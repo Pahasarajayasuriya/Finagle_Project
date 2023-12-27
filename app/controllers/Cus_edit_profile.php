@@ -40,7 +40,7 @@ class Cus_edit_profile extends Controller
 
             // Update other user information
             $user->update($id, $_POST);
-            redirect('cus_profile/' . $id);
+            redirect('login/' . $id);
         }
 
         $data['title'] = "Edit Profile";
