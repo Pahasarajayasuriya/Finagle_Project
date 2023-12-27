@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+html,
+body {
+  font-family: "Poppins", sans-serif;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+}
+
+.pro_container {
+  max-width: 800px;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: #000000;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.pro_card {
+  padding: 20px;
+  margin: 20px auto;
+  color: #f5eded;
+}
+
+.pro_details {
+  margin: 15px 0px 0px 0px;
+}
+
+.pro_font {
+  color: #d72323;
+}
+
+.pro_form-group {
+  margin: 15px 0px 0px 0px;
+}
+
+.pro_form-group input[type="text"],
+.pro_form-group input[type="email"],
+.pro_form-group input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #f5eded;
+  border-radius: 5px;
+}
+
+.pro_btn {
+  padding: 10px 20px;
+  margin-right: 10px;
+  margin: 20px 0 0 0;
+  cursor: pointer;
+  background-color: #d72323;
+  color: #f5eded;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.pro_btn:hover {
+  background-color: #3e3636;
+}
+
+.pro_text-right {
+  color: #d72323;
+}
+
+@media (max-width: 768px) {
+  .pro_container {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .pro_card {
+    padding: 10px;
+    width: 60vw;
+  }
+
+  .pro_form-group input[type="text"],
+  .pro_form-group input[type="email"],
+  .pro_form-group input[type="password"] {
+    padding: 8px;
+  }
+
+  .pro_btn {
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pro_container {
+    padding: 5px;
+  }
+
+  .pro_card {
+    padding: 5px;
+    width: 88vw;
+  }
+
+  .pro_form-group input[type="text"],
+  .pro_form-group input[type="email"],
+  .pro_form-group input[type="password"] {
+    padding: 6px;
+  }
+
+  .pro_btn {
+    padding: 6px 12px;
+  }
+}
+
+/* overlapping part fixed */
+.sidebar.open ~ .home-section {
+  left: 190px;
+  width: calc(100% - 50px);
+}
+.home-section {
+  position: relative;
+  transition: all 0.5s ease;
+  min-height: 100vh;
+  left: 8px;
+  width: calc(100% - 58px);
+  z-index: 2;
+}
