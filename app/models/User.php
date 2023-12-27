@@ -11,6 +11,7 @@ class User extends Model
         'password',
         'teleno',
         'role',
+        'address',
     ];
     public function validate($data)
     {

@@ -39,17 +39,22 @@ $this->view('includes/footer', $data);
                         <input class="pro_input" type="text" id="teleno" name="teleno" value="<?=set_value('teleno',$row->teleno)?>">
                     </div>
                     <div class="pro_form-group">
+                        <label class="pro_name" for="pro_address">Address</label>
+                        <input class="pro_input" type="text" id="pro_address" name="address" value="<?=set_value('address',$row->address)?>">
+                    </div>
+                    <div class="pro_form-group">
                         <label class="pro_name" for="pro_phone">Current Password</label>
-                        <input class="pro_input" type="text" id="pro_phone" name="password">
+                        <input class="pro_input" type="password" id="pro_phone" name="password">
                     </div>
                     <div class="pro_form-group">
                         <label class="pro_name" for="pro_phone">New Password</label>
-                        <input class="pro_input" type="text" id="pro_phone" name="newpassword">
+                        <input class="pro_input" type="password" id="pro_phone" name="newpassword">
                     </div>
                     <div class="pro_form-group">
                         <label class="pro_name" for="pro_phone">Re-enter Password</label>
-                        <input class="pro_input" type="text" id="pro_phone" name="renewpassword">
+                        <input class="pro_input" type="password" id="pro_phone" name="renewpassword">
                     </div>
+                    
                     <div class="pro_button">
                         <p>&emsp;</p>
                         <a href="<?=ROOT?>/home">
