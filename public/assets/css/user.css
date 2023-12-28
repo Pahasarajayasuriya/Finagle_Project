@@ -3,6 +3,7 @@ body {
   padding: 0;
   background-color: white;
   font-family: sans-serif;
+
 }
 
 
@@ -32,23 +33,105 @@ body {
   align-items: center;
   /* Add this line to center items vertically */
   display: flex;
+  font-family:"Poppins";
 }
 
-.navbar-links a {
+.signup , .login {
   color: rgb(192, 191, 191);
   text-decoration: none;
   margin-right: 85px;
   justify-content: 20px;
+  background-color: transparent;
+
 }
 
 
-/* .signup{
-  margin-left: 100px;
-} */
-.navbar-links a:hover {
+.signup:hover .login:hover {
   color: rgb(158, 30, 30);
-  /* Add your desired hover color */
+  background-color: transparent;
+
+
 }
+
+.dropdown {
+  /* overflow: hidden; */
+  margin-right: 80px;
+  border-radius: 10px;
+  width: 150px;
+  position: relative;
+  display: inline-block;
+  font-family: "Poppins";
+  background-color: black;
+  border: 3px solid rgba(255,255,255,.2);
+
+}
+
+.dropbtn {
+  width: 100%;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color:white;
+  padding: 10px;
+  background-color: black;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  
+ 
+}
+.dropbtn .fa.fa-user-circle-o{
+  padding-right: 10px;
+  font-size: 25px;
+
+}
+.dropbtn .fa.fa-caret-down {
+  margin-left: 5px;
+}
+
+
+
+.dropdown-content {
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  display: none;
+  
+ 
+}
+
+.dropdown-content.active {
+  display: block; 
+ 
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+ 
+
+
+} 
+
+
+
+
+.dropdown-content a:hover {
+  background-color: red;
+  transform: translateX(5);
+  color: white;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
 
 .home-section {
   display: flex;
@@ -60,9 +143,6 @@ body {
   position: relative;
 
 }
-
-
-
 
 .page-container {
   flex: 1;
@@ -84,7 +164,10 @@ img {
   height: auto;
   object-fit: cover;
 }
-
+ 
+.image-container button{
+  font-family: sans-serif;
+}
 .text {
   position: absolute;
   top: 50%;
@@ -222,6 +305,7 @@ img {
   position: relative;
   overflow: hidden;
   margin-top: 15px;
+  font-family:"Poppins";
 }
 
 .text .button button:hover {
@@ -293,6 +377,7 @@ img {
   margin-top: 20px;
   font-size: 14px;
   color: rgb(133, 132, 132);
+  font-family:"Poppins";
 
 }
 
@@ -310,6 +395,7 @@ strong {
   text-transform: uppercase;
   font-weight: bold;
   margin-top: 60px;
+  font-family:"Poppins";
 }
 
 .offer-category,
@@ -448,6 +534,7 @@ strong {
   transition: all 0.3s;
   border: none;
   text-decoration: none;
+  font-family:"Poppins";
 }
 
 .offer_section .box .detail-box a:hover {
@@ -558,6 +645,7 @@ strong {
   width: 200px;
   padding-left: 5px;
   padding-right: 5px;
+  font-family:"Poppins";
   
 
 }
@@ -587,6 +675,7 @@ strong {
   margin-left: 20px;
   margin: 30px;
   box-shadow: #bababa;
+  font-family:"Poppins";
 
 }
 
@@ -737,20 +826,22 @@ strong {
 .about-content {
   margin: 20px;
   margin-right: 40px;
+  font-family:"Poppins";
 }
 
 .about-head {
   margin-top: 40px;
   margin-left: 30px;
   font-size: 25px;
+  font-family:"Poppins";
 }
 
 .about-p {
   text-align: justify;
   margin-left: 10px;
   margin-top: 20px;
-  font-size: 16px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  font-family:"Poppins";
 
 }
 
@@ -777,10 +868,13 @@ strong {
 
 .exp-title {
   padding-right: 20px;
+  font-weight: bolder;
+  font-family:  'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .sub-topic {
   color: rgb(154, 154, 154);
+  font-family:  'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .read-more {
@@ -799,6 +893,9 @@ strong {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
   border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   margin-left: 0;
+  font-family:"Poppins";
+  margin-top: 5px;
+
 
 }
 
@@ -831,7 +928,8 @@ strong {
 .review{
   margin-top: 20px;
   font-size: 15px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family:"Poppins";
+ 
   
 }
 
@@ -862,6 +960,7 @@ strong {
   font-size: 13px;
   margin-top: 40px;
   font-weight: bold;
+  font-family: "Poppins";
 }
 
 .footer-section{
@@ -991,7 +1090,7 @@ strong {
 .send{
   height: 50px;
   width: 80px;
-  margin-left: -100px;
+  margin-left: -120px;
   border: none;
   border-radius: 5px;
   background-color: red;
@@ -1085,63 +1184,4 @@ strong {
 .sidebar.open~.navbar {
   width: calc(100% - 250px);
   margin-left: 200px;
-}
-
-.user_navbar {
-  overflow: hidden;
-  background-color: #3E3636;
-}
-
-.user_navbar a {
-  float: left;
-  font-size: 16px;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-.dropdown .dropbtn {
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  margin-left: 10px;
-}
-
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: #D72323;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 140px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
 }

@@ -1,8 +1,6 @@
 <?php
 $role = "User";
-// require_once '../includes/header.view.php';
-// require_once '../views/includes/NavBar.view.php';
-// require_once '../views/includes/footer.view.php';
+
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
