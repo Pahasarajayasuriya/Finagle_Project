@@ -68,7 +68,6 @@ $this->view('includes/footer', $data);
         </div>
 
     </div>
-
     <div class="home-section">
         <div class="page-container">
             <div class="image-container">
