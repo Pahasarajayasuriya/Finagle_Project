@@ -30,7 +30,7 @@
                                 <span class="tooltip">Exports</span>
                               </li>
                               <li>
-                                <a href="recipes.php">
+                              <a href="../customer/recipes.view.php">
                                   <i class="bx bx-food-menu"></i>
                                   <span class="links_name">Recipes</span>
                                 </a>
