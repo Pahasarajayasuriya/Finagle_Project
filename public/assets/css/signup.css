@@ -1,49 +1,75 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@media screen and (max-width: 768px) {
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'poppins',sans-serif;
+    /* Adjust styles for smaller screens */
+    .sidebar {
+        display: none;
+        /* Hide the sidebar menu on small screens */
+    }
+
+    /* Modify other styles as needed */
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+
 
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background-image: url(https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_1280.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  font-size: 14px;
+    margin: 0;
+    padding: 0;
+   
+    background-color: #d9d9d9;
+    font-family: sans-serif;
 }
 
-section {
+.login_container {
+    width: 100%;
+    height: 540px;
+    max-width: 900px;
+    margin: 30px auto;
+    border: 2px solid #ccc;
+    overflow: hidden;
+    background:white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+}
+
+.image-container {
     position: relative;
-    max-width: 400px;
-    height: 650px;
-    background-color: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 20px;
-    backdrop-filter: blur(55px);
+    /* margin-top: -20px; */
+    width: 420px;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem 3rem;
+    padding: 2rem 3rem 5rem;
+    color: black;
+    float: left;
+    box-sizing: border-box;
+    background: #45a049;
+    border-radius: 10px;
 }
 
-h1 {
-    font-size: 2rem;
-    color: #fff;
-    text-align: center;
+.form-container {
+    position: relative;
+    /* margin-top: -20px; */
+    width: 480px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 3rem;
+    color: black;
+    float: right;
+    box-sizing: border-box;
+    background: white;
 }
+
 
 .inputbox {
     position: relative;
-    margin: 30px 0;
+    margin: 10px 0;
     max-width: 310px;
-    border-bottom: 2px solid #fff;
+    border-bottom: 2px solid #aea7a7;
 }
 
 .inputbox label {
@@ -51,26 +77,38 @@ h1 {
     top: 50%;
     left: 5px;
     transform: translateY(-50%);
-    color: #fff;
+    color: #000000;
     font-size: 1rem;
     pointer-events: none;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.8s ease-in-out;
+}
+
+.inputbox input:placeholder-shown ~ label {
+    top: 50%;
+    
 }
 
 input:focus ~ label, 
 input:valid ~ label {
     top: -5px;
 }
+.inputbox i{
+    position: absolute;
+    /* right: 8px; */
+    color: #000000;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
 
 .inputbox input {
     width: 100%;
     height: 60px;
-    background: transparent;
     border: none;
     outline: none;
     font-size: 1rem;
     padding: 0 35px 0 5px;
-    color: #fff;
+    color: #cacaca; 
+    margin-left: 30px;
 }
 
 .inputbox ion-icon {
@@ -81,39 +119,11 @@ input:valid ~ label {
     top: 20px;
 }
 
-.forget {
-    margin: 35px 0;
-    font-size: 0.85rem;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
- 
-}
-
-.forget label {
-    display: flex;
-    align-items: center;
-}
-
-.forget label input {
-    margin-right: 3px;
-}
-
-.forget a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.forget a:hover {
-    text-decoration: underline;
-}
-
 button {
     width: 100%;
     height: 40px;
     border-radius: 40px;
-    background-color: rgb(255, 255,255, 1);
+    background-color:red;
     border: none;
     outline: none;
     cursor: pointer;
@@ -123,22 +133,66 @@ button {
 }
 
 button:hover {
-  background-color: rgb(255, 255,255, 0.5);
+  background-color: rgba(255, 237, 237, 0.5);
 }
 
 .register {
     font-size: 0.9rem;
-    color: #fff;
+    color: #000000;
     text-align: center;
     margin: 25px 0 10px;
 }
 
 .register p a {
     text-decoration: none;
-    color: #fff;
+    color: #000000;
     font-weight: 600;
 }
 
 .register p a:hover {
     text-decoration: underline;
+}
+
+.form-container button {
+    background-color:red;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.form-container button:hover {
+    background-color: #000000;
+}
+
+@media (max-width: 768px) {
+
+    .form-container,
+    .container img {
+        width: 100%;
+        float: none;
+        border-radius: 0;
+    }
+}
+
+
+h1 {
+    
+    align-items: center;
+    /* font-size: 2rem; */
+    text-align: center;
+    color:black;
+    /* letter-spacing: 0.08rem;
+    margin: 2rem 0 1rem;*/
+    font-weight: 900; 
+
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 8px;
+    /* margin: 0 0 15px;
+    margin-top: 5px; */
+
 }
