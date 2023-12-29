@@ -18,10 +18,10 @@
             <h3>QUICK LINKS</h3>
             <div class="link-quick">
 
-                <i class="fas fa-arrow-right"></i> <a href="homepage.php#aboutus" class="a-link"> About us </a><br>
+                <i class="fas fa-arrow-right"></i> <a href="<?= ROOT ?>#aboutus" class="a-link"> About us </a><br>
 
 
-                <i class="fas fa-arrow-right"></i> <a href="product.php" class="a-link">Products</a><br>
+                <i class="fas fa-arrow-right"></i> <a href="<?= ROOT ?>/products" class="a-link">Products</a><br>
 
 
                 <i class="fas fa-arrow-right"></i> <a href="" class="a-link">Our Segments</a><br>
@@ -46,12 +46,12 @@
             <h3>PRODUCTS</h3>
             <div class="link-product">
 
-                <i class="fas fa-arrow-right"></i> <a href="product.php" class="a-link">Bread & Buns</a><br>
+                <i class="fas fa-arrow-right"></i> <a href="<?= ROOT ?>/products" class="a-link">Bread & Buns</a><br>
 
 
-                <i class="fas fa-arrow-right"></i> <a href="product.php" class="a-link">Frozen Products</a><br>
+                <i class="fas fa-arrow-right"></i> <a href="<?= ROOT ?>/products" class="a-link">Frozen Products</a><br>
 
-                <i class="fas fa-arrow-right"></i> <a href="product.php" class="a-link">Cakes</a><br>
+                <i class="fas fa-arrow-right"></i> <a href="<?= ROOT ?>/products" class="a-link">Cakes</a><br>
 
             </div>
         </div>
@@ -72,10 +72,10 @@
 
             </div>
             <div class="social-links">
-                <a class="social-btn" href=""><i class="fab fa-twitter"></i></a>
-                <a class="social-btn" href=""><i class="fab fa-facebook-f"></i></a>
-                <a class="social-btn" href=""><i class="fab fa-youtube"></i></a>
-                <a class="social-btn" href=""><i class="fab fa-linkedin-in"></i></a>
+                <a class="social-btn" href="https://www.facebook.com/finaglelanka/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a class="social-btn" href="https://www.youtube.com/@finaglelanka9579" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a class="social-btn" href="https://lk.linkedin.com/company/finaglelanka" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a class="social-btn" href="https://www.instagram.com/finagle_lanka/" target="_blank"><i class="fab fa-instagram"></i></a>
             </div>
 
         </div>

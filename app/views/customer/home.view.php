@@ -41,7 +41,7 @@ $this->view('includes/footer', $data);
 </head>
 
 <body>
-    <div class="navbar">
+    <!-- <div class="navbar">
         <div class="logo_icon">
             <img src="<?= ROOT ?>/assets/images/logo.png" alt="">
         </div>
@@ -67,7 +67,12 @@ $this->view('includes/footer', $data);
             </div>
         </div>
 
-    </div>
+    </div> -->
+
+    <?php
+// require_once '../../Components/NavBar/Footer/cus_footer.php';
+$this->view('includes/cus_topbar', $data);
+?>
 
     <style>
         .image-container {
