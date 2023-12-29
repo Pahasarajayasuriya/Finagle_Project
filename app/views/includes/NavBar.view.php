@@ -9,21 +9,21 @@
                                 <span class="tooltip">Dashboard</span>
                               </li>
                               <li>
-                                <a href="' . ROOT . '/product_stock.php">
+                                <a href="' . ROOT . '/products">
                                   <i class="bx bx-cake"></i>
                                   <span class="links_name">Products</span>
                                 </a>
                                 <span class="tooltip">Products</span>
                               </li> 
                               <li>
-                                <a href="process.php">
+                                <a href="' . ROOT . '/process">
                                   <i class="bx bx-pie-chart-alt-2"></i>
                                   <span class="links_name">Process</span>
                                 </a>
                                 <span class="tooltip">Process</span>
                               </li>
                               <li>
-                                <a href="export.php">
+                                <a href="' . ROOT . '/export">
                                   <i class="bx bxs-plane-alt"></i>
                                   <span class="links_name">Exports</span>
                                 </a>

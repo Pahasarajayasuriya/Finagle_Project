@@ -202,7 +202,7 @@ $this->view('includes/footer', $data);
                                         <h6>
                                             <span>20%</span> Off
                                         </h6>
-                                        <a href="product.php">
+                                        <a href="<?= ROOT ?>/products">
                                             Order Now<span> <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i></span>
                                         </a>
                                     </div>
@@ -221,7 +221,7 @@ $this->view('includes/footer', $data);
                                         <h6>
                                             <span>15%</span> Off
                                         </h6>
-                                        <a href="product.php">
+                                        <a href="<?= ROOT ?>/products">
                                             Order Now<span> <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i></span>
 
                                         </a>
@@ -251,7 +251,7 @@ $this->view('includes/footer', $data);
                     <div class="category-content">
                         <img src="<?= ROOT ?>/assets/images/delicious-bread.jpg" alt="breads" class="category-image">
 
-                        <a href="product.php">
+                        <a href="<?= ROOT ?>/products">
                             <h5 class="category-title">BREAD & BUNS</h5>
                         </a>
 
@@ -262,7 +262,7 @@ $this->view('includes/footer', $data);
                     <div class="category-content">
                         <img src="<?= ROOT ?>/assets/images/vegi_roti.jpg" alt="frozen" class="category-image">
 
-                        <a href="product.php">
+                        <a href="<?= ROOT ?>/products">
                             <h5 class="category-title">FROZEN FOODS</h5>
                         </a>
 
@@ -273,7 +273,7 @@ $this->view('includes/footer', $data);
                     <div class="category-content">
                         <img src="<?= ROOT ?>/assets/images/cakes.jpg" alt="cakes" class="category-image">
 
-                        <a href="product.php">
+                        <a href="<?= ROOT ?>/products">
                             <h5 class="category-title"> CAKES</h5>
                         </a>
 
@@ -281,7 +281,7 @@ $this->view('includes/footer', $data);
                 </div>
             </div>
 
-            <a href="product.php">
+            <a href="<?= ROOT ?>/products">
                 <div class="view-more">View more</div>
             </a>
 
@@ -316,7 +316,7 @@ $this->view('includes/footer', $data);
                                         <h6>
                                             Rs.1000.00
                                         </h6>
-                                        <a href="product.php">
+                                        <a href="<?= ROOT ?>/products">
                                             <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i>
 
                                         </a>
@@ -341,7 +341,7 @@ $this->view('includes/footer', $data);
                                         <h6>
                                             Rs.4500.00
                                         </h6>
-                                        <a href="product.php">
+                                        <a href="<?= ROOT ?>/products">
                                             <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i>
 
 
@@ -367,7 +367,7 @@ $this->view('includes/footer', $data);
                                             <h6>
                                                 Rs.3750.00
                                             </h6>
-                                            <a href="product.php">
+                                            <a href="<?= ROOT ?>/products">
                                                 <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i>
 
                                             </a>
@@ -396,7 +396,7 @@ $this->view('includes/footer', $data);
                                             <h6>
                                                 Rs.1700.00
                                             </h6>
-                                            <a href="product.php">
+                                            <a href="<?= ROOT ?>/products">
                                                 <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i>
 
                                             </a>
@@ -423,7 +423,7 @@ $this->view('includes/footer', $data);
                                         <h6>
                                             Rs.200.00
                                         </h6>
-                                        <a href="product.php">
+                                        <a href="<?= ROOT ?>/products">
                                             <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i></span>
 
 
@@ -450,7 +450,7 @@ $this->view('includes/footer', $data);
                                             <h6>
                                                 Rs.5000.00
                                             </h6>
-                                            <a href="product.php">
+                                            <a href="<?= ROOT ?>/products">
                                                 <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i>
 
                                             </a>
@@ -466,7 +466,7 @@ $this->view('includes/footer', $data);
 
             </div>
             <br>
-            <a href="product.php">
+            <a href="<?= ROOT ?>/products">
                 <div class="view-more">View more</div>
             </a>
 
@@ -529,7 +529,7 @@ $this->view('includes/footer', $data);
 
                             </div>
                         </div>
-                        <a class="read-more" href="process.php">READ MORE</a>
+                        <a class="read-more" href="<?= ROOT ?>/process">READ MORE</a>
                     </div>
 
                 </div>
