@@ -45,3 +45,9 @@ $this->view('includes/footer', $data);
 </body>
 </html>
 
+
+<?php
+// require_once '../../Components/NavBar/Footer/cus_footer.php';
+$this->view('includes/cus_topbar', $data);
+?>
+

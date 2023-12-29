@@ -19,28 +19,28 @@ $this->view('includes/footer', $data);
 </head>
 
 <body>
-<div class="home-section">
+    <div class="home-section">
         <div class="pro_container">
             <h1 class="pro_font">
                 Edit Profile
             </h1>
             <div class="pro_card">
-                <form  method="post">
+                <form method="post">
                     <div class="pro_form-group">
                         <label class="pro_name" for="pro_username">Username</label>
-                        <input class="pro_input" type="text" id="username" name="username" value="<?=set_value('username',$row->username)?>">
+                        <input class="pro_input" type="text" id="username" name="username" value="<?= set_value('username', $row->username) ?>">
                     </div>
                     <div class="pro_form-group">
                         <label class="pro_name" for="pro_email">E-mail</label>
-                        <input class="pro_input" type="email" id="email" name="email" value="<?=set_value('email',$row->email)?>">
+                        <input class="pro_input" type="email" id="email" name="email" value="<?= set_value('email', $row->email) ?>">
                     </div>
                     <div class="pro_form-group">
                         <label class="pro_name" for="pro_phone">Phone No</label>
-                        <input class="pro_input" type="text" id="teleno" name="teleno" value="<?=set_value('teleno',$row->teleno)?>">
+                        <input class="pro_input" type="text" id="teleno" name="teleno" value="<?= set_value('teleno', $row->teleno) ?>">
                     </div>
                     <div class="pro_form-group">
                         <label class="pro_name" for="pro_address">Address</label>
-                        <input class="pro_input" type="text" id="pro_address" name="address" value="<?=set_value('address',$row->address)?>">
+                        <input class="pro_input" type="text" id="pro_address" name="address" value="<?= set_value('address', $row->address) ?>">
                     </div>
                     <div class="pro_form-group">
                         <label class="pro_name" for="pro_phone">Current Password</label>
@@ -54,20 +54,20 @@ $this->view('includes/footer', $data);
                         <label class="pro_name" for="pro_phone">Re-enter Password</label>
                         <input class="pro_input" type="password" id="pro_phone" name="renewpassword">
                     </div>
-                    
+
                     <div class="pro_button">
                         <p>&emsp;</p>
-                        <a href="<?=ROOT?>/home">
+                        <a href="<?= ROOT ?>/home">
                             <button type="button" class="pro_btn">Back</button></a>
                         <p>&emsp;</p>
-                        <a href="<?=ROOT?>/home">
+                        <a href="<?= ROOT ?>/home">
                             <button type="submit" class="pro_btn">Save Changes</button></a>
 
                     </div>
                 </form>
             </div>
         </div>
-</div>
+    </div>
 </body>
 
 </html>
