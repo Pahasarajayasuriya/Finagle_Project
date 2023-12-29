@@ -79,11 +79,9 @@ $this->view('includes/footer', $data);
             width: 100%;
             height: auto;
             display: none;
-            /* Hide all images initially */
         }
 
         .text {
-            /* Your existing styling for the text */
             position: absolute;
             top: 50%;
             left: 50%;
@@ -110,7 +108,7 @@ $this->view('includes/footer', $data);
                     </div>
 
                     <h3 class="text-span">Conveniently Delicious Frozen & Fresh Bakery Products</h3>
-                    <div class="button"> <a href="homepage.php"><button>Explore</button></a></div>
+                    <div class="button"> <a href="<?= ROOT ?>"><button>Explore</button></a></div>
                 </div>
             </div>
             <script>
@@ -438,9 +436,9 @@ $this->view('includes/footer', $data);
                         <div class="col-sm-6 col-lg-4 all pizza">
                             <div class="box">
                                 <div>
-                                    <!-- <div class="img-box">
+                                    <div class="img-box">
                                         <img src="https://i.pinimg.com/474x/0a/57/9b/0a579b9bdaf19849ca8443ba628e0b6b.jpg" alt="">
-                                    </div> -->
+                                    </div>
                                     <div class="detail-box">
                                         <h5>
                                             Chocolate Berry Cake
