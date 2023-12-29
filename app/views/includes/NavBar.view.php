@@ -9,54 +9,48 @@
                                 <span class="tooltip">Dashboard</span>
                               </li>
                               <li>
-                                <a href="' . ROOT . '/product_stock.php">
+                                <a href="' . ROOT . '/products">
                                   <i class="bx bx-cake"></i>
                                   <span class="links_name">Products</span>
                                 </a>
                                 <span class="tooltip">Products</span>
                               </li> 
                               <li>
-                                <a href="process.php">
+                                <a href="' . ROOT . '/process">
                                   <i class="bx bx-pie-chart-alt-2"></i>
                                   <span class="links_name">Process</span>
                                 </a>
                                 <span class="tooltip">Process</span>
                               </li>
                               <li>
-                                <a href="export.php">
+                                <a href="' . ROOT . '/export">
                                   <i class="bx bxs-plane-alt"></i>
                                   <span class="links_name">Exports</span>
                                 </a>
                                 <span class="tooltip">Exports</span>
                               </li>
                               <li>
-                              <a href="../customer/recipes.view.php">
+                              <a href="' . ROOT . '/recipes">
                                   <i class="bx bx-food-menu"></i>
                                   <span class="links_name">Recipes</span>
                                 </a>
                                 <span class="tooltip">Recipes</span>
                               </li>
                               <li>
-                                <a href="complaint.php">
+                                <a href="' . ROOT . '/complaint">
                                   <i class="bx bx-message-alt-detail"></i>
                                   <span class="links_name">Complains</span>
                                 </a>
                                 <span class="tooltip">Complains</span>
                               </li>
                               <li>
-                                <a href="user.php#aboutus">
+                                <a href="'. ROOT .'#aboutus">
                                 <i class="bx bx-info-circle"></i>
                                   <span class="links_name">About Us</span>
                                 </a>
                                 <span class="tooltip">About Us</span>
                               </li>
-                              <li>
-                                <a href="user.php#contactus">
-                                  <i class="bx bxs-phone-call"></i>
-                                  <span class="links_name">Contact Us</span>
-                                </a>
-                                <span class="tooltip">Contact Us</span>
-                              </li>';
+                              ';
                         } elseif ($role == "Employee") {
                           echo '
                           <li>
