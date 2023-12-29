@@ -35,6 +35,8 @@
 
      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
      <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
 
 
      <link rel="stylesheet" href="<?= ROOT ?>/assets/css/user.css">
@@ -54,7 +56,7 @@
                      <div class="user_navbar" >
                          <div class="dropdown">
                              <button class="dropbtn" onclick="toggleDropdown()">
-                                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>Hi, <?= Auth::getUsername() ?>
+                                <i class="fa fa-user-circle-o" aria-hidden="true"></i>Hi, <?= Auth::getUsername() ?>
                                  <i class="fa fa-caret-down"></i>
                              </button>
                              <div class="dropdown-content" >
