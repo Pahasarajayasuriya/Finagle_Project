@@ -41,37 +41,65 @@ $this->view('includes/footer', $data);
 </head>
 
 <body>
-<div class="navbar">
+    <div class="navbar">
         <div class="logo_icon">
             <img src="<?= ROOT ?>/assets/images/logo.png" alt="">
         </div>
         <div class="navbar-links">
-        <div class="user-buttons">
-        <?php if (!Auth::logged_in()) : ?>
-            <a class="signup" href="<?= ROOT ?>/signup">Signup</a>
-            <a class="login" href="<?= ROOT ?>/login">Login</a>
-        <?php else : ?>
-            <div class="user_navbar">
-                <div class="dropdown">
-                    <button class="dropbtn">Hi, <?= Auth::getUsername() ?>
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="<?= ROOT ?>/cus_profile">Profile</a>
-                        <a href="<?= ROOT ?>/cus_edit_profile">Edit Profile</a>
-                        <a href="<?= ROOT ?>/Logout">Logout</a>
+            <div class="user-buttons">
+                <?php if (!Auth::logged_in()) : ?>
+                    <a class="signup" href="<?= ROOT ?>/signup">Signup</a>
+                    <a class="login" href="<?= ROOT ?>/login">Login</a>
+                <?php else : ?>
+                    <div class="user_navbar">
+                        <div class="dropdown">
+                            <button class="dropbtn">Hi, <?= Auth::getUsername() ?>
+                                <i class="fa fa-caret-down"></i>
+                            </button>
+                            <div class="dropdown-content">
+                                <a href="<?= ROOT ?>/cus_profile">Profile</a>
+                                <a href="<?= ROOT ?>/cus_edit_profile">Edit Profile</a>
+                                <a href="<?= ROOT ?>/Logout">Logout</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                <?php endif; ?>
             </div>
-        <?php endif; ?>
-    </div>
         </div>
 
     </div>
+
+    <style>
+        .image-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: none;
+            /* Hide all images initially */
+        }
+
+        .text {
+            /* Your existing styling for the text */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            color: #fff;
+        }
+    </style>
+
     <div class="home-section">
         <div class="page-container">
             <div class="image-container">
                 <img src="<?= ROOT ?>/assets/images/banner.jpg" alt="Background Image">
+                <img src="<?= ROOT ?>/assets/images/kotthu-banner.jpg" alt="Background Image">
+                <img src="<?= ROOT ?>/assets/images/sandwitches-banner.jpg" alt="Background Image">
+                <img src="<?= ROOT ?>/assets/images/pita-bread-banner.jpg" alt="Background Image">
                 <div class="text">
                     <h2 class="head_1">Welcome to</h2>
                     <h1 class="head_2">FINAGLE LANKA (PVT) LTD</h1>
@@ -85,6 +113,32 @@ $this->view('includes/footer', $data);
                     <div class="button"> <a href="homepage.php"><button>Explore</button></a></div>
                 </div>
             </div>
+            <script>
+                let currentIndex = 0;
+                const images = document.querySelectorAll('.image-container img');
+                const intervalTime = 10000; 
+
+                function showImage(index) {
+                    images.forEach((img, i) => {
+                        if (i === index) {
+                            img.style.display = 'block';
+                        } else {
+                            img.style.display = 'none';
+                        }
+                    });
+                }
+
+                function nextImage() {
+                    currentIndex++;
+                    if (currentIndex >= images.length) {
+                        currentIndex = 0;
+                    }
+                    showImage(currentIndex);
+                }
+                
+                nextImage();
+                setInterval(nextImage, intervalTime);
+            </script>
         </div>
         <div class="row g-4">
 
@@ -199,7 +253,9 @@ $this->view('includes/footer', $data);
                     <div class="category-content">
                         <img src="<?= ROOT ?>/assets/images/delicious-bread.jpg" alt="breads" class="category-image">
 
-                        <a href="product.php"><h5 class="category-title">BREAD & BUNS</h5></a>
+                        <a href="product.php">
+                            <h5 class="category-title">BREAD & BUNS</h5>
+                        </a>
 
                     </div>
                 </div>
@@ -208,7 +264,9 @@ $this->view('includes/footer', $data);
                     <div class="category-content">
                         <img src="<?= ROOT ?>/assets/images/vegi_roti.jpg" alt="frozen" class="category-image">
 
-                        <a href="product.php"><h5 class="category-title">FROZEN FOODS</h5></a>
+                        <a href="product.php">
+                            <h5 class="category-title">FROZEN FOODS</h5>
+                        </a>
 
                     </div>
                 </div>
@@ -217,16 +275,20 @@ $this->view('includes/footer', $data);
                     <div class="category-content">
                         <img src="<?= ROOT ?>/assets/images/cakes.jpg" alt="cakes" class="category-image">
 
-                        <a href="product.php"><h5 class="category-title"> CAKES</h5></a>
+                        <a href="product.php">
+                            <h5 class="category-title"> CAKES</h5>
+                        </a>
 
                     </div>
                 </div>
             </div>
 
-            <a href="product.php"><div class="view-more">View more</div></a>
+            <a href="product.php">
+                <div class="view-more">View more</div>
+            </a>
 
             <div class="newly-added">
-               
+
 
                 <h2 class="section-title"><strong> </strong>NEWLY ADDED</h2>
                 <div class="divider dark mb-4">
@@ -406,9 +468,11 @@ $this->view('includes/footer', $data);
 
             </div>
             <br>
-            <a href="product.php"><div class="view-more">View more</div></a>
+            <a href="product.php">
+                <div class="view-more">View more</div>
+            </a>
 
-            <div class="about-us" >
+            <div class="about-us">
 
                 <h2 class="section-title" id="aboutus"><strong> </strong>ABOUT US</h2>
                 <div class="divider dark mb-4">
