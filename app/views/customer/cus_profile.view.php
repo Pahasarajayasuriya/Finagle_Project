@@ -31,32 +31,10 @@ $this->view('includes/footer', $data);
 
    </head>
 <body>
-<div class="navbar">
-         <div class="logo_icon">
-             <img src="<?= ROOT ?>/assets/images/logo.png" alt="">
-         </div>
-         <div class="navbar-links">
-             <div class="user-buttons">
-                     <div class="user_navbar" >
-                         <div class="dropdown">
-                             <button class="dropbtn" onclick="toggleDropdown()">
-                                <i class="fa fa-user-circle-o" aria-hidden="true"></i> <p>Hi, <?= Auth::getUsername() ?></p>
-                                 <i class="fa fa-caret-down"></i>
-                             </button>
-                             <div class="dropdown-content" >
-                                 <!-- <a href="<?= ROOT ?>/cus_profile">Profile</a> -->
-                                 <a href="<?= ROOT ?>/cus_edit_profile">Edit Profile</a>
-                                 <a href="<?= ROOT ?>/Logout">Logout</a>
-                             </div>
-                         </div>
-                     </div>
-                    
-               
-             </div>
-         </div>
-
-     </div>
-
+<?php
+// require_once '../../Components/NavBar/Footer/cus_footer.php';
+$this->view('includes/cus_topbar', $data);
+?>
 
 <?php if (!empty($row)): ?>
     <div class="home-section">

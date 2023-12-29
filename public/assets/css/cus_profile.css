@@ -41,7 +41,7 @@ body {
   background-color: transparent;
 }
 
-/* Fix syntax error in the following code */
+
 .signup:hover,
 .login:hover {
   color: rgb(158, 30, 30);
@@ -59,7 +59,6 @@ body {
   border: 3px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Fix syntax error in the following code */
 .dropbtn {
   width: 100%;
   font-size: 16px;
@@ -99,7 +98,6 @@ body {
   display: none;
 }
 
-/* Fix syntax error in the following code */
 .dropdown-content.active {
   display: block;
 }
