@@ -3,6 +3,7 @@
 class ComplaintModel extends Model
 {
     protected $table = 'complaints';
+    public $errors = [];
     protected $allowedColumns = [
         'name',
         'teleno',
@@ -12,26 +13,41 @@ class ComplaintModel extends Model
 
     public function validate($data)
     {
-        // Implement your validation logic here
-        // Return validated data or false if validation fails
-        // Example: return $validatedData;
+        $this->errors = [];
 
-        // For now, returning the input data as is (no validation)
-        return $data;
-    }
+        if (empty($data['name'])) {
+            $this->errors['name'] = "Name is required";
+        }
 
-    public function insertComplaint($data)
-    {
-        // Validate data
-        $validatedData = $this->validate($data);
+        if (empty($data['teleno'])) {
+            $this->errors['teleno'] = "A telephone number is required";
+        } elseif (!preg_match('/^[0-9]{10}$/', $data['teleno'])) {
+            $this->errors['teleno'] = "Invalid phone number";
+        }
 
-        if ($validatedData) {
-            // Insert data into the 'complaints' table
-            return $this->insert($validatedData);
+        if (empty($data['email'])) {
+            $this->errors['email'] = "Email is required";
+        }
+
+        if (empty($data['complaint'])) {
+            $this->errors['complaint'] = "Complaint is required";
+        }
+
+        if (empty($this->errors)) {
+            return $data;
         }
 
         return false;
     }
 
-    // Add other methods specific to the 'complaints' table if needed
+    public function insertComplaint($data)
+    {
+        $validatedData = $this->validate($data);
+
+        if (!$validatedData) {
+            return false; // Return false if validation fails
+        }
+
+        return $this->insert($validatedData);
+    }
 }
