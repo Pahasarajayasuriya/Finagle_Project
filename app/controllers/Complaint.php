@@ -4,12 +4,11 @@ class Complaint extends Controller
 {
     public function index()
     {
-        $data['title'] = "Complaint";
+        $data['errors'] = [];
       
-
+        $complaintModel = new ComplaintModel();
         // Check if the form is submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $complaintModel = new ComplaintModel();
             $validatedData = $complaintModel->validate($_POST);
 
             if ($validatedData) {
@@ -27,7 +26,8 @@ class Complaint extends Controller
         if (!empty($_GET['success'])) {
             $data['successMessage'] = urldecode($_GET['success']);
         }
-
+        $data['errors'] = $complaintModel->errors;
+        $data['title'] = "Complaint";
         $this->view('customer/complaint', $data);
     }
 }

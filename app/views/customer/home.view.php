@@ -70,9 +70,8 @@ $this->view('includes/footer', $data);
     </div> -->
 
     <?php
-// require_once '../../Components/NavBar/Footer/cus_footer.php';
-$this->view('includes/cus_topbar', $data);
-?>
+    $this->view('includes/cus_topbar', $data);
+    ?>
 
     <style>
         .image-container {
@@ -119,7 +118,7 @@ $this->view('includes/cus_topbar', $data);
             <script>
                 let currentIndex = 0;
                 const images = document.querySelectorAll('.image-container img');
-                const intervalTime = 10000; 
+                const intervalTime = 10000;
 
                 function showImage(index) {
                     images.forEach((img, i) => {
@@ -138,7 +137,7 @@ $this->view('includes/cus_topbar', $data);
                     }
                     showImage(currentIndex);
                 }
-                
+
                 nextImage();
                 setInterval(nextImage, intervalTime);
             </script>

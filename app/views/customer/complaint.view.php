@@ -75,9 +75,8 @@ $this->view('includes/footer', $data);
                         <?php if (!empty($errors['teleno'])) : ?>
                             <div class="invalid"><?= $errors['teleno'] ?></div>
                         <?php endif; ?>
-
-
                     </div>
+
                     <div class="pro_inline">
                         <label class="pro_name" for="pro_comemail">Enter Your E-mail</label>
                         <input class="pro_input" type="email" id="pro_comemail" name="email" value="<?= set_value('email') ?>" required>
