@@ -39,6 +39,11 @@ $this->view('includes/footer', $data);
                     font-weight: bold;
 
                 }
+
+                .invalid {
+                    color: red;
+                    font-size: 14px;
+                }
             </style>
             <script>
                 function hideSuccessMessage() {
@@ -46,7 +51,7 @@ $this->view('includes/footer', $data);
                     if (successMessage) {
                         setTimeout(function() {
                             successMessage.style.display = 'none';
-                        }, 3000); 
+                        }, 3000);
                     }
                 }
 
@@ -59,21 +64,35 @@ $this->view('includes/footer', $data);
                 <form action="<?= ROOT ?>/complaint" method="POST">
                     <div class="pro_inline">
                         <label class="pro_name" for="pro_username">Enter Your Name</label>
-                        <input class="pro_input" type="text" id="pro_name" name="name" required>
+                        <input class="pro_input" type="text" id="pro_name" name="name" value="<?= set_value('name') ?>" required>
+                        <?php if (!empty($errors['name'])) : ?>
+                            <div class="invalid"><?= $errors['name'] ?></div>
+                        <?php endif; ?>
                     </div>
                     <div class="pro_inline">
                         <label class="pro_name" for="pro_phoneno">Enter Your Phone Number</label>
-                        <input class="pro_input" type="text" id="pro_phoneno" name="teleno" required>
+                        <input class="pro_input" type="text" id="pro_phoneno" name="teleno" value="<?= set_value('teleno') ?>" required>
+                        <?php if (!empty($errors['teleno'])) : ?>
+                            <div class="invalid"><?= $errors['teleno'] ?></div>
+                        <?php endif; ?>
                     </div>
+
                     <div class="pro_inline">
                         <label class="pro_name" for="pro_comemail">Enter Your E-mail</label>
-                        <input class="pro_input" type="email" id="pro_comemail" name="email" required>
+                        <input class="pro_input" type="email" id="pro_comemail" name="email" value="<?= set_value('email') ?>" required>
+                        <?php if (!empty($errors['email'])) : ?>
+                            <div class="invalid"><?= $errors['email'] ?></div>
+                        <?php endif; ?>
                     </div>
 
                     <div class="pro_inline">
                         <label class="pro_name" for="pro_complaint">Enter Your Complaint</label>
-                        <textarea class="pro_input" id="pro_complaint" name="complaint" required></textarea>
+                        <textarea class="pro_input" id="pro_complaint" name="complaint" required><?= set_value('complaint') ?></textarea>
+                        <?php if (!empty($errors['complaint'])) : ?>
+                            <div class="invalid"><?= $errors['complaint'] ?></div>
+                        <?php endif; ?>
                     </div>
+
 
                     <div class="pro_button">
                         <p>&emsp;</p>
