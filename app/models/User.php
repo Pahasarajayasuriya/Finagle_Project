@@ -70,13 +70,6 @@ class User extends Model
             }
         }
 
-
-        if (empty($data['password'])) {
-            $this->errors['password'] = "A password is required";
-        }
-        // if ($data['repassword'] !== $data['password']) {
-        //     $this->errors['password'] = "Password do not match";
-        // }
         if (empty($data['teleno'])) {
             $this->errors['teleno'] = "A telephone number is required";
         } elseif (!preg_match('/^[0-9]{10}$/', $data['teleno'])) {

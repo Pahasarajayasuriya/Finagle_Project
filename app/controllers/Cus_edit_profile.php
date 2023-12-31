@@ -43,7 +43,6 @@ class Cus_edit_profile extends Controller
                 redirect('login/' . $id);
                 // redirect('login');
             }    
-
         }
         $data['errors'] = $user->errors;
         $data['title'] = "Edit Profile";
