@@ -33,6 +33,10 @@
                 <i class="fas fa-arrow-right"></i> <a href="" class="a-link">Privacy Policy</a><br>
 
                 <i class="fas fa-arrow-right"></i> <a href="" class="a-link">Sitemap</a><br>
+                <?php if (Auth::is_admin()) : ?>
+                    <i class="fas fa-arrow-right"></i> <a href="<?= ROOT ?>/admin_products" class="a-link">Admin</a><br>
+                <?php endif; ?>
+
 
 
 
