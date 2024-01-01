@@ -4,7 +4,8 @@ class Admin_products extends Controller
 {
     public function index()
     {
-        $data['title'] = "Products";
+        $data['title'] = "Admin";
         $this->view('admin/admin_products', $data);
     }
+
 }
