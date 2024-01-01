@@ -47,7 +47,8 @@
                 </tr>
             </table>
         </section>
-
+        <!-- Add this message element -->
+        <div id="no-results-message" class="no-results-message">No matching categories found.</div>
         <!-- POPUP -->
         <form method="post">
             <div class="popup-report">

@@ -20,14 +20,13 @@ function closeReport(){
     popupReport.classList.remove("open-popup-report");
     overlay.classList.remove("overlay-active");
 }
-
 document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.querySelector('.form-group');
     const rows = document.querySelectorAll('.table tbody tr');
     const noResultsMessage = document.getElementById('no-results-message');
 
-    searchInput.addEventListener('input', function () {
-        const searchTerm = searchInput.value.toLowerCase();
+    function filterCategories() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
         let found = false;
 
         rows.forEach(row => {
@@ -40,5 +39,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 row.style.display = 'none';
             }
         });
-    });
+
+        // Show/hide the "No results" message
+        noResultsMessage.style.display = searchTerm !== '' && !found ? 'block' : 'none';
+    }
+
+    // Initial filtering when the page loads
+    filterCategories();
+
+    searchInput.addEventListener('input', filterCategories);
 });
+
