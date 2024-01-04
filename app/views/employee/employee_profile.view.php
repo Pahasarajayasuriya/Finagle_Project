@@ -1,9 +1,9 @@
-
 <?php
 $role = "Employee";
 // require_once '../../Components/NavBar/header.php';
 // require_once '../../Components/NavBar/NavBar.php';
 // require_once '../../Components/NavBar/footer.php';
+
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
@@ -63,21 +63,24 @@ $this->view('includes/footer', $data);
                  <div class="profile-image"> 
                     <img src="https://i.pinimg.com/474x/e0/4c/38/e04c383ed661003b1a599bb877eff836.jpg" alt="Employee 1" >
                  </div>
+               
                     <p class='profile-id'>E100</p>
                     <p class='profile-name'>Dilum Induwara</p>
                     <div class="profile-date">18-09-2020</div>
                 
+
+                   
             </div>
 
             <div class="profile-record">
               <div class="profile-image"> 
                      <img src="https://i.pinimg.com/474x/b8/5e/9d/b85e9df9e9b75bcce3a767eb894ef153.jpg" alt="Employee 2">
               </div>
-                
+            
                     <p class='profile-id'>E140</p>
                     <p class='profile-name'>Mithun Weerasinghe</p>
                     <div class="profile-date">03-12-2020</div>
-                   
+              
               
             </div>
 
@@ -85,19 +88,20 @@ $this->view('includes/footer', $data);
                <div class="profile-image"> 
                      <img src="https://i.pinimg.com/564x/6b/b6/60/6bb6600e01459e62f16363626ff9d515.jpg" alt="Employee 3" >
                </div>
+               
                     <p class='profile-id'>E200</p>
                     <p class='profile-name'>   Dilshan Akalanka</p>
                     <div class="profile-date">08-09-2022</div>
+           
                
             </div>
         </div>
         </div>
 
-        <div class="insights">
+        <!-- <div class="insights">
                     <div class="goals-container">
                         <h2>Goals</h2>
-                        <!-- <h4>Tasks to be completed within this month</h4> -->
-
+                       
                         <ul class="white-frame">
                             <li><input type="checkbox" id="goal1" name="goal1"><label for="goal1">Achieve a 99% accuracy rate in order fulfillment</label></li>
                             <li><input type="checkbox" id="goal2" name="goal2"><label for="goal2">Achieve a 95% on-time delivery rate.</label></li>
@@ -106,7 +110,7 @@ $this->view('includes/footer', $data);
 
                     </div>
 
-        </div>
+        </div> -->
 
     </div>
 

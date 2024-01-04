@@ -1,0 +1,288 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    color: black;
+    background-color: white;
+
+
+}
+
+.main-title{
+ margin-top: -90px; 
+}
+
+.section-title {
+    font-size: 1.5em;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 1%;
+    font-family:"Poppins";
+    margin-left: 42%;
+    
+  }
+  .fas.fa-bread-slice.fa-3x.text-primary.mb-4{
+    margin-left: 48%;
+    font-size: 40px;
+    /* margin-top: -20px;
+   */
+  } 
+ 
+    
+.fas.fa-bread-slice.fa-3x.text-primary.mb-4 :after{
+  margin-left: 100px;
+ 
+
+}
+
+  
+.fas.fa-bread-slice.fa-3x.text-primary.mb-4 :after{
+    margin-left: 500px;
+   
+  
+  }
+  
+  .divider .icon-wrap:after {
+    content: "";
+    position: absolute;
+    border-bottom: 3px solid #ff0000;
+    width: 120px;
+    height: 17px;
+  
+  }
+  
+  .divider.dark .icon-wrap:before,
+  .divider.dark .icon-wrap:after {
+    content: "";
+    position: absolute;
+    border-bottom: 3px solid #ff0000;
+    width: 200px;
+    height: 17px;
+  
+  }
+  
+  .divider .icon-wrap:before,
+  .divider.dark .icon-wrap:before {
+    left: 400px;
+    transform: translateX(-50%);
+  
+  
+  }
+  
+  .divider .icon-wrap:after,
+  .divider.dark .icon-wrap:after {
+    right: 380px;
+    transform: translateX(50%);
+  }
+  /* ... (your existing CSS rules) ... */
+
+.orders-container {
+    display: flex;
+    width: calc(100% - 75px);
+    justify-content: space-around;
+    /* margin: 90px; */
+    margin: 10px;
+    margin-top: 40px;
+    margin-left: 60px;
+    gap: 30px;
+    
+}
+
+.order-status {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease-in-out;
+    height: auto;
+   
+}
+
+.order-status:hover {
+    background-color: #f4f4f4;
+}
+
+.title-section {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+
+    
+
+
+}
+
+.title-section i {
+    margin-right: 10px;
+    font-size: 25px;
+}
+
+.status-title {
+    font-size: 18px;
+    font-weight: bold;
+  
+}
+
+
+.filter-buttons {
+    margin-top: 10px;
+    /* margin-left: 50%; */
+    align-items: end;
+    display: flex;
+    justify-content: end;
+    gap: 3px;
+}
+
+.filter-buttons button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: 0 1px;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: background-color 0.3s ease-in-out;
+    font-size: 10px;
+}
+
+.filter-buttons button:hover {
+    background-color: #218838;
+}
+.placed-item{
+    width: 100%;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-top:10px;
+    padding-right: 15px;
+    transition: 0.5s ease-in-out;
+}
+
+.placed-item:hover{
+    transform: scale(1.05);
+    
+}
+
+.item-title{
+    display: flex;
+    /* gap: 90px; */
+    font-size: 20px;
+    padding: 10px;
+    padding-bottom: 0px;
+    justify-content: space-between;
+}
+
+.item-symbol{
+    font-size: 20px;
+    /* margin-top: -2px; */
+  
+
+}
+
+.item-id{
+    font-size: 16px;
+    font-weight: bold;
+
+}
+.bx.bx-time-five{
+    margin-top: 1px;
+    align-items: center;
+    font-size: 15px;
+    justify-content: center;
+    text-align: center;
+   
+}
+
+.ready-time{
+    text-align: center;
+    font-size: 14px;
+}
+
+.time-duration{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-right: -5px;
+
+}
+.main-item{
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    /* gap: 5px; */
+}
+
+.item-options{
+    display: flex;
+    margin-left: 20px;
+   
+    justify-content: space-between;
+    margin-bottom: 10px;
+   
+
+}
+
+
+ .view-details , .cancel{
+  /* transform: translate(-50%, -50%); */
+  background-color: white;
+  outline: none;
+  border: none;
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  color: rgb(138, 138, 138);
+  padding: 3px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+  width: max-content;
+  font-size: 12px;
+  text-decoration: none;
+ 
+}
+
+.view-details:hover , .cancel:hover{
+  border-color: red;
+  color: red;
+
+}
+
+.ready-order-list{
+    margin-top: 45px;
+}
+
+/* .ready-item-options{
+    display: flex;
+    margin-left: 70px;
+    margin-top: 10px;
+    gap: 20px;
+   
+
+} */
+.home-section {
+    position: relative;
+    transition: all 0.5s ease;
+    /* min-height: 100vh; */
+    left: 20px;
+    margin-top: 100px;
+    width: calc(100% - 68px);
+    /* z-index: 2; */
+  }
+
+  /* .sidebar.open ~ .orders-container {
+    width: calc(100% - );
+  } */
+
+  .sidebar.open ~ .home-section {
+    left: 200px;
+    width: calc(100% - 200);
+  } 
+
