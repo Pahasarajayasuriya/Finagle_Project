@@ -91,29 +91,29 @@ $this->view('includes/footer', $data);
     <h1>&emsp;&emsp;&emsp;&emsp;&emsp;The profile was not found!</h1>
   <?php endif; ?>
 
-  <!-- 
 
-<?php if (!empty($row)) : ?>
-<div class="home-section">
- <div class="pro_container">
-  <div class="pro_outer">
-    <div class="pro_content">
-      <div class="pro_details">
-        <div class="pro_name">Your Account</div>
 
-        <div class="pro_buttons">
-            <p class="pro_details"><strong>Username: </strong><?= esc($row->username) ?></p>
-            <p class="pro_details"><strong>E-mail: </strong><?= esc($row->email) ?></p>
-            <p class="pro_details"><strong>Phone No: </strong><?= esc($row->teleno) ?></p>
+  <?php if (!empty($row)) : ?>
+    <div class="home-section">
+      <div class="pro_container">
+        <div class="pro_outer">
+          <div class="pro_content">
+            <div class="pro_details">
+              <div class="pro_name">Your Account</div>
+
+              <div class="pro_buttons">
+                <p class="pro_details"><strong>Username: </strong><?= esc($row->username) ?></p>
+                <p class="pro_details"><strong>E-mail: </strong><?= esc($row->email) ?></p>
+                <p class="pro_details"><strong>Phone No: </strong><?= esc($row->teleno) ?></p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-  </div>
- </div>
-</div>
-</div>
-<?php else : ?>
-  <h1>&emsp;&emsp;&emsp;&emsp;&emsp;The profile was not found!</h1>
-<?php endif; ?> -->
+    </div>
+  <?php else : ?>
+    <h1>&emsp;&emsp;&emsp;&emsp;&emsp;The profile was not found!</h1>
+  <?php endif; ?>
 
 </body>
 

@@ -592,3 +592,11 @@ select {
     width: calc(100% - 58px);
     z-index: 2;
   } */
+
+  /* Add these styles to your existing CSS file or inline in HTML */
+
+.image-preview {
+  max-width: 100px;  /* Adjust the maximum width as needed */
+  max-height: 100px; /* Adjust the maximum height as needed */
+  border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+}

@@ -184,13 +184,6 @@
                                 <span class="tooltip">Products</span>
                               </li>
                               <li>
-                                <a href="#">
-                                  <i class="bx bx-cake"></i>
-                                  <span class="links_name">Categories</span>
-                                </a>
-                                <span class="tooltip">Products</span>
-                              </li>
-                              <li>
                               <a href="#">
                                 <i class="bx bx-cake"></i>
                                 <span class="links_name">Branches</span>

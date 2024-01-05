@@ -1,8 +1,10 @@
 <?php
 $role = "User";
-// require_once '../../Components/NavBar/header.php';
-// require_once '../../Components/NavBar/NavBar.php';
-// require_once '../../Components/NavBar/footer.php';
+
+// require_once '../includes/header.view.php';
+// require_once '../views/includes/NavBar.view.php';
+// require_once '../views/includes/footer.view.php';
+
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
@@ -162,3 +164,4 @@ $this->view('includes/footer', $data);
 </body>
 
 </html>
+
