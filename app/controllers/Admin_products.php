@@ -15,8 +15,10 @@ class Admin_products extends Controller
             if ($validatedData) {
                 // Handle file upload for the image
                 $imagePath = $this->uploadImage($_FILES['image']);
+
                 if ($imagePath) {
                     $validatedData['image'] = $imagePath;
+
                     // Insert the product into the database
                     $adminProductsModel->insert($validatedData);
 
@@ -24,7 +26,7 @@ class Admin_products extends Controller
                     redirect('admin_products');
                 } else {
                     // Handle image upload failure
-                    echo "Image Upload Failed. Details:";
+                    echo "Image Upload Failed.";
                 }
             } else {
                 // Handle validation errors
@@ -45,43 +47,17 @@ class Admin_products extends Controller
         // Example code (modify as per your image upload logic)
         $targetDirectory = "uploads/";
         $targetFile = $targetDirectory . basename($file["name"]);
-        $uploadOk = 1;
 
-        // Check if image file is a actual image or fake image
-        $check = getimagesize($file["tmp_name"]);
-        if ($check !== false) {
-            $uploadOk = 1;
+        // Ensure the target directory exists
+        if (!is_dir($targetDirectory)) {
+            mkdir($targetDirectory, 0777, true);
+        }
+
+        // Move the uploaded file to the target directory
+        if (move_uploaded_file($file["tmp_name"], $targetFile)) {
+            return $targetFile;
         } else {
-            $uploadOk = 0;
-        }
-
-        // Check if file already exists
-        if (file_exists($targetFile)) {
-            $uploadOk = 0;
-        }
-
-        // Check file size
-        if ($file["size"] > 500000) {
-            $uploadOk = 0;
-        }
-
-        // Allow certain file formats
-        $allowedExtensions = ["jpg", "jpeg", "png", "gif"];
-        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-        if (!in_array($imageFileType, $allowedExtensions)) {
-            $uploadOk = 0;
-        }
-
-        // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 0) {
             return false;
-        } else {
-            // if everything is ok, try to upload file
-            if (move_uploaded_file($file["tmp_name"], $targetFile)) {
-                return $targetFile;
-            } else {
-                return false;
-            }
         }
     }
 }
