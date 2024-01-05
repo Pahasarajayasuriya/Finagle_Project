@@ -19,12 +19,5 @@ class Admin_productsModel extends Model
 
         return $data;
     }
-
-    public function all()
-    {
-        $query = "SELECT * FROM {$this->table}";
-        return $this->query($query);
-    }
-
-    
+ 
 }
