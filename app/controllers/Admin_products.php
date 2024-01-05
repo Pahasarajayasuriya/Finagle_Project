@@ -38,13 +38,10 @@ class Admin_products extends Controller
         $this->view('admin/admin_products', $data);
     }
 
-    // Function to handle image upload
+
     private function uploadImage($file)
     {
-        // Add your image upload logic here
-        // Return the path of the uploaded image if successful, or false on failure
 
-        // Example code (modify as per your image upload logic)
         $targetDirectory = "uploads/";
         $targetFile = $targetDirectory . basename($file["name"]);
 
@@ -53,10 +50,29 @@ class Admin_products extends Controller
             mkdir($targetDirectory, 0777, true);
         }
 
+        // Check allowed file types
+        $allowedExtensions = ["jpg", "jpeg", "png", "gif"];
+        $fileExtension = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+        if (!in_array($fileExtension, $allowedExtensions)) {
+            echo "Invalid file type. Only JPG, JPEG, PNG, and GIF are allowed.";
+            return false;
+        }
+
+        // Check image dimensions
+        list($width, $height) = getimagesize($file["tmp_name"]);
+        $maxDimension = 20000;
+
+        if ($width > $maxDimension || $height > $maxDimension) {
+            echo "Image dimensions are too high. Please upload a smaller image.";
+            return false;
+        }
+
         // Move the uploaded file to the target directory
         if (move_uploaded_file($file["tmp_name"], $targetFile)) {
             return $targetFile;
         } else {
+            echo "Image Upload Failed.";
             return false;
         }
     }

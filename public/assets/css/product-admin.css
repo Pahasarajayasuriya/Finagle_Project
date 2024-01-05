@@ -595,8 +595,10 @@ select {
 
   /* Add these styles to your existing CSS file or inline in HTML */
 
-.image-preview {
-  max-width: 100px;  
-  max-height: 100px; 
-  border-radius: 5px; 
-}
+  .image-preview {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%; /* Use 50% for a circle */
+    object-fit: cover; /* Preserve aspect ratio and cover the entire container */
+  }
+  
