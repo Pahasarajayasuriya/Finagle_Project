@@ -11,6 +11,7 @@ class Admin_products extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Validate and sanitize input data
             $validatedData = $adminProductsModel->validate($_POST);
+            echo $_POST['category'];
             if ($validatedData) {
                 // Handle file upload for the image
                 $imagePath = $this->uploadImage($_FILES['image']);

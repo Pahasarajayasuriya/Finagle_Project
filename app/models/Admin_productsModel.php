@@ -26,14 +26,5 @@ class Admin_productsModel extends Model
         return $this->query($query);
     }
 
-    public function insertComplaint($data)
-    {
-        $validatedData = $this->validate($data);
-
-        if (!$validatedData) {
-            return false; // Return false if validation fails
-        }
-
-        return $this->insert($validatedData);
-    }
+    
 }

@@ -21,7 +21,7 @@
                 <div class="form">
                     <input class="form-group" type="text" placeholder="Search...">
                     <i class='bx bx-search icon'></i>
-                    <input class="btn" type="button" onclick="openReport()" value="Add Categories">
+                    <input class="btn" type="button" onclick="openReport()" value="Add Products">
                 </div>
 
             </form>
@@ -49,7 +49,7 @@
                             <img class="image-preview" src="<?= esc($row->image) ?>" alt="Product Image">
                         </td>
                         <td class="products"><?= esc($row->name) ?> </td>
-                        <td class="desc"><?= esc($row->category) ?></td>
+                        <td class="category"><?= esc($row->category) ?></td>
                         <td class="desc"><?= esc($row->price) ?></td>
                         <td><button type="submit" class="view-order-btn" onclick="openView()">Edit Products</button></td>
                         <td><button type="submit" class="view-order-btn">Delete Products</button></td>
@@ -83,7 +83,7 @@
                 </div>
                 <div>
                     <label for="category">Category</label>
-                    <input required type="text" name="category" value="<?= set_value('category') ?>">
+                    <input required type="text" id="category" name="category" value="<?= set_value('category') ?>">
                     <?php if (!empty($errors['category'])) : ?>
                         <div class="invalid"><?= $errors['category'] ?></div>
                     <?php endif; ?>
