@@ -26,6 +26,7 @@
 
             </form>
 
+
             <table class="table">
                 <thead>
                     <tr>
@@ -33,27 +34,30 @@
                         <th class="ordId">Id</th>
                         <th class="ordId">Image</th>
                         <th class="desc">Product Name</th>
-                        <th class="desc">Category</th>
+                        <th class="desc">category</th>
                         <th class="ordId">Price</th>
                         <th>Update</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
-                <tr>
-                    <td>1</td>
-                    <td class="ordId">002345</td>
-                    <td class="desc">
-                        <img class="image-preview" src="path/to/your/image.jpg" alt="Product Image">
-                        <!-- <div class="filename">Selected File: None</div>
-                        <input onchange="load_image(this.files[0])" type="file" name="image"> -->
-                    </td>
-                    <td class="products">burger </td>
-                    <td class="desc">bread and buns </td>
-                    <td class="desc">500 </td>
-                    <td><button type="submit" class="view-order-btn" onclick="openView()">Edit Products</button></td>
-                    <td><button type="submit" class="view-order-btn">Delete Products</button></td>
-                </tr>
+                <?php $rowNumber = 1; ?>
+                <?php foreach ($rows as $row) : ?>
+                    <tr>
+                        <td><?= $rowNumber++ ?></td>
+                        <td class="ordId"><?= esc($row->id) ?></td>
+                        <td class="desc">
+                            <img class="image-preview" src="<?= esc($row->image) ?>" alt="Product Image">
+                        </td>
+                        <td class="products"><?= esc($row->name) ?> </td>
+                        <td class="desc"><?= esc($row->category) ?></td>
+                        <td class="desc"><?= esc($row->price) ?></td>
+                        <td><button type="submit" class="view-order-btn" onclick="openView()">Edit Products</button></td>
+                        <td><button type="submit" class="view-order-btn">Delete Products</button></td>
+                    </tr>
+                <?php endforeach; ?>
             </table>
+
+
         </section>
         <!-- Add this message element -->
         <div id="no-results-message" class="no-results-message">No matching products found.</div>
