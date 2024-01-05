@@ -74,7 +74,6 @@
                 </div>
                 <div>
                     <label for="image">Product image</label>
-                    <div class="filename">Selected File: None</div>
                     <input onchange="load_image(this.files[0])" type="file" name="image" value="<?= set_value('image') ?>">
                     <?php if (!empty($errors['image'])) : ?>
                         <div class="invalid"><?= $errors['image'] ?></div>
@@ -113,29 +112,27 @@
                 <form>
                     <div class="user-details">
                         <div class="input-box">
-                            <span class="details">Product Id </span>
-                            <input type="text" required onChange="" value="0023456" />
-                        </div>
-
-                        <div class="input-box">
                             <span class="details">Product Name </span>
-                            <input type="text" required onChange="" value="Ja-ela" />
+                            <input type="text" required onChange="" value="<?= set_value('name', $row->name) ?>" />
                         </div>
 
                         <div class="input-box">
                             <span class="details">Category</span>
-                            <input type="text" required onChange="" value="0112815328" />
+                            <input type="text" required onChange="" value="<?= set_value('category', $row->category) ?>" />
                         </div>
 
                         <div class="input-box">
                             <label for="edit-image">Edit Image</label>
                             <input type="file" name="edit-image" accept="image/*">
-
+                            <?php if ($row->image) : ?>
+                                <div>Current Image: <?= basename($row->image) ?></div>
+                                <input type="hidden" name="current-image" value="<?= basename($row->image) ?>">
+                            <?php endif; ?>
                         </div>
 
                         <div class="input-box">
                             <span class="details">price</span>
-                            <input type="text" required onChange="" value="0112815328" />
+                            <input type="text" required onChange="" value="<?= set_value('price', $row->price) ?>" />
                         </div>
                     </div>
                 </form>
