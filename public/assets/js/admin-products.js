@@ -51,9 +51,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-function load_image(file){
-  document.querySelector(".filename").innerHTML = "Selected File " + file.name;
+// function load_image(file){
+//   document.querySelector(".filename").innerHTML = "Selected File " + file.name;
 
-  var mylink = URL.createObjectURL (file);
-  document.querySelector(".image-preview").src = mylink;
-}
+//   var mylink = URL.createObjectURL (file);
+//   document.querySelector(".image-preview").src = mylink;
+// }

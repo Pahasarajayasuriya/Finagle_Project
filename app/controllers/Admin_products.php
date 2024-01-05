@@ -11,25 +11,24 @@ class Admin_products extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Validate and sanitize input data
             $validatedData = $adminProductsModel->validate($_POST);
-            echo $_POST['category'];
+
             if ($validatedData) {
                 // Handle file upload for the image
                 $imagePath = $this->uploadImage($_FILES['image']);
-                // if ($imagePath) {
-                //     $validatedData['image'] = $imagePath;
-
+                if ($imagePath) {
+                    $validatedData['image'] = $imagePath;
                     // Insert the product into the database
                     $adminProductsModel->insert($validatedData);
 
                     // Redirect to avoid form resubmission
                     redirect('admin_products');
-                // } else {
+                } else {
                     // Handle image upload failure
-                    // You can add an error message or redirect to the form page with an error
-                // }
+                    echo "Image Upload Failed. Details:";
+                }
             } else {
                 // Handle validation errors
-                // You can add an error message or redirect to the form page with errors
+                $data['errors'] = $adminProductsModel->errors;
             }
         }
 
@@ -42,5 +41,47 @@ class Admin_products extends Controller
     {
         // Add your image upload logic here
         // Return the path of the uploaded image if successful, or false on failure
+
+        // Example code (modify as per your image upload logic)
+        $targetDirectory = "uploads/";
+        $targetFile = $targetDirectory . basename($file["name"]);
+        $uploadOk = 1;
+
+        // Check if image file is a actual image or fake image
+        $check = getimagesize($file["tmp_name"]);
+        if ($check !== false) {
+            $uploadOk = 1;
+        } else {
+            $uploadOk = 0;
+        }
+
+        // Check if file already exists
+        if (file_exists($targetFile)) {
+            $uploadOk = 0;
+        }
+
+        // Check file size
+        if ($file["size"] > 500000) {
+            $uploadOk = 0;
+        }
+
+        // Allow certain file formats
+        $allowedExtensions = ["jpg", "jpeg", "png", "gif"];
+        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+        if (!in_array($imageFileType, $allowedExtensions)) {
+            $uploadOk = 0;
+        }
+
+        // Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            return false;
+        } else {
+            // if everything is ok, try to upload file
+            if (move_uploaded_file($file["tmp_name"], $targetFile)) {
+                return $targetFile;
+            } else {
+                return false;
+            }
+        }
     }
 }

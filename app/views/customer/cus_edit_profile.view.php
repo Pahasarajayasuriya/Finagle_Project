@@ -18,9 +18,27 @@ $this->view('includes/footer', $data);
     <meta name="viewport" content="width=device-width">
     <title>Edit Profile</title>
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/cus_edit_profile.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <link href="https://fonts.googleapis.com/css?family=Cabin|Herr+Von+Muellerhoff|Source+Sans+Pro" rel="stylesheet">
+     <!--Fonts-->
+
+    
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+
 </head>
 
 <body>
+<?php
+$this->view('includes/cus_topbar', $data);
+?>
+
 <div class="home-section">
             <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
               <h2 class="section-title">EDIT YOUR ACCOUNT</h2>
@@ -36,17 +54,30 @@ $this->view('includes/footer', $data);
                 <form  method="post">
                     <div class="inline">
                     <div class="pro_form-group">
-                        <label class="pro_name" for="pro_username">Username</label>
-                        <input class="pro_input" type="text" id="username" name="username" value="<?=set_value('username',$row->username)?>">
+                        <label class="pro_name" for="pro_username">Username : </label>
+                        <input class="pro_input" type="text" id="username" name="username" value="<?=set_value('username',$row->username)?>" required>
+                        <?php if (!empty($errors['username'])) : ?>
+                            <div class="invalid"><?= $errors['username'] ?></div>
+                        <?php endif; ?>
                     </div>
 
                     <div class="pro_form-group">
-                        <label class="pro_name" for="pro_email">E-mail</label>
-                        <input class="pro_input" type="email" id="email" name="email" value="<?=set_value('email',$row->email)?>">
+                        <label class="pro_name" for="pro_email">E-mail : </label>
+                        <input class="pro_input" type="email" id="email" name="email" value="<?=set_value('email',$row->email)?>" required>
+                        <?php if (!empty($errors['email'])) : ?>
+                            <div class="invalid"><?= $errors['email'] ?></div>
+                        <?php endif; ?>
                     </div>
+
+                    </div>
+                    <div class="inline">
+                   
                     <div class="pro_form-group">
-                        <label class="pro_name" for="pro_phone">Phone No</label>
-                        <input class="pro_input" type="text" id="teleno" name="teleno" value="<?=set_value('teleno',$row->teleno)?>">
+                        <label class="pro_name" for="pro_phone">Phone No : </label>
+                        <input class="pro_input" type="text" id="teleno" name="teleno" value="<?=set_value('teleno',$row->teleno)?>" required>
+                        <?php if (!empty($errors['teleno'])) : ?>
+                            <div class="invalid"><?= $errors['teleno'] ?></div>
+                        <?php endif; ?>
                     </div>
                     <div class="pro_form-group">
                         <label class="pro_name" for="pro_address">Address : </label>
