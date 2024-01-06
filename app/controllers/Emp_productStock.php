@@ -1,6 +1,6 @@
 <?php
 
-class Emp_progress extends Controller
+class Emp_productStock extends Controller
 {
     public function index($id = null)
     {
@@ -8,8 +8,8 @@ class Emp_progress extends Controller
 
         $user = new User();
         $data['row'] = $user->first(['id'=>$id]);
-        $data['title'] = "Progress";
-        $this->view('employee/order_assign', $data);
+        $data['title'] = "ProductStock";
+        $this->view('employee/product_stock', $data);
     }
 
     // public function profile($id = null)
