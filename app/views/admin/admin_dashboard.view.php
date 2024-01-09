@@ -54,7 +54,7 @@
             </a>
           </li>
           <li class="sidebar-list-item">
-            <a href="<?= ROOT?>/admin_branch" target="_self">
+            <a href="<?= ROOT?>/admin_branches" target="_self">
               <span class="material-icons-outlined">storefront</span> Branches
             </a>
           </li>
