@@ -112,25 +112,14 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <?php foreach($rows as $row): ?>
                   <tr>
-                    <td>01</td>
-                    <td>Matara</td>
-                    <td>224/2/A, Malwatta Rd, Colombo 06</td>
-                    <td><button>Edit</button> <button>Delete</button></td>
-                      
+                    <td><?= esc($row->id) ?></td>
+                    <td><?= esc($row->name) ?></td>
+                    <td><?= esc($row->address) ?></td>
+                    <td><button>Edit</button> <button>Delete</button></td>                    
                   </tr>
-                  <tr>
-                    <td>02</td>
-                    <td>Borella</td>
-                    <td>104/2, Main road, Borella</td>
-                    <td><button>Edit</button> <button>Delete</button></td>
-                  </tr>
-                  <tr>
-                    <td>03</td>
-                    <td>Nugegoda</td>
-                    <td>Sri Jayawardenepura ,Kotte</td>
-                    <td><button>Edit</button> <button>Delete</button></td>
-                  </tr>
+                  <?php endforeach; ?>
                 </tbody>
               </table>
             </div>
