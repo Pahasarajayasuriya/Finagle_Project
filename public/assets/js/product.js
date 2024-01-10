@@ -31,7 +31,7 @@ let cart = [];
 let buttonsDOM = [];
 
 class UI {
-  // Update the displayProducts method to accept dynamic product data
+
   displayProducts(products) {
     let result = "";
 

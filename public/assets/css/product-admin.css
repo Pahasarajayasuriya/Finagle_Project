@@ -17,13 +17,22 @@ body {
 }
 .no-results-message {
   /* display: flex; */
-  align-items: center;
+  /* align-items: center;
   justify-content: center;
   height: 100vh;
   color: red;
-  font-weight: bold;
+  font-weight: bold; */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid red;
+  color: red;
+  display: none;
 }
-.delete-btn{
+.delete-btn {
   right: 1%;
   font-size: 16px;
   width: fit-content;
@@ -196,7 +205,7 @@ table tbody tr.active-row {
   margin-left: 0%;
 } */
 
-.report{
+.report {
   position: absolute;
   height: fit-content;
   width: 60%;
@@ -593,12 +602,11 @@ select {
     z-index: 2;
   } */
 
-  /* Add these styles to your existing CSS file or inline in HTML */
+/* Add these styles to your existing CSS file or inline in HTML */
 
-  .image-preview {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%; /* Use 50% for a circle */
-    object-fit: cover; /* Preserve aspect ratio and cover the entire container */
-  }
-  
+.image-preview {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%; /* Use 50% for a circle */
+  object-fit: cover; /* Preserve aspect ratio and cover the entire container */
+}
