@@ -1,46 +1,42 @@
+const cartBtn = document.querySelector(".cart-btn"),
+  cartModal = document.querySelector(".cart"),
+  backDrop = document.querySelector(".backdrop"),
+  closeModalBtn = document.querySelector(".cart-item-confirm");
 
-
-const cartBtn = document.querySelector('.cart-btn'),
-cartModal = document.querySelector('.cart'),
-backDrop = document.querySelector('.backdrop'),
-closeModalBtn = document.querySelector('.cart-item-confirm');
-
-cartBtn.addEventListener('click', showModal);
-closeModalBtn.addEventListener('click', closeModal);
-backDrop.addEventListener('click', closeModal);
+cartBtn.addEventListener("click", showModal);
+closeModalBtn.addEventListener("click", closeModal);
+backDrop.addEventListener("click", closeModal);
 
 function showModal() {
-backDrop.style.display = 'block';
-cartModal.style.opacity = '1';
-cartModal.style.position = 'fixed';
-cartModal.style.top = '21%';
+  backDrop.style.display = "block";
+  cartModal.style.opacity = "1";
+  cartModal.style.position = "fixed";
+  cartModal.style.top = "21%";
 }
 
 function closeModal() {
-backDrop.style.display = 'none';
-cartModal.style.opacity = '0';
-cartModal.style.top = '-100%';
+  backDrop.style.display = "none";
+  cartModal.style.opacity = "0";
+  cartModal.style.top = "-100%";
 }
 
-
-
-const productsDOM = document.querySelector('.products-center'),
-cartTotal = document.querySelector('.cart-total'),
-cartItemsCounter = document.querySelector('.cart-items'),
-cartContent = document.querySelector('.cart-content'),
-clearCart = document.querySelector('.clear-cart'),
-searchInput = document.querySelector('.search');
+const productsDOM = document.querySelector(".products-center"),
+  cartTotal = document.querySelector(".cart-total"),
+  cartItemsCounter = document.querySelector(".cart-items"),
+  cartContent = document.querySelector(".cart-content"),
+  clearCart = document.querySelector(".clear-cart"),
+  searchInput = document.querySelector(".search");
 
 let cart = [];
 let buttonsDOM = [];
 
 class UI {
-// Update the displayProducts method to accept dynamic product data
-displayProducts(products) {
-  let result = '';
+  // Update the displayProducts method to accept dynamic product data
+  displayProducts(products) {
+    let result = "";
 
-  products.forEach((item) => {
-    result += `
+    products.forEach((item) => {
+      result += `
       <div class="product">
         <div class="img-container">
           <img class="product-img" src="${item.image}" alt="${item.name}" />
@@ -57,82 +53,80 @@ displayProducts(products) {
         </div>
       </div>
     `;
-  });
-
-  // Remove the local declaration of productsDOM
-  productsDOM.innerHTML = result;
-
-  // Update the method to get cart buttons dynamically
-  this.getCartBtns();
-}
-
-// ... Other methods ...
-
-
-
-getCartBtns() {
-  const addCartBtns = [...document.querySelectorAll('.add-to-cart')];
-  // console.log(addCartBtns);
-
-  buttonsDOM = addCartBtns;
-
-  addCartBtns.forEach((btn) => {
-    // console.log(btn.dataset.id);
-    const id = btn.dataset.id;
-
-    //-> check if product is in the cart
-    const isExist = cart.find((p) => p.id === id);
-
-    if (isExist) {
-      btn.textContent = 'Added';
-      btn.disabled = true;
-    }
-
-    btn.addEventListener('click', (e) => {
-      //-> when btn clicked to add product to cart
-      e.target.textContent = 'Added';
-      e.target.disabled = true;
-
-      //-> get products that has been added before, from localStorage
-      //-> quantity: 1 -> to find out whether it has been added or not
-      const addedProduct = { ...Storage.getProducts(id), quantity: 1 };
-
-      //-> update shopping cart
-      cart = [...cart, addedProduct];
-
-      //-> save shopping cart to localStorage
-      Storage.saveCart(cart);
-
-      //-> update number of items in shoppingCart & totalPrice
-      this.setCartValue(cart);
-
-      //-> display added products in shopping cart
-      this.addCartItem(addedProduct);
     });
-  });
-}
 
-setCartValue(cart) {
-  //-> total price of cart
-  let tempCartItems = 0;
+    // Remove the local declaration of productsDOM
+    productsDOM.innerHTML = result;
 
-  const totalPrice = cart.reduce((acc, curr) => {
-    //-> show number of items in cart
-    tempCartItems += curr.quantity;
+    // Update the method to get cart buttons dynamically
+    this.getCartBtns();
+  }
 
-    return acc + curr.quantity * curr.price;
-  }, 0);
+  // ... Other methods ...
 
-  cartTotal.textContent = `Total price: Rs.${totalPrice.toFixed(2)}`;
+  getCartBtns() {
+    const addCartBtns = [...document.querySelectorAll(".add-to-cart")];
+    // console.log(addCartBtns);
 
-  cartItemsCounter.textContent = tempCartItems;
-}
+    buttonsDOM = addCartBtns;
 
-addCartItem(cartItem) {
-  const div = document.createElement('div');
-  div.classList.add('cart-item');
+    addCartBtns.forEach((btn) => {
+      // console.log(btn.dataset.id);
+      const id = btn.dataset.id;
 
-  div.innerHTML = `
+      //-> check if product is in the cart
+      const isExist = cart.find((p) => p.id === id);
+
+      if (isExist) {
+        btn.textContent = "Added";
+        btn.disabled = true;
+      }
+
+      btn.addEventListener("click", (e) => {
+        //-> when btn clicked to add product to cart
+        e.target.textContent = "Added";
+        e.target.disabled = true;
+
+        //-> get products that has been added before, from localStorage
+        //-> quantity: 1 -> to find out whether it has been added or not
+        const addedProduct = { ...Storage.getProducts(id), quantity: 1 };
+
+        //-> update shopping cart
+        cart = [...cart, addedProduct];
+
+        //-> save shopping cart to localStorage
+        Storage.saveCart(cart);
+
+        //-> update number of items in shoppingCart & totalPrice
+        this.setCartValue(cart);
+
+        //-> display added products in shopping cart
+        this.addCartItem(addedProduct);
+      });
+    });
+  }
+
+  setCartValue(cart) {
+    //-> total price of cart
+    let tempCartItems = 0;
+
+    const totalPrice = cart.reduce((acc, curr) => {
+      //-> show number of items in cart
+      tempCartItems += curr.quantity;
+
+      return acc + curr.quantity * curr.price;
+    }, 0);
+
+    cartTotal.textContent = `Total price: Rs.${totalPrice.toFixed(2)}`;
+
+    cartItemsCounter.textContent = tempCartItems;
+  }
+
+  addCartItem(cartItem) {
+    const div = document.createElement("div");
+    div.classList.add("cart-item");
+
+    div.innerHTML = `
   
   <img
     class="cart-item-img"
@@ -153,182 +147,200 @@ addCartItem(cartItem) {
   <i class="ri-delete-bin-line trash" data-id=${cartItem.id} ></i>
   `;
 
-  cartContent.append(div);
-}
+    cartContent.append(div);
+  }
 
+  //======> Save information when page refreshed <=====
+  setUpApp() {
+    //-> get cart from localStorage - update global cart
+    cart = Storage.getCart() || [];
 
-//======> Save information when page refreshed <=====
-setUpApp() {
-  //-> get cart from localStorage - update global cart
-  cart = Storage.getCart() || [];
+    //-> addCartItem to Modal
+    cart.forEach((cartItem) => {
+      const addedCart = document.querySelector(`[data-id="${cartItem.id}"]`);
 
-  //-> addCartItem to Modal
-  cart.forEach((cartItem) => {
-    const addedCart = document.querySelector(`[data-id="${cartItem.id}"]`);
+      if (addedCart) {
+        addedCart.textContent = "Added";
+        addedCart.disabled = true;
+      }
 
-    if (addedCart) {
-      addedCart.textContent = 'Added';
-      addedCart.disabled = true;
-    }
+      //-> display added products in shopping cart
+      this.addCartItem(cartItem);
+    });
 
-    //-> display added products in shopping cart
-    this.addCartItem(cartItem);
-  });
-
-  // Update values: price + item
-  this.setCartValue(cart);
-}
-
-//======> Shopping-Cart functionality <=====
-cartLogic() {
-  //-> clear cart
-  clearCart.addEventListener('click', () => this.clearCart());
-
-  //-> get cartContent to manipulate inc, dec and remove buttons
-  cartContent.addEventListener('click', (e) => handleClick(e));
-
-  const handleClick = (e) => {
-    let target = e.target;
-
-    if (target.classList.contains('arrow-up')) {
-      increaseQuantity(target);
-    } else if (target.classList.contains('trash')) {
-      removeItemFromCart(target);
-    } else if (target.classList.contains('arrow-down')) {
-      decreaseQuantity(target);
-    }
-  };
-
-  //-> increase products <-
-  const increaseQuantity = (target) => {
-    //get item from cart
-    const addedItem = cart.find((c) => c.id === parseInt(target.dataset.id));
-    addedItem.quantity++;
-
-    //update total shopping cart value
+    // Update values: price + item
     this.setCartValue(cart);
+  }
 
-    Storage.saveCart(cart);
+  //======> Shopping-Cart functionality <=====
+  cartLogic() {
+    //-> clear cart
+    clearCart.addEventListener("click", () => this.clearCart());
 
-    //update cart item number in Modal
-    target.nextElementSibling.textContent = addedItem.quantity;
-  };
+    //-> get cartContent to manipulate inc, dec and remove buttons
+    cartContent.addEventListener("click", (e) => handleClick(e));
 
-  //-> remove products <-
-  const removeItemFromCart = (target) => {
-    const removedItem = cart.find(
-      (c) => c.id === parseInt(target.dataset.id)
-    );
+    const handleClick = (e) => {
+      let target = e.target;
 
-    //remove from cart item
-    this.removeItem(removedItem.id);
+      if (target.classList.contains("arrow-up")) {
+        increaseQuantity(target);
+      } else if (target.classList.contains("trash")) {
+        removeItemFromCart(target);
+      } else if (target.classList.contains("arrow-down")) {
+        decreaseQuantity(target);
+      }
+    };
 
-    Storage.saveCart(cart);
+    //-> increase products <-
+    const increaseQuantity = (target) => {
+      //get item from cart
+      const addedItem = cart.find((c) => c.id === parseInt(target.dataset.id));
+      addedItem.quantity++;
 
-    //remove product from cart content
-    //its parentElement = cart-item
-    cartContent.removeChild(target.parentElement);
-  };
-
-  //-> decrease products <-
-  const decreaseQuantity = (target) => {
-    const subtractedItem = cart.find(
-      (c) => c.id === parseInt(target.dataset.id)
-    );
-
-    //remove when one product remained
-    if (subtractedItem.quantity === 1) {
-      this.removeItem(subtractedItem.id);
-
-      //first parentElement = cart-item-controller
-      //second parentElement = cart-item
-      cartContent.removeChild(target.parentElement.parentElement);
-    } else {
-      subtractedItem.quantity--;
-
-      //update cart value
+      //update total shopping cart value
       this.setCartValue(cart);
 
       Storage.saveCart(cart);
 
       //update cart item number in Modal
-      target.previousElementSibling.textContent = subtractedItem.quantity;
-    }
-  };
-}
+      target.nextElementSibling.textContent = addedItem.quantity;
+    };
 
-clearCart() {
-  //-> get all carts and pass id to removeItem()
-  cart.forEach((cItem) => this.removeItem(cItem.id));
+    //-> remove products <-
+    const removeItemFromCart = (target) => {
+      const removedItem = cart.find(
+        (c) => c.id === parseInt(target.dataset.id)
+      );
 
-  //-> remove cart-content children from Modal
-  while (cartContent.children.length > 0) {
-    cartContent.removeChild(cartContent.children[0]);
+      //remove from cart item
+      this.removeItem(removedItem.id);
+
+      Storage.saveCart(cart);
+
+      //remove product from cart content
+      //its parentElement = cart-item
+      cartContent.removeChild(target.parentElement);
+    };
+
+    //-> decrease products <-
+    const decreaseQuantity = (target) => {
+      const subtractedItem = cart.find(
+        (c) => c.id === parseInt(target.dataset.id)
+      );
+
+      //remove when one product remained
+      if (subtractedItem.quantity === 1) {
+        this.removeItem(subtractedItem.id);
+
+        //first parentElement = cart-item-controller
+        //second parentElement = cart-item
+        cartContent.removeChild(target.parentElement.parentElement);
+      } else {
+        subtractedItem.quantity--;
+
+        //update cart value
+        this.setCartValue(cart);
+
+        Storage.saveCart(cart);
+
+        //update cart item number in Modal
+        target.previousElementSibling.textContent = subtractedItem.quantity;
+      }
+    };
   }
 
-  closeModal();
-}
+  clearCart() {
+    //-> get all carts and pass id to removeItem()
+    cart.forEach((cItem) => this.removeItem(cItem.id));
 
-removeItem(id) {
-  // console.log(id);
-  //-> update cart
-  cart = cart.filter((c) => c.id !== id);
+    //-> remove cart-content children from Modal
+    while (cartContent.children.length > 0) {
+      cartContent.removeChild(cartContent.children[0]);
+    }
 
-  //-> update total price & cart items
-  this.setCartValue(cart);
+    closeModal();
+  }
 
-  //-> update localStorage
-  Storage.saveCart(cart);
+  removeItem(id) {
+    // console.log(id);
+    //-> update cart
+    cart = cart.filter((c) => c.id !== id);
 
-  //-> get carts  and update text and disabled
-  const button = buttonsDOM.find(
-    (btn) => parseInt(btn.dataset.id) === parseInt(id)
-  );
+    //-> update total price & cart items
+    this.setCartValue(cart);
 
-  button.textContent = 'Add to Cart';
-  button.disabled = false;
-}
+    //-> update localStorage
+    Storage.saveCart(cart);
 
-//======> Search Products <======
-searchItem() {
-  searchInput.addEventListener('input', (e) => {
+    //-> get carts  and update text and disabled
+    const button = buttonsDOM.find(
+      (btn) => parseInt(btn.dataset.id) === parseInt(id)
+    );
+
+    button.textContent = "Add to Cart";
+    button.disabled = false;
+  }
+
+  //======> Search Products <======
+  searchItem() {
+    searchInput.addEventListener("input", (e) => {
       const searchValue = e.target.value.toLowerCase();
 
       const filteredProducts = productsData.filter((product) => {
-          return product.name.toLowerCase().includes(searchValue);
+        return product.name.toLowerCase().includes(searchValue);
       });
+
+      if (filteredProducts.length === 0) {
+        // Display the error message when no matching products are found
+        this.displayErrorMessage("No products found.");
+      } else {
+        // Clear the error message when products are found
+        this.clearErrorMessage();
+      }
 
       this.displayProducts(filteredProducts);
       this.getCartBtns();
-  });
-}
+    });
+  }
 
+  displayErrorMessage(message) {
+    const errorMessageElement = document.querySelector(".search-error");
+    errorMessageElement.textContent = message;
+    errorMessageElement.style.display = "block"; // Show the error message
+  }
+
+  clearErrorMessage() {
+    const errorMessageElement = document.querySelector(".search-error");
+    errorMessageElement.textContent = "";
+    errorMessageElement.style.display = "none"; // Hide the error message
+  }
 }
 
 /*==================== localStorage ===================*/
 class Storage {
-// save loaded products and set "products" on localStorage
-static saveProducts(products) {
-  localStorage.setItem('products', JSON.stringify(products));
+  // save loaded products and set "products" on localStorage
+  static saveProducts(products) {
+    localStorage.setItem("products", JSON.stringify(products));
+  }
+
+  static getProducts(id) {
+    const _products = JSON.parse(localStorage.getItem("products"));
+
+    // parseInt(): convert string to integer
+    return _products.find((p) => p.id === parseInt(id));
+  }
+
+  static saveCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
+  static getCart() {
+    return JSON.parse(localStorage.getItem("cart"));
+  }
 }
 
-static getProducts(id) {
-  const _products = JSON.parse(localStorage.getItem('products'));
-
-  // parseInt(): convert string to integer
-  return _products.find((p) => p.id === parseInt(id));
-}
-
-static saveCart(cart) {
-  localStorage.setItem('cart', JSON.stringify(cart));
-}
-
-static getCart() {
-  return JSON.parse(localStorage.getItem('cart'));
-}
-}
-
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   const ui = new UI();
   ui.displayProducts(productsData);
   ui.getCartBtns();

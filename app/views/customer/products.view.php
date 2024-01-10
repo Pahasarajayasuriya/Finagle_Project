@@ -68,6 +68,7 @@ $products = $productModel->getProducts();
                 <i class="fas fa-shopping-cart"></i>
 
             </div> -->
+            <div class="search-error"></div>
         </div>
         <div class="products-center">
             <?php foreach ($data['products'] as $product) : ?>
