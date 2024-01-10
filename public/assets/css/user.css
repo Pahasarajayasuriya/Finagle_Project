@@ -169,7 +169,7 @@ img {
 }
 .text {
   position: absolute;
-  top: 50%;
+  top: 59%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
@@ -180,10 +180,11 @@ img {
   font-family: 'Pacifico', cursive;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
   background: linear-gradient(rgba(7, 7, 7, 0.5), rgba(0, 0, 0, 0.5));
-  padding: 20px;
-  border-radius: 10px;
-  width: 80%;
+  /* padding: 20px; */
+  /* border-radius: 10px; */
+  width: 100%;
   box-sizing: border-box;
+  height: 80%;
 }
 
 

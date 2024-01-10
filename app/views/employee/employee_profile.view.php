@@ -34,11 +34,11 @@ $this->view('includes/footer', $data);
 </head>
 
 <body>
-    <div class="navbar">
+    <!-- <div class="navbar">
          <div class="logo_icon">
              <img src="<?= ROOT ?>/assets/images/logo.png" alt="">
          </div>
-    </div>
+    </div> -->
 
 
 
@@ -79,7 +79,7 @@ $this->view('includes/footer', $data);
                                 <div class="profile-image">
                                     <!-- <img src="https://i.pinimg.com/474x/e0/4c/38/e04c383ed661003b1a599bb877eff836.jpg"> -->
                                    <!-- <?= ROOT ?>/assets/images/Emp_profiles/-->
-                                   <img src="<?= $val->image?>"> 
+                                   <img src="<?= ROOT ?>/assets/images/Emp_profiles/<?= $val->image ?>"> 
                                   
                                 </div>
                                 <p class='profile-id'><?= $val->id ?></p>

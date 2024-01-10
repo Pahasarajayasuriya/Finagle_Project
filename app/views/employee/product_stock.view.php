@@ -17,7 +17,10 @@ $this->view('includes/footer', $data);
     <title>Product Stock Details</title>
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/employee/product_stock.css">
 
-    
+    <script src="<?= ROOT ?>/assets/js/product_stock.js"></script>
+
+
+
     <link href="https://fonts.googleapis.com/css?family=Cabin|Herr+Von+Muellerhoff|Source+Sans+Pro" rel="stylesheet">
     <!--Fonts-->
 
@@ -33,118 +36,72 @@ $this->view('includes/footer', $data);
 <body>
     <div class="home-section">
 
-    
-    <div class="black-background">
-        <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i> 
-        <h2 class="section-title">PRODUCTS STOCK</h2>
-        <div class="divider dark mb-4">
-            <div class="icon-wrap">
-                <!-- <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>  -->
+      
+
+        
+
+        <div class="form-header">
+            <form action="#" class="sub-form">
+                <div class="ad-form-input">
+                    <input type="search" id="search" placeholder="Search...">
+                    <button type="submit" class="ad-search-btn">
+                        <i class='bx bx-search'></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <form method="POST" class="complete_form">
+
+            <div class="table-container">
+                <table>
+                    <tr class="table_heading">
+                        <th>Product ID</th>
+                        <th>Image</th>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Category</th>
+
+                    </tr>
+
+                    <tr>
+                        <?php
+
+                        if (isset($data['product'])) {
+                            foreach ($data['product'] as $product) {
+                        ?>
+                    <tr>
+                        <td><?= $product->id ?></td>
+                        <td><img src="<?= ROOT ?>/assets/images/products/<?= $product->image ?>" alt=""></td>
+                        <td><?= $product->user_name ?></td>
+                        <td class="black-text">
+                            <span class="quantity" id="quantity_<?= $product->id ?>"><?= $product->quantity ?></span>
+                            <button type="reset" class="plus-button" onclick="changeQuantity(<?= $product->id ?>, 'increase')">+</button>
+                            <button type="reset" class="minus-button" onclick="changeQuantity(<?= $product->id ?>, 'decrease')">-</button>
+                        </td>
+                        <td>
+                            <?= $product->category ?>
+                        </td>
+
+                    </tr>
+                    <input type="hidden" name="id_<?= $product->id ?>" id="product_id_<?= $product->id ?>" value="<?= $product->id ?>">
+                    <input type="hidden" name="qty_<?= $product->id ?>" id="updated_quantity_<?= $product->id ?>" value="<?= $product->quantity ?>" style="display: none;">
+            <?php
+                            }
+                        }
+            ?>
+
+                </table>
             </div>
-        </div>
 
-        <div class="table-container">
-            <table>
-                <tr class="table_heading">
-                    <th>Product ID</th>
-                    <th>Image</th>
-                    <th>Product Name</th>
-                    <th>Quantity</th>
-                </tr>
-                <tr>
-                    <td>001</td>
-                    <td><img src="./images/sandwich_bread.jpg" alt=""></td>
-                    <td>Sandwitch Bread</td>
-                    <td class="black-text">
-                        <span class="quantity">10</span>
-                        <button class="plus-button">+</button>
-                        <button class="minus-button">-</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>002</td>
-                    <td><img src="./images/hotdog.jpg" alt=""></td>
-                    <td>Hot Dog Buns</td>
-                    <td class="black-text">
-                        <span class="quantity">15</span>
-                        <button class="plus-button">+</button>
-                        <button class="minus-button">-</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>003</td>
-                    <td><img src="./images/crust-top-bread.jpg" alt=""></td>
-                    <td>Crust Top Bread</td>
-                    <td class="black-text">
-                        <span class="quantity">20</span>
-                        <button class="plus-button">+</button>
-                        <button class="minus-button">-</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>004</td>
-                    <td><img src="./images/black-forest-cake.jpg" alt=""></td>
-                    <td>Black Forest Cake</td>
-                    <td class="black-text">
-                        <span class="quantity">12</span>
-                        <button class="plus-button">+</button>
-                        <button class="minus-button">-</button>
-                    </td>
-                </tr>
+            <div class="button-container">
+                <button id="back" class="back-button left-button"> <b>Back</b></button>
+                <button type="submit" name="update" value="update" id="update" class="update-button right-button"><b>Update & Refresh</b></button>
+            </div>
+            <!-- </div> -->
+        </form>
 
-                <tr>
-                
-                 <td>005</td>
-                    <td><img src="./images/chicken_bun.jpg" alt=""></td>
-                    <td>Chicken Bun</td>
-                    <td class="black-text">
-                        <span class="quantity">12</span>
-                        <button class="plus-button">+</button>
-                        <button class="minus-button">-</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>006</td>
-                    <td><img src="./images/burger-bun.jpg" alt=""></td>
-                    <td>Burger Buns</td>
-                    <td class="black-text">
-                        <span class="quantity">12</span>
-                        <button class="plus-button">+</button>
-                        <button class="minus-button">-</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>007</td>
-                    <td><img src="./images/kottu_roti.jpg" alt=""></td>
-                    <td>Kottu Roti</td>
-                    <td class="black-text">
-                        <span class="quantity">12</span>
-                        <button class="plus-button">+</button>
-                        <button class="minus-button">-</button>
-                    </td>
-                </tr>
-                <!-- Add more product rows with text as needed -->
-            </table>
-        </div>
-
-        <div class="button-container">
-            <button id="back" class="back-button left-button"> <b>Back</b></button>
-            <script>
-                document.getElementById("back").addEventListener("click", function() {
-                    window.location.href = "employee_profile.php"
-                });
-            </script>
-            <button id="update" class="update-button right-button"><b>Update & Refresh</b></button>
-            <script>
-                document.getElementById("update").addEventListener("click", function() {
-                    window.location.href = "product_stock.php"
-                });
-            </script>
-        </div>
     </div>
-    </div>
-    <script src="product_stock.js"></script>
 </body>
 
 </html>

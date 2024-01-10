@@ -60,6 +60,13 @@
                         } elseif ($role == "Employee") {
                           echo '
                           <li>
+                               <a href="Emp_dashboard">
+                                  <i class="bx bx-grid-alt"></i>
+                                  <span class="links_name">Dashboard</span>
+                                </a>
+                                <span class="tooltip">Dashboard</span>
+                          </li>
+                          <li>
                           <a href="Emp_profile">
                             <i class="bx bx-user"></i>
                             <span class="links_name">Profile</span>
