@@ -1,3 +1,5 @@
+
+
 const cartBtn = document.querySelector('.cart-btn'),
 cartModal = document.querySelector('.cart'),
 backDrop = document.querySelector('.backdrop'),
@@ -289,19 +291,18 @@ removeItem(id) {
 
 //======> Search Products <======
 searchItem() {
-  const searchInput = document.getElementById('search'); // Ensure that the input field has the correct ID
-
   searchInput.addEventListener('input', (e) => {
-    const searchValue = e.target.value.toLowerCase();
+      const searchValue = e.target.value.toLowerCase();
 
-    const filteredProducts = productsData.filter((product) => {
-      return product.name.toLowerCase().includes(searchValue); // Update to 'name' property if that's what your products have
-    });
+      const filteredProducts = productsData.filter((product) => {
+          return product.name.toLowerCase().includes(searchValue);
+      });
 
-    this.displayProducts(filteredProducts);
-    this.getCartBtns();
+      this.displayProducts(filteredProducts);
+      this.getCartBtns();
   });
 }
+
 }
 
 /*==================== localStorage ===================*/
@@ -328,26 +329,11 @@ static getCart() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-const products = new ProductModel();
-const productsData = products.getProducts();
-
-// console.log(productsData);
-
-
-const ui = new UI();
-//-> display products on DOM
-ui.displayProducts(productsData);
-
-//-> get buttons
-ui.getCartBtns();
-
-//-> get card and set up app
-ui.setUpApp();
-
-ui.cartLogic();
-
-ui.searchItem();
-
-//-> Display saved products on page loading
-Storage.saveProducts(productsData);
+  const ui = new UI();
+  ui.displayProducts(productsData);
+  ui.getCartBtns();
+  ui.setUpApp();
+  ui.cartLogic();
+  ui.searchItem();
+  Storage.saveProducts(productsData);
 });
