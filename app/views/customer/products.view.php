@@ -1,10 +1,5 @@
 <?php
 $role = "User";
-
-// require_once '../includes/header.view.php';
-// require_once '../views/includes/NavBar.view.php';
-// require_once '../views/includes/footer.view.php';
-
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
@@ -51,7 +46,6 @@ $this->view('includes/footer', $data);
     <?php
     $this->view('includes/cus_topbar', $data);
     ?>
-
     <div class="home-section">
         <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
         <h2 class="section-title">OUR PRODUCTS</h2>
@@ -81,43 +75,36 @@ $this->view('includes/footer', $data);
 
             </div> -->
         </div>
-        <div class="container">
-            <div class="products-center">
-                <!-- Product-1 -->
-                <!-- <div class="product">
-                  <div class="img-container">
-                    <img
-                      class="product-img"
-                      src="<?= ROOT ?>/assets/images/burger-bun.jpg"
-                      alt="p-1"
-                    />
-                  </div>
+        <div class="products-center">
+            <?php foreach ($data['products'] as $product) : ?>
+                <div class="product">
+                    <div class="img-container">
+                        <img class="product-img" src="<?= $product->image ?>" alt="<?= $product->name ?>" />
+                    </div>
+                    <div class="product-desc">
+                        <p class="product-title"><?= $product->name ?></p>
+                        <div class="product-description">
+                            <p class="product-descrip"><?= $product->category ?></p>
+                        </div>
+                        <div class="options">
+                            <p class="product-price">Rs.<?= $product->price ?>.00</p>
+                            <button class="btn add-to-cart" data-id="<?= $product->id ?>">Add to Cart</button>
+                        </div>
 
-                  <div class="product-desc">
-                    <p class="product-title">
-                      Burger Buns
-                    </p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
 
-                     <div class="options">
-                        <p class="product-price">Rs.500</p>
-                  
+        <section class="cart-modal">
+            <div class="backdrop"></div>
 
-                        <button class="add-to-cart">Add to Cart <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i></button>
-                     </div>
-                  </div>
-                </div> -->
-                <!--  -->
-            </div>
+            <div class="cart">
+                <h3 class="cart-title">Your Cart</h3>
 
-            <section class="cart-modal">
-                <div class="backdrop"></div>
-
-                <div class="cart">
-                    <h3 class="cart-title">Your Cart</h3>
-
-                    <!--# cart-body #-->
-                    <div class="cart-content">
-                        <!-- <div class="cart-item">
+                <!--# cart-body #-->
+                <div class="cart-content">
+                    <!-- <div class="cart-item">
 
             <img
               class="cart-item-img"
@@ -138,20 +125,20 @@ $this->view('includes/footer', $data);
             <i class="ri-delete-bin-line"></i>
             
           </div> -->
+                </div>
+                <div class="cart-footer">
+                    <div class="">
+                        <span class="cart-total">Total price: Rs.90</span>
                     </div>
-                    <div class="cart-footer">
-                        <div class="">
-                            <span class="cart-total">Total price: Rs.90</span>
-                        </div>
-                        <div class="">
-                            <button class="btn clear-cart">Clear</button>
-                            <button class="btn cart-item-confirm" id="checkout-button">Checkout</button>
-                        </div>
+                    <div class="">
+                        <button class="btn clear-cart">Clear</button>
+                        <button class="btn cart-item-confirm" id="checkout-button">Checkout</button>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-        </div>
+    </div>
 
     </div>
     <script>
@@ -164,4 +151,3 @@ $this->view('includes/footer', $data);
 </body>
 
 </html>
-

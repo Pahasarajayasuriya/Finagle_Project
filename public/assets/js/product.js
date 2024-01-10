@@ -1,362 +1,353 @@
-// -> import productsData
-import { productsData } from '../js/products.js';
-
 const cartBtn = document.querySelector('.cart-btn'),
-  cartModal = document.querySelector('.cart'),
-  backDrop = document.querySelector('.backdrop'),
-  closeModalBtn = document.querySelector('.cart-item-confirm');
+cartModal = document.querySelector('.cart'),
+backDrop = document.querySelector('.backdrop'),
+closeModalBtn = document.querySelector('.cart-item-confirm');
 
 cartBtn.addEventListener('click', showModal);
 closeModalBtn.addEventListener('click', closeModal);
 backDrop.addEventListener('click', closeModal);
 
 function showModal() {
-  backDrop.style.display = 'block';
-  cartModal.style.opacity = '1';
-  cartModal.style.position = 'fixed';
-  cartModal.style.top = '21%';
+backDrop.style.display = 'block';
+cartModal.style.opacity = '1';
+cartModal.style.position = 'fixed';
+cartModal.style.top = '21%';
 }
 
 function closeModal() {
-  backDrop.style.display = 'none';
-  cartModal.style.opacity = '0';
-  cartModal.style.top = '-100%';
+backDrop.style.display = 'none';
+cartModal.style.opacity = '0';
+cartModal.style.top = '-100%';
 }
 
-class Products {
-  getProducts() {
-    return productsData;
-  }
-}
+
 
 const productsDOM = document.querySelector('.products-center'),
-  cartTotal = document.querySelector('.cart-total'),
-  cartItemsCounter = document.querySelector('.cart-items'),
-  cartContent = document.querySelector('.cart-content'),
-  clearCart = document.querySelector('.clear-cart'),
-  searchInput = document.querySelector('.search');
+cartTotal = document.querySelector('.cart-total'),
+cartItemsCounter = document.querySelector('.cart-items'),
+cartContent = document.querySelector('.cart-content'),
+clearCart = document.querySelector('.clear-cart'),
+searchInput = document.querySelector('.search');
 
 let cart = [];
 let buttonsDOM = [];
 
 class UI {
-  displayProducts(products) {
-    let result = '';
+// Update the displayProducts method to accept dynamic product data
+displayProducts(products) {
+  let result = '';
 
-    products.forEach((item) => {
-      result += `
-      
+  products.forEach((item) => {
+    result += `
       <div class="product">
         <div class="img-container">
-            <img
-              class="product-img"
-              src="${item.imageUrl}"
-              alt="${item.title}"
-            />
+          <img class="product-img" src="${item.image}" alt="${item.name}" />
         </div>
-
         <div class="product-desc">
-          <p class="product-title">
-            ${item.title}
-          </p>
+          <p class="product-title">${item.name}</p>
           <div class="product-description">
-             <p class="product-descrip"> ${item.desc}</p>
+            <p class="product-descrip">${item.category}</p>
           </div>
-
           <div class="options">
-
-          <p class="product-price">
-            Rs.${item.price}.00
-          </p>
-          
-
-          <button class="btn add-to-cart" data-id=${item.id}>
-          Add to Cart
-        </button>
+            <p class="product-price">Rs.${item.price}.00</p>
+            <button class="btn add-to-cart" data-id="${item.id}">Add to Cart</button>
+          </div>
         </div>
       </div>
-      </div>
-      `;
-    });
-
-    productsDOM.innerHTML = result;
-  }
-
-  getCartBtns() {
-    const addCartBtns = [...document.querySelectorAll('.add-to-cart')];
-    // console.log(addCartBtns);
-
-    buttonsDOM = addCartBtns;
-
-    addCartBtns.forEach((btn) => {
-      // console.log(btn.dataset.id);
-      const id = btn.dataset.id;
-
-      //-> check if product is in the cart
-      const isExist = cart.find((p) => p.id === id);
-
-      if (isExist) {
-        btn.textContent = 'Added';
-        btn.disabled = true;
-      }
-
-      btn.addEventListener('click', (e) => {
-        //-> when btn clicked to add product to cart
-        e.target.textContent = 'Added';
-        e.target.disabled = true;
-
-        //-> get products that has been added before, from localStorage
-        //-> quantity: 1 -> to find out whether it has been added or not
-        const addedProduct = { ...Storage.getProducts(id), quantity: 1 };
-
-        //-> update shopping cart
-        cart = [...cart, addedProduct];
-
-        //-> save shopping cart to localStorage
-        Storage.saveCart(cart);
-
-        //-> update number of items in shoppingCart & totalPrice
-        this.setCartValue(cart);
-
-        //-> display added products in shopping cart
-        this.addCartItem(addedProduct);
-      });
-    });
-  }
-
-  setCartValue(cart) {
-    //-> total price of cart
-    let tempCartItems = 0;
-
-    const totalPrice = cart.reduce((acc, curr) => {
-      //-> show number of items in cart
-      tempCartItems += curr.quantity;
-
-      return acc + curr.quantity * curr.price;
-    }, 0);
-
-    cartTotal.textContent = `Total price: Rs.${totalPrice.toFixed(2)}`;
-
-    cartItemsCounter.textContent = tempCartItems;
-  }
-
-  addCartItem(cartItem) {
-    const div = document.createElement('div');
-    div.classList.add('cart-item');
-
-    div.innerHTML = `
-    
-    <img
-      class="cart-item-img"
-      src="${cartItem.imageUrl}"
-    />
-
-    <div class="cart-item-desc">
-      <h4>${cartItem.title}</h4>
-      <h5>Rs.${cartItem.price}</h5>
-    </div>
-
-    <div class="cart-item-controller">
-      <i class="ri-arrow-up-s-line arrow-up" data-id=${cartItem.id} ></i>
-      <p>${cartItem.quantity}</p>
-      <i class="ri-arrow-down-s-line arrow-down" data-id=${cartItem.id} ></i>
-    </div>
-
-    <i class="ri-delete-bin-line trash" data-id=${cartItem.id} ></i>
     `;
+  });
 
-    cartContent.append(div);
-  }
+  // Remove the local declaration of productsDOM
+  productsDOM.innerHTML = result;
 
-  //======> Save information when page refreshed <=====
-  setUpApp() {
-    //-> get cart from localStorage - update global cart
-    cart = Storage.getCart() || [];
+  // Update the method to get cart buttons dynamically
+  this.getCartBtns();
+}
 
-    //-> addCartItem to Modal
-    cart.forEach((cartItem) => {
-      const addedCart = document.querySelector(`[data-id="${cartItem.id}"]`);
+// ... Other methods ...
 
-      if (addedCart) {
-        addedCart.textContent = 'Added';
-        addedCart.disabled = true;
-      }
+
+
+getCartBtns() {
+  const addCartBtns = [...document.querySelectorAll('.add-to-cart')];
+  // console.log(addCartBtns);
+
+  buttonsDOM = addCartBtns;
+
+  addCartBtns.forEach((btn) => {
+    // console.log(btn.dataset.id);
+    const id = btn.dataset.id;
+
+    //-> check if product is in the cart
+    const isExist = cart.find((p) => p.id === id);
+
+    if (isExist) {
+      btn.textContent = 'Added';
+      btn.disabled = true;
+    }
+
+    btn.addEventListener('click', (e) => {
+      //-> when btn clicked to add product to cart
+      e.target.textContent = 'Added';
+      e.target.disabled = true;
+
+      //-> get products that has been added before, from localStorage
+      //-> quantity: 1 -> to find out whether it has been added or not
+      const addedProduct = { ...Storage.getProducts(id), quantity: 1 };
+
+      //-> update shopping cart
+      cart = [...cart, addedProduct];
+
+      //-> save shopping cart to localStorage
+      Storage.saveCart(cart);
+
+      //-> update number of items in shoppingCart & totalPrice
+      this.setCartValue(cart);
 
       //-> display added products in shopping cart
-      this.addCartItem(cartItem);
+      this.addCartItem(addedProduct);
     });
+  });
+}
 
-    // Update values: price + item
+setCartValue(cart) {
+  //-> total price of cart
+  let tempCartItems = 0;
+
+  const totalPrice = cart.reduce((acc, curr) => {
+    //-> show number of items in cart
+    tempCartItems += curr.quantity;
+
+    return acc + curr.quantity * curr.price;
+  }, 0);
+
+  cartTotal.textContent = `Total price: Rs.${totalPrice.toFixed(2)}`;
+
+  cartItemsCounter.textContent = tempCartItems;
+}
+
+addCartItem(cartItem) {
+  const div = document.createElement('div');
+  div.classList.add('cart-item');
+
+  div.innerHTML = `
+  
+  <img
+    class="cart-item-img"
+    src="${cartItem.image}"
+  />
+
+  <div class="cart-item-desc">
+    <h4>${cartItem.name}</h4>
+    <h5>Rs.${cartItem.price}</h5>
+  </div>
+
+  <div class="cart-item-controller">
+    <i class="ri-arrow-up-s-line arrow-up" data-id=${cartItem.id} ></i>
+    <p>${cartItem.quantity}</p>
+    <i class="ri-arrow-down-s-line arrow-down" data-id=${cartItem.id} ></i>
+  </div>
+
+  <i class="ri-delete-bin-line trash" data-id=${cartItem.id} ></i>
+  `;
+
+  cartContent.append(div);
+}
+
+
+//======> Save information when page refreshed <=====
+setUpApp() {
+  //-> get cart from localStorage - update global cart
+  cart = Storage.getCart() || [];
+
+  //-> addCartItem to Modal
+  cart.forEach((cartItem) => {
+    const addedCart = document.querySelector(`[data-id="${cartItem.id}"]`);
+
+    if (addedCart) {
+      addedCart.textContent = 'Added';
+      addedCart.disabled = true;
+    }
+
+    //-> display added products in shopping cart
+    this.addCartItem(cartItem);
+  });
+
+  // Update values: price + item
+  this.setCartValue(cart);
+}
+
+//======> Shopping-Cart functionality <=====
+cartLogic() {
+  //-> clear cart
+  clearCart.addEventListener('click', () => this.clearCart());
+
+  //-> get cartContent to manipulate inc, dec and remove buttons
+  cartContent.addEventListener('click', (e) => handleClick(e));
+
+  const handleClick = (e) => {
+    let target = e.target;
+
+    if (target.classList.contains('arrow-up')) {
+      increaseQuantity(target);
+    } else if (target.classList.contains('trash')) {
+      removeItemFromCart(target);
+    } else if (target.classList.contains('arrow-down')) {
+      decreaseQuantity(target);
+    }
+  };
+
+  //-> increase products <-
+  const increaseQuantity = (target) => {
+    //get item from cart
+    const addedItem = cart.find((c) => c.id === parseInt(target.dataset.id));
+    addedItem.quantity++;
+
+    //update total shopping cart value
     this.setCartValue(cart);
-  }
 
-  //======> Shopping-Cart functionality <=====
-  cartLogic() {
-    //-> clear cart
-    clearCart.addEventListener('click', () => this.clearCart());
+    Storage.saveCart(cart);
 
-    //-> get cartContent to manipulate inc, dec and remove buttons
-    cartContent.addEventListener('click', (e) => handleClick(e));
+    //update cart item number in Modal
+    target.nextElementSibling.textContent = addedItem.quantity;
+  };
 
-    const handleClick = (e) => {
-      let target = e.target;
+  //-> remove products <-
+  const removeItemFromCart = (target) => {
+    const removedItem = cart.find(
+      (c) => c.id === parseInt(target.dataset.id)
+    );
 
-      if (target.classList.contains('arrow-up')) {
-        increaseQuantity(target);
-      } else if (target.classList.contains('trash')) {
-        removeItemFromCart(target);
-      } else if (target.classList.contains('arrow-down')) {
-        decreaseQuantity(target);
-      }
-    };
+    //remove from cart item
+    this.removeItem(removedItem.id);
 
-    //-> increase products <-
-    const increaseQuantity = (target) => {
-      //get item from cart
-      const addedItem = cart.find((c) => c.id === parseInt(target.dataset.id));
-      addedItem.quantity++;
+    Storage.saveCart(cart);
 
-      //update total shopping cart value
+    //remove product from cart content
+    //its parentElement = cart-item
+    cartContent.removeChild(target.parentElement);
+  };
+
+  //-> decrease products <-
+  const decreaseQuantity = (target) => {
+    const subtractedItem = cart.find(
+      (c) => c.id === parseInt(target.dataset.id)
+    );
+
+    //remove when one product remained
+    if (subtractedItem.quantity === 1) {
+      this.removeItem(subtractedItem.id);
+
+      //first parentElement = cart-item-controller
+      //second parentElement = cart-item
+      cartContent.removeChild(target.parentElement.parentElement);
+    } else {
+      subtractedItem.quantity--;
+
+      //update cart value
       this.setCartValue(cart);
 
       Storage.saveCart(cart);
 
       //update cart item number in Modal
-      target.nextElementSibling.textContent = addedItem.quantity;
-    };
-
-    //-> remove products <-
-    const removeItemFromCart = (target) => {
-      const removedItem = cart.find(
-        (c) => c.id === parseInt(target.dataset.id)
-      );
-
-      //remove from cart item
-      this.removeItem(removedItem.id);
-
-      Storage.saveCart(cart);
-
-      //remove product from cart content
-      //its parentElement = cart-item
-      cartContent.removeChild(target.parentElement);
-    };
-
-    //-> decrease products <-
-    const decreaseQuantity = (target) => {
-      const subtractedItem = cart.find(
-        (c) => c.id === parseInt(target.dataset.id)
-      );
-
-      //remove when one product remained
-      if (subtractedItem.quantity === 1) {
-        this.removeItem(subtractedItem.id);
-
-        //first parentElement = cart-item-controller
-        //second parentElement = cart-item
-        cartContent.removeChild(target.parentElement.parentElement);
-      } else {
-        subtractedItem.quantity--;
-
-        //update cart value
-        this.setCartValue(cart);
-
-        Storage.saveCart(cart);
-
-        //update cart item number in Modal
-        target.previousElementSibling.textContent = subtractedItem.quantity;
-      }
-    };
-  }
-
-  clearCart() {
-    //-> get all carts and pass id to removeItem()
-    cart.forEach((cItem) => this.removeItem(cItem.id));
-
-    //-> remove cart-content children from Modal
-    while (cartContent.children.length > 0) {
-      cartContent.removeChild(cartContent.children[0]);
+      target.previousElementSibling.textContent = subtractedItem.quantity;
     }
+  };
+}
 
-    closeModal();
+clearCart() {
+  //-> get all carts and pass id to removeItem()
+  cart.forEach((cItem) => this.removeItem(cItem.id));
+
+  //-> remove cart-content children from Modal
+  while (cartContent.children.length > 0) {
+    cartContent.removeChild(cartContent.children[0]);
   }
 
-  removeItem(id) {
-    // console.log(id);
-    //-> update cart
-    cart = cart.filter((c) => c.id !== id);
+  closeModal();
+}
 
-    //-> update total price & cart items
-    this.setCartValue(cart);
+removeItem(id) {
+  // console.log(id);
+  //-> update cart
+  cart = cart.filter((c) => c.id !== id);
 
-    //-> update localStorage
-    Storage.saveCart(cart);
+  //-> update total price & cart items
+  this.setCartValue(cart);
 
-    //-> get carts  and update text and disabled
-    const button = buttonsDOM.find(
-      (btn) => parseInt(btn.dataset.id) === parseInt(id)
-    );
+  //-> update localStorage
+  Storage.saveCart(cart);
 
-    button.textContent = 'Add to Cart';
-    button.disabled = false;
-  }
+  //-> get carts  and update text and disabled
+  const button = buttonsDOM.find(
+    (btn) => parseInt(btn.dataset.id) === parseInt(id)
+  );
 
-  //======> Search Products <======
-  searchItem() {
-    searchInput.addEventListener('input', (e) => {
-      const searchValue = e.target.value.toLowerCase();
+  button.textContent = 'Add to Cart';
+  button.disabled = false;
+}
 
-      const filteredProducts = productsData.filter((product) => {
-        return product.title.toLowerCase().includes(searchValue);
-      });
+//======> Search Products <======
+searchItem() {
+  const searchInput = document.getElementById('search'); // Ensure that the input field has the correct ID
 
-      this.displayProducts(filteredProducts);
-      this.getCartBtns();
+  searchInput.addEventListener('input', (e) => {
+    const searchValue = e.target.value.toLowerCase();
+
+    const filteredProducts = productsData.filter((product) => {
+      return product.name.toLowerCase().includes(searchValue); // Update to 'name' property if that's what your products have
     });
-  }
+
+    this.displayProducts(filteredProducts);
+    this.getCartBtns();
+  });
+}
 }
 
 /*==================== localStorage ===================*/
 class Storage {
-  // save loaded products and set "products" on localStorage
-  static saveProducts(products) {
-    localStorage.setItem('products', JSON.stringify(products));
-  }
-
-  static getProducts(id) {
-    const _products = JSON.parse(localStorage.getItem('products'));
-
-    // parseInt(): convert string to integer
-    return _products.find((p) => p.id === parseInt(id));
-  }
-
-  static saveCart(cart) {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }
-
-  static getCart() {
-    return JSON.parse(localStorage.getItem('cart'));
-  }
+// save loaded products and set "products" on localStorage
+static saveProducts(products) {
+  localStorage.setItem('products', JSON.stringify(products));
 }
 
-/*================ Show products on DOM ===============*/
+static getProducts(id) {
+  const _products = JSON.parse(localStorage.getItem('products'));
+
+  // parseInt(): convert string to integer
+  return _products.find((p) => p.id === parseInt(id));
+}
+
+static saveCart(cart) {
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+static getCart() {
+  return JSON.parse(localStorage.getItem('cart'));
+}
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  const products = new Products();
-  const productsData = products.getProducts();
+const products = new ProductModel();
+const productsData = products.getProducts();
 
-  const ui = new UI();
-  //-> display products on DOM
-  ui.displayProducts(productsData);
+// console.log(productsData);
 
-  //-> get buttons
-  ui.getCartBtns();
 
-  //-> get card and set up app
-  ui.setUpApp();
+const ui = new UI();
+//-> display products on DOM
+ui.displayProducts(productsData);
 
-  ui.cartLogic();
+//-> get buttons
+ui.getCartBtns();
 
-  ui.searchItem();
+//-> get card and set up app
+ui.setUpApp();
 
-  //-> Display saved products on page loading
-  Storage.saveProducts(productsData);
+ui.cartLogic();
+
+ui.searchItem();
+
+//-> Display saved products on page loading
+Storage.saveProducts(productsData);
 });

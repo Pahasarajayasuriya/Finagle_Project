@@ -112,10 +112,9 @@
                 <form>
                     <div class="user-details">
                         <div class="input-box">
-                            <span class="details">Product Name </span>
+                            <span class="details">Product Name</span>
                             <input type="text" required onChange="" value="<?= set_value('name', $row->name) ?>" />
                         </div>
-
                         <div class="input-box">
                             <span class="details">Category</span>
                             <input type="text" required onChange="" value="<?= set_value('category', $row->category) ?>" />
@@ -131,7 +130,7 @@
                         </div>
 
                         <div class="input-box">
-                            <span class="details">price</span>
+                            <span class="details">Price</span>
                             <input type="text" required onChange="" value="<?= set_value('price', $row->price) ?>" />
                         </div>
                     </div>
@@ -141,6 +140,7 @@
         </div>
         <div id="overlay" class="overlay"></div>
     </div>
+
 
 
 
