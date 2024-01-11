@@ -64,47 +64,99 @@ class UI {
 
   // ... Other methods ...
 
-  getCartBtns() {
-    const addCartBtns = [...document.querySelectorAll(".add-to-cart")];
-    // console.log(addCartBtns);
+//   getCartBtns() {
+//   const addCartBtns = [...document.querySelectorAll(".add-to-cart")];
 
-    buttonsDOM = addCartBtns;
 
-    addCartBtns.forEach((btn) => {
-      // console.log(btn.dataset.id);
-      const id = btn.dataset.id;
+//   addCartBtns.forEach((btn) => {
+//     btn.removeEventListener("click", this.handleAddToCart);
+//   });
 
-      //-> check if product is in the cart
-      const isExist = cart.find((p) => p.id === id);
+//   buttonsDOM = addCartBtns;
 
-      if (isExist) {
-        btn.textContent = "Added";
-        btn.disabled = true;
-      }
+//   addCartBtns.forEach((btn) => {
+//     btn.addEventListener("click", this.handleAddToCart);
+//   });
+// }
 
-      btn.addEventListener("click", (e) => {
-        //-> when btn clicked to add product to cart
-        e.target.textContent = "Added";
-        e.target.disabled = true;
+// handleAddToCart(e) {
+//   const btn = e.target;
+//   const id = btn.dataset.id;
 
-        //-> get products that has been added before, from localStorage
-        //-> quantity: 1 -> to find out whether it has been added or not
-        const addedProduct = { ...Storage.getProducts(id), quantity: 1 };
 
-        //-> update shopping cart
-        cart = [...cart, addedProduct];
+//   const isExist = cart.find((p) => p.id === id);
 
-        //-> save shopping cart to localStorage
-        Storage.saveCart(cart);
+//   if (isExist) {
+//     btn.textContent = "Added";
+//     btn.disabled = true;
+//   }
 
-        //-> update number of items in shoppingCart & totalPrice
-        this.setCartValue(cart);
+//   btn.addEventListener("click", (e) => {
+//     e.target.textContent = "Added";
+//     e.target.disabled = true;
 
-        //-> display added products in shopping cart
-        this.addCartItem(addedProduct);
-      });
-    });
+
+//     const addedProduct = { ...Storage.getProducts(id), quantity: 1 };
+
+//     cart = [...cart, addedProduct];
+
+//     Storage.saveCart(cart);
+
+//     this.setCartValue(cart);
+
+//     this.addCartItem(addedProduct);
+//   });
+// }
+getCartBtns() {
+  const addCartBtns = [...document.querySelectorAll(".add-to-cart")];
+
+  // Remove event listeners to prevent duplicates
+  addCartBtns.forEach((btn) => {
+    btn.removeEventListener("click", this.handleAddToCart);
+  });
+
+  buttonsDOM = addCartBtns;
+
+  addCartBtns.forEach((btn) => {
+    btn.addEventListener("click", this.handleAddToCart);
+  });
+}
+
+handleAddToCart(e) {
+  const btn = e.target;
+  const id = btn.dataset.id;
+
+  // Check if product is in the cart
+  const isExist = cart.find((p) => p.id === id);
+
+  if (isExist) {
+    btn.textContent = "Added";
+    btn.disabled = true;
   }
+
+  btn.addEventListener("click", (e) => {
+    // when btn clicked to add product to cart
+    e.target.textContent = "Added";
+    e.target.disabled = true;
+
+    // get products that have been added before, from localStorage
+    // quantity: 1 -> to find out whether it has been added or not
+    const addedProduct = { ...Storage.getProducts(id), quantity: 1 };
+
+    // update shopping cart
+    cart = [...cart, addedProduct];
+
+    // save shopping cart to localStorage
+    Storage.saveCart(cart);
+
+    // update number of items in shoppingCart & totalPrice
+    this.setCartValue(cart);
+
+    // display added products in shopping cart
+    this.addCartItem(addedProduct);
+  });
+}
+
 
   setCartValue(cart) {
     //-> total price of cart

@@ -14,7 +14,7 @@ class Signup extends Controller
 		$user = new User();
 
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
-
+			$_POST['role'] = 'customer';
 			if ($user->validate($_POST)) {
 				$_POST['role'] = 'customer';
 				$_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
