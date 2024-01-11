@@ -10,7 +10,7 @@ $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
 ?>
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -79,3 +79,8 @@ $this->view('includes/footer', $data);
 </body>
 
 </html>
+
+<?php
+// require_once '../../Components/NavBar/Footer/cus_footer.php';
+$this->view('includes/cus_topbar', $data);
+?>

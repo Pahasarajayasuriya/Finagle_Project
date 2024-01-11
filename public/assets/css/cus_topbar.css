@@ -1,0 +1,156 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-family: sans-serif;
+  
+  }
+  
+  
+  
+  .logo_icon {
+    width: 100px;
+    height: 50px;
+  }
+  
+  .logo_icon img {
+    height: 100%;
+    width: auto;
+  }
+  
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 78px;
+    width: 100%;
+    background-color: transparent;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 1000;
+    transition: background-color 0.5s ease;
+    justify-content: space-between;
+
+    align-items: center;
+    display: flex;
+    font-family:"Poppins";
+  }
+  
+  .signup , .login {
+    color: rgb(192, 191, 191);
+    text-decoration: none;
+    margin-right: 85px;
+    justify-content: 20px;
+    background-color: transparent;
+  
+  }
+  
+  
+  .signup:hover .login:hover {
+    color: rgb(158, 30, 30);
+    background-color: transparent;
+  
+  
+  }
+  
+  .dropdown {
+    margin-right: 80px;
+    border-radius: 10px;
+    width: 150px;
+    position: relative;
+    display: inline-block;
+    font-family: "Poppins";
+    background-color: black;
+    border: 3px solid rgba(255,255,255,.2);
+  
+  }
+  
+  .dropbtn {
+    width: 100%;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color:white;
+    padding: 10px;
+    background-color: black;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    
+   
+  }
+  .dropbtn .fa.fa-user-circle-o{
+    padding-right: 10px;
+    font-size: 25px;
+  
+  }
+  .dropbtn .fa.fa-caret-down {
+    margin-left: 5px;
+  }
+  
+  
+  
+  .dropdown-content {
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    display: none;
+    
+   
+  }
+  
+  .dropdown-content.active {
+    display: block; 
+   
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+   
+  
+  
+  } 
+  
+  
+  
+  
+  .dropdown-content a:hover {
+    background-color: red;
+    transform: translateX(5);
+    color: white;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  
+  
+  .home-section {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+  }
+  
+  .home-section {
+    width: calc(100% - 78px);
+    margin-left: 78px;
+    transition: all 0.5s ease;
+  }
+  
+  
+  
+  .sidebar.open~.home-section {
+    width: calc(100% - 250px);
+    margin-left: 250px;
+  }
+  
+  .sidebar.open~.navbar {
+    width: calc(100% - 250px);
+    margin-left: 200px;
+  }

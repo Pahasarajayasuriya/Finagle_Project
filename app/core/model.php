@@ -109,4 +109,10 @@ class Model extends Database
         // show($data);die;
         $this->query($query, $data);
     }
+
+    public function all()
+    {
+        $query = "SELECT * FROM {$this->table}";
+        return $this->query($query);
+    }
 }

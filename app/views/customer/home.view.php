@@ -1,15 +1,76 @@
- <?php
-    // session_start();
-    // $_SESSION['role'] = "User";
+<?php
+// session_start();
+// $_SESSION['role'] = "User";
 
-    // include '../includes/header.view.php';
-    // include '../includes/NavBar.view.php';
-    // require_once '../includes/footer.view.php';
-    // $role = "User";
+// include '../includes/header.view.php';
+// include '../includes/NavBar.view.php';
+// require_once '../includes/footer.view.php';
+$role = "User";
 
-    $this->view('includes/header', $data);
-    $this->view('includes/NavBar', $data);
-    $this->view('includes/footer', $data);
+$this->view('includes/header', $data);
+$this->view('includes/NavBar', $data);
+$this->view('includes/footer', $data);
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= ucfirst(App::$page) ?> - <?= APPNAME ?></title>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Cabin|Herr+Von+Muellerhoff|Source+Sans+Pro" rel="stylesheet">
+    <!--Fonts-->
+
+    <!--FontAwesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-rwsk1BGvQx5JrLHoi9fj7I01Aph5FfAs91nCl4azgazl7HdjL2vF8A1krkYNTl1f" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/user.css">
+</head>
+
+<body>
+    <!-- <div class="navbar">
+        <div class="logo_icon">
+            <img src="<?= ROOT ?>/assets/images/logo.png" alt="">
+        </div>
+        <div class="navbar-links">
+            <div class="user-buttons">
+                <?php if (!Auth::logged_in()) : ?>
+                    <a class="signup" href="<?= ROOT ?>/signup">Signup</a>
+                    <a class="login" href="<?= ROOT ?>/login">Login</a>
+                <?php else : ?>
+                    <div class="user_navbar">
+                        <div class="dropdown">
+                            <button class="dropbtn">Hi, <?= Auth::getUsername() ?>
+                                <i class="fa fa-caret-down"></i>
+                            </button>
+                            <div class="dropdown-content">
+                                <a href="<?= ROOT ?>/cus_profile">Profile</a>
+                                <a href="<?= ROOT ?>/cus_edit_profile">Edit Profile</a>
+                                <a href="<?= ROOT ?>/Logout">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+
+    </div> -->
+
+    <?php
+    $this->view('includes/cus_topbar', $data);
     ?>
  <!DOCTYPE html>
  <html lang="en">
@@ -644,9 +705,15 @@
                          <script src="<?= ROOT ?>/assets/js/user.js"></script>
  </body>
 
- </html>
 
- <?php
-    // require_once '../../Components/NavBar/Footer/cus_footer.php';
-    $this->view('includes/cus_footer', $data);
-    ?>
+                    </div>
+
+                </div>
+</body>
+
+</html>
+
+<?php
+// require_once '../../Components/NavBar/Footer/cus_footer.php';
+$this->view('includes/cus_footer', $data);
+?>
