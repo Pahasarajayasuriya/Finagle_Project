@@ -13,84 +13,97 @@
   --red: #fc3b56;
 }
 body {
-  background-color: #ffffff;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: black;
 }
-.no-results-message {
-  /* display: flex; */
-  display: none;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  color: red;
-  font-weight: bold;
-}
-.delete-btn{
-  right: 1%;
-  font-size: 16px;
-  width: fit-content;
-  text-decoration: none;
-  color: var(--red);
-  cursor: pointer;
-  padding: 5px 15px;
-  border-radius: 6px;
-  color: #000;
-  border: none;
-  background: var(--blue);
-}
-#main {
-  position: fixed;
-  top: 78px;
-  width: calc(100% - 120px);
-  height: max-content;
-  left: 78px;
-  margin-left: 20px;
-  transition: all 0.5s ease;
-  z-index: 2;
-  border-radius: 50px;
-}
+.ad_head {
+    align-items: center;
+    text-align: center;
+    font-size: 25px;
+    color: red;
+    letter-spacing: 0.08rem;
+    margin: 1rem 0 1rem;
+    font-weight: 600;
+    margin-top: -10px;
 
-#main.open {
-  left: 250px;
-  width: calc(100% - 250px);
-}
+  }
+  
+  .ad_head_1 {
+  
+    font-weight: 800;
+    color: black;
+    white-space: nowrap;
+    font-size: 25px;
+    margin-top: -10px;
 
-#main h2 {
-  position: relative;
-  padding: 10px 10px;
-  text-align: center;
-  background: #f4f7fc;
+  }
+  
+  .ad_head_1 span {
+  
+    color: #d72323;
+  }
+ 
+.form-header{
+    display: flex;
+     gap: 70px;
 }
+  form {
+    max-width: 800px;
+    width: 100%;
+    padding: 10px;
+    margin-top: 0px;
+  }
+ form .ad-form-input {
+    display: flex;
+    align-items: center;
+    height: 36px;
+    margin-left: 350px;
+    margin-top: 0px;
 
-#main form {
-  background: #f4f7fc;
-  top: 60px;
-  padding-bottom: 10px;
-}
+  }
+  
+ form .ad-form-input input {
+    flex-grow: 1;
+    padding: 0 16px;
+    height: 100%;
+    border: none;
+    background: rgb(255, 255, 255);
+    outline: none;
+    border-radius: 36px 0 0 36px;
+    box-shadow: 0px 0px 10px 0px rgb(187, 184, 184);
+    width: 400px;
+    
+  
+  }
+  
+ form .ad-form-input button {
+    width: 36px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    color: white;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 0 36px 36px 0;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 2px rgb(187, 184, 184);
+    transition: 0.3s ease;
+  }
+  
+ form .ad-form-input button:hover {
+    /* background: rgb(236, 236, 236); */
+    font-size: 20px;
+    /* color: black; */
+  }
 
-.form-group {
-  position: relative;
-  left: 3%;
-  width: 20%;
-  background: #d5dfe7d5;
-  border-radius: 20px;
-  border: none;
-  outline: none;
-  padding: 10px 30px;
-  transition: all 0.3s ease;
-  color: var(--dark);
-}
-
-.form-group:focus {
-  box-shadow: 0 0 4px 1px rgb(47, 122, 235);
-}
-
-.form .icon {
-  position: relative;
-  font-size: 20px;
-  top: 12%;
-  /* transform: translateY(-50%); */
-  color: var(--dark);
-}
 
 .btn {
   position: absolute;
@@ -176,42 +189,80 @@ table tbody tr:nth-of-type(even) {
   background-color: #191919;
 }
 
-table tbody tr:last-of-type {
-  border-top: 2px solid #bcc2ce;
+.branch-loc{
+  flex: 4;
 }
 
-table tbody tr.active-row {
-  font-weight: bold;
-  color: #009879;
+.branch-name{
+  flex: 2;
+  margin-left: 20px;
 }
 
-.st {
-  padding: 0%;
+.branch-id{
+  flex: 1;
+  margin-left: 20px;
+  
+
+}
+.ad-id{
+  margin-left: -40px;
 }
 
-/* .text-status {
-  background-color: rgb(16, 197, 52);
-  border-radius: 12px;
-  width: fit-content;
-  padding: 2% 13%;
-  margin-left: 0%;
+/* .emp-id{
+  flex: 1;
+} */
+/* 
+.emp-name{
+  margin-left: 10px;
+
+} */
+/* .emp-branch{
+  flex: 1;
+
 } */
 
-.report{
-  position: absolute;
-  height: fit-content;
-  width: 60%;
-  background: #ffffff;
-  margin-top: 3%;
-  margin-bottom: 3%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 0 0 1px var(--blue), 0 0 0 4px var(--light-blue);
-  transition: transform 0.5s, top 0.5s;
-  justify-content: center;
+
+.advertisement-record {
+    display: flex;
+    gap: 20px;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color:black;
+    transition: transform 0.3s ease-in-out;
+    width: 900px;
+    margin-left: 100px;
+    margin-top: 20px;
+    
+  
+}
+
+.advertisement-record:hover {
+    transform: scale(1.05);
+}
+
+.advertisement-id,
+.advertisement-image
+{
+    flex: 1;
+}
+
+.advertisement-name,.advertisement-date {
+    flex: 2;
+}
+
+.advertisement-id{
+    font-weight: bold;
+}
+  .advertisement-image{
+    font-size: 16px;
+    width: 20px;
+  }
+  .advertisement-image {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .popup-view,
@@ -589,15 +640,14 @@ select {
     position: relative;
     transition: all 0.5s ease;
     min-height: 100vh;
-    left: 8px;
-    width: calc(100% - 58px);
-    z-index: 2;
-  } */
+    left: 20px;
+    margin-top: 50px;
+    /* width: calc(100% - 58px); */
+    /* z-index: 2; */
+  }
 
-  /* Add these styles to your existing CSS file or inline in HTML */
+  .sidebar.open ~ .home-section {
+    left: 100px;
+    width: calc(100% - 150);
+  } 
 
-.image-preview {
-  max-width: 100px;  /* Adjust the maximum width as needed */
-  max-height: 100px; /* Adjust the maximum height as needed */
-  border-radius: 5px; /* Optional: Add border-radius for rounded corners */
-}

@@ -90,7 +90,6 @@
                 <div class="link-newsletter">
                     <input class="email-input" type="text" placeholder="Enter your email">
                     <button type="button" class="send">SEND</button>
-
                 </div>
                 <div class="confirm">
                     <input type="checkbox" id="consentCheckbox">
