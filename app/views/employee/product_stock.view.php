@@ -36,9 +36,16 @@ $this->view('includes/footer', $data);
 <body>
     <div class="home-section">
 
-      
+        <div class="title-profile">
 
-        
+            <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
+            <h2 class="section-title">BRANCH EMPLOYEES</h2>
+            <div class="divider dark mb-4">
+                <div class="icon-wrap">
+                </div>
+            </div>
+
+        </div>
 
         <div class="form-header">
             <form action="#" class="sub-form">
