@@ -1,5 +1,5 @@
 <?php
-                        $role = "Employee";
+                        $role = "User";
                         if ($role == "User") {
                             echo '<li>
                                <a href="'. ROOT .'/">
@@ -22,13 +22,7 @@
                                 </a>
                                 <span class="tooltip">Process</span>
                               </li>
-                              <li>
-                                <a href="export.php">
-                                  <i class="bx bxs-plane-alt"></i>
-                                  <span class="links_name">Exports</span>
-                                </a>
-                                <span class="tooltip">Exports</span>
-                              </li>
+                             
                               <li>
                               <a href="../customer/recipes.view.php">
                                   <i class="bx bx-food-menu"></i>
