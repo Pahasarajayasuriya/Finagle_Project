@@ -137,13 +137,21 @@ $this->view('includes/footer', $data);
     </div>
     </div>
     <script>
+        let cart = [];
         document.getElementById("checkout-button").addEventListener("click", function() {
-            // Check if the user is logged in before redirecting to the checkout page
-            if (isLoggedIn()) {
+            // Check if the user is logged in and if there is at least 1 product in the cart
+            if (isLoggedIn() && cartHasProducts()) {
                 window.location.href = "<?= ROOT ?>/checkout";
             } else {
                 // Redirect to the login page if the user is not logged in
-                window.location.href = "<?= ROOT ?>/login";
+                // or display an alert if the cart is empty
+                if (!isLoggedIn()) {
+                    window.location.href = "<?= ROOT ?>/login";
+                } else {
+                    alert("Your cart is empty. Please add at least 1 product to proceed to checkout.");
+                    // Alternatively, redirect to another page
+                     window.location.href = "<?= ROOT ?>/products"; 
+                }
             }
         });
 
@@ -154,7 +162,14 @@ $this->view('includes/footer', $data);
             // You may need to modify this logic based on how you determine if a user is logged in
             return <?php echo (Auth::logged_in()) ? 'true' : 'false'; ?>;
         }
+
+        // Function to check if the cart has at least 1 product
+        function cartHasProducts() {
+            // You may need to modify this logic based on how you track cart items
+            return (cart.length > 0); // Assuming cart is an array of items
+        }
     </script>
+
 
 
     <script type="module" src="<?= ROOT ?>/assets/js/product.js"></script>
