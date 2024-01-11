@@ -5,10 +5,10 @@ $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
 ?>
 <?php
-include_once(__DIR__ . '/../../models/ProductModel.php');
+// include_once(__DIR__ . '/../../models/ProductModel.php');
 
-$productModel = new ProductModel();
-$products = $productModel->getProducts();
+// $productModel = new ProductModel();
+// $products = $productModel->getProducts();
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +22,7 @@ $products = $productModel->getProducts();
 
     <link href="https://fonts.googleapis.com/css?family=Cabin|Herr+Von+Muellerhoff|Source+Sans+Pro" rel="stylesheet">
     <!--Fonts-->
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.3.0/remixicon.css" integrity="sha512-0JEaZ1BDR+FsrPtq5Ap9o05MUwn8lKs2GiCcRVdOH0qDcUcCoMKi8fDVJ9gnG8VN1Mp/vuWw2sMO0SQom5th4g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--FontAwesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous">
 
@@ -103,7 +103,7 @@ $products = $productModel->getProducts();
 
             <img
               class="cart-item-img"
-              src="<?= ROOT ?>/assets/images/burger-bun.jpg"
+              src="./images/burger-bun.jpg"
             />
 
             <div class="cart-item-desc">
@@ -111,13 +111,15 @@ $products = $productModel->getProducts();
               <h5> 120</h5>
             </div>
 
-            <div class="cart-item-controller">
-              <i class="ri-arrow-up-s-line"></i>
-              <p>1</p>
-              <i class="ri-arrow-down-s-line"></i>
+             <div class="cart-item-controller">
+              <i class="ri-arrow-up-s-line arrow-up"  ></i>
+              <p>5</p>
+              <i class="ri-arrow-down-s-line arrow-down" ></i>
             </div>
 
-            <i class="ri-delete-bin-line"></i>
+            <i class="ri-delete-bin-line trash" ></i>
+
+          
             
           </div> -->
                 </div>
