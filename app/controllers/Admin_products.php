@@ -6,31 +6,25 @@ class Admin_products extends Controller
     {
         $adminProductsModel = new Admin_productsModel();
 
-        $data['rows'] = $adminProductsModel->all(); // Fetch all products
+        $data['rows'] = $adminProductsModel->all(); 
         $data['errors'] = [];
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Validate and sanitize input data
             $validatedData = $adminProductsModel->validate($_POST);
 
             if ($validatedData) {
-                // Handle file upload for the image
                 $imagePath = $this->uploadImage($_FILES['image']);
                 if ($imagePath) {
                     $validatedData['image'] = $imagePath;
 
-                    // Insert the product into the database
                     $adminProductsModel->insert($validatedData);
 
-                    // Redirect to avoid form resubmission
                     redirect('admin_products');
                 } else {
-                    // Handle image upload failure
 
                     echo "Image Upload Failed.";
                 }
             } else {
-                // Handle validation errors
                 $data['errors'] = $adminProductsModel->errors;
 
             }
@@ -47,12 +41,10 @@ class Admin_products extends Controller
         $targetDirectory = "uploads/";
         $targetFile = $targetDirectory . basename($file["name"]);
 
-        // Ensure the target directory exists
         if (!is_dir($targetDirectory)) {
             mkdir($targetDirectory, 0777, true);
         }
 
-        // Check allowed file types
         $allowedExtensions = ["jpg", "jpeg", "png", "gif"];
         $fileExtension = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
@@ -61,7 +53,6 @@ class Admin_products extends Controller
             return false;
         }
 
-        // Check image dimensions
         list($width, $height) = getimagesize($file["tmp_name"]);
         $maxDimension = 20000;
 
@@ -70,7 +61,6 @@ class Admin_products extends Controller
             return false;
         }
 
-        // Move the uploaded file to the target directory
         if (move_uploaded_file($file["tmp_name"], $targetFile)) {
             return $targetFile;
         } else {
