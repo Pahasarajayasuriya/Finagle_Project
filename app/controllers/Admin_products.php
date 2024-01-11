@@ -5,7 +5,8 @@ class Admin_products extends Controller
     public function index()
     {
         $adminProductsModel = new Admin_productsModel();
-        $data['rows'] = $adminProductsModel->all();
+
+        $data['rows'] = $adminProductsModel->all(); // Fetch all products
         $data['errors'] = [];
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -15,7 +16,6 @@ class Admin_products extends Controller
             if ($validatedData) {
                 // Handle file upload for the image
                 $imagePath = $this->uploadImage($_FILES['image']);
-
                 if ($imagePath) {
                     $validatedData['image'] = $imagePath;
 
@@ -26,11 +26,13 @@ class Admin_products extends Controller
                     redirect('admin_products');
                 } else {
                     // Handle image upload failure
+
                     echo "Image Upload Failed.";
                 }
             } else {
                 // Handle validation errors
                 $data['errors'] = $adminProductsModel->errors;
+
             }
         }
 
@@ -75,5 +77,6 @@ class Admin_products extends Controller
             echo "Image Upload Failed.";
             return false;
         }
+
     }
 }

@@ -19,4 +19,21 @@ class Admin_productsModel extends Model
 
         return $data;
     }
+
+    public function all()
+    {
+        $query = "SELECT * FROM {$this->table}";
+        return $this->query($query);
+    }
+
+    public function insertComplaint($data)
+    {
+        $validatedData = $this->validate($data);
+
+        if (!$validatedData) {
+            return false; // Return false if validation fails
+        }
+
+        return $this->insert($validatedData);
+    }
 }
