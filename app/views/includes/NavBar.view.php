@@ -1,8 +1,8 @@
 <?php
-                        $role = "User";
+                        $role = "Manager";
                         if ($role == "User") {
                             echo '<li>
-                               <a href="'. ROOT .'">
+                               <a href="'. ROOT .'/">
                                   <i class="bx bx-grid-alt"></i>
                                   <span class="links_name">Dashboard</span>
                                 </a>
@@ -47,21 +47,28 @@
                         } elseif ($role == "Employee") {
                           echo '
                           <li>
-                          <a href="employee_profile.php">
+                               <a href="Emp_dashboard">
+                                  <i class="bx bx-grid-alt"></i>
+                                  <span class="links_name">Dashboard</span>
+                                </a>
+                                <span class="tooltip">Dashboard</span>
+                          </li>
+                          <li>
+                          <a href="Emp_profile">
                             <i class="bx bx-user"></i>
                             <span class="links_name">Profile</span>
                           </a>
                           <span class="tooltip">Profile</span>
                         </li>
                         <li>
-                        <a href="product_stock.php">
+                        <a href="Emp_productStock">
                         <i class="bx bx-book-open"></i>
                           <span class="links_name">Stocks</span>
                         </a>
                         <span class="tooltip">Stocks</span>
                       </li>
                       <li>
-                      <a href="delivery_progress.php">
+                      <a href="Emp_progress">
                       <i class="bx bx-cake"></i>
                         <span class="links_name">Orders</span>
                       </a>

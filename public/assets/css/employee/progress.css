@@ -1,3 +1,4 @@
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -259,6 +260,18 @@ body {
     margin-top: 45px;
 }
 
+
+.dispatched-order-list{
+    margin-top: 45px;
+
+}
+
+.bxs-right-arrow-square{
+    font-size: 30px;
+    margin-top: -5px;
+    margin-left: 20px;
+    color: red;
+}
 /* .ready-item-options{
     display: flex;
     margin-left: 70px;
