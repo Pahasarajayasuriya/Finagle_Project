@@ -138,10 +138,24 @@ $this->view('includes/footer', $data);
     </div>
     <script>
         document.getElementById("checkout-button").addEventListener("click", function() {
-            window.location.href = "<?= ROOT ?>/checkout";
+            // Check if the user is logged in before redirecting to the checkout page
+            if (isLoggedIn()) {
+                window.location.href = "<?= ROOT ?>/checkout";
+            } else {
+                // Redirect to the login page if the user is not logged in
+                window.location.href = "<?= ROOT ?>/login";
+            }
         });
+
         const productsData = <?= json_encode($data['products']) ?>;
+
+        // Function to check if the user is logged in
+        function isLoggedIn() {
+            // You may need to modify this logic based on how you determine if a user is logged in
+            return <?php echo (Auth::logged_in()) ? 'true' : 'false'; ?>;
+        }
     </script>
+
 
     <script type="module" src="<?= ROOT ?>/assets/js/product.js"></script>
 </body>
