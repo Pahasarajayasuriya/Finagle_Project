@@ -151,6 +151,7 @@ $products = $productModel->getProducts();
             }
         });
 
+
         const productsData = <?= json_encode($data['products']) ?>;
 
         function isLoggedIn() {
