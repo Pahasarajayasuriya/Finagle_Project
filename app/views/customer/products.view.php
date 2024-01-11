@@ -138,7 +138,7 @@ $this->view('includes/footer', $data);
     </div>
     <script>
         document.getElementById("checkout-button").addEventListener("click", function() {
-            window.location.href = "checkout.php";
+            window.location.href = "<?= ROOT ?>/checkout";
         });
         const productsData = <?= json_encode($data['products']) ?>;
     </script>
