@@ -12,7 +12,7 @@
 <body>
    
     
-    <div id="myModal" class="modal">
+    <div id="myModal2" class="modal">
       <div class="modal-content">
         <!-- <span><i class="bx bx-x close" style="color: #ff0000"></i></span>
         <div>
@@ -21,29 +21,32 @@
         </div> -->
         <i class='bx bx-cart bx-fade-right' style='color:#fd0303' ></i>
         <h2>Order ID: 12345</h2>
+        <div class="delivery-loc"><i class="fas fa-map-marker-alt"></i> No 34, Flowers road, Colombo 7.</div>
+        <button class="pay-status">Paid</button>
+            <br><hr>
+        
 
     <div class="details">
         <div class="product-item">
            <div class="product-name">Chocolate Cake</div>
            <div class="product-qty">2</div>
+           <div class="product-price">Rs.2500.00</div>
         </div>
 
         <div class="product-item">
            <div class="product-name">Burger Bun</div>
            <div class="product-qty">5</div>
+           <div class="product-price">Rs.500.00</div>
         </div>
 
         <hr>
         <div class="product-summery">
-            <div class="sub-total">Sub Total : Rs.5400</div>
-            <div class="delivery-fee">Delivery Free :Rs.300</div>
             <div class="total-amount">Total Amount : Rs.5700</div>
         </div>
 
-
         </div>
         
-        <button class="button" id="confirmDelete">OK</button>
+        <button class="button" id="confirmDetails">OK</button>
         <!-- <button class="button" id="cancelDelete">Cancel</button> -->
       </div>
     </div>
@@ -52,7 +55,7 @@
 
 
     <style>
-           .modal {
+        .modal {
         display: none;
         position: fixed;
         z-index: 1;
@@ -69,7 +72,7 @@
     .modal-content {
         border-radius: 10px;
         background-color: #fefefe;
-        margin: 15% auto;
+        margin: 10% auto;
         padding: 20px;
         border: 1px solid #888;
         width: 50%;
@@ -107,13 +110,46 @@
 
       }
 
+      .delivery-loc{
+        display: flex;
+        text-align: center;
+        gap: 10px;
+        margin-left: 170px;
+        color: #888;
+        font-size: 14px;
+        align-self: center;
+        margin-top: 10px;
+      }
+
+      .pay-status{
+        width: 100px;
+        height: 30px;
+        font-size: 16px;
+        display: inline-block;
+        padding: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        color: white;
+        transition: 0.3s ease-in;
+        margin-top: 10px;
+        text-align: center;
+        align-items: center;
+        background-color:rgb(16, 187, 0);
+        margin: 10px;
+
+      }
       .product-item{
         display: flex;
         text-align: center;
-        gap: 20px;
-        margin-left: 150px;
-        color: #888;
-        font-size: 12px;
+        gap: 10px;
+        margin-left: 100px;
+        color: black;
+        font-size: 14px;
+        align-self: center;
+        padding: 10px;
+        
 
       }
       .product-name{
@@ -123,12 +159,30 @@
       .product-qty{
         max-width: 20px;
       }
+
+      .product-price{
+        min-width: 200px;
+
+      }
+
+      .total-amount{
+        display: flex;
+        text-align: right;
+        gap: 10px;
+        margin-left: 350px;
+        color: black;
+        font-size: 16px;
+        /* align-self: center; */
+        padding: 10px;
+        font-weight: bold;
+        
+      }
       .button {
         width: 100px;
         height: 37px;
         font-size: 16px;
         display: inline-block;
-        padding: 10px;
+        padding: 5px;
         border-radius: 5px;
         cursor: pointer;
         border: none;
@@ -136,26 +190,27 @@
         color: #fff;
         transition: 0.3s ease-in;
         margin-top: 10px;
-        
+        text-align: center;
+        align-items: center;
       }
 
       .details{
         text-align: center;
       }
-      #confirmDelete {
+      #confirmDetails {
         margin-right: 10px;
         background-color: #000000;
       }
       
-      #cancelDelete {
+      #cancelDetails {
         background-color: #f44336;
       }
 
-      #confirmDelete:hover {
+      #confirmDetails:hover {
         background-color: rgb(16, 187, 0);
       }
       
-      #cancelDelete:hover {
+      #cancelDetails:hover {
         background-color: rgb(255, 0, 0);
       }
 
