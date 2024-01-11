@@ -12,4 +12,12 @@ class Products extends Controller
         $data['title'] = "Products";
         $this->view('customer/products', $data);
     }
+
+
+    public function aaa($id='')
+    {
+        show('1');
+    }
+
+
 }

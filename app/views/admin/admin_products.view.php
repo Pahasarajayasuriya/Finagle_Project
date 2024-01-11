@@ -11,7 +11,9 @@
 </head>
 
 <body>
+
     <div class="overlay" id="overlay"></div>
+
     <div class="home-section">
         <!-- content  -->
         <section id="main" class="main">
@@ -19,34 +21,48 @@
                 <p class="ad_head_1">PRODUCT<span> DETAILS</span></p>
             </div>
 
-            <div class="form-header">
-                <form action="#">
-                    <div class="ad-form-input">
-                        <input type="search" id="search" placeholder="Search...">
-                        <button type="submit" class="ad-search-btn">
-                            <i class='bx bx-search'></i>
-                        </button>
-                    </div>
-                </form>
+            <h2>PRODUCTS</h2>
 
-                <input class="add-btn" type="button" onclick="openReport()" value="Add Products">
-            </div>
+            <form>
+                <div class="form">
+                    <input class="form-group" type="text" placeholder="Search...">
+                    <i class='bx bx-search icon'></i>
+                    <input class="btn" type="button" onclick="openReport()" value="Add Products">
+                </div>
 
-            <!-- Popup Container -->
-            <div class="popup-container" id="popupContainer">
-                <h2>Add a Product</h2>
-                <div class="popup-content">
+            </form>
 
 
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th class="ordId">Id</th>
+                        <th class="ordId">Image</th>
+                        <th class="desc">Product Name</th>
+                        <th class="desc">category</th>
+                        <th class="ordId">Price</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <?php $rowNumber = 1; ?>
+                <?php foreach ($rows as $row) : ?>
+                    <tr>
+                        <td><?= $rowNumber++ ?></td>
+                        <td class="ordId"><?= esc($row->id) ?></td>
+                        <td class="desc">
+                            <img class="image-preview" src="<?= esc($row->image) ?>" alt="Product Image">
+                        </td>
+                        <td class="products"><?= esc($row->name) ?> </td>
+                        <td class="category"><?= esc($row->category) ?></td>
+                        <td class="desc"><?= esc($row->price) ?></td>
+                        <td><button type="submit" class="view-order-btn" onclick="openView()">Edit Products</button></td>
+                        <td><button type="submit" class="view-order-btn">Delete Products</button></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
 
-                    <label for="name">Product Name:</label>
-                    <input type="text" id="description" name="description" placeholder="Enter product name">
-
-                    <label for="price">Price:</label>
-                    <input type="text" id="price" name="price">
-
-                    <label for="Image">Image:</label>
-                    <input type="image" id="Image" name="Image">
 
                     <div class="buttons-container">
                         <button class="cancel-btn" onclick="closePopup()">Cancel</button>
@@ -64,18 +80,164 @@
                     <label for="editEndDate">Price:</label>
                     <input type="text" id="editEndDate" name="editEndDate">
 
-                    <div class="buttons-container">
-                        <button class="cancel-btn" onclick="closeEditPopup()">Cancel</button>
-                        <button class="submit-btn" onclick="submitEditForm()">Submit</button>
+        <div class="popup-view" id="popup-view">
+            <button type="button" class="update-btn pb" onclick="closeView()">Update Product</button>
+            <button type="button" class="cancel-btn pb" onclick="closeView()">Cancel</button>
+            <h2>Product Details</h2>
+
+            <div class="container1">
+                <form>
+                    <div class="user-details">
+                        <div class="input-box">
+                            <span class="details">Product Name</span>
+                            <input type="text" required onChange="" value="<?= set_value('name', $row->name) ?>" />
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Category</span>
+                            <input type="text" required onChange="" value="<?= set_value('category', $row->category) ?>" />
+                        </div>
+
+                        <div class="input-box">
+                            <label for="edit-image">Edit Image</label>
+                            <input type="file" name="edit-image" accept="image/*">
+                            <?php if ($row->image) : ?>
+                                <div>Current Image: <?= basename($row->image) ?></div>
+                                <input type="hidden" name="current-image" value="<?= basename($row->image) ?>">
+                            <?php endif; ?>
+                        </div>
+
+                        <div class="input-box">
+                            <span class="details">Price</span>
+                            <input type="text" required onChange="" value="<?= set_value('price', $row->price) ?>" />
+                        </div>
+
+                    </div>
+
+                </form>
+
+                <!-- ... Your HTML above ... -->
+
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th class="ordId">Id</th>
+            <th class="ordId">Image</th>
+            <th class="desc">Product Name</th>
+            <th class="desc">category</th>
+            <th class="ordId">Price</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <?php $rowNumber = 1; ?>
+    <?php foreach ($rows as $row) : ?>
+        <tr>
+            <td><?= $rowNumber++ ?></td>
+            <td class="ordId"><?= esc($row->id) ?></td>
+            <td class="desc">
+                <img class="image-preview" src="<?= esc($row->image) ?>" alt="Product Image">
+            </td>
+            <td class="products"><?= esc($row->name) ?> </td>
+            <td class="desc"><?= esc($row->category) ?></td>
+            <td class="desc"><?= esc($row->price) ?></td>
+            <td><button type="submit" class="view-order-btn" onclick="openView()">Edit Products</button></td>
+            <td><button type="submit" class="view-order-btn">Delete Products</button></td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+
+<!-- ... Your HTML below ... -->
+
+            </section>
+            <!-- Add this message element -->
+            <div id="no-results-message" class="no-results-message">No matching products found.</div>
+            <!-- POPUP -->
+            <form method="POST" enctype="multipart/form-data" action="<?= ROOT ?>/admin_products">
+                <div class="popup-report">
+                    <h2>Add Products</h2>
+                    <div>
+                        <label for="name"> Product Name</label>
+                        <input required type="text" id="name" name="name" value="<?= set_value('name') ?>">
+                        <?php if (!empty($errors['name'])) : ?>
+                            <div class="invalid"><?= $errors['name'] ?></div>
+                        <?php endif; ?>
+                    </div>
+                    <div>
+                        <label for="category">Category</label>
+                        <input required type="text" name="category" id="category" value="<?= set_value('category') ?>">
+
+                    </div>
+                    <div>
+                        <label for="price">Price</label>
+                        <input required type="text" name="price" value="<?= set_value('price') ?>">
+                        <?php if (!empty($errors['price'])) : ?>
+                            <div class="invalid"><?= $errors['price'] ?></div>
+                        <?php endif; ?>
+                    </div>
+                    <div>
+                        <label for="image">Product image</label>
+                        <div class="filename">Selected File: None</div>
+                        <input onchange="load_image(this.files[0])" type="file" name="image" value="<?= set_value('image') ?>">
+                        <?php if (!empty($errors['image'])) : ?>
+                            <div class="invalid"><?= $errors['image'] ?></div>
+                        <?php endif; ?>
+                        </br>
+                    </div>
+                    <div class="btns">
+                        <button type="button" class="cancelR-btn" onclick="closeReport()">Cancel</button>
+                        <input type="submit" name="add_branches" value="Add" class="close-btn">
                     </div>
                 </div>
+            </form>
+
+
+
+            <div class="popup-view" id="popup-view">
+                <button type="button" class="update-btn pb" onclick="closeView()">Update Product</button>
+                <button type="button" class="cancel-btn pb" onclick="closeView()">Cancel</button>
+                <h2>Product Details</h2>
+
+                <div class="container1">
+                    <form>
+                        <div class="user-details">
+                            <div class="input-box">
+                                <span class="details">Product Id </span>
+                                <input type="text" required onChange="" value="0023456" />
+                            </div>
+
+                            <div class="input-box">
+                                <span class="details">Product Name </span>
+                                <input type="text" required onChange="" value="Ja-ela" />
+                            </div>
+
+                            <div class="input-box">
+                                <span class="details">category</span>
+                                <input type="text" required onChange="" value="0112815328" />
+                            </div>
+
+                            <div class="input-box">
+                                <label for="edit-image">Edit Image</label>
+                                <input type="file" name="edit-image" accept="image/*">
+
+                            </div>
+
+                            <div class="input-box">
+                                <span class="details">price</span>
+                                <input type="text" required onChange="" value="0112815328" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <button type="button" class="ok-btn" onclick="closeView()">OK</button>
             </div>
+            <div id="overlay" class="overlay"></div>
+        </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script src="<?= ROOT ?>/assets/js/product-admin.js"></script>
 
-            <div class="products" id="productList"></div>
-        </section>
-        <script src="<?= ROOT ?>/assets/js/product-admin.js"></script>
-    </div>
 </body>
 
 </html>

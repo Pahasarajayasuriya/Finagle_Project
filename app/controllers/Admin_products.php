@@ -6,17 +6,18 @@ class Admin_products extends Controller
     {
         $adminProductsModel = new Admin_productsModel();
 
-        $data['rows'] = $adminProductsModel->all();
+
+        $data['rows'] = $adminProductsModel->all(); // Fetch all products
 
         $data['errors'] = [];
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Validate and sanitize input data
             $validatedData = $adminProductsModel->validate($_POST);
+
             if ($validatedData) {
                 // Handle file upload for the image
                 $imagePath = $this->uploadImage($_FILES['image']);
-
                 if ($imagePath) {
                     $validatedData['image'] = $imagePath;
 
@@ -40,7 +41,6 @@ class Admin_products extends Controller
         $data['title'] = "Products";
         $this->view('admin/admin_products', $data);
     }
-
 
 
     private function uploadImage($file)
