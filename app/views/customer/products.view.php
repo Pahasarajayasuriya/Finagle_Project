@@ -5,10 +5,10 @@ $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
 ?>
 <?php
-// include_once(__DIR__ . '/../../models/ProductModel.php');
+include_once(__DIR__ . '/../../models/ProductModel.php');
 
-// $productModel = new ProductModel();
-// $products = $productModel->getProducts();
+$productModel = new ProductModel();
+$products = $productModel->getProducts();
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +22,7 @@ $this->view('includes/footer', $data);
 
     <link href="https://fonts.googleapis.com/css?family=Cabin|Herr+Von+Muellerhoff|Source+Sans+Pro" rel="stylesheet">
     <!--Fonts-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.3.0/remixicon.css" integrity="sha512-0JEaZ1BDR+FsrPtq5Ap9o05MUwn8lKs2GiCcRVdOH0qDcUcCoMKi8fDVJ9gnG8VN1Mp/vuWw2sMO0SQom5th4g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!--FontAwesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous">
 
@@ -103,7 +103,7 @@ $this->view('includes/footer', $data);
 
             <img
               class="cart-item-img"
-              src="./images/burger-bun.jpg"
+              src="<?= ROOT ?>/assets/images/burger-bun.jpg"
             />
 
             <div class="cart-item-desc">
@@ -111,15 +111,13 @@ $this->view('includes/footer', $data);
               <h5> 120</h5>
             </div>
 
-             <div class="cart-item-controller">
-              <i class="ri-arrow-up-s-line arrow-up"  ></i>
-              <p>5</p>
-              <i class="ri-arrow-down-s-line arrow-down" ></i>
+            <div class="cart-item-controller">
+              <i class="ri-arrow-up-s-line"></i>
+              <p>1</p>
+              <i class="ri-arrow-down-s-line"></i>
             </div>
 
-            <i class="ri-delete-bin-line trash" ></i>
-
-          
+            <i class="ri-delete-bin-line"></i>
             
           </div> -->
                 </div>
@@ -137,39 +135,19 @@ $this->view('includes/footer', $data);
     </div>
     </div>
     <script>
-        let cart = [];
-        document.getElementById("checkout-button").addEventListener("click", function() {
-            // Check if the user is logged in and if there is at least 1 product in the cart
-            if (isLoggedIn() && cartHasProducts()) {
-                window.location.href = "<?= ROOT ?>/checkout";
-            } else {
-                // Redirect to the login page if the user is not logged in
-                // or display an alert if the cart is empty
-                if (!isLoggedIn()) {
-                    window.location.href = "<?= ROOT ?>/login";
-                } else {
-                    alert("Your cart is empty. Please add at least 1 product to proceed to checkout.");
-                    // Alternatively, redirect to another page
-                     window.location.href = "<?= ROOT ?>/products"; 
-                }
-            }
-        });
-
-        const productsData = <?= json_encode($data['products']) ?>;
-
-        // Function to check if the user is logged in
-        function isLoggedIn() {
-            // You may need to modify this logic based on how you determine if a user is logged in
-            return <?php echo (Auth::logged_in()) ? 'true' : 'false'; ?>;
+    document.getElementById("checkout-button").addEventListener("click", function() {
+        if (isLoggedIn()) {
+            window.location.href = "<?= ROOT ?>/checkout";
+        } else {
+            window.location.href = "<?= ROOT ?>/login";
         }
+    });
 
-        // Function to check if the cart has at least 1 product
-        function cartHasProducts() {
-            // You may need to modify this logic based on how you track cart items
-            return (cart.length > 0); // Assuming cart is an array of items
-        }
-    </script>
-
+    const productsData = <?= json_encode($data['products']) ?>;
+    function isLoggedIn() {
+        return <?php echo (Auth::logged_in()) ? 'true' : 'false'; ?>;
+    }
+</script>
 
 
     <script type="module" src="<?= ROOT ?>/assets/js/product.js"></script>

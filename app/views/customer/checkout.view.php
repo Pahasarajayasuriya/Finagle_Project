@@ -172,7 +172,7 @@
 
         <script>
             document.getElementById("back-button").addEventListener("click", function() {
-                window.location.href = "product.php"
+                window.location.href = "<?= ROOT ?>/products"
             });
         </script>
     </div>

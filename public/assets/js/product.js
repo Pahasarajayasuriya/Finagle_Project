@@ -394,3 +394,4 @@ document.addEventListener("DOMContentLoaded", () => {
   ui.searchItem();
   Storage.saveProducts(productsData);
 });
+
