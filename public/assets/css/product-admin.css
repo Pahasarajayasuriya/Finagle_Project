@@ -17,14 +17,23 @@ body {
 }
 .no-results-message {
   /* display: flex; */
-  display: none;
-  align-items: center;
+  /* align-items: center;
   justify-content: center;
   height: 100vh;
   color: red;
-  font-weight: bold;
+  font-weight: bold; */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid red;
+  color: red;
+  display: none;
 }
-.delete-btn{
+.delete-btn {
+
   right: 1%;
   font-size: 16px;
   width: fit-content;
@@ -196,6 +205,7 @@ table tbody tr.active-row {
   padding: 2% 13%;
   margin-left: 0%;
 } */
+
 
 .report{
   position: absolute;
@@ -594,10 +604,12 @@ select {
     z-index: 2;
   } */
 
-  /* Add these styles to your existing CSS file or inline in HTML */
+/* Add these styles to your existing CSS file or inline in HTML */
 
 .image-preview {
-  max-width: 100px;  /* Adjust the maximum width as needed */
-  max-height: 100px; /* Adjust the maximum height as needed */
-  border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+  width: 70px;
+  height: 70px;
+  border-radius: 50%; /* Use 50% for a circle */
+  object-fit: cover; /* Preserve aspect ratio and cover the entire container */
+
 }
