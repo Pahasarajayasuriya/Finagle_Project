@@ -2,7 +2,7 @@
 
 class admin_branchesModel extends Model
 {
-    public $table = "branches";
+    public $table = "branch";
     public $errors = [];
     protected $allowedColumns = [
         'id',

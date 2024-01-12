@@ -17,7 +17,7 @@ body {
 }
 .no-results-message {
   /* display: flex; */
-<<<<<<<<< Temporary merge branch 1
+
   display: none;
   align-items: center;
   justify-content: center;
@@ -26,7 +26,7 @@ body {
   font-weight: bold;
 }
 .delete-btn{
-=========
+
   /* align-items: center;
   justify-content: center;
   height: 100vh;
@@ -43,7 +43,7 @@ body {
   display: none;
 }
 .delete-btn {
->>>>>>>>> Temporary merge branch 2
+
   right: 1%;
   font-size: 16px;
   width: fit-content;
@@ -220,11 +220,9 @@ table tbody tr:nth-of-type(even) {
   margin-left: 0%;
 } */
 
-<<<<<<<<< Temporary merge branch 1
-.report{
-=========
+
 .report {
->>>>>>>>> Temporary merge branch 2
+
   position: absolute;
   height: fit-content;
   width: 60%;
@@ -621,14 +619,7 @@ select {
     z-index: 2;
   } */
 
-<<<<<<<<< Temporary merge branch 1
-  /* Add these styles to your existing CSS file or inline in HTML */
 
-.image-preview {
-  max-width: 100px;  /* Adjust the maximum width as needed */
-  max-height: 100px; /* Adjust the maximum height as needed */
-  border-radius: 5px; /* Optional: Add border-radius for rounded corners */
-=========
 /* Add these styles to your existing CSS file or inline in HTML */
 
 .image-preview {
@@ -636,5 +627,5 @@ select {
   height: 70px;
   border-radius: 50%; /* Use 50% for a circle */
   object-fit: cover; /* Preserve aspect ratio and cover the entire container */
->>>>>>>>> Temporary merge branch 2
+
 }

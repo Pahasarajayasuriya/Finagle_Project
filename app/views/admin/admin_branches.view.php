@@ -74,6 +74,7 @@ $this->view('includes/footer', $data);
                 <div class="ad-id"> Branch ID</div>
                 <div class="ad-description">Branch Name</div>
                 <div class="ad-date">Address</div>
+              
             </div>
             </div>
 
@@ -92,21 +93,23 @@ $this->view('includes/footer', $data);
                     </div>
                 </div>
             </div class="branch-container">
+            <?php foreach ($rows as $row) : ?>
             <div class="advertisement-record">
                 <div class="advertisement-image"> <img src="https://lh3.googleusercontent.com/p/AF1QipNFVt_67WFrJbjsHEQfxY691SYz3wxrn1Ioq5KC=s1360-w1360-h1020" alt="branch.id" class="customer-image"></div>
-                <div class="branch-id">13</div>
-                <div class="branch-name">Borella</div>
-                <div class="branch-loc">104/2, Main road, Borella</div>
+                <div class="branch-id"><?= esc($row->id) ?></div>
+                <div class="branch-name"><?= esc($row->name) ?></div>
+                <div class="branch-loc"><?= esc($row->address) ?></div>
                 <div class="advertisement-actions">
                   <button class="edit-button" onclick="openEditPopupDialog('${branch.id}', '${branch.name}', '${branch.location}')">Edit Product</button>
-                </div>
-            
+                </div>             
              </div>
+             <?php endforeach;?>
             </div>
 
         </section>
         <!-- <script src="branch-admin.js"></script> -->
     </div>
+    <script src="<?= ROOT ?>/assets/js/admin_branch.js"></script>
 </body>
 
 </html>
