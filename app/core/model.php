@@ -4,6 +4,10 @@
 class Model extends Database
 {
     protected $table = "";
+    protected $limit        = 10;
+    protected $offset       = 0;
+    protected $order_type   = 'ASC';
+    protected $order_column = 'id';
     protected $allowedColumns = [
 
         'username',
@@ -12,6 +16,8 @@ class Model extends Database
         'teleno',
         'role',
     ];
+
+
     public function insert($data)
     {
         if (!empty($this->allowedColumns)) {
@@ -27,6 +33,16 @@ class Model extends Database
         $query .= " (" . implode(",", $keys) . ") values (:" . implode(",:", $keys) . ")";
 
         $this->query($query, $data);
+    }
+
+    public function findAll($order_column = 'id')
+    {
+
+        $quary = "SELECT * FROM $this->table ORDER BY $order_column $this->order_type LIMIT $this->limit OFFSET $this->offset";
+
+        // echo $quary;
+        // run the quary stage
+        return $this->query($quary);
     }
 
     public function where($data)

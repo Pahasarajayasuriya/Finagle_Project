@@ -31,6 +31,7 @@ class Login extends Controller
 				if(password_verify($_POST['password'], $row->password))
 				{
 					//authenticate
+					// unset the password unset($row->password)
 					Auth::authenticate($row);
 
 					// redirect('home');

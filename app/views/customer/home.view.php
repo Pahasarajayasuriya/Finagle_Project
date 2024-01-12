@@ -476,6 +476,7 @@ $this->view('includes/footer', $data);
                                         <h3 class="ss-topic">COUNTRIES</h6>
                                     </div>
 
+
                                 </div>
                             </div>
                             <a class="read-more" href="<?= ROOT ?>/process">READ MORE</a>
@@ -589,6 +590,17 @@ $this->view('includes/footer', $data);
                                 <img src="https://i.pinimg.com/474x/61/23/72/612372dba970fe25663857c585e8d56e.jpg" alt="">
                                 <p class="client-name">Mithun Weerasinghe</p>
 
+                                <div class="many-branch">
+                                    <div class="vertical-line"></div>
+                                    <div class="exp-title">
+                                        <h1 class=""> 20 </h1>
+                                    </div>
+                                    <div class="exp-content">
+                                        <p class="sub-topic">Exporting</p>
+                                        <h3 class="ss-topic">COUNTRIES</h6>
+                                    </div>
+
+                                </div>
                             </div>
 
 
@@ -717,12 +729,6 @@ $this->view('includes/footer', $data);
                          <script src="<?= ROOT ?>/assets/js/user.js"></script>
  </body>
 
-
-                    </div>
-
-                </div>
-</body>
-
 </html>
-
 <?php $this->view('includes/cus_footer', $data); ?>
+

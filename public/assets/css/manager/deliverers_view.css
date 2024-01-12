@@ -1,6 +1,5 @@
 
 
-
 body {
     font-family: "Poppins";
     margin: 0;
@@ -14,130 +13,6 @@ body {
 
 }
 
-
-.logo_icon {
-  width: 100px;
-  height: 50px;
-}
-
-.logo_icon img {
-  height: 100%;
-  width: auto;
-}
-
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 78px;
-  width: 100%;
-  background-color:black;
-  padding: 10px;
-  box-sizing: border-box;
-  z-index: 1000;
-  transition: background-color 0.5s ease;
-  justify-content: space-between;
-  /* Add this line to space items horizontally */
-  align-items: center;
-  /* Add this line to center items vertically */
-  display: flex;
-  font-family:"Poppins";
-}
-
-
-.profile-id, .profile-name {
-    flex: 1;
-}
-
-.pro-image ,
-.pro-id{
-    flex: 1;
-}
-
-.pro-id{
-    margin-left: 5%;
-}
-
-.pro-description
-{
-    flex: 2;
-    margin-left: 100px;
-}
-
-.pro-date{
-    flex:1;
-    /* margin-left: -20px; */
-  }
-   
-
-
-.profile-date{
-  margin-left: 90px;
-}
-
-.profile-name{
-  margin-left: 20px;
-}
-
-
-
-  
-.profile-record {
-    display: flex;
-    gap: 20px;
-    padding: 10px;
-    border-radius: 15px;
-    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
-    color:black;
-    transition: transform 0.3s ease-in-out;
-    width: 90%;
-    margin-left: 100px;
-    margin-top: 20px;
-    text-align: center;
-    
-  
-}
-
-.profile-record:hover {
-    transform: scale(1.05);
-}
-
-.profile-id,
-.profile-image
-{
-    flex: 1;
-}
-
-.profile-name,.profile-date {
-    flex: 2;
-}
-
-.profile-id{
-    font-weight: bold;
-}
- .profile-image{
-    font-size: 16px;
-    width: 20px;
-  }
-.profile-image {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.profile-image img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.7);
-    transition: transform 0.1s ease, filter 0.1s ease;
-   
-}
-
-
-
 .logout-button {
     text-align: right;
     margin-top: 10px;
@@ -147,10 +22,6 @@ body {
     justify-content: end;
 
 
-}
-h2{
-    align-items: center;
-    text-align: center;
 }
 /* Style for the Log Out button */
 .logout-button button {
@@ -194,11 +65,12 @@ h2{
     font-weight: bold;
     margin-top: 1%;
     font-family:"Poppins";
-    /* margin-left: 1%; */
+    margin-left: 2%; 
     text-align: center;
+    
   }
   .fas.fa-bread-slice.fa-3x.text-primary.mb-4{
-    margin-left: 46%;
+    margin-left: 48%;
    
   
   } 
@@ -244,38 +116,141 @@ h2{
     transform: translateX(50%);
   }
   
-.sections{
-    display: flex;
-    align-items: center;
-    margin-left: 20px;
-}
 
-.profile-table {
+  .employee-table {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
     color: black;
     margin-top: 40px;
-    width: 90%;
-    align-self: center;
-    margin-left: 30px;
-   
-    
+    align-items: center;
 }
 
-.profile-header {
+.table-header {
     display: flex;
     gap: 20px;
-    padding: 10px;
+    padding: 15px;
     background-color: #e0e0e0;
     border-radius: 8px;
     font-weight: bold;
-    width: 90%;
+    width: 800px;
     color: black;
-    margin-left: 100px;
   
 }
 
+.header-item, .employee-id, .employee-name, .goal-assignment {
+    flex: 1;
+}
+
+.header-item{
+    margin-left: -40px;
+
+}
+
+.employee-record {
+    display: flex;
+    gap: 20px;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color:black;
+    transition: transform 0.3s ease-in-out;
+    width: 800px;
+}
+
+.employee-record:hover {
+    transform: scale(1.05);
+}
+
+.employee-id,
+.employee-image,
+.employee-name,
+.goal-assignment {
+    flex: 1;
+}
+
+/* .employee-id{
+    margin-left: 50px;
+}
+.employee-name{
+    margin-left: 50px;
+} */
+.goal-assignment {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+.goal-assignment{ 
+    outline: none;
+    font-size: 16px;
+    flex: 2;
+    padding: 10px;
+    border: 1px solid  #f5eded;;
+    border-radius: 5px;
+    width: 100px;
+    
+  
+    
+  }
+
+  .header-item .employee-image{
+    font-size: 16px;
+    width: 20px;
+  }
+  .employee-image {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.employee-image img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.7);
+    transition: transform 0.1s ease, filter 0.1s ease;
+   
+}
+
+.employee-icon {
+    width: -20px; /* Adjust the width and height as needed */
+    height: -20px;
+    margin-left: -40px;
+
+}
+
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.star {
+    cursor: pointer;
+    font-size: 24px;
+    color: #ccc;
+    margin: 0 5px;
+    transition: color 0.3s;
+}
+
+.star:hover,
+.star.checked {
+    color: gold;
+}
+
+/* Optional: Hide radio input */
+input[type="radio"] {
+    display: none;
+}
+
+  
 .home-section {
     position: relative;
     transition: all 0.5s ease;
@@ -287,17 +262,6 @@ h2{
   }
 
   .sidebar.open ~ .home-section {
-    left: 150px;
-    width: calc(100% - 150);
+    left: 180px;
+    width: calc(100% - 180);
   } 
-
-  .sidebar.open~.navbar {
-    width: calc(100% - 170px);
-    margin-left: 170px;
-    transition: 0.5s;
-  }
-
-  .sidebar.close ~.navbar {
-   
-    transition: 0.5s;
-  }

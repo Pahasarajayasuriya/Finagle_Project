@@ -156,6 +156,7 @@ $products = $productModel->getProducts();
 
         function isLoggedIn() {
             return <?php echo (Auth::is_customer()) ? 'true' : 'false'; ?>;
+
         }
 
         // Function to display a message on the page
