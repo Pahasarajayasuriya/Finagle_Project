@@ -59,7 +59,7 @@ class UI {
     productsDOM.innerHTML = result;
 
     // Update the method to get cart buttons dynamically
-    this.getCartBtns();
+    // this.getCartBtns();
   }
 
   // ... Other methods ...
@@ -107,53 +107,46 @@ class UI {
 //     this.addCartItem(addedProduct);
 //   });
 // }
-getCartBtns() {
-  const addCartBtns = [...document.querySelectorAll(".add-to-cart")];
 
-  // Remove event listeners to prevent duplicates
-  addCartBtns.forEach((btn) => {
-    btn.removeEventListener("click", this.handleAddToCart);
-  });
+getCartBtns() {
+  const addCartBtns = [...document.querySelectorAll('.add-to-cart')];
+  // console.log(addCartBtns);
 
   buttonsDOM = addCartBtns;
 
   addCartBtns.forEach((btn) => {
-    btn.addEventListener("click", this.handleAddToCart);
-  });
-}
+    // console.log(btn.dataset.id);
+    const id = btn.dataset.id;
 
-handleAddToCart(e) {
-  const btn = e.target;
-  const id = btn.dataset.id;
+    //-> check if product is in the cart
+    const isExist = cart.find((p) => p.id === id);
 
-  // Check if product is in the cart
-  const isExist = cart.find((p) => p.id === id);
+    if (isExist) {
+      btn.textContent = 'Added';
+      btn.disabled = true;
+    }
 
-  if (isExist) {
-    btn.textContent = "Added";
-    btn.disabled = true;
-  }
+    btn.addEventListener('click', (e) => {
+      //-> when btn clicked to add product to cart
+      e.target.textContent = 'Added';
+      e.target.disabled = true;
 
-  btn.addEventListener("click", (e) => {
-    // when btn clicked to add product to cart
-    e.target.textContent = "Added";
-    e.target.disabled = true;
+      //-> get products that has been added before, from localStorage
+      //-> quantity: 1 -> to find out whether it has been added or not
+      const addedProduct = { ...Storage.getProducts(id), quantity: 1 };
 
-    // get products that have been added before, from localStorage
-    // quantity: 1 -> to find out whether it has been added or not
-    const addedProduct = { ...Storage.getProducts(id), quantity: 1 };
+      //-> update shopping cart
+      cart = [...cart, addedProduct];
 
-    // update shopping cart
-    cart = [...cart, addedProduct];
+      //-> save shopping cart to localStorage
+      Storage.saveCart(cart);
 
-    // save shopping cart to localStorage
-    Storage.saveCart(cart);
+      //-> update number of items in shoppingCart & totalPrice
+      this.setCartValue(cart);
 
-    // update number of items in shoppingCart & totalPrice
-    this.setCartValue(cart);
-
-    // display added products in shopping cart
-    this.addCartItem(addedProduct);
+      //-> display added products in shopping cart
+      this.addCartItem(addedProduct);
+    });
   });
 }
 
@@ -191,10 +184,10 @@ handleAddToCart(e) {
   </div>
 
   <div class="cart-item-controller">
-    <i class="ri-arrow-up-s-line arrow-up" data-id=${cartItem.id} ></i>
-    <p>${cartItem.quantity}</p>
-    <i class="ri-arrow-down-s-line arrow-down" data-id=${cartItem.id} ></i>
-  </div>
+      <i class="ri-arrow-up-s-line arrow-up" data-id=${cartItem.id} ></i>
+      <p>${cartItem.quantity}</p>
+      <i class="ri-arrow-down-s-line arrow-down" data-id=${cartItem.id} ></i>
+    </div>
 
   <i class="ri-delete-bin-line trash" data-id=${cartItem.id} ></i>
   `;
@@ -235,11 +228,11 @@ handleAddToCart(e) {
     const handleClick = (e) => {
       let target = e.target;
 
-      if (target.classList.contains("arrow-up")) {
+      if (target.classList.contains('arrow-up')) {
         increaseQuantity(target);
-      } else if (target.classList.contains("trash")) {
+      } else if (target.classList.contains('trash')) {
         removeItemFromCart(target);
-      } else if (target.classList.contains("arrow-down")) {
+      } else if (target.classList.contains('arrow-down')) {
         decreaseQuantity(target);
       }
     };
@@ -401,3 +394,4 @@ document.addEventListener("DOMContentLoaded", () => {
   ui.searchItem();
   Storage.saveProducts(productsData);
 });
+

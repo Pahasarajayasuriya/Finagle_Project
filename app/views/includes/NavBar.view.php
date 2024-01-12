@@ -23,13 +23,6 @@
                                 <span class="tooltip">Process</span>
                               </li>
                               <li>
-                                <a href="' . ROOT . '/export">
-                                  <i class="bx bxs-plane-alt"></i>
-                                  <span class="links_name">Exports</span>
-                                </a>
-                                <span class="tooltip">Exports</span>
-                              </li>
-                              <li>
                               <a href="' . ROOT . '/recipes">
                                   <i class="bx bx-food-menu"></i>
                                   <span class="links_name">Recipes</span>

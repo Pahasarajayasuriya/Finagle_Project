@@ -22,7 +22,7 @@ $products = $productModel->getProducts();
 
     <link href="https://fonts.googleapis.com/css?family=Cabin|Herr+Von+Muellerhoff|Source+Sans+Pro" rel="stylesheet">
     <!--Fonts-->
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.3.0/remixicon.css" integrity="sha512-0JEaZ1BDR+FsrPtq5Ap9o05MUwn8lKs2GiCcRVdOH0qDcUcCoMKi8fDVJ9gnG8VN1Mp/vuWw2sMO0SQom5th4g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--FontAwesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous">
 
@@ -70,6 +70,7 @@ $products = $productModel->getProducts();
             </div> -->
             <div class="search-error"></div>
         </div>
+        <div id="message-error-container"></div>
         <div class="products-center">
             <?php foreach ($data['products'] as $product) : ?>
                 <div class="product">
@@ -134,27 +135,36 @@ $products = $productModel->getProducts();
         </section>
     </div>
     </div>
+    <!-- HTML structure for the message container -->
+
     <script>
-    document.getElementById("checkout-button").addEventListener("click", function() {
-        // Check if the user is logged in before redirecting to the checkout page
-        if (isLoggedIn()) {
-            window.location.href = "<?= ROOT ?>/checkout";
-        } else {
-            // Redirect to the login page if the user is not logged in
-            window.location.href = "<?= ROOT ?>/login";
+        document.getElementById("checkout-button").addEventListener("click", function() {
+            if (isLoggedIn()) {
+                window.location.href = "<?= ROOT ?>/checkout";
+            } else {
+                // Display a message on the page
+                displayMessage("Please log in before placing an order");
+                // Redirect to login page after a certain time (e.g., 3 seconds)
+                setTimeout(function() {
+                    window.location.href = "<?= ROOT ?>/login";
+                }, 3000);
+            }
+        });
+
+
+        const productsData = <?= json_encode($data['products']) ?>;
+
+        function isLoggedIn() {
+            return <?php echo (Auth::is_customer()) ? 'true' : 'false'; ?>;
         }
-    });
 
-    const productsData = <?= json_encode($data['products']) ?>;
-
-    // Function to check if the user is logged in
-    function isLoggedIn() {
-        // You may need to modify this logic based on how you determine if a user is logged in
-        return <?php echo (Auth::logged_in()) ? 'true' : 'false'; ?>;
-    }
-</script>
-
-
+        // Function to display a message on the page
+        function displayMessage(message) {
+            const messageContainer = document.getElementById("message-error-container");
+            messageContainer.innerHTML = message;
+            messageContainer.style.display = "block";
+        }
+    </script>
     <script type="module" src="<?= ROOT ?>/assets/js/product.js"></script>
 </body>
 

@@ -33,7 +33,26 @@ class Login extends Controller
 					//authenticate
 					Auth::authenticate($row);
 
-					redirect('home');
+					// redirect('home');
+					if(Auth::is_admin()){
+						redirect("Admin_products");
+					}
+					else if(Auth::is_customer()){
+						redirect("home");
+					}
+					else if(Auth::is_employee()){
+						redirect("emp_profile");
+					}
+					else if(Auth::is_manager()){
+						redirect("manager_profile");
+					}
+					else if(Auth::is_deliverer()){
+						redirect("deliverer_profile");
+					}
+					else
+					{
+						redirect("login");
+					}
 				}
 			}
 
