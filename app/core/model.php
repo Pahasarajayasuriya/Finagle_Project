@@ -4,14 +4,6 @@
 class Model extends Database
 {
     protected $table = "";
-    protected $allowedColumns = [
-
-        'username',
-        'email',
-        'password',
-        'teleno',
-        'role',
-    ];
     public function insert($data)
     {
         if (!empty($this->allowedColumns)) {
@@ -25,6 +17,8 @@ class Model extends Database
         // $values = array_values($data);
         $query = "insert into " . $this->table;
         $query .= " (" . implode(",", $keys) . ") values (:" . implode(",:", $keys) . ")";
+
+        show($query);
 
         $this->query($query, $data);
     }

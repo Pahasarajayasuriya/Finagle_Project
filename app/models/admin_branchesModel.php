@@ -7,7 +7,10 @@ class admin_branchesModel extends Model
     protected $allowedColumns = [
         'id',
         'name',
-        'addresss',
+        'address',
+        'contact_number',
+        'open_time',
+        'close_time',
     ];
 
     public function validate($data)

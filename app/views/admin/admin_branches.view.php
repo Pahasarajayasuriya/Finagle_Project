@@ -40,34 +40,48 @@ $this->view('includes/footer', $data);
             </div>
 
             <!-- Popup Container -->
+            <form method="POST" enctype="multipart/form-data" action="<?= ROOT?>/admin_branches">
             <div class="popup-container" id="popupContainer">
                 <h2>Add a Branch</h2>
                 <div class="popup-content">
-
-
-
                     <label for="name">Branch Name:</label>
-                    <input type="text" id="description" name="description" placeholder="Enter branch name">
+                    <input value="<?= set_value('name') ?>" type="text" id="description" name="name" placeholder="Enter branch name">
+                    <?php if (!empty($errors['name'])) : ?>
+                            <div class="invalid"><?= $errors['name'] ?></div>
+                    <?php endif; ?>
 
                     <label for="address">Address:</label>
                     <input type="text" id="price" name="address">
+                    <?php if (!empty($errors['address'])) : ?>
+                            <div class="invalid"><?= $errors['address'] ?></div>
+                    <?php endif; ?>
 
                     <label for="contact-number">Contact number:</label>
-                    <input type="text" id="Image" name="contact-number">
+                    <input type="text" id="Image" name="contact_number">
+                    <?php if (!empty($errors['contact_number'])) : ?>
+                            <div class="invalid"><?= $errors['contact_number'] ?></div>
+                    <?php endif; ?>
 
                     <label for="open">Openning hours:</label>
-                    <input type="time" id="open" name="open">
+                    <input type="time" id="open" name="open_time">
+                    <?php if (!empty($errors['open_time'])) : ?>
+                            <div class="invalid"><?= $errors['open_time'] ?></div>
+                    <?php endif; ?>
 
                     <label for="close">Closing hours:</label>
-                    <input type="time" id="close" name="close">
-
-
+                    <input type="time" id="close" name="close_time">
+                    <?php if (!empty($errors['close_time'])) : ?>
+                            <div class="invalid"><?= $errors['close_time'] ?></div>
+                    <?php endif; ?>
                     <div class="buttons-container">
                         <button class="cancel-btn" onclick="closePopup()">Cancel</button>
                         <button class="submit-btn" onclick="submitForm()">Submit</button>
                     </div>
+
                 </div>
-            </div>
+              </div>
+              </form>
+
             <div class="advertisement-table">
             <div class="advertisement-header">
                 <div class="ad-image"></div>
