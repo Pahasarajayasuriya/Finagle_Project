@@ -117,7 +117,7 @@ $this->view('includes/footer', $data);
                 <div class="branch-loc"><?= esc($row->address) ?></div>
                 <div class="advertisement-actions">
                   <button class="edit-button" onclick="openEditPopupDialog('${branch.id}', '${branch.name}', '${branch.location}')">Edit Branch</button>
-                  <button class="edit-button">Delete Branch</button>                
+                  <button class="edit-button"><a href="<?= ROOT."/admin_branches/delete_branch/".$row->id ?>">Delete Branch</a></button>                
                 </div>             
              </div>
              <?php endforeach;?>
