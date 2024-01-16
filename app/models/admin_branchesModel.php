@@ -26,4 +26,10 @@ class admin_branchesModel extends Model
         $query = "SELECT * FROM {$this->table}";
         return $this->query($query);
     }
+
+    public function del_branch($id)
+    {
+        $query="DELETE FROM `branch` WHERE `branch`.`id` = ".$id;
+        $this->query($query);
+    }
 }

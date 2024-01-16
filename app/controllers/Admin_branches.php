@@ -16,7 +16,7 @@ class Admin_branches extends Controller
 
             // show($validatedData);
             if ($validatedData) {
-                    show($_POST);
+                    //show($_POST);
                     // Insert the product into the database
                     $admin_branch_model->insert($_POST);
 
@@ -37,5 +37,12 @@ class Admin_branches extends Controller
         $data['title'] = "admin_branch";
         $this->view('admin/admin_branches', $data);
 
+    }
+
+    public function delete_branch($id)
+    {
+        $admin_branch_model = new admin_branchModel();
+        $admin_branch_model->delete_branch($id);
+        redirect('admin_branches');
     }
 }

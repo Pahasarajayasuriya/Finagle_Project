@@ -1,5 +1,6 @@
 <?php
 $role = "Admin";
+$update_branch_id='';
 
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
@@ -11,7 +12,7 @@ $this->view('includes/footer', $data);
 
 <head>
     <title>Branches</title>
-    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin_products.css">
+    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin_branches.css">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -74,7 +75,8 @@ $this->view('includes/footer', $data);
                             <div class="invalid"><?= $errors['close_time'] ?></div>
                     <?php endif; ?>
                     <div class="buttons-container">
-                        <button class="cancel-btn" onclick="closePopup()">Cancel</button>
+                        <!-- <button class="cancel-btn" onclick="closePopup()">Cancel</button> -->
+                        <button class="cancel-btn" ><a href="<?= ROOT."/admin_branches" ?>">Cancel</a></button>
                         <button class="submit-btn" onclick="submitForm()">Submit</button>
                     </div>
 
@@ -96,10 +98,10 @@ $this->view('includes/footer', $data);
                 <h2>Edit the branch</h2>
                 <div class="popup-content">
                     <label for="editDescription">Branch Name:</label>
-                    <input type="text" id="editDescription" name="editDescription" placeholder="Enter the branch name">
+                    <input type="text" id="editDescription" name="editDescription" placeholder="Enter the branch name" value="branch_name">
 
                     <label for="editEndDate">Address:</label>
-                    <input type="text" id="editEndDate" name="editEndDate">
+                    <input type="text" id="editEndDate" name="editEndDate" value="branch_address">
 
                     <div class="buttons-container">
                         <button class="cancel-btn" onclick="closeEditPopup()">Cancel</button>
@@ -114,7 +116,8 @@ $this->view('includes/footer', $data);
                 <div class="branch-name"><?= esc($row->name) ?></div>
                 <div class="branch-loc"><?= esc($row->address) ?></div>
                 <div class="advertisement-actions">
-                  <button class="edit-button" onclick="openEditPopupDialog('${branch.id}', '${branch.name}', '${branch.location}')">Edit Product</button>
+                  <button class="edit-button" onclick="openEditPopupDialog('${branch.id}', '${branch.name}', '${branch.location}')">Edit Branch</button>
+                  <button class="edit-button">Delete Branch</button>                
                 </div>             
              </div>
              <?php endforeach;?>
