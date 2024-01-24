@@ -31,7 +31,6 @@ let cart = [];
 let buttonsDOM = [];
 
 class UI {
-
   displayProducts(products) {
     let result = "";
 
@@ -59,104 +58,57 @@ class UI {
     productsDOM.innerHTML = result;
 
     // Update the method to get cart buttons dynamically
-    this.getCartBtns();
+    // this.getCartBtns();
   }
-
-  // ... Other methods ...
-
-//   getCartBtns() {
-//   const addCartBtns = [...document.querySelectorAll(".add-to-cart")];
-
-
-//   addCartBtns.forEach((btn) => {
-//     btn.removeEventListener("click", this.handleAddToCart);
-//   });
-
-//   buttonsDOM = addCartBtns;
-
-//   addCartBtns.forEach((btn) => {
-//     btn.addEventListener("click", this.handleAddToCart);
-//   });
-// }
-
-// handleAddToCart(e) {
-//   const btn = e.target;
-//   const id = btn.dataset.id;
-
-
-//   const isExist = cart.find((p) => p.id === id);
-
-//   if (isExist) {
-//     btn.textContent = "Added";
-//     btn.disabled = true;
-//   }
-
-//   btn.addEventListener("click", (e) => {
-//     e.target.textContent = "Added";
-//     e.target.disabled = true;
-
-
-//     const addedProduct = { ...Storage.getProducts(id), quantity: 1 };
-
-//     cart = [...cart, addedProduct];
-
-//     Storage.saveCart(cart);
-
-//     this.setCartValue(cart);
-
-//     this.addCartItem(addedProduct);
-//   });
-// }
-getCartBtns() {
-  const addCartBtns = [...document.querySelectorAll(".add-to-cart")];
-
-  // Remove event listeners to prevent duplicates
-  addCartBtns.forEach((btn) => {
-    btn.removeEventListener("click", this.handleAddToCart);
-  });
-
-  buttonsDOM = addCartBtns;
-
-  addCartBtns.forEach((btn) => {
-    btn.addEventListener("click", this.handleAddToCart);
-  });
-}
-
-handleAddToCart(e) {
-  const btn = e.target;
-  const id = btn.dataset.id;
-
-  // Check if product is in the cart
-  const isExist = cart.find((p) => p.id === id);
-
-  if (isExist) {
-    btn.textContent = "Added";
-    btn.disabled = true;
+  updateCheckoutButtonState() {
+    const checkoutButton = document.getElementById("checkout-button");
+    if (cart.length > 0) {
+      checkoutButton.removeAttribute("disabled");
+    } else {
+      checkoutButton.setAttribute("disabled", true);
+    }
   }
+  getCartBtns() {
+    const addCartBtns = [...document.querySelectorAll(".add-to-cart")];
+    // console.log(addCartBtns);
 
-  btn.addEventListener("click", (e) => {
-    // when btn clicked to add product to cart
-    e.target.textContent = "Added";
-    e.target.disabled = true;
+    buttonsDOM = addCartBtns;
 
-    // get products that have been added before, from localStorage
-    // quantity: 1 -> to find out whether it has been added or not
-    const addedProduct = { ...Storage.getProducts(id), quantity: 1 };
+    addCartBtns.forEach((btn) => {
+      // console.log(btn.dataset.id);
+      const id = btn.dataset.id;
 
-    // update shopping cart
-    cart = [...cart, addedProduct];
+      //-> check if product is in the cart
+      const isExist = cart.find((p) => p.id === id);
 
-    // save shopping cart to localStorage
-    Storage.saveCart(cart);
+      if (isExist) {
+        btn.textContent = "Added";
+        btn.disabled = true;
+      }
 
-    // update number of items in shoppingCart & totalPrice
-    this.setCartValue(cart);
+      btn.addEventListener("click", (e) => {
+        //-> when btn clicked to add product to cart
+        e.target.textContent = "Added";
+        e.target.disabled = true;
 
-    // display added products in shopping cart
-    this.addCartItem(addedProduct);
-  });
-}
+        //-> get products that has been added before, from localStorage
+        //-> quantity: 1 -> to find out whether it has been added or not
+        const addedProduct = { ...Storage.getProducts(id), quantity: 1 };
 
+        //-> update shopping cart
+        cart = [...cart, addedProduct];
+
+        //-> save shopping cart to localStorage
+        Storage.saveCart(cart);
+
+        //-> update number of items in shoppingCart & totalPrice
+        this.setCartValue(cart);
+
+        //-> display added products in shopping cart
+        this.addCartItem(addedProduct);
+      });
+    });
+  }
 
   setCartValue(cart) {
     //-> total price of cart
@@ -191,14 +143,14 @@ handleAddToCart(e) {
   </div>
 
   <div class="cart-item-controller">
-    <i class="ri-arrow-up-s-line arrow-up" data-id=${cartItem.id} ></i>
-    <p>${cartItem.quantity}</p>
-    <i class="ri-arrow-down-s-line arrow-down" data-id=${cartItem.id} ></i>
-  </div>
+      <i class="ri-arrow-up-s-line arrow-up" data-id=${cartItem.id} ></i>
+      <p>${cartItem.quantity}</p>
+      <i class="ri-arrow-down-s-line arrow-down" data-id=${cartItem.id} ></i>
+    </div>
 
   <i class="ri-delete-bin-line trash" data-id=${cartItem.id} ></i>
   `;
-
+  this.updateCheckoutButtonState();
     cartContent.append(div);
   }
 
@@ -310,7 +262,7 @@ handleAddToCart(e) {
     while (cartContent.children.length > 0) {
       cartContent.removeChild(cartContent.children[0]);
     }
-
+    this.updateCheckoutButtonState();
     closeModal();
   }
 
@@ -321,7 +273,7 @@ handleAddToCart(e) {
 
     //-> update total price & cart items
     this.setCartValue(cart);
-
+    this.updateCheckoutButtonState();
     //-> update localStorage
     Storage.saveCart(cart);
 
@@ -399,5 +351,6 @@ document.addEventListener("DOMContentLoaded", () => {
   ui.setUpApp();
   ui.cartLogic();
   ui.searchItem();
+  ui.updateCheckoutButtonState();
   Storage.saveProducts(productsData);
 });

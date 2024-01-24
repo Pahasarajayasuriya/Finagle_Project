@@ -121,7 +121,7 @@
 
                     <div class="check_inline">
                         <label class="check_name" for="order_note">Cards Accepted:</label>
-                        <img class="payment_methods" src="../../img/card_img.png" alt="">
+                        <img class="payment_methods" src="<?= ROOT ?>/images/card_img.png" alt="">
                     </div>
 
                     <div class="check_inline">

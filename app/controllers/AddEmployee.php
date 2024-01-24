@@ -15,7 +15,6 @@ class AddEmployee extends Controller
 
 		if($_SERVER['REQUEST_METHOD'] == "POST")
 		{
-            show($_POST);
             $_POST['repassword'] =  $_POST['password'];
 
 			if($user->validate($_POST))
@@ -25,13 +24,8 @@ class AddEmployee extends Controller
 				$user->insert($_POST);
 			
 				message("Your profile was successfuly created. Please login");
-				// redirect('login');
+				redirect('login');
 			}
-            else
-            {
-                // show("kes");
-                show($user->errors);
-            }
 		}
 
 		$data['errors'] = $user->errors;
