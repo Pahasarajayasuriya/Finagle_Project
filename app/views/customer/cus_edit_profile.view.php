@@ -17,7 +17,7 @@ $this->view('includes/footer', $data);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <title>Edit Profile</title>
-    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/customer_edit.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/cus_edit_profile.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,31 +35,9 @@ $this->view('includes/footer', $data);
 </head>
 
 <body>
-<div class="navbar">
-         <div class="logo_icon">
-             <img src="<?= ROOT ?>/assets/images/logo.png" alt="">
-         </div>
-         <div class="navbar-links">
-             <div class="user-buttons">
-                     <div class="user_navbar" >
-                         <div class="dropdown">
-                             <button class="dropbtn" onclick="toggleDropdown()">
-                                <i class="fa fa-user-circle-o" aria-hidden="true"></i> <p>Hi, <?= Auth::getUsername() ?></p>
-                                 <i class="fa fa-caret-down"></i>
-                             </button>
-                             <div class="dropdown-content" >
-                                 <a href="<?= ROOT ?>/cus_profile">Profile</a>
-                                 <!-- <a href="<?= ROOT ?>/cus_edit_profile">Edit Profile</a> -->
-                                 <a href="<?= ROOT ?>/Logout">Logout</a>
-                             </div>
-                         </div>
-                     </div>
-                    
-               
-             </div>
-         </div>
-
-</div>
+<?php
+$this->view('includes/cus_topbar', $data);
+?>
 
 <div class="home-section">
             <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
@@ -77,12 +55,18 @@ $this->view('includes/footer', $data);
                     <div class="inline">
                     <div class="pro_form-group">
                         <label class="pro_name" for="pro_username">Username : </label>
-                        <input class="pro_input" type="text" id="username" name="username" value="<?=set_value('username',$row->username)?>">
+                        <input class="pro_input" type="text" id="username" name="username" value="<?=set_value('username',$row->username)?>" required>
+                        <?php if (!empty($errors['username'])) : ?>
+                            <div class="invalid"><?= $errors['username'] ?></div>
+                        <?php endif; ?>
                     </div>
 
                     <div class="pro_form-group">
                         <label class="pro_name" for="pro_email">E-mail : </label>
-                        <input class="pro_input" type="email" id="email" name="email" value="<?=set_value('email',$row->email)?>">
+                        <input class="pro_input" type="email" id="email" name="email" value="<?=set_value('email',$row->email)?>" required>
+                        <?php if (!empty($errors['email'])) : ?>
+                            <div class="invalid"><?= $errors['email'] ?></div>
+                        <?php endif; ?>
                     </div>
 
                     </div>
@@ -90,7 +74,10 @@ $this->view('includes/footer', $data);
                    
                     <div class="pro_form-group">
                         <label class="pro_name" for="pro_phone">Phone No : </label>
-                        <input class="pro_input" type="text" id="teleno" name="teleno" value="<?=set_value('teleno',$row->teleno)?>">
+                        <input class="pro_input" type="text" id="teleno" name="teleno" value="<?=set_value('teleno',$row->teleno)?>" required>
+                        <?php if (!empty($errors['teleno'])) : ?>
+                            <div class="invalid"><?= $errors['teleno'] ?></div>
+                        <?php endif; ?>
                     </div>
                     <div class="pro_form-group">
                         <label class="pro_name" for="pro_address">Address : </label>
