@@ -50,13 +50,13 @@
 
                     </div>
 
-                    <div class="check_inline">
+                    <div class="check_inline" id="deliveryOrdersSection" style="display: none;">
                         <label class="check_name" for="delivery_orders"><b>For Delivery Orders:</b></label>
 
                         <a class="change_address" href="#">Choose Address</a>
                     </div>
 
-                    <div class="check_inline">
+                    <div id="pickupOutletsSection" class="check_inline" style="display: none;">
                         <label class="check_name" for="pickup_orders"><b>For Pickup Orders:</b></label>
                         <select id="pickupLocation" name="pickupLocation" disabled>
                             <option class="branch_select" value="branch1">Pelawatta</option>
