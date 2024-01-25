@@ -35,10 +35,10 @@ class Model extends Database
         $this->query($query, $data);
     }
 
-    public function findAll($order_column = 'id')
+    public function findAll($order_column = 'id', $order_type = 'ASC', $limit = 10)
     {
 
-        $quary = "SELECT * FROM $this->table ORDER BY $order_column $this->order_type LIMIT $this->limit OFFSET $this->offset";
+        $quary = "SELECT * FROM $this->table ORDER BY $order_column $order_type LIMIT $limit OFFSET $this->offset";
 
         // echo $quary;
         // run the quary stage

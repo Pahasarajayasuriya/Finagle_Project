@@ -1,5 +1,5 @@
 <?php
-                        $role = "Manager";
+                        $role = "Employee";
                         if ($role == "User") {
                             echo '<li>
                                <a href="'. ROOT .'/">

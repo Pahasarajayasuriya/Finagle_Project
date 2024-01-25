@@ -158,33 +158,26 @@ $this->view('includes/footer', $data);
 								</tr>
 							</thead>
 							<tbody>
+							<?php
+
+                          //   show($data);
+                          if (isset($data['order'])) {
+	                      foreach ($data['order'] as $order) {
+
+                            ?>
 								<tr>
 									<td>
-										<img src="<?= ROOT?>/assets/images/Emp_profiles/Dilum001.jpg">
-										<p>John Doe</p>
+										<img src="<?= ROOT?>/assets/images/customers/<?= $order->image ?>">
+										<p><?= $order->username ?></p>
 									</td>
-									<td>01-10-2021</td>
-									<td><span class="status completed">Completed</span></td>
-								</tr>
-								<tr>
-									<td>
-									   <img src="<?= ROOT?>/assets/images/Emp_profiles/Malki002.jpg">
-										<p>Malki Yash</p>
-									</td>
-									<td>04-12-2022</td>
-									<td><span class="status pending">Pending</span></td>
-								</tr>
-								<tr>
-									<td>
-									    <img src="<?= ROOT?>/assets/images/Emp_profiles/yowin.jpg">
-										<p>Dilum IR</p>
-										
-									</td>
-									<td>21-09-2023</td>
-									<td><span class="status process">Process</span></td>
+									<td><?= $order->date_of_order ?></td>
+									<td><span class="status <?= $order->status ?>"><?= $order->status ?></span></td>
 								</tr>
 								
-								
+			 					<?php
+                          }
+                        }
+                         ?>		
 							</tbody>
 						</table>
 					</div>
