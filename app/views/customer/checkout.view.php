@@ -112,7 +112,7 @@
 
 
 
-                <div class="check_col">
+                <div class="check_col" id="paymentDetailsSection">
                     <br>
                     <h3 class="check_title">payment</h3>
 
@@ -146,13 +146,7 @@
                             <input class="check_input" type="text" placeholder="123">
                         </div>
                     </div>
-
-
-
-
-
                 </div>
-
             </div>
             <button class="check_submit-btn" id="p_checkout-button">Proceed to Checkout</button>
 

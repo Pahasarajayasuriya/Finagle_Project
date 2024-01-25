@@ -25,7 +25,9 @@
     background-color: white;
   }
   
-  
+  #paymentDetailsSection {
+    display: none;
+}
   .check_container {
     display: flex;
     justify-content: center;

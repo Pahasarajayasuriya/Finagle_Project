@@ -7,6 +7,7 @@ const pickupRadio = document.querySelector(
 
 const sendAsGiftRadios = document.querySelectorAll('.send-as-gift-radio');
 const paymentMethodRadios = document.querySelectorAll('.payment-method-radio');
+const paymentDetailsSection = document.getElementById('paymentDetailsSection');
 
 const pickupLocation = document.getElementById("pickupLocation");
 
@@ -42,3 +43,8 @@ paymentMethodRadios.forEach(function(radio) {
     });
 });
 
+paymentMethodRadios.forEach(function(radio) {
+    radio.addEventListener('click', function() {
+        paymentDetailsSection.style.display = radio.value === 'card' ? 'block' : 'none';
+    });
+});
