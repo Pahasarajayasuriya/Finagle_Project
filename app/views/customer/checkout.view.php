@@ -7,14 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/checkout.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/boxicons/2.1.0/css/boxicons.min.css">
-
+    <!-- <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3KoOPDxuE9bSb6J__Wn_tz18S3IdBNIw&loading=async&callback=initMap"></script> -->
 
     <title><?= APPNAME ?>- Checkout</title>
 
 </head>
 
 <body>
-
+    <input name="latitude" type="hidden" required />
+    <input name="longitude" type="hidden" required />
     <div class="check_container">
         <form action="">
             <div class="check_row">
@@ -52,8 +53,9 @@
 
                     <div class="check_inline" id="deliveryOrdersSection" style="display: none;">
                         <label class="check_name" for="delivery_orders"><b>For Delivery Orders:</b></label>
-
-                        <a class="change_address" href="#">Choose Address</a>
+                        <div id="map" style="height: 300px; width: 100%;">
+                            <a class="change_address" href="#">Choose Address</a>
+                        </div>
                     </div>
 
                     <div id="pickupOutletsSection" class="check_inline" style="display: none;">
@@ -168,6 +170,7 @@
         </script>
     </div>
     <script src="<?= ROOT ?>/assets/js/checkout.js"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3KoOPDxuE9bSb6J__Wn_tz18S3IdBNIw&loading=async&callback=initMap"></script>
 </body>
 
 </html>

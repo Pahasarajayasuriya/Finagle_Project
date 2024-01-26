@@ -55,3 +55,78 @@ paymentMethodRadios.forEach(function (radio) {
       radio.value === "card" ? "block" : "none";
   });
 });
+
+var map;
+var marker;
+var infowindow;
+var flag = true;
+
+function initMap() {
+  map = document.getElementById("map");
+
+  map.addEventListener("mouseover", function () {
+    var lat = document.querySelector('input[name="latitude"]').value;
+    var lng = document.querySelector('input[name="longitude"]').value;
+
+    if (lat && lng && flag) {
+      var position = { lat: parseFloat(lat), lng: parseFloat(lng) };
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: position,
+        zoom: 8,
+      });
+      marker = new google.maps.Marker({
+        position: position,
+        map: map,
+      });
+    } else {
+      navigator.geolocation.getCurrentPosition(function (pos, error) {
+        if (error) {
+          console.log(error);
+        } else {
+          map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: pos.coords.latitude, lng: pos.coords.longitude },
+            zoom: 8,
+          });
+        }
+      });
+    }
+    flag = false;
+  });
+
+  map.addEventListener("click", function (event) {
+    if (marker) {
+      marker.setMap(null);
+    }
+
+    marker = new google.maps.Marker({
+      position: event.latLng,
+      map: map,
+    });
+
+    // infowindow = new google.maps.InfoWindow({
+    //     content: lat+','+ lng
+    // });
+
+    // infowindow.open(map, marker);
+
+    google.maps.event.addEventListener(marker, "rightclick", function () {
+      marker.setMap(null);
+    });
+
+    lat = event.latLng.lat();
+    lng = event.latLng.lng();
+
+    document.querySelector('input[name="latitude"]').value = lat;
+    document.querySelector('input[name="longitude"]').value = lng;
+  });
+  // closeViewBtn = document.getElementById("closeViewBtn");
+  // closeViewBtn.addEventListener('click', function () {
+  //     if(marker){
+  //         marker.setMap(null);
+  //     }
+  // });
+}
+// document.addEventListener("DOMContentLoaded", function () {
+//   initMap();
+// });
+initMap();
