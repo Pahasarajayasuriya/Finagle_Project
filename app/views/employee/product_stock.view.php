@@ -79,7 +79,7 @@ $this->view('includes/footer', $data);
                         ?>
                     <tr>
                         <td><?= $product->id ?></td>
-                        <td><img src="<?= ROOT ?>/assets/images/products/<?= $product->image ?>" alt=""></td>
+               b         <td><img src="<?= ROOT ?>/assets/images/products/<?= $product->image ?>" alt=""></td>
                         <td><?= $product->user_name ?></td>
                         <td class="black-text">
                             <span class="quantity" id="quantity_<?= $product->id ?>"><?= $product->quantity ?></span>
