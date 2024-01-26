@@ -82,7 +82,7 @@ class Model extends Database
         $query .= " where id = :id ";
 
         $data['id'] = $id;
-        // show($query);
+        //show($query);
         // show($data);die;
         $this->query($query, $data);
     }

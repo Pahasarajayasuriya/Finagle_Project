@@ -1,10 +1,10 @@
 <?php
 $role = "Admin";
-$update_branch_id='';
 
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
+
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +40,7 @@ $this->view('includes/footer', $data);
                 <input class="add-btn" type="button" onclick="openReport()" value="Add Branches">
             </div>
 
-            <!-- Popup Container for add branch -->
+            <!-- Popup Container for add a branch -->
             <form method="POST" enctype="multipart/form-data" action="<?= ROOT?>/admin_branches">
             <div class="popup-container" id="popupContainer">
                 <h2>Add a Branch</h2>
@@ -77,7 +77,7 @@ $this->view('includes/footer', $data);
                     <div class="buttons-container">
                         <!-- <button class="cancel-btn" onclick="closePopup()">Cancel</button> -->
                         <button class="cancel-btn" ><a href="<?= ROOT."/admin_branches" ?>">Cancel</a></button>
-                        <button name="add" value="add" class="submit-btn" onclick="submitForm()">Submit</button>
+                        <button class="submit-btn" onclick="submitForm()">Submit</button>
                     </div>
 
                 </div>
@@ -90,26 +90,35 @@ $this->view('includes/footer', $data);
                 <div class="ad-id"> Branch ID</div>
                 <div class="ad-description">Branch Name</div>
                 <div class="ad-date">Address</div>
+
+                <p>this is the update view</p>
               
             </div>
             </div>
             
+            <!-- Pop for edit branch -->
+            <form method="POST" enctype="multipart/form-data" action="<?= ROOT?>/admin_branches">
             <div class="popup-container" id="editPopupContainer">
                 <h2>Edit the branch</h2>
                 <div class="popup-content">
                     <label for="editDescription">Branch Name:</label>
-                    <input type="text" id="editDescription" name="editDescription" placeholder="Enter the branch name" value="">
+                    <input type="text" id="editDescription" name="name" placeholder="Enter the branch name" value="<?= $row[0]->name ?>">
 
                     <label for="editEndDate">Address:</label>
-                    <input type="text" id="editEndDate" name="editEndDate" value="">
+                    <input type="text" id="editEndDate" name="address" value="<?= $row[0]->address ?>">
 
+                    <input type="hidden" name="id" value="<?= $row[0]->id; ?>">
+                    
                     <div class="buttons-container">
-                        <button class="cancel-btn" onclick="closeEditPopup()">Cancel</button>
-                        <button class="submit-btn" onclick="submitEditForm()">Submit</button>
+                        <!-- <button class="cancel-btn" onclick="closeEditPopup()">Cancel</button> -->
+                        <button class="cancel-btn"><a href="<?= ROOT."/admin_branches" ?>">Cancel</a></button>
+                        <button name="update" value="update" class="submit-btn" onclick="submitEditForm()">Submit</button>
                     </div>
                 </div>
             </div class="branch-container">
+            </form>
 
+            <!-- data for tables -->
             <?php foreach ($rows as $row) : ?>
             <div class="advertisement-record">
                 <div class="advertisement-image"> <img src="https://lh3.googleusercontent.com/p/AF1QipNFVt_67WFrJbjsHEQfxY691SYz3wxrn1Ioq5KC=s1360-w1360-h1020" alt="branch.id" class="customer-image"></div>
@@ -117,8 +126,7 @@ $this->view('includes/footer', $data);
                 <div class="branch-name"><?= esc($row->name) ?></div>
                 <div class="branch-loc"><?= esc($row->address) ?></div>
                 <div class="advertisement-actions">
-                  <!-- <button class="edit-button" onclick="openEditPopupDialog('${branch.id}', '${branch.name}', '${branch.location}')">Edit Branch</button> -->
-                  <button class="edit-button"><a href="<?= ROOT."/admin_branches/update_branch/".$row->id ?>">Edit Branch</a></button>
+                  <button class="edit-button" onclick="openEditPopupDialog('${branch.id}', '${branch.name}', '${branch.location}')">Edit Branch</button>
                   <button class="edit-button"><a href="<?= ROOT."/admin_branches/delete_branch/".$row->id ?>">Delete Branch</a></button>                
                 </div>             
              </div>
@@ -128,7 +136,7 @@ $this->view('includes/footer', $data);
         </section>
         <!-- <script src="branch-admin.js"></script> -->
     </div>
-    <script src="<?= ROOT ?>/assets/js/admin_branch.js"></script>
+    <script src="<?= ROOT ?>/assets/js/admin_branch_update.js"></script>
 </body>
 
 </html>
