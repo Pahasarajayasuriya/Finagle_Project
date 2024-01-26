@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/signup.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/admin/add_employee.css">
     <link href="https://fonts.googleapis.com/css?family=Cabin|Herr+Von+Muellerhoff|Source+Sans+Pro" rel="stylesheet">
     <!--Fonts-->
 
@@ -26,14 +26,16 @@
 <body>
 
     <div class="login_container">
-        <div class="image_container">
-            <img src="https://i.pinimg.com/564x/e5/e2/3a/e5e23aa6ee2fbcfac5e5e183183a2dde.jpg" width="420px" height="100%" alt="Login Image">
-        </div>
+        <!-- <img src="https://i.pinimg.com/564x/4c/80/3b/4c803b6dcc4b96172ee2667ac3f80eff.jpg"> -->
+    
 
         <div class="form-container">
             <section>
+                <i class="fas fa-birthday-cake" style="font-size:30px;margin-left:280px;"></i>
                 <form method="post">
                     <h1>Add Employee</h1>
+                <div class="line-inputs">
+
                     <div class="inputbox">
 
                         <i class="fas fa-user"></i>
@@ -52,6 +54,10 @@
                             <div class="invalid"><?= $errors['email'] ?></div>
                         <?php endif; ?>
                     </div>
+                </div>
+                
+                <div class="line-inputs">
+
                     <div class="inputbox">
                         <i class="fas fa-lock"></i>
                         <input value="<?= set_value('password') ?>" type="password" name="password" id="password" placeholder="Create Password" required>
@@ -70,6 +76,11 @@
                             <div class="invalid"><?= $errors['password'] ?></div>
                         <?php endif; ?>
                     </div>
+
+                </div>
+
+                <div class="line-inputs">
+
                     <div class="inputbox">
                         <i class="fas fa-phone"></i>
 
@@ -80,16 +91,27 @@
                             <div class="invalid"><?= $errors['teleno'] ?></div>
                         <?php endif; ?>
                     </div>
-                    <div>
-                        <label for="address">Joined Date</label>
-                        <input type="date" name="joined_date" id="joined_date" value="<?= set_value('joined_date') ?>">
-                        <?php if (!empty($errors['joined_date'])) : ?>
+
+
+                    <div class="inputbox">
+                        <i class="far fa-calendar-alt"></i>
+
+                           <!-- <label for="address">Joined Date</label> -->
+
+                         <input type="date" name="joined_date" id="joined_date"  value="<?= set_value('joined_date') ?> "  placeholder="Joined Date" required style="color: #717171;">
+                         <?php if (!empty($errors['joined_date'])) : ?>
                             <div class="invalid"><?= $errors['joined_date'] ?></div>
                         <?php endif; ?>
                     </div>
-                    <div>
-                        <label for="branch">Branch</label>
-                        <select name="branch" id="branch">
+                </div>
+
+                <div class="line-inputs">
+                     <div class="inputbox" >
+                        <i class="fas fa-code-branch"></i>
+
+                        <!-- <label for="branch">Branch</label> -->
+
+                        <select name="branch" id="branch" placeholder="Branch">
                             <option value="Battaramulla">Battaramulla</option>
                             <option value="Borella">Borella</option>
                             <option value="Nugegoda">Nugegoda</option>
@@ -98,15 +120,20 @@
                             <option value="Thalawatugoda">Thalawatugoda</option>
                         </select>
                     </div>
-                    <div>
-                        <label for="role">Role</label>
-                        <select name="role" id="role">
+
+                    <div class="inputbox" >
+                       <i class="fas fa-tasks"></i>
+                        <!-- <label for="role">Role</label> -->
+                        <select name="role" id="role" placeholder="Role">
                             <option value="admin">Admin</option>
                             <option value="manager">Manager</option>
                             <option value="employee">Employee</option>
                             <option value="deliverer">Deliverer</option>
                         </select>
                     </div>
+                </div>
+                
+
 
                     <button>Sign Up</button>
                 </form>

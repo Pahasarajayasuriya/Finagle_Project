@@ -4,11 +4,6 @@ $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
 ?>
-<?php
-// include_once(__DIR__ . '/../../models/ProductModel.php');
-// $productModel = new ProductModel();
-// $products = $productModel->getProducts();
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +33,10 @@ $this->view('includes/footer', $data);
 </head>
 
 <body>
-    <?php $this->view('includes/cus_topbar', $data); ?>
+
+
+
+    <!-- <?php $this->view('includes/cus_topbar', $data); ?> -->
     <div class="home-section">
         <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
         <h2 class="section-title">OUR PRODUCTS</h2>
@@ -73,22 +71,25 @@ $this->view('includes/footer', $data);
         <div class="products-center">
             <?php foreach ($data['products'] as $product) : ?>
                 <div class="product">
+                    <p><?=  esc($product->image)  ?></p>
                     <div class="img-container">
-                        <img class="product-img" src="<?= $product->image ?>" alt="<?= $product->name ?>" />
+                   
+                        <!-- <img class="product-img" src="<?= esc($product->image) ?>" alt="<?= esc($product->user_name) ?>" /> -->
+                        <img class="product-img" src="<?= ROOT.'/'. ($product->image) ?>" alt="<?= esc($product->user_name) ?>" />
                     </div>
                     <div class="product-desc">
-                        <p class="product-title"><?= $product->name ?></p>
+                        <p class="product-title"><?= esc($product->user_name) ?></p>
                         <div class="product-description">
-                            <p class="product-descrip"><?= $product->category ?></p>
+                            <p class="product-descrip"><?= esc($product->category) ?></p>
                         </div>
                         <div class="options">
-                            <p class="product-price">Rs.<?= $product->price ?>.00</p>
+                            <p class="product-price">Rs.<?= esc($product->price) ?>.00</p>
                             <button class="btn add-to-cart" data-id="<?= $product->id ?>">Add to Cart</button>
                         </div>
-
                     </div>
                 </div>
             <?php endforeach; ?>
+
         </div>
 
         <section class="cart-modal">
@@ -153,6 +154,7 @@ $this->view('includes/footer', $data);
         function isLoggedIn() {
             return <?php echo (Auth::is_customer()) ? 'true' : 'false'; ?>;
         }
+
         function displayMessage(message) {
             const messageContainer = document.getElementById("message-error-container");
             messageContainer.innerHTML = message;

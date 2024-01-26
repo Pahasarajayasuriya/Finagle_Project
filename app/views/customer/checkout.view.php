@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/boxicons/2.1.0/css/boxicons.min.css">
 
 
-    <title>Payment</title>
+    <title><?= APPNAME ?>- Checkout</title>
 
 </head>
 

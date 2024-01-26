@@ -38,10 +38,10 @@ class UI {
       result += `
       <div class="product">
         <div class="img-container">
-          <img class="product-img" src="${item.image}" alt="${item.name}" />
+          <img class="product-img" src="${item.image}" alt="${item.user_name}" />
         </div>
         <div class="product-desc">
-          <p class="product-title">${item.name}</p>
+          <p class="product-title">${item.user_name}</p>
           <div class="product-description">
             <p class="product-descrip">${item.category}</p>
           </div>
@@ -138,7 +138,7 @@ class UI {
   />
 
   <div class="cart-item-desc">
-    <h4>${cartItem.name}</h4>
+    <h4>${cartItem.user_name}</h4>
     <h5>Rs.${cartItem.price}</h5>
   </div>
 
@@ -292,7 +292,7 @@ class UI {
       const searchValue = e.target.value.toLowerCase();
 
       const filteredProducts = productsData.filter((product) => {
-        return product.name.toLowerCase().includes(searchValue);
+        return product.user_name.toLowerCase().includes(searchValue);
       });
 
       if (filteredProducts.length === 0) {

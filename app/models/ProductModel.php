@@ -4,10 +4,14 @@ class ProductModel extends Model
 {
     protected $table = "products";
     protected $allowedColumns = [
-        'name',
+        'user_name',
+        'description',
         'category',
         'price',
+        'quantity',
         'image',
+        'date',
+        'slug',
     ];
 
     public function getProducts()
