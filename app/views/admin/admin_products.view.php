@@ -4,7 +4,7 @@
 <head>
     <title>Products</title>
     <!-- Link Styles -->
-    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/product-admin.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/admin/product-admin.css">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -144,7 +144,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-    <script src="<?= ROOT ?>/assets/js/product-admin.js"></script>
+    <script src="<?= ROOT ?>/assets/js/admin/product-admin.js"></script>
 
 </body>
 

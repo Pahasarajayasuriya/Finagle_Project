@@ -1,8 +1,5 @@
 <?php 
 
-/**
- * signup class
- */
 class AddEmployee extends Controller
 {
 	
