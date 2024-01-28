@@ -10,7 +10,7 @@ class Admin_branches extends Controller
         //show($data);
         $data['errors'] = [];
         //show($_POST);
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save'])) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add'])) {
             // Validate and sanitize input data
             $validatedData = $admin_branch_model->validate($_POST);
 
@@ -18,10 +18,10 @@ class Admin_branches extends Controller
             if ($validatedData) {
                     //show($_POST);
                     // Insert the product into the database
-                    //$admin_branch_model->insert($_POST);
+                    $admin_branch_model->insert($_POST);
 
                     // Redirect to avoid form resubmission
-                    //redirect('admin_branches');
+                    redirect('admin_branches');
                 } else {
                     // Handle image upload failure
 

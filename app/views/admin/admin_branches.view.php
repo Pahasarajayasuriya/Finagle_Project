@@ -1,6 +1,5 @@
 <?php
 $role = "Admin";
-$update_branch_id='';
 
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
@@ -64,13 +63,13 @@ $this->view('includes/footer', $data);
                     <?php endif; ?>
 
                     <label for="open">Openning hours:</label>
-                    <input type="time" id="open" name="open_time">
+                    <input type="time" id="open" name="open_time" value="00:00:00">
                     <?php if (!empty($errors['open_time'])) : ?>
                             <div class="invalid"><?= $errors['open_time'] ?></div>
                     <?php endif; ?>
 
                     <label for="close">Closing hours:</label>
-                    <input type="time" id="close" name="close_time">
+                    <input type="time" id="close" name="close_time" value="00:00:00">
                     <?php if (!empty($errors['close_time'])) : ?>
                             <div class="invalid"><?= $errors['close_time'] ?></div>
                     <?php endif; ?>

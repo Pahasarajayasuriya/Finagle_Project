@@ -1,5 +1,5 @@
 <?php
-                        $role = "User";
+                        $role = "Admin";
                         if ($role == "User") {
                             echo '<li>
                                <a href="'. ROOT .'">
@@ -149,6 +149,13 @@
                         } elseif ($role == "Admin") {
                             echo '
                             <li>
+                                <a href="#">
+                                  <i class="bx bx-message-alt-detail"></i>
+                                  <span class="links_name">Dashboard</span>
+                                </a>
+                                <span class="tooltip">Dashboard</span>
+                              </li>
+                              <li>
                                 <a href="#">
                                   <i class="bx bx-message-alt-detail"></i>
                                   <span class="links_name">Customers</span>
