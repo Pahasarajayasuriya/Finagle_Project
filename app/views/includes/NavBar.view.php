@@ -149,7 +149,7 @@
                         } elseif ($role == "Admin") {
                             echo '
                             <li>
-                                <a href="#">
+                                <a href="' . ROOT . '/admin_dashboard">
                                   <i class="bx bx-message-alt-detail"></i>
                                   <span class="links_name">Dashboard</span>
                                 </a>
@@ -191,14 +191,14 @@
                                 <span class="tooltip">Products</span>
                               </li>
                               <li>
-                              <a href="#">
+                              <a href="' . ROOT . '/admin_branches">
                                 <i class="bx bx-cake"></i>
                                 <span class="links_name">Branches</span>
                               </a>
                               <span class="tooltip">Branches</span>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="' . ROOT . '/admin_advertisements">
                                   <i class="bx bx-cake"></i>
                                   <span class="links_name">Advertisement</span>
                                 </a>

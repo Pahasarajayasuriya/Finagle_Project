@@ -25,7 +25,7 @@ class Admin_branches extends Controller
                 } else {
                     // Handle image upload failure
 
-                    echo "Image Upload Failed.";
+                    //echo "Image Upload Failed.";
                 }
             } else {
                 // Handle validation errors

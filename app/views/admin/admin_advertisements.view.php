@@ -10,8 +10,8 @@ $this->view('includes/footer', $data);
 <html lang="en">
 
 <head>
-    <title>Branches</title>
-    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin_branches.css">
+    <title>Advertisements</title>
+    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin/admin_advertisements.css">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -23,7 +23,7 @@ $this->view('includes/footer', $data);
         <!-- content  -->
         <section id="main" class="main">
             <div class="ad_head">
-                <p class="ad_head_1">BRANCH<span> DETAILS</span></p>
+                <p class="ad_head_1">ADVERTISEMENTS<span> DETAILS</span></p>
             </div>
 
             <div class="form-header">
@@ -36,46 +36,35 @@ $this->view('includes/footer', $data);
                     </div>
                 </form>
 
-                <input class="add-btn" type="button" onclick="openReport()" value="Add Branches">
+                <input class="add-btn" type="button" onclick="openReport()" value="Add ADVERTISEMENT">
             </div>
 
             <!-- Popup Container for add branch -->
-            <form method="POST" enctype="multipart/form-data" action="<?= ROOT?>/admin_branches">
+            <form method="POST" enctype="multipart/form-data" action="<?= ROOT?>/admin_advertisements">
             <div class="popup-container" id="popupContainer">
-                <h2>Add a Branch</h2>
+                <h2>Add a Advertisement</h2>
                 <div class="popup-content">
-                    <label for="name">Branch Name:</label>
-                    <input value="<?= set_value('name') ?>" type="text" id="description" name="name" placeholder="Enter branch name">
+                    <label for="description">Description:</label>
+                    <input value="<?= set_value('name') ?>" type="text" id="description" name="description" placeholder="">
                     <?php if (!empty($errors['name'])) : ?>
-                            <div class="invalid"><?= $errors['name'] ?></div>
+                            <div class="invalid"><?= $errors['description'] ?></div>
                     <?php endif; ?>
 
-                    <label for="address">Address:</label>
-                    <input type="text" id="price" name="address">
+                    <label for="image">image:</label>
+                    <input type="text" id="price" name="image">
                     <?php if (!empty($errors['address'])) : ?>
-                            <div class="invalid"><?= $errors['address'] ?></div>
+                            <div class="invalid"><?= $errors['image'] ?></div>
                     <?php endif; ?>
 
-                    <label for="contact-number">Contact number:</label>
-                    <input type="text" id="Image" name="contact_number">
+                    <label for="end_date">end_date:</label>
+                    <input type="date" id="Image" name="end_date">
                     <?php if (!empty($errors['contact_number'])) : ?>
-                            <div class="invalid"><?= $errors['contact_number'] ?></div>
+                            <div class="invalid"><?= $errors['end_date'] ?></div>
                     <?php endif; ?>
 
-                    <label for="open">Openning hours:</label>
-                    <input type="time" id="open" name="open_time" value="00:00:00">
-                    <?php if (!empty($errors['open_time'])) : ?>
-                            <div class="invalid"><?= $errors['open_time'] ?></div>
-                    <?php endif; ?>
-
-                    <label for="close">Closing hours:</label>
-                    <input type="time" id="close" name="close_time" value="00:00:00">
-                    <?php if (!empty($errors['close_time'])) : ?>
-                            <div class="invalid"><?= $errors['close_time'] ?></div>
-                    <?php endif; ?>
                     <div class="buttons-container">
                         <!-- <button class="cancel-btn" onclick="closePopup()">Cancel</button> -->
-                        <button class="cancel-btn" ><a href="<?= ROOT."/admin_branches" ?>">Cancel</a></button>
+                        <button class="cancel-btn" ><a href="<?= ROOT."/admin_advertisements" ?>">Cancel</a></button>
                         <button name="add" value="add" class="submit-btn" onclick="submitForm()">Submit</button>
                     </div>
 
@@ -85,10 +74,11 @@ $this->view('includes/footer', $data);
 
             <div class="advertisement-table">
             <div class="advertisement-header">
-                <div class="ad-image"></div>
-                <div class="ad-id"> Branch ID</div>
-                <div class="ad-description">Branch Name</div>
-                <div class="ad-date">Address</div>      
+                <div class="ad-image">Image</div>
+                <div class="ad-id">ID</div>
+                <div class="ad-description">Description</div>
+                <div class="ad-date">End Date</div>
+              
             </div>
             </div>
             
@@ -111,13 +101,14 @@ $this->view('includes/footer', $data);
             <?php foreach ($rows as $row) : ?>
             <div class="advertisement-record">
                 <div class="advertisement-image"> <img src="https://lh3.googleusercontent.com/p/AF1QipNFVt_67WFrJbjsHEQfxY691SYz3wxrn1Ioq5KC=s1360-w1360-h1020" alt="branch.id" class="customer-image"></div>
+                <div class="branch-id"><?= esc($row->image) ?></div>
                 <div class="branch-id"><?= esc($row->id) ?></div>
-                <div class="branch-name"><?= esc($row->name) ?></div>
-                <div class="branch-loc"><?= esc($row->address) ?></div>
+                <div class="branch-name"><?= esc($row->description) ?></div>
+                <div class="branch-loc"><?= esc($row->end_date) ?></div>
                 <div class="advertisement-actions">
                   <!-- <button class="edit-button" onclick="openEditPopupDialog('${branch.id}', '${branch.name}', '${branch.location}')">Edit Branch</button> -->
-                  <button class="edit-button"><a href="<?= ROOT."/admin_branches/update_branch/".$row->id ?>">Edit Branch</a></button>
-                  <button class="edit-button"><a href="<?= ROOT."/admin_branches/delete_branch/".$row->id ?>">Delete Branch</a></button>                
+                  <button class="edit-button"><a href="<?= ROOT."/admin_advertisements/update_advertisement/".$row->id ?>">Edit Advertisement</a></button>
+                  <button class="edit-button"><a href="<?= ROOT."/admin_advertisements/delete_advertisement/".$row->id ?>">Delete Advertisement</a></button>                
                 </div>             
              </div>
              <?php endforeach;?>

@@ -15,10 +15,31 @@ class admin_branchesModel extends Model
 
     public function validate($data)
     {
-        // Add your validation logic here
-        // You can customize the validation rules based on your requirements
+        //There are more validation parts to be created
+        $this->errors=[];
 
-        return $data;
+        if(empty($data['name']))
+        {
+            $this->errors['name']='Branch name is required'; 
+        }
+
+        if(empty($data['address']))
+        {
+            $this->errors['address']='Address is required'; 
+        }
+
+        if(empty($data['contact_number']))
+        {
+            $this->errors['contact_number']='Contact number is required'; 
+        }
+
+        if(empty($this->errors))
+        {
+            return true;
+        }
+        return false;
+
+        // return $data;
     }
 
     public function get_all()
