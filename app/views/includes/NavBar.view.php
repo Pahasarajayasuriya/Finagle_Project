@@ -184,7 +184,7 @@
                               <span class="tooltip">Deliverers</span>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="' . ROOT . '/admin_products">
                                   <i class="bx bx-cake"></i>
                                   <span class="links_name">Products</span>
                                 </a>

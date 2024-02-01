@@ -14,7 +14,7 @@ class Admin_branches extends Controller
             // Validate and sanitize input data
             $validatedData = $admin_branch_model->validate($_POST);
 
-            // show($validatedData);
+            //show($validatedData);
             if ($validatedData) {
                     //show($_POST);
                     // Insert the product into the database

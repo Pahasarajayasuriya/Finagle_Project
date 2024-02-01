@@ -31,7 +31,7 @@ $this->view('includes/footer', $data);
               <h3>PRODUCTS</h3>
               <span class="material-icons-outlined">inventory_2</span>
             </div>
-            <h1>249</h1>
+            <h1><?= $data['counts']['product_count']; ?></h1>
           </div>
 
           <div class="card">
@@ -39,7 +39,7 @@ $this->view('includes/footer', $data);
               <h3>Branches</h3>
               <span class="material-icons-outlined">storefront</span>
             </div>
-            <h1>25</h1>
+            <h1><?= $data['counts']['branch_count']; ?></h1>
           </div>
 
           <div class="card">
@@ -76,7 +76,7 @@ $this->view('includes/footer', $data);
       </main>
       </div>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
-      <script src="<?= ROOT?>/assets/js/admin.js"></script>
+      <script src="<?= ROOT?>/assets/js/admin_dashboard.js"></script>
 </body>
 
 </html>

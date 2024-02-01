@@ -3,9 +3,10 @@
 // main model class
 class Model extends Database
 {
-    protected $table = "";
+
     public function insert($data)
     {
+        
         if (!empty($this->allowedColumns)) {
             foreach ($data as $key => $value) {
                 if (!in_array($key, $this->allowedColumns)) {
@@ -18,6 +19,7 @@ class Model extends Database
         $query = "insert into " . $this->table;
         $query .= " (" . implode(",", $keys) . ") values (:" . implode(",:", $keys) . ")";
 
+        //show($_query);
 
         $this->query($query, $data);
     }
@@ -91,5 +93,12 @@ class Model extends Database
     {
         $query = "SELECT * FROM {$this->table}";
         return $this->query($query);
+    }
+
+    public function get_count()
+    {
+        $query = "SELECT COUNT(*) AS row_count FROM {$this->table}";
+        $result = $this->query($query, $data);
+        return $result[0]->row_count;
     }
 }
