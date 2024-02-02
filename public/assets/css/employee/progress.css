@@ -132,6 +132,25 @@ body {
   
 }
 
+.filter-buttons a{
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: 0 1px;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: background-color 0.3s ease-in-out;
+    font-size: 10px;
+    text-decoration: none;
+   
+
+}
+
+.filter-buttons a:hover{
+    background-color: #218838;
+
+}
 
 .filter-buttons {
     margin-top: 10px;

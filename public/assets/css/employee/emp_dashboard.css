@@ -406,14 +406,14 @@
 	font-size: 14px;
 	font-weight: bold;
 }
-#content main .table-data .order table tr td .status.Completed {
+#content main .table-data .order table tr td .status.Dispatched {
 	background: black;
 	
 }
-#content main .table-data .order table tr td .status.Processing {
+#content main .table-data .order table tr td .status.Preparing{
 	background: red;
 }
-#content main .table-data .order table tr td .status.Pending {
+#content main .table-data .order table tr td .status.Placed {
 	background: rgb(145, 255, 77);
 }
 

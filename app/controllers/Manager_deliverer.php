@@ -15,6 +15,7 @@ class Manager_deliverer extends Controller
         // show($newData);
 
         $this->view('manager/deliverers', $data);
+       
     }
 
     // public function profile($id = null)

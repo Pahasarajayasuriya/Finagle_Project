@@ -12,7 +12,7 @@
 <body>
 
 
-  <div id="myModal3" class="modal">
+  <div id="assignDeliver" class="modal">
     <div class="modal-content">
       <!-- <span><i class="bx bx-x close" style="color: #ff0000"></i></span> -->
       <div>
@@ -30,12 +30,20 @@
           <i class="bx bx-chevron-down"></i>
         </div>
 
+        <?php 
+        show($data);
+        if (isset($data['driver'])) {
+               foreach ($data['driver'] as $driver) {
+       
+
+        ?>
+
         <ul class="options">
           <li class="option">
             <i class='bx bxs-user-circle' style='color:#ff0e0e'  ></i>
-            <span class="option-text">DD01 - Dilum Induwara</span>
+            <span class="option-text"><?= $driver->id ?> - <?= $driver->name ?></span>
           </li>
-          <li class="option">
+          <!-- <li class="option">
             <i class='bx bxs-user-circle' style='color:#ff0e0e'  ></i>
             <span class="option-text">DD02 - Pahasara Jayasooriya</span>
           </li>
@@ -46,9 +54,15 @@
           <li class="option">
             <i class='bx bxs-user-circle' style='color:#ff0e0e'  ></i>
             <span class="option-text">DD04 - Dilshan Akalanka</span>
-          </li>
+          </li> -->
           
         </ul>
+
+        <?php
+               }
+              }
+
+        ?>
       </div>
 
 
@@ -57,8 +71,10 @@
 
 </html>
 
-<button class="button" id="confirmOK">OK</button>
-<button class="button" id="cancelOK">Cancel</button>
+
+<button class="button" id="confirmDelete"  onclick="hidePopup('assignDeliver')" >OK</button>
+<button class="button" id="confirmDelete"  onclick="hidePopup('assignDeliver')" >Cancel</button>
+
 </div>
 </div>
 

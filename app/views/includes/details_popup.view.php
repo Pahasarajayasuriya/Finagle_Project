@@ -12,7 +12,7 @@
 <body>
    
     
-    <div id="myModal2" class="modal">
+    <div id="viewDetails" class="modal">
       <div class="modal-content">
         <!-- <span><i class="bx bx-x close" style="color: #ff0000"></i></span>
         <div>
@@ -46,7 +46,11 @@
 
         </div>
         
-        <button class="button" id="confirmDetails">OK</button>
+        <button class="button" id="confirmDetails" onclick="hidePopup('viewDetails')">OK</button>
+        <button class="button" id="cancelDelete" onclick="hidePopup('viewDetails')">Cancel</button>
+
+
+
         <!-- <button class="button" id="cancelDelete">Cancel</button> -->
       </div>
     </div>

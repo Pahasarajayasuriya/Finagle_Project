@@ -45,6 +45,14 @@ class Model extends Database
         return $this->query($quary);
     }
 
+    public function count()
+    {
+        $query = "SELECT COUNT(delivery_or_pickup) FROM $this->table WHERE delivery_or_pickup = 'delivery';";
+        
+        return $this->query($query);
+
+    }
+
     public function where($data)
     {
         $keys = array_keys($data);

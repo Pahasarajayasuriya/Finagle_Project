@@ -14,6 +14,19 @@ class Emp_dashboard extends Controller
         $data['order'] = $data;
 
 
+
+        $online = new Checkout();
+        $online_delivery = $this->getOnlineDeliveries($online);
+        $online_delivery['$online'] = $online_delivery;
+
+        $pickup = new Checkout();
+        $pickups= $this->getPickupOrders($pickup);
+        $pickups['$online'] = $pickups;
+
+
+
+
+
         $this->view('employee/employee_dashboard', $data);
     }
 
@@ -36,6 +49,20 @@ class Emp_dashboard extends Controller
 
         //    $data = $branch_id->where($arr);
         // show($data);
+        return $data;
+    }
+
+    private function getOnlineDeliveries($analyse)
+    {
+        $data = $analyse-> count();
+
+        return $data;
+    }
+
+    private function getPickupOrders($analyse)
+    {
+        $data = $analyse-> count();
+
         return $data;
     }
 }

@@ -92,7 +92,7 @@ $this->view('includes/footer', $data);
 						<i class='bx bxs-group'></i>
 						<span class="text">
 							<h3>2834</h3>
-							<p>Visitors</p>
+							<p>Customers</p>
 						</span>
 						<div class="circular">
 							<div class="inner"></div>
@@ -171,7 +171,7 @@ $this->view('includes/footer', $data);
 										<p><?= $order->username ?></p>
 									</td>
 									<td><?= $order->date_of_order ?></td>
-									<td><span class="status <?= $order->status ?>"><?= $order->status ?></span></td>
+									<td><span class="status<?= $order->status ?>"><?= $order->status ?></span></td>
 								</tr>
 								
 			 					<?php
@@ -196,7 +196,7 @@ $this->view('includes/footer', $data);
 
 							  </div>
 							   
-								<p class="increase" style="color:rgb(147, 240, 94);">+38%</p>
+								<!-- <p class="increase" style="color:rgb(147, 240, 94);">+38%</p> -->
 								<p class="count">380</p>
 
 							</li>
@@ -205,16 +205,16 @@ $this->view('includes/footer', $data);
 						    	<i class='bx bxs-package bx-tada' ></i>
 								<p class="type">PickUp Orders</p>
 							 </div>
-								<p class="increase" style="color:red;">-17%</p>
+								<!-- <p class="increase" style="color:red;">-17%</p> -->
 								<p class="count">200</p>
 								
 							</li>
 							<li class="completed">
 							<div class="numeric">
 							    <i class='bx bxs-user bx-tada'></i>
-								<p class="type">New Customers</p>
+								<p class="type">New Branches</p>
 							</div>
-								<p class="increase" style="color:rgb(147, 240, 94);">+18%</p>
+								<!-- <p class="increase" style="color:rgb(147, 240, 94);">+18%</p> -->
 								<p class="count">150</p>
 								
 							</li>

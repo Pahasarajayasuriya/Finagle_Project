@@ -12,7 +12,7 @@
 <body>
    
     
-    <div id="myModal" class="modal">
+    <div id="cancel" class="modal">
       <div class="modal-content">
         <span><i class="bx bx-x close" style="color: #ff0000"></i></span>
         <div>
@@ -21,8 +21,8 @@
 
         </div>
         <h4>Are you sure you want to proceed with the cancellation.This action is irreversible ?</h4>
-        <button class="button" id="confirmDelete">OK</button>
-        <button class="button" id="cancelDelete">Cancel</button>
+        <button class="button" id="confirmDelete"  onclick="hidePopup('cancel')" >OK</button>
+        <button class="button" id="cancelDelete" onclick="hidePopup('cancel')">Cancel</button>
       </div>
     </div>
 

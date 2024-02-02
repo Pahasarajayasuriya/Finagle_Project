@@ -10,8 +10,8 @@ $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
 
-// $this->view('includes/cancel_popup', $data);
-// $this->view('includes/details_popup', $data);
+$this->view('includes/cancel_popup', $data);
+$this->view('includes/details_popup', $data);
 $this->view('includes/assign_popup', $data);
 ?>
 
@@ -59,138 +59,73 @@ $this->view('includes/assign_popup', $data);
                     <div class="status-title">Placed Orders</div>
                 </div>
 
-                <div class="filter-buttons">
-                    <button onclick="filterOrders('deliveries')">Deliveries</button>
-                    <button onclick="filterOrders('pickups')">Pickups</button>
+                <div class="all-button">
+                    </div>
+                    
+                    <div class="filter-buttons">
+                    <!-- <button >All</button> -->
+                      
+                      <a href="<?=ROOT?>/Emp_progress">All</a>
+                   
+                     <button onclick='filterOrders("d",<?php echo json_encode($data) ?>)'>Deliveries</button>
+                     <button onclick='filterOrders("p",<?php echo json_encode($data) ?>)'>Pickups</button>
                 </div>
 
-                <div class="placed-order-list">
-                    <div class="placed-item">
-                        <div class="item-title">
-                            <div class="main-item">
-                                <div class="item-symbol">
-                                    <i class='bx bx-dots-vertical-rounded bx-rotate-180'></i>
+
+                <div class="placed-order-list" id="placed-order-list">
+
+                    <?php
+                    if (isset($data)) {
+                        // show($data);
+                        foreach ($data['detail'] as $val) {
+
+                    ?>
+                            <div class="placed-item">
+                                <div class="item-title">
+                                    <div class="main-item">
+                                        <div class="item-symbol">
+                                            <i class='bx bx-dots-vertical-rounded bx-rotate-180'></i>
+                                        </div>
+                                        <p class="item-id"><b><?= $val->id ?><span>
+                                                    <?php
+                                                    if ($val->delivery_or_pickup == "delivery") {
+                                                        echo 'D';
+                                                    } else {
+                                                        echo 'P';
+                                                    }
+                                                    ?>
+                                                </span></b></p>
+                                    </div>
+
+                                    <?php
+                                    if ($val->delivery_or_pickup == "delivery") {
+                                    ?>
+                                        <div class="time-duration">
+                                            <i class='bx bx-time-five'></i>
+                                            <div class="ready-time"><?= $val->delivery_date ?></div>
+                                        </div>
+                                    <?php
+
+                                    }
+                                    ?>
+
                                 </div>
-                                <p class="item-id">D0123</p>
-                            </div>
-                            <div class="time-duration">
-                                <i class='bx bx-time-five'></i>
-                                <div class="ready-time">1d</div>
-                            </div>
-
-                        </div>
-                        <div class="item-options">
-                            <button class="view-details" id="detailButton">View Details</button>
-                            <button class="cancel" id="deleteButton">Cancel</button>
-                        </div>
-
-                    </div>
-                    <div class="placed-item">
-                        <div class="item-title">
-                            <div class="main-item">
-                                <div class="item-symbol">
-                                    <i class='bx bx-dots-vertical-rounded bx-rotate-180'></i>
+                                <div class="item-options">
+                                    <button class="view-details" id="detailButton" onclick="showPopup('viewDetails','<?= $val->id ?>')">View Details</button>
+                                    <button class="cancel" id="deleteButton" onclick="showPopup('cancel')">Cancel</button>
                                 </div>
-                                <p class="item-id">PO340</p>
-                            </div>
-                            <div class="time-duration">
-                                <i class='bx bx-time-five'></i>
-                                <div class="ready-time">5h</div>
-                            </div>
 
-                        </div>
-                        <div class="item-options">
-                            <button class="view-details">View Details</button>
-                            <button class="cancel">Cancel</button>
-                        </div>
-                    </div>
-
-                    <div class="placed-item">
-                        <div class="item-title">
-                            <div class="main-item">
-                                <div class="item-symbol">
-                                    <i class='bx bx-dots-vertical-rounded bx-rotate-180'></i>
-                                </div>
-                                <p class="item-id">D0123</p>
                             </div>
-                            <div class="time-duration">
-                                <i class='bx bx-time-five'></i>
-                                <div class="ready-time">1d</div>
-                            </div>
+                    <?php
 
-                        </div>
-                        <div class="item-options">
-                            <button class="view-details">View Details</button>
-                            <button class="cancel">Cancel</button>
-                        </div>
+                        }
+                    }
+                    ?>
 
-                    </div>
-                    <div class="placed-item">
-                        <div class="item-title">
-                            <div class="main-item">
-                                <div class="item-symbol">
-                                    <i class='bx bx-dots-vertical-rounded bx-rotate-180'></i>
-                                </div>
-                                <p class="item-id">D0245</p>
-                            </div>
-                            <div class="time-duration" style="color:red;">
-                                <i class='bx bx-time-five'></i>
-                                <div class="ready-time">2h</div>
-                            </div>
-
-                        </div>
-                        <div class="item-options">
-                            <button class="view-details">View Details</button>
-                            <button class="cancel">Cancel</button>
-                        </div>
-
-                    </div>
-                    <div class="placed-item">
-                        <div class="item-title">
-                            <div class="main-item">
-                                <div class="item-symbol">
-                                    <i class='bx bx-dots-vertical-rounded bx-rotate-180'></i>
-                                </div>
-                                <p class="item-id">D0005</p>
-                            </div>
-                            <div class="time-duration">
-                                <i class='bx bx-time-five'></i>
-                                <div class="ready-time">4d</div>
-                            </div>
-
-                        </div>
-                        <div class="item-options">
-                            <button class="view-details">View Details</button>
-                            <button class="cancel">Cancel</button>
-                        </div>
-
-                    </div>
-                    <div class="placed-item">
-                        <div class="item-title">
-                            <div class="main-item">
-                                <div class="item-symbol">
-                                    <i class='bx bx-dots-vertical-rounded bx-rotate-180'></i>
-                                </div>
-                                <p class="item-id">D0120</p>
-                            </div>
-                            <div class="time-duration">
-                                <i class='bx bx-time-five'></i>
-                                <div class="ready-time">10h</div>
-                            </div>
-
-                        </div>
-                        <div class="item-options">
-                            <button class="view-details">View Details</button>
-                            <button class="cancel">Cancel</button>
-                        </div>
-
-                    </div>
                 </div>
 
 
             </div>
-
-
 
             <div class="order-status ready-orders">
                 <div class="title-section">
@@ -198,6 +133,7 @@ $this->view('includes/assign_popup', $data);
                     <i class='bx bx-check-circle bx-tada'></i>
                     <div class="status-title">Ready Orders</div>
                 </div>
+
                 <div class="ready-order-list">
                     <div class="placed-item">
                         <div class="item-title">
@@ -214,51 +150,13 @@ $this->view('includes/assign_popup', $data);
 
                         </div>
                         <div class="item-options">
-                            <button class="view-details">View Details</button>
+                            <button class="view-details" onclick="showPopup('viewDetails')">View Details</button>
 
-                            <button class="cancel" id="assignButton">Assign Deliverer</button>
+                            <button class="cancel" id="assignButton" onclick="showPopup('assignDeliver')">Assign Deliverer</button>
                         </div>
 
                     </div>
-                    <div class="placed-item">
-                        <div class="item-title">
-                            <div class="main-item">
-                                <div class="item-symbol">
-                                    <i class='bx bx-dots-vertical-rounded bx-rotate-180'></i>
-                                </div>
-                                <p class="item-id">D0205</p>
-                            </div>
-                            <!-- <div class="time-duration">
-                                 <i class='bx bx-time-five'></i>
-                                 <div class="ready-time">1d</div>
-                            </div> -->
 
-                        </div>
-                        <div class="item-options">
-                            <button class="view-details" type="hide">View Details</button>
-                            <button class="cancel">Assign Deliverer</button>
-                        </div>
-
-                    </div>
-                    <div class="placed-item">
-                        <div class="item-title">
-                            <div class="main-item">
-                                <div class="item-symbol">
-                                    <i class='bx bx-dots-vertical-rounded bx-rotate-180'></i>
-                                </div>
-                                <p class="item-id">D0345</p>
-                            </div>
-                            <!-- <div class="time-duration">
-                                 <i class='bx bx-time-five'></i>
-                                 <div class="ready-time">1d</div>
-                            </div> -->
-
-                        </div>
-                        <div class="item-options">
-                            <button class="view-details" type="hide">View Details</button>
-                            <button class="cancel">Assign Deliverer</button>
-                        </div>
-                    </div>
 
                 </div>
             </div>
@@ -280,51 +178,191 @@ $this->view('includes/assign_popup', $data);
                             </div>
                             <i class='bx bxs-right-arrow-square'></i>
                             <p class="item-id">DD003</p>
-                           
+
 
                         </div>
                         <div class="item-options">
-                            <button class="view-details" id="detailButton">View Details</button>
-                            <!-- <button class="cancel" id="deleteButton">Cancel</button> -->
+                            <button class="view-details" id="detailButton" onclick="showPopup('viewDetails')">View Details</button>
+                            <!-- <button class="cancel" id="deleteButton" >Cancel</button> -->
                         </div>
 
                     </div>
-                    <div class="placed-item">
-                        <div class="item-title">
-                            <div class="main-item">
-                                <div class="item-symbol">
-                                    <i class='bx bx-dots-vertical-rounded bx-rotate-180'></i>
-                                </div>
-                                <p class="item-id">D0345</p>
-                            </div>
-                            <i class='bx bxs-right-arrow-square'></i>
-                            <p class="item-id">DD001</p>
-                           
 
-                        </div>
-                        <div class="item-options">
-                            <button class="view-details" id="detailButton">View Details</button>
-                            <!-- <button class="cancel" id="deleteButton">Cancel</button> -->
-                        </div>
-
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 
 
-     
-    <!-- <script src="<?= ROOT ?>/assets/js/order_cancel.js"></script> -->
 
-    <!-- <script src="<?= ROOT ?>/assets/js/order_details.js"></script> -->
+    <!-- <script src="<?= ROOT ?>/assets/js/order_cancel.js"></script>
 
-    <script src="<?= ROOT ?>/assets/js/order_assign.js"></script>
+    <script src="<?= ROOT ?>/assets/js/order_details.js"></script>
 
+    <script src="<?= ROOT ?>/assets/js/order_assign.js"></script> -->
+
+    <!-- Import JQuary Library script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+
+    <script>
+        function showPopup(popupId,id=0) {
+            console.log(id);
+            var popup = document.getElementById(popupId);
+            if (popup) {
+                popup.style.display = "block";
+
+            }
+             data = {
+                'id':id
+             }
+
+            $.ajax({
+                type: "POST",
+                url: "<?= ROOT ?>/OrderDetail_Popup",
+                data: data,
+                cache: false,
+                success: function(res) {
+                    console.log(res);
+                },
+                error: function(xhr, status, error) {
+                    // return xhr;
+                }
+            });
+
+        }
+
+        function hidePopup(popupId) {
+            var popup = document.getElementById(popupId);
+            if (popup) {
+                popup.style.display = "none";
+            }
+        }
+
+        function filterOrders(type, data) {
+            console.log(data)
+            console.log(type);
+
+            var placed = document.getElementById("placed-order-list");
+
+            placed.textContent = ""
+
+            item_id = document.getElementsByName("item-id")
+
+            // data.forEach(element => {
+            for (let index = 0; index < data.detail.length; index++) {
+
+                const element = data[index];
+
+                switch (type) {
+
+                    case 'd':
+
+                        if (element.delivery_or_pickup == "delivery") {
+
+                            item_id.textContent = element.id
+                            // console.log(item_id)
+                            itemContainer = createItemHTML(element);
+                            placed.appendChild(itemContainer);
+
+                        }
+                        break;
+
+                    case 'p':
+
+                        if (element.delivery_or_pickup == "pickup") {
+                            item_id.textContent = element.id
+                            // console.log(item_id)
+                            itemContainer = createItemHTML(element);
+                            placed.appendChild(itemContainer);
+
+                        }
+                        break;
+
+                    default:
+                        break;
+                }
+
+
+            }
+
+            // });
+
+        }
+
+        function createItemHTML(val) {
+            var itemContainer = document.createElement('div');
+            itemContainer.className = 'placed-item';
+
+            var itemTitle = document.createElement('div');
+            itemTitle.className = 'item-title';
+
+            var mainItem = document.createElement('div');
+            mainItem.className = 'main-item';
+
+            var itemSymbol = document.createElement('div');
+            itemSymbol.className = 'item-symbol';
+            var icon = document.createElement('i');
+            icon.className = 'bx bx-dots-vertical-rounded bx-rotate-180';
+            itemSymbol.appendChild(icon);
+
+            var itemId = document.createElement('p');
+            itemId.className = 'item-id';
+            var boldText = document.createElement('b');
+            boldText.textContent = val.id;
+            var span = document.createElement('span');
+            span.textContent = (val.delivery_or_pickup === "delivery") ? 'D' : 'P';
+            boldText.appendChild(span);
+            itemId.appendChild(boldText);
+
+            mainItem.appendChild(itemSymbol);
+            mainItem.appendChild(itemId);
+
+            var timeDuration = document.createElement('div');
+            timeDuration.className = 'time-duration';
+            if (val.delivery_or_pickup === "delivery") {
+                var timeIcon = document.createElement('i');
+                timeIcon.className = 'bx bx-time-five';
+                var readyTime = document.createElement('div');
+                readyTime.className = 'ready-time';
+                readyTime.textContent = val.delivery_date;
+                timeDuration.appendChild(timeIcon);
+                timeDuration.appendChild(readyTime);
+            }
+
+            itemTitle.appendChild(mainItem);
+            itemTitle.appendChild(timeDuration);
+
+            var itemOptions = document.createElement('div');
+            itemOptions.className = 'item-options';
+
+            var viewDetailsButton = document.createElement('button');
+            viewDetailsButton.className = 'view-details';
+            viewDetailsButton.textContent = 'View Details';
+            viewDetailsButton.onclick = function() {
+                showPopup('viewDetails');
+            };
+
+            var cancelButton = document.createElement('button');
+            cancelButton.className = 'cancel';
+            cancelButton.textContent = 'Cancel';
+            cancelButton.onclick = function() {
+                showPopup('cancel');
+            };
+
+            itemOptions.appendChild(viewDetailsButton);
+            itemOptions.appendChild(cancelButton);
+
+            itemContainer.appendChild(itemTitle);
+            itemContainer.appendChild(itemOptions);
+
+            return itemContainer;
+        }
+
+        
+      
+    </script>
 </body>
 
 </html>
-
-
-
-
