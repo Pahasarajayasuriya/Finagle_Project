@@ -31,6 +31,10 @@ class Database
 
         return false;
     }
+    public function read($query, $data = [])
+    {
+        return $this->query($query, $data, 'assoc');
+    }
 
     public function create_tables()
     {

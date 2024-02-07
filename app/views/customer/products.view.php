@@ -36,7 +36,7 @@ $this->view('includes/footer', $data);
 
 
 
-    <!-- <?php $this->view('includes/cus_topbar', $data); ?> -->
+    <?php $this->view('includes/cus_topbar', $data); ?>
     <div class="home-section">
         <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
         <h2 class="section-title">OUR PRODUCTS</h2>
