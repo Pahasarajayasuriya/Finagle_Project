@@ -51,7 +51,7 @@ $this->view('includes/footer', $data);
                     <?php endif; ?>
 
                     <label for="image">image:</label>
-                    <input type="text" id="price" name="image">
+                    <input type="file" onchange="load_image(this.files[0])" id="price" name="image">
                     <?php if (!empty($errors['address'])) : ?>
                             <div class="invalid"><?= $errors['image'] ?></div>
                     <?php endif; ?>

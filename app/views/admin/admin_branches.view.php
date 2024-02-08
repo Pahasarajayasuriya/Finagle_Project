@@ -85,10 +85,21 @@ $this->view('includes/footer', $data);
 
             <div class="advertisement-table">
             <div class="advertisement-header">
-                <div class="ad-image"></div>
-                <div class="ad-id"> Branch ID</div>
-                <div class="ad-description">Branch Name</div>
-                <div class="ad-date">Address</div>      
+                <!-- <div class="ad-image"></div> -->
+                <!-- <div class="ad-id"> Branch ID</div>
+                <div class="ad-description">Branch Name</div> -->
+                <!-- <div class="ad-date">Address</div>   -->
+                <!-- <div class="ad-description">Address</div>
+                <div class="ad-description">Contact NO</div>
+                <div class="ad-description">Open Time</div>
+                <div class="ad-description">Close Time</div>    -->
+                
+                <div >ID</div>
+                <div >Branch Name</div>
+                <div >Address</div>
+                <div >Contact NO</div>
+                <div >Open Time</div>
+                <div >Close Time</div> 
             </div>
             </div>
             
@@ -110,10 +121,14 @@ $this->view('includes/footer', $data);
 
             <?php foreach ($rows as $row) : ?>
             <div class="advertisement-record">
-                <div class="advertisement-image"> <img src="https://lh3.googleusercontent.com/p/AF1QipNFVt_67WFrJbjsHEQfxY691SYz3wxrn1Ioq5KC=s1360-w1360-h1020" alt="branch.id" class="customer-image"></div>
+                <!-- <div class="advertisement-image"> <img src="https://lh3.googleusercontent.com/p/AF1QipNFVt_67WFrJbjsHEQfxY691SYz3wxrn1Ioq5KC=s1360-w1360-h1020" alt="branch.id" class="customer-image"></div> -->
                 <div class="branch-id"><?= esc($row->id) ?></div>
                 <div class="branch-name"><?= esc($row->name) ?></div>
                 <div class="branch-loc"><?= esc($row->address) ?></div>
+                <div class="branch-loc"><?= esc($row->contact_number) ?></div>
+                <div class="branch-loc"><?= esc($row->open_time) ?></div>
+                <div class="branch-loc"><?= esc($row->close_time) ?></div>
+
                 <div class="advertisement-actions">
                   <!-- <button class="edit-button" onclick="openEditPopupDialog('${branch.id}', '${branch.name}', '${branch.location}')">Edit Branch</button> -->
                   <button class="edit-button"><a href="<?= ROOT."/admin_branches/update_branch/".$row->id ?>">Edit Branch</a></button>

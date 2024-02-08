@@ -14,14 +14,16 @@ class Admin_advertisements extends Controller
             // Validate and sanitize input data
             $validatedData = $admin_advertisement_model->validate($_POST);
 
-            // show($validatedData);
+            //show($validatedData);
             if ($validatedData) {
                     //show($_POST);
                     // Insert the product into the database
-                    $admin_advertisement_model->insert($_POST);
+                    show($_FILES['image']);
+                    die;
+                    //$admin_advertisement_model->insert($_POST);
 
                     // Redirect to avoid form resubmission
-                    redirect('admin_advertisements');
+                    //redirect('admin_advertisements');
                 } else {
                     // Handle image upload failure
 

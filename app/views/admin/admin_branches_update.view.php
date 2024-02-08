@@ -86,12 +86,18 @@ $this->view('includes/footer', $data);
 
             <div class="advertisement-table">
             <div class="advertisement-header">
-                <div class="ad-image"></div>
+
+                <!-- <div class="ad-image"></div>
                 <div class="ad-id"> Branch ID</div>
                 <div class="ad-description">Branch Name</div>
-                <div class="ad-date">Address</div>
-
-                <p>this is the update view</p>
+                <div class="ad-date">Address</div> -->
+                
+                <div >ID</div>
+                <div >Branch Name</div>
+                <div >Address</div>
+                <div >Contact NO</div>
+                <div >Open Time</div>
+                <div >Close Time</div> 
               
             </div>
             </div>
@@ -107,6 +113,15 @@ $this->view('includes/footer', $data);
                     <label for="editEndDate">Address:</label>
                     <input type="text" id="editEndDate" name="address" value="<?= $row[0]->address ?>">
 
+                    <label for="editEndDate">Contact NO:</label>
+                    <input type="text" id="editEndDate" name="address" value="<?= $row[0]->contact_number ?>">
+
+                    <label for="editEndDate">OPEN HOUR:</label>
+                    <input type="text" id="editEndDate" name="address" value="<?= $row[0]->open_time ?>">
+
+                    <label for="editEndDate">CLOSE HOUR:</label>
+                    <input type="text" id="editEndDate" name="address" value="<?= $row[0]->close_time ?>">
+
                     <input type="hidden" name="id" value="<?= $row[0]->id; ?>">
                     
                     <div class="buttons-container">
@@ -121,7 +136,7 @@ $this->view('includes/footer', $data);
             <!-- data for tables -->
             <?php foreach ($rows as $row) : ?>
             <div class="advertisement-record">
-                <div class="advertisement-image"> <img src="https://lh3.googleusercontent.com/p/AF1QipNFVt_67WFrJbjsHEQfxY691SYz3wxrn1Ioq5KC=s1360-w1360-h1020" alt="branch.id" class="customer-image"></div>
+                <!-- <div class="advertisement-image"> <img src="https://lh3.googleusercontent.com/p/AF1QipNFVt_67WFrJbjsHEQfxY691SYz3wxrn1Ioq5KC=s1360-w1360-h1020" alt="branch.id" class="customer-image"></div> -->
                 <div class="branch-id"><?= esc($row->id) ?></div>
                 <div class="branch-name"><?= esc($row->name) ?></div>
                 <div class="branch-loc"><?= esc($row->address) ?></div>
