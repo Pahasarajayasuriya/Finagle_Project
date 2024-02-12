@@ -22,6 +22,8 @@ class User extends Model
         if (empty($data['username'])) {
             $this->errors['username'] = "Username is required";
         }
+
+
         //check email
         if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
             $this->errors['email'] = "Email is not valid";
@@ -29,6 +31,8 @@ class User extends Model
         if ($this->where(['email' => $data['email']])) {
             $this->errors['email'] = "This email already exists";
         }
+
+
         if (empty($data['password'])) {
             $this->errors['password'] = "A password is required";
         }
@@ -40,19 +44,13 @@ class User extends Model
         } elseif (!preg_match('/^[0-9]{10}$/', $data['teleno'])) {
             $this->errors['teleno'] = "Invalid phone number";
         }
-        if (empty($data['joined_date'])) {
-            $this->errors['joined_date'] = "Joined date is required";
-        } elseif (strtotime($data['joined_date']) > time()) {
-            $this->errors['joined_date'] = "Joined date cannot be a future date";
-        }
-    
         if (empty($this->errors)) {
             return true;
         }
         return false;
     }
 
-    public function edit_validate($data, $id)
+    public function edit_validate($data,$id)
     {
         $this->errors = [];
 
@@ -64,10 +62,11 @@ class User extends Model
         //check email
         if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
             $this->errors['email'] = "Email is not valid";
-        } else 
+        }
+         else 
         if ($results = $this->where(['email' => $data['email']])) {
             foreach ($results as $result) {
-                if ($id != $result->id) {
+                if($id != $result->id){
                     $this->errors['email'] = "This email already exists";
                 }
             }

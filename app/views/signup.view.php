@@ -2,37 +2,6 @@
 <html lang="en">
 
 <?php
-// if (isset($_POST['sendotp'])) {
-//     $username = "pahasarajayasuriya@gmail.com";
-//     $hash = "21f2f609b2765ce0ff1321f7b9c452c3e1d96191a857b85bdd4bfccdbe8a3d70";
-
-//     $test = "0";
-//     $name = $_POST['username'];
-
-//     $sender = "Pahasara Nimnath"; 
-//     $numbers = $_POST['teleno']; 
-//     $otp = mt_rand(100000, 999999);
-//     setcookie("otp", $otp);
-//     $message = "Hey " . $name . " your OTP is " . $otp;
-
-//     $message = urlencode($message);
-//     $data = "username=" . $username . "&hash=" . $hash . "&message=" . $message . "&sender=" . $sender . "&numbers=" . $numbers . "&test=" . $test;
-//     $ch = curl_init('https://api.txtlocal.com/send/?');
-//     curl_setopt($ch, CURLOPT_POST, true);
-//     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-//     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-//     $result = curl_exec($ch); 
-//     echo ("OTP sent successfully");
-//     curl_close($ch);
-// }
-// if (isset($_POST['ver'])) {
-//     $verotp = $_POST['otp'];
-//     if ($verotp == $_COOKIE['otp']) {
-//         echo ("OTP verified successfully");
-//     } else {
-//         echo ("Invalid OTP");
-//     }
-// }
 
 use Infobip\Configuration;
 use Infobip\Api\SmsApi;
@@ -47,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['sendotp'])) {
     $name = $_POST['username'];
     $otp = mt_rand(100000, 999999);
     setcookie("otp", $otp);
-    $message = "Hey " .$name. ", Your OTP is " . $otp;
+    $message = "Hey " . $name . ", Your OTP is " . $otp;
 
     $baseUrl = 'k24v9x.api.infobip.com';
     $apiKey = '4da450695e249aa084d584d9a51b52f2-85b70403-35d3-46cb-b340-4cf2ccd55cfa';
@@ -64,7 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['sendotp'])) {
         messages: [$message]
     );
     $response = $api->sendSmsMessage($request);
-    echo ("OTP sent successfully");
+    header("Location: " . ROOT . "/otp");
+    exit;
 }
 
 if (isset($_POST['ver'])) {
@@ -109,56 +79,51 @@ if (isset($_POST['ver'])) {
             <section>
                 <form method="post" action="<?= ROOT ?>/signup">
                     <h1>Register</h1>
-                    <div class="inputbox">
+                    <div class="set1">
+                        <div class="inputbox">
+                            <i class="fas fa-user"></i>
+                            <input value="<?= set_value('username') ?>" type="text" name="username" id="username" placeholder="Username" required>
+                
 
-                        <i class="fas fa-user"></i>
-                        <input value="<?= set_value('username') ?>" type="text" name="username" id="username" placeholder="Username" required>
-                        <!-- <label for="">Username </label> -->
+                            <?php if (!empty($errors['username'])) : ?>
+                                <div class="invalid"><?= $errors['username'] ?></div>
+                            <?php endif; ?>
+                        </div>
+                        <div class="inputbox">
+                            <i class="fas fa-envelope"></i>
+                            <input value="<?= set_value('email') ?>" type="email" name="email" id="name" placeholder="Email" required>
 
-                        <?php if (!empty($errors['username'])) : ?>
-                            <div class="invalid"><?= $errors['username'] ?></div>
-                        <?php endif; ?>
+                            <?php if (!empty($errors['email'])) : ?>
+                                <div class="invalid"><?= $errors['email'] ?></div>
+                            <?php endif; ?>
+                        </div>
+                        <div class="inputbox">
+                            <i class="fas fa-phone"></i>
+                            <input value="<?= set_value('teleno') ?>" type="phoneno." name="teleno" id="teleno" placeholder="Contact Number" required>
+
+                            <?php if (!empty($errors['teleno'])) : ?>
+                                <div class="invalid"><?= $errors['teleno'] ?></div>
+                            <?php endif; ?>
+                        </div>
+                        <div class="inputbox">
+                            <i class="fas fa-lock"></i>
+                            <input value="<?= set_value('password') ?>" type="password" name="password" id="password" placeholder="Create Password">
+                            <?php if (!empty($errors['password'])) : ?>
+                                <div class="invalid"><?= $errors['password'] ?></div>
+                            <?php endif; ?>
+                        </div>
+                        <div class="inputbox">
+                            <i class="fas fa-lock"></i>
+                            <input value="<?= set_value('repassword') ?>" type="password" name="repassword" id="repassword" placeholder="Confirm Password">
+                            <?php if (!empty($errors['password'])) : ?>
+                                <div class="invalid"><?= $errors['password'] ?></div>
+                            <?php endif; ?>
+                        </div>
+                        <button name="sendotp">Send OTP</button>
+                        <div class="register">
+                            <p>Already have an account? <a href="<?= ROOT ?>/login">Sign In</a></p>
+                        </div>
                     </div>
-                    <div class="inputbox">
-                        <i class="fas fa-envelope"></i>
-                        <input value="<?= set_value('email') ?>" type="email" name="email" id="name" placeholder="Email" required>
-
-                        <?php if (!empty($errors['email'])) : ?>
-                            <div class="invalid"><?= $errors['email'] ?></div>
-                        <?php endif; ?>
-                    </div>
-                    <div class="inputbox">
-                        <i class="fas fa-phone"></i>
-
-                        <input value="<?= set_value('teleno') ?>" type="phoneno." name="teleno" id="teleno" placeholder="Contact Number" required>
-                        <!-- <label for="">Contact Number </label> -->
-
-                        <!-- <?php if (!empty($errors['teleno'])) : ?>
-                            <div class="invalid"><?= $errors['teleno'] ?></div>
-                        <?php endif; ?> -->
-                    </div>
-
-                    <button name="sendotp">Send OTP</button>
-                    <div class="register">
-                        <p>Already have an account? <a href="<?= ROOT ?>/login">Sign In</a></p>
-                    </div>
-                    <div class="inputbox">
-                        <i class="fas fa-lock"></i>
-                        <input type="text" name="otp" id="otp" placeholder="Verify OTP">
-                    </div>
-                    <button name="ver">Verify</button>
-
-                    <!-- <div class="inputbox">
-                        <i class="fas fa-lock"></i>
-                        <input value="<?= set_value('password') ?>" type="password" name="password" id="password" placeholder="Create Password">
-
-
-                    </div>
-                    <div class="inputbox">
-                        <i class="fas fa-lock"></i>
-                        <input value="<?= set_value('repassword') ?>" type="password" name="repassword" id="repassword" placeholder="Confirm Password">
-
-                    </div> -->
                 </form>
             </section>
         </div>
@@ -166,5 +131,3 @@ if (isset($_POST['ver'])) {
 
 </body>
 
-
-</html>

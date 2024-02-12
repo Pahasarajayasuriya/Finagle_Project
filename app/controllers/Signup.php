@@ -1,8 +1,4 @@
 <?php
-
-/**
- * signup class
- */
 class Signup extends Controller
 {
 
