@@ -3,48 +3,48 @@
 
 <?php
 
-use Infobip\Configuration;
-use Infobip\Api\SmsApi;
-use Infobip\Model\SmsDestination;
-use Infobip\Model\SmsTextualMessage;
-use Infobip\Model\SmsAdvancedTextualRequest;
+// use Infobip\Configuration;
+// use Infobip\Api\SmsApi;
+// use Infobip\Model\SmsDestination;
+// use Infobip\Model\SmsTextualMessage;
+// use Infobip\Model\SmsAdvancedTextualRequest;
 
-require __DIR__ . '/../../vendor/autoload.php';
+// require __DIR__ . '/../../vendor/autoload.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['sendotp'])) {
-    $number = "+94" . $_POST['teleno'];
-    $name = $_POST['username'];
-    $otp = mt_rand(100000, 999999);
-    setcookie("otp", $otp);
-    $message = "Hey " . $name . ", Your OTP is " . $otp;
+// if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['sendotp'])) {
+//     $number = "+94" . $_POST['teleno'];
+//     $name = $_POST['username'];
+//     $otp = mt_rand(100000, 999999);
+//     setcookie("otp", $otp);
+//     $message = "Hey " . $name . ", Your OTP is " . $otp;
 
-    $baseUrl = 'k24v9x.api.infobip.com';
-    $apiKey = '4da450695e249aa084d584d9a51b52f2-85b70403-35d3-46cb-b340-4cf2ccd55cfa';
+//     $baseUrl = 'dk6m5l.api.infobip.com';
+//     $apiKey = '041f721ec5960fc5e9234eb5e99a15e8-cbc0ce26-5198-421d-9d16-6097956576d8';
 
-    $configuration = new Configuration(host: $baseUrl, apiKey: $apiKey);
-    $api = new SmsApi(config: $configuration);
-    $destination = new SmsDestination(to: $number);
-    $message = new SmsTextualMessage(
-        destinations: [$destination],
-        text: $message,
-        from: "Finagle"
-    );
-    $request = new SmsAdvancedTextualRequest(
-        messages: [$message]
-    );
-    $response = $api->sendSmsMessage($request);
-    header("Location: " . ROOT . "/otp");
-    exit;
-}
+//     $configuration = new Configuration(host: $baseUrl, apiKey: $apiKey);
+//     $api = new SmsApi(config: $configuration);
+//     $destination = new SmsDestination(to: $number);
+//     $message = new SmsTextualMessage(
+//         destinations: [$destination],
+//         text: $message,
+//         from: "Finagle"
+//     );
+//     $request = new SmsAdvancedTextualRequest(
+//         messages: [$message]
+//     );
+//     $response = $api->sendSmsMessage($request);
+//     header("Location: " . ROOT . "/otp");
+//     exit;
+// }
 
-if (isset($_POST['ver'])) {
-    $verotp = $_POST['otp'];
-    if ($verotp == $_COOKIE['otp']) {
-        echo ("OTP verified successfully");
-    } else {
-        echo ("Invalid OTP");
-    }
-}
+// if (isset($_POST['ver'])) {
+//     $verotp = $_POST['otp'];
+//     if ($verotp == $_COOKIE['otp']) {
+//         echo ("OTP verified successfully");
+//     } else {
+//         echo ("Invalid OTP");
+//     }
+// }
 ?>
 
 
@@ -69,21 +69,20 @@ if (isset($_POST['ver'])) {
 </head>
 
 <body>
+    <div class="set1" id="set1">
+        <div class="login_container">
+            <div class="image_container">
+                <img src="https://i.pinimg.com/564x/e5/e2/3a/e5e23aa6ee2fbcfac5e5e183183a2dde.jpg" width="420px" height="100%" alt="Login Image">
+            </div>
+            <div class="form-container">
+                <section>
+                    <form method="post">
+                        <h1>Register</h1>
 
-    <div class="login_container">
-        <div class="image_container">
-            <img src="https://i.pinimg.com/564x/e5/e2/3a/e5e23aa6ee2fbcfac5e5e183183a2dde.jpg" width="420px" height="100%" alt="Login Image">
-        </div>
-
-        <div class="form-container">
-            <section>
-                <form method="post" action="<?= ROOT ?>/signup">
-                    <h1>Register</h1>
-                    <div class="set1">
                         <div class="inputbox">
                             <i class="fas fa-user"></i>
                             <input value="<?= set_value('username') ?>" type="text" name="username" id="username" placeholder="Username" required>
-                
+
 
                             <?php if (!empty($errors['username'])) : ?>
                                 <div class="invalid"><?= $errors['username'] ?></div>
@@ -123,11 +122,49 @@ if (isset($_POST['ver'])) {
                         <div class="register">
                             <p>Already have an account? <a href="<?= ROOT ?>/login">Sign In</a></p>
                         </div>
-                    </div>
-                </form>
+            </div>
+            </form>
             </section>
         </div>
     </div>
+    <div class="set2" id="set2" style="display: none;">
+        <div class="login_container">
+            <div class="image_container">
+                <img src="https://i.pinimg.com/564x/e5/e2/3a/e5e23aa6ee2fbcfac5e5e183183a2dde.jpg" width="420px" height="100%" alt="Login Image">
+            </div>
+            <div class="form-container">
+                <section>
+                    <form method="post">
+                        <h1>Register</h1>
+                        <div class="inputbox">
+                            <i class="fas fa-lock"></i>
+                            <input type="text" name="otp" id="otp" placeholder="Verify OTP" required>
+                        </div>
+                        <button name="ver">Verify</button>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Get references to the set 1 and set 2 sections
+        const set1 = document.getElementById('set1');
+        const set2 = document.getElementById('set2');
+
+        // Get reference to the "Send OTP" button
+        const sendOtpButton = document.querySelector('button[name="sendotp"]');
+
+        // Add event listener to the "Send OTP" button
+        sendOtpButton.addEventListener('click', function(event) {
+            // Prevent the default form submission behavior
+            event.preventDefault();
+
+            // Hide set 1 and display set 2
+            set1.style.display = 'none';
+            set2.style.display = 'block';
+        });
+    </script>
 
 </body>
 
+</html>
