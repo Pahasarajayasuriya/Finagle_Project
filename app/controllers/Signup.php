@@ -39,6 +39,7 @@ class Signup extends Controller
 					$_SESSION['signup_data'] = $_POST;
 					$_SESSION['otp'] = $otp;
                     // Redirect to OTP verification page
+					$_SESSION['otp_sent'] = true;
                     redirect('otp');
                 }
             }

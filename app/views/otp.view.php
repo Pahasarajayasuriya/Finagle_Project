@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,29 +18,51 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-    <title>SignUp</title>
+    <title>OTP verification</title>
+    <style>
+        .error-message {
+            color: #FF0000;
+            font-family: "Poppins", sans-serif;
+            font-size: 16px;
+            margin-top: 1vw;
+            margin-left: 4vw;
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="login_container">
-    <div class="image_container">
-        <img src="https://i.pinimg.com/564x/e5/e2/3a/e5e23aa6ee2fbcfac5e5e183183a2dde.jpg" width="420px" height="100%" alt="Login Image">
+    <div class="login_container">
+        <div class="image_container">
+            <img src="https://i.pinimg.com/564x/e5/e2/3a/e5e23aa6ee2fbcfac5e5e183183a2dde.jpg" width="420px" height="100%" alt="Login Image">
+        </div>
+        <div class="form-container">
+            <section>
+                <form method="post">
+                    <h1>Register</h1>
+                    <div class="inputbox">
+                        <i class="fas fa-lock"></i>
+                        <input type="text" name="otp" id="otp" placeholder="Verify OTP" required>
+                    </div>
+                    <button name="ver">Verify</button>
+                    <?php if (!empty($errors['otp'])) : ?>
+                        <div class="error-message"><?= $errors['otp'] ?></div>
+                    <?php endif; ?>
+                </form>
+            </section>
+        </div>
     </div>
-  
-    <div class="form-container">
-        <section>
-            <form method="post">
-                <h1>Register</h1>
-                <div class="inputbox">
-                    <i class="fas fa-lock"></i>
-                    <input  type="text" name="otp" id="otp" placeholder="Verify OTP" required>
-                </div>            
-                <button name="ver">Verify</button>
-            </form>
-        </section>
-    </div>
-</div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var errorMessage = document.querySelector('.error-message');
+            if (errorMessage) {
+                setTimeout(function() {
+                    errorMessage.style.display = 'none';
+                }, 4000);
+            }
+        });
+    </script>
 </body>
 
 

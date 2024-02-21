@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-</head>
-
-<body>
 <?php
 class Otp extends Controller
 {
@@ -28,9 +21,8 @@ class Otp extends Controller
                 redirect('login');
             } else {
                 // Invalid OTP
-                $invalidMessage = '<div id="invalid-message" style="color: #FF0000;">Invalid OTP</div>';
-                message($invalidMessage);
-                $this->view('otp', $data);
+                $data['errors']['otp'] = 'Invalid OTP'; // Set error message
+                $this->view('otp', $data); // Render the OTP verification form with error message
                 return;
             }
         }
@@ -40,26 +32,3 @@ class Otp extends Controller
     }
 }
 ?>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var successMessage = document.getElementById('success-message');
-            var invalidMessage = document.getElementById('invalid-message');
-
-            // Hide the success message after 4 seconds
-            if (successMessage) {
-                setTimeout(function() {
-                    successMessage.style.display = 'none';
-                }, 4000);
-            }
-
-            // Hide the invalid message after 4 seconds
-            if (invalidMessage) {
-                setTimeout(function() {
-                    invalidMessage.style.display = 'none';
-                }, 4000);
-            }
-        });
-    </script>
-</body>
-
-</html>

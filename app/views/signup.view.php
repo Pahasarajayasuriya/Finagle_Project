@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
     <title>SignUp</title>
 </head>
+
 <body>
     <div class="login_container">
         <div class="image_container">
@@ -59,7 +61,7 @@
                         </div>
                         <button name="sendotp">Send OTP</button>
                         <div class="message">
-                            <?php if (isset($otpSent) && $otpSent === true): ?>
+                            <?php if (isset($_POST['sendotp'])) : ?>
                                 <div class="success-message">OTP has been sent successfully!</div>
                             <?php endif; ?>
                         </div>
@@ -71,5 +73,16 @@
             </section>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var errorMessage = document.querySelector('.success-message');
+            if (errorMessage) {
+                setTimeout(function() {
+                    errorMessage.style.display = 'none';
+                }, 4000);
+            }
+        });
+    </script>
 </body>
+
 </html>
