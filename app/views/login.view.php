@@ -52,7 +52,7 @@
                     </div>
                     <div class="forget">
                         <label for=""><input type="checkbox">Remember Me</label>
-                        <a href="#">Forget Password</a>
+                        <a href="<?= ROOT ?>/forgotpassword">Forget Password</a>
                     </div>
 
                     <?php if (message()) : ?>
