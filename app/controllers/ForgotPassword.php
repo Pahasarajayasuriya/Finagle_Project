@@ -4,10 +4,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require 'phpmailer/src/Exception.php';
-require 'phpmailer/src/PHPMailer.php';
-require 'phpmailer/src/SMTP.php';
-
+require __DIR__ . '/../../vendor/phpmailer/src/PHPMailer.php';
+require __DIR__ . '/../../vendor/phpmailer/src/SMTP.php';
+require __DIR__ . '/../../vendor/phpmailer/src/Exception.php';
 
 class ForgotPassword extends Controller
 {
