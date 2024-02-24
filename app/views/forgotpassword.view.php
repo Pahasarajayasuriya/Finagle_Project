@@ -22,7 +22,31 @@
 </head>
 
 <body>
+    <style>
+        /* Add these styles to your existing CSS file or inline in HTML */
 
+        .message {
+            color: green;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+
+        }
+    </style>
+    <script>
+        function hideSuccessMessage() {
+            var successMessage = document.querySelector('.message');
+            if (successMessage) {
+                setTimeout(function() {
+                    successMessage.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        window.onload = function() {
+            hideSuccessMessage();
+        };
+    </script>
     <div class="login_container">
         <div class="image_container">
             <img src="https://i.pinimg.com/564x/e5/e2/3a/e5e23aa6ee2fbcfac5e5e183183a2dde.jpg" width="420px" height="100%" alt="Login Image">
@@ -38,6 +62,9 @@
                     </div>
                     <button name="send" id="send">Recover Password</button>
                 </form>
+                <?php if (!empty($message)) : ?>
+                    <div class="message"><?= $message ?></div>
+                <?php endif; ?>
             </section>
         </div>
     </div>

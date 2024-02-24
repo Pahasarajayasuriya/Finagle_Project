@@ -12,38 +12,47 @@ class ForgotPassword extends Controller
 {
     public function index()
     {
+        $message = '';
+
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $email = $_POST["email"];
             $forgotPasswordModel = new ForgotPasswordModel();
             $result = $forgotPasswordModel->generateResetToken($email);
-                    $phpmailer = new PHPMailer(true);
-                    try {
-                        // Server settings
-                        $phpmailer->isSMTP();
-                        $phpmailer->Host = "smtp.gmail.com";
-                        $phpmailer->SMTPSecure = 'ssl';
-                        $phpmailer->SMTPAuth = true;
-                        $phpmailer->Port = 465;
-                        $phpmailer->Username = '2021cs087@stu.ucsc.cmb.ac.lk';
-                        $phpmailer->Password = 'soevefjawduuahin';
-                        $phpmailer->isHtml(true);
+            $phpmailer = new PHPMailer(true);
+            try {
+                // Server settings
+                $phpmailer->isSMTP();
+                $phpmailer->Host = "smtp.gmail.com";
+                $phpmailer->SMTPSecure = 'ssl';
+                $phpmailer->SMTPAuth = true;
+                $phpmailer->Port = 465;
+                $phpmailer->Username = '2021cs087@stu.ucsc.cmb.ac.lk';
+                $phpmailer->Password = 'soevefjawduuahin';
+                $phpmailer->isHtml(true);
 
-
-                        // Email content
-                        $phpmailer->setFrom('2021cs087@stu.ucsc.cmb.ac.lk', 'Finagle Lanka');
-                        $phpmailer->addAddress($email);
-                        $phpmailer->Subject = 'Reset Password';
-                        $phpmailer->Body = <<<END
+                // Email content
+                $phpmailer->setFrom('2021cs087@stu.ucsc.cmb.ac.lk', 'Finagle Lanka');
+                $phpmailer->addAddress($email);
+                $phpmailer->Subject = 'Reset Password';
+                $phpmailer->Body = <<<END
     Click <a href="http://example.com/reset-password.php?token=$result">here</a> to reset your password.
 END;
-                        $phpmailer->send();
-                    } catch (Exception $e) {
-                        echo "Message could not be sent. Mailer Error: {$phpmailer->ErrorInfo}";
-                    }
+                $phpmailer->send();
+
+                $message = "Please check your email.";
+            } catch (Exception $e) {
+                // Handle errors
+                $message = "Message could not be sent. Please try again later.";
+            }
         }
 
+        if (!empty($_GET['message'])) {
+            $message = urldecode($_GET['message']);
+        }
 
         $data['title'] = "Forgot password";
+        $data['message'] = $message;
         $this->view('forgotpassword', $data);
     }
 }
+?>
