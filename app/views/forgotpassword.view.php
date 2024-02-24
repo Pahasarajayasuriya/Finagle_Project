@@ -29,14 +29,14 @@
         </div>
         <div class="form-container">
             <section>
-                <form method="post" >
+                <form method="post">
                     <h1>Forgot Password</h1>
                     <div class="inputbox">
                         <i class="fas fa-lock"></i>
                         <input type="hidden" name="type" value="send">
                         <input type="email" name="email" id="email" placeholder="Email" required>
                     </div>
-                    <button name="ver">Recover Password</button>
+                    <button name="send" id="send">Recover Password</button>
                 </form>
             </section>
         </div>
