@@ -14,6 +14,8 @@ class User extends Model
         'address',
         'branch',
         'joined_date',
+        'reset_token_hash',
+        'reset_token_expires_at'
     ];
     public function validate($data)
     {
