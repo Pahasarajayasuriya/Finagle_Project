@@ -18,6 +18,7 @@ class ForgotPassword extends Controller
             $email = $_POST["email"];
             $forgotPasswordModel = new ForgotPasswordModel();
             $result = $forgotPasswordModel->generateResetToken($email);
+            var_dump($result);
             $phpmailer = new PHPMailer(true);
             try {
                 // Server settings
@@ -34,14 +35,12 @@ class ForgotPassword extends Controller
                 $phpmailer->setFrom('2021cs087@stu.ucsc.cmb.ac.lk', 'Finagle Lanka');
                 $phpmailer->addAddress($email);
                 $phpmailer->Subject = 'Reset Password';
-                $phpmailer->Body = <<<END
-    Click <a href="http://example.com/reset-password.php?token=$result">here</a> to reset your password.
-END;
+                $resetLink = ROOT . '/send_password?token=' . $result;
+                $phpmailer->Body = "Click <a href=\"$resetLink\">here</a> to reset your password.";
                 $phpmailer->send();
 
                 $message = "Please check your email.";
             } catch (Exception $e) {
-                // Handle errors
                 $message = "Message could not be sent. Please try again later.";
             }
         }
@@ -55,4 +54,3 @@ END;
         $this->view('forgotpassword', $data);
     }
 }
-?>

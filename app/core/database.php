@@ -9,6 +9,11 @@ class Database
         return new PDO($str, DBUSER, DBPASS);
     }
 
+    public function prepare($query)
+    {
+        return $this->connect()->prepare($query);
+    }
+
     public function query($query, $data = [], $type = 'object')
     {
         $con = $this->connect();

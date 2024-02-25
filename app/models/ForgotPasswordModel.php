@@ -20,7 +20,15 @@ class ForgotPasswordModel extends Model
             'email' => $email
         ];
 
-        return $db->query($query, $data);
+        try {
+            $db->query($query, $data);
+
+            return $token;
+        } catch (Exception $e) {
+           
+            echo "Error: " . $e->getMessage();
+            return false; 
+        }
     }
 }
-?>
+
