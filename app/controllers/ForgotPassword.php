@@ -18,7 +18,7 @@ class ForgotPassword extends Controller
             $email = $_POST["email"];
             $forgotPasswordModel = new ForgotPasswordModel();
             $result = $forgotPasswordModel->generateResetToken($email);
-            var_dump($result);
+            // var_dump($result);
             $phpmailer = new PHPMailer(true);
             try {
                 // Server settings
