@@ -7,27 +7,16 @@ class Emp_dashboard extends Controller
         $id = $id ?? Auth::getId();
 
         $order = new Orders();
-
         $data = $this->getOrderdata($order);
-
         // show($data);
         $data['order'] = $data;
 
 
 
-        $online = new Checkout();
-        $online_delivery = $this->getOnlineDeliveries($online);
-        $online_delivery['$online'] = $online_delivery;
-
-        $pickup = new Checkout();
-        $pickups= $this->getPickupOrders($pickup);
-        $pickups['$online'] = $pickups;
-
-
-
-
 
         $this->view('employee/employee_dashboard', $data);
+     
+
     }
 
     // public function profile($id = null)
@@ -52,17 +41,5 @@ class Emp_dashboard extends Controller
         return $data;
     }
 
-    private function getOnlineDeliveries($analyse)
-    {
-        $data = $analyse-> count();
-
-        return $data;
-    }
-
-    private function getPickupOrders($analyse)
-    {
-        $data = $analyse-> count();
-
-        return $data;
-    }
+   
 }

@@ -1,5 +1,5 @@
 <?php
-                        $role = "Employee";
+                        $role = "Deliverer";
                         if ($role == "User") {
                             echo '<li>
                                <a href="'. ROOT .'/">
@@ -200,14 +200,14 @@
                         } elseif ($role == "Deliverer") {
                           echo '
                           <li>
-                              <a href="profile.php">
+                              <a href="Deliverer_profile">
                                 <i class="bx bx-user"></i>
                                 <span class="links_name">Profile</span>
                               </a>
                               <span class="tooltip">Profile</span>
                             </li>
                             <li>
-                            <a href="assign.php">
+                            <a href="Deliverer_assign">
                             <i class="bx bx-clipboard"></i>
                               <span class="links_name">Assign Orders</span>
                             </a>

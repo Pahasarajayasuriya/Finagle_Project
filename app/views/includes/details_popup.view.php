@@ -20,34 +20,31 @@
            
         </div> -->
         <i class='bx bx-cart bx-fade-right' style='color:#fd0303' ></i>
-        <h2>Order ID: 12345</h2>
-        <div class="delivery-loc"><i class="fas fa-map-marker-alt"></i> No 34, Flowers road, Colombo 7.</div>
+        <h2 id="order-id">Order ID: 12345</h2>
+        <div class="delivery-loc" ><i class="fas fa-map-marker-alt"></i> No 34, Flowers road, Colombo 7.</div>
         <button class="pay-status">Paid</button>
             <br><hr>
         
 
-    <div class="details">
-        <div class="product-item">
-           <div class="product-name">Chocolate Cake</div>
-           <div class="product-qty">2</div>
-           <div class="product-price">Rs.2500.00</div>
-        </div>
+    <div class="details" id="details">
 
-        <div class="product-item">
-           <div class="product-name">Burger Bun</div>
-           <div class="product-qty">5</div>
-           <div class="product-price">Rs.500.00</div>
-        </div>
+        <!-- <div class="product-item">
+           <div class="product-name" id="product-name">Chocolate Cake</div>
+           <div class="product-qty" id="product-qty">2</div>
+           <div class="product-price" id="product-price">Rs.2500.00</div>
+        </div> -->
+
+      
 
         <hr>
         <div class="product-summery">
-            <div class="total-amount">Total Amount : Rs.5700</div>
-        </div>
-
+          <div class="total-amount" >Total Amount : Rs.5700</div>
         </div>
         
-        <button class="button" id="confirmDetails" onclick="hidePopup('viewDetails')">OK</button>
-        <button class="button" id="cancelDelete" onclick="hidePopup('viewDetails')">Cancel</button>
+      </div>
+      
+      <button class="button" id="confirmDetails" onclick="hidePopup('viewDetails')">OK</button>
+      <button class="button" id="cancelDelete" onclick="hidePopup('viewDetails')">Cancel</button>
 
 
 

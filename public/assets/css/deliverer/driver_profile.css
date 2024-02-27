@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  background-color: white;
+}
+
+
+
+.pro_card {
+  
+  width: 700px;
+  height: 500px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 3%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-left: 25%;
+  margin-top: 2%;
+
+ 
+}
+
+
+.pro_head {
+  
+  text-align: left;
+  font-size: 12px;
+  color: red;
+  letter-spacing: 0.05rem;
+  margin: 2rem 0 1rem;
+  font-weight: 600;
+  font-family: pop;
+  margin-top: -15px;
+
+}
+
+.pro_head_1 {
+  font-weight: 600;
+  color: black;
+  white-space: nowrap;
+}
+
+.pro_head_1 span {
+  color: #d72323;
+}
+
+.profile-picture {
+  position: relative;
+  width: 150px; 
+  height: 150px; 
+  justify-content: center;
+  align-items: center;
+  margin-left: 40%;
+}
+
+.outer-circle {
+  width: 140px; 
+  height: 140px; 
+  border-radius: 50%;
+  border: 2px solid rgb(159, 159, 159);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+}
+
+.inner-circle {
+  width: 130px; /* Adjust size as needed */
+  height: 130px; /* Adjust size as needed */
+  border-radius: 50%;
+  background-color: rgb(159, 159, 159);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  
+}
+
+.inner-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.inner-circle i {
+  color:rgb(159, 159, 159);
+  font-size: 20px;
+  position: absolute;
+  bottom: 7px;
+  right: 25px;
+  cursor: pointer;
+}
+
+.driver-info {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.driver-name {
+  font-weight: bold;
+}
+
+.joined-date {
+  color: #6c757d; /* Optional: Adjust the color as needed */
+}

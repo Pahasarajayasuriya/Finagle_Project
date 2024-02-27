@@ -4,6 +4,7 @@ $role = "Employee";
 // require_once '../../Components/NavBar/NavBar.php';
 // require_once '../../Components/NavBar/footer.php';
 
+// include 'includes/details_popup.view.php';
 
 
 $this->view('includes/header', $data);
@@ -13,6 +14,7 @@ $this->view('includes/footer', $data);
 $this->view('includes/cancel_popup', $data);
 $this->view('includes/details_popup', $data);
 $this->view('includes/assign_popup', $data);
+
 ?>
 
 <!DOCTYPE html>
@@ -60,15 +62,15 @@ $this->view('includes/assign_popup', $data);
                 </div>
 
                 <div class="all-button">
-                    </div>
-                    
-                    <div class="filter-buttons">
+                </div>
+
+                <div class="filter-buttons">
                     <!-- <button >All</button> -->
-                      
-                      <a href="<?=ROOT?>/Emp_progress">All</a>
-                   
-                     <button onclick='filterOrders("d",<?php echo json_encode($data) ?>)'>Deliveries</button>
-                     <button onclick='filterOrders("p",<?php echo json_encode($data) ?>)'>Pickups</button>
+
+                    <a href="<?= ROOT ?>/Emp_progress">All</a>
+
+                    <button onclick='filterOrders("d",<?php echo json_encode($data) ?>)'>Deliveries</button>
+                    <button onclick='filterOrders("p",<?php echo json_encode($data) ?>)'>Pickups</button>
                 </div>
 
 
@@ -207,16 +209,17 @@ $this->view('includes/assign_popup', $data);
 
 
     <script>
-        function showPopup(popupId,id=0) {
-            console.log(id);
+        function showPopup(popupId, id = 0) {
+
+            // console.log(id);
             var popup = document.getElementById(popupId);
             if (popup) {
                 popup.style.display = "block";
 
             }
-             data = {
-                'id':id
-             }
+            data = {
+                'order_id': id
+            }
 
             $.ajax({
                 type: "POST",
@@ -224,7 +227,16 @@ $this->view('includes/assign_popup', $data);
                 data: data,
                 cache: false,
                 success: function(res) {
-                    console.log(res);
+                    var detail = JSON.parse(res);
+                    // console.log(detail);
+
+
+                    detail.forEach(element => {
+
+                        console.log(element)
+                        createProductItem(element.user_name,element.quantity,element.price)
+                    });
+
                 },
                 error: function(xhr, status, error) {
                     // return xhr;
@@ -232,6 +244,39 @@ $this->view('includes/assign_popup', $data);
             });
 
         }
+
+    function createProductItem(name, qty, price) {
+    // Create the product-item div
+    var productItemDiv = document.createElement("div");
+    productItemDiv.className = "product-item";
+
+    // Create the product-name div
+    var productNameDiv = document.createElement("div");
+    productNameDiv.className = "product-name";
+    productNameDiv.textContent = name;
+
+    // Create the product-qty div
+    var productQtyDiv = document.createElement("div");
+    productQtyDiv.className = "product-qty";
+    productQtyDiv.textContent = qty;
+
+    // Create the product-price div
+    var productPriceDiv = document.createElement("div");
+    productPriceDiv.className = "product-price";
+    productPriceDiv.textContent = price;
+
+    // Append product-name, product-qty, and product-price divs to product-item div
+    productItemDiv.appendChild(productNameDiv);
+    productItemDiv.appendChild(productQtyDiv);
+    productItemDiv.appendChild(productPriceDiv);
+
+
+    document.getElementById("details").appendChild(productItemDiv)
+
+
+    // return productItemDiv;
+}
+
 
         function hidePopup(popupId) {
             var popup = document.getElementById(popupId);
@@ -359,9 +404,6 @@ $this->view('includes/assign_popup', $data);
 
             return itemContainer;
         }
-
-        
-      
     </script>
 </body>
 

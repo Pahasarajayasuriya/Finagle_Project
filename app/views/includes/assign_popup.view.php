@@ -34,8 +34,6 @@
         show($data);
         if (isset($data['driver'])) {
                foreach ($data['driver'] as $driver) {
-       
-
         ?>
 
         <ul class="options">

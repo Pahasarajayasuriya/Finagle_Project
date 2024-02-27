@@ -45,13 +45,51 @@ class Model extends Database
         return $this->query($quary);
     }
 
-    public function count()
-    {
-        $query = "SELECT COUNT(delivery_or_pickup) FROM $this->table WHERE delivery_or_pickup = 'delivery';";
-        
-        return $this->query($query);
 
+    // public function count_online()
+    // {
+    //     $query = "SELECT COUNT(delivery_or_pickup) FROM $this->table WHERE delivery_or_pickup = 'delivery';";
+
+    //     $query = "SELECT COUNT(*)  FROM $this->table WHERE delivery_or_pickup = 'delivery'";
+    //     return $this->query($query);
+    // }
+
+    // public function count_pickup()
+    // {
+    //     $query = "SELECT COUNT(delivery_or_pickup) FROM $this->table WHERE delivery_or_pickup = 'pickup';";
+
+       
+    //     return $this->query($query);
+    // }
+
+    public function count_online()
+{
+    $query = "SELECT COUNT(*) AS online_delivery_count FROM $this->table WHERE delivery_or_pickup = 'delivery'";
+    $result = $this->query($query);
+
+    if ($result) {
+        return $result[0]['online_delivery_count'];
+    } else {
+        // Handle errors
+       // $this->errors[] = "Error executing query: " . $query;
+        return false;
     }
+}
+
+public function count_pickup()
+{
+    $query = "SELECT COUNT(*) AS pickup_count FROM $this->table WHERE delivery_or_pickup = 'pickup'";
+    $result = $this->query($query);
+
+    if ($result) {
+        return $result[0]['pickup_count'];
+    } else {
+        // Handle errors
+       // $this->errors[] = "Error executing query: " . $query;
+        return false;
+    }
+}
+
 
     public function where($data)
     {
@@ -122,5 +160,33 @@ class Model extends Database
     {
         $query = "SELECT * FROM {$this->table}";
         return $this->query($query);
+    }
+
+    public function where_withInner($data, $reference_table, $refe_column1 = 'id', $refe_column2 = 'id')
+    {
+
+        $keys = array_keys($data);
+
+
+        $query = "SELECT * FROM $this->table JOIN $reference_table 
+                            ON $this->table.$refe_column1 = $reference_table.$refe_column2";
+
+        $query .= " WHERE ";
+        
+        foreach ($keys as $key) {
+            $query .= $this->table . "." . $key . "=:" . $key . " && ";
+        }
+        $query = trim($query, "&& ");
+        
+        $query .= " ORDER BY $refe_column1 $this->order_type LIMIT $this->limit OFFSET $this->offset";
+
+        // echo $query;
+
+        $res = $this->query($query, $data);
+        if (is_array($res)) {
+            return $res;
+        }
+
+        return false;
     }
 }
