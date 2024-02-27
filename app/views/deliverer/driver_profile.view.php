@@ -32,19 +32,35 @@ $this->view('includes/footer', $data);
               </div>
 
               <div class="profile-picture">
-                <div class="outer-circle">
+                <!-- <div class="outer-circle"> -->
                     <div class="inner-circle">
                         
                         <img src="https://i.pinimg.com/474x/39/af/8d/39af8d65e8612ee6d12b94ea81ee5e62.jpg" alt="Profile Picture"> 
                         <i class="fas fa-camera"></i> 
                     </div>
-                </div>
+                <!-- </div> -->
 
                 <div class="driver-info">
                   <p class="driver-name">John Doe</p>
                   <p class="joined-date">Joined on January 1, 2022</p>
                 </div>
+
                
+            </div>
+
+            <div class="stats-boxes">
+                <!-- Orders delivered box -->
+                <div class="stats-box">
+                    <i class="fas fa-truck"></i>
+                    <p class="stats-number">125</p>
+                    <p class="stats-text">Orders delivered</p>
+                </div>
+                <!-- Total earnings box -->
+                <div class="stats-box">
+                    <i class="fas fa-money-bill"></i>
+                    <p class="stats-number">$1500</p>
+                    <p class="stats-text">Total Earnings</p>
+                </div>
             </div>
            
                

@@ -27,13 +27,16 @@ body {
   margin-top: 2%;
 
  
+  border: 2px solid #d72323; 
+
+ 
 }
 
 
 .pro_head {
   
   text-align: left;
-  font-size: 12px;
+  font-size: 14px;
   color: red;
   letter-spacing: 0.05rem;
   margin: 2rem 0 1rem;
@@ -59,7 +62,7 @@ body {
   height: 150px; 
   justify-content: center;
   align-items: center;
-  margin-left: 40%;
+  margin-left: 38%;
 }
 
 .outer-circle {
@@ -84,6 +87,9 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
+
+ 
+  box-shadow: 0 0.5px 4px 6px rgba(0, 0, 0, 0.1);
   
 }
 
@@ -98,10 +104,23 @@ body {
   color:rgb(159, 159, 159);
   font-size: 20px;
   position: absolute;
-  bottom: 7px;
-  right: 25px;
+  bottom: 5px;
+  right: 10px;
   cursor: pointer;
+
+  width: 30px; /* Adjust size of the small circle */
+  height: 30px; /* Adjust size of the small circle */
+  border-radius: 50%; /* Make it a circle */
+  background-color: black; /* Set background color */
+  color:white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 2px solid rgb(159, 159, 159);
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
 }
+
 
 .driver-info {
   text-align: center;
@@ -110,8 +129,56 @@ body {
 
 .driver-name {
   font-weight: bold;
+  font-size: 24px;
 }
 
 .joined-date {
+  color: #6c757d;
+  font-size: 13px;
+}
+
+.stats-boxes {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 100px;
+}
+
+.stats-box {
+  text-align: center;
+  padding: 10px;
+  width: 200px;
+  height: 150px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stats-box i {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.fas.fa-truck{
+  color: rgb(254, 117, 26);
+
+}
+
+.fas.fa-money-bill{
+  color: green;
+
+}
+.stats-number {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 10px;
+
+}
+
+.stats-text {
+  margin-top: 10px;
   color: #6c757d; /* Optional: Adjust the color as needed */
+}
+
+.stats-box:hover {
+  transform: scale(1.1); 
+  
 }
