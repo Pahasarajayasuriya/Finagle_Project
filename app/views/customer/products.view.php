@@ -99,27 +99,6 @@ $this->view('includes/footer', $data);
 
                 <!--# cart-body #-->
                 <div class="cart-content">
-                    <!-- <div class="cart-item">
-
-            <img
-              class="cart-item-img"
-              src="<?= ROOT ?>/assets/images/burger-bun.jpg"
-            />
-
-            <div class="cart-item-desc">
-              <h4>product title</h4>
-              <h5> 120</h5>
-            </div>
-
-            <div class="cart-item-controller">
-              <i class="ri-arrow-up-s-line"></i>
-              <p>1</p>
-              <i class="ri-arrow-down-s-line"></i>
-            </div>
-
-            <i class="ri-delete-bin-line"></i>
-            
-          </div> -->
                 </div>
                 <div class="cart-footer">
                     <div class="">
