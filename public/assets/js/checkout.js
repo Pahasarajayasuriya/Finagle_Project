@@ -141,19 +141,22 @@ var totalProductPrice = 0;
 
 // Loop through each item in the cart
 cartItems.forEach(function(item) {
-    // Calculate total price for the current item
-    var totalPriceForItem = item.price * item.quantity;
+  // Calculate total price for the current item
+  var totalPriceForItem = item.price * item.quantity;
 
-    // Add the total price for the current item to the overall total product price
-    totalProductPrice += totalPriceForItem;
+  // Add the total price for the current item to the overall total product price
+  totalProductPrice += totalPriceForItem;
 
-    // Create a list item to display the item information
-    var listItem = document.createElement('li');
-    listItem.textContent = `Product Name: ${item.user_name}, Quantity: ${item.quantity}, Price: ${totalPriceForItem.toFixed(2)}`;
+  // Create a list item to display the item information
+  var listItem = document.createElement('li');
+  
+  // Set the inner HTML of the list item to include the image and other item information
+  listItem.innerHTML = `<img src="${item.image}" alt="${item.user_name}" class="product-image"/> Product Name: ${item.user_name}, Quantity: ${item.quantity}, Price: ${totalPriceForItem.toFixed(2)}`;
 
-    // Append the list item to the cart summary list
-    cartSummaryList.appendChild(listItem);
+  // Append the list item to the cart summary list
+  cartSummaryList.appendChild(listItem);
 });
+
 
 // Display the total product price
 totalProductPriceContainer.textContent = `Total Product Price: LKR ${totalProductPrice.toFixed(2)}`;

@@ -292,3 +292,38 @@
   
     color: #d72323;
   }
+
+  .summary-container {
+    margin-top: 20px;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .summary-container h3 {
+    color: black;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .cart-summary-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .cart-summary-list li {
+    margin-bottom: 10px;
+  }
+  
+  .total-product-price {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+
+  .product-image {
+    max-width: 100px; /* Adjust the maximum width as needed */
+    height: auto; /* Maintain aspect ratio */
+}

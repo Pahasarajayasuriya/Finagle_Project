@@ -98,7 +98,7 @@ $this->view('includes/footer', $data);
                 <h3 class="cart-title">Your Cart</h3>
 
                 <!--# cart-body #-->
-                <div class="cart-content">
+                <div class="cart-content" >
                 </div>
                 <div class="cart-footer">
                     <div class="">
