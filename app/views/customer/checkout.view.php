@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/checkout.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/boxicons/2.1.0/css/boxicons.min.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
     <title><?= APPNAME ?>- Checkout</title>
 
 </head>
@@ -78,6 +81,7 @@
 
                             <input class="check_input" type="date">
                         </div>
+
                         <div class="check_inputBox">
                             <label class="check_name" for="order_timr">Time:</label>
                             <input class="check_input" type="time">
@@ -94,14 +98,14 @@
                         </label>
                     </div>
 
-                    <div class="check_inline">
-                        <label class="check_name" for="order_note">Note:</label><br><br>
+                    <div class="check_inline" id="note">
+                        <label class="check_name" id="order_note">Note:</label><br><br>
 
                         <textarea class="check_input" id="note" name="note"></textarea>
                     </div>
 
                 </div>
-                <div class="check_inline">
+                <div class="check_inline" id="payment">
                     <label class="check_name" for="check_payment">Payment Method :</label>
                     <label class="check_radio_1">
                         <input type="radio" name="payment" value="card" class="payment-method-radio"> Credit or Debit card
@@ -162,13 +166,17 @@
 
 
         </form>
-        <button class="check_back-btn" id="back-button">Back</button>
 
         <div class="summary-container">
-            <h3>Cart Summary</h3>
+            <h3>CART SUMMARY</h3>
             <ul class="cart-summary-list"></ul>
             <div class="total-product-price"></div>
         </div>
+
+        <div class="back-icon" id="back-button">
+             <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </div>
+
 
 
         <script>
