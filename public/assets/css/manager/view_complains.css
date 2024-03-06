@@ -1,0 +1,248 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+
+.branch_head {
+  align-items: center;
+  text-align: center;
+  font-size: 25px;
+  color: red;
+  letter-spacing: 0.08rem;
+  margin: 2rem 0 1rem;
+  font-weight: 600;
+
+}
+
+.branch_head_1 {
+
+  font-weight: 800;
+  color: black;
+  white-space: nowrap;
+  font-size: 25px;
+
+}
+
+.branch_head_1 span {
+
+  color: #d72323;
+}
+
+
+h2 {
+  margin-top: 0;
+  color : white
+}
+
+.back-button{
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bolder;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1;
+  box-shadow: 0 0 10px rgb(62, 54, 54);
+}
+
+.back-button:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+.response-button{
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bolder;
+  position: relative;
+  box-shadow: 0 0 10px rgb(62, 54, 54);
+  
+}
+
+.response-button:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+form {
+  max-width: 750px;
+  width: 100%;
+  padding: 10px;
+  margin-top: 0px;
+}
+form .form-input {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  margin-left: 400px;
+  margin-top: 0px;
+
+}
+
+form .form-input input {
+  flex-grow: 1;
+  padding: 0 16px;
+  height: 100%;
+  border: none;
+  background: rgb(255, 255, 255);
+  outline: none;
+  border-radius: 36px 0 0 36px;
+  box-shadow: 0px 0px 10px 0px rgb(187, 184, 184);
+
+}
+
+form .form-input button {
+  width: 36px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
+  color: white;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  border-radius: 0 36px 36px 0;
+  cursor: pointer;
+  box-shadow: 0px 0px 5px 2px rgb(187, 184, 184);
+  transition: 0.3s ease;
+}
+
+form .form-input button:hover {
+  /* background: rgb(236, 236, 236); */
+  font-size: 20px;
+  /* color: black; */
+}
+
+.order-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 5px;
+  margin-top: 20px
+
+}
+
+.history-container {
+  flex: 0 0 25%; /* Adjust the width for each container */
+  /* margin: 10px;  */
+  background: white;
+  padding: 0px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px 0px rgb(187, 184, 184);
+  transition: 0.5s ease-in-out;
+  color: #000000;
+  text-align: center;
+  width: 300px;
+  height: 300px; 
+  gap: 10px;
+  grid-template-columns: 5px;
+  border-right: 10px solid rgb(233, 229, 229);
+  margin-left: 50px;
+  margin-right: 30px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.history-container:hover {
+  box-shadow: 0 5px 10px 5px rgb(161, 161, 161);
+  border-right: 10px solid black;
+}
+
+
+.order {
+  text-align: center;
+
+}
+
+.order-details{
+  text-align: left;
+  margin-left: 10px;
+}
+
+.topic{
+  color: rgb(194, 194, 194);
+}
+.status{
+  color: green;
+}
+
+.order-id{
+  display: inline-block;
+  background-color: black;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+
+
+.complaint-container {
+  flex: 0 0 25%; /* Adjust the width for each container */
+  /* margin: 10px;  */
+  background: white;
+  padding: 0px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px 0px rgb(187, 184, 184);
+  transition: 0.5s ease-in-out;
+  color: #000000;
+  text-align: center;
+  width: 300px;
+  height: 300px; 
+  gap: 10px;
+  grid-template-columns: 5px;
+  border-right: 10px solid rgb(233, 229, 229);
+  margin-left: 50px;
+  margin-right: 30px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.complaint-container:hover {
+  box-shadow: 0 5px 10px 5px rgb(161, 161, 161);
+  border-right: 10px solid black;
+}
+
+
+.complaints {
+  text-align: center;
+
+}
+
+.complaint-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 5px;
+  margin-top: 20px
+
+}
+
+.order-details{
+  text-align: left;
+  margin-left: 10px;
+}
+
+.sidebar.open ~ .home-section {
+  left: 70px;
+  width: calc(100% - 150);
+}
+.home-section {
+  position: relative;
+  transition: all 0.5s ease;
+  min-height: 100vh;
+  left: 8px;
+  width: calc(100% - 58px);
+  z-index: 2;
+}
+
