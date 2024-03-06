@@ -58,11 +58,11 @@ body {
 
 .profile-picture {
   position: relative;
-  width: 150px; 
-  height: 150px; 
+  width: 200px; 
+  height: 200px; 
   justify-content: center;
   align-items: center;
-  margin-left: 38%;
+  margin-left: 50%;
 }
 
 .outer-circle {
@@ -87,9 +87,8 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
-
- 
   box-shadow: 0 0.5px 4px 6px rgba(0, 0, 0, 0.1);
+  margin-left: -35%;
   
 }
 
@@ -107,7 +106,6 @@ body {
   bottom: 5px;
   right: 10px;
   cursor: pointer;
-
   width: 30px; /* Adjust size of the small circle */
   height: 30px; /* Adjust size of the small circle */
   border-radius: 50%; /* Make it a circle */
@@ -116,7 +114,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
   border: 2px solid rgb(159, 159, 159);
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
 }
@@ -125,6 +122,8 @@ body {
 .driver-info {
   text-align: center;
   margin-top: 20px;
+  width: 500px;
+  margin-left: -245px;
 }
 
 .driver-name {
@@ -140,7 +139,7 @@ body {
 .stats-boxes {
   display: flex;
   justify-content: space-around;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .stats-box {

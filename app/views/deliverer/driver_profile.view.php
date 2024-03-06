@@ -18,55 +18,70 @@ $this->view('includes/footer', $data);
     <title>Profile</title>
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/deliverer/driver_profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+
 </head>
 
 <body>
     <div class="home-section">
-      
-            
-            <div class="pro_card">
 
-              <div class="pro_head">
-               <p class="pro_head_1">YOUR  <span> PROFILE</span></p>
-              </div>
 
-              <div class="profile-picture">
-                <!-- <div class="outer-circle"> -->
-                    <div class="inner-circle">
-                        
-                        <img src="https://i.pinimg.com/474x/39/af/8d/39af8d65e8612ee6d12b94ea81ee5e62.jpg" alt="Profile Picture"> 
-                        <i class="fas fa-camera"></i> 
-                    </div>
-                <!-- </div> -->
+        <div class="pro_card">
 
-                <div class="driver-info">
-                  <p class="driver-name">John Doe</p>
-                  <p class="joined-date">Joined on January 1, 2022</p>
-                </div>
-
-               
+            <div class="pro_head">
+                <p class="pro_head_1">YOUR <span> PROFILE</span></p>
             </div>
+
+            <?php
+            if (isset($data)) {
+                foreach ($data as $val) {
+                    // show($val);
+
+            ?>
+
+                    <div class="profile-picture">
+                        <!-- <div class="outer-circle"> -->
+                        <div class="inner-circle">
+
+                        
+                            <img src="<?= ROOT ?>/assets/images/drivers/<?= $val->image ?>"> 
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <!-- </div> -->
+
+                        <div class="driver-info">
+                            <p class="driver-name"><?= $val->name ?></p>
+                            <p class="joined-date">Joined Date : <?= $val->joined_date ?></p>
+                        </div>
+
+
+                    </div>
+            
 
             <div class="stats-boxes">
                 <!-- Orders delivered box -->
                 <div class="stats-box">
                     <i class="fas fa-truck"></i>
-                    <p class="stats-number">125</p>
+                    <p class="stats-number"><?= $val->delivered_orders ?></p>
                     <p class="stats-text">Orders delivered</p>
                 </div>
                 <!-- Total earnings box -->
                 <div class="stats-box">
                     <i class="fas fa-money-bill"></i>
-                    <p class="stats-number">$1500</p>
+                    <p class="stats-number">Rs.<?= $val->total_earnings ?></p>
                     <p class="stats-text">Total Earnings</p>
                 </div>
             </div>
-           
-               
-              
-            </div>
-        
+
+            <?php
+
+                }
+            }
+            ?>
+
+
+
+        </div>
+
     </div>
 </body>
 
