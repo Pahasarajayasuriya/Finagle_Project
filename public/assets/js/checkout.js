@@ -119,14 +119,41 @@ function initMap() {
     document.querySelector('input[name="latitude"]').value = lat;
     document.querySelector('input[name="longitude"]').value = lng;
   });
-  // closeViewBtn = document.getElementById("closeViewBtn");
-  // closeViewBtn.addEventListener('click', function () {
-  //     if(marker){
-  //         marker.setMap(null);
-  //     }
-  // });
 }
-// document.addEventListener("DOMContentLoaded", function () {
-//   initMap();
-// });
 initMap();
+
+ // Summary of the cart items
+var cartItems = localStorage.getItem("cart");
+cartItems = cartItems ? JSON.parse(cartItems) : [];
+console.log(cartItems);
+
+
+// Get reference to the cart summary list and total product price container
+var cartSummaryList = document.querySelector('.cart-summary-list');
+var totalProductPriceContainer = document.querySelector('.total-product-price');
+
+// Clear previous content
+cartSummaryList.innerHTML = '';
+totalProductPriceContainer.innerHTML = '';
+
+// Initialize total product price
+var totalProductPrice = 0;
+
+// Loop through each item in the cart
+cartItems.forEach(function(item) {
+    // Calculate total price for the current item
+    var totalPriceForItem = item.price * item.quantity;
+
+    // Add the total price for the current item to the overall total product price
+    totalProductPrice += totalPriceForItem;
+
+    // Create a list item to display the item information
+    var listItem = document.createElement('li');
+    listItem.textContent = `Product Name: ${item.user_name}, Quantity: ${item.quantity}, Price: ${totalPriceForItem.toFixed(2)}`;
+
+    // Append the list item to the cart summary list
+    cartSummaryList.appendChild(listItem);
+});
+
+// Display the total product price
+totalProductPriceContainer.textContent = `Total Product Price: LKR ${totalProductPrice.toFixed(2)}`;

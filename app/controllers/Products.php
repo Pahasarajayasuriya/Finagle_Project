@@ -41,6 +41,17 @@ class Products extends Controller
         $productModel = new ProductModel();
         $data['products'] = $productModel->all();
 
+        if (isset($_POST['data'])){
+            foreach ($_POST['data'] as $key => $value){
+                $data[] = array(
+                    $key => $value
+                );
+            }
+            $dataForm = call_user_func_array('array_merge', $data);
+            print_r($dataForm);
+        //    print_r($data);
+        }
+
         // var_dump($data['products']);
 
         $data['title'] = "Products";

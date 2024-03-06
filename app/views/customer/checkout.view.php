@@ -149,6 +149,8 @@
                     </div>
                 </div>
             </div>
+
+
             <button class="check_submit-btn" id="p_checkout-button">Proceed to Checkout</button>
 
             <script>
@@ -161,6 +163,13 @@
 
         </form>
         <button class="check_back-btn" id="back-button">Back</button>
+
+        <div class="summary-container">
+            <h3>Cart Summary</h3>
+            <ul class="cart-summary-list"></ul>
+            <div class="total-product-price"></div>
+        </div>
+
 
         <script>
             document.getElementById("back-button").addEventListener("click", function() {

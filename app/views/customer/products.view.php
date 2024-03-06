@@ -143,3 +143,4 @@ $this->view('includes/footer', $data);
 </body>
 
 </html>
+<?php
