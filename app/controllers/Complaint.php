@@ -5,12 +5,11 @@ class Complaint extends Controller
     public function index()
     {
         $data['errors'] = [];
-      
+
         $complaintModel = new ComplaintModel();
         // Check if the form is submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $validatedData = $complaintModel->validate($_POST);
-
             if ($validatedData) {
                 $complaintModel->insert($validatedData);
 

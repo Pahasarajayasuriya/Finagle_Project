@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/checkout.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/boxicons/2.1.0/css/boxicons.min.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
     <title><?= APPNAME ?>- Checkout</title>
 
 </head>
@@ -16,7 +19,7 @@
     <input name="latitude" type="hidden" required />
     <input name="longitude" type="hidden" required />
     <div class="check_container">
-        <form action="">
+        <form method="POST">
             <div class="check_row">
                 <div class="check_col">
                     <div class="recipe_head">
@@ -27,27 +30,34 @@
 
 
                     <div class="check_inline">
-                        <label class="check_name" for="check_name">Name</label>
-                        <input class="check_input" value="<?= set_value('name') ?>" type="text" id="check_name" name="check_name">
+                        <label class="check_name" for="check_name" name='name'>Name</label>
+                        <input class="check_input" name='name' value="<?= set_value('name') ?>" type="text" id="check_name" name="check_name">
+                        <?php if (!empty($errors['name'])) : ?>
+                            <div class="invalid"><?= $errors['name'] ?></div>
+                        <?php endif; ?>
                     </div>
                     <div class="check_inline">
-                        <label class="check_name" for="check_comemail">E-mail</label>
-                        <input class="check_input" value="<?= set_value('email') ?>" type="email" id="check_comemail" name="check_comemail">
+                        <label class="check_name" for="check_comemail" name='email'>E-mail</label>
+                        <input class="check_input" name='email' value="<?= set_value('email') ?>" type="email" id="check_comemail" name="check_comemail">
+                        <?php if (!empty($errors['email'])) : ?>
+                            <div class="invalid"><?= $errors['email'] ?></div>
+                        <?php endif; ?>
                     </div>
                     <div class="check_inline">
-                        <label class="check_name" for="check_phoneno">Phone Number</label>
-                        <input class="check_input" value="<?= set_value('teleno') ?>" type="text" id="check_phoneno" name="check_phoneno">
+                        <label class="check_name" for="check_phoneno" name='teleno'>Phone Number</label>
+                        <input class="check_input" name='teleno' value="<?= set_value('teleno') ?>" type="text" id="check_phoneno" name="check_phoneno">
+                        <?php if (!empty($errors['teleno'])) : ?>
+                            <div class="invalid"><?= $errors['teleno'] ?></div>
+                        <?php endif; ?>
                     </div>
 
                     <div class="check_inline">
                         <label class="check_name" for="check_option">Delivery or Pickup:</label>
-                        <label class="check_radio">
-                            <input type="radio" name="delivery-pickup" value="delivery"> Delivery
-                        </label>
-                        <label class="check_radio">
-                            <input type="radio" name="delivery-pickup" value="pickup"> Pickup
-                        </label>
+                        <input type="radio" id="delivery" name="delivery-pickup" value="delivery">
+                        <label class="check_radio" for="delivery"> Delivery </label>
 
+                        <input type="radio" id="pickup" name="delivery-pickup" value="pickup">
+                        <label class="check_radio" for="pickup"> Pickup </label>
                     </div>
 
                     <div class="check_inline" id="deliveryOrdersSection" style="display: none;">
@@ -60,13 +70,13 @@
                     <div id="pickupOutletsSection" class="check_inline" style="display: none;">
                         <label class="check_name" for="pickup_orders"><b>For Pickup Orders:</b></label>
                         <select id="pickupLocation" name="pickupLocation" disabled>
-                            <option class="branch_select" value="branch1">Pelawatta</option>
-                            <option class="branch_select" value="branch2">Ja-Ela</option>
-                            <option class="branch_select" value="branch3">Nugegoda</option>
-                            <option class="branch_select" value="branch3">Jawatta</option>
-                            <option class="branch_select" value="branch3">Kollupitiya</option>
-                            <option class="branch_select" value="branch3">Dehiwala</option>
-                            <option class="branch_select" value="branch3">Borella</option>
+                            <option class="branch_select">Pelawatta</option>
+                            <option class="branch_select">Ja-Ela</option>
+                            <option class="branch_select">Nugegoda</option>
+                            <option class="branch_select">Jawatta</option>
+                            <option class="branch_select">Kollupitiya</option>
+                            <option class="branch_select">Dehiwala</option>
+                            <option class="branch_select">Borella</option>
                         </select>
                     </div>
 
@@ -74,41 +84,46 @@
 
                     <div class="check_flex">
                         <div class="check_inputBox">
-                            <label class="check_name" for="order_data">Date:</label>
-
-                            <input class="check_input" type="date">
+                            <label class="check_name" for="order_data" name='date'>Date:</label>
+                            <input class="check_input" type="date" name='date' value="<?= set_value('date') ?>">
+                            <?php if (!empty($errors['date'])) : ?>
+                                <div class="invalid"><?= $errors['date'] ?></div>
+                            <?php endif; ?>
                         </div>
+
                         <div class="check_inputBox">
-                            <label class="check_name" for="order_timr">Time:</label>
-                            <input class="check_input" type="time">
+                            <label class="check_name" for="order_time" name='time'>Time:</label>
+                            <input class="check_input" type="time" name='time' value="<?= set_value('time') ?>">
+                            <?php if (!empty($errors['time'])) : ?>
+                                <div class="invalid"><?= $errors['time'] ?></div>
+                            <?php endif; ?>
                         </div>
                     </div>
 
                     <div class="check_inline">
-                        <label class="check_name" for="check_gift">Send as a gift:</label>
-                        <label class="check_radio">
-                            <input type="radio" name="gift" value="yes" class="send-as-gift-radio"> Yes
-                        </label>
-                        <label class="check_radio">
-                            <input type="radio" name="gift" value="no" class="send-as-gift-radio"> No
-                        </label>
+                        <label class="check_name" for="check_gift" name='gift'>Send as a gift:</label>
+                        <input type="radio" id="send-gift-yes" name="gift" value="yes" class="send-as-gift-radio">
+                        <label class="check_radio" for="send-gift-yes"> Yes </label>
+
+                        <input type="radio" id="send-gift-no" name="gift" value="no" class="send-as-gift-radio">
+                        <label class="check_radio" for="send-gift-no"> No </label>
                     </div>
 
-                    <div class="check_inline">
-                        <label class="check_name" for="order_note">Note:</label><br><br>
+                    <div class="check_inline" id="note">
+                        <label class="check_name" id="order_note" name='note'>Note:</label><br><br>
 
-                        <textarea class="check_input" id="note" name="note"></textarea>
+                        <textarea class="check_input" id="note" name="note" value="<?= set_value('note') ?>"></textarea>
                     </div>
 
                 </div>
-                <div class="check_inline">
+                <div class="check_inline" id="payment">
                     <label class="check_name" for="check_payment">Payment Method :</label>
-                    <label class="check_radio_1">
-                        <input type="radio" name="payment" value="card" class="payment-method-radio"> Credit or Debit card
-                    </label>
-                    <label class="check_radio_1">
-                        <input type="radio" name="payment" value="cash" class="payment-method-radio"> Cash payment
-                    </label>
+                    <input type="radio" id="payment-card" name="payment" value="card" class="payment-method-radio">
+                    <label class="check_radio_1" for="payment-card"> Credit or Debit card </label>
+
+                    <input type="radio" id="payment-cash" name="payment" value="cash" class="payment-method-radio">
+                    <label class="check_radio_1" for="payment-cash"> Cash payment </label>
+
                 </div>
 
 
@@ -153,22 +168,26 @@
 
             <button class="check_submit-btn" id="p_checkout-button">Proceed to Checkout</button>
 
-            <script>
+            <!-- <script>
                 document.getElementById("p_checkout-button").addEventListener("click", function() {
                     event.preventDefault();
                     window.location.href = "progressbar.php";
                 });
-            </script>
+            </script> -->
 
 
         </form>
-        <button class="check_back-btn" id="back-button">Back</button>
 
         <div class="summary-container">
-            <h3>Cart Summary</h3>
+            <h3>CART SUMMARY</h3>
             <ul class="cart-summary-list"></ul>
             <div class="total-product-price"></div>
         </div>
+
+        <div class="back-icon" id="back-button">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </div>
+
 
 
         <script>

@@ -337,7 +337,7 @@ class Storage {
 
   static saveCart(cart) {
     localStorage.setItem("cart", JSON.stringify(cart));
-    console.log(cart);
+    // console.log(cart);
   }
 
   static getCart() {

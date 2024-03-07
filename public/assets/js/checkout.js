@@ -122,7 +122,7 @@ function initMap() {
 }
 initMap();
 
- // Summary of the cart items
+// Summary of the cart items
 var cartItems = localStorage.getItem("cart");
 cartItems = cartItems ? JSON.parse(cartItems) : [];
 console.log(cartItems);
@@ -140,7 +140,7 @@ totalProductPriceContainer.innerHTML = '';
 var totalProductPrice = 0;
 
 // Loop through each item in the cart
-cartItems.forEach(function(item) {
+cartItems.forEach(function (item) {
   // Calculate total price for the current item
   var totalPriceForItem = item.price * item.quantity;
 
@@ -149,9 +149,19 @@ cartItems.forEach(function(item) {
 
   // Create a list item to display the item information
   var listItem = document.createElement('li');
-  
-  // Set the inner HTML of the list item to include the image and other item information
-  listItem.innerHTML = `<img src="${item.image}" alt="${item.user_name}" class="product-image"/> Product Name: ${item.user_name}, Quantity: ${item.quantity}, Price: ${totalPriceForItem.toFixed(2)}`;
+
+  listItem.innerHTML = `
+   <div class="product-details">
+    <div class="product-image">
+        <img src="${item.image}" alt="${item.user_name}" class="product-image"/>
+    </div>
+    <div class="other-details">
+       <p class="user-name">${item.user_name}</p>
+       <p class="quantity">${item.quantity}</p>
+       <p class="total-price">${totalPriceForItem.toFixed(2)}</p>
+    </div>
+  </div>
+`;
 
   // Append the list item to the cart summary list
   cartSummaryList.appendChild(listItem);
@@ -159,4 +169,10 @@ cartItems.forEach(function(item) {
 
 
 // Display the total product price
-totalProductPriceContainer.textContent = `Total Product Price: LKR ${totalProductPrice.toFixed(2)}`;
+
+totalProductPriceContainer.innerHTML = `
+ <div class="total-price-container">
+  <div class="total-label">TOTAL:</div>
+  <div class="price-label">LKR ${totalProductPrice.toFixed(2)}</div>
+ </div>
+`;
