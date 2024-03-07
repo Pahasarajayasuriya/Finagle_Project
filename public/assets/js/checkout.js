@@ -123,6 +123,7 @@ function initMap() {
 initMap();
 
 // Summary of the cart items
+// Summary of the cart items
 var cartItems = localStorage.getItem("cart");
 cartItems = cartItems ? JSON.parse(cartItems) : [];
 console.log(cartItems);
@@ -169,10 +170,4 @@ cartItems.forEach(function (item) {
 
 
 // Display the total product price
-
-totalProductPriceContainer.innerHTML = `
- <div class="total-price-container">
-  <div class="total-label">TOTAL:</div>
-  <div class="price-label">LKR ${totalProductPrice.toFixed(2)}</div>
- </div>
-`;
+totalProductPriceContainer.textContent = `Total Product Price: LKR ${totalProductPrice.toFixed(2)}`;

@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
     <title><?= APPNAME ?>- Checkout</title>
 
 </head>
@@ -112,6 +115,7 @@
                     <div class="check_inline" id="note">
                         <label class="check_name" id="order_note" name='note'>Note:</label><br><br>
 
+
                         <textarea class="check_input" id="note" name="note" value="<?= set_value('note') ?>"></textarea>
                     </div>
 
@@ -186,6 +190,7 @@
 
         <div class="back-icon" id="back-button">
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
+
         </div>
 
 
