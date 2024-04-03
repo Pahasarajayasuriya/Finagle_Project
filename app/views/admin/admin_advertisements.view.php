@@ -51,7 +51,7 @@ $this->view('includes/footer', $data);
                     <?php endif; ?>
 
                     <label for="image">image:</label>
-                    <input type="file" onchange="load_image(this.files[0])" id="price" name="image">
+                    <input type="file" onchange="load_image(this.files[0])" id="image" name="image">
                     <?php if (!empty($errors['address'])) : ?>
                             <div class="invalid"><?= $errors['image'] ?></div>
                     <?php endif; ?>
@@ -74,10 +74,15 @@ $this->view('includes/footer', $data);
 
             <div class="advertisement-table">
             <div class="advertisement-header">
-                <div class="ad-image">Image</div>
+                <!-- <div class="ad-image">Image</div>
                 <div class="ad-id">ID</div>
                 <div class="ad-description">Description</div>
-                <div class="ad-date">End Date</div>
+                <div class="ad-date">End Date</div> -->
+
+                <div>Image</div>
+                <div>ID</div>
+                <div>Description</div>
+                <div>End Date</div>
               
             </div>
             </div>
@@ -101,7 +106,7 @@ $this->view('includes/footer', $data);
             <?php foreach ($rows as $row) : ?>
             <div class="advertisement-record">
                 <div class="advertisement-image"> <img src="https://lh3.googleusercontent.com/p/AF1QipNFVt_67WFrJbjsHEQfxY691SYz3wxrn1Ioq5KC=s1360-w1360-h1020" alt="branch.id" class="customer-image"></div>
-                <div class="branch-id"><?= esc($row->image) ?></div>
+                <!-- <div class="branch-id"><?= esc($row->image) ?></div> -->
                 <div class="branch-id"><?= esc($row->id) ?></div>
                 <div class="branch-name"><?= esc($row->description) ?></div>
                 <div class="branch-loc"><?= esc($row->end_date) ?></div>
