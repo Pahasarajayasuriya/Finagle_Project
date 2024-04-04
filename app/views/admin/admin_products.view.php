@@ -149,6 +149,27 @@ $this->view('includes/footer', $data);
         <!-- <script src="branch-admin.js"></script> -->
     </div>
     <script src="<?= ROOT ?>/assets/js/admin_branch.js"></script>
+    <script>
+        function filterBranches() {
+            var input, filter, branchesContainer, branches, branchName;
+            input = document.getElementById('search');
+            filter = input.value.toUpperCase();
+            branchesContainer = document.getElementById('main'); // Corrected ID
+            branches = branchesContainer.getElementsByClassName('advertisement-record');
+            
+            // Loop through all branches, hide those that don't match the search query
+            for (var i = 0; i < branches.length; i++) {
+                branchName = branches[i].getElementsByClassName('branch-name')[0];
+                if (branchName.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    branches[i].style.display = "";
+                } else {
+                    branches[i].style.display = "none";
+                }
+            }
+        }
+
+        document.getElementById('search').addEventListener('input', filterBranches);
+    </script>
 </body>
 
 </html>
