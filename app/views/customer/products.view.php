@@ -7,6 +7,7 @@ $this->view('includes/footer', $data);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,14 +28,9 @@ $this->view('includes/footer', $data);
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-
 </head>
 
 <body>
-
-
-
     <?php $this->view('includes/cus_topbar', $data); ?>
     <div class="home-section">
         <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
@@ -68,27 +64,30 @@ $this->view('includes/footer', $data);
         </div>
         <div id="message-error-container"></div>
         <div class="products-center">
-            <?php foreach ($data['products'] as $product) : ?>
-                <div class="product">
-                    <p><?=  esc($product->image)  ?></p>
-                    <div class="img-container">
-                   
-                        <!-- <img class="product-img" src="<?= esc($product->image) ?>" alt="<?= esc($product->user_name) ?>" /> -->
-                        <img class="product-img" src="<?= ROOT.'/'. ($product->image) ?>" alt="<?= esc($product->user_name) ?>" />
-                    </div>
-                    <div class="product-desc">
-                        <p class="product-title"><?= esc($product->user_name) ?></p>
-                        <div class="product-description">
-                            <p class="product-descrip"><?= esc($product->category) ?></p>
-                        </div>
-                        <div class="options">
-                            <p class="product-price">Rs.<?= esc($product->price) ?>.00</p>
-                            <button class="btn add-to-cart" data-id="<?= $product->id ?>">Add to Cart</button>
-                        </div>
+            <?php foreach ($categories as $category) : ?>
+                <div class="category-container">
+                    <h2 class="section-title"><?= $category ?></h2>
+                    <div class="products">
+                        <?php foreach ($productsByCategory[$category] as $product) : ?>
+                            <div class="product">
+                                <div class="img-container">
+                                    <img class="product-img" src="<?= ROOT . '/' . ($product->image) ?>" alt="<?= esc($product->user_name) ?>" />
+                                </div>
+                                <div class="product-desc">
+                                    <p class="product-title"><?= esc($product->user_name) ?></p>
+                                    <div class="product-description">
+                                        <p class="product-descrip"><?= esc($product->category) ?></p>
+                                    </div>
+                                    <div class="options">
+                                        <p class="product-price">Rs.<?= esc($product->price) ?>.00</p>
+                                        <button class="btn add-to-cart" data-id="<?= $product->id ?>">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             <?php endforeach; ?>
-
         </div>
 
         <section class="cart-modal">
@@ -98,7 +97,7 @@ $this->view('includes/footer', $data);
                 <h3 class="cart-title">Your Cart</h3>
 
                 <!--# cart-body #-->
-                <div class="cart-content" >
+                <div class="cart-content">
                 </div>
                 <div class="cart-footer">
                     <div class="">
@@ -143,4 +142,3 @@ $this->view('includes/footer', $data);
 </body>
 
 </html>
-<?php
