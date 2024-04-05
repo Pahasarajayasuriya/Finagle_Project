@@ -31,7 +31,6 @@
                         <p class="recipe_head_1">ORDER<span> CHECKOUT</span></p>
                     </div>
 
-
                     <div class="check_inline">
                         <label class="check_name" for="check_name" name='name'>Name</label>
                         <input class="check_input" name='name' value="<?= set_value('name') ?>" type="text" id="check_name" name="check_name">
@@ -47,19 +46,19 @@
                         <?php endif; ?>
                     </div>
                     <div class="check_inline">
-                        <label class="check_name" for="check_phoneno" name='teleno'>Phone Number</label>
-                        <input class="check_input" name='teleno' value="<?= set_value('teleno') ?>" type="text" id="check_phoneno" name="check_phoneno">
-                        <?php if (!empty($errors['teleno'])) : ?>
-                            <div class="invalid"><?= $errors['teleno'] ?></div>
+                        <label class="check_name" for="check_phoneno" name='phone_number'>Phone Number</label>
+                        <input class="check_input" name='phone_number' value="<?= set_value('phone_number') ?>" type="text" id="check_phoneno" name="check_phoneno">
+                        <?php if (!empty($errors['phone_number'])) : ?>
+                            <div class="invalid"><?= $errors['phone_number'] ?></div>
                         <?php endif; ?>
                     </div>
 
                     <div class="check_inline">
                         <label class="check_name" for="check_option">Delivery or Pickup:</label>
-                        <input type="radio" id="delivery" name="delivery-pickup" value="delivery">
+                        <input type="radio" id="delivery" name="delivery_or_pickup" value="delivery">
                         <label class="check_radio" for="delivery"> Delivery </label>
 
-                        <input type="radio" id="pickup" name="delivery-pickup" value="pickup">
+                        <input type="radio" id="pickup" name="delivery_or_pickup" value="pickup">
                         <label class="check_radio" for="pickup"> Pickup </label>
                     </div>
 
@@ -72,7 +71,7 @@
 
                     <div id="pickupOutletsSection" class="check_inline" style="display: none;">
                         <label class="check_name" for="pickup_orders"><b>For Pickup Orders:</b></label>
-                        <select id="pickupLocation" name="pickupLocation" disabled>
+                        <select id="pickupLocation" name="pickup_location" disabled>
                             <option class="branch_select">Pelawatta</option>
                             <option class="branch_select">Ja-Ela</option>
                             <option class="branch_select">Nugegoda</option>
@@ -87,28 +86,28 @@
 
                     <div class="check_flex">
                         <div class="check_inputBox">
-                            <label class="check_name" for="order_data" name='date'>Date:</label>
-                            <input class="check_input" type="date" name='date' value="<?= set_value('date') ?>">
-                            <?php if (!empty($errors['date'])) : ?>
-                                <div class="invalid"><?= $errors['date'] ?></div>
+                            <label class="check_name" for="order_data" name='delivery_date'>Date:</label>
+                            <input class="check_input" type="date" name='delivery_date' value="<?= set_value('delivery_date') ?>">
+                            <?php if (!empty($errors['delivery_date'])) : ?>
+                                <div class="invalid"><?= $errors['delivery_date'] ?></div>
                             <?php endif; ?>
                         </div>
 
                         <div class="check_inputBox">
-                            <label class="check_name" for="order_time" name='time'>Time:</label>
-                            <input class="check_input" type="time" name='time' value="<?= set_value('time') ?>">
-                            <?php if (!empty($errors['time'])) : ?>
-                                <div class="invalid"><?= $errors['time'] ?></div>
+                            <label class="check_name" for="order_time" name='delivery_time'>Time:</label>
+                            <input class="check_input" type="time" name='delivery_time' value="<?= set_value('delivery_time') ?>">
+                            <?php if (!empty($errors['delivery_time'])) : ?>
+                                <div class="invalid"><?= $errors['delivery_time'] ?></div>
                             <?php endif; ?>
                         </div>
                     </div>
 
                     <div class="check_inline">
-                        <label class="check_name" for="check_gift" name='gift'>Send as a gift:</label>
-                        <input type="radio" id="send-gift-yes" name="gift" value="yes" class="send-as-gift-radio">
+                        <label class="check_name" for="check_gift" name='is_gift'>Send as a gift:</label>
+                        <input type="radio" id="send-gift-yes" name="is_gift" value="yes" class="send-as-gift-radio">
                         <label class="check_radio" for="send-gift-yes"> Yes </label>
 
-                        <input type="radio" id="send-gift-no" name="gift" value="no" class="send-as-gift-radio">
+                        <input type="radio" id="send-gift-no" name="is_gift" value="no" class="send-as-gift-radio">
                         <label class="check_radio" for="send-gift-no"> No </label>
                     </div>
 
@@ -122,10 +121,10 @@
                 </div>
                 <div class="check_inline" id="payment">
                     <label class="check_name" for="check_payment">Payment Method :</label>
-                    <input type="radio" id="payment-card" name="payment" value="card" class="payment-method-radio">
+                    <input type="radio" id="payment-card" name="payment_method" value="card" class="payment-method-radio">
                     <label class="check_radio_1" for="payment-card"> Credit or Debit card </label>
 
-                    <input type="radio" id="payment-cash" name="payment" value="cash" class="payment-method-radio">
+                    <input type="radio" id="payment-cash" name="payment_method" value="cash" class="payment-method-radio">
                     <label class="check_radio_1" for="payment-cash"> Cash payment </label>
 
                 </div>

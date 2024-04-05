@@ -5,11 +5,11 @@ class Products extends Controller
     public function index()
     {
         $productModel = new ProductModel();
-        $data['products'] = $productModel->all();
+        $data['products'] = $allproducts = $productModel->all();
         $categories = ['Bread & Buns', 'Cakes', 'Frozen Foods'];
         $productsByCategory = [];
         foreach ($categories as $category) {
-            $productsByCategory[$category] = array_filter($data['products'], function ($product) use ($category) {
+            $productsByCategory[$category] = array_filter($allproducts, function ($product) use ($category) {
                 return $product->category === $category;
             });
         }

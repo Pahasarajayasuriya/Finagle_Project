@@ -12,19 +12,14 @@ class Checkout extends Controller
             $_POST['gift'] = isset($_POST['gift']) ? $_POST['gift'] : null;
             $_POST['delivery-pickup'] = isset($_POST['delivery-pickup']) ? $_POST['delivery-pickup'] : null;
             $validatedData = $CheckoutModel->validate($_POST);
-            if (is_array($validatedData)) {
-                show($validatedData);
-                if ($CheckoutModel->saveData($validatedData)) {
-                    redirect('login');
-                } else {
-                    $data['errors'] = $CheckoutModel->errors;
-                }
+            if (($validatedData)) {
+                $CheckoutModel->saveData($validatedData);
+                $successMessage = urlencode("Order submitted successfully!");         
             } else {
                 // Validation failed, set errors and handle appropriately
                 $data['errors'] = $CheckoutModel->errors;
             }
         }
-
         $data['title'] = "Checkout";
         $this->view('customer/checkout', $data);
     }

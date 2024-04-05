@@ -113,14 +113,11 @@ class Model extends Database
         $keys = array_keys($data);
         $values = array_values($data);
 
-        // Build the query
         $query = "INSERT INTO `" . $this->table . "`";
         $query .= " (" . implode(",", $keys) . ") VALUES (:" . implode(",:", $keys) . ")";
 
-        // Execute the query
         $result = $this->query($query, $data);
 
-        // Return true if the query executed successfully, false otherwise
         return $result !== false;
     }
 }

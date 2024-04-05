@@ -3,10 +3,10 @@ const paymentMethodRadios = document.querySelectorAll(".payment-method-radio");
 const paymentDetailsSection = document.getElementById("paymentDetailsSection");
 
 const deliveryRadio = document.querySelector(
-  'input[name="delivery-pickup"][value="delivery"]'
+  'input[name="delivery_or_pickup"][value="delivery"]'
 );
 const pickupRadio = document.querySelector(
-  'input[name="delivery-pickup"][value="pickup"]'
+  'input[name="delivery_or_pickup"][value="pickup"]'
 );
 
 const pickupOutletsSection = document.getElementById("pickupOutletsSection");
@@ -18,14 +18,14 @@ pickupRadio.addEventListener("change", enablePickupOptions);
 
 function enableDeliveryOptions() {
   pickupLocation.disabled = true;
-  pickupOutletsSection.style.display = "none"; // Hide pickup outlets list
-  deliveryOrdersSection.style.display = "block"; // Show delivery orders section
+  pickupOutletsSection.style.display = "none"; 
+  deliveryOrdersSection.style.display = "block";
 }
 
 function enablePickupOptions() {
   pickupLocation.disabled = false;
-  pickupOutletsSection.style.display = "block"; // Show pickup outlets list
-  deliveryOrdersSection.style.display = "none"; // Hide delivery orders section
+  pickupOutletsSection.style.display = "block"; 
+  deliveryOrdersSection.style.display = "none"; 
 }
 
 sendAsGiftRadios.forEach(function (radio) {
@@ -40,7 +40,7 @@ sendAsGiftRadios.forEach(function (radio) {
 
 paymentMethodRadios.forEach(function (radio) {
   radio.addEventListener("click", function () {
-    // Toggle the selection when the user clicks on a radio button
+
     paymentMethodRadios.forEach(function (otherRadio) {
       if (otherRadio !== radio) {
         otherRadio.checked = false;
