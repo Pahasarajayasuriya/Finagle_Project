@@ -123,11 +123,13 @@ function initMap() {
 initMap();
 
 // Summary of the cart items
-// Summary of the cart items
 var cartItems = localStorage.getItem("cart");
 cartItems = cartItems ? JSON.parse(cartItems) : [];
-console.log(cartItems);
+// console.log(cartItems);
 
+function clearLocalStorage() {
+  localStorage.removeItem("cart");
+}
 
 // Get reference to the cart summary list and total product price container
 var cartSummaryList = document.querySelector('.cart-summary-list');

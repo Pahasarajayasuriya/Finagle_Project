@@ -22,6 +22,7 @@ class CheckoutModel extends Model
         'longitude',
         'formatted_address',
         'order_status',
+        'order_Details',
         'total_cost'
     ];
     public function validate($data)

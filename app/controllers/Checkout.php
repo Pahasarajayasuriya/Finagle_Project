@@ -14,9 +14,8 @@ class Checkout extends Controller
             $validatedData = $CheckoutModel->validate($_POST);
             if (($validatedData)) {
                 $CheckoutModel->saveData($validatedData);
-                $successMessage = urlencode("Order submitted successfully!");         
+                redirect('clear_cart');
             } else {
-                // Validation failed, set errors and handle appropriately
                 $data['errors'] = $CheckoutModel->errors;
             }
         }
@@ -24,4 +23,3 @@ class Checkout extends Controller
         $this->view('customer/checkout', $data);
     }
 }
-
