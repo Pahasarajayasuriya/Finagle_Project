@@ -78,6 +78,9 @@ $this->view('includes/footer', $data);
                                     <div class="product-description">
                                         <p class="product-descrip"><?= esc($product->category) ?></p>
                                     </div>
+                                    <div class="product-description">
+                                        <p class="product-descrip">Quantity: <?= esc($product->quantity) ?></p>
+                                    </div>
                                     <div class="options">
                                         <p class="product-price">Rs.<?= esc($product->price) ?>.00</p>
                                         <button class="btn add-to-cart" data-id="<?= $product->id ?>">Add to Cart</button>

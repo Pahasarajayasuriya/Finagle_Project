@@ -55,7 +55,7 @@ $this->view('includes/footer', $data);
                         </div>
 
                         <h3 class="text-span">Conveniently Delicious Frozen & Fresh Bakery Products</h3>
-                        <div class="button"> <a href="homepage.php"><button>Explore</button></a></div>
+                        <div class="button"> <a href="<?= ROOT?>/home"><button>Explore</button></a></div>
                     </div>
                 </div>
             </div>
@@ -265,7 +265,7 @@ $this->view('includes/footer', $data);
                                         <h6>
                                             Rs.1000.00
                                         </h6>
-                                        <a href="product.php">
+                                        <a href="<?= ROOT ?>/products">
                                             <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i>
 
                                         </a>
@@ -290,7 +290,7 @@ $this->view('includes/footer', $data);
                                         <h6>
                                             Rs.4500.00
                                         </h6>
-                                        <a href="product.php">
+                                        <a href="<?= ROOT ?>/products">
                                             <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i>
 
 
@@ -316,7 +316,7 @@ $this->view('includes/footer', $data);
                                             <h6>
                                                 Rs.3750.00
                                             </h6>
-                                            <a href="product.php">
+                                            <a href="<?= ROOT ?>/products">
                                                 <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i>
 
                                             </a>
@@ -345,7 +345,7 @@ $this->view('includes/footer', $data);
                                             <h6>
                                                 Rs.1700.00
                                             </h6>
-                                            <a href="product.php">
+                                            <a href="<?= ROOT ?>/products">
                                                 <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i>
 
                                             </a>
@@ -372,7 +372,7 @@ $this->view('includes/footer', $data);
                                         <h6>
                                             Rs.200.00
                                         </h6>
-                                        <a href="product.php">
+                                        <a href="<?= ROOT ?>/products">
                                             <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i></span>
 
 
@@ -399,7 +399,7 @@ $this->view('includes/footer', $data);
                                             <h6>
                                                 Rs.5000.00
                                             </h6>
-                                            <a href="product.php">
+                                            <a href="<?= ROOT ?>/products">
                                                 <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i>
 
                                             </a>

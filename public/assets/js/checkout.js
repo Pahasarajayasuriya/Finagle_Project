@@ -125,7 +125,7 @@ initMap();
 // Summary of the cart items
 var cartItems = localStorage.getItem("cart");
 cartItems = cartItems ? JSON.parse(cartItems) : [];
-// console.log(cartItems);
+
 
 function clearLocalStorage() {
   localStorage.removeItem("cart");

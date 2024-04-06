@@ -2,28 +2,29 @@
 
 class CheckoutModel extends Model
 {
-    public $table = "order";
+    public $table = "checkout";
     public $errors = [];
     protected $allowedColumns = [
 
-        'user_id',
+        'customer_id',
         'name',
         'email',
         'phone_number',
         'delivery_or_pickup',
+        'deliver_id',
         'delivery_address',
         'pickup_location',
-        'delivery_date',
-        'delivery_time',
-        'is_gift',
-        'note',
-        'payment_method',
+        'order_time',
         'latitude',
         'longitude',
-        'formatted_address',
         'order_status',
-        'order_Details',
-        'total_cost'
+        'delivery_date',
+        'delivery_time',
+        'total_cost',
+        'is_gift',
+        'payment_method',
+        'note',
+        'formatted_address'
     ];
     public function validate($data)
     {
@@ -64,7 +65,7 @@ class CheckoutModel extends Model
 
         // if (empty($data['delivery_time'])) {
         //     $this->errors['delivery_time'] = "Time is required";
-        // } elseif (strtotime($data['delivery_time']) < strtotime('now') + 1800) {
+        // } elseif (strtotime($data['delivery_time']) > strtotime('now') + 1800) {
         //     $this->errors['delivery_time'] = "Time must be at least 30 minutes ahead of the current time";
         // }
 
@@ -80,5 +81,35 @@ class CheckoutModel extends Model
             return $data;
         }
         return false;
+    }
+
+    public function saveData($data)
+    {
+        if (!empty($this->allowedColumns)) {
+            foreach ($data as $key => $value) {
+                if (!in_array($key, $this->allowedColumns)) {
+                    unset($data[$key]);
+                }
+            }
+        }
+
+        // Get the user id from the session
+        $userId = $_SESSION['USER_DATA']->id;
+
+        // Add the user id to the data array
+        $data['customer_id'] = $userId;
+
+        // Set deliver_id to NULL initially
+        $data['deliver_id'] = NULL;
+
+        $keys = array_keys($data);
+        $values = array_values($data);
+
+        $query = "INSERT INTO `" . $this->table . "`";
+        $query .= " (" . implode(",", $keys) . ") VALUES (:" . implode(",:", $keys) . ")";
+
+        $result = $this->query($query, $data);
+
+        return $result !== false;
     }
 }

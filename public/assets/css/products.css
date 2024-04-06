@@ -765,3 +765,8 @@ cursor: pointer;
   color: red;
   display: none;
 }
+
+.btn.add-to-cart:disabled {
+  background-color: #6e6c6c; /* ash color */
+  cursor: not-allowed;
+}
