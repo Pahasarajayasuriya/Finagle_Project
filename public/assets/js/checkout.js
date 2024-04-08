@@ -1,6 +1,7 @@
 const sendAsGiftRadios = document.querySelectorAll(".send-as-gift-radio");
 const paymentMethodRadios = document.querySelectorAll(".payment-method-radio");
 const paymentDetailsSection = document.getElementById("paymentDetailsSection");
+var checkoutForm = document.getElementById("checkoutForm");
 
 const deliveryRadio = document.querySelector(
   'input[name="delivery_or_pickup"][value="delivery"]'
@@ -18,14 +19,14 @@ pickupRadio.addEventListener("change", enablePickupOptions);
 
 function enableDeliveryOptions() {
   pickupLocation.disabled = true;
-  pickupOutletsSection.style.display = "none"; 
+  pickupOutletsSection.style.display = "none";
   deliveryOrdersSection.style.display = "block";
 }
 
 function enablePickupOptions() {
   pickupLocation.disabled = false;
-  pickupOutletsSection.style.display = "block"; 
-  deliveryOrdersSection.style.display = "none"; 
+  pickupOutletsSection.style.display = "block";
+  deliveryOrdersSection.style.display = "none";
 }
 
 sendAsGiftRadios.forEach(function (radio) {
@@ -40,7 +41,6 @@ sendAsGiftRadios.forEach(function (radio) {
 
 paymentMethodRadios.forEach(function (radio) {
   radio.addEventListener("click", function () {
-
     paymentMethodRadios.forEach(function (otherRadio) {
       if (otherRadio !== radio) {
         otherRadio.checked = false;
@@ -126,50 +126,62 @@ initMap();
 var cartItems = localStorage.getItem("cart");
 cartItems = cartItems ? JSON.parse(cartItems) : [];
 
-
 function clearLocalStorage() {
   localStorage.removeItem("cart");
 }
 
 // Get reference to the cart summary list and total product price container
-var cartSummaryList = document.querySelector('.cart-summary-list');
-var totalProductPriceContainer = document.querySelector('.total-product-price');
+var cartSummaryList = document.querySelector(".cart-summary-list");
+var totalProductPriceContainer = document.querySelector(".total-product-price");
 
 // Clear previous content
-cartSummaryList.innerHTML = '';
-totalProductPriceContainer.innerHTML = '';
+cartSummaryList.innerHTML = "";
+totalProductPriceContainer.innerHTML = "";
 
 // Initialize total product price
 var totalProductPrice = 0;
 
 // Loop through each item in the cart
-cartItems.forEach(function (item) {
-  // Calculate total price for the current item
-  var totalPriceForItem = item.price * item.quantity;
+checkoutForm.addEventListener("submit", function (event) {
+  // Prevent the form from being submitted immediately
+  event.preventDefault();
 
-  // Add the total price for the current item to the overall total product price
-  totalProductPrice += totalPriceForItem;
+  // Calculate the total cost
+  var totalProductPrice = 0;
+  cartItems.forEach(function (item) {
+    var totalPriceForItem = item.price * item.quantity;
+    totalProductPrice += totalPriceForItem;
 
-  // Create a list item to display the item information
-  var listItem = document.createElement('li');
+    // Create a list item to display the item information
+    var listItem = document.createElement("li");
 
-  listItem.innerHTML = `
-   <div class="product-details">
-    <div class="product-image">
-        <img src="${item.image}" alt="${item.user_name}" class="product-image"/>
-    </div>
-    <div class="other-details">
-       <p class="user-name">${item.user_name}</p>
-       <p class="quantity">${item.quantity}</p>
-       <p class="total-price">${totalPriceForItem.toFixed(2)}</p>
-    </div>
-  </div>
-`;
+    listItem.innerHTML = `
+      <div class="product-details">
+          <div class="product-image">
+              <img src="${item.image}" alt="${
+      item.user_name
+    }" class="product-image"/>
+          </div>
+          <div class="other-details">
+              <p class="user-name">${item.user_name}</p>
+              <p class="quantity">${item.quantity}</p>
+              <p class="total-price">${totalPriceForItem.toFixed(2)}</p>
+          </div>
+      </div>
+      `;
 
-  // Append the list item to the cart summary list
-  cartSummaryList.appendChild(listItem);
+    // Append the list item to the cart summary list
+    cartSummaryList.appendChild(listItem);
+  });
+
+  // Set the total cost value
+  document.getElementById("totalCost").value = totalProductPrice.toFixed(2);
+
+  // Submit the form
+  checkoutForm.submit();
 });
 
-
 // Display the total product price
-totalProductPriceContainer.textContent = `Total Product Price: LKR ${totalProductPrice.toFixed(2)}`;
+totalProductPriceContainer.textContent = `Total Product Price: LKR ${totalProductPrice.toFixed(
+  2
+)}`;

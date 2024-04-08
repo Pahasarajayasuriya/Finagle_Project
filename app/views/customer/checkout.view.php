@@ -22,7 +22,7 @@
     <input name="latitude" type="hidden" required />
     <input name="longitude" type="hidden" required />
     <div class="check_container">
-        <form method="POST">
+        <form method="POST" id="checkoutForm">
             <div class="check_row">
                 <div class="check_col">
                     <div class="recipe_head">
@@ -30,7 +30,7 @@
                         <i class='bx bxs-calendar-check' style="margin-top: 10px;"></i>
                         <p class="recipe_head_1">ORDER<span> CHECKOUT</span></p>
                     </div>
-
+                    <input type="hidden" id="totalCost" name="total_cost" value="">
                     <div class="check_inline">
                         <label class="check_name" for="check_name" name='name'>Name</label>
                         <input class="check_input" name='name' value="<?= set_value('name') ?>" type="text" id="check_name" name="check_name">
