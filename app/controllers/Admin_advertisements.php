@@ -30,7 +30,7 @@ class Admin_advertisements extends Controller
                 } else {
                     // Handle image upload failure
 
-                    echo "Image Upload Failed firstly.";
+                   // echo "Image Upload Failed firstly.";
                 }
             } else {
                 // Handle validation errors
@@ -129,10 +129,12 @@ class Admin_advertisements extends Controller
         } else {
             // move_uploaded_file("")
             show($targetFile);
-            show($file);
-            echo "Image Upload Failed inside the func.";
+            show($_FILES['image']["tmp_name"]);
+            //show($file);
+            //echo "Image Upload Failed inside the func.";
             return false;
         }
 
     }
+
 }
