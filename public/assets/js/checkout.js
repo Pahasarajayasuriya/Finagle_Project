@@ -141,13 +141,8 @@ totalProductPriceContainer.innerHTML = "";
 // Initialize total product price
 var totalProductPrice = 0;
 
-// Loop through each item in the cart
-checkoutForm.addEventListener("submit", function (event) {
-  // Prevent the form from being submitted immediately
-  event.preventDefault();
-
+function displayCartSummary() {
   // Calculate the total cost
-  var totalProductPrice = 0;
   cartItems.forEach(function (item) {
     var totalPriceForItem = item.price * item.quantity;
     totalProductPrice += totalPriceForItem;
@@ -174,14 +169,21 @@ checkoutForm.addEventListener("submit", function (event) {
     cartSummaryList.appendChild(listItem);
   });
 
+  // Display the total product price
+  totalProductPriceContainer.textContent = `Total Product Price: LKR ${totalProductPrice.toFixed(
+    2
+  )}`;
+}
+
+displayCartSummary();
+
+checkoutForm.addEventListener("submit", function (event) {
+  // Prevent the form from being submitted immediately
+  event.preventDefault();
+
   // Set the total cost value
   document.getElementById("totalCost").value = totalProductPrice.toFixed(2);
 
   // Submit the form
   checkoutForm.submit();
 });
-
-// Display the total product price
-totalProductPriceContainer.textContent = `Total Product Price: LKR ${totalProductPrice.toFixed(
-  2
-)}`;
