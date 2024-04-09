@@ -66,9 +66,23 @@ $this->view('includes/footer', $data);
 					<li>
 						<i class='bx bxs-calendar-check'></i>
 						<span class="text">
-							<h3>1020</h3>
-							<p>New Order</p>
+							<?php
+							//show($data['count']);
+
+							if (isset($data['count'])) {
+								foreach ($data['count'] as $order_count) {
+
+							?>
+									<h3><?= $order_count->total_records ?></h3>
+
+
+							<?php
+								}
+							}
+							?>
+							<p>Orders</p>
 						</span>
+
 						<div class="circular">
 							<div class="inner"></div>
 							<div class="outer"></div>
@@ -91,7 +105,16 @@ $this->view('includes/footer', $data);
 					<li>
 						<i class='bx bxs-group'></i>
 						<span class="text">
-							<h3>2834</h3>
+							<?php
+							//show($data['count']);
+							if (isset($data['getCusData'])) {
+								foreach ($data['getCusData'] as $cus_count) {
+							?>
+									<h3><?= $cus_count->total_records ?></h3>
+							<?php
+								}
+							}
+							?>
 							<p>Customers</p>
 						</span>
 						<div class="circular">
@@ -161,8 +184,8 @@ $this->view('includes/footer', $data);
 								<?php
 
 								//   show($data);
-								if (isset($data['order'])) {
-									foreach ($data['order'] as $order) {
+								if (isset($data['getData'])) {
+									foreach ($data['getData'] as $order) {
 
 								?>
 										<tr>
@@ -302,7 +325,7 @@ $this->view('includes/footer', $data);
 		}
 	</script>
 
-	
+
 </body>
 
 </html>

@@ -186,7 +186,7 @@ hr{
   color: #fff;
   border: none;
   border-radius: 10px; /* Make buttons pill-shaped */
-  padding: 4% 4%; /* Increase padding for larger buttons */
+  padding: 6% 4%; /* Increase padding for larger buttons */
   font-size: 12px; /* Increase font size */
   cursor: pointer;
   transition: all 0.3s ease; /* Smooth transition for hover effects */
@@ -205,7 +205,7 @@ hr{
 /* Hover styles for location button */
 .view-location-btn:hover {
   background-color: #218838; /* Darker green color on hover */
-  transform: scale(1.1); /* Increase button size on hover */
+  transform: scale(1.05); /* Increase button size on hover */
 }
 
 /* Hover styles for delivered button */

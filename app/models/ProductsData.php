@@ -1,6 +1,6 @@
 <?php
 
-class Products extends Model
+class ProductsData extends Model
 {
     public $table = "products";
     public $errors = [];

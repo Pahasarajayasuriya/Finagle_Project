@@ -7,14 +7,29 @@ class Emp_dashboard extends Controller
         $id = $id ?? Auth::getId();
 
         $order = new Orders();
-        $data = $this->getOrderdata($order);
+
+        $getData = $this->getOrderdata($order);
         // show($data);
-        $data['order'] = $data;
+        $data['getData'] = $getData;
 
+        $count=$this->totalOrders($order);
+       // show($count);
+        $data['count'] = $count; 
+       //show($data['count']);
 
+       $customer = new Customer();
+       $getCusData = $this->getCustomerdata($customer);
+       // show($data);
+       $data['getCusData'] = $getCusData;
+
+       $cost = new Checkout();
+       $getTotalcost = $this->getTotalCost($cost);
+       $data['getTotalcost'] = $getTotalcost;
 
 
         $this->view('employee/employee_dashboard', $data);
+        
+     
      
 
     }
@@ -41,5 +56,23 @@ class Emp_dashboard extends Controller
         return $data;
     }
 
+    private function totalOrders($order)
+    {
+
+        $data = $order->countall();
+         // show($data);
+        return $data;
+    }
    
+    private function getCustomerdata($customer)
+    {
+        $data = $customer->countall();
+        // show($data);
+       return $data;
+    }
+
+    private function getTotalCost($cost){
+        $data = $cost->sumall();
+        return $data;
+    }
 }

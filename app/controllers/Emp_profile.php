@@ -6,11 +6,11 @@ class Emp_profile extends Controller
     {
         $id = $id ?? Auth::getId();
 
-        // show($id);
+         //show($id);
 
         // $_SESSION['USER_DATA']->branch_id;
         
-        $branch_id = 1;
+        $branch_id = 13;
 
         $user = new User();
         $data['row'] = $user->first(['id'=>$id]);

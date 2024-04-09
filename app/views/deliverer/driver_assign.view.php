@@ -35,104 +35,85 @@ $this->view('includes/orderDetails_popup', $data);
       <div class="assigned-orders">
 
 
-        <div class="order-box">
-          <div class="order-header">
-            >
-            <h3>Order ID: 245 D</h3>
-            <button class="view-details" id="locationButton" onclick="showPopup('viewOrderDetails')">View Details >>>></button>
+        <?php
 
-          </div>
-          <hr>
+        if (!empty($data['ready_order'])) {
 
+          foreach ($data['ready_order'] as $key => $element) {
+        ?>
+            <div class="order-box">
+              <div class="order-header">
+                >
+                <h3>Order ID: <?= $element->id ?> D</h3>
+                <button class="view-details" id="locationButton" onclick="showPopup('viewOrderDetails')">View Details >>>></button>
 
-          <div class="addresses">
-
-            <div class="pickup-address">
-              <div class="dot"></div>
-              <p>Pickup from branch</p>
-            </div>
-
-            <div class="vertical-line"><br><br></div>
-
-            <div class="delivery-address">
-              <i class="fas fa-map-marker-alt"></i>
-              <p>No 34, Flowers road, Colombo 7</p>
-            </div>
-
-          </div>
-          <div class="footer">
-            <div class="call-icon">
-              <a href=""><i class="fa-solid fa-phone"></i></a>
-
-            </div>
-
-            <div class="action-buttons">
-
-              <button class="view-location-btn" id="locationButton">View Location</button>
-              <button class="delivered-btn">Delivered</button>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="order-box">
-          <div class="order-header">
-            >
-            <h3>Order ID: 200 D</h3>
-            <button class="view-details" id="locationButton" onclick="showPopup('viewOrderDetails')">View Details >>>></button>
+              </div>
+              <hr>
 
 
-          </div>
-          <hr>
+              <div class="addresses">
 
+                <div class="pickup-address">
+                  <div class="dot"></div>
+                  <p>Pickup from branch</p>
+                </div>
 
-          <div class="addresses">
+                <div class="vertical-line"><br><br></div>
 
-            <div class="pickup-address">
-              <div class="dot"></div>
-              <p>Pickup from branch</p>
-            </div>
+                <div class="delivery-address">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <p><?= ucfirst($element->delivery_address) ?></p>
+                </div>
 
-            <div class="vertical-line"><br><br></div>
+              </div>
+              <div class="footer">
+                <div class="call-icon">
+                  <a href=""><i class="fa-solid fa-phone"></i></a>
 
-            <div class="delivery-address">
-              <i class="fas fa-map-marker-alt"></i>
-              <p>No.5, Temple Road,Borella</p>
-            </div>
+                </div>
 
-          </div>
-          <div class="footer">
-            <div class="call-icon">
-              <a href=""><i class="fa-solid fa-phone"></i></a>
+                <div class="action-buttons">
+
+                  <button class="view-location-btn" id="locationButton">View Location</button>
+
+                  <!-- <form method="POST">
+                    <input type="hidden" name="order_status" value="delivered">
+                    <input type="hidden" name="id" value="<?= $element->id ?>">
+                    <button name="delivered_btn" class="delivered-btn">Delivered</button> 
+                    
+                  </form> -->
+                  <button class="delivered-btn"  id="locationButton" onclick="showPopup('viewOrderConfirm')"> Delivered</button>
+                </div>
+
+              </div>
 
             </div>
+          <?php
+          }
 
-            <div class="action-buttons">
-              <button class="view-location-btn" id="locationButton">View Location</button>
+        } else {
 
-              <button class="delivered-btn">Delivered</button>
-              <!-- WHEN DELIVERED BUTTON CLICKS,THAT DRIVER'S 'DELIVERED ORDERS' AND 'TOTAL EARNINGS' COLUMNS MUST BE UPDATED -->
-            </div>
+          ?>
+          <h3>No Available Delivery Orders</h3>
+        <?php
+        }
 
-          </div>
-
-        </div>
+        ?>
       </div>
     </div>
 
     <div class="right-section">
 
-     
-          <div class="googlemap" id="map">
 
-          </div>
+      <div class="googlemap" id="map">
 
-        </div>
       </div>
 
+    </div>
+  </div>
 
-     
+
+
   </div>
 
 
@@ -184,28 +165,31 @@ $this->view('includes/orderDetails_popup', $data);
         popup.style.display = "none";
       }
     }
-
   </script>
 
   <script>
     // Initialize and display the Google Map
     function initMap() {
       const map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: -34.397, lng: 150.644 }, // Initial center coordinates
-        zoom: 8, // Initial zoom level
+        center: {
+          lat: 7.7072567,
+          lng: 80.6534611
+        }, // Initial center coordinates
+        zoom: 7.7, // Initial zoom level
       });
     }
   </script>
 
- 
+
   <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3KoOPDxuE9bSb6J__Wn_tz18S3IdBNIw&loading=async&callback=initMap"></script>
 
   <style>
     #map {
-      height: 600px; /* Adjust as needed */
+      height: 600px;
+      /* Adjust as needed */
       width: 100%;
     }
- </style>
+  </style>
 
 
 </body>

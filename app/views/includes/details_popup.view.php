@@ -14,34 +14,41 @@
     
     <div id="viewDetails" class="modal">
       <div class="modal-content">
-        <!-- <span><i class="bx bx-x close" style="color: #ff0000"></i></span>
-        <div>
-             <i class='bx bx-window-close bx-fade-right' style='color:red'  ></i>
-           
-        </div> -->
+      
         <i class='bx bx-cart bx-fade-right' style='color:#fd0303' ></i>
-        <h2 id="order-id">Order ID: 12345</h2>
-        <div class="delivery-loc" ><i class="fas fa-map-marker-alt"></i> No 34, Flowers road, Colombo 7.</div>
+        <?php
+                    if (isset($data)) {
+                        //show($data);
+                        foreach ($data['detail'] as $val) {
+
+                    ?>
+        <h2 id="order-id">Order ID: <?= $val->id ?></h2>
+        <div class="delivery-loc" ><i class="fas fa-map-marker-alt"></i><?= $val->delivery_address?></div>
         <button class="pay-status">Paid</button>
             <br><hr>
         
 
-    <div class="details" id="details">
+      <div class="details" id="details">
 
-        <!-- <div class="product-item">
+        <div class="product-item">
            <div class="product-name" id="product-name">Chocolate Cake</div>
            <div class="product-qty" id="product-qty">2</div>
            <div class="product-price" id="product-price">Rs.2500.00</div>
-        </div> -->
+        </div>
 
       
 
         <hr>
         <div class="product-summery">
-          <div class="total-amount" >Total Amount : Rs.5700</div>
+          <div class="total-amount" >Total Amount : <?= $val->total_cost?></div>
         </div>
         
       </div>
+      <?php
+                       
+        }
+}
+?>
       
       <button class="button" id="confirmDetails" onclick="hidePopup('viewDetails')">OK</button>
       <button class="button" id="cancelDelete" onclick="hidePopup('viewDetails')">Cancel</button>

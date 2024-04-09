@@ -26,7 +26,7 @@
             <br>
         
 
-    <div class="details" id="details">
+      <div class="details" id="details">
 
         <div class="product-item">
            <div class="product-name" id="product-name">Chocolate Cake</div>
@@ -60,7 +60,30 @@
       </div>
     </div>
 
+    <div id="viewOrderConfirm" class="modal">
+      <div class="modal-content">
+        
 
+        <h2 id="order-id">Order Delivery Confirmation</h2>
+       
+        <i class='bx bx-alarm-exclamation bx-fade-left' style='color:#fd0303' ></i>
+      
+      
+       
+        <h3>Has the order been successfully delivered?</h3>
+
+     
+           <!-- <form method="POST">
+                    <input type="hidden" name="order_status" value="delivered">
+                    <input type="hidden" name="id" value="<?= $element->id ?>">
+                    <button name="delivered_btn" class="delivered-btn">Delivered</button> 
+                    
+          </form>  -->
+
+      <button class="button" id="confirmDetails" onclick="hidePopup('viewOrderConfirm')">Yes</button>
+      <button class="button" id="cancelDetails" onclick="hidePopup('viewOrderConfirm')">No</button>
+    </div>
+    </div>
 
 
     <style>
@@ -110,12 +133,13 @@
         align-items: center;
       }
 
-      .bx-cart {
+      .bx.bx-alarm-exclamation.bx-fade-left{
         margin-left: 27px;
-        font-size: 3rem;
+        font-size: 7rem;
         display: flexbox;
         justify-content: center;
         align-items: center;
+        margin-top: 30px;
 
       }
 
@@ -198,7 +222,7 @@
         outline: none;
         color: #fff;
         transition: 0.3s ease-in;
-        margin-top: 10px;
+        margin-top: 20px;
         text-align: center;
         align-items: center;
       }

@@ -40,7 +40,7 @@ class Model extends Database
 
         $quary = "SELECT * FROM $this->table ORDER BY $order_column $order_type LIMIT $limit OFFSET $this->offset";
 
-        // echo $quary;
+        //echo $quary;
         // run the quary stage
         return $this->query($quary);
     }
@@ -162,6 +162,12 @@ public function count_pickup()
         return $this->query($query);
     }
 
+    public function countall()
+    {
+        $query = "SELECT  COUNT(*) AS total_records FROM {$this->table}";
+        return $this->query($query);
+
+    }
     public function where_withInner($data, $reference_table, $refe_column1 = 'id', $refe_column2 = 'id')
     {
 

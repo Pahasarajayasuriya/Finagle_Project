@@ -5,23 +5,33 @@ class Emp_progress extends Controller
     public function index($id = null)
     {
         $id = $id ?? Auth::getId();
+       
 
 
         $user = new User();
         $data['row'] = $user->first(['id'=>$id]);
         $data['title'] = "Progress";
 
-        $order = new Checkout();
-        // show($detail);
-        $data = $this->getOrderDetails($order);
-        // show($data);
-        $data['detail'] = $data;
+        $order = new CheckoutOrder();
+       
+        $detail = $this->getOrderDetails($order);
+        //show($detail);
+        //show($data);
+        $data['detail'] = $detail;
+
+        $driver = new Deliverers();
+        $driver_details= $this->getDriverDetails($driver);
+        //show($driver_details);
+        $data['driver_details'] = $driver_details;
+        //show($data);
+
 
         $this->view('employee/order_assign', $data);
     }
 
     // public function profile($id = null)
     // {
+
         
     //     $id = $id ?? Auth::getId();
 
@@ -42,4 +52,14 @@ class Emp_progress extends Controller
         // show($data);
         return $data;
     }
+
+     private function getDriverDetails($driver)
+     {
+
+        $data = $driver->findAll();
+
+        //    $data = $branch_id->where($arr);
+        // show($data);
+        return $data;
+     }
 }

@@ -1,13 +1,13 @@
 <?php
 
-class Checkout extends Model
+class CheckoutOrder extends Model
 {
     public $table = "checkout";
     public $errors = [];
     protected $allowedColumns = [
 
         'id',
-        'user_id',
+        'customer_id',
         'name',
         'email',
         'phone_number',
@@ -23,7 +23,8 @@ class Checkout extends Model
         'longitude',
         'formatted_address',
         'order_status',
-        'total_cost'
+        'total_cost',
+        'deliver_id'
 
         
     ];

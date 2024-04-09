@@ -34,11 +34,7 @@ $this->view('includes/footer', $data);
 </head>
 
 <body>
-    <!-- <div class="navbar">
-         <div class="logo_icon">
-             <img src="<?= ROOT ?>/assets/images/logo.png" alt="">
-         </div>
-    </div> -->
+  
 
 
 
@@ -49,7 +45,7 @@ $this->view('includes/footer', $data);
             <h2 class="section-title">BRANCH EMPLOYEES</h2>
             <div class="divider dark mb-4">
                 <div class="icon-wrap">
-                    <!-- <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>  -->
+                  
                 </div>
             </div>
 
@@ -77,7 +73,7 @@ $this->view('includes/footer', $data);
 
                                <div class="profile-record">
                                 <div class="profile-image">
-                                    <!-- <img src="https://i.pinimg.com/474x/e0/4c/38/e04c383ed661003b1a599bb877eff836.jpg"> -->
+                          
                                    <!-- <?= ROOT ?>/assets/images/Emp_profiles/-->
                                    <img src="<?= ROOT ?>/assets/images/Emp_profiles/<?= $val->image ?>"> 
                                   
@@ -117,9 +113,10 @@ $this->view('includes/footer', $data);
 
         </div>
 
-        <div class="logout-button">
+         <div class="logout-button">
             <button><b>Log Out</b></button>
-        </div>
+         </div>
+
     </div>
 </body>
 

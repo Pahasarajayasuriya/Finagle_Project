@@ -31,9 +31,9 @@
         </div>
 
         <?php 
-        show($data);
-        if (isset($data['driver'])) {
-               foreach ($data['driver'] as $driver) {
+        //show($data);
+        if (isset($data['driver_details'])) {
+               foreach ($data['driver_details'] as $driver) {
         ?>
 
         <ul class="options">
@@ -41,18 +41,7 @@
             <i class='bx bxs-user-circle' style='color:#ff0e0e'  ></i>
             <span class="option-text"><?= $driver->id ?> - <?= $driver->name ?></span>
           </li>
-          <!-- <li class="option">
-            <i class='bx bxs-user-circle' style='color:#ff0e0e'  ></i>
-            <span class="option-text">DD02 - Pahasara Jayasooriya</span>
-          </li>
-          <li class="option">
-            <i class='bx bxs-user-circle' style='color:#ff0e0e'  ></i>
-            <span class="option-text">DD03 - Mithun Weerasinghe</span>
-          </li>
-          <li class="option">
-            <i class='bx bxs-user-circle' style='color:#ff0e0e'  ></i>
-            <span class="option-text">DD04 - Dilshan Akalanka</span>
-          </li> -->
+          
           
         </ul>
 
