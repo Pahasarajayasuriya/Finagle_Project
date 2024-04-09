@@ -184,6 +184,7 @@
         <div class="summary-container">
             <h3>CART SUMMARY</h3>
             <ul class="cart-summary-list"></ul>
+            <div class="delivery-fee"></div>
             <div class="total-product-price"></div>
         </div>
 

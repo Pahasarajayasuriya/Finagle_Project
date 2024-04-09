@@ -2,6 +2,8 @@ const sendAsGiftRadios = document.querySelectorAll(".send-as-gift-radio");
 const paymentMethodRadios = document.querySelectorAll(".payment-method-radio");
 const paymentDetailsSection = document.getElementById("paymentDetailsSection");
 var checkoutForm = document.getElementById("checkoutForm");
+const deliveryFee = 250;
+var deliveryFeeContainer = document.querySelector(".delivery-fee");
 
 const deliveryRadio = document.querySelector(
   'input[name="delivery_or_pickup"][value="delivery"]'
@@ -21,12 +23,30 @@ function enableDeliveryOptions() {
   pickupLocation.disabled = true;
   pickupOutletsSection.style.display = "none";
   deliveryOrdersSection.style.display = "block";
+  // Add delivery fee to total price
+  totalProductPrice += deliveryFee;
+  // Update displayed total price
+  totalProductPriceContainer.textContent = `Total Product Price: LKR ${totalProductPrice.toFixed(
+    2
+  )}`;
+  // Display delivery fee
+  deliveryFeeContainer.textContent = `Delivery Fee: LKR ${deliveryFee.toFixed(
+    2
+  )}`;
 }
 
 function enablePickupOptions() {
   pickupLocation.disabled = false;
   pickupOutletsSection.style.display = "block";
   deliveryOrdersSection.style.display = "none";
+  // Remove delivery fee from total price
+  totalProductPrice -= deliveryFee;
+  // Update displayed total price
+  totalProductPriceContainer.textContent = `Total Product Price: LKR ${totalProductPrice.toFixed(
+    2
+  )}`;
+  // Hide delivery fee
+  deliveryFeeContainer.textContent = "";
 }
 
 sendAsGiftRadios.forEach(function (radio) {
@@ -169,6 +189,15 @@ function displayCartSummary() {
     cartSummaryList.appendChild(listItem);
   });
 
+  // Add delivery fee to total price if delivery option is selected
+  if (deliveryRadio.checked) {
+    totalProductPrice += deliveryFee;
+    // Display delivery fee
+    deliveryFeeContainer.textContent = `Delivery Fee: LKR ${deliveryFee.toFixed(
+      2
+    )}`;
+  }
+
   // Display the total product price
   totalProductPriceContainer.textContent = `Total Product Price: LKR ${totalProductPrice.toFixed(
     2
@@ -181,8 +210,14 @@ checkoutForm.addEventListener("submit", function (event) {
   // Prevent the form from being submitted immediately
   event.preventDefault();
 
+  // Add delivery fee to total cost if delivery option is selected
+  var totalCost = totalProductPrice;
+  if (deliveryRadio.checked) {
+    totalCost += deliveryFee;
+  }
+
   // Set the total cost value
-  document.getElementById("totalCost").value = totalProductPrice.toFixed(2);
+  document.getElementById("totalCost").value = totalCost.toFixed(2);
 
   // Submit the form
   checkoutForm.submit();

@@ -46,7 +46,7 @@ class UI {
             <p class="product-descrip">${item.category}</p>
           </div>
           <div class="product-description">
-            <p class="product-descrip">Quantity: ${item.quantity > 0 ? item.quantity : "Out of stock"}</p>
+            <p class="product-descrip">Quantity: ${item.quantity > 0 ? item.quantity : '<span class="out-of-stock">Out of stock</span>'}</p>
           </div>
           <div class="options">
             <p class="product-price">Rs.${item.price}.00</p>

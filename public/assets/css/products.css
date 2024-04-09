@@ -770,3 +770,7 @@ cursor: pointer;
   background-color: #6e6c6c; /* ash color */
   cursor: not-allowed;
 }
+
+.out-of-stock {
+  color: red;
+}
