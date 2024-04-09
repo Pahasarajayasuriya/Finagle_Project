@@ -212,10 +212,6 @@ checkoutForm.addEventListener("submit", function (event) {
 
   // Add delivery fee to total cost if delivery option is selected
   var totalCost = totalProductPrice;
-  if (deliveryRadio.checked) {
-    totalCost += deliveryFee;
-  }
-
   // Set the total cost value
   document.getElementById("totalCost").value = totalCost.toFixed(2);
 

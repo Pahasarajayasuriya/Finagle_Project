@@ -18,4 +18,12 @@ class ProductModel extends Model
     {
         return $this->all();
     }
+
+    public function updateQuantity($productId, $quantity)
+    {
+        $query = "UPDATE `" . $this->table . "` SET quantity = ? WHERE id = ?";
+        $result = $this->query($query, [$quantity, $productId]);
+
+        return $result !== false;
+    }
 }

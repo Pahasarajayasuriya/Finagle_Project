@@ -9,7 +9,7 @@ class Checkout extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $validatedData = $CheckoutModel->validate($_POST);
             if (($validatedData)) {
-                $CheckoutModel->saveData($validatedData);
+               $insertorderid = $CheckoutModel->saveData($validatedData);
                 redirect('clear_cart');
             } else {
                 $data['errors'] = $CheckoutModel->errors;

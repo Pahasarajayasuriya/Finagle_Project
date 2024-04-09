@@ -108,8 +108,15 @@ class CheckoutModel extends Model
         $query = "INSERT INTO `" . $this->table . "`";
         $query .= " (" . implode(",", $keys) . ") VALUES (:" . implode(",:", $keys) . ")";
 
-        $result = $this->query($query, $data);
+        //$result = $this->query($query, $data);
 
-        return $result !== false;
+        $pdo = $this->query2($query, $data);
+
+        if ($pdo instanceof PDO) {
+            $lastInsertId = $pdo->lastInsertId();
+            return $lastInsertId;
+        }
+
+        return false;
     }
 }
