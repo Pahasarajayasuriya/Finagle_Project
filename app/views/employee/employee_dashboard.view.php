@@ -57,8 +57,22 @@ $this->view('includes/footer', $data);
 					</div>
 
 					<div class="right">
-						<p>Hey,Borella Branch </p>
-						<i class='bx bxs-building'></i>
+						<p>Hey,
+							<?php
+							if (isset($data['BranchName'])) {
+								foreach ($data['BranchName'] as $branch) {
+									// show($val);
+
+							?><?= $branch->name ?> Branch </p>
+
+				<?php
+
+								}
+							}
+				?>
+
+
+				<i class='bx bxs-building'></i>
 					</div>
 
 				</div>
@@ -90,9 +104,6 @@ $this->view('includes/footer', $data);
 
 							</div>
 							<div class="circle">
-								<!-- <div class="dot">
-									<span></span>
-								</div> -->
 								<div class="bar left">
 									<div class="progress"></div>
 								</div>
@@ -102,7 +113,8 @@ $this->view('includes/footer', $data);
 							</div>
 						</div>
 					</li>
-					<li>
+
+					<!-- <li>
 						<i class='bx bxs-group'></i>
 						<span class="text">
 							<?php
@@ -115,8 +127,8 @@ $this->view('includes/footer', $data);
 								}
 							}
 							?>
-							<p>Customers</p>
-						</span>
+							<p>Customers</p> -->
+					<!-- </span>
 						<div class="circular">
 							<div class="inner"></div>
 							<div class="outer"></div>
@@ -124,9 +136,6 @@ $this->view('includes/footer', $data);
 
 							</div>
 							<div class="circle">
-								<!-- <div class="dot">
-									<span></span>
-								</div> -->
 								<div class="bar left">
 									<div class="progress"></div>
 								</div>
@@ -136,13 +145,64 @@ $this->view('includes/footer', $data);
 							</div>
 						</div>
 
+					</li> -->
+					<li>
+						<i class='bx bxs-group'></i>
+						<span class="text">
+							<?php
+							//show($data['count']);
+
+							if (isset($data['getCusData'])) {
+								foreach ($data['getCusData'] as $cus_count) {
+
+							?>
+									<h3><?= $cus_count->total_records ?></h3>
+
+
+							<?php
+								}
+							}
+							?>
+							<!-- <p>Customers</p> -->
+							<p>Buyers</p>
+						</span>
+
+						<div class="circular">
+							<div class="inner"></div>
+							<div class="outer"></div>
+							<div class="numb2">
+
+							</div>
+							<div class="circle">
+								<div class="bar left">
+									<div class="progress"></div>
+								</div>
+								<div class="bar right">
+									<div class="progress"></div>
+								</div>
+							</div>
+						</div>
 					</li>
+
+
+
 					<li>
 						<i class='bx bxs-dollar-circle'></i>
 						<span class="text">
-							<h3>$2543</h3>
-							<p>Total Sales</p>
+
+							<?php
+							//show($data['count']);
+							if (isset($data['getTotalcost'])) {
+								foreach ($data['getTotalcost'] as $total_cost) {
+							?>
+									<h3><?= $total_cost->total_sum ?></h3>
+							<?php
+								}
+							}
+							?>
+							<p>Revenue</p>
 						</span>
+
 						<div class="circular">
 							<div class="inner"></div>
 							<div class="outer"></div>
@@ -150,9 +210,6 @@ $this->view('includes/footer', $data);
 
 							</div>
 							<div class="circle">
-								<!-- <div class="dot">
-									<span></span>
-								</div> -->
 								<div class="bar left">
 									<div class="progress"></div>
 								</div>
@@ -161,7 +218,6 @@ $this->view('includes/footer', $data);
 								</div>
 							</div>
 						</div>
-
 					</li>
 				</ul>
 
@@ -190,11 +246,11 @@ $this->view('includes/footer', $data);
 								?>
 										<tr>
 											<td>
-												<img src="<?= ROOT ?>/assets/images/customers/<?= $order->image ?>">
-												<p><?= $order->username ?></p>
+												<!-- <img src="<?= ROOT ?>/assets/images/customers/<?= $order->image ?>"> -->
+												<p><?= $order->name ?></p>
 											</td>
-											<td> <?= $order->order_id ?></td>
-											<td><span class="status<?= $order->status ?>"><?= $order->status ?></span></td>
+											<td> <?= $order->id ?></td>
+											<td><span class="status<?= $order->order_status ?>"><?= $order->order_status ?></span></td>
 										</tr>
 
 								<?php
@@ -207,8 +263,7 @@ $this->view('includes/footer', $data);
 					<div class="todo">
 						<div class="head">
 							<h3>Sales Analytics</h3>
-							<!-- <i class='bx bx-plus'></i>
-							<i class='bx bx-filter'></i> -->
+
 						</div>
 						<ul class="todo-list">
 							<li class="completed">
@@ -218,24 +273,22 @@ $this->view('includes/footer', $data);
 									<p class="type">Online Orders</p>
 
 								</div>
-
 								<?php
-								show($orders);
-								// Check if online delivery count is set in the $data array
-								if (isset($orders['online_delivery'])) {
+								//show($data['getOnlineorders']);
 
-									// Output the online delivery count
-									//echo "<p class='count'>" . $data['online_delivery'] . "</p>";
+								if (isset($data['getOnlineorders'])) {
+									foreach ($data['getOnlineorders'] as $online_orders) {
 
 								?>
-									<!-- <p class="increase" style="color:rgb(147, 240, 94);">+38%</p> -->
-									<p class="count"><?= $orders['online_delivery']  ?></p>
+										<p class="count"><?= $online_orders->online_delivery_count ?></p>
+
 
 								<?php
-
+									}
 								}
-
 								?>
+
+
 							</li>
 
 
@@ -246,29 +299,39 @@ $this->view('includes/footer', $data);
 								</div>
 
 								<?php
-								// Check if online delivery count is set in the $data array
-								if (isset($orders['pickup_orders'])) {
+								//show($data['getPickuporders ']);
 
-									// Output the online delivery count
-									//echo "<p class='count'>" . $data['online_delivery'] . "</p>";
+								if (isset($data['getPickuporders '])) {
+									foreach ($data['getPickuporders '] as $pickup_orders) {
 
 								?>
-									<!-- <p class="increase" style="color:rgb(147, 240, 94);">+38%</p> -->
-									<p class="count"><?= $orders['pickup_orders']  ?></p>
+										<p class="count"><?= $pickup_orders->pickup_count ?></p>
+
 
 								<?php
-
+									}
 								}
-
 								?>
+
+
 							</li>
 							<li class="completed">
 								<div class="numeric">
 									<i class='bx bxs-user bx-tada'></i>
 									<p class="type">New Branches</p>
 								</div>
-								<!-- <p class="increase" style="color:rgb(147, 240, 94);">+18%</p> -->
-								<p class="count">150</p>
+								<?php
+								//show($data['count']);
+								if (isset($data['getBranchcount '])) {
+									foreach ($data['getBranchcount '] as $branch_count) {
+								?>
+										<p class="count"><?= $branch_count->total_records ?></p>
+								<?php
+									}
+								}
+								?>
+
+
 
 							</li>
 
@@ -276,54 +339,60 @@ $this->view('includes/footer', $data);
 					</div>
 				</div>
 			</main>
-			<!-- MAIN -->
+
 		</section>
-		<!-- CONTENT -->
+
 	</div>
 	<script>
 		const numb1 = document.querySelector(".numb1");
 		let counter1 = 0;
+		const targetPercentage1 = <?= $order_count->total_records ?>;
 		const intervalId1 = setInterval(() => {
-			if (counter1 == 100) {
+			if (counter1 >= targetPercentage1) {
 				clearInterval(intervalId1);
 			} else {
 				counter1 += 1;
-				numb1.textContent = counter1 + "%";
-				updateProgressCircle(numb1, counter1);
+				numb1.textContent = (counter1 / 400) * 100 + "%";
+
 			}
 		}, 80);
+
+
+
 
 		const numb2 = document.querySelector(".numb2");
 		let counter2 = 0;
+		const targetPercentage2 = <?= $cus_count->total_records ?>;
 		const intervalId2 = setInterval(() => {
-			if (counter2 == 70) {
+			if (counter2 >= targetPercentage2) {
 				clearInterval(intervalId2);
 			} else {
 				counter2 += 1;
-				numb2.textContent = counter2 + "%";
-				updateProgressCircle(numb2, counter2);
+				numb2.textContent = (counter2 / 200) * 100 + "%";
+
 			}
 		}, 80);
+
+
+
 
 		const numb3 = document.querySelector(".numb3");
 		let counter3 = 0;
+		const targetPercentage3 = <?= $total_cost->total_sum ?>;
 		const intervalId3 = setInterval(() => {
-			if (counter3 == 50) {
+			if (counter3 == targetPercentage3) {
 				clearInterval(intervalId3);
 			} else {
 				counter3 += 1;
-				numb3.textContent = counter3 + "%";
-				updateProgressCircle(numb3, counter3);
+				numb3.textContent = (counter1 / 1000) * 100 + "%";
+
 			}
 		}, 80);
 
-		function updateProgressCircle(element, percentage) {
-			const circle = element.parentElement.querySelector(".circle");
-			const fill = circle.querySelector(".progress-fill");
-			const angle = 360 * (percentage / 100); // Calculate the angle of the fill animation
-			fill.style.transform = `rotate(${angle}deg)`; // Update the fill animation angle
-		}
-	</script>
+
+</script>
+
+
 
 
 </body>

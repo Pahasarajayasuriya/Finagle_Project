@@ -14,15 +14,14 @@
 
   <div id="assignDeliver" class="modal">
     <div class="modal-content">
-      <!-- <span><i class="bx bx-x close" style="color: #ff0000"></i></span> -->
+      
       <div>
         <i class='bx bxs-truck bx-fade-right' style='color:#f90000'></i>
 
 
-        <!-- <i class='bx bx-window-close bx-fade-right' style='color:red'  ></i> -->
+        
       </div>
-      <!-- <h4>Assign a deliverer for this order</h4> -->
-
+      
 
       <div class="select-menu">
         <div class="select-btn">
@@ -39,7 +38,7 @@
         <ul class="options">
           <li class="option">
             <i class='bx bxs-user-circle' style='color:#ff0e0e'  ></i>
-            <span class="option-text"><?= $driver->id ?> - <?= $driver->name ?></span>
+            <span class="option-text"><?= $driver->id ?> - <?= $driver->username ?></span>
           </li>
           
           

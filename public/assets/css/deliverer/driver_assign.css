@@ -177,19 +177,20 @@ hr{
 .action-buttons{
   margin-top: 3.5%;
   display: flex;
-  gap: 30px;
+  gap: 10px;
 }
+
 
 .view-location-btn,
 .delivered-btn {
- 
   color: #fff;
   border: none;
-  border-radius: 10px; /* Make buttons pill-shaped */
-  padding: 6% 4%; /* Increase padding for larger buttons */
-  font-size: 12px; /* Increase font size */
+  border-radius: 10px; 
+  padding: 4% 12%; /* Increase padding for larger buttons and adjust horizontally */
+  font-size: 11px; 
   cursor: pointer;
-  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  transition: all 0.3s ease; 
+  width: auto; 
 }
 
 

@@ -1,8 +1,6 @@
 <?php
 $role = "Deliverer";
-// require_once '../../Components/NavBar/header.php';
-// require_once '../../Components/NavBar/NavBar.php';
-// require_once '../../Components/NavBar/footer.php';
+
 
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
@@ -34,19 +32,19 @@ $this->view('includes/footer', $data);
             <?php
             if (isset($data)) {
                 foreach ($data as $val) {
-                    // show($val);
+                 
 
             ?>
 
                     <div class="profile-picture">
-                        <!-- <div class="outer-circle"> -->
+                       
                         <div class="inner-circle">
 
                         
                             <img src="<?= ROOT ?>/assets/images/drivers/<?= $val->image ?>"> 
                             <i class="fas fa-camera"></i>
                         </div>
-                        <!-- </div> -->
+                     
 
                         <div class="driver-info">
                             <p class="driver-name"><?= $val->name ?></p>

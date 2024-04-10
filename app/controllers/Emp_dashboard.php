@@ -6,13 +6,20 @@ class Emp_dashboard extends Controller
     {
         $id = $id ?? Auth::getId();
 
-        $order = new Orders();
+        $id = 13;
+        $BranchName= $this->getBranchName($id);
+        // show($allBranchEmp);
+        $data['BranchName'] = $BranchName;
 
-        $getData = $this->getOrderdata($order);
+
+         $check = new CheckoutOrder();
+
+        $order = new Orders();
+        $getData = $this->getOrderdata($check);
         // show($data);
         $data['getData'] = $getData;
 
-        $count=$this->totalOrders($order);
+        $count=$this->totalOrders($check);
        // show($count);
         $data['count'] = $count; 
        //show($data['count']);
@@ -22,15 +29,34 @@ class Emp_dashboard extends Controller
        // show($data);
        $data['getCusData'] = $getCusData;
 
-       $cost = new Checkout();
-       $getTotalcost = $this->getTotalCost($cost);
+      
+       $getTotalcost = $this->getTotalCost($check);
        $data['getTotalcost'] = $getTotalcost;
 
+       $getOnlineorders = $this->getOnlineorders($check);
+       //show($data['getOnlineorders']);
+       $data['getOnlineorders'] = $getOnlineorders ;
 
-        $this->view('employee/employee_dashboard', $data);
+       $getPickuporders = $this->getPickuporders($check);
+       $data['getPickuporders '] = $getPickuporders ;
+
+       $branch = new Branches();
+       $getBranchcount = $this->getBranchcount ($branch);
+       $data['getBranchcount '] = $getBranchcount  ;
+
+       $this->view('employee/employee_dashboard', $data);
         
      
      
+
+    }
+    private function getBranchName($id){
+        $branch = new Branches();
+
+        $arr['id']=$id;
+
+       $data = $branch->where($arr);
+       return $data;
 
     }
 
@@ -49,7 +75,7 @@ class Emp_dashboard extends Controller
 
     private function getOrderdata($order)
     {
-        $data = $order->findAll('order_id','DESC',3);
+        $data = $order->findAll('id','DESC',3);
 
         //    $data = $branch_id->where($arr);
         // show($data);
@@ -71,8 +97,30 @@ class Emp_dashboard extends Controller
        return $data;
     }
 
-    private function getTotalCost($cost){
-        $data = $cost->sumall();
+    private function getTotalCost($check){
+        $data = $check->sumOfColumn();
         return $data;
     }
+
+    private function getOnlineorders($check){
+        $data = $check->count_online();
+        return $data;
+
+    }
+
+    
+    private function getPickuporders($check){
+        $data = $check->count_pickup();
+        return $data;
+
+    }
+
+    private function getBranchcount ($branch)
+    {
+        $data = $branch->countall();
+        // show($data);
+       return $data;
+    }
+
+
 }

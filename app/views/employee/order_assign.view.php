@@ -68,7 +68,7 @@ $this->view('includes/assign_popup', $data);
                     <!-- <button >All</button> -->
 
                     <a href="<?= ROOT ?>/Emp_progress">All</a>
-
+                   
                     <button onclick='filterOrders("D",<?php echo json_encode($data) ?>)'>Deliveries</button>
                     <button onclick='filterOrders("P",<?php echo json_encode($data) ?>)'>Pickups</button>
                 </div>
@@ -100,8 +100,8 @@ $this->view('includes/assign_popup', $data);
                 <div class="placed-order-list" id="placed-order-list">
 
                     <?php
-                    if (isset($data)) {
-                        // show($data);
+                    if (isset($data['detail'])) {
+                       // show($data['detail']);
                         foreach ($data['detail'] as $val) {
 
                     ?>
@@ -135,7 +135,7 @@ $this->view('includes/assign_popup', $data);
 
                                 </div>
                                 <div class="item-options">
-                                    <button class="view-details" id="detailButton" onclick="showPopup('viewDetails','<?= json_encode($val) ?>')">View Details</button>
+                                    <button class="view-details" onclick="showPopup('viewDetails', <?= htmlspecialchars(json_encode($val)) ?>)">View Details</button>
                                     <button class="cancel" id="deleteButton" onclick="showPopup('cancel')">Cancel</button>
                                 </div>
 
@@ -173,7 +173,7 @@ $this->view('includes/assign_popup', $data);
                         </div>
                         <div class="dropdown-content" id="readyDropdownContent">
                             <div onclick="selectReadyOption('Assign to Drivers')">Assign to Drivers</div>
-                            <!-- <div onclick="selectReadyOption('Option 2')">Option 2</div> -->
+                           
                           
                         </div>
                     </div>
@@ -187,10 +187,7 @@ $this->view('includes/assign_popup', $data);
                                 <input class="checkbox" type="checkbox" id="checkbox-<?= $val->id ?>" name="checkbox-<?= $val->id ?>">
                                 <p class="item-id">D0123</p>
                             </div>
-                            <!-- <div class="time-duration">
-                                 <i class='bx bx-time-five'></i>
-                                 <div class="ready-time">1d</div>
-                            </div> -->
+                           
 
                         </div>
                         <div class="item-options">
@@ -262,11 +259,7 @@ $this->view('includes/assign_popup', $data);
 
 
 
-    <!-- <script src="<?= ROOT ?>/assets/js/order_cancel.js"></script>
-
-    <script src="<?= ROOT ?>/assets/js/order_details.js"></script>
-
-    <script src="<?= ROOT ?>/assets/js/order_assign.js"></script> -->
+  
 
     <!-- Import JQuary Library script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -351,8 +344,7 @@ $this->view('includes/assign_popup', $data);
         }
 
         function filterOrders(type, data) {
-            console.log(data)
-            console.log(type);
+           
 
             var placed = document.getElementById("placed-order-list");
 
@@ -372,7 +364,7 @@ $this->view('includes/assign_popup', $data);
                         if (element.delivery_or_pickup == "delivery") {
 
                             item_id.textContent = element.id
-                            // console.log(item_id)
+                           // console.log(item_id)
                             itemContainer = createItemHTML(element);
                             placed.appendChild(itemContainer);
 
@@ -397,7 +389,7 @@ $this->view('includes/assign_popup', $data);
 
             }
 
-            // });
+            
 
         }
 

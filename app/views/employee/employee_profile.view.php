@@ -57,16 +57,14 @@ $this->view('includes/footer', $data);
 
                 <div class="profile-header">
                     <div class="pro-image"></div>
-                    <div class="pro-id"> Username</div>
-                    <div class="pro-description">Name</div>
+                    <div class="pro-id"> User Id</div>
+                    <div class="pro-description">User Name</div>
                     <div class="pro-date">Joined Date</div>
                 </div>
 
                         <?php
                         if (isset($data)) {
                             foreach ($data as $val) {
-                                // show($val);
-
                         ?>
                         
                          <div class="profile-container">
@@ -74,13 +72,13 @@ $this->view('includes/footer', $data);
                                <div class="profile-record">
                                 <div class="profile-image">
                           
-                                   <!-- <?= ROOT ?>/assets/images/Emp_profiles/-->
+                                  
                                    <img src="<?= ROOT ?>/assets/images/Emp_profiles/<?= $val->image ?>"> 
                                   
                                 </div>
                                 <p class='profile-id'><?= $val->id ?></p>
                                 <p class='profile-name'><?= $val->username ?></p>
-                                <div class="profile-date"><?= $val->Joined_Date ?></div>
+                                <div class="profile-date"><?= $val->joined_date ?></div>
                                </div>
                          </div>
 

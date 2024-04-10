@@ -38,7 +38,7 @@ class Model extends Database
     public function findAll($order_column = 'id', $order_type = 'ASC', $limit = 10)
     {
 
-        $quary = "SELECT * FROM $this->table ORDER BY $order_column $order_type LIMIT $limit OFFSET $this->offset";
+        $quary = "SELECT * FROM {$this->table} ORDER BY $order_column $order_type LIMIT $limit OFFSET $this->offset";
 
         //echo $quary;
         // run the quary stage
@@ -46,48 +46,22 @@ class Model extends Database
     }
 
 
-    // public function count_online()
-    // {
-    //     $query = "SELECT COUNT(delivery_or_pickup) FROM $this->table WHERE delivery_or_pickup = 'delivery';";
-
-    //     $query = "SELECT COUNT(*)  FROM $this->table WHERE delivery_or_pickup = 'delivery'";
-    //     return $this->query($query);
-    // }
-
-    // public function count_pickup()
-    // {
-    //     $query = "SELECT COUNT(delivery_or_pickup) FROM $this->table WHERE delivery_or_pickup = 'pickup';";
-
-       
-    //     return $this->query($query);
-    // }
+   
 
     public function count_online()
 {
-    $query = "SELECT COUNT(*) AS online_delivery_count FROM $this->table WHERE delivery_or_pickup = 'delivery'";
-    $result = $this->query($query);
-
-    if ($result) {
-        return $result[0]['online_delivery_count'];
-    } else {
-        // Handle errors
-       // $this->errors[] = "Error executing query: " . $query;
-        return false;
-    }
+    $query = "SELECT COUNT(*) AS online_delivery_count FROM {$this->table} WHERE delivery_or_pickup ='delivery'";
+    return $this->query($query); 
 }
 
-public function count_pickup()
-{
-    $query = "SELECT COUNT(*) AS pickup_count FROM $this->table WHERE delivery_or_pickup = 'pickup'";
-    $result = $this->query($query);
 
-    if ($result) {
-        return $result[0]['pickup_count'];
-    } else {
-        // Handle errors
-       // $this->errors[] = "Error executing query: " . $query;
-        return false;
-    }
+
+  public function count_pickup()
+{
+    $query = "SELECT COUNT(*) AS pickup_count FROM {$this->table} WHERE delivery_or_pickup ='pickup'";
+    return $this->query($query);
+
+   
 }
 
 
@@ -108,6 +82,16 @@ public function count_pickup()
 
         return false;
     }
+
+
+    public function findUsersByRole($branch_id, $user_role)
+{
+
+    $query = "SELECT * FROM {$this->table} WHERE branch_id = $branch_id AND user_role = '$user_role'";
+   
+    return $this->query($query);
+}
+
 
     public function first($data)
     {
@@ -168,6 +152,13 @@ public function count_pickup()
         return $this->query($query);
 
     }
+
+    public function sumOfColumn()
+   {
+    $query = "SELECT SUM(total_cost) AS total_sum FROM {$this->table}";
+    return $this->query($query);
+   }   
+
     public function where_withInner($data, $reference_table, $refe_column1 = 'id', $refe_column2 = 'id')
     {
 

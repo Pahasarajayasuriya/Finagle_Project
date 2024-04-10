@@ -17,7 +17,7 @@
       
         <i class='bx bx-cart bx-fade-right' style='color:#fd0303' ></i>
         <?php
-                    if (isset($data)) {
+                    if (isset($data['detail'])) {
                         //show($data);
                         foreach ($data['detail'] as $val) {
 

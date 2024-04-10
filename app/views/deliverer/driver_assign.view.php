@@ -45,7 +45,8 @@ $this->view('includes/orderDetails_popup', $data);
               <div class="order-header">
                 >
                 <h3>Order ID: <?= $element->id ?> D</h3>
-                <button class="view-details" id="locationButton" onclick="showPopup('viewOrderDetails')">View Details >>>></button>
+               
+                <button class="view-details" id="locationButton" onclick="showPopup('viewOrderDetails' , <?= json_encode($element) ?>)">View Details >>>></button>
 
               </div>
               <hr>
@@ -68,7 +69,8 @@ $this->view('includes/orderDetails_popup', $data);
               </div>
               <div class="footer">
                 <div class="call-icon">
-                  <a href=""><i class="fa-solid fa-phone"></i></a>
+                 
+                  <a href="tel:<?= $element->phone_number ?>"><i class="fa-solid fa-phone"></i></a>
 
                 </div>
 
@@ -122,7 +124,7 @@ $this->view('includes/orderDetails_popup', $data);
 
 
   <script>
-    function showPopup(popupId, id = 0) {
+    function showPopup(popupId, id =0) {
 
       // console.log(id);
       var popup = document.getElementById(popupId);

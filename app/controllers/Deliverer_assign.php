@@ -41,7 +41,7 @@ class Deliverer_assign extends Controller
         foreach ($completeOrder as $key => $data) {
 
             // need to find register driver for this orders. It is not added
-            if ($data->delivery_or_pickup == "delivery" && $data->order_status == "ready") {
+            if ($data->delivery_or_pickup == "delivery" && $data->order_status == "Ready") {
                 unset($data->order_status);
                 unset($data->delivery_date);
                 unset($data->delivery_time);
