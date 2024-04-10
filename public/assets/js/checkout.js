@@ -145,6 +145,7 @@ initMap();
 // Summary of the cart items
 var cartItems = localStorage.getItem("cart");
 cartItems = cartItems ? JSON.parse(cartItems) : [];
+console.log(cartItems);
 
 function clearLocalStorage() {
   localStorage.removeItem("cart");
@@ -214,6 +215,29 @@ checkoutForm.addEventListener("submit", function (event) {
   var totalCost = totalProductPrice;
   // Set the total cost value
   document.getElementById("totalCost").value = totalCost.toFixed(2);
+
+  // Remove old hidden inputs
+  var oldInputs = document.querySelectorAll(".hidden-input");
+  oldInputs.forEach(function (input) {
+    input.remove();
+  });
+
+  // Add product_id and quantity as hidden inputs to the form
+  cartItems.forEach(function (item, index) {
+    var productIdInput = document.createElement("input");
+    productIdInput.type = "hidden";
+    productIdInput.name = "product_ids[]";
+    productIdInput.value = item.id;
+    productIdInput.classList.add("hidden-input");
+    checkoutForm.appendChild(productIdInput);
+
+    var quantityInput = document.createElement("input");
+    quantityInput.type = "hidden";
+    quantityInput.name = "quantities[]";
+    quantityInput.value = item.quantity;
+    quantityInput.classList.add("hidden-input");
+    checkoutForm.appendChild(quantityInput);
+  });
 
   // Submit the form
   checkoutForm.submit();

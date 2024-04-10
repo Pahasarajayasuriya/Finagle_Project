@@ -108,12 +108,34 @@ class CheckoutModel extends Model
         $query = "INSERT INTO `" . $this->table . "`";
         $query .= " (" . implode(",", $keys) . ") VALUES (:" . implode(",:", $keys) . ")";
 
-        //$result = $this->query($query, $data);
-
         $pdo = $this->query2($query, $data);
 
         if ($pdo instanceof PDO) {
             $lastInsertId = $pdo->lastInsertId();
+
+            // Insert order items
+            $productIds = $_POST['product_ids'];
+            $quantities = $_POST['quantities'];
+
+            for ($i = 0; $i < count($productIds); $i++) {
+                $productId = $productIds[$i];
+                $quantity = $quantities[$i];
+
+                $orderItemData = [
+                    'order_id' => $lastInsertId,
+                    'product_id' => $productId,
+                    'quantity' => $quantity,
+                ];
+
+                $keys = array_keys($orderItemData);
+                $values = array_values($orderItemData);
+
+                $query = "INSERT INTO `orderitems`";
+                $query .= " (" . implode(",", $keys) . ") VALUES (:" . implode(",:", $keys) . ")";
+
+                $this->query2($query, $orderItemData);
+            }
+
             return $lastInsertId;
         }
 
