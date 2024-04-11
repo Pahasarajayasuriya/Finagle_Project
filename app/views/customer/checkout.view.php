@@ -19,6 +19,9 @@
 </head>
 
 <body>
+    <?php
+    $this->view('includes/cus_topbar', $data);
+    ?>
     <input name="latitude" type="hidden" required />
     <input name="longitude" type="hidden" required />
     <div class="check_container">

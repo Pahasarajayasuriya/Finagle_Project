@@ -1,3 +1,10 @@
+<?php
+// $role = "User";
+// $this->view('includes/header', $data);
+// $this->view('includes/NavBar', $data);
+// $this->view('includes/footer', $data);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +21,12 @@
 <body>
     <div class="home-section">
         <div class="progress_main">
-
+            <div class="container">
+                <div class="text-container">
+                    <h1>Order ID: <?= $data['orderId'] ?></h1>
+                    <h2>If you have any issue, then call our hotline: <a href="tel:+940112236976">+94 (0) 11 223 6976</a></h2>
+                </div>
+            </div>
             <div class="bar_container">
                 <div class="progress_head">
                     <p class="progress_head_1">Order <span> Status</span></p>
@@ -48,12 +60,16 @@
                 </ul>
 
             </div>
-
-            <form action="<?= ROOT ?>/complaint">
-                <br><br><br>
-                <button type="submit" class="process_btn" id="complaintButton">Complaint</button>
-            </form>
-
+            <div class="button-container">
+                <form action="<?= ROOT ?>/products">
+                    <br><br><br>
+                    <button type="submit" class="process_btn" id="homeButton">Place a new Order</button>
+                </form>
+                <form action="<?= ROOT ?>/complaint">
+                    <br><br><br>
+                    <button type="submit" class="process_btn" id="complaintButton">Complaint</button>
+                </form>
+            </div>
         </div>
         <script>
             var orderStatus = "<?= $data['orderStatus'] ?>";

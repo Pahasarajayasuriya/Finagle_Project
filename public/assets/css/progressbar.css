@@ -131,20 +131,33 @@ ul li .active .uil {
   display: flex;
 }
 
+.button-container {
+  display: flex;
+  justify-content: space-between; 
+}
+
 .process_btn {
   outline: none;
   border: none;
   border-radius: 5px;
-  background-color: red;
   color: var(--bodyColor);
   padding: 10px 30px;
   margin: 30px 100px;
   font-weight: bolder;
-  box-shadow: 0 0 10px rgb(62, 54, 54);
+  box-shadow: 0 0 10px rgb(255, 255, 255);
   cursor: pointer;
   align-items: center;
   color: white;
+}
 
+#homeButton {
+  margin-right: 30vw;
+  background-color: rgb(71, 71, 255); 
+}
+
+#complaintButton {
+  margin-left: 10vw; 
+  background-color: rgb(250, 54, 54);
 }
 
 .process_btn:hover {
@@ -206,3 +219,26 @@ ul li .active .uil {
   width: calc(100% - 58px);
   z-index: 2;
 } */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px; 
+}
+
+.text-container {
+  text-align: left;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 18px; 
+  color: red;
+  margin-top: 20px;
+}

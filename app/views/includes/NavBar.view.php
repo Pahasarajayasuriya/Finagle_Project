@@ -16,6 +16,13 @@
                                 <span class="tooltip">Products</span>
                               </li> 
                               <li>
+                                <a href="' . ROOT . '/progressbar">
+                                  <i class="bx bx-taxi"></i>
+                                  <span class="links_name">Order Status</span>
+                                </a>
+                                <span class="tooltip">Order Status</span>
+                              </li>
+                              <li>
                                 <a href="' . ROOT . '/process">
                                   <i class="bx bx-pie-chart-alt-2"></i>
                                   <span class="links_name">Process</span>
