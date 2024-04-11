@@ -143,11 +143,10 @@ class CheckoutModel extends Model
     }
 
 
-
-    public function getLastOrderStatus()
+    public function getLastOrderStatus($userId)
     {
-        $query = "SELECT `order_status` FROM `" . $this->table . "` ORDER BY `id` DESC LIMIT 1";
-        $result = $this->query($query);
+        $query = "SELECT `order_status` FROM `" . $this->table . "` WHERE `customer_id` = :userId ORDER BY `id` DESC LIMIT 1";
+        $result = $this->query($query, ['userId' => $userId]);
 
         if ($result) {
             return $result[0]->order_status;
@@ -156,10 +155,10 @@ class CheckoutModel extends Model
         return false;
     }
 
-    public function getLastOrderId()
+    public function getLastOrderId($userId)
     {
-        $query = "SELECT `id` FROM `" . $this->table . "` ORDER BY `id` DESC LIMIT 1";
-        $result = $this->query($query);
+        $query = "SELECT `id` FROM `" . $this->table . "` WHERE `customer_id` = :userId ORDER BY `id` DESC LIMIT 1";
+        $result = $this->query($query, ['userId' => $userId]);
 
         if ($result) {
             return $result[0]->id;
