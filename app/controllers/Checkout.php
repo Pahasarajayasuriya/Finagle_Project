@@ -6,6 +6,7 @@ class Checkout extends Controller
     {
         $data['errors'] = [];
         $CheckoutModel = new CheckoutModel();
+        $ProductModel = new ProductModel(); // Add this line
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $productIds = $_POST['product_ids'];
             $quantities = $_POST['quantities'];
@@ -18,6 +19,16 @@ class Checkout extends Controller
 
                 $allProductIds[] = $productId;
                 $allQuantities[] = $quantity;
+
+                // Get the current quantity of the product
+                $product = $ProductModel->find($productId);
+                $currentQuantity = $product->quantity;
+
+                // Calculate the new quantity
+                $newQuantity = $currentQuantity - $quantity;
+
+                // Update the quantity in the database
+                $ProductModel->updateQuantity($productId, $newQuantity);
             }
 
             $validatedData = $CheckoutModel->validate($_POST);

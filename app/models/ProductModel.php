@@ -26,4 +26,16 @@ class ProductModel extends Model
 
         return $result !== false;
     }
+
+    public function find($id)
+    {
+        $query = "SELECT * FROM `" . $this->table . "` WHERE `id` = :id LIMIT 1";
+        $result = $this->query($query, ['id' => $id]);
+
+        if ($result) {
+            return $result[0];
+        }
+
+        return false;
+    }
 }
