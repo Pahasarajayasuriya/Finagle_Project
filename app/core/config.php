@@ -8,7 +8,7 @@ if($_SERVER['SERVER_NAME'] == 'localhost'){
     define('DBHOST', 'localhost');
     define('DBNAME', 'finagle');
     define('DBUSER', 'root');
-    define('DBPASS', '');
+    define('DBPASS', 'root');
     define('DBDRIVER', 'mysql');
 
     define('ROOT','http://localhost/finagle/public');
