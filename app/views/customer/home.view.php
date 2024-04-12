@@ -55,7 +55,7 @@ $this->view('includes/footer', $data);
                         </div>
 
                         <h3 class="text-span">Conveniently Delicious Frozen & Fresh Bakery Products</h3>
-                        <div class="button"> <a href="<?= ROOT?>/home"><button>Explore</button></a></div>
+                        <div class="button"> <a href="<?= ROOT ?>/home"><button>Explore</button></a></div>
                     </div>
                 </div>
             </div>
@@ -513,8 +513,7 @@ $this->view('includes/footer', $data);
                         </div>
                     </div>
                 </div>
-
-                <!-- <div class="certificates">
+                <div class="certificates">
 
                     <h2 class="section-title" id="exports">QUALITY CERTIFICATIONS</h2>
                     <div class="divider dark mb-4">
@@ -529,6 +528,7 @@ $this->view('includes/footer', $data);
                             <div class="outer">
                                 <div class="img-01">
                                     <img src="<?= ROOT ?>/assets/images/fssc-22000.png" alt="">
+
 
 
                                 </div>
@@ -570,157 +570,42 @@ $this->view('includes/footer', $data);
 
 
                     </div>
-                </div>
-                <br><br>
-                <div class="feedback-section">
+                    <br><br>
 
-                    <h2 class="section-title"><strong> </strong>CLIENTS' REVIEWS</h2>
-                    <div class="divider dark mb-4">
-                        <div class="icon-wrap">
-                            <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
-                        </div>
-                    </div>
 
-                    <div class="feedback-container">
-                        <div class="feedback">
-                            <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                            <p class="review">Super and excellent productions. And my favorite product was roller cake.</p>
-                            <div class="client-info">
-                                <img src="https://i.pinimg.com/474x/61/23/72/612372dba970fe25663857c585e8d56e.jpg" alt="">
-                                <p class="client-name">Mithun Weerasinghe</p>
 
+                    <div class="feedback-section">
+                        <h2 class="section-title"><strong> </strong>CLIENTS' REVIEWS</h2>
+                        <div class="divider dark mb-4">
+                            <div class="icon-wrap">
+                                <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
                             </div>
-
-
-
                         </div>
-                        <div class="feedback">
-                            <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                            <p class="review">Tasty soft buns for burgers and submarines. Quality is great, love it
-                            <p>
-                            <div class="client-info">
-                                <img src="https://i.pinimg.com/474x/01/cb/08/01cb089df6c94483423dc52f63cf7762.jpg" alt="">
-                                <p class="client-name">Pahasara Jayasooriya</p>
-
-                            </div> -->
 
 
-
-                 <div class="certificates">
-
-                     <h2 class="section-title" id="exports">QUALITY CERTIFICATIONS</h2>
-                     <div class="divider dark mb-4">
-                         <div class="icon-wrap">
-                             <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
-                         </div>
-                     </div>
-
-                     <div class="certificate-section">
-                         <div class="c1">
-
-                             <div class="outer">
-                                 <div class="img-01">
-                                     <img src="<?= ROOT ?>/assets/images/fssc-22000.png" alt="">
+                        <div class="feedback-container">
+                            <?php foreach ($reviews as $review) : ?>
+                                <div class="feedback">
+                                    <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                                    <p class="review"><?= htmlspecialchars($review->review) ?></p>
+                                    <div class="client-info">
+                                        <img src='<?= esc($review->image) ?>' alt="">
+                                        <p class="client-name"><?= htmlspecialchars($review->userName) ?></p>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
 
 
-
-                                 </div>
-                             </div>
-                             <p>FSSC 22000 <br>Certification</p>
-
-                         </div>
-
-                         <div class="c1">
-                             <div class="outer">
-                                 <div class="img-01">
-                                     <img src="<?= ROOT ?>/assets/images/gmp.jpg" alt="">
-
-                                 </div>
-                             </div>
-                             <p>GMP <br>Certification</p>
-                         </div>
-
-                         <div class="c1">
-                             <div class="outer">
-                                 <div class="img-01">
-                                     <img src="<?= ROOT ?>/assets/images/ISO-22000.png" alt="">
-
-                                 </div>
-                             </div>
-                             <p>ISO 22000 <br> Certification</p>
-                         </div>
-
-                         <div class="c1">
-                             <div class="outer">
-                                 <div class="img-01">
-                                     <img src="<?= ROOT ?>/assets/images/HACCP.jpg" alt="">
-
-                                 </div>
-                             </div>
-                             <p>HACCP <br> Certification</p>
-                         </div>
-
-
-
-                     </div>
-                     <br><br>
-
-
-
-                     <div class="feedback-section">
-
-                         <h2 class="section-title"><strong> </strong>CLIENTS' REVIEWS</h2>
-                         <div class="divider dark mb-4">
-                             <div class="icon-wrap">
-                                 <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
-                             </div>
-                         </div>
-
-                         <div class="feedback-container">
-                             <div class="feedback">
-                                 <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                                 <p class="review">Super and excellent productions. And my favorite product was roller cake.</p>
-                                 <div class="client-info">
-                                     <img src="https://i.pinimg.com/474x/61/23/72/612372dba970fe25663857c585e8d56e.jpg" alt="">
-                                     <p class="client-name">Mithun Weerasinghe</p>
-
-                                 </div>
-
-
-
-                             </div>
-                             <div class="feedback">
-                                 <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                                 <p class="review">Tasty soft buns for burgers and submarines. Quality is great, love it
-                                 <p>
-                                 <div class="client-info">
-                                     <img src="https://i.pinimg.com/474x/01/cb/08/01cb089df6c94483423dc52f63cf7762.jpg" alt="">
-                                     <p class="client-name">Pahasara Jayasooriya</p>
-
-                                 </div>
-
-                             </div>
-
-                             <div class="feedback">
-                                 <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                                 <p class="review">Love the bread and bakery items produced by them. Top quality❤️❤️
-                                 <p>
-                                 <div class="client-info">
-                                     <img src="https://i.pinimg.com/474x/6b/03/09/6b030941295661a780641ea0922d09c6.jpg" alt="">
-                                     <p class="client-name">Malki Yasodhara</p>
-
-                                 </div>
-
-                             </div>
-
-                         </div>
-                         <script src="<?= ROOT ?>/assets/js/user.js"></script>
- </body>
 
 
                     </div>
 
                 </div>
+                <script src="<?= ROOT ?>/assets/js/user.js"></script>
+</body>
+</div>
+</div>
 </body>
 
 </html>

@@ -11,4 +11,9 @@ class ProgressbarModel extends Model
         'datetime',
     ];
 
+    public function getLatestReviews($limit = 3)
+    {
+        $query = "SELECT * FROM {$this->table} ORDER BY datetime DESC LIMIT {$limit}";
+        return $this->query($query);
+    }
 }
