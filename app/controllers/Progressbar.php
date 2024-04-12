@@ -13,4 +13,14 @@ class Progressbar extends Controller
         $data['orderId'] = $orderId;
         $this->view('customer/progressbar', $data);
     }
+
+    public function saveReview()
+    {
+        $data = json_decode(file_get_contents('php://input'), true);
+        var_dump($data);
+        $ProgressbarModel = new ProgressbarModel();
+        $ProgressbarModel->insert($data);
+
+        echo json_encode(['success' => true]);
+    }
 }
