@@ -1,5 +1,6 @@
 <?php
 $role = "User";
+$data['role'] = $role;
 
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
@@ -436,7 +437,7 @@ $this->view('includes/footer', $data);
 
                             </div>
                             <div class="img-container-2">
-                                <img class="img-3" src="https://media.licdn.com/dms/image/D5622AQFDpnTPgR-H1A/feedshare-shrink_800/0/1686316219976?e=1704326400&v=beta&t=RAbhzyChajbcxVD8A4Tn2Rv8oI1UEWWdxSLkBOgeWjo" alt="">
+                                <img class="img-3" src="https://lh3.googleusercontent.com/p/AF1QipMRpMNJLbc9yGciZgvXzr4Y32F3pZBYMwuPtTzZ=s680-w680-h510" alt="">
                                 <img class="img-4" src="https://www.finagle.lk/images/site-specific/market-segments/horeca_01.jpg" alt="">
 
                             </div>

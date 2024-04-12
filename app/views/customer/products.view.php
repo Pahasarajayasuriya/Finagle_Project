@@ -1,5 +1,6 @@
 <?php
 $role = "User";
+$data['role'] = $role;
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
