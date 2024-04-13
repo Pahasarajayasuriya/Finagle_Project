@@ -33,12 +33,17 @@ let buttonsDOM = [];
 class UI {
   displayProducts(products) {
     let result = "";
+    const groupedProducts = this.groupByCategory(products);
 
-    products.forEach((item) => {
-      result += `
+    for (const category in groupedProducts) {
+      result += `<h2>${category}</h2>`;
+      groupedProducts[category].forEach((item) => {
+        result += `
       <div class="product">
         <div class="img-container">
-          <img class="product-img" src="${item.image}" alt="${item.user_name}" />
+          <img class="product-img" src="${item.image}" alt="${
+          item.user_name
+        }" />
         </div>
         <div class="product-desc">
           <p class="product-title">${item.user_name}</p>
@@ -46,22 +51,39 @@ class UI {
             <p class="product-descrip">${item.category}</p>
           </div>
           <div class="product-description">
-            <p class="product-descrip">Quantity: ${item.quantity > 0 ? item.quantity : '<span class="out-of-stock">Out of stock</span>'}</p>
+            <p class="product-descrip">Quantity: ${
+              item.quantity > 0
+                ? item.quantity
+                : '<span class="out-of-stock">Out of stock</span>'
+            }</p>
           </div>
           <div class="options">
             <p class="product-price">Rs.${item.price}.00</p>
-            <button class="btn add-to-cart" data-id="${item.id}" ${item.quantity > 0 ? '' : 'disabled'}>Add to Cart</button>
+            <button class="btn add-to-cart" data-id="${item.id}" ${
+          item.quantity > 0 ? "" : "disabled"
+        }>Add to Cart</button>
           </div>
         </div>
       </div>
     `;
-    });
-
+      });
+    }
     // Remove the local declaration of productsDOM
     productsDOM.innerHTML = result;
 
     // Update the method to get cart buttons dynamically
     // this.getCartBtns();
+  }
+
+  groupByCategory(products) {
+    return products.reduce((grouped, product) => {
+      const category = product.category;
+      if (!grouped[category]) {
+        grouped[category] = [];
+      }
+      grouped[category].push(product);
+      return grouped;
+    }, {});
   }
   updateCheckoutButtonState() {
     const checkoutButton = document.getElementById("checkout-button");
@@ -123,7 +145,7 @@ class UI {
   addCartItem(cartItem) {
     const div = document.createElement("div");
     div.classList.add("cart-item");
-  
+
     div.innerHTML = `
     <img
       class="cart-item-img"
@@ -143,20 +165,21 @@ class UI {
   
     <i class="ri-delete-bin-line trash" data-id=${cartItem.id} ></i>
     `;
-  
-    const arrowUp = div.querySelector('.arrow-up');
-    arrowUp.addEventListener('click', (event) => {
+
+    const arrowUp = div.querySelector(".arrow-up");
+    arrowUp.addEventListener("click", (event) => {
       const product = Storage.getProducts(cartItem.id);
       if (product.quantity <= cartItem.quantity) {
         alert("Sorry, you can't add more of this product.");
         return;
       }
       cartItem.quantity++;
-      event.target.parentElement.querySelector('.quantity').textContent = cartItem.quantity;
+      event.target.parentElement.querySelector(".quantity").textContent =
+        cartItem.quantity;
       this.setCartValue(cart);
       Storage.saveCart(cart);
     });
-  
+
     this.updateCheckoutButtonState();
     cartContent.append(div);
   }
@@ -186,32 +209,32 @@ class UI {
   //======> Shopping-Cart functionality <=====
   cartLogic() {
     clearCart.addEventListener("click", () => this.clearCart());
-  
+
     cartContent.addEventListener("click", (e) => {
       let target = e.target;
-  
+
       if (target.classList.contains("trash")) {
         removeItemFromCart(target);
       } else if (target.classList.contains("arrow-down")) {
         decreaseQuantity(target);
       }
     });
-  
+
     const removeItemFromCart = (target) => {
       const removedItem = cart.find(
         (c) => c.id === parseInt(target.dataset.id)
       );
-  
+
       this.removeItem(removedItem.id);
       Storage.saveCart(cart);
       cartContent.removeChild(target.parentElement);
     };
-  
+
     const decreaseQuantity = (target) => {
       const subtractedItem = cart.find(
         (c) => c.id === parseInt(target.dataset.id)
       );
-  
+
       if (subtractedItem.quantity === 1) {
         this.removeItem(subtractedItem.id);
         cartContent.removeChild(target.parentElement.parentElement);

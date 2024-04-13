@@ -39,8 +39,7 @@ function enablePickupOptions() {
   pickupLocation.disabled = false;
   pickupOutletsSection.style.display = "block";
   deliveryOrdersSection.style.display = "none";
-  // Remove delivery fee from total price
-  totalProductPrice -= deliveryFee;
+  // Do not subtract delivery fee from total price
   // Update displayed total price
   totalProductPriceContainer.textContent = `Total Product Price: LKR ${totalProductPrice.toFixed(
     2

@@ -65,11 +65,11 @@ $this->view('includes/footer', $data);
         </div>
         <div id="message-error-container"></div>
         <div class="products-center">
-            <?php foreach ($categories as $category) : ?>
+        <?php foreach ($productsByCategory as $category => $products) : ?>
                 <div class="category-container">
                     <h2 class="section-title"><?= $category ?></h2>
                     <div class="products">
-                        <?php foreach ($productsByCategory[$category] as $product) : ?>
+                    <?php foreach ($products as $product) : ?>
                             <div class="product">
                                 <div class="img-container">
                                     <img class="product-img" src="<?= ROOT . '/' . ($product->image) ?>" alt="<?= esc($product->user_name) ?>" />
