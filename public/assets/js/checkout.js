@@ -81,63 +81,96 @@ var infowindow;
 var flag = true;
 
 function initMap() {
-  map = document.getElementById("map");
+  var lat, lng; // Declare lat and lng here
 
-  map.addEventListener("mouseover", function () {
-    var lat = document.querySelector('input[name="latitude"]').value;
-    var lng = document.querySelector('input[name="longitude"]').value;
-
-    if (lat && lng && flag) {
-      var position = { lat: parseFloat(lat), lng: parseFloat(lng) };
+  navigator.geolocation.getCurrentPosition(
+    function (pos) {
+      lat = pos.coords.latitude;
+      lng = pos.coords.longitude;
       map = new google.maps.Map(document.getElementById("map"), {
-        center: position,
+        center: { lat: lat, lng: lng },
         zoom: 8,
       });
+
+      // Update the hidden input fields for latitude and longitude
+      document.querySelector('input[name="latitude"]').value = lat;
+      document.querySelector('input[name="longitude"]').value = lng;
+      // Create a marker at the user's current location
       marker = new google.maps.Marker({
-        position: position,
+        position: { lat: lat, lng: lng },
         map: map,
       });
-    } else {
-      navigator.geolocation.getCurrentPosition(function (pos, error) {
-        if (error) {
-          console.log(error);
-        } else {
-          map = new google.maps.Map(document.getElementById("map"), {
-            center: { lat: pos.coords.latitude, lng: pos.coords.longitude },
-            zoom: 8,
-          });
+
+      // Create the autocomplete object, restricting the search predictions to
+      // geographical location types.
+      var autocomplete = new google.maps.places.Autocomplete(
+        document.getElementById("check_address"),
+        {
+          types: ["geocode"],
+          componentRestrictions: {
+            country: "LK",
+          },
         }
+      );
+
+      // When the user selects an address from the drop-down, populate the
+      // address fields in the form and place a marker on the map at the address.
+      autocomplete.addListener("place_changed", function () {
+        var place = autocomplete.getPlace();
+        if (!place.geometry) {
+          window.alert("No details available for input: '" + place.name + "'");
+          return;
+        }
+
+        // Set the position of the marker using the place ID and location.
+        lat = place.geometry.location.lat();
+        lng = place.geometry.location.lng();
+        var position = { lat: lat, lng: lng };
+        map.setCenter(position);
+        marker.setPosition(position);
+
+        // Update the hidden input fields for latitude and longitude
+        document.querySelector('input[name="latitude"]').value = lat;
+        document.querySelector('input[name="longitude"]').value = lng;
       });
+
+      map.addListener("mouseover", function () {
+        lat = document.querySelector('input[name="latitude"]').value;
+        lng = document.querySelector('input[name="longitude"]').value;
+
+        if (lat && lng && flag) {
+          var position = { lat: parseFloat(lat), lng: parseFloat(lng) };
+          map.setCenter(position);
+          marker.setPosition(position); // Set the position of the marker
+        }
+        flag = false;
+      });
+
+      map.addListener("click", function (event) {
+        if (marker) {
+          marker.setMap(null);
+        }
+
+        marker = new google.maps.Marker({
+          position: event.latLng,
+          map: map,
+        });
+
+        google.maps.event.addListener(marker, "rightclick", function () {
+          marker.setMap(null);
+        });
+
+        lat = event.latLng.lat();
+        lng = event.latLng.lng();
+
+        document.querySelector('input[name="latitude"]').value = lat;
+        document.querySelector('input[name="longitude"]').value = lng;
+      });
+    },
+    function (error) {
+      console.log("Error occurred. Error code: " + error.code);
     }
-    flag = false;
-  });
-
-  map.addEventListener("click", function (event) {
-    if (marker) {
-      marker.setMap(null);
-    }
-
-    marker = new google.maps.Marker({
-      position: event.latLng,
-      map: map,
-    });
-
-    // infowindow = new google.maps.InfoWindow({
-    //     content: lat+','+ lng
-    // });
-
-    // infowindow.open(map, marker);
-
-    google.maps.event.addEventListener(marker, "rightclick", function () {
-      marker.setMap(null);
-    });
-
-    lat = event.latLng.lat();
-    lng = event.latLng.lng();
-
-    document.querySelector('input[name="latitude"]').value = lat;
-    document.querySelector('input[name="longitude"]').value = lng;
-  });
+  );
 }
 initMap();
 

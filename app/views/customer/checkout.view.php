@@ -22,10 +22,10 @@
     <?php
     $this->view('includes/cus_topbar', $data);
     ?>
-    <input name="latitude" type="hidden" required />
-    <input name="longitude" type="hidden" required />
     <div class="check_container">
         <form method="POST" id="checkoutForm">
+            <input name="latitude" type="hidden" />
+            <input name="longitude" type="hidden" />
             <div class="check_row">
                 <div class="check_col">
                     <div class="recipe_head">
@@ -67,6 +67,13 @@
 
                     <div class="check_inline" id="deliveryOrdersSection" style="display: none;">
                         <label class="check_name" for="delivery_orders"><b>For Delivery Orders:</b></label>
+                        <div class="check_inline">
+                            <label class="check_name" for="check_address" name='address'>location</label>
+                            <input class="check_input" value="<?= set_value('address') ?>" type="text" id="check_address" name="check_address" placeholder="Type address...">
+                            <?php if (!empty($errors['address'])) : ?>
+                                <div class="invalid"><?= $errors['address'] ?></div>
+                            <?php endif; ?>
+                        </div>
                         <div id="map" style="height: 300px; width: 100%;">
                             <a class="change_address" href="#">Choose Address</a>
                         </div>
@@ -134,44 +141,12 @@
 
 
 
+
                 <div class="check_col" id="paymentDetailsSection">
-                    <br>
-                    <h3 class="check_title">payment</h3>
-
-                    <div class="check_inline">
-                        <label class="check_name" for="order_note">Cards Accepted:</label>
-                        <img class="payment_methods" src="<?= ROOT ?>/assets/images/card_img.png" alt="">
-                    </div>
-
-                    <div class="check_inline">
-                        <label class="check_name" for="check_name">Name on card :</label>
-                        <input class="check_input" type="text" id="check_name" name="check_name" placeholder="Mr. Pahasara Jayasuriya">
-                    </div>
-
-                    <div class="check_inline">
-                        <label class="check_name" for="check_no">Credit Card number :</label>
-                        <input class="check_input" type="text" id="check_no" name="check_name" placeholder="1111-2222-3333-4444">
-                    </div>
-
-                    <div class="check_flex">
-                        <div class="check_inputBox">
-                            <label class="check_name" for="check_month">Exp Month:</label>
-
-                            <input class="check_input" type="text" placeholder="January">
-                        </div>
-                        <div class="check_inputBox">
-                            <label class="check_name" for="check_year">Exp Year:</label>
-                            <input class="check_input" type="text" placeholder="2024">
-                        </div>
-                        <div class="check_inputBox">
-                            <label class="check_name" for="check_CVV">CVV :</label>
-                            <input class="check_input" type="text" placeholder="123">
-                        </div>
-                    </div>
                 </div>
             </div>
 
-
+            <br><br><br>
             <button class="check_submit-btn" id="p_checkout-button">Proceed to Checkout</button>
 
             <!-- <script>
@@ -183,6 +158,9 @@
 
 
         </form>
+        <div>
+            <button onclick="paymentGateWay();">Pay here</button>
+        </div>
 
         <div class="summary-container">
             <h3>CART SUMMARY</h3>
@@ -203,9 +181,72 @@
                 window.location.href = "<?= ROOT ?>/products"
             });
         </script>
+
+        <script>
+            function paymentGateWay() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = () => {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        alert(xhttp.responseText);
+                        var obj = JSON.parse(xhttp.responseText);
+
+
+                        // Payment completed. It can be a successful failure.
+                        payhere.onCompleted = function onCompleted(orderId) {
+                            console.log("Payment completed. OrderID:" + orderId);
+                            // Note: validate the payment and show success or failure page to the customer
+                        };
+
+                        // Payment window closed
+                        payhere.onDismissed = function onDismissed() {
+                            // Note: Prompt user to pay again or show an error page
+                            console.log("Payment dismissed");
+                        };
+
+                        // Error occurred
+                        payhere.onError = function onError(error) {
+                            // Note: show an error page
+                            console.log("Error:" + error);
+                        };
+
+                        // Put the payment variables here
+                        var payment = {
+                            "sandbox": true,
+                            "merchant_id": "1226489", // Replace your Merchant ID
+                            "return_url": "http://localhost/finagle/public/checkout", // Important
+                            "cancel_url": "http://localhost/finagle/public/checkout", // Important
+                            "notify_url": "http://sample.com/notify",
+                            "order_id": obj['order_id'],
+                            "items": obj['item'],
+                            "amount": obj['amount'],
+                            "currency": obj['currency'],
+                            "hash": obj['hash'], // *Replace with generated hash retrieved from backend
+                            "first_name": obj['first_name'],
+                            "last_name": obj['last_name'],
+                            "email": obj['email'],
+                            "phone": obj['phone'],
+                            "address": obj['address'],
+                            "city": obj['city'],
+                            "country": "Sri Lanka",
+                            "delivery_address": "No. 46, Galle road, Kalutara South",
+                            "delivery_city": "Kalutara",
+                            "delivery_country": "Sri Lanka",
+                            "custom_1": "",
+                            "custom_2": ""
+                        };
+
+                        payhere.startPayment(payment);
+                    }
+                };
+                xhttp.open("GET", '<?= ROOT ?>/Checkout/Payherprocess', true);
+                xhttp.send();
+            }
+        </script>
+
     </div>
+    <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3KoOPDxuE9bSb6J__Wn_tz18S3IdBNIw&loading=async&libraries=places&callback=initMap"></script>
     <script src="<?= ROOT ?>/assets/js/checkout.js"></script>
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3KoOPDxuE9bSb6J__Wn_tz18S3IdBNIw&loading=async&callback=initMap"></script>
 </body>
 
 </html>

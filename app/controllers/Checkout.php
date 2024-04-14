@@ -44,4 +44,44 @@ class Checkout extends Controller
         $data['title'] = "Checkout";
         $this->view('customer/checkout', $data);
     }
+
+    public function Payherprocess()
+    {
+        
+        $amount = 3000;
+        $merchant_id = "1226489";
+        $order_id = uniqid();
+        $merchant_secret = "ODQ4NjM1NTMzMzMyMTc2ODYyMjExNzgyODE0OTI0MDcwNTcwOTc5";
+        $currency = "LKR";
+        
+        
+        $hash = strtoupper(
+            md5(
+                $merchant_id . 
+                $order_id . 
+                number_format($amount, 2, '.', '') . 
+                $currency .  
+                strtoupper(md5($merchant_secret)) 
+            ) 
+        );
+
+        $array = [];
+        $array["fist_name"] = "saman";
+        $array["last_name"] = "perera";
+        $array["email"] = "saman@gmail.com";
+        $array["phone"] = "0771234567";
+        $array["address"] = "No 1, Galle Road";
+        $array["city"] = "Colombo";
+        $array["item"] = "Finagle Lanka (Pvt) Ltd";
+        $array['country'] = "Sri Lanka";
+
+        $array['amount'] = $amount;
+        $array['merchant_id'] = $merchant_id;
+        $array['order_id'] = $order_id;
+        $array['currency'] = $currency;
+        $array['hash'] = $hash;
+
+        $jsonObject = json_encode($array);
+        echo $jsonObject;
+    }
 }

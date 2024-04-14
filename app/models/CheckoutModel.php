@@ -21,10 +21,10 @@ class CheckoutModel extends Model
         'delivery_date',
         'delivery_time',
         'total_cost',
+        'payement_status',
         'is_gift',
         'payment_method',
-        'note',
-        'formatted_address'
+        'note'
     ];
     public function validate($data)
     {
@@ -101,6 +101,11 @@ class CheckoutModel extends Model
 
         // Set deliver_id to NULL initially
         $data['deliver_id'] = NULL;
+
+        // Retrieve the address, latitude, and longitude from the form data
+        $data['delivery_address'] = $_POST['check_address'];
+        $data['latitude'] = $_POST['latitude'];
+        $data['longitude'] = $_POST['longitude'];
 
         $keys = array_keys($data);
         $values = array_values($data);
