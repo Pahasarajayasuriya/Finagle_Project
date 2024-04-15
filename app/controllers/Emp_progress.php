@@ -8,9 +8,12 @@ class Emp_progress extends Controller
        
 
 
-        $branch_id =13;
+        $branch ='Borella';
+
+       
 
         $user = new User();
+
         $data['row'] = $user->first(['id'=>$id]);
         $data['title'] = "Progress";
 
@@ -18,11 +21,14 @@ class Emp_progress extends Controller
        
         $detail = $this->getOrderDetails($order);
         //show($detail);
-        //show($data);
         $data['detail'] = $detail;
 
+        $items = $this->getItemsDetails($order);
+        //show($items);
+        $data['$items'] = $items;
+
       
-        $driver_details= $this->getDriverDetails($branch_id);
+        $driver_details= $this->getDriverDetails($branch);
         //show($driver_details);
         $data['driver_details'] = $driver_details;
         //show($data);
@@ -49,18 +55,26 @@ class Emp_progress extends Controller
     private function getOrderDetails($order)
     {
         $data = $order->findAll();
-
-        //    $data = $branch_id->where($arr);
-        // show($data);
         return $data;
     }
 
-     private function getDriverDetails($branch_id)
+    private function getItemsDetails($order)
+    {
+       
+        $order_id =51;
+        $data = $order->findOrderdetails($order_id);
+        return $data;
+ 
+
+
+    }
+
+
+     private function getDriverDetails($branch)
      {
 
         $user = new User();
-
-        $data = $user->findUsersByRole($branch_id,'driver');
+        $data = $user->findUsersByRole($branch,'driver');
  
         return $data;
  

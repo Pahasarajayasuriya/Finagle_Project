@@ -6,82 +6,52 @@
   <title>Order Details Display</title>
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 
-
 </head>
 
 <body>
-
 
   <div id="viewOrderDetails" class="modal">
     <div class="modal-content">
 
       <i class='bx bx-cart bx-fade-right' style='color:#fd0303'></i>
 
-       <?php
-      if (isset($data)) {
-     
-        foreach ($data as $val) {
+      <h2 id="order-id">Order ID: &nbsp; <span id="view-order-id"></span> </h2>
+      <div class="delivery-info">
 
-      ?> 
+        <div class="delivery-loc"><i class="fas fa-map-marker-alt"></i><span id="user-location"></span> </div>
+        <div class="delivery-loc"><i class="fas fa-phone"></i> <span id="user-phone"></span> </div>
+      </div>
+  
+      <button class="pay-status"><span id="pay-status"></span></button>
 
-          <h2 id="order-id">Order ID: <?= $val->id ?></h2>
-          <div class="delivery-info">
+      <br>
 
+      <div class="details" id="details">
 
-            <div class="delivery-loc"><i class="fas fa-map-marker-alt"></i> <?= $val->delivery_address ?></div>
-            <div class="delivery-loc"><i class="fas fa-phone"></i> <?= $val->phone_number ?></div>
-          </div>
+        <div class="product-item">
+          <div class="product-name" id="product-name">Chocolate Cake</div>
+          <div class="product-qty" id="product-qty">2</div>
+          <div class="product-price" id="product-price">Rs.2500.00</div>
+        </div>
 
-          <button class="pay-status">
-            <?php
-            if ($val->payment_method == "card") {
-              echo "Paid";
-            } else {
-              echo "Not Paid";
-            }
-            ?>
+        <div class="product-item">
+          <div class="product-name" id="product-name">Sandwitch Bread</div>
+          <div class="product-qty" id="product-qty">3</div>
+          <div class="product-price" id="product-price">Rs.1000.00</div>
+        </div>
+        <hr>
+        <div class="product-summery">
+          <div class="total-amount">Total Amount : Rs.<span id="total_cost"></span> </div>
+        </div>
 
-           </button>
+        <hr>
 
-          <br>
+      </div>
 
-
-          <div class="details" id="details">
-
-            <div class="product-item">
-              <div class="product-name" id="product-name">Chocolate Cake</div>
-              <div class="product-qty" id="product-qty">2</div>
-              <div class="product-price" id="product-price">Rs.2500.00</div>
-            </div>
-
-            <div class="product-item">
-              <div class="product-name" id="product-name">Sandwitch Bread</div>
-              <div class="product-qty" id="product-qty">3</div>
-              <div class="product-price" id="product-price">Rs.1000.00</div>
-            </div>
+      <button class="ok-button" id="confirmDetails" onclick="hidePopup('viewOrderDetails')">OK</button>
+      
 
 
-
-            <hr>
-            <div class="product-summery">
-              <div class="total-amount">Total Amount : Rs.5500</div>
-            </div>
-
-            <hr>
-
-          </div>
-
-          <button class="button" id="confirmDetails" onclick="hidePopup('viewOrderDetails')">OK</button>
-          <button class="button" id="cancelDetails" onclick="hidePopup('viewOrderDetails')">Cancel</button>
-
-
-      <?php
-
-        }
-      }
-      ?>
-
-      <!-- <button class="button" id="cancelDelete">Cancel</button> -->
     </div>
   </div>
 
@@ -105,11 +75,19 @@
                     
           </form>  -->
 
-      <button class="button" id="confirmDetails" onclick="hidePopup('viewOrderConfirm')">Yes</button>
-      <button class="button" id="cancelDetails" onclick="hidePopup('viewOrderConfirm')">No</button>
+          <!-- <form method="POST">
+                    <input type="hidden" name="order_status" value="delivered">
+                    <input type="hidden" name="id" value="<?= $element->id ?>">
+                    <button name="delivered_btn" class="delivered-btn">Yes</button> 
+                    
+          </form>  -->
+
+      <button class="confirm_button" id="confirmDetails" onclick="hidePopup('viewOrderConfirm')">Yes</button>
+      <button class="cancel_button" id="cancelDetails" onclick="hidePopup('viewOrderConfirm')">No</button>
     </div>
   </div>
-
+  
+  
 
   <style>
     .modal {
@@ -122,6 +100,7 @@
       height: 100%;
       overflow: auto;
       background-color: rgba(0, 0, 0, 0.4);
+    
     }
 
 
@@ -129,11 +108,12 @@
     .modal-content {
       border-radius: 10px;
       background-color: #fefefe;
-      margin: 10% auto;
+      margin: 5% auto;
       padding: 20px;
       border: 1px solid #888;
       width: 50%;
       text-align: center;
+     
     }
 
     .close {
@@ -158,6 +138,10 @@
       align-items: center;
     }
 
+    .bx.bx-cart.bx-fade-right {
+      font-size: 2rem;
+    }
+
     .bx.bx-alarm-exclamation.bx-fade-left {
       margin-left: 27px;
       font-size: 7rem;
@@ -178,9 +162,9 @@
       display: flex;
       /* text-align: center; */
       gap: 10px;
-      margin-left: 50px;
-      margin-right: 50px;
-      color: #889;
+      margin-left: 20px;
+      margin-right: 20px;
+      color:  #8e6d6d;
       font-size: 14px;
       /* align-self: center; */
       margin-top: 20px;
@@ -201,7 +185,7 @@
       margin-top: 10px;
       text-align: center;
       align-items: center;
-      background-color: rgb(16, 187, 0);
+      background-color: #606060;
       margin: 10px;
 
     }
@@ -245,7 +229,7 @@
 
     }
 
-    .button {
+    .confirm_button , .cancel_button, .ok-button  {
       width: 100px;
       height: 37px;
       font-size: 16px;

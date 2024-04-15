@@ -46,23 +46,21 @@ class Model extends Database
     }
 
 
-   
+
 
     public function count_online()
-{
-    $query = "SELECT COUNT(*) AS online_delivery_count FROM {$this->table} WHERE delivery_or_pickup ='delivery'";
-    return $this->query($query); 
-}
+    {
+        $query = "SELECT COUNT(*) AS online_delivery_count FROM {$this->table} WHERE delivery_or_pickup ='delivery'";
+        return $this->query($query);
+    }
 
 
 
-  public function count_pickup()
-{
-    $query = "SELECT COUNT(*) AS pickup_count FROM {$this->table} WHERE delivery_or_pickup ='pickup'";
-    return $this->query($query);
-
-   
-}
+    public function count_pickup()
+    {
+        $query = "SELECT COUNT(*) AS pickup_count FROM {$this->table} WHERE delivery_or_pickup ='pickup'";
+        return $this->query($query);
+    }
 
 
     public function where($data)
@@ -84,13 +82,39 @@ class Model extends Database
     }
 
 
-    public function findUsersByRole($branch_id, $user_role)
-{
+    public function findUsersByRole($branch, $user_role)
+    {
 
-    $query = "SELECT * FROM {$this->table} WHERE branch_id = $branch_id AND user_role = '$user_role'";
-   
-    return $this->query($query);
-}
+        $query = "SELECT * FROM {$this->table} WHERE branch = '$branch' AND {$this->table}.role = '$user_role'";
+
+        return $this->query($query);
+    }
+
+
+    public function findDrivers($driver_id)
+    {
+
+        $query = "SELECT * FROM {$this->table} WHERE id = $driver_id AND {$this->table}.role= 'deliverer'";
+
+        return $this->query($query);
+    }
+
+    public function find_driver_deliveredOrders($driver_id)
+    {
+        $query = "SELECT COUNT(*) AS delivered_count FROM {$this->table} WHERE deliver_id = $driver_id";
+
+        return $this->query($query);
+    }
+
+    public function find_total_earnings($driver_id)
+    {
+
+        $query = "SELECT SUM(total_cost) AS totalCost FROM {$this->table} WHERE deliver_id = $driver_id";
+
+        return $this->query($query);
+    }
+
+    
 
 
     public function first($data)
@@ -113,7 +137,6 @@ class Model extends Database
         return false;
     }
 
-
     public function update($id, $data)
     {
         if (!empty($this->allowedColumns)) {
@@ -123,22 +146,25 @@ class Model extends Database
                 }
             }
         }
+        
+        // Modify the data array to set 'order-status' to 'delivered'
+        $data['order_status'] = 'delivered';
+    
         $keys = array_keys($data);
-        // $values = array_values($data)
-
+    
         $query = "update " . $this->table . " set ";
         foreach ($keys as $key) {
             $query .= $key . "=:" . $key . ",";
         }
-
+    
         $query = trim($query, ",");
         $query .= " where id = :id ";
-
+    
         $data['id'] = $id;
-        // show($query);
-        // show($data);die;
+    
         $this->query($query, $data);
     }
+    
 
     public function all()
     {
@@ -150,14 +176,63 @@ class Model extends Database
     {
         $query = "SELECT  COUNT(*) AS total_records FROM {$this->table}";
         return $this->query($query);
+    }
 
+    public function count_Customers()
+    {
+        $query = "SELECT  COUNT(*) AS total_customers FROM {$this->table} WHERE {$this->table}.role= 'customer'";
+        return $this->query($query);
     }
 
     public function sumOfColumn()
-   {
-    $query = "SELECT SUM(total_cost) AS total_sum FROM {$this->table}";
-    return $this->query($query);
-   }   
+    {
+        $query = "SELECT SUM(total_cost) AS total_sum FROM {$this->table}";
+        return $this->query($query);
+    }
+
+    public function findOrderdetails($order_id)
+    {
+
+        $orderitemsTable = 'orderitems';
+        $productsTable = 'products';
+
+        $query = "SELECT p.user_name, oi.quantity 
+                  FROM {$this->table} c
+                  JOIN  $orderitemsTable oi ON c.id = oi.order_id
+                  JOIN $productsTable p ON oi.product_id = p.id
+                  WHERE c.id = $order_id";
+
+         return $this->query($query);
+    }
+
+//     public function generateTotal($order_id)
+// {
+//     $orderitemsTable = 'orderitems';
+//     $productsTable = 'products';
+
+//     $query = "SELECT oi_total.total AS checkout_total
+//               FROM {$this->table} c
+//               JOIN (
+//                   SELECT oi.order_id, SUM(p.price * oi.quantity) AS total
+//                   FROM   $orderitemsTable  oi
+//                   JOIN  $productsTable p ON oi.product_id = p.id
+//                   GROUP BY oi.order_id
+//               ) AS oi_total ON c.id = oi_total.order_id
+//               WHERE  c.id = $order_id";
+
+//     $result = $this->query($query);
+
+   
+//     $checkout_total = $result['checkout_total']; 
+
+   
+//     $updateQuery = "UPDATE {$this->table} SET total_cost = $checkout_total WHERE id = $order_id";
+//     $this->query($updateQuery);
+
+//     return $result;
+// }
+
+    
 
     public function where_withInner($data, $reference_table, $refe_column1 = 'id', $refe_column2 = 'id')
     {
@@ -169,12 +244,12 @@ class Model extends Database
                             ON $this->table.$refe_column1 = $reference_table.$refe_column2";
 
         $query .= " WHERE ";
-        
+
         foreach ($keys as $key) {
             $query .= $this->table . "." . $key . "=:" . $key . " && ";
         }
         $query = trim($query, "&& ");
-        
+
         $query .= " ORDER BY $refe_column1 $this->order_type LIMIT $this->limit OFFSET $this->offset";
 
         // echo $query;

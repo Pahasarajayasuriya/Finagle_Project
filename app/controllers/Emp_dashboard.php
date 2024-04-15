@@ -14,7 +14,6 @@ class Emp_dashboard extends Controller
 
          $check = new CheckoutOrder();
 
-        $order = new Orders();
         $getData = $this->getOrderdata($check);
         // show($data);
         $data['getData'] = $getData;
@@ -24,7 +23,7 @@ class Emp_dashboard extends Controller
         $data['count'] = $count; 
        //show($data['count']);
 
-       $customer = new Customer();
+       $customer = new User();
        $getCusData = $this->getCustomerdata($customer);
        // show($data);
        $data['getCusData'] = $getCusData;
@@ -90,9 +89,9 @@ class Emp_dashboard extends Controller
         return $data;
     }
    
-    private function getCustomerdata($customer)
+    private function getCustomerdata($user)
     {
-        $data = $customer->countall();
+        $data = $user->count_Customers();
         // show($data);
        return $data;
     }

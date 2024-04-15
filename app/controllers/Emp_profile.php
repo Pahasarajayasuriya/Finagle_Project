@@ -6,9 +6,9 @@ class Emp_profile extends Controller
     {
         $id = $id ?? Auth::getId();
 
-        $branch_id = 13;
+        $branch = 'Borella';
 
-        $allBranchEmp= $this->getEmpdata($branch_id);
+        $allBranchEmp= $this->getEmpdata($branch);
         //show($allBranchEmp);
         $data['data'] = $allBranchEmp;
 
@@ -18,10 +18,10 @@ class Emp_profile extends Controller
 
     
 
-    private function getEmpdata($branch_id ){
+    private function getEmpdata($branch){
        $user = new User();
 
-       $data = $user->findUsersByRole( $branch_id,'employee');
+       $data = $user->findUsersByRole($branch,'employee');
 
        return $data;
 

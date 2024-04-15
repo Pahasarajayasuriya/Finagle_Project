@@ -1,12 +1,12 @@
 <?php
 
-class Order_Details extends Model
+class OrderItems extends Model
 {
-    public $table = "order_details";
+    public $table = "orderitems";
     public $errors = [];
     protected $allowedColumns = [
 
-        'id',
+        
         'order_id',
         'product_id',
         'quantity',

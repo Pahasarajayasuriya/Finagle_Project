@@ -390,6 +390,10 @@ input[type="checkbox"] {
   }
   
 
+  .dropdown-header {
+    color: #e4e4e4; /* Initial text color */
+}
+
 .dropdown {
     position: relative;
     display: inline-block;
@@ -438,7 +442,10 @@ input[type="checkbox"] {
   .dropdown-content div:hover {
     background-color: #e4e4e4;
   }
-  
+ 
+
+
+
 .home-section {
     position: relative;
     transition: all 0.5s ease;
@@ -449,9 +456,7 @@ input[type="checkbox"] {
     /* z-index: 2; */
   }
 
-  /* .sidebar.open ~ .orders-container {
-    width: calc(100% - );
-  } */
+ 
 
   .sidebar.open ~ .home-section {
     left: 200px;

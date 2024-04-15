@@ -20,7 +20,7 @@ body {
   justify-content: center;
   color: black;
   background-color: white;
-
+  overflow: hidden; 
 
 }
 
@@ -276,14 +276,40 @@ hr{
   justify-content: space-between;
 }
 
+
+
 .left-section {
   flex: 1;
-  padding-right: 20px; 
+  padding-right: 20px;
+  height: 100vh; /* Adjust the height as needed */
+  overflow-y: auto; /* Add scrollbar when content exceeds height */
 }
 
 .right-section {
   flex: 1;
-  padding-left: 20px; 
+  padding-left: 20px;
+}
+
+/* Hide the default scrollbar */
+.left-section::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 5px; 
+}
+
+/* Track */
+.left-section::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+}
+
+/* Handle */
+.left-section::-webkit-scrollbar-thumb {
+  background: #8e6d6d; /* Color of the scrollbar handle */
+  border-radius: 5px; /* Make the scrollbar handle round */
+}
+
+/* Handle on hover */
+.left-section::-webkit-scrollbar-thumb:hover {
+  background: #8e6d6d; /* Change color of scrollbar handle on hover */
 }
 
 .googlemap {

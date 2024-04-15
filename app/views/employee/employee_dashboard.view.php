@@ -113,39 +113,6 @@ $this->view('includes/footer', $data);
 							</div>
 						</div>
 					</li>
-
-					<!-- <li>
-						<i class='bx bxs-group'></i>
-						<span class="text">
-							<?php
-							//show($data['count']);
-							if (isset($data['getCusData'])) {
-								foreach ($data['getCusData'] as $cus_count) {
-							?>
-									<h3><?= $cus_count->total_records ?></h3>
-							<?php
-								}
-							}
-							?>
-							<p>Customers</p> -->
-					<!-- </span>
-						<div class="circular">
-							<div class="inner"></div>
-							<div class="outer"></div>
-							<div class="numb2">
-
-							</div>
-							<div class="circle">
-								<div class="bar left">
-									<div class="progress"></div>
-								</div>
-								<div class="bar right">
-									<div class="progress"></div>
-								</div>
-							</div>
-						</div>
-
-					</li> -->
 					<li>
 						<i class='bx bxs-group'></i>
 						<span class="text">
@@ -156,7 +123,7 @@ $this->view('includes/footer', $data);
 								foreach ($data['getCusData'] as $cus_count) {
 
 							?>
-									<h3><?= $cus_count->total_records ?></h3>
+									<h3><?= $cus_count->total_customers ?></h3>
 
 
 							<?php
@@ -362,7 +329,7 @@ $this->view('includes/footer', $data);
 
 		const numb2 = document.querySelector(".numb2");
 		let counter2 = 0;
-		const targetPercentage2 = <?= $cus_count->total_records ?>;
+		const targetPercentage2 = <?= $cus_count->total_customers ?>;
 		const intervalId2 = setInterval(() => {
 			if (counter2 >= targetPercentage2) {
 				clearInterval(intervalId2);

@@ -30,45 +30,76 @@ $this->view('includes/footer', $data);
             </div>
 
             <?php
-            if (isset($data)) {
-                foreach ($data as $val) {
-                 
+            if (isset($data['driver_data'])) {
+                //show($data['driver_data']);
+                foreach ($data['driver_data'] as $val) {
+
 
             ?>
 
                     <div class="profile-picture">
-                       
+
                         <div class="inner-circle">
 
-                        
-                            <img src="<?= ROOT ?>/assets/images/drivers/<?= $val->image ?>"> 
+
+                            <img src="<?= ROOT ?>/assets/images/drivers/<?= $val->image ?>">
                             <i class="fas fa-camera"></i>
                         </div>
-                     
+
 
                         <div class="driver-info">
-                            <p class="driver-name"><?= $val->name ?></p>
+                            <p class="driver-name"><?= $val->username ?></p>
                             <p class="joined-date">Joined Date : <?= $val->joined_date ?></p>
                         </div>
 
 
                     </div>
-            
 
-            <div class="stats-boxes">
-                <!-- Orders delivered box -->
-                <div class="stats-box">
-                    <i class="fas fa-truck"></i>
-                    <p class="stats-number"><?= $val->delivered_orders ?></p>
-                    <p class="stats-text">Orders delivered</p>
-                </div>
-                <!-- Total earnings box -->
-                <div class="stats-box">
-                    <i class="fas fa-money-bill"></i>
-                    <p class="stats-number">Rs.<?= $val->total_earnings ?></p>
-                    <p class="stats-text">Total Earnings</p>
-                </div>
-            </div>
+
+                    <div class="stats-boxes">
+                        <!-- Orders delivered box -->
+                        <div class="stats-box">
+                            <i class="fas fa-truck"></i>
+
+                            <?php
+                            // show($data['$deliveredOrder']);
+                            if (isset($data['$deliveredOrder'])) {
+                                foreach ($data['$deliveredOrder'] as $delivered_orders) {
+
+                            ?>
+                                    <p class="stats-number"><?= $delivered_orders->delivered_count ?></p>
+
+
+                            <?php
+                                }
+                            }
+                            ?>
+
+
+                            <p class="stats-text">Orders delivered</p>
+                        </div>
+                        <!-- Total earnings box -->
+                        <div class="stats-box">
+                            <i class="fas fa-money-bill"></i>
+                          
+                            
+                            <?php
+                            // show($data['$totalEarnings']);
+                            if (isset($data['$totalEarnings'])) {
+                                foreach ($data['$totalEarnings'] as $total_earnings) {
+
+                            ?>
+                                     <p class="stats-number">Rs.<?= $total_earnings->totalCost ?></p>
+
+
+                            <?php
+                                }
+                            }
+                            ?>
+
+                            <p class="stats-text">Total Earnings</p>
+                        </div>
+                    </div>
 
             <?php
 

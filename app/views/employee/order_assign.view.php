@@ -1,12 +1,5 @@
 <?php
 $role = "Employee";
-// require_once '../../Components/NavBar/header.php';
-// require_once '../../Components/NavBar/NavBar.php';
-// require_once '../../Components/NavBar/footer.php';
-
-// include 'includes/details_popup.view.php';
-
-
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
@@ -14,6 +7,7 @@ $this->view('includes/footer', $data);
 $this->view('includes/cancel_popup', $data);
 $this->view('includes/details_popup', $data);
 $this->view('includes/assign_popup', $data);
+$this->view('includes/alreadyProcess_popup', $data);
 
 ?>
 
@@ -68,7 +62,7 @@ $this->view('includes/assign_popup', $data);
                     <!-- <button >All</button> -->
 
                     <a href="<?= ROOT ?>/Emp_progress">All</a>
-                   
+
                     <button onclick='filterOrders("D",<?php echo json_encode($data) ?>)'>Deliveries</button>
                     <button onclick='filterOrders("P",<?php echo json_encode($data) ?>)'>Pickups</button>
                 </div>
@@ -83,17 +77,19 @@ $this->view('includes/assign_popup', $data);
 
 
                     <div class="dropdown">
-                        <div class="dropdown-header" onclick="togglePlacedDropdown()">
+                        <div class="dropdown-header" onclick="togglePlacedDropdown()" id="placedDropdownHeader">
                             <span id="placedSelectedOption">Change the State</span>
-                            <i class="bx bxs-down-arrow style='color:#266bff"></i>
+                            <i class="bx bxs-down-arrow" style="color:#888"></i>
                         </div>
                         <div class="dropdown-content" id="placedDropdownContent">
-                            <div onclick="selectPlacedOption('Already Processed')">Already Processed</div>
+                            <div id="alreadyProcessedButton" onclick="showSelectedOrders()">Already Processed</div>
                             <div onclick="selectPlacedOption('Cancel Orders')">Cancel Orders</div>
-                          
                         </div>
                     </div>
+
+
                 </div>
+
 
 
 
@@ -101,7 +97,7 @@ $this->view('includes/assign_popup', $data);
 
                     <?php
                     if (isset($data['detail'])) {
-                       // show($data['detail']);
+                        // show($data['detail']);
                         foreach ($data['detail'] as $val) {
 
                     ?>
@@ -135,8 +131,10 @@ $this->view('includes/assign_popup', $data);
 
                                 </div>
                                 <div class="item-options">
-                                    <button class="view-details" onclick="showPopup('viewDetails', <?= htmlspecialchars(json_encode($val)) ?>)">View Details</button>
-                                    <button class="cancel" id="deleteButton" onclick="showPopup('cancel')">Cancel</button>
+
+
+                                    <button class="view-details" data-order='<?php echo json_encode($val); ?>' onclick="showPopup(this,'viewDetails')">View Details</button>
+                                    <button class="cancel" id="deleteButton" onclick="showPopup(this,'cancel')">Cancel</button>
                                 </div>
 
                             </div>
@@ -157,6 +155,8 @@ $this->view('includes/assign_popup', $data);
                     <i class='bx bx-check-circle bx-tada'></i>
                     <div class="status-title">Ready Orders</div>
                 </div>
+
+
                 <div class="selectOption">
                     <div class="select-all" id="select-all-ready" onclick="selectAllItems('ready')">
                         <div class="outer-circle">
@@ -167,14 +167,13 @@ $this->view('includes/assign_popup', $data);
 
 
                     <div class="dropdown">
-                        <div class="dropdown-header" onclick="toggleReadyDropdown()">
+                        <div class="dropdown-header" onclick="toggleReadyDropdown()" id="readyDropdownHeader">
                             <span id="readySelectedOption">Change the State</span>
-                            <i class="bx bxs-down-arrow style='color:#266bff"></i>
+                            <i class="bx bxs-down-arrow style='color:#888"></i>
                         </div>
                         <div class="dropdown-content" id="readyDropdownContent">
                             <div onclick="selectReadyOption('Assign to Drivers')">Assign to Drivers</div>
-                           
-                          
+
                         </div>
                     </div>
                 </div>
@@ -187,7 +186,7 @@ $this->view('includes/assign_popup', $data);
                                 <input class="checkbox" type="checkbox" id="checkbox-<?= $val->id ?>" name="checkbox-<?= $val->id ?>">
                                 <p class="item-id">D0123</p>
                             </div>
-                           
+
 
                         </div>
                         <div class="item-options">
@@ -259,80 +258,49 @@ $this->view('includes/assign_popup', $data);
 
 
 
-  
+
 
     <!-- Import JQuary Library script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 
 
-    <script>
-        function showPopup(popupId, id = 0) {
 
-            // console.log(id);
+    <script>
+        var view_details = document.querySelector('view-details');
+
+
+        function showPopup(button, popupId) {
+
+
+            data = JSON.parse(button.getAttribute('data-order'));
             var popup = document.getElementById(popupId);
+
             if (popup) {
                 popup.style.display = "block";
-
-            }
-            data = {
-                'order_id': id
             }
 
-            $.ajax({
-                type: "POST",
-                url: "<?= ROOT ?>/OrderDetail_Popup",
-                data: data,
-                cache: false,
-                success: function(res) {
-                    var detail = JSON.parse(res);
-                    // console.log(detail);
+            var order_id = document.getElementById('view-order-id');
+            var user_location = document.getElementById('user-location');
+            var pay_status = document.getElementById('pay-status');
+            var total_cost = document.getElementById('total_cost');
 
 
-                    detail.forEach(element => {
+            console.log(data);
 
-                        console.log(element)
-                        createProductItem(element.user_name, element.quantity, element.price)
-                    });
+            order_id.innerHTML = data.id;
+            user_location.innerHTML = data.delivery_address;
+            total_cost.innerHTML = data.total_cost;
 
-                },
-                error: function(xhr, status, error) {
-                    // return xhr;
-                }
-            });
+            if (data.payment_method == 'card') {
+                pay_status.innerHTML = "PAID";
 
-        }
-
-        function createProductItem(name, qty, price) {
-            // Create the product-item div
-            var productItemDiv = document.createElement("div");
-            productItemDiv.className = "product-item";
-
-            // Create the product-name div
-            var productNameDiv = document.createElement("div");
-            productNameDiv.className = "product-name";
-            productNameDiv.textContent = name;
-
-            // Create the product-qty div
-            var productQtyDiv = document.createElement("div");
-            productQtyDiv.className = "product-qty";
-            productQtyDiv.textContent = qty;
-
-            // Create the product-price div
-            var productPriceDiv = document.createElement("div");
-            productPriceDiv.className = "product-price";
-            productPriceDiv.textContent = price;
-
-            // Append product-name, product-qty, and product-price divs to product-item div
-            productItemDiv.appendChild(productNameDiv);
-            productItemDiv.appendChild(productQtyDiv);
-            productItemDiv.appendChild(productPriceDiv);
+            } else {
+                pay_status.innerHTML = "NOT PAID";
+            }
 
 
-            document.getElementById("details").appendChild(productItemDiv)
 
-
-            // return productItemDiv;
         }
 
 
@@ -343,8 +311,13 @@ $this->view('includes/assign_popup', $data);
             }
         }
 
+        function showConfirmPopup(popupId) {
+
+
+        }
+
         function filterOrders(type, data) {
-           
+
 
             var placed = document.getElementById("placed-order-list");
 
@@ -364,7 +337,7 @@ $this->view('includes/assign_popup', $data);
                         if (element.delivery_or_pickup == "delivery") {
 
                             item_id.textContent = element.id
-                           // console.log(item_id)
+                            // console.log(item_id)
                             itemContainer = createItemHTML(element);
                             placed.appendChild(itemContainer);
 
@@ -389,7 +362,7 @@ $this->view('includes/assign_popup', $data);
 
             }
 
-            
+
 
         }
 
@@ -462,43 +435,66 @@ $this->view('includes/assign_popup', $data);
             return itemContainer;
         }
 
-        function togglePlacedDropdown() {
+        document.addEventListener("DOMContentLoaded", function() {
+            var dropdownHeader = document.getElementById("placedDropdownHeader");
+            updateDropdownColor(); // Call the function to set initial color
+        });
 
-            var dropdownContent = document.getElementById("placedDropdownContent");
-            var dropdownHeader = document.querySelector(".dropdown-header");
-            if (dropdownContent.style.display === "block") {
-                dropdownContent.style.display = "none";
+        function updateDropdownColor() {
+            var dropdownHeader = document.getElementById("placedDropdownHeader");
+            if (isAnyOrderSelected()) {
+                dropdownHeader.classList.remove('disabled');
+                dropdownHeader.style.color = '#808080'; // Change text color to grey
             } else {
-                dropdownContent.style.display = "block";
-                dropdownContent.style.width = dropdownHeader.offsetWidth + "px";
+                dropdownHeader.classList.add('disabled');
+                dropdownHeader.style.color = '#e4e4e4'; // Change text color back to light gray
             }
         }
 
-        function selectPlacedOption(option) {
+        function togglePlacedDropdown() {
+            var dropdownContent = document.getElementById("placedDropdownContent");
+            var dropdownHeader = document.getElementById("placedDropdownHeader");
+            if (isAnyOrderSelected()) {
+                dropdownContent.classList.remove('disabled');
+                dropdownHeader.classList.remove('disabled');
+                dropdownHeader.style.color = '#808080'; // Change text color to grey
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                    dropdownContent.style.width = dropdownHeader.offsetWidth + "px";
+                }
+            } else {
+                dropdownContent.classList.add('disabled');
+                dropdownHeader.classList.add('disabled');
+                dropdownHeader.style.color = '#e4e4e4'; // Change text color back to light gray
+            }
+        }
 
+        // Function to check if any order is selected
+        function isAnyOrderSelected() {
+            var checkboxes = document.querySelectorAll('.placed-order-list .checkbox');
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    return true; // If any checkbox is checked, return true
+                }
+            }
+            return false; // If no checkbox is checked, return false
+        }
+        // Attach event listeners to checkboxes to update dropdown color when clicked
+        var checkboxes = document.querySelectorAll('.placed-order-list .checkbox');
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('click', updateDropdownColor);
+        });
+
+        var selectAllCheckbox = document.getElementById('select-all-placed');
+        selectAllCheckbox.addEventListener('click', updateDropdownColor);
+
+        function selectPlacedOption(option) {
             document.getElementById("placedSelectedOption").innerText = option;
-         
             document.getElementById("placedDropdownContent").style.display = "none";
         }
 
-        function toggleReadyDropdown() {
-
-            var dropdownContent = document.getElementById("readyDropdownContent");
-            var dropdownHeader = document.querySelector(".dropdown-header");
-            if (dropdownContent.style.display === "block") {
-                dropdownContent.style.display = "none";
-            } else {
-                dropdownContent.style.display = "block";
-                dropdownContent.style.width = dropdownHeader.offsetWidth + "px";
-            }
-        }
-
-        function selectReadyOption(option) {
-
-            document.getElementById("readySelectedOption").innerText = option;
-        
-            document.getElementById("readyDropdownContent").style.display = "none";
-        }
 
         function toggleDispatchDropdown() {
 
@@ -515,7 +511,7 @@ $this->view('includes/assign_popup', $data);
         function selectDispatchOption(option) {
 
             document.getElementById("dispatchSelectedOption").innerText = option;
-           
+
             document.getElementById("dispatchDropdownContent").style.display = "none";
         }
 
@@ -531,7 +527,53 @@ $this->view('includes/assign_popup', $data);
                 item.checked = !item.checked;
             });
         }
+
+        // Function to show the popup modal
+        function showModal(selectedOrders) {
+            var modal = document.getElementById("myModal");
+            var modalContent = document.querySelector(".modal-content");
+            var closeBtn = document.getElementsByClassName("close")[0];
+
+            var ordersDiv = document.getElementById("selectedOrders");
+            ordersDiv.innerHTML = "";
+
+            selectedOrders.forEach(function(order) {
+                var p = document.createElement("p");
+                p.textContent = order;
+                ordersDiv.appendChild(p);
+            });
+
+            modal.style.display = "block";
+
+            // Close the modal when clicking on the close button
+            closeBtn.onclick = function() {
+                modal.style.display = "none";
+            };
+
+            // Close the modal when clicking outside of it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
+        }
+
+        // Call this function when the "Already Processed" option is selected
+        function showSelectedOrders() {
+            var selectedOrders = [];
+            var checkboxes = document.querySelectorAll(".placed-order-list .checkbox:checked");
+            checkboxes.forEach(function(checkbox) {
+                var orderId = checkbox.parentElement.nextElementSibling.querySelector(".item-id").textContent;
+                selectedOrders.push(orderId);
+            });
+            showModal(selectedOrders);
+        }
     </script>
+
+    <style>
+
+
+    </style>
 </body>
 
 </html>

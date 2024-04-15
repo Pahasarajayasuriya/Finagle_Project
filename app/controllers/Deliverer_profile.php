@@ -6,58 +6,54 @@ class Deliverer_profile extends Controller
     {
         $id = $id ?? Auth::getId();
 
-        $id = 1;
+        $driver_id = 7;
 
-        $driver = new Deliverers();
-        $data['row'] = $driver->first(['id'=>$id]);
-        $data['title'] = "Profile";
 
-        $driverData= $this->getDelivererInfo($id);
-        // show($driverData);
-        $data['data'] = $driverData;
+        $driverData= $this->getDelivererInfo($driver_id);
+       // show($driverData);
+        $data['driver_data'] = $driverData;
+
+        $deliveredOrders = $this->getOrdersCount($driver_id );
+        //show( $deliveredOrders );
+        $data['$deliveredOrder']= $deliveredOrders;
+
+        $totalEarnings = $this->getTotalEarnings($driver_id );
+        //show( $totalEarnings);
+        $data['$totalEarnings']= $totalEarnings;
+
        
         $this->view('deliverer/driver_profile', $data);
     }
 
-   
 
-    // public function getDelivererInfo($id)
-    // {
-
-    //     $driver = new Deliverers();
-
-    //     $data = $driver->findAll($id);
-
-
-    //     foreach ($data as $key) {
-    //         unset($key->password);
-    //         unset($key->email);
-    //         unset($key->contact_number);
-    //         unset($key->DOB);
-    //     }
-
-       
-    //     return ($data);
-    // }
 
     private function getDelivererInfo($driver_id){
-        $driver = new Deliverers();
-
-        $arr['id']=$driver_id;
-
-       $data = $driver->where($arr);
-
-       foreach ($data as $key) {
-        unset($key->password);
-        unset($key->email);
-        unset($key->contact_number);
-        unset($key->DOB);
-      }
+       $driver = new User();
+     
+       $data = $driver->findDrivers( $driver_id);
 
        return $data;
+       
 
     }
+
+    private function getOrdersCount($driver_id )
+    {
+        $order = new CheckoutOrder();
+
+        $data = $order->find_driver_deliveredOrders($driver_id);
+
+        return $data;
+    }
     
+    private function getTotalEarnings($driver_id )
+    {
+        $order = new CheckoutOrder();
+
+        $data = $order->find_total_earnings($driver_id);
+
+        return $data;
+    }
 
     
 }

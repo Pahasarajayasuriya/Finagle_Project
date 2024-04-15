@@ -37,6 +37,8 @@ $this->view('includes/orderDetails_popup', $data);
 
         <?php
 
+        // show($data['total_cost']);
+
         if (!empty($data['ready_order'])) {
 
           foreach ($data['ready_order'] as $key => $element) {
@@ -45,8 +47,8 @@ $this->view('includes/orderDetails_popup', $data);
               <div class="order-header">
                 >
                 <h3>Order ID: <?= $element->id ?> D</h3>
-               
-                <button class="view-details" id="locationButton" onclick="showPopup('viewOrderDetails' , <?= json_encode($element) ?>)">View Details >>>></button>
+
+                <button type="button" class="view-details" id="locationButton view-details" data-order='<?php echo json_encode($element); ?>' onclick="showPopup(this,'viewOrderDetails')">View Details >>>></button>
 
               </div>
               <hr>
@@ -69,7 +71,7 @@ $this->view('includes/orderDetails_popup', $data);
               </div>
               <div class="footer">
                 <div class="call-icon">
-                 
+
                   <a href="tel:<?= $element->phone_number ?>"><i class="fa-solid fa-phone"></i></a>
 
                 </div>
@@ -78,13 +80,13 @@ $this->view('includes/orderDetails_popup', $data);
 
                   <button class="view-location-btn" id="locationButton">View Location</button>
 
-                  <!-- <form method="POST">
+                  <form method="POST">
                     <input type="hidden" name="order_status" value="delivered">
                     <input type="hidden" name="id" value="<?= $element->id ?>">
-                    <button name="delivered_btn" class="delivered-btn">Delivered</button> 
-                    
-                  </form> -->
-                  <button class="delivered-btn"  id="locationButton" onclick="showPopup('viewOrderConfirm')"> Delivered</button>
+                    <button name="delivered_btn" class="delivered-btn">Delivered</button>
+
+                  </form>
+                  <!-- <button class="delivered-btn" id="locationButton" onclick="showPopup(this,'viewOrderConfirm')"> Delivered</button> -->
                 </div>
 
               </div>
@@ -92,7 +94,6 @@ $this->view('includes/orderDetails_popup', $data);
             </div>
           <?php
           }
-
         } else {
 
           ?>
@@ -105,6 +106,20 @@ $this->view('includes/orderDetails_popup', $data);
     </div>
 
     <div class="right-section">
+
+       <?php
+     
+      $address = "College House, 94 Kumaratunga Munidasa Mawatha, Colombo 00700";
+
+      
+      $geocodeUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" . urlencode($address) . "&key=AIzaSyB3KoOPDxuE9bSb6J__Wn_tz18S3IdBNIw&loading=async";
+      $response = json_decode(file_get_contents($geocodeUrl), true);
+
+      if ($response['status'] == 'OK') {
+        $latitude = $response['results'][0]['geometry']['location']['lat'];
+        $longitude = $response['results'][0]['geometry']['location']['lng'];
+      }
+      ?> 
 
 
       <div class="googlemap" id="map">
@@ -124,39 +139,46 @@ $this->view('includes/orderDetails_popup', $data);
 
 
   <script>
-    function showPopup(popupId, id =0) {
+    var view_details = document.querySelector('view-details');
 
-      // console.log(id);
+
+    function showPopup(button, popupId) {
+
+
+      data = JSON.parse(button.getAttribute('data-order'));
+
+
       var popup = document.getElementById(popupId);
+
       if (popup) {
         popup.style.display = "block";
-
-      }
-      data = {
-        'order_id': id
       }
 
-      $.ajax({
-        type: "POST",
-        url: "<?= ROOT ?>/OrderDetail_Popup",
-        data: data,
-        cache: false,
-        success: function(res) {
-          var detail = JSON.parse(res);
-          // console.log(detail);
+      var order_id = document.getElementById('view-order-id');
+      var user_location = document.getElementById('user-location');
+      var user_phone = document.getElementById('user-phone');
+      var pay_status = document.getElementById('pay-status');
+      var total_cost = document.getElementById('total_cost');
 
 
-          detail.forEach(element => {
+      console.log(data);
+      console.log(data.id);
 
-            console.log(element)
-            createProductItem(element.user_name, element.quantity, element.price)
-          });
+      order_id.innerHTML = data.id;
+      user_location.innerHTML = data.delivery_address;
+      user_phone.innerHTML = data.phone_number;
+      pay_status.innerHTML = data.payment_method;
+      total_cost.innerHTML = data.total_cost;
 
-        },
-        error: function(xhr, status, error) {
-          // return xhr;
-        }
-      });
+
+      if (data.payment_method == 'card') {
+        pay_status.innerHTML = ('PAID');
+
+      } else {
+        pay_status.innerHTML = ('NOT PAID');
+
+
+      }
 
     }
 
@@ -170,14 +192,26 @@ $this->view('includes/orderDetails_popup', $data);
   </script>
 
   <script>
-    // Initialize and display the Google Map
+  
+
     function initMap() {
-      const map = new google.maps.Map(document.getElementById("map"), {
+      // Create a new map instance
+      var map = new google.maps.Map(document.getElementById('map'), {
         center: {
-          lat: 7.7072567,
-          lng: 80.6534611
-        }, // Initial center coordinates
-        zoom: 7.7, // Initial zoom level
+          lat: <?php echo $latitude; ?>,
+          lng: <?php echo $longitude; ?>
+        },
+        zoom: 15 // Adjust the zoom level as needed   zoom: 7.7
+      });
+
+      // Add a marker to the map
+      var marker = new google.maps.Marker({
+        position: {
+          lat: <?php echo $latitude; ?>,
+          lng: <?php echo $longitude; ?>
+        },
+        map: map,
+        title: 'Customer Address'
       });
     }
   </script>
