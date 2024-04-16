@@ -132,36 +132,19 @@
                 <div class="check_inline" id="payment">
                     <label class="check_name" for="check_payment">Payment Method :</label>
                     <input type="radio" id="payment-card" name="payment_method" value="card" class="payment-method-radio">
-                    <label class="check_radio_1" for="payment-card"> Credit or Debit card </label>
+                    <label class="check_radio_1" for="payment-card"> Online payment </label>
 
                     <input type="radio" id="payment-cash" name="payment_method" value="cash" class="payment-method-radio">
                     <label class="check_radio_1" for="payment-cash"> Cash payment </label>
 
                 </div>
-
-
-
-
                 <div class="check_col" id="paymentDetailsSection">
                 </div>
             </div>
 
             <br><br><br>
             <button class="check_submit-btn" id="p_checkout-button">Proceed to Checkout</button>
-
-            <!-- <script>
-                document.getElementById("p_checkout-button").addEventListener("click", function() {
-                    event.preventDefault();
-                    window.location.href = "progressbar.php";
-                });
-            </script> -->
-
-
         </form>
-        <div>
-            <button onclick="paymentGateWay();">Pay here</button>
-        </div>
-
         <div class="summary-container">
             <h3>CART SUMMARY</h3>
             <ul class="cart-summary-list"></ul>
@@ -173,8 +156,26 @@
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
 
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-
+        <script>
+            document.getElementById("payment-card").addEventListener("change", function() {
+                if (this.checked) {
+                    Swal.fire({
+                        title: "Pay here",
+                        icon: "info",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Pay here"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            paymentGateWay();
+                        }
+                    });
+                }
+            });
+        </script>
 
         <script>
             document.getElementById("back-button").addEventListener("click", function() {
@@ -191,11 +192,24 @@
                         var obj = JSON.parse(xhttp.responseText);
 
 
-                        // Payment completed. It can be a successful failure.
                         payhere.onCompleted = function onCompleted(orderId) {
                             console.log("Payment completed. OrderID:" + orderId);
-                            // Note: validate the payment and show success or failure page to the customer
+                            // Send a POST request to the new endpoint
+                            var xhr = new XMLHttpRequest();
+                            xhr.open("POST", '<?= ROOT ?>/Checkout/saveCardPayment', true);
+                            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                            xhr.onreadystatechange = function() {
+                                if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                                    // The request has been completed successfully
+                                    console.log(this.responseText);
+                                } else if (this.readyState === XMLHttpRequest.DONE) {
+                                    // The request has been completed but the status is not 200
+                                    console.error("There was an error. Status: " + this.status);
+                                }
+                            }
+                            xhr.send("orderId=" + orderId);
                         };
+
 
                         // Payment window closed
                         payhere.onDismissed = function onDismissed() {

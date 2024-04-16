@@ -17,7 +17,6 @@ class Progressbar extends Controller
     public function saveReview()
     {
         $data = json_decode(file_get_contents('php://input'), true);
-        var_dump($data);
         $ProgressbarModel = new ProgressbarModel();
         $ProgressbarModel->insert($data);
 

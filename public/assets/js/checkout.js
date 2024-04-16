@@ -1,6 +1,4 @@
 const sendAsGiftRadios = document.querySelectorAll(".send-as-gift-radio");
-const paymentMethodRadios = document.querySelectorAll(".payment-method-radio");
-const paymentDetailsSection = document.getElementById("paymentDetailsSection");
 var checkoutForm = document.getElementById("checkoutForm");
 const deliveryFee = 250;
 var deliveryFeeContainer = document.querySelector(".delivery-fee");
@@ -48,32 +46,6 @@ function enablePickupOptions() {
   deliveryFeeContainer.textContent = "";
 }
 
-sendAsGiftRadios.forEach(function (radio) {
-  radio.addEventListener("click", function () {
-    sendAsGiftRadios.forEach(function (otherRadio) {
-      if (otherRadio !== radio) {
-        otherRadio.checked = false;
-      }
-    });
-  });
-});
-
-paymentMethodRadios.forEach(function (radio) {
-  radio.addEventListener("click", function () {
-    paymentMethodRadios.forEach(function (otherRadio) {
-      if (otherRadio !== radio) {
-        otherRadio.checked = false;
-      }
-    });
-  });
-});
-
-paymentMethodRadios.forEach(function (radio) {
-  radio.addEventListener("click", function () {
-    paymentDetailsSection.style.display =
-      radio.value === "card" ? "block" : "none";
-  });
-});
 
 var map;
 var marker;
