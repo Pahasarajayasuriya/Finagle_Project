@@ -25,6 +25,12 @@ class Checkout extends Controller
 
                 $validatedData = $CheckoutModel->validate($_POST);
                 if (($validatedData)) {
+                    if (isset($_POST['latitude']) && isset($_POST['longitude'])) {
+                        // Add latitude and longitude to the validated data
+                        $validatedData['latitude'] = $_POST['latitude'];
+                        $validatedData['longitude'] = $_POST['longitude'];
+                    }
+
                     $validatedData['product_ids'] = $allProductIds;
                     $validatedData['quantities'] = $allQuantities;
 

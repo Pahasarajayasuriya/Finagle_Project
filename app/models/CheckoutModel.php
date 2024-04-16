@@ -57,11 +57,11 @@ class CheckoutModel extends Model
         //         $this->errors['pickupLocation'] = "Please select pickup location";
         //     }
         // }
-        if (empty($data['delivery_date'])) {
-            $this->errors['delivery_date'] = "Date is required";
-        } elseif (date('Y-m-d', strtotime($data['delivery_date'])) != date('Y-m-d')) {
-            $this->errors['delivery_date'] = "Date must be the current date";
-        }
+        // if (empty($data['delivery_date'])) {
+        //     $this->errors['delivery_date'] = "Date is required";
+        // } elseif (date('Y-m-d', strtotime($data['delivery_date'])) != date('Y-m-d')) {
+        //     $this->errors['delivery_date'] = "Date must be the current date";
+        // }
 
         // if (empty($data['delivery_time'])) {
         //     $this->errors['delivery_time'] = "Time is required";
@@ -112,9 +112,17 @@ class CheckoutModel extends Model
         $data['deliver_id'] = NULL;
 
         // Retrieve the address, latitude, and longitude from the form data
-        $data['delivery_address'] = $_POST['check_address'];
-        $data['latitude'] = $_POST['latitude'];
-        $data['longitude'] = $_POST['longitude'];
+        if ($_POST['delivery_or_pickup'] == 'delivery') {
+        if (isset($_POST['check_address'])) {
+            $data['delivery_address'] = $_POST['check_address'];
+        }
+        if (isset($_POST['latitude'])) {
+            $data['latitude'] = $_POST['latitude'];
+        }
+        if (isset($_POST['longitude'])) {
+            $data['longitude'] = $_POST['longitude'];
+        }
+    }
 
         $keys = array_keys($data);
         $values = array_values($data);

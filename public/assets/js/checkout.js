@@ -2,6 +2,8 @@ const sendAsGiftRadios = document.querySelectorAll(".send-as-gift-radio");
 var checkoutForm = document.getElementById("checkoutForm");
 const deliveryFee = 250;
 var deliveryFeeContainer = document.querySelector(".delivery-fee");
+const latitudeInput = document.querySelector('input[name="latitude"]');
+const longitudeInput = document.querySelector('input[name="longitude"]');
 
 const deliveryRadio = document.querySelector(
   'input[name="delivery_or_pickup"][value="delivery"]'
@@ -19,6 +21,8 @@ pickupRadio.addEventListener("change", enablePickupOptions);
 
 function enableDeliveryOptions() {
   pickupLocation.disabled = true;
+  latitudeInput.disabled = false;
+  longitudeInput.disabled = false;
   pickupOutletsSection.style.display = "none";
   deliveryOrdersSection.style.display = "block";
   // Add delivery fee to total price
@@ -35,6 +39,8 @@ function enableDeliveryOptions() {
 
 function enablePickupOptions() {
   pickupLocation.disabled = false;
+  latitudeInput.disabled = true;
+  longitudeInput.disabled = true;
   pickupOutletsSection.style.display = "block";
   deliveryOrdersSection.style.display = "none";
   // Do not subtract delivery fee from total price
