@@ -53,6 +53,7 @@ class Checkout extends Controller
                             // unset($_SESSION['orderId']);
                             // If the orderId is set in the session, save the data to the database and redirect to the clear cart page
                             $lastInsertId = $CheckoutModel->saveData($validatedData);
+                            $CheckoutModel->updatePaymentStatus($lastInsertId, 'Completed');
                             unset($_SESSION['orderId']);
                             redirect('clear_cart');
                         } else {

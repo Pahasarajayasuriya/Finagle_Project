@@ -57,16 +57,25 @@ class CheckoutModel extends Model
         //         $this->errors['pickupLocation'] = "Please select pickup location";
         //     }
         // }
-        // if (empty($data['delivery_date'])) {
-        //     $this->errors['delivery_date'] = "Date is required";
-        // } elseif (date('Y-m-d', strtotime($data['delivery_date'])) != date('Y-m-d')) {
-        //     $this->errors['delivery_date'] = "Date must be the current date";
-        // }
+        if (empty($data['delivery_date'])) {
+            $this->errors['delivery_date'] = "Date is required";
+        } elseif (date('Y-m-d', strtotime($data['delivery_date'])) != date('Y-m-d')) {
+            $this->errors['delivery_date'] = "Date must be the current date";
+        }
 
         // if (empty($data['delivery_time'])) {
         //     $this->errors['delivery_time'] = "Time is required";
-        // } elseif (strtotime($data['delivery_time']) < strtotime('now') + 1800) {
-        //     $this->errors['delivery_time'] = "Time must be at least 30 minutes ahead of the current time";
+        // } else {
+        //     $deliveryTime = strtotime($data['delivery_time']);
+        //     $currentTime = strtotime('now');
+        //     $openingTime = strtotime(date('Y-m-d') . ' 7:30');
+        //     $closingTime = strtotime(date('Y-m-d') . ' 19:30');
+
+        //     if ($deliveryTime < $currentTime + 1800) {
+        //         $this->errors['delivery_time'] = "Time must be at least 30 minutes ahead of the current time";
+        //     } elseif ($deliveryTime < $openingTime || $deliveryTime > $closingTime) {
+        //         $this->errors['delivery_time'] = "We're open from 7:30 AM to 7:30 PM. Please choose a delivery time within our operating hours.";
+        //     }
         // }
 
         if (empty($data['is_gift'])) {
@@ -183,5 +192,23 @@ class CheckoutModel extends Model
         }
 
         return false;
+    }
+
+
+
+    public function updatePaymentStatus($orderId, $status)
+    {
+        $data = ['id' => $orderId, 'payment_status' => $status];
+        $keys = array_keys($data);
+
+        $query = "UPDATE " . $this->table . " SET ";
+        foreach ($keys as $key) {
+            $query .= $key . "=:" . $key . ",";
+        }
+
+        $query = trim($query, ",");
+        $query .= " WHERE id = :id";
+
+        $this->query($query, $data);
     }
 }
