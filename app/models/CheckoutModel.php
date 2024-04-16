@@ -171,4 +171,17 @@ class CheckoutModel extends Model
 
         return false;
     }
+
+
+    public function getLastOrderIdAll()
+    {
+        $query = "SELECT `id` FROM `" . $this->table . "` ORDER BY `id` DESC LIMIT 1";
+        $result = $this->query($query);
+
+        if ($result) {
+            return $result[0]->id;
+        }
+
+        return false;
+    }
 }

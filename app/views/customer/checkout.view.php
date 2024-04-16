@@ -22,6 +22,7 @@
     <?php
     $this->view('includes/cus_topbar', $data);
     ?>
+    
     <div class="check_container">
         <form method="POST" id="checkoutForm">
             <input name="latitude" type="hidden" />
@@ -156,6 +157,7 @@
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
 
         </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <script>
@@ -184,13 +186,15 @@
         </script>
 
         <script>
+            var ROOT = "<?= ROOT ?>";
+        </script>
+        <script>
             function paymentGateWay() {
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = () => {
                     if (xhttp.readyState == 4 && xhttp.status == 200) {
-                        alert(xhttp.responseText);
+                        console.log(xhttp.responseText);
                         var obj = JSON.parse(xhttp.responseText);
-
 
                         payhere.onCompleted = function onCompleted(orderId) {
                             console.log("Payment completed. OrderID:" + orderId);

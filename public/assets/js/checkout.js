@@ -46,7 +46,6 @@ function enablePickupOptions() {
   deliveryFeeContainer.textContent = "";
 }
 
-
 var map;
 var marker;
 var infowindow;
@@ -163,11 +162,18 @@ var totalProductPriceContainer = document.querySelector(".total-product-price");
 cartSummaryList.innerHTML = "";
 totalProductPriceContainer.innerHTML = "";
 
-// Initialize total product price
+// Initialize total product price and total cost
 var totalProductPrice = 0;
+var totalCost = 0;
 
 function displayCartSummary() {
-  // Calculate the total cost
+  // Clear previous cart summary
+  cartSummaryList.innerHTML = "";
+
+  // Reset total product price
+  totalProductPrice = 0;
+
+  // Calculate the total product price
   cartItems.forEach(function (item) {
     var totalPriceForItem = item.price * item.quantity;
     totalProductPrice += totalPriceForItem;
@@ -194,29 +200,36 @@ function displayCartSummary() {
     cartSummaryList.appendChild(listItem);
   });
 
-  // Add delivery fee to total price if delivery option is selected
+  // Calculate the total cost
+  totalCost = totalProductPrice;
+
+  // Add delivery fee to total cost if delivery option is selected
   if (deliveryRadio.checked) {
-    totalProductPrice += deliveryFee;
+    totalCost += deliveryFee;
     // Display delivery fee
     deliveryFeeContainer.textContent = `Delivery Fee: LKR ${deliveryFee.toFixed(
       2
     )}`;
   }
 
-  // Display the total product price
-  totalProductPriceContainer.textContent = `Total Product Price: LKR ${totalProductPrice.toFixed(
+  // Display the total cost
+  totalProductPriceContainer.textContent = `Total Cost: LKR ${totalCost.toFixed(
     2
   )}`;
+  console.log("Total Cost:", totalCost.toFixed(2));
+  document.cookie = "totalCost=" + totalCost.toFixed(2) + ";path=http://localhost/finagle/public/checkout/Payherprocess";
 }
 
 displayCartSummary();
+
+// Update total cost when delivery option changes
+deliveryRadio.addEventListener("change", displayCartSummary);
+pickupRadio.addEventListener("change", displayCartSummary);
 
 checkoutForm.addEventListener("submit", function (event) {
   // Prevent the form from being submitted immediately
   event.preventDefault();
 
-  // Add delivery fee to total cost if delivery option is selected
-  var totalCost = totalProductPrice;
   // Set the total cost value
   document.getElementById("totalCost").value = totalCost.toFixed(2);
 
@@ -242,7 +255,6 @@ checkoutForm.addEventListener("submit", function (event) {
     quantityInput.classList.add("hidden-input");
     checkoutForm.appendChild(quantityInput);
   });
-
   // Submit the form
   checkoutForm.submit();
 });

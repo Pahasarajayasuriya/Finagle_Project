@@ -2,9 +2,6 @@
 
 class Checkout extends Controller
 {
-
-
-
     public function index($id = null)
     {
         $data['errors'] = [];
@@ -53,7 +50,7 @@ class Checkout extends Controller
                     } else if ($_POST['payment_method'] == 'card') {
                         if (isset($_SESSION['orderId'])) {
                             // show($_SESSION['orderId']);
-                            unset($_SESSION['orderId']);
+                            // unset($_SESSION['orderId']);
                             // If the orderId is set in the session, save the data to the database and redirect to the clear cart page
                             $lastInsertId = $CheckoutModel->saveData($validatedData);
                             unset($_SESSION['orderId']);
@@ -85,9 +82,22 @@ class Checkout extends Controller
     public function Payherprocess()
     {
 
-        $amount = 3000;
+        $id = Auth::getId(); // Get the ID of the currently logged in user
+
+        $UserModel = new User();
+        $user = $UserModel->first(['id' => $id]); // Get the user data
+
+        $CheckoutModel = new CheckoutModel();
+        $lastOrderId = $CheckoutModel->getLastOrderIdAll();
+        if (isset($_COOKIE['totalCost'])) {
+            $totalCost = $_COOKIE['totalCost'];
+        } else {
+            // Handle the case where the cookie is not set
+        }
+
+        $amount = $totalCost;
         $merchant_id = "1226489";
-        $order_id = uniqid();
+        $order_id = $lastOrderId + 1;
         $merchant_secret = "ODQ4NjM1NTMzMzMyMTc2ODYyMjExNzgyODE0OTI0MDcwNTcwOTc5";
         $currency = "LKR";
 
@@ -104,13 +114,13 @@ class Checkout extends Controller
 
         $array = [];
 
-        $array["fist_name"] = "saman";
-        $array["last_name"] = "perera";
-        $array["email"] = "saman@gmail.com";
-        $array["phone"] = "0771234567";
-        $array["address"] = "No 1, Galle Road";
-        $array["city"] = "Colombo";
-        $array["item"] = "Mobile Phone";
+        $array["fist_name"] = $user->username;
+        $array["last_name"] = $user->username;
+        $array["email"] = $user->email;
+        $array["phone"] = $user->teleno;
+        $array["address"] = $user->address;
+        $array["city"] = "Borella";
+        $array["item"] = "Order Payment";
 
         $array['amount'] = $amount;
         $array['merchant_id'] = $merchant_id;
