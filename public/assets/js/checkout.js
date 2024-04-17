@@ -103,9 +103,24 @@ function initMap() {
 
       // Show a message to the user about whether delivery is available or not
       if (deliveryAvailable) {
-        window.alert("We deliver to your current location!");
+        console.log("We deliver to your current location!");
       } else {
-        window.alert("Sorry, we don't deliver to your current location.");
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Sorry, we don't deliver to your location.",
+          footer:
+            '<a href="#" id="pickupLink">Click here to make a pickup order instead</a>',
+          didOpen: () => {
+            document
+              .getElementById("pickupLink")
+              .addEventListener("click", function (e) {
+                e.preventDefault();
+                document.getElementById("pickup").click();
+                Swal.close();
+              });
+          },
+        });
       }
 
       // Create the autocomplete object, restricting the search predictions to
@@ -125,7 +140,12 @@ function initMap() {
       autocomplete.addListener("place_changed", function () {
         var place = autocomplete.getPlace();
         if (!place.geometry) {
-          window.alert("No details available for input: '" + place.name + "'");
+          Swal.fire({
+            text: "No details available for input: '" + place.name + "'",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            allowEnterKey: false,
+          });
           return;
         }
 
@@ -162,9 +182,24 @@ function initMap() {
 
         // Show a message to the user about whether delivery is available or not
         if (deliveryAvailable) {
-          window.alert("We deliver to your selected location!");
+          console.log("We deliver to your selected location!");
         } else {
-          window.alert("Sorry, we don't deliver to your selected location.");
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Sorry, we don't deliver to your location.",
+            footer:
+              '<a href="#" id="pickupLink">Click here to make a pickup order instead</a>',
+            didOpen: () => {
+              document
+                .getElementById("pickupLink")
+                .addEventListener("click", function (e) {
+                  e.preventDefault();
+                  document.getElementById("pickup").click();
+                  Swal.close();
+                });
+            },
+          });
         }
       });
 
@@ -222,9 +257,24 @@ function initMap() {
 
         // Show a message to the user about whether delivery is available or not
         if (deliveryAvailable) {
-          window.alert("We deliver to your selected location!");
+          console.log("We deliver to your selected location!");
         } else {
-          window.alert("Sorry, we don't deliver to your selected location.");
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Sorry, we don't deliver to your location.",
+            footer:
+              '<a href="#" id="pickupLink">Click here to make a pickup order instead</a>',
+            didOpen: () => {
+              document
+                .getElementById("pickupLink")
+                .addEventListener("click", function (e) {
+                  e.preventDefault();
+                  document.getElementById("pickup").click();
+                  Swal.close();
+                });
+            },
+          });
         }
       });
     },
