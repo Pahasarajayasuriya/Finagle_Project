@@ -27,6 +27,7 @@
         <form method="POST" id="checkoutForm">
             <input name="latitude" type="hidden" />
             <input name="longitude" type="hidden" />
+            <input type="hidden" id="branches" value="<?php echo htmlspecialchars(json_encode($data['branches'])); ?>">
             <div class="check_row">
                 <div class="check_col">
                     <div class="recipe_head">

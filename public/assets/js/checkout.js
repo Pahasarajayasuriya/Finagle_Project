@@ -69,14 +69,44 @@ function initMap() {
         zoom: 8,
       });
 
-      // Update the hidden input fields for latitude and longitude
-      document.querySelector('input[name="latitude"]').value = lat;
-      document.querySelector('input[name="longitude"]').value = lng;
+      var branches = JSON.parse(document.getElementById("branches").value);
+
       // Create a marker at the user's current location
       marker = new google.maps.Marker({
         position: { lat: lat, lng: lng },
         map: map,
       });
+
+      // Update the hidden input fields for latitude and longitude
+      document.querySelector('input[name="latitude"]').value = lat;
+      document.querySelector('input[name="longitude"]').value = lng;
+
+      // Loop through each branch and calculate the distance to the user's location
+      var nearestBranches = [];
+      branches.forEach(function (branch) {
+        var distance = calculateDistance(
+          lat,
+          lng,
+          branch.latitude,
+          branch.longitude
+        );
+        if (distance <= 4) {
+          nearestBranches.push(branch);
+        }
+      });
+
+      // Now nearestBranches contains all branches that are within 5km of the user's location
+      console.log(nearestBranches);
+
+      // Check if delivery is available for the user's current location
+      var deliveryAvailable = nearestBranches.length > 0;
+
+      // Show a message to the user about whether delivery is available or not
+      if (deliveryAvailable) {
+        window.alert("We deliver to your current location!");
+      } else {
+        window.alert("Sorry, we don't deliver to your current location.");
+      }
 
       // Create the autocomplete object, restricting the search predictions to
       // geographical location types.
@@ -109,6 +139,33 @@ function initMap() {
         // Update the hidden input fields for latitude and longitude
         document.querySelector('input[name="latitude"]').value = lat;
         document.querySelector('input[name="longitude"]').value = lng;
+
+        // Loop through each branch and calculate the distance to the user's location
+        var nearestBranches = [];
+        branches.forEach(function (branch) {
+          var distance = calculateDistance(
+            lat,
+            lng,
+            branch.latitude,
+            branch.longitude
+          );
+          if (distance <= 4) {
+            nearestBranches.push(branch);
+          }
+        });
+
+        // Now nearestBranches contains all branches that are within 5km of the selected location
+        console.log(nearestBranches);
+
+        // Check if delivery is available for the selected location
+        var deliveryAvailable = nearestBranches.length > 0;
+
+        // Show a message to the user about whether delivery is available or not
+        if (deliveryAvailable) {
+          window.alert("We deliver to your selected location!");
+        } else {
+          window.alert("Sorry, we don't deliver to your selected location.");
+        }
       });
 
       map.addListener("mouseover", function () {
@@ -142,12 +199,58 @@ function initMap() {
 
         document.querySelector('input[name="latitude"]').value = lat;
         document.querySelector('input[name="longitude"]').value = lng;
+
+        // Loop through each branch and calculate the distance to the user's location
+        var nearestBranches = [];
+        branches.forEach(function (branch) {
+          var distance = calculateDistance(
+            lat,
+            lng,
+            branch.latitude,
+            branch.longitude
+          );
+          if (distance <= 4) {
+            nearestBranches.push(branch);
+          }
+        });
+
+        // Now nearestBranches contains all branches that are within 5km of the selected location
+        console.log(nearestBranches);
+
+        // Check if delivery is available for the selected location
+        var deliveryAvailable = nearestBranches.length > 0;
+
+        // Show a message to the user about whether delivery is available or not
+        if (deliveryAvailable) {
+          window.alert("We deliver to your selected location!");
+        } else {
+          window.alert("Sorry, we don't deliver to your selected location.");
+        }
       });
     },
     function (error) {
       console.log("Error occurred. Error code: " + error.code);
     }
   );
+}
+
+function calculateDistance(lat1, lon1, lat2, lon2) {
+  var R = 6371; // Radius of the earth in km
+  var dLat = deg2rad(lat2 - lat1);
+  var dLon = deg2rad(lon2 - lon1);
+  var a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(deg2rad(lat1)) *
+      Math.cos(deg2rad(lat2)) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var d = R * c; // Distance in km
+  return d;
+}
+
+function deg2rad(deg) {
+  return deg * (Math.PI / 180);
 }
 initMap();
 
@@ -223,7 +326,10 @@ function displayCartSummary() {
     2
   )}`;
   console.log("Total Cost:", totalCost.toFixed(2));
-  document.cookie = "totalCost=" + totalCost.toFixed(2) + ";path=http://localhost/finagle/public/checkout/Payherprocess";
+  document.cookie =
+    "totalCost=" +
+    totalCost.toFixed(2) +
+    ";path=http://localhost/finagle/public/checkout/Payherprocess";
 }
 
 displayCartSummary();

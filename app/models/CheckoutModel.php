@@ -219,4 +219,10 @@ class CheckoutModel extends Model
 
         $this->query($query, $data);
     }
+
+    public function getAllBranches() {
+        $query = "SELECT `id`, `latitude`, `longitude` FROM `branch`";
+        return $this->query($query);
+    }
+
 }

@@ -7,6 +7,12 @@ class Checkout extends Controller
         $data['errors'] = [];
         $CheckoutModel = new CheckoutModel();
         $ProductModel = new ProductModel();
+        // Fetch all branches
+        $branches = $CheckoutModel->getAllBranches();
+
+        // Pass branches to the view
+        $data['branches'] = $branches;
+        
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Check if the product_ids and quantities keys are set in the $_POST array
             if (isset($_POST['product_ids']) && isset($_POST['quantities'])) {
