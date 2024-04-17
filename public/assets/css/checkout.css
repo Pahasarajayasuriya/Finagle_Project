@@ -413,6 +413,11 @@
 
 }
 
+#p_checkout-button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
 .check_container form {
   padding: 15px;
   width: 800px;

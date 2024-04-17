@@ -119,6 +119,7 @@ function initMap() {
           // Show a message to the user about whether delivery is available or not
           if (deliveryAvailable) {
             console.log("We deliver to your current location!");
+            document.getElementById('p_checkout-button').disabled = false;
           } else {
             Swal.fire({
               icon: "error",
@@ -136,6 +137,7 @@ function initMap() {
                   });
               },
             });
+            document.getElementById('p_checkout-button').disabled = true;
           }
         });
 
@@ -210,6 +212,7 @@ function initMap() {
         // Show a message to the user about whether delivery is available or not
         if (deliveryAvailable) {
           console.log("We deliver to your selected location!");
+          document.getElementById('p_checkout-button').disabled = false;
         } else {
           Swal.fire({
             icon: "error",
@@ -227,6 +230,7 @@ function initMap() {
                 });
             },
           });
+          document.getElementById('p_checkout-button').disabled = true;
         }
       });
 
@@ -296,6 +300,7 @@ function initMap() {
         // Show a message to the user about whether delivery is available or not
         if (deliveryAvailable) {
           console.log("We deliver to your selected location!");
+          document.getElementById('p_checkout-button').disabled = false;
         } else {
           Swal.fire({
             icon: "error",
@@ -313,6 +318,7 @@ function initMap() {
                 });
             },
           });
+          document.getElementById('p_checkout-button').disabled = true;
         }
       });
     },
