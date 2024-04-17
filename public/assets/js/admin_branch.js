@@ -21,6 +21,26 @@ function closePopup() {
     overlay.classList.remove('show');
 }
 
+
+//for deleting pop up
+function openReport1() {
+    const popupContainer = document.getElementById('deletePopup');
+    const overlay = document.getElementById('overlay');
+
+    popupContainer.classList.add('show');
+    overlay.classList.add('show');
+}
+
+function closePopup1() {
+    const popupContainer = document.getElementById('deletePopup');
+    const overlay = document.getElementById('overlay');
+
+    popupContainer.classList.remove('show');
+    overlay.classList.remove('show');
+}
+
+
+
 function submitForm() {
     // Add your form submission logic here
     
