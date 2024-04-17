@@ -6,6 +6,11 @@ class Products extends Controller
     {
         $productModel = new ProductModel();
         $data['products'] = $allproducts = $productModel->all();
+        $data['weights'] = [
+            'Bread & Buns' => 2,
+            'Cakes' => 10,
+            'Frozen Foods' => 2,
+        ];
         $categories = ['Bread & Buns', 'Cakes', 'Frozen Foods'];
         $productsByCategory = [];
         foreach ($categories as $category) {

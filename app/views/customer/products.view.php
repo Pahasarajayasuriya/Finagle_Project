@@ -65,11 +65,11 @@ $this->view('includes/footer', $data);
         </div>
         <div id="message-error-container"></div>
         <div class="products-center">
-        <?php foreach ($productsByCategory as $category => $products) : ?>
+            <?php foreach ($productsByCategory as $category => $products) : ?>
                 <div class="category-container">
                     <h2 class="section-title"><?= $category ?></h2>
                     <div class="products">
-                    <?php foreach ($products as $product) : ?>
+                        <?php foreach ($products as $product) : ?>
                             <div class="product">
                                 <div class="img-container">
                                     <img class="product-img" src="<?= ROOT . '/' . ($product->image) ?>" alt="<?= esc($product->user_name) ?>" />
@@ -116,7 +116,10 @@ $this->view('includes/footer', $data);
         </section>
     </div>
     </div>
-
+    <script>
+        const weights = <?= json_encode($data['weights']) ?>;
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.getElementById("checkout-button").addEventListener("click", function() {
             if (isLoggedIn()) {

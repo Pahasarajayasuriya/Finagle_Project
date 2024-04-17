@@ -127,18 +127,29 @@ class UI {
   }
 
   setCartValue(cart) {
-    //-> total price of cart
     let tempCartItems = 0;
+    let totalWeight = 0;
 
     const totalPrice = cart.reduce((acc, curr) => {
-      //-> show number of items in cart
       tempCartItems += curr.quantity;
+      totalWeight += weights[curr.category] * curr.quantity;
 
       return acc + curr.quantity * curr.price;
     }, 0);
 
-    cartTotal.textContent = `Total price: Rs.${totalPrice.toFixed(2)}`;
+    // Store the total weight in local storage
+    localStorage.setItem("totalWeight", totalWeight);
 
+    // Check if the total weight exceeds the limit
+    if (totalWeight > 30) {
+      Swal.fire({
+        title: "Order too large",
+        text: "Your order exceeds our delivery limit due to its large size. Please place your order as a pickup order.",
+        icon: "warning",
+      });
+    }
+
+    cartTotal.textContent = `Total price: Rs.${totalPrice.toFixed(2)}`;
     cartItemsCounter.textContent = tempCartItems;
   }
 
@@ -172,7 +183,7 @@ class UI {
       if (product.quantity <= cartItem.quantity) {
         Swal.fire({
           title: "The Sorry, you can't add more of this product.",
-          icon: "warning"
+          icon: "warning",
         });
         return;
       }

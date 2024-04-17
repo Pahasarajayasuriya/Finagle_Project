@@ -4,6 +4,8 @@ const deliveryFee = 250;
 var deliveryFeeContainer = document.querySelector(".delivery-fee");
 const latitudeInput = document.querySelector('input[name="latitude"]');
 const longitudeInput = document.querySelector('input[name="longitude"]');
+var totalWeight = parseFloat(localStorage.getItem("totalWeight"));
+console.log(totalWeight);
 
 const deliveryRadio = document.querySelector(
   'input[name="delivery_or_pickup"][value="delivery"]'
@@ -16,8 +18,25 @@ const pickupOutletsSection = document.getElementById("pickupOutletsSection");
 const deliveryOrdersSection = document.getElementById("deliveryOrdersSection");
 const pickupLocation = document.getElementById("pickupLocation");
 
+var checkoutButton = document.getElementById("checkout-button");
+
 deliveryRadio.addEventListener("change", enableDeliveryOptions);
 pickupRadio.addEventListener("change", enablePickupOptions);
+
+deliveryRadio.addEventListener("change", function () {
+  if (this.checked && totalWeight > 30) {
+    Swal.fire({
+      title: "Order too large",
+      text: "Your order is too large for delivery. Please consider a pickup order.",
+      icon: "error",
+    });
+    checkoutButton.disabled = true;
+    checkoutButton.style.backgroundColor = "#b2b2b2"; 
+  } else {
+    checkoutButton.disabled = false;
+    checkoutButton.style.backgroundColor = "#FF0000"; 
+  }
+});
 
 function enableDeliveryOptions() {
   pickupLocation.disabled = true;
@@ -109,7 +128,8 @@ function initMap() {
           console.log(nearestBranches);
           console.log(nearestBranch);
           if (nearestBranch) {
-            document.getElementById('pickup_location').value = nearestBranch.name;
+            document.getElementById("pickup_location").value =
+              nearestBranch.name;
           } else {
             console.log("No branches are within 4km of the selected location.");
           }
@@ -119,7 +139,7 @@ function initMap() {
           // Show a message to the user about whether delivery is available or not
           if (deliveryAvailable) {
             console.log("We deliver to your current location!");
-            document.getElementById('p_checkout-button').disabled = false;
+            document.getElementById("p_checkout-button").disabled = false;
           } else {
             Swal.fire({
               icon: "error",
@@ -137,7 +157,7 @@ function initMap() {
                   });
               },
             });
-            document.getElementById('p_checkout-button').disabled = true;
+            document.getElementById("p_checkout-button").disabled = true;
           }
         });
 
@@ -202,7 +222,7 @@ function initMap() {
         console.log(nearestBranches);
         console.log(nearestBranch);
         if (nearestBranch) {
-          document.getElementById('pickup_location').value = nearestBranch.name;
+          document.getElementById("pickup_location").value = nearestBranch.name;
         } else {
           console.log("No branches are within 4km of the selected location.");
         }
@@ -212,7 +232,7 @@ function initMap() {
         // Show a message to the user about whether delivery is available or not
         if (deliveryAvailable) {
           console.log("We deliver to your selected location!");
-          document.getElementById('p_checkout-button').disabled = false;
+          document.getElementById("p_checkout-button").disabled = false;
         } else {
           Swal.fire({
             icon: "error",
@@ -230,7 +250,7 @@ function initMap() {
                 });
             },
           });
-          document.getElementById('p_checkout-button').disabled = true;
+          document.getElementById("p_checkout-button").disabled = true;
         }
       });
 
@@ -290,7 +310,7 @@ function initMap() {
         console.log(nearestBranches);
         console.log(nearestBranch);
         if (nearestBranch) {
-          document.getElementById('pickup_location').value = nearestBranch.name;
+          document.getElementById("pickup_location").value = nearestBranch.name;
         } else {
           console.log("No branches are within 4km of the selected location.");
         }
@@ -300,7 +320,7 @@ function initMap() {
         // Show a message to the user about whether delivery is available or not
         if (deliveryAvailable) {
           console.log("We deliver to your selected location!");
-          document.getElementById('p_checkout-button').disabled = false;
+          document.getElementById("p_checkout-button").disabled = false;
         } else {
           Swal.fire({
             icon: "error",
@@ -318,7 +338,7 @@ function initMap() {
                 });
             },
           });
-          document.getElementById('p_checkout-button').disabled = true;
+          document.getElementById("p_checkout-button").disabled = true;
         }
       });
     },
