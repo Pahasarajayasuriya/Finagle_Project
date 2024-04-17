@@ -221,7 +221,7 @@ class CheckoutModel extends Model
     }
 
     public function getAllBranches() {
-        $query = "SELECT `id`, `latitude`, `longitude` FROM `branch`";
+        $query = "SELECT `name`, `latitude`, `longitude` FROM `branch`";
         return $this->query($query);
     }
 

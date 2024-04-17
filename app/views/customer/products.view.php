@@ -142,6 +142,7 @@ $this->view('includes/footer', $data);
             messageContainer.style.display = "block";
         }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="<?= ROOT ?>/assets/js/product.js"></script>
 </body>
 

@@ -82,49 +82,62 @@ function initMap() {
       document.querySelector('input[name="longitude"]').value = lng;
 
       // Loop through each branch and calculate the distance to the user's location
-      document.getElementById('delivery').addEventListener('click', function() {
-        // Loop through each branch and calculate the distance to the user's location
-        var nearestBranches = [];
-        branches.forEach(function (branch) {
-          var distance = calculateDistance(
-            lat,
-            lng,
-            branch.latitude,
-            branch.longitude
-          );
-          if (distance <= 4) {
-            nearestBranches.push(branch);
+      document
+        .getElementById("delivery")
+        .addEventListener("click", function () {
+          // Loop through each branch and calculate the distance to the user's location
+          var nearestBranches = [];
+          var minDistance = Infinity;
+          var nearestBranch = null;
+          branches.forEach(function (branch) {
+            var distance = calculateDistance(
+              lat,
+              lng,
+              branch.latitude,
+              branch.longitude
+            );
+            if (distance <= 4) {
+              nearestBranches.push(branch);
+              if (distance < minDistance) {
+                minDistance = distance;
+                nearestBranch = branch;
+              }
+            }
+          });
+
+          // Now nearestBranches contains all branches that are within 5km of the user's location
+          console.log(nearestBranches);
+          console.log(nearestBranch);
+          if (nearestBranch) {
+            document.getElementById('pickup_location').value = nearestBranch.name;
+          } else {
+            console.log("No branches are within 4km of the selected location.");
+          }
+          // Check if delivery is available for the user's current location
+          var deliveryAvailable = nearestBranches.length > 0;
+
+          // Show a message to the user about whether delivery is available or not
+          if (deliveryAvailable) {
+            console.log("We deliver to your current location!");
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Sorry, we don't deliver to your location.",
+              footer:
+                '<a href="#" id="pickupLink">Click here to make a pickup order instead</a>',
+              didOpen: () => {
+                document
+                  .getElementById("pickupLink")
+                  .addEventListener("click", function (e) {
+                    e.preventDefault();
+                    document.getElementById("pickup").click();
+                    Swal.close();
+                  });
+              },
+            });
           }
         });
-
-        // Now nearestBranches contains all branches that are within 5km of the user's location
-        console.log(nearestBranches);
-
-        // Check if delivery is available for the user's current location
-        var deliveryAvailable = nearestBranches.length > 0;
-
-        // Show a message to the user about whether delivery is available or not
-        if (deliveryAvailable) {
-          console.log("We deliver to your current location!");
-        } else {
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Sorry, we don't deliver to your location.",
-            footer:
-              '<a href="#" id="pickupLink">Click here to make a pickup order instead</a>',
-            didOpen: () => {
-              document
-                .getElementById("pickupLink")
-                .addEventListener("click", function (e) {
-                  e.preventDefault();
-                  document.getElementById("pickup").click();
-                  Swal.close();
-                });
-            },
-          });
-        }
-      });
 
       // Create the autocomplete object, restricting the search predictions to
       // geographical location types.
@@ -165,6 +178,8 @@ function initMap() {
 
         // Loop through each branch and calculate the distance to the user's location
         var nearestBranches = [];
+        var minDistance = Infinity;
+        var nearestBranch = null;
         branches.forEach(function (branch) {
           var distance = calculateDistance(
             lat,
@@ -174,12 +189,21 @@ function initMap() {
           );
           if (distance <= 4) {
             nearestBranches.push(branch);
+            if (distance < minDistance) {
+              minDistance = distance;
+              nearestBranch = branch;
+            }
           }
         });
 
         // Now nearestBranches contains all branches that are within 5km of the selected location
         console.log(nearestBranches);
-
+        console.log(nearestBranch);
+        if (nearestBranch) {
+          document.getElementById('pickup_location').value = nearestBranch.name;
+        } else {
+          console.log("No branches are within 4km of the selected location.");
+        }
         // Check if delivery is available for the selected location
         var deliveryAvailable = nearestBranches.length > 0;
 
@@ -240,6 +264,8 @@ function initMap() {
 
         // Loop through each branch and calculate the distance to the user's location
         var nearestBranches = [];
+        var minDistance = Infinity;
+        var nearestBranch = null;
         branches.forEach(function (branch) {
           var distance = calculateDistance(
             lat,
@@ -249,12 +275,21 @@ function initMap() {
           );
           if (distance <= 4) {
             nearestBranches.push(branch);
+            if (distance < minDistance) {
+              minDistance = distance;
+              nearestBranch = branch;
+            }
           }
         });
 
         // Now nearestBranches contains all branches that are within 5km of the selected location
         console.log(nearestBranches);
-
+        console.log(nearestBranch);
+        if (nearestBranch) {
+          document.getElementById('pickup_location').value = nearestBranch.name;
+        } else {
+          console.log("No branches are within 4km of the selected location.");
+        }
         // Check if delivery is available for the selected location
         var deliveryAvailable = nearestBranches.length > 0;
 

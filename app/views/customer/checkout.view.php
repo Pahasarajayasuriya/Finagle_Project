@@ -80,7 +80,7 @@
                             <a class="change_address" href="#">Choose Address</a>
                         </div>
                     </div>
-
+                    <input type="hidden" name="pickup_location" id="pickup_location">
                     <div id="pickupOutletsSection" class="check_inline" style="display: none;">
                         <label class="check_name" for="pickup_orders"><b>For Pickup Orders:</b></label>
                         <select id="pickupLocation" name="pickup_location" disabled>

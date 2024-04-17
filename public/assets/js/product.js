@@ -170,7 +170,10 @@ class UI {
     arrowUp.addEventListener("click", (event) => {
       const product = Storage.getProducts(cartItem.id);
       if (product.quantity <= cartItem.quantity) {
-        alert("Sorry, you can't add more of this product.");
+        Swal.fire({
+          title: "The Sorry, you can't add more of this product.",
+          icon: "warning"
+        });
         return;
       }
       cartItem.quantity++;
