@@ -22,7 +22,7 @@
     <?php
     $this->view('includes/cus_topbar', $data);
     ?>
-    
+
     <div class="check_container">
         <form method="POST" id="checkoutForm">
             <input name="latitude" type="hidden" />
@@ -84,13 +84,9 @@
                     <div id="pickupOutletsSection" class="check_inline" style="display: none;">
                         <label class="check_name" for="pickup_orders"><b>For Pickup Orders:</b></label>
                         <select id="pickupLocation" name="pickup_location" disabled>
-                            <option class="branch_select">Pelawatta</option>
-                            <option class="branch_select">Ja-Ela</option>
-                            <option class="branch_select">Nugegoda</option>
-                            <option class="branch_select">Jawatta</option>
-                            <option class="branch_select">Kollupitiya</option>
-                            <option class="branch_select">Dehiwala</option>
-                            <option class="branch_select">Borella</option>
+                            <?php foreach ($data['branches'] as $branch) : ?>
+                                <option class="branch_select"><?= $branch->name ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
 
