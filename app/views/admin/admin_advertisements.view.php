@@ -136,6 +136,7 @@ $this->view('includes/footer', $data);
     </div>
     <script src="<?= ROOT ?>/assets/js/admin_branch.js"></script>
     <script>
+        //for search bar
         var deleteulr="<?= ROOT ?>/admin_advertisements/delete_advertisement/";
         function filterBranches() {
             var input, filter, branchesContainer, branches, branchName;
@@ -161,9 +162,11 @@ $this->view('includes/footer', $data);
         //for get id through delete button
         function openDeletePopup(adId) {
             const popupContainer = document.getElementById('deletePopup');
+            const overlay = document.getElementById('overlay');
             const deleteButton = document.querySelector('#deletePopup .submit-btn');
             deleteButton.onclick = function() { confirmDelete(adId); } // Set up the deletion confirmation
             popupContainer.classList.add('show');
+            overlay.classList.add('show');
         }
 
         function confirmDelete(adId) {
@@ -175,6 +178,7 @@ $this->view('includes/footer', $data);
         function closePopup1() {
             const popupContainer = document.getElementById('deletePopup');
             popupContainer.classList.remove('show');
+            overlay.classList.remove('show');
         }
 
     </script>
