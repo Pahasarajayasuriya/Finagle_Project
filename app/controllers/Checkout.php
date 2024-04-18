@@ -12,7 +12,7 @@ class Checkout extends Controller
 
         // Pass branches to the view
         $data['branches'] = $branches;
-        
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Check if the product_ids and quantities keys are set in the $_POST array
             if (isset($_POST['product_ids']) && isset($_POST['quantities'])) {
@@ -58,18 +58,23 @@ class Checkout extends Controller
                     if ($_POST['payment_method'] == 'cash') {
                         // If it is, save the data to the database and redirect to the clear cart page
                         $lastInsertId = $CheckoutModel->saveData($validatedData);
-                        redirect('clear_cart');
+                        if ($_POST['delivery_or_pickup'] == 'pickup') {
+                            redirect('clear_cart_pickup');
+                        } else {
+                            redirect('clear_cart');
+                        }
                     } else if ($_POST['payment_method'] == 'card') {
                         if (isset($_SESSION['orderId'])) {
-                            // show($_SESSION['orderId']);
-                            // unset($_SESSION['orderId']);
                             // If the orderId is set in the session, save the data to the database and redirect to the clear cart page
                             $lastInsertId = $CheckoutModel->saveData($validatedData);
                             $CheckoutModel->updatePaymentStatus($lastInsertId, 'Completed');
                             unset($_SESSION['orderId']);
-                            redirect('clear_cart');
+                            if ($_POST['delivery_or_pickup'] == 'pickup') {
+                                redirect('clear_cart_pickup');
+                            } else {
+                                redirect('clear_cart');
+                            }
                         } else {
-                            // echo "Order Id not set in the session";
                             // If the orderId is not set in the session, save the validated data to the session
                             $_SESSION['checkout_data'] = $validatedData;
                         }
