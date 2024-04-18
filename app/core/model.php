@@ -47,6 +47,45 @@ class Model extends Database
 
 
 
+    public function findAllPlacedOrders($branch)
+    {
+
+        $query = "SELECT * FROM {$this->table} WHERE order_status= 'order placed' AND pickup_location = '$branch' ";
+
+        //echo $query;
+        // run the quary stage
+        return $this->query($query);
+    }
+
+    
+    public function findAllReadyOrders($branch)
+    {
+
+        $quary = "SELECT * FROM {$this->table} WHERE order_status='order preparing' AND pickup_location = '$branch' ";
+
+        
+        return $this->query($quary);
+    }
+
+    public function findAllDispatchOrders($branch)
+    {
+
+        $quary = "SELECT * FROM {$this->table} WHERE order_status='order dispatch' AND pickup_location = '$branch' ";
+
+        
+        return $this->query($quary);
+    }
+
+
+    public function findAllProducts($branch)
+    {
+
+        $quary = "SELECT * FROM {$this->table} WHERE branch_name = '$branch' ";
+
+        //echo $quary;
+        // run the quary stage
+        return $this->query($quary);
+    }
 
     public function count_online()
     {
@@ -148,7 +187,36 @@ class Model extends Database
         }
         
         // Modify the data array to set 'order-status' to 'delivered'
-        $data['order_status'] = 'delivered';
+        // $data['order_status'] = 'delivered';
+    
+        $keys = array_keys($data);
+    
+        $query = "update " . $this->table . " set ";
+        foreach ($keys as $key) {
+            $query .= $key . "=:" . $key . ",";
+        }
+    
+        $query = trim($query, ",");
+        $query .= " where id = :id ";
+    
+        $data['id'] = $id;
+    
+        $this->query($query, $data);
+    }
+    
+
+    public function updateOrder($id, $data)
+    {
+        if (!empty($this->allowedColumns)) {
+            foreach ($data as $key => $value) {
+                if (!in_array($key, $this->allowedColumns)) {
+                    unset($data[$key]);
+                }
+            }
+        }
+        
+        // Modify the data array to set 'order-status' to 'delivered'
+        // $data['order_status'] = 'delivered';
     
         $keys = array_keys($data);
     
@@ -190,17 +258,17 @@ class Model extends Database
         return $this->query($query);
     }
 
-    public function findOrderdetails($order_id)
+    public function findOrderdetails()
     {
 
         $orderitemsTable = 'orderitems';
         $productsTable = 'products';
 
-        $query = "SELECT p.user_name, oi.quantity 
+        $query = "SELECT p.user_name, oi.quantity , p.price ,c.id,c.customer_id,c.phone_number,c.deliver_id,c.delivery_or_pickup ,c.order_status,c.order_status,c.total_cost,c.payment_method,c.delivery_address,c.latitude,c.longitude
                   FROM {$this->table} c
                   JOIN  $orderitemsTable oi ON c.id = oi.order_id
                   JOIN $productsTable p ON oi.product_id = p.id
-                  WHERE c.id = $order_id";
+                  ";
 
          return $this->query($query);
     }

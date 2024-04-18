@@ -84,13 +84,13 @@ body {
 
 .orders-container {
     display: flex;
-    width: calc(100% - 75px);
+    width: calc(100% - 50px);
     justify-content: space-around;
     /* margin: 90px; */
     margin: 10px;
     margin-top: 40px;
-    margin-left: 60px;
-    gap: 30px;
+    margin-left: 45px;
+   
     
 }
 
@@ -98,23 +98,22 @@ body {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
-    width: 100%;
+    /* width: 100%; */
     text-align: center;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.2s ease-in-out;
     height: auto;
 }
 
 .order-status:hover {
     background-color: #fafafa;
+    
 }
 
 .title-section {
     display: flex;
     align-items: center;
     justify-content: left;
-
-    
 
 
 }
@@ -182,13 +181,13 @@ body {
     background-color: white;
     border-radius: 10px;
     margin-top:10px;
-    padding-right: 15px;
+    padding-right: 10px;
     transition: 0.5s ease-in-out;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px  rgba(0, 0, 0, 0.1);
 }
 
 .placed-item:hover{
-    transform: scale(1.05);
+    transform: scale(1.02);
     
 }
 
@@ -285,13 +284,12 @@ input[type="checkbox"] {
     display: flex;
     /* align-items: center; */
     justify-content: center;
-    /* gap: 5px; */
+    gap: 5px; 
 }
 
 .item-options{
     display: flex;
     margin-left: 20px;
-   
     justify-content: space-between;
     margin-top: 10px;
     margin-bottom: 20px;
@@ -443,6 +441,119 @@ input[type="checkbox"] {
     background-color: #e4e4e4;
   }
  
+#dispatchSelectedOption , #dispatchButton{
+  font-weight: 400;
+}
+
+#select-all-dispatch span{
+  font-weight: 400;
+}
+
+#readySelectedOption{
+  font-weight: 400;
+
+}
+
+.dropdown button {
+ 
+    border: none; 
+    background-color: transparent; 
+    padding: 0; 
+    cursor: pointer; 
+    outline: none; 
+    font-size: 12px;
+    font-weight: 400;
+    font-family: "Arial", sans-serif;
+   
+
+}
+
+.dropdown-header span,
+.select-all span,
+#readySelectedOption {
+    font-family: "Arial", sans-serif; /* Same font family */
+    font-size: 12px; /* Same font size */
+  
+}
+
+.empty-box{
+  font-size: 12px;
+  font-family: "Arial", sans-serif; 
+  color: #888;
+  font-style: italic;
+}
+
+
+
+.placed-order-list , .ready-order-list , .dispatch-order-list{
+  height: 300px;
+  overflow-y: auto;
+  padding: 5px; 
+ 
+
+}
+/* Customize scrollbar for the Placed Orders container */
+.placed-order-list::-webkit-scrollbar {
+  width: 10px;
+
+}
+
+.placed-order-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.placed-order-list::-webkit-scrollbar-thumb {
+  background:#878787; /* Color of the scrollbar handle */
+  border-radius: 5px; /* Make the scrollbar handle round */
+}
+
+.placed-order-list::-webkit-scrollbar-thumb:hover {
+  background: #afadad; /* Change color of scrollbar handle on hover */
+}
+
+
+/* Customize scrollbar for the Ready Orders container */
+.ready-order-list::-webkit-scrollbar {
+  width: 10px;
+ 
+}
+
+.ready-order-list::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+}
+
+.ready-order-list::-webkit-scrollbar-thumb {
+  background: #878787; /* Color of the scrollbar handle */
+  border-radius: 5px; /* Make the scrollbar handle round */
+}
+
+.ready-order-list::-webkit-scrollbar-thumb:hover {
+  background:#afadad; /* Change color of scrollbar handle on hover */
+}
+
+/* Customize scrollbar for the Dispatched Orders container */
+.dispatched-order-list::-webkit-scrollbar {
+  width: 10px;
+ 
+}
+
+.dispatched-order-list::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+}
+
+.dispatched-order-list::-webkit-scrollbar-thumb {
+  background:#878787; /* Color of the scrollbar handle */
+  border-radius: 5px; /* Make the scrollbar handle round */
+}
+
+.dispatched-order-list::-webkit-scrollbar-thumb:hover {
+  background: #afadad; /* Change color of scrollbar handle on hover */
+}
+
+.orders-container
+{
+  flex:1;
+}
 
 
 

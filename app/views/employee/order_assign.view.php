@@ -42,7 +42,7 @@ $this->view('includes/alreadyProcess_popup', $data);
             <h2 class="section-title">ORDERS PROGRESS</h2>
             <div class="divider dark mb-4">
                 <div class="icon-wrap">
-                    <!-- <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>  -->
+
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@ $this->view('includes/alreadyProcess_popup', $data);
         <div class="orders-container">
             <div class="order-status placed-orders">
                 <div class="title-section">
-                    <!-- <i class="fas fa-shopping-cart"></i> -->
+
                     <i class='bx bxs-cart-alt bx-tada'></i>
                     <div class="status-title">Placed Orders</div>
                 </div>
@@ -59,7 +59,7 @@ $this->view('includes/alreadyProcess_popup', $data);
                 </div>
 
                 <div class="filter-buttons">
-                    <!-- <button >All</button> -->
+
 
                     <a href="<?= ROOT ?>/Emp_progress">All</a>
 
@@ -82,22 +82,21 @@ $this->view('includes/alreadyProcess_popup', $data);
                             <i class="bx bxs-down-arrow" style="color:#888"></i>
                         </div>
                         <div class="dropdown-content" id="placedDropdownContent">
-                            <div id="alreadyProcessedButton" onclick="showSelectedOrders()">Already Processed</div>
-                            <div onclick="selectPlacedOption('Cancel Orders')">Cancel Orders</div>
+                            <div id="alreadyProcessedButton" onclick="showProcessedOrders()">Already Processed</div>
+                            <div id="informButton" onclick="showPickupsOrders()">Inform Customers</div>
+                            <div id="cancelButton" onclick="showSelectedOrders_cancel()">Cancel</div>
                         </div>
                     </div>
 
 
                 </div>
 
-
-
-
                 <div class="placed-order-list" id="placed-order-list">
 
                     <?php
-                    if (isset($data['detail'])) {
-                        // show($data['detail']);
+
+                    if (!empty($data['detail'])) {
+                        //show($data['detail']);
                         foreach ($data['detail'] as $val) {
 
                     ?>
@@ -138,9 +137,14 @@ $this->view('includes/alreadyProcess_popup', $data);
                                 </div>
 
                             </div>
-                    <?php
+                        <?php
 
                         }
+                    } else {
+
+                        ?>
+                        <p class="empty-box">No Available placed orders</p>
+                    <?php
                     }
                     ?>
 
@@ -149,9 +153,10 @@ $this->view('includes/alreadyProcess_popup', $data);
 
             </div>
 
+
+
             <div class="order-status ready-orders">
                 <div class="title-section">
-                    <!-- <i class="fas fa-check"></i> -->
                     <i class='bx bx-check-circle bx-tada'></i>
                     <div class="status-title">Ready Orders</div>
                 </div>
@@ -167,35 +172,81 @@ $this->view('includes/alreadyProcess_popup', $data);
 
 
                     <div class="dropdown">
-                        <div class="dropdown-header" onclick="toggleReadyDropdown()" id="readyDropdownHeader">
-                            <span id="readySelectedOption">Change the State</span>
-                            <i class="bx bxs-down-arrow style='color:#888"></i>
-                        </div>
-                        <div class="dropdown-content" id="readyDropdownContent">
-                            <div onclick="selectReadyOption('Assign to Drivers')">Assign to Drivers</div>
+                        <div class="dropdown-header" onclick="updateAssignButtonState()" id="updateAssign">
+
+                            <div id="readySelectedOption" onclick="showDrivers()">Assign to Drivers</div>
 
                         </div>
                     </div>
+
+
                 </div>
 
                 <div class="ready-order-list" id="ready-order-list">
-                    <div class="placed-item">
-                        <div class="item-title">
-                            <div class="main-item">
+                    <?php
 
-                                <input class="checkbox" type="checkbox" id="checkbox-<?= $val->id ?>" name="checkbox-<?= $val->id ?>">
-                                <p class="item-id">D0123</p>
+                    if (!empty($data['ready'])) {
+                        //show($data['ready']);
+                        foreach ($data['ready'] as $val) {
+
+                    ?>
+                            <div class="placed-item">
+                                <div class="item-title">
+                                    <div class="main-item">
+
+
+                                        <input class="checkbox" type="checkbox" id="checkbox-<?= $val->id ?>" name="checkbox-<?= $val->id ?>">
+                                        <p class="item-id"><b><?= $val->id ?><span>
+
+                                                    <?php
+                                                    if ($val->delivery_or_pickup == "delivery") {
+                                                        echo 'D';
+                                                    } else {
+                                                        echo 'P';
+                                                    }
+                                                    ?>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="item-options">
+                                    <button class="view-details" data-order='<?php echo json_encode($val); ?>' onclick="showPopup(this,'viewDetails')">View Details</button>
+                                    <?php
+                                    if ($val->delivery_or_pickup == "delivery") {
+                                    ?>
+
+                                        <button class="cancel" id="assignButton" onclick="showPopup(this,'assignDeliver')">Assign Deliverer</button>
+
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <button class="cancel" id="assignButton" onclick="showPopup(this,'assignDeliver')">Finish the Order</button>
+
+                                    <?php
+                                    }
+                                    ?>
+
+
+
+
+
+
+
+                                </div>
+
                             </div>
 
+                        <?php
 
-                        </div>
-                        <div class="item-options">
-                            <button class="view-details" onclick="showPopup('viewDetails')">View Details</button>
+                        }
+                    } else {
 
-                            <button class="cancel" id="assignButton" onclick="showPopup('assignDeliver')">Assign Deliverer</button>
-                        </div>
-
-                    </div>
+                        ?>
+                        <p class="empty-box">No Available ready orders</p>
+                    <?php
+                    }
+                    ?>
 
                 </div>
             </div>
@@ -204,12 +255,12 @@ $this->view('includes/alreadyProcess_popup', $data);
 
             <div class="order-status dispatched-orders">
                 <div class="title-section">
-                    <!-- <i class="fas fa-truck"></i> -->
+
                     <i class='bx bxs-truck bx-tada'></i>
                     <div class="status-title">Dispatched Orders</div>
                 </div>
 
-                <div class="selectOption">
+                <!-- <div class="selectOption">
                     <div class="select-all" id="select-all-dispatch" onclick="selectAllItems('dispatch')">
                         <div class="outer-circle">
                             <div class="inner-circle"></div>
@@ -220,24 +271,31 @@ $this->view('includes/alreadyProcess_popup', $data);
 
 
                     <div class="dropdown">
-                        <div class="dropdown-header" onclick="toggleDispatchDropdown()">
+                        <div class="dropdown-header" onclick="toggleDispatchDropdown()" id="dispatchDropdownHeader">
                             <span id="dispatchSelectedOption">Change the State</span>
                             <i class="bx bxs-down-arrow style='color:#266bff"></i>
                         </div>
                         <div class="dropdown-content" id="dispatchDropdownContent">
-                            <div onclick="selectDispatchOption('Ready to Dispatch')">Ready to Dispatch</div>
-                            <div onclick="selectDispatchOption('Option 2')">Option 2</div>
-                            <div onclick="selectDispatchOption('Option 3')">Option 3</div>
+                            <div id="dispatchButton" onclick="selectDispatchOption('Ready to Dispatch')">Ready to Dispatch</div>
+
                         </div>
                     </div>
-                </div>
+                </div> -->
+
                 <div class="dispatch-order-list" id="dispatch-order-list">
+                <?php
+
+                if (!empty($data['dispatch'])) {
+                         //show($data['ready']);
+                      foreach ($data['dispatch'] as $val) {
+
+                ?>
                     <div class="placed-item">
                         <div class="item-title">
                             <div class="main-item">
 
                                 <input class="checkbox" type="checkbox" id="checkbox-<?= $val->id ?>" name="checkbox-<?= $val->id ?>">
-                                <p class="item-id">D0123</p>
+                                <p class="item-id"><?= $val->id ?></p>
                             </div>
                             <i class='bx bxs-right-arrow-square'></i>
                             <p class="item-id">DD003</p>
@@ -246,15 +304,29 @@ $this->view('includes/alreadyProcess_popup', $data);
                         </div>
                         <div class="item-options">
                             <button class="view-details" id="detailButton" onclick="showPopup('viewDetails')">View Details</button>
-                            <!-- <button class="cancel" id="deleteButton" >Cancel</button> -->
+
                         </div>
 
                     </div>
 
                 </div>
+          
             </div>
+            <?php
+            }
+                    } else {
+
+            ?>
+                        <p class="empty-box">No Available dispatch orders</p>
+                    <?php
+                    }
+                    ?>
+
+       
         </div>
     </div>
+
+
 
 
 
@@ -270,8 +342,8 @@ $this->view('includes/alreadyProcess_popup', $data);
         var view_details = document.querySelector('view-details');
 
 
-        function showPopup(button, popupId) {
 
+        function showPopup(button, popupId) {
 
             data = JSON.parse(button.getAttribute('data-order'));
             var popup = document.getElementById(popupId);
@@ -286,7 +358,7 @@ $this->view('includes/alreadyProcess_popup', $data);
             var total_cost = document.getElementById('total_cost');
 
 
-            console.log(data);
+            // console.log(data);
 
             order_id.innerHTML = data.id;
             user_location.innerHTML = data.delivery_address;
@@ -311,10 +383,7 @@ $this->view('includes/alreadyProcess_popup', $data);
             }
         }
 
-        function showConfirmPopup(popupId) {
 
-
-        }
 
         function filterOrders(type, data) {
 
@@ -435,6 +504,11 @@ $this->view('includes/alreadyProcess_popup', $data);
             return itemContainer;
         }
 
+
+
+
+        //PLACED-ORDER-CONTAINER
+
         document.addEventListener("DOMContentLoaded", function() {
             var dropdownHeader = document.getElementById("placedDropdownHeader");
             updateDropdownColor(); // Call the function to set initial color
@@ -496,52 +570,35 @@ $this->view('includes/alreadyProcess_popup', $data);
         }
 
 
-        function toggleDispatchDropdown() {
 
-            var dropdownContent = document.getElementById("dispatchDropdownContent");
-            var dropdownHeader = document.querySelector(".dropdown-header");
-            if (dropdownContent.style.display === "block") {
-                dropdownContent.style.display = "none";
-            } else {
-                dropdownContent.style.display = "block";
-                dropdownContent.style.width = dropdownHeader.offsetWidth + "px";
-            }
-        }
 
-        function selectDispatchOption(option) {
-
-            document.getElementById("dispatchSelectedOption").innerText = option;
-
-            document.getElementById("dispatchDropdownContent").style.display = "none";
-        }
-
-        function selectAllItems(category) {
-            var outerCircle = document.querySelector('#select-all-' + category + ' .outer-circle');
-            var placedItems = document.querySelectorAll('.' + category + '-order-list .placed-item input[type="checkbox"]');
-
-            // Toggle the clicked class to change outer circle color
-            outerCircle.classList.toggle('clicked');
-
-            // Check/uncheck all placed items
-            placedItems.forEach(function(item) {
-                item.checked = !item.checked;
-            });
-        }
-
-        // Function to show the popup modal
+        // Function to show the popup modal of 'alreadyProcess_popup'
         function showModal(selectedOrders) {
-            var modal = document.getElementById("myModal");
+            var modal = document.getElementById("viewAlreadyProcessed");
             var modalContent = document.querySelector(".modal-content");
-            var closeBtn = document.getElementsByClassName("close")[0];
+            var closeBtn = document.getElementById("cancelDetails");
+            var ordersContainer = document.getElementById("selectedOrdersContainer");
 
-            var ordersDiv = document.getElementById("selectedOrders");
-            ordersDiv.innerHTML = "";
+            // Clear previous content
+            ordersContainer.innerHTML = "";
+
 
             selectedOrders.forEach(function(order) {
+                // Create a container for each order
+                var orderContainer = document.createElement("div");
+                orderContainer.classList.add("order-container");
+
+                // Create a paragraph element to display order details
                 var p = document.createElement("p");
                 p.textContent = order;
-                ordersDiv.appendChild(p);
+
+                // Append the paragraph to the order container
+                orderContainer.appendChild(p);
+
+                // Append the order container to the orders container
+                ordersContainer.appendChild(orderContainer);
             });
+
 
             modal.style.display = "block";
 
@@ -558,15 +615,365 @@ $this->view('includes/alreadyProcess_popup', $data);
             };
         }
 
-        // Call this function when the "Already Processed" option is selected
-        function showSelectedOrders() {
-            var selectedOrders = [];
+        var selectedOrders = [];
+
+        function showProcessedOrders() {
+
+            selectedOrders = [];
             var checkboxes = document.querySelectorAll(".placed-order-list .checkbox:checked");
             checkboxes.forEach(function(checkbox) {
-                var orderId = checkbox.parentElement.nextElementSibling.querySelector(".item-id").textContent;
+                //find the closest ancestor element with the class .placed-item
+                var orderId = checkbox.closest(".placed-item").querySelector(".item-id").textContent;
                 selectedOrders.push(orderId);
             });
             showModal(selectedOrders);
+        }
+
+
+
+
+        // Function to show the popup modal of 'InformCustomers_popup'
+        function showPickupModal(selectedPickups) {
+            var modal = document.getElementById("customerInform");
+            var modalContent = document.querySelector(".modal-content");
+            var closeBtn = document.getElementById("cancelDetails_pickups");
+            var ordersContainer = document.getElementById("selectedPickupsContainer");
+
+            // Clear previous content
+            ordersContainer.innerHTML = "";
+
+
+            selectedPickups.forEach(function(order) {
+                // Create a container for each order
+                var orderContainer = document.createElement("div");
+                orderContainer.classList.add("order-container");
+
+                // Create a paragraph element to display order details
+                var p = document.createElement("p");
+                p.textContent = order;
+
+                // Append the paragraph to the order container
+                orderContainer.appendChild(p);
+
+                // Append the order container to the orders container
+                ordersContainer.appendChild(orderContainer);
+            });
+
+
+            modal.style.display = "block";
+
+            // Close the modal when clicking on the close button
+            closeBtn.onclick = function() {
+                modal.style.display = "none";
+            };
+
+            // Close the modal when clicking outside of it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
+        }
+
+        var selectedPickups = [];
+
+        function showPickupsOrders() {
+
+            selectedPickups = [];
+            var checkboxes = document.querySelectorAll(".placed-order-list .checkbox:checked");
+            checkboxes.forEach(function(checkbox) {
+                //find the closest ancestor element with the class .placed-item
+                var orderId = checkbox.closest(".placed-item").querySelector(".item-id").textContent;
+                selectedPickups.push(orderId);
+            });
+            console.log(selectedPickups);
+            showPickupModal(selectedPickups);
+        }
+
+
+
+        // Function to show the popup modal of 'cancel_popup'
+        function showCancelModal(selectedOrders) {
+            var modal = document.getElementById("viewCancel");
+            var modalContent = document.querySelector(".modal-content");
+            var closeBtn = document.getElementById("cancelDetails_cancel");
+            var ordersContainer_cancel = document.getElementById("selectedOrdersContainer_cancel");
+
+            // Clear previous content
+            ordersContainer_cancel.innerHTML = "";
+
+
+            selectedOrders.forEach(function(order) {
+                // Create a container for each order
+                var orderContainer_cancel = document.createElement("div");
+                orderContainer_cancel.classList.add("order-container-cancel");
+
+                // Create a paragraph element to display order details
+                var p = document.createElement("p");
+                p.textContent = order;
+
+                // Append the paragraph to the order container
+                orderContainer_cancel.appendChild(p);
+
+                // Append the order container to the orders container
+                ordersContainer_cancel.appendChild(orderContainer_cancel);
+            });
+
+
+            modal.style.display = "block";
+
+            // Close the modal when clicking on the close button
+            closeBtn.onclick = function() {
+                modal.style.display = "none";
+            };
+
+            // Close the modal when clicking outside of it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
+        }
+
+        function showSelectedOrders_cancel() {
+            var selectedOrders = [];
+            var checkboxes = document.querySelectorAll(".placed-order-list .checkbox:checked");
+            checkboxes.forEach(function(checkbox) {
+                //find the closest ancestor element with the class .placed-item
+                var orderId = checkbox.closest(".placed-item").querySelector(".item-id").textContent;
+                selectedOrders.push(orderId);
+            });
+            showCancelModal(selectedOrders);
+        }
+
+
+
+
+
+        //READY-ORDER-CONTAINER
+        document.addEventListener("DOMContentLoaded", function() {
+            updateAssignButtonState(); // Call the function to set initial button state
+        });
+
+
+        function updateAssignButtonState() {
+            var assignButton = document.getElementById("readySelectedOption");
+            var checkboxes = document.querySelectorAll('.ready-order-list .checkbox');
+            var isAnySelected = false;
+
+            // Check if any checkbox is checked
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    isAnySelected = true;
+                    break;
+                }
+            }
+
+            // Update button state
+            assignButton.disabled = !isAnySelected;
+
+            // Update button color based on disabled state
+            if (assignButton.disabled) {
+                assignButton.style.color = '#e4e4e4'; // Disabled color
+            } else {
+                assignButton.style.color = '#808080'; // Enabled color
+            }
+        }
+
+
+        // Function to check if any order is selected
+        function isAnyReadyOrderSelected() {
+            var checkboxes = document.querySelectorAll('.ready-order-list .checkbox');
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    return true; // If any checkbox is checked, return true
+                }
+            }
+            return false; // If no checkbox is checked, return false
+        }
+
+        // Attach event listeners to checkboxes to update button state when clicked
+        var checkboxes = document.querySelectorAll('.ready-order-list .checkbox');
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('click', updateAssignButtonState);
+        });
+
+        var selectAllReadyCheckbox = document.getElementById('select-all-ready');
+        selectAllReadyCheckbox.addEventListener('click', function() {
+            selectAllDeliveryOrders();
+            updateAssignButtonState();
+        });
+
+        function selectAllDeliveryOrders() {
+            var checkboxes = document.querySelectorAll('.ready-order-list .checkbox');
+            checkboxes.forEach(function(checkbox) {
+                var orderType = checkbox.parentElement.parentElement.querySelector('.main-item span').textContent;
+                if (orderType.trim() === 'D') {
+                    checkbox.checked = true;
+                } else {
+                    checkbox.checked = false; // Uncheck non-delivery orders
+                }
+            });
+        }
+
+        function selectReadyOption(option) {
+            document.getElementById("readySelectedOption").innerText = option;
+        }
+
+
+
+        // Function to show the popup modal of 'driver assign_popup'
+        function showAssignModal(selectedOrders) {
+
+            var modal = document.getElementById("viewAssign");
+            var modalContent = document.querySelector(".modal-content");
+            var closeBtn = document.getElementById("cancelAssign");
+            var ordersContainer = document.getElementById("assignOrdersContainer");
+
+            // Clear previous content
+            ordersContainer.innerHTML = "";
+
+            // Create a flex container div to hold the order elements
+            var flexContainer = document.createElement("div");
+            flexContainer.classList.add("order-flex-container");
+
+            // Iterate over selectedOrders to create a div for each order
+            selectedOrders.forEach(function(orderId) {
+                // Create a div for each order
+                var orderDiv = document.createElement("div");
+                orderDiv.textContent = orderId;
+                // Append the order div to the flex container
+                flexContainer.appendChild(orderDiv);
+            });
+
+            // Append the flex container to the orders container
+            ordersContainer.appendChild(flexContainer);
+
+            modal.style.display = "block";
+
+            // Close the modal when clicking on the close button
+            closeBtn.onclick = function() {
+                modal.style.display = "none";
+            };
+
+            // Close the modal when clicking outside of it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
+        }
+
+        function showDrivers() {
+
+            var selectedOrders = [];
+            var checkboxes = document.querySelectorAll(".ready-order-list .checkbox:checked");
+            checkboxes.forEach(function(checkbox) {
+                //find the closest ancestor element with the class .placed-item
+                var orderId = checkbox.closest(".placed-item").querySelector(".item-id").textContent;
+                selectedOrders.push(orderId);
+            });
+
+            //console.log(selectedOrders);
+            showAssignModal(selectedOrders);
+        }
+
+
+
+
+
+
+        //DISPATCH-ORDER-CONTAINER
+        document.addEventListener("DOMContentLoaded", function() {
+            var dropdownHeader = document.getElementById("dispatchDropdownHeader");
+            updateDispatchDropdownColor(); // Call the function to set initial color
+        });
+
+        function updateDispatchDropdownColor() {
+            var dropdownHeader = document.getElementById("dispatchDropdownHeader");
+            if (isAnyDispatchOrderSelected()) {
+                dropdownHeader.classList.remove('disabled');
+                dropdownHeader.style.color = '#808080'; // Change text color to grey
+            } else {
+                dropdownHeader.classList.add('disabled');
+                dropdownHeader.style.color = '#e4e4e4'; // Change text color back to light gray
+            }
+        }
+
+        function toggleDispatchDropdown() {
+            var dropdownContent = document.getElementById("dispatchDropdownContent");
+            var dropdownHeader = document.getElementById("dispatchDropdownHeader");
+            if (isAnyDispatchOrderSelected()) {
+                dropdownContent.classList.remove('disabled');
+                dropdownHeader.classList.remove('disabled');
+                dropdownHeader.style.color = '#808080'; // Change text color to grey
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                    dropdownContent.style.width = dropdownHeader.offsetWidth + "px";
+                }
+            } else {
+                dropdownContent.classList.add('disabled');
+                dropdownHeader.classList.add('disabled');
+                dropdownHeader.style.color = '#e4e4e4'; // Change text color back to light gray
+            }
+        }
+
+        // Function to check if any order is selected
+        function isAnyDispatchOrderSelected() {
+            var checkboxes = document.querySelectorAll('.dispatch-order-list .checkbox');
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    return true; // If any checkbox is checked, return true
+                }
+            }
+            return false; // If no checkbox is checked, return false
+        }
+        // Attach event listeners to checkboxes to update dropdown color when clicked
+
+        var checkboxes = document.querySelectorAll('.dispatch-order-list .checkbox');
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('click', updateDispatchDropdownColor);
+        });
+
+
+        var selectAllDispatchCheckbox = document.getElementById('select-all-dispatch');
+        selectAllDispatchCheckbox.addEventListener('click', updateDispatchDropdownColor);
+
+        function selectDispatchOption(option) {
+            document.getElementById("dispatchSelectedOption").innerText = option;
+            document.getElementById("dispatchDropdownContent").style.display = "none";
+        }
+
+
+
+
+
+
+
+
+
+        function selectAllItems(category) {
+
+            var outerCircle = document.querySelector('#select-all-' + category + ' .outer-circle');
+            var placedItems = document.querySelectorAll('.' + category + '-order-list .placed-item input[type="checkbox"]');
+
+            // Toggle the clicked class to change outer circle color
+            outerCircle.classList.toggle('clicked');
+
+            // alert(outerCircle.checked);
+            if (outerCircle.classList.contains('clicked')) {
+
+                // Check/uncheck all placed items
+                placedItems.forEach(function(item) {
+                    item.checked = !item.checked;
+                });
+            } else {
+                placedItems.forEach(function(item) {
+                    item.checked = false;
+                });
+            }
         }
     </script>
 

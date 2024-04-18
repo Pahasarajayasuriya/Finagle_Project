@@ -8,16 +8,18 @@ class Deliverer_assign extends Controller
 
         $data['title'] = "Assign";
 
-        $readyOrder = $this->delivery_order();
+        $readyOrder = $this->getItemsDetails();
+        //show($readyOrder);
         $data['ready_order'] = $readyOrder;
 
+        
 
         if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST["delivered_btn"])) {
-           // show($_POST["delivered_btn"]);
-            unset($_POST["delivered_btn"]);
 
+            unset($_POST["delivered_btn"]);
             $this->update_delivered_order($_POST);
         }
+
 
         // echo $_SESSION;
         $this->view('deliverer/driver_assign', $data);
@@ -26,44 +28,101 @@ class Deliverer_assign extends Controller
     private function update_delivered_order($arr)
     {
         $checkout = new CheckoutOrder();
-       
+
         $id = $arr['id'];
-        $checkout->update($id,$arr);
+        $checkout->updateOrder($id, $arr);
 
         unset($arr['id']);
         // show($arr);
-       
+
         redirect("Deliverer_assign");
     }
 
-    private function delivery_order() 
+   
+
+    private function getItemsDetails()
     {
+
         $checkout = new CheckoutOrder();
-        $completeOrder = $checkout->findAll();
 
-        $completeOrderOnly=array();
+        $data = $checkout->findOrderdetails();
+        
+        $i = 0;
 
-        foreach ($completeOrder as $key => $data) {
+        // show($data);
+        
+        foreach ($data as $item) {
 
-            // need to find register driver for this orders. It is not added
-            if ($data->delivery_or_pickup == "delivery" && $data->order_status == "ready") {
-                unset($data->order_status);
-                unset($data->delivery_date);
-                unset($data->delivery_time);
-               // unset($data->total_cost);
-                unset($data->is_gift);
-                //unset($data->payment_method);
-                unset($data->note);
-                unset($data->formatted_address);
-                unset($data->delivery_or_pickup);
-                unset($data->deliver_id);
+            $item->unique_id = $i;
+
+            if ($item->delivery_or_pickup == "delivery" && $item->order_status == "order dispatch") {
                 
-                $completeOrderOnly[$key] = $data;
+                // initially included data pass to the array
+                $item->mult_order = [
+                    [
+                        "user_name" => $item->user_name,
+                        "quantity" => $item->quantity,
+                        "price"=> $item->price
+                    ]
+                    ];
+                }else{
+                    unset($data[$i]);
+                }
+                $i++;
             }
+            
+        //show($data);        
+        // find the same order id orders and merge that orders 
+        foreach ($data as $nkey =>$item) {
+            
+
+            foreach ($data as $key=> $value) {
+
+                if ($item->unique_id != $value->unique_id && $item->id == $value->id) {
+
+                    $new_mult = [
+
+                        "user_name" => $value->user_name,
+                        "quantity" => $value->quantity,
+                        "price"=> $value->price
+                    ];
+
+                    $item->mult_order = array_merge($item->mult_order, [$new_mult]);
+
+                }
+                
+            }
+            
         }
 
-        return $completeOrderOnly;
-    }
+        $new_result = [];
+        $id_array = [];
 
-  
+        // show($data);
+
+
+        foreach($data as $item) {
+
+            if (!in_array( $item->id,$id_array)) {
+
+                array_push($id_array, $item->id);
+                array_push($new_result, $item);
+            }
+
+            unset($item->user_name);
+            
+            unset($item->quantity);
+
+            unset($item->price);
+
+
+
+        }
+
+        //show($new_result);
+
+        return($new_result);
+
+        
+    }
 }

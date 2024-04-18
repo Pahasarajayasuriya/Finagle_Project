@@ -71,7 +71,7 @@ $this->view('includes/footer', $data);
 							}
 				?>
 
-
+						
 				<i class='bx bxs-building'></i>
 					</div>
 

@@ -17,7 +17,7 @@
 
       <div>
         <i class='bx bx-window-close bx-fade-right' style='color:red'></i>
-        <!-- <i class='bx bxs-error-circle bx-tada icon-warn' style='color:#ffd900' ></i> -->
+       
 
       </div>
 

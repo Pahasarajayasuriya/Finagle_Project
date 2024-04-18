@@ -6,11 +6,13 @@ class Emp_dashboard extends Controller
     {
         $id = $id ?? Auth::getId();
 
+        $branch ='Borella';
+
         $id = 13;
         $BranchName= $this->getBranchName($id);
-        // show($allBranchEmp);
         $data['BranchName'] = $BranchName;
 
+       
 
          $check = new CheckoutOrder();
 

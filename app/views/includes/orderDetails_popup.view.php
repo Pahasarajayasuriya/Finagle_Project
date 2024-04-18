@@ -22,23 +22,28 @@
         <div class="delivery-loc"><i class="fas fa-phone"></i> <span id="user-phone"></span> </div>
       </div>
   
-      <button class="pay-status"><span id="pay-status"></span></button>
+      <button class="pay-status" id="pay-status-btn"><span id="pay-status"></span></button>
 
       <br>
 
       <div class="details" id="details">
+
+      <div id="order-details">
 
         <div class="product-item">
           <div class="product-name" id="product-name">Chocolate Cake</div>
           <div class="product-qty" id="product-qty">2</div>
           <div class="product-price" id="product-price">Rs.2500.00</div>
         </div>
-
+        
         <div class="product-item">
           <div class="product-name" id="product-name">Sandwitch Bread</div>
           <div class="product-qty" id="product-qty">3</div>
           <div class="product-price" id="product-price">Rs.1000.00</div>
         </div>
+        
+      </div>
+
         <hr>
         <div class="product-summery">
           <div class="total-amount">Total Amount : Rs.<span id="total_cost"></span> </div>
@@ -58,34 +63,38 @@
   <div id="viewOrderConfirm" class="modal">
     <div class="modal-content">
 
-
+     
       <h2 id="order-id">Order Delivery Confirmation</h2>
 
       <i class='bx bx-alarm-exclamation bx-fade-left' style='color:#fd0303'></i>
 
 
+      <!-- <h2 id="order-id">Order ID: &nbsp; <span id="deliver-order-id"></span> </h2> -->
 
+       <!-- <p><span id="order_status"></span></p> -->
       <h3>Has the order been successfully delivered?</h3>
+    
 
 
-      <!-- <form method="POST">
-                    <input type="hidden" name="order_status" value="delivered">
-                    <input type="hidden" name="id" value="<?= $element->id ?>">
-                    <button name="delivered_btn" class="delivered-btn">Delivered</button> 
-                    
-          </form>  -->
+      <form method="POST">
+            <input type="hidden" name="order_status" value="order delivered">
+            <input type="hidden" id="order-deliver-id" name="id" value="" >
+            <button type="submit" name="delivered_btn" class="confirm_button" onclick="confirm_delivery()">Yes</button>
+            
+            <button type="button" class="cancel_button" onclick="hidePopup('viewOrderConfirm')">No</button>
+        </form>
 
-          <!-- <form method="POST">
-                    <input type="hidden" name="order_status" value="delivered">
-                    <input type="hidden" name="id" value="<?= $element->id ?>">
-                    <button name="delivered_btn" class="delivered-btn">Yes</button> 
-                    
-          </form>  -->
 
-      <button class="confirm_button" id="confirmDetails" onclick="hidePopup('viewOrderConfirm')">Yes</button>
-      <button class="cancel_button" id="cancelDetails" onclick="hidePopup('viewOrderConfirm')">No</button>
     </div>
   </div>
+
+  <script>
+
+    function confirm_delivery(){
+
+      document.getElementById('order-deliver-id').value = data.id;
+    }
+  </script>
   
   
 
@@ -250,20 +259,24 @@
       text-align: center;
     }
 
-    #confirmDetails {
+    .confirm_button ,.ok-button {
       margin-right: 10px;
       background-color: #000000;
     }
 
-    #cancelDetails {
+    .cancel_button {
       background-color: #f44336;
     }
 
-    #confirmDetails:hover {
+    .confirm_button:hover {
       background-color: rgb(16, 187, 0);
     }
 
-    #cancelDetails:hover {
+    .ok-button:hover {
+      background-color: rgb(16, 187, 0);
+    }
+
+    .cancel_button:hover {
       background-color: rgb(255, 0, 0);
     }
   </style>

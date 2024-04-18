@@ -40,12 +40,12 @@ $this->view('includes/orderDetails_popup', $data);
         // show($data['total_cost']);
 
         if (!empty($data['ready_order'])) {
-
+          //show($data['ready_order']);
           foreach ($data['ready_order'] as $key => $element) {
         ?>
             <div class="order-box">
               <div class="order-header">
-                >
+                
                 <h3>Order ID: <?= $element->id ?> D</h3>
 
                 <button type="button" class="view-details" id="locationButton view-details" data-order='<?php echo json_encode($element); ?>' onclick="showPopup(this,'viewOrderDetails')">View Details >>>></button>
@@ -78,15 +78,23 @@ $this->view('includes/orderDetails_popup', $data);
 
                 <div class="action-buttons">
 
-                  <button class="view-location-btn" id="locationButton">View Location</button>
+                  <!-- <button class="view-location-btn" id="locationButton">View Location</button> -->
+                  
+                  <!-- <button class="view-location-btn" onclick="addMarker(<?= $element->latitude ?>, <?= $element->longitude ?>)">View Location</button> -->
 
-                  <form method="POST">
+                  <button class="view-location-btn" onclick="calculateAndDisplayRoute({lat: <?= $element->latitude ?>, lng: <?= $element->longitude ?>})">View Location</button>
+
+
+
+
+                 <!-- <form method="POST">
                     <input type="hidden" name="order_status" value="delivered">
                     <input type="hidden" name="id" value="<?= $element->id ?>">
                     <button name="delivered_btn" class="delivered-btn">Delivered</button>
+                  </form>   -->
 
-                  </form>
-                  <!-- <button class="delivered-btn" id="locationButton" onclick="showPopup(this,'viewOrderConfirm')"> Delivered</button> -->
+                  <button  class="delivered-btn" id="locationButton view-details" data-order='<?php echo json_encode($element); ?>' onclick="showPopup(this,'viewOrderConfirm')"> Delivered</button>
+               
                 </div>
 
               </div>
@@ -107,49 +115,36 @@ $this->view('includes/orderDetails_popup', $data);
 
     <div class="right-section">
 
-       <?php
-     
-      $address = "College House, 94 Kumaratunga Munidasa Mawatha, Colombo 00700";
-
-      
-      $geocodeUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" . urlencode($address) . "&key=AIzaSyB3KoOPDxuE9bSb6J__Wn_tz18S3IdBNIw&loading=async";
-      $response = json_decode(file_get_contents($geocodeUrl), true);
-
-      if ($response['status'] == 'OK') {
-        $latitude = $response['results'][0]['geometry']['location']['lat'];
-        $longitude = $response['results'][0]['geometry']['location']['lng'];
-      }
-      ?> 
-
-
-      <div class="googlemap" id="map">
-
-      </div>
+      <div class="googlemap" id="map"></div>
 
     </div>
   </div>
+ </div>
 
+ <style>
 
-
-  </div>
-
-
-
-
-
+  .active{
+    background-color: green;
+  }
+ </style>
 
   <script>
-    var view_details = document.querySelector('view-details');
+    // var view_details = document.querySelector('view-details');
+    // var view_details = document.querySelector('delivered-btn');
 
 
+    var data = {};
+    
     function showPopup(button, popupId) {
-
+      
+      data = {};
 
       data = JSON.parse(button.getAttribute('data-order'));
 
-
       var popup = document.getElementById(popupId);
 
+    //  console.log(data.mult_order);
+      
       if (popup) {
         popup.style.display = "block";
       }
@@ -157,27 +152,43 @@ $this->view('includes/orderDetails_popup', $data);
       var order_id = document.getElementById('view-order-id');
       var user_location = document.getElementById('user-location');
       var user_phone = document.getElementById('user-phone');
+
       var pay_status = document.getElementById('pay-status');
+      var pay_status_btn = document.getElementById('pay-status-btn');
+
       var total_cost = document.getElementById('total_cost');
 
+      var delivered_id = document.getElementById('deliver-order-id');
+      var order_status = document.getElementById('order_status');
 
-      console.log(data);
-      console.log(data.id);
-
-      order_id.innerHTML = data.id;
+     order_id.innerHTML = data.id;
       user_location.innerHTML = data.delivery_address;
       user_phone.innerHTML = data.phone_number;
       pay_status.innerHTML = data.payment_method;
       total_cost.innerHTML = data.total_cost;
 
+     // delivered_id.innerHTML = data.id;
+     // order_status.innerHTML = data.order_status;
+
 
       if (data.payment_method == 'card') {
         pay_status.innerHTML = ('PAID');
-
+        pay_status_btn.classList.remove('active');
+        
       } else {
         pay_status.innerHTML = ('NOT PAID');
+        pay_status_btn.classList.add('active');
 
+      }
 
+      // document.getElementById('order-id-input').value = data.id;
+
+      document.getElementById('order-details').innerHTML = "";
+
+      for (let index = 0; index < data.mult_order.length; index++) {
+       // console.log(data.mult_order[index]);
+
+        order_list(data.mult_order[index]);
       }
 
     }
@@ -189,32 +200,90 @@ $this->view('includes/orderDetails_popup', $data);
         popup.style.display = "none";
       }
     }
+
+    function order_list(orders_list) {
+
+
+      var details = document.getElementById('order-details');
+      var newCard = document.createElement("div");
+      newCard.className = "product-item";
+      
+      newCard.innerHTML  = `<div class="product-name" id="product-name">${orders_list.user_name}</div>
+          <div class="product-qty" id="product-qty">${orders_list.quantity}</div>
+          <div class="product-price" id="product-price">Rs.${orders_list.price}</div>
+      `;
+
+      newCard.style.transition = "all 0.5s ease-in-out";
+      details.appendChild(newCard);
+    }
+
+
+
   </script>
+
 
   <script>
-  
+    var map;
+    var directionsService;
+    var directionsRenderer;
+ 
 
     function initMap() {
-      // Create a new map instance
-      var map = new google.maps.Map(document.getElementById('map'), {
-        center: {
-          lat: <?php echo $latitude; ?>,
-          lng: <?php echo $longitude; ?>
-        },
-        zoom: 15 // Adjust the zoom level as needed   zoom: 7.7
-      });
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {
+                lat: 6.9271,
+                lng: 79.8612
+            },
+            zoom: 15
+        });
 
-      // Add a marker to the map
-      var marker = new google.maps.Marker({
-        position: {
-          lat: <?php echo $latitude; ?>,
-          lng: <?php echo $longitude; ?>
-        },
-        map: map,
-        title: 'Customer Address'
-      });
+        directionsService = new google.maps.DirectionsService();
+        directionsRenderer = new google.maps.DirectionsRenderer();
+        directionsRenderer.setMap(map);
     }
-  </script>
+
+    function addMarker(latitude, longitude) {
+        // Remove existing markers (if any)
+        mapMarkers.forEach(function(marker) {
+            marker.setMap(null);
+        });
+
+        // Create a new marker
+        var marker = new google.maps.Marker({
+            position: {
+                lat: latitude,
+                lng: longitude
+            },
+            map: map,
+            title: 'Location'
+        });
+
+        // Store the marker in an array for future reference
+        mapMarkers.push(marker);
+
+        // Pan the map to the marker's position
+        map.panTo(marker.getPosition());
+    }
+
+
+    var mapMarkers = []; // Array to store markers
+
+    function calculateAndDisplayRoute(destination) {
+        var request = {
+            origin: 'Dr NM Perera Mawatha Rd, Colombo 00800',
+            destination: destination,
+            travelMode: 'DRIVING'
+        };
+        directionsService.route(request, function(result, status) {
+            if (status == 'OK') {
+                directionsRenderer.setDirections(result);
+            } else {
+                console.error('Error:', status);
+            }
+        });
+    }
+</script>
+
 
 
   <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3KoOPDxuE9bSb6J__Wn_tz18S3IdBNIw&loading=async&callback=initMap"></script>

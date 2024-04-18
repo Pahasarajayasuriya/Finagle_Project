@@ -6,11 +6,13 @@ class Emp_productStock extends Controller
     {
         $id = $id ?? Auth::getId();
 
+        $branch="Borella";
+
         $user = new User();
         $data['row'] = $user->first(['id' => $id]);
         $data['title'] = "ProductStock";
 
-        $product = $this->editProducts();
+        $product = $this->editProducts($branch);
         // show($product);
         $data['product'] = $product;
 
@@ -24,11 +26,11 @@ class Emp_productStock extends Controller
         $this->view('employee/product_stock', $data);
     }
 
-    private function editProducts()
+    private function editProducts($branch)
     {
         $product = new ProductsData();
 
-        $data = $product->findAll();
+        $data = $product->findAllProducts($branch);
 
 
         foreach ($data as $key) {

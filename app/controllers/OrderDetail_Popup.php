@@ -9,7 +9,7 @@ class OrderDetail_Popup extends Controller
         $data['title'] = "";
         // show($_POST);
 
-        $details = new Order_Details ();
+        $details = new OrderItems();
         $data= $details->where_withInner($_POST,"products","product_id","id");
 
         // show($data);
