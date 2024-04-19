@@ -156,28 +156,28 @@
                                 <span class="tooltip">Dashboard</span>
                               </li>
                               <li>
-                                <a href="#">
+                                <a href="' . ROOT . '/admin_customers">
                                   <i class="bx bx-message-alt-detail"></i>
                                   <span class="links_name">Customers</span>
                                 </a>
                                 <span class="tooltip">Customers</span>
                               </li>
                               <li>
-                              <a href="#">
+                              <a href="' . ROOT . '/admin_managers">
                                 <i class="bx bx-message-alt-detail"></i>
                                 <span class="links_name">Managers</span>
                               </a>
                               <span class="tooltip">Managers</span>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="' . ROOT . '/admin_employees">
                                   <i class="bx bx-message-alt-detail"></i>
                                   <span class="links_name">Employess</span>
                                 </a>
                                 <span class="tooltip">Employees</span>
                               </li>
                               <li>
-                              <a href="#">
+                              <a href="' . ROOT . '/admin_deliverers">
                                 <i class="bx bx-message-alt-detail"></i>
                                 <span class="links_name">Deliverers</span>
                               </a>

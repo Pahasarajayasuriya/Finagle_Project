@@ -67,14 +67,14 @@ class Admin_customers extends Controller
 
     }
 
-    public function delete_branch($id)
+    public function delete_customer($id)
     {
         $admin_customer_model = new admin_customersModel();
-        $admin_customer_model->del_branch($id);
+        $admin_customer_model->del_customer($id);
         redirect('admin_customers');
     }
 
-    public function update_branch($id)
+    public function update_customer($id)
     {
         $param['id']=$id;
         $admin_customer_model = new admin_customersModel();
