@@ -38,7 +38,7 @@ $this->view('includes/footer', $data);
         <h2 class="section-title">OUR PRODUCTS</h2>
         <div class="divider dark mb-4">
             <div class="icon-wrap">
-              
+
             </div>
         </div>
         <div class="product-search">
@@ -57,10 +57,35 @@ $this->view('includes/footer', $data);
                 </span>
                 <div class="cart-items">0</div>
             </div>
-          
+
             <div class="search-error"></div>
         </div>
         <div id="message-error-container"></div>
+
+
+
+        <div class="categories">
+            <div class="category-item" data-category="Bread & Buns">
+                <div class="p-4">
+                    <i class='bx bx-badge bx-tada'></i>
+                    <h5 class="category-title">Bread & Buns</h5>
+                </div>
+            </div>
+            <div class="category-item" data-category="Cakes">
+                <div class="p-4">
+                    <i class='bx bxs-cake bx-tada'></i>
+                    <h5 class="category-title">Cakes</h5>
+                </div>
+            </div>
+            <div class="category-item" data-category="Frozen Foods">
+                <div class="p-4">
+                    <i class='bx bxs-pizza bx-tada'></i>
+                    <h5 class="category-title">Frozen Foods</h5>
+                </div>
+            </div>
+        </div>
+
+
         <div class="products-center">
             <?php foreach ($productsByCategory as $category => $products) : ?>
                 <div class="category-container">
@@ -120,7 +145,6 @@ $this->view('includes/footer', $data);
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-
         document.getElementById("checkout-button").addEventListener("click", function() {
             if (isLoggedIn()) {
                 window.location.href = "<?= ROOT ?>/checkout";

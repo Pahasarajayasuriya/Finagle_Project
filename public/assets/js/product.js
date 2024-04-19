@@ -33,17 +33,13 @@ let buttonsDOM = [];
 class UI {
   displayProducts(products) {
     let result = "";
-    const groupedProducts = this.groupByCategory(products);
-
-    for (const category in groupedProducts) {
-      result += `<h2>${category}</h2>`;
-      groupedProducts[category].forEach((item) => {
-        result += `
+    products.forEach((item) => {
+      result += `
       <div class="product">
         <div class="img-container">
           <img class="product-img" src="${item.image}" alt="${
-          item.user_name
-        }" />
+        item.user_name
+      }" />
         </div>
         <div class="product-desc">
           <p class="product-title">${item.user_name}</p>
@@ -60,19 +56,14 @@ class UI {
           <div class="options">
             <p class="product-price">Rs.${item.price}.00</p>
             <button class="btn add-to-cart" data-id="${item.id}" ${
-          item.quantity > 0 ? "" : "disabled"
-        }>Add to Cart</button>
+        item.quantity > 0 ? "" : "disabled"
+      }>Add to Cart</button>
           </div>
         </div>
       </div>
     `;
-      });
-    }
-    // Remove the local declaration of productsDOM
+    });
     productsDOM.innerHTML = result;
-
-    // Update the method to get cart buttons dynamically
-    // this.getCartBtns();
   }
 
   groupByCategory(products) {
@@ -228,9 +219,8 @@ class UI {
       let target = e.target;
 
       if (target.classList.contains("trash")) {
-
         removeItemFromCart(target);
-      } else if (target.classList.contains('arrow-down')) {
+      } else if (target.classList.contains("arrow-down")) {
         decreaseQuantity(target);
       }
     });
@@ -355,12 +345,35 @@ class Storage {
 
 document.addEventListener("DOMContentLoaded", () => {
   const ui = new UI();
-  ui.displayProducts(productsData);
+  const defaultCategory = "Bread & Buns";
+  const defaultProducts = productsData.filter(
+    (product) => product.category === defaultCategory
+  );
+  ui.displayProducts(defaultProducts);
   ui.getCartBtns();
   ui.setUpApp();
   ui.cartLogic();
   ui.searchItem();
   ui.updateCheckoutButtonState();
   Storage.saveProducts(productsData);
-});
 
+  // Get all category items
+  const categoryItems = document.querySelectorAll(".category-item");
+
+  // Add click event listener to each category item
+  categoryItems.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      // Get the category from the clicked item
+      const category = e.currentTarget.dataset.category;
+
+      // Filter the products based on the selected category
+      const filteredProducts = productsData.filter(
+        (product) => product.category === category
+      );
+
+      // Display the filtered products
+      ui.displayProducts(filteredProducts);
+      ui.getCartBtns(); // Update the cart buttons for the new products
+    });
+  });
+});
