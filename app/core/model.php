@@ -115,4 +115,5 @@ class Model extends Database
         $query = "SELECT * FROM {$this->table}";
         return $this->query($query);
     }
+
 }

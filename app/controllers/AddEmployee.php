@@ -1,11 +1,9 @@
 <?php 
 
-/**
- * signup class
- */
-// class AddEmployee extends Controller
-// {
-	
+
+class AddEmployee extends Controller
+{
+
 // 	public function index()
 // 	{
 	
@@ -13,10 +11,10 @@
 
 // 		$user = new User();
 
-// 		if($_SERVER['REQUEST_METHOD'] == "POST")
-// 		{
-//             show($_POST);
-//             $_POST['repassword'] =  $_POST['password'];
+		if($_SERVER['REQUEST_METHOD'] == "POST")
+		{
+            $_POST['repassword'] =  $_POST['password'];
+
 
 // 			if($user->validate($_POST))
 // 			{
@@ -24,18 +22,15 @@
 
 // 				$user->insert($_POST);
 			
-// 				message("Your profile was successfuly created. Please login");
-// 			}
-//             else
-//             {
-//                 show($user->errors);
-//             }
-// 		}
+				message("Your profile was successfuly created. Please login");
+				redirect('login');
+			}
+		}
 
-// 		$data['errors'] = $user->errors;
-// 		$data['title'] = "Add User";
-//         $this->view('admin/admin_add_employees',$data);
-// 	}
+		$data['errors'] = $user->errors;
+		$data['title'] = "Add User";
+        $this->view('admin/admin_add_employees',$data);
+	}
 	
 // }
 
