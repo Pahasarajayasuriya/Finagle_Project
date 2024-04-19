@@ -1,5 +1,6 @@
 <?php
 $role = "Employee";
+$data['role'] = $role;
 
 
 $this->view('includes/header', $data);
