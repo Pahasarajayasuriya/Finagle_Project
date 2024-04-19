@@ -24,8 +24,8 @@ class Signup extends Controller
                     setcookie("otp", $otp);
 
                     // Send OTP via Infobip SMS API
-                    $baseUrl = 'dk6m5l.api.infobip.com';
-                    $apiKey = '041f721ec5960fc5e9234eb5e99a15e8-cbc0ce26-5198-421d-9d16-6097956576d8';
+                    $baseUrl = '6glnnd.api.infobip.com';
+                    $apiKey = '48aec9f721e803db63f659fc3c34b046-a8406dfc-7c8e-4452-9ef9-19152170386c';
                     $configuration = new Infobip\Configuration(host: $baseUrl, apiKey: $apiKey);
                     $api = new Infobip\Api\SmsApi(config: $configuration);
                     $destination = new Infobip\Model\SmsDestination(to: $number);

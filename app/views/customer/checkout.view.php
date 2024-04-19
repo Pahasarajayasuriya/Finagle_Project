@@ -141,7 +141,7 @@
             </div>
 
             <br><br><br>
-            <button class="check_submit-btn" id="p_checkout-button">Place Order</button>
+            <button class="check_submit-btn" id="p_checkout-button" name="place_order">Place Order</button>
         </form>
         <div class="summary-container">
             <h3>CART SUMMARY</h3>

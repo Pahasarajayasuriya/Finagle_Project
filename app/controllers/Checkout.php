@@ -58,6 +58,7 @@ class Checkout extends Controller
                     if ($_POST['payment_method'] == 'cash') {
                         // If it is, save the data to the database and redirect to the clear cart page
                         $lastInsertId = $CheckoutModel->saveData($validatedData);
+                        $this->sendOrderConfirmationSMS($lastInsertId); // send sms
                         if ($_POST['delivery_or_pickup'] == 'pickup') {
                             redirect('clear_cart_pickup');
                         } else {
@@ -67,6 +68,7 @@ class Checkout extends Controller
                         if (isset($_SESSION['orderId'])) {
                             // If the orderId is set in the session, save the data to the database and redirect to the clear cart page
                             $lastInsertId = $CheckoutModel->saveData($validatedData);
+                            $this->sendOrderConfirmationSMS($lastInsertId); // send sms
                             $CheckoutModel->updatePaymentStatus($lastInsertId, 'Completed');
                             unset($_SESSION['orderId']);
                             if ($_POST['delivery_or_pickup'] == 'pickup') {
@@ -86,6 +88,27 @@ class Checkout extends Controller
         }
         $data['title'] = "Checkout";
         $this->view('customer/checkout', $data);
+    }
+
+    private function sendOrderConfirmationSMS($orderId)
+    {
+        $number = "+94" . $_POST['phone_number']; // Replace with the customer's phone number
+        require __DIR__ . '/../../vendor/autoload.php';
+
+        // Send SMS via Infobip SMS API
+        $baseUrl = '6glnnd.api.infobip.com';
+        $apiKey = '48aec9f721e803db63f659fc3c34b046-a8406dfc-7c8e-4452-9ef9-19152170386c';
+        $configuration = new Infobip\Configuration(host: $baseUrl, apiKey: $apiKey);
+        $api = new Infobip\Api\SmsApi(config: $configuration);
+        $destination = new Infobip\Model\SmsDestination(to: $number);
+        $message = new Infobip\Model\SmsTextualMessage(
+            destinations: [$destination],
+            text: "Thank you for your order. Your order number is: $orderId
+            Any questions? Call us on 011 223 6976.",
+            from: "Finagle"
+        );
+        $request = new Infobip\Model\SmsAdvancedTextualRequest(messages: [$message]);
+        $response = $api->sendSmsMessage($request);
     }
 
     public function saveCardPayment()
