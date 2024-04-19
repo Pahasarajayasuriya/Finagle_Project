@@ -38,7 +38,7 @@ $this->view('includes/footer', $data);
         <h2 class="section-title">OUR PRODUCTS</h2>
         <div class="divider dark mb-4">
             <div class="icon-wrap">
-                <!-- <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i> -->
+              
             </div>
         </div>
         <div class="product-search">
@@ -57,10 +57,7 @@ $this->view('includes/footer', $data);
                 </span>
                 <div class="cart-items">0</div>
             </div>
-            <!-- <div class="cart-button">
-                <i class="fas fa-shopping-cart"></i>
-
-            </div> -->
+          
             <div class="search-error"></div>
         </div>
         <div id="message-error-container"></div>

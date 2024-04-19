@@ -15,6 +15,8 @@ class Deliverers extends Model
         'branch',
         'DOB',
         'joined_date',
+        'delivered_orders',
+        'total_earnings',
         
 
    

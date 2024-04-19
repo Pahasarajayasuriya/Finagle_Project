@@ -1,0 +1,333 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins";
+}
+
+
+
+
+body {
+  font-family: "Poppins";
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  background-color: white;
+  overflow: hidden; 
+
+}
+
+
+
+.home-section {
+  position: relative;
+  transition: all 0.5s ease;
+  width: calc(100% - 155px); /* Adjust width as needed */
+  padding: 3%; /* Add padding to increase size */
+}
+
+
+
+h4{
+  position: relative; 
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 2% 2%;
+  margin-top: 1%; 
+  color: #ccc;
+}
+
+h2::before {
+  content: ""; /* Add content */
+  position: absolute;
+  top: -10px; /* Adjust to position above the heading */
+  left: 0;
+  width: 100%;
+  height: 3%; /* Height of the decorative line */
+  background-color: #333; /* Color of the decorative line */
+}
+
+
+
+.assigned-orders {
+
+  width: 80%;
+  margin-top: 3%;
+  padding: 1%;
+  margin-left:5%;
+
+}
+
+
+.order-box {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 3%;
+  margin-bottom: 3%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin-left: 10px;
+}
+
+.order-header{
+  display: flex;
+  
+}
+
+.order-header h3{
+  color: black;
+}
+.order-id {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+
+.view-details {
+  background: none;
+  border: none;
+  color:#bbbbbb;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-left: 50%;
+}
+
+.view-details:hover {
+  color: #c70909;
+}
+
+hr{
+  margin-top: 3%;
+  margin-bottom: 3%;
+  border-color: #bbbbbb;
+}
+.address {
+  margin-top: 3%;
+  font-size: 14px;
+  
+}
+.pickup-address{
+  display: flex;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  margin-right: 3%; /* Adjust as needed */
+  margin-top: 1%;
+  box-shadow: 0 0 5px red;
+}
+
+
+/* Add vertical broken line */
+.vertical-line {
+  border-left: 1px dashed rgba(0, 0, 0, 0.5); /* Transparent dashed line */
+  height: 100%; /* Adjust height */
+  margin: 0 10px; /* Adjust margin as needed */
+  margin-left: 1%;
+}
+
+/* Style for delivery address */
+.delivery-address {
+  display: flex;
+  align-items: center;
+ 
+  
+}
+
+/* Style for location icon */
+.delivery-address i {
+  margin-right: 3%; 
+ 
+}
+
+.footer{
+  display: flex;
+  gap: 40%;
+}
+
+.call-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3.5%;
+  width: 35px; /* Adjust width and height to set the size of the circle */
+  height: 35px; 
+  border-radius: 50%; /* Make it a circle */
+  background-color: #ccc; /* Grey background */
+  cursor: pointer;
+}
+
+.call-icon i {
+  color: black; /* Black icon color */
+  font-size: 15px; /* Adjust font size as needed */
+  align-items: center;
+}
+
+.action-buttons{
+  margin-top: 3.5%;
+  display: flex;
+  gap: 10px;
+}
+
+
+.view-location-btn,
+.delivered-btn {
+  color: #fff;
+  border: none;
+  border-radius: 10px; 
+  padding: 4% 12%; /* Increase padding for larger buttons and adjust horizontally */
+  font-size: 11px; 
+  cursor: pointer;
+  transition: all 0.3s ease; 
+  width: auto; 
+}
+
+
+.view-location-btn {
+  background-color: #28a745; /* Green color for location button */
+}
+
+
+.delivered-btn {
+  background-color: #dc3545; /* Red color for delivered button */
+}
+
+/* Hover styles for location button */
+.view-location-btn:hover {
+  background-color: #218838; /* Darker green color on hover */
+  transform: scale(1.05); /* Increase button size on hover */
+}
+
+/* Hover styles for delivered button */
+.delivered-btn:hover {
+  background-color: #c82333; /* Darker red color on hover */
+  transform: scale(1.1); /* Increase button size on hover */
+}
+
+
+@media screen and (max-width: 768px) {
+  .order-box {
+    padding: 15px; /* Adjust padding for smaller screens */
+  }
+
+  .view-details-btn,
+  .call-icon {
+    margin-bottom: 5px; /* Reduce margin for smaller screens */
+  }
+
+  .addresses {
+    margin-bottom: 10px; /* Adjust margin for smaller screens */
+  }
+
+  .action-buttons {
+    flex-direction: column; /* Stack buttons vertically on smaller screens */
+  }
+
+  .view-location-btn,
+  .delivered-btn {
+    width: 100%; /* Make buttons full width on smaller screens */
+    margin-top: 10px; /* Add margin between buttons */
+  }
+}
+
+@media only screen and (max-width: 600px) {
+ 
+  .home-section {
+    padding: 20px;
+  }
+  .order-box {
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  /* Adjust styles for medium screens here */
+  .home-section {
+    padding: 30px;
+  }
+  .order-box {
+    margin-bottom: 30px;
+  }
+}
+
+/* Example of media query for large screens */
+@media only screen and (min-width: 1025px) {
+  /* Adjust styles for large screens here */
+  .home-section {
+    padding: 40px;
+  }
+  .order-box {
+    margin-bottom: 40px;
+  }
+}
+.home-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+.left-section {
+  flex: 1;
+  padding-right: 20px;
+  height: 100vh; /* Adjust the height as needed */
+  overflow-y: auto; /* Add scrollbar when content exceeds height */
+}
+
+.right-section {
+  flex: 1;
+  padding-left: 20px;
+}
+
+/* Hide the default scrollbar */
+.left-section::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 5px; 
+}
+
+/* Track */
+.left-section::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+}
+
+/* Handle */
+.left-section::-webkit-scrollbar-thumb {
+  background: #8e6d6d; /* Color of the scrollbar handle */
+  border-radius: 5px; /* Make the scrollbar handle round */
+}
+
+/* Handle on hover */
+.left-section::-webkit-scrollbar-thumb:hover {
+  background: #8e6d6d; /* Change color of scrollbar handle on hover */
+}
+
+.googlemap {
+
+   
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 3%;
+  margin-bottom: 3%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+
+.sidebar.open~.home-section {
+  left: 150px;
+  width: calc(100% - 150px);
+
+}
+

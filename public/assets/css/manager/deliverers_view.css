@@ -138,12 +138,16 @@ body {
   
 }
 
-.header-item, .employee-id, .employee-name, .goal-assignment {
+.header-item, .employee-id{
     flex: 1;
 }
 
+
+.employee-no{
+  flex: 2;
+}
 .header-item{
-    margin-left: -40px;
+    margin-left: -50px;
 
 }
 
