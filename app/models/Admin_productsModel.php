@@ -5,18 +5,18 @@ class Admin_productsModel extends Model
     public $table = "products";
     public $errors = [];
     protected $allowedColumns = [
-        'name',
+        'user_name',
+        'description',
         'category',
         'price',
         'quantity',
         'image',
+        'date',
+        'slug',
     ];
 
     public function validate($data)
     {
-        // Add your validation logic here
-        // You can customize the validation rules based on your requirements
-
         return $data;
     }
 

@@ -14,8 +14,10 @@ class User extends Model
         'teleno',
         ' user_role',
         'address',
-        'branch_id',
+        'branch',
         'joined_date',
+        'reset_token_hash',
+        'reset_token_expires_at'
     ];
     public function validate($data)
     {
