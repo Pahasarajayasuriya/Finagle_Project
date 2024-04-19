@@ -26,7 +26,7 @@ class CheckoutOrder extends Model
         'total_cost',
         'deliver_id'
 
-        
+       
     ];
    
 
