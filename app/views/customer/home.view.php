@@ -1,6 +1,6 @@
 <?php
 $role = "User";
-
+$data['role'] = $role;
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
@@ -55,7 +55,8 @@ $this->view('includes/footer', $data);
                         </div>
 
                         <h3 class="text-span">Conveniently Delicious Frozen & Fresh Bakery Products</h3>
-                        <div class="button"> <a href="homepage.php"><button>Explore</button></a></div>
+                        <div class="button"> <a href="<?= ROOT ?>/home"><button>Explore</button></a></div>
+
                     </div>
                 </div>
             </div>
@@ -436,7 +437,7 @@ $this->view('includes/footer', $data);
 
                             </div>
                             <div class="img-container-2">
-                                <img class="img-3" src="https://media.licdn.com/dms/image/D5622AQFDpnTPgR-H1A/feedshare-shrink_800/0/1686316219976?e=1704326400&v=beta&t=RAbhzyChajbcxVD8A4Tn2Rv8oI1UEWWdxSLkBOgeWjo" alt="">
+                                <img class="img-3" src="https://lh3.googleusercontent.com/p/AF1QipMRpMNJLbc9yGciZgvXzr4Y32F3pZBYMwuPtTzZ=s680-w680-h510" alt="">
                                 <img class="img-4" src="https://www.finagle.lk/images/site-specific/market-segments/horeca_01.jpg" alt="">
 
                             </div>
@@ -496,6 +497,7 @@ $this->view('includes/footer', $data);
                         <div class="export-img">
                             <img src="<?= ROOT ?>/assets/images/exports.jpg" alt="export Img" />
                         </div>
+                        <div class="about-content">
 
                         <div class="export-content">
                             <p class="export-p">Exports of frozen baked products is another of our success stories. Exports of our baked
@@ -513,123 +515,111 @@ $this->view('includes/footer', $data);
                         </div>
                     </div>
                 </div>
-                 <div class="certificates">
+                <div class="certificates">
 
-                     <h2 class="section-title" id="exports">QUALITY CERTIFICATIONS</h2>
-                     <div class="divider dark mb-4">
-                         <div class="icon-wrap">
-                             <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
-                         </div>
-                     </div>
+                    <h2 class="section-title" id="exports">QUALITY CERTIFICATIONS</h2>
+                    <div class="divider dark mb-4">
+                        <div class="icon-wrap">
+                            <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
+                        </div>
+                    </div>
 
-                     <div class="certificate-section">
-                         <div class="c1">
+                    <div class="certificate-section">
+                        <div class="c1">
 
-                             <div class="outer">
-                                 <div class="img-01">
-                                     <img src="<?= ROOT ?>/assets/images/fssc-22000.png" alt="">
-
-
-
-                                 </div>
-                             </div>
-                             <p>FSSC 22000 <br>Certification</p>
-
-                         </div>
-
-                         <div class="c1">
-                             <div class="outer">
-                                 <div class="img-01">
-                                     <img src="<?= ROOT ?>/assets/images/gmp.jpg" alt="">
-
-                                 </div>
-                             </div>
-                             <p>GMP <br>Certification</p>
-                         </div>
-
-                         <div class="c1">
-                             <div class="outer">
-                                 <div class="img-01">
-                                     <img src="<?= ROOT ?>/assets/images/ISO-22000.png" alt="">
-
-                                 </div>
-                             </div>
-                             <p>ISO 22000 <br> Certification</p>
-                         </div>
-
-                         <div class="c1">
-                             <div class="outer">
-                                 <div class="img-01">
-                                     <img src="<?= ROOT ?>/assets/images/HACCP.jpg" alt="">
-
-                                 </div>
-                             </div>
-                             <p>HACCP <br> Certification</p>
-                         </div>
+                            <div class="outer">
+                                <div class="img-01">
+                                    <img src="<?= ROOT ?>/assets/images/fssc-22000.png" alt="">
 
 
 
-                     </div>
-                     <br><br>
+                            <div class="about-exp">
+                                <div class="experience">
+                                    <div class="vertical-line"></div>
+                                    <div class="exp-title">
+                                        <h1 class=""> 15 </h1>
+                                    </div>
+                                    <div class="exp-content">
+                                        <p class="sub-topic">Years of</p>
+                                        <h3 class="ss-topic">EXPERIENCE</h6>
+
+                                </div>
+                            </div>
+                            <p>FSSC 22000 <br>Certification</p>
+
+                        </div>
+
+                        <div class="c1">
+                            <div class="outer">
+                                <div class="img-01">
+                                    <img src="<?= ROOT ?>/assets/images/gmp.jpg" alt="">
+
+                                </div>
+                            </div>
+                            <p>GMP <br>Certification</p>
+                        </div>
+
+                        <div class="c1">
+                            <div class="outer">
+                                <div class="img-01">
+                                    <img src="<?= ROOT ?>/assets/images/ISO-22000.png" alt="">
+
+                                </div>
+                            </div>
+                            <p>ISO 22000 <br> Certification</p>
+                        </div>
+
+                        <div class="c1">
+                            <div class="outer">
+                                <div class="img-01">
+                                    <img src="<?= ROOT ?>/assets/images/HACCP.jpg" alt="">
+
+                                </div>
+                            </div>
+                            <p>HACCP <br> Certification</p>
+                        </div>
 
 
 
-                     <div class="feedback-section">
-
-                         <h2 class="section-title"><strong> </strong>CLIENTS' REVIEWS</h2>
-                         <div class="divider dark mb-4">
-                             <div class="icon-wrap">
-                                 <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
-                             </div>
-                         </div>
-
-                         <div class="feedback-container">
-                             <div class="feedback">
-                                 <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                                 <p class="review">Super and excellent productions. And my favorite product was roller cake.</p>
-                                 <div class="client-info">
-                                     <img src="https://i.pinimg.com/474x/61/23/72/612372dba970fe25663857c585e8d56e.jpg" alt="">
-                                     <p class="client-name">Mithun Weerasinghe</p>
-
-                                 </div>
+                    </div>
+                    <br><br>
 
 
 
-                             </div>
-                             <div class="feedback">
-                                 <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                                 <p class="review">Tasty soft buns for burgers and submarines. Quality is great, love it
-                                 <p>
-                                 <div class="client-info">
-                                     <img src="https://i.pinimg.com/474x/01/cb/08/01cb089df6c94483423dc52f63cf7762.jpg" alt="">
-                                     <p class="client-name">Pahasara Jayasooriya</p>
+                    <div class="feedback-section">
+                        <h2 class="section-title"><strong> </strong>CLIENTS' REVIEWS</h2>
+                        <div class="divider dark mb-4">
+                            <div class="icon-wrap">
+                                <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
+                            </div>
+                        </div>
 
-                                 </div>
 
-                             </div>
+                        <div class="feedback-container">
+                            <?php foreach ($reviews as $review) : ?>
+                                <div class="feedback">
+                                    <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                                    <p class="review"><?= htmlspecialchars($review->review) ?></p>
+                                    <div class="client-info">
+                                        <img src='<?= esc($review->image) ?>' alt="">
+                                        <p class="client-name"><?= htmlspecialchars($review->userName) ?></p>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
 
-                             <div class="feedback">
-                                 <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                                 <p class="review">Love the bread and bakery items produced by them. Top quality❤️❤️
-                                 <p>
-                                 <div class="client-info">
-                                     <img src="https://i.pinimg.com/474x/6b/03/09/6b030941295661a780641ea0922d09c6.jpg" alt="">
-                                     <p class="client-name">Malki Yasodhara</p>
-
-                                 </div>
-
-                             </div>
-
-                         </div>
-                         <script src="<?= ROOT ?>/assets/js/user.js"></script>
- </body>
 
 
                     </div>
 
                 </div>
+                <script src="<?= ROOT ?>/assets/js/user.js"></script>
+</body>
+</div>
+</div>
 </body>
 
 </html>
 
 <?php $this->view('includes/cus_footer', $data); ?>
+
