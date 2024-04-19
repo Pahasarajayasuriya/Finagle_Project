@@ -2,7 +2,6 @@
 
 
 $role = "Employee";
-$data['role']= $role;
 
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
@@ -59,9 +58,9 @@ $this->view('includes/alreadyProcess_popup', $data);
                    <h3 class="notify_topic">Notifications</h3>
                 <?php
 
-                if (!empty($data['notify'])) {
+                if (!empty($notify)) {
                   //show($data['detail']);
-                      foreach ($data['notify'] as $val) {
+                      foreach ($notify as $val) {
 
                 ?>
                     
@@ -156,9 +155,9 @@ $this->view('includes/alreadyProcess_popup', $data);
 
                     <?php
 
-                    if (!empty($data['detail'])) {
+                    if (!empty($detail)) {
                         //show($data['detail']);
-                        foreach ($data['detail'] as $val) {
+                        foreach ($detail as $val) {
 
                     ?>
                             <div class="placed-item">
@@ -247,9 +246,9 @@ $this->view('includes/alreadyProcess_popup', $data);
                 <div class="ready-order-list" id="ready-order-list">
                     <?php
 
-                    if (!empty($data['ready'])) {
+                    if (!empty($ready)) {
                         //show($data['ready']);
-                        foreach ($data['ready'] as $val) {
+                        foreach ($ready as $val) {
 
                     ?>
                             <div class="placed-item">
@@ -355,9 +354,9 @@ $this->view('includes/alreadyProcess_popup', $data);
                 <div class="dispatch-order-list" id="dispatch-order-list">
                     <?php
 
-                    if (!empty($data['dispatch'])) {
+                    if (!empty($dispatch)) {
                         //show($data['ready']);
-                        foreach ($data['dispatch'] as $val) {
+                        foreach ($dispatch as $val) {
 
                     ?>
                             <div class="placed-item">
