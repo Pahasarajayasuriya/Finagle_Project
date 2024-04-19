@@ -78,6 +78,8 @@ $this->view('includes/footer', $data);
 
                             <p class="stats-text">Orders delivered</p>
                         </div>
+
+                        
                         <!-- Total earnings box -->
                         <div class="stats-box">
                             <i class="fas fa-money-bill"></i>

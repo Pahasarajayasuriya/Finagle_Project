@@ -11,49 +11,63 @@
 
 <body>
 
-
-  <div id="viewDetails" class="modal">
+<div id="viewOrderDetails" class="modal">
     <div class="modal-content">
 
       <i class='bx bx-cart bx-fade-right' style='color:#fd0303'></i>
 
-      <h2 id="order-id">Order ID: &nbsp; <span id="view-order-id"> </h2>
+      <h2 id="order-id">Order ID: &nbsp; <span id="view-order-id"></span> </h2>
+      <div class="delivery-info">
 
-      <div class="delivery-loc"><i class="fas fa-map-marker-alt"></i><span id="user-location"></span> </div>
-    
-
-      <button class="pay-status"><span id="pay-status"></span></button>
       
-      <br>
-      <hr>
+        <div class="delivery-loc"><i class="fas fa-map-marker-alt"></i><span id="user-location"></span> </div>
+        <!-- <div class="delivery-loc"><i class="fas fa-phone"></i> <span id="user-phone"></span> </div> -->
+      </div>
+  
+      <button class="pay-status" id="pay-status-btn"><span id="pay-status"></span></button>
 
+      <br>
 
       <div class="details" id="details">
+
+      <div id="order-details">
 
         <div class="product-item">
           <div class="product-name" id="product-name">Chocolate Cake</div>
           <div class="product-qty" id="product-qty">2</div>
           <div class="product-price" id="product-price">Rs.2500.00</div>
         </div>
-
-
+        
+        <div class="product-item">
+          <div class="product-name" id="product-name">Sandwitch Bread</div>
+          <div class="product-qty" id="product-qty">3</div>
+          <div class="product-price" id="product-price">Rs.1000.00</div>
+        </div>
+        
+      </div>
 
         <hr>
         <div class="product-summery">
-          <div class="total-amount">Total Amount : Rs. <span id="total_cost"></span> </div>
+          <div class="total-amount">Total Amount : Rs.<span id="total_cost"></span> </div>
         </div>
+
+        <hr>
 
       </div>
 
-
-      <button class="button" id="confirmDetails" onclick="hidePopup('viewDetails')">OK</button>
-      <!-- <button class="button" id="cancelDelete" onclick="hidePopup('viewDetails')">Cancel</button> -->
-
+      <button class="ok-button" id="confirmDetails" onclick="hidePopup('viewOrderDetails')">OK</button>
+      
 
 
-      <!-- <button class="button" id="cancelDelete">Cancel</button> -->
     </div>
   </div>
+
+
+ 
+
+       
+
+      
 
 
 
@@ -184,7 +198,7 @@
 
     }
 
-    .button {
+    .ok-button {
       width: 100px;
       height: 37px;
       font-size: 16px;

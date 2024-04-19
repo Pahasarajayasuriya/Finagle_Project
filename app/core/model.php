@@ -264,7 +264,7 @@ class Model extends Database
         $orderitemsTable = 'orderitems';
         $productsTable = 'products';
 
-        $query = "SELECT p.user_name, oi.quantity , p.price ,c.id,c.customer_id,c.phone_number,c.deliver_id,c.delivery_or_pickup ,c.order_status,c.order_status,c.total_cost,c.payment_method,c.delivery_address,c.latitude,c.longitude
+        $query = "SELECT p.user_name, oi.quantity , p.price ,c.id,c.customer_id,c.phone_number,c.deliver_id,c.delivery_or_pickup ,c.order_status,c.order_status,c.total_cost,c.payment_method,c.deliver_id,c.delivery_date,c.delivery_address,c.latitude,c.longitude
                   FROM {$this->table} c
                   JOIN  $orderitemsTable oi ON c.id = oi.order_id
                   JOIN $productsTable p ON oi.product_id = p.id
@@ -328,5 +328,18 @@ class Model extends Database
         }
 
         return false;
+    }
+
+    public function findSuccessOrders($branch)
+    {
+        $usersTable = 'users';
+
+        $query = "SELECT c.id , c.deliver_id , u.image ,u.username 
+        FROM {$this->table} c 
+        JOIN  $usersTable u ON c.deliver_id = u.id
+
+        WHERE pickup_location = '$branch' AND order_status = 'order delivered' AND delivery_or_pickup ='delivery' ";
+
+        return $this->query($query);
     }
 }

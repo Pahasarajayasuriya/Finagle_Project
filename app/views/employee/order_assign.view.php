@@ -33,6 +33,7 @@ $this->view('includes/alreadyProcess_popup', $data);
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
+
 </head>
 
 <body>
@@ -45,7 +46,59 @@ $this->view('includes/alreadyProcess_popup', $data);
 
                 </div>
             </div>
+
+            <button class="circle-container" id="notification-button">
+             
+                <i  id="bell-icon" class='bx bxs-bell' style='color:#ffffff'  ></i>
+               
+                <div id="notification-box">
+                   <h3 class="notify_topic">Notifications</h3>
+                <?php
+
+                if (!empty($data['notify'])) {
+                  //show($data['detail']);
+                      foreach ($data['notify'] as $val) {
+
+                ?>
+                    
+
+                    <hr>
+                    <div class="notify">
+                        <img src="<?= ROOT ?>/assets/images/drivers/<?= $val->image ?>" class="profile-img">
+                        <p class="msg"> <b>Deliver_ID - <?= $val->deliver_id ?> </b>delivered the <b>Order-<?= $val->id ?> </b> successfully</p>
+                    </div>
+
+                <?php 
+                  }
+                   }
+                ?>
+
+                </div>
+
+            </button>
+
+
+
+
+
+
         </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var notificationButton = document.getElementById("notification-button");
+                var notificationBox = document.getElementById("notification-box");
+
+                notificationButton.addEventListener("click", function() {
+                    // Toggle the visibility of the notification box
+                    if (notificationBox.style.display === "none") {
+                        notificationBox.style.display = "block";
+                    } else {
+                        notificationBox.style.display = "none";
+                    }
+                });
+            });
+        </script>
 
         <div class="orders-container">
             <div class="order-status placed-orders">
@@ -63,6 +116,10 @@ $this->view('includes/alreadyProcess_popup', $data);
 
                     <a href="<?= ROOT ?>/Emp_progress">All</a>
 
+                    <!-- <?php
+
+                    show(json_encode($data));
+                    ?> -->
                     <button onclick='filterOrders("D",<?php echo json_encode($data) ?>)'>Deliveries</button>
                     <button onclick='filterOrders("P",<?php echo json_encode($data) ?>)'>Pickups</button>
                 </div>
@@ -83,7 +140,7 @@ $this->view('includes/alreadyProcess_popup', $data);
                         </div>
                         <div class="dropdown-content" id="placedDropdownContent">
                             <div id="alreadyProcessedButton" onclick="showProcessedOrders()">Already Processed</div>
-                            <div id="informButton" onclick="showPickupsOrders()">Inform Customers</div>
+                            <!-- <div id="informButton" onclick="showPickupsOrders()">Inform Customers</div> -->
                             <div id="cancelButton" onclick="showSelectedOrders_cancel()">Cancel</div>
                         </div>
                     </div>
@@ -132,7 +189,8 @@ $this->view('includes/alreadyProcess_popup', $data);
                                 <div class="item-options">
 
 
-                                    <button class="view-details" data-order='<?php echo json_encode($val); ?>' onclick="showPopup(this,'viewDetails')">View Details</button>
+                                    <button class="view-details" data-order='<?php echo json_encode($val); ?>' onclick="showPopup(this,'viewOrderDetails')">View Details</button>
+
                                     <button class="cancel" id="deleteButton" onclick="showPopup(this,'cancel')">Cancel</button>
                                 </div>
 
@@ -193,9 +251,16 @@ $this->view('includes/alreadyProcess_popup', $data);
                             <div class="placed-item">
                                 <div class="item-title">
                                     <div class="main-item">
+                                        <?php
+                                        if ($val->delivery_or_pickup == "delivery") {
+                                        ?>
+                                            <input class="checkbox" type="checkbox" id="checkbox-<?= $val->id ?>" name="checkbox-<?= $val->id ?>">
+                                        <?php
+                                        }
+                                        ?>
 
 
-                                        <input class="checkbox" type="checkbox" id="checkbox-<?= $val->id ?>" name="checkbox-<?= $val->id ?>">
+
                                         <p class="item-id"><b><?= $val->id ?><span>
 
                                                     <?php
@@ -211,7 +276,8 @@ $this->view('includes/alreadyProcess_popup', $data);
                                 </div>
 
                                 <div class="item-options">
-                                    <button class="view-details" data-order='<?php echo json_encode($val); ?>' onclick="showPopup(this,'viewDetails')">View Details</button>
+
+                                    <button class="view-details" data-order='<?php echo json_encode($val); ?>' onclick="showPopup(this,'viewOrderDetails')">View Details</button>
                                     <?php
                                     if ($val->delivery_or_pickup == "delivery") {
                                     ?>
@@ -220,18 +286,18 @@ $this->view('includes/alreadyProcess_popup', $data);
 
                                     <?php
                                     } else {
+
                                     ?>
-                                        <button class="cancel" id="assignButton" onclick="showPopup(this,'assignDeliver')">Finish the Order</button>
+                                        <form method="POST">
+                                            <input type="hidden" name="order_status" value="order delivered">
+                                            <input type="hidden" name="id" value="<?= $val->id ?>">
+                                            <button name="cancel" class="cancel">Finish the Order</button>
+                                        </form>
+                                        <!-- <button class="cancel" id="assignButton">Finish the Order</button> -->
 
                                     <?php
                                     }
                                     ?>
-
-
-
-
-
-
 
                                 </div>
 
@@ -283,46 +349,47 @@ $this->view('includes/alreadyProcess_popup', $data);
                 </div> -->
 
                 <div class="dispatch-order-list" id="dispatch-order-list">
-                <?php
+                    <?php
 
-                if (!empty($data['dispatch'])) {
-                         //show($data['ready']);
-                      foreach ($data['dispatch'] as $val) {
+                    if (!empty($data['dispatch'])) {
+                        //show($data['ready']);
+                        foreach ($data['dispatch'] as $val) {
 
-                ?>
-                    <div class="placed-item">
-                        <div class="item-title">
-                            <div class="main-item">
+                    ?>
+                            <div class="placed-item">
+                                <div class="item-title">
+                                    <div class="main-item">
 
-                                <input class="checkbox" type="checkbox" id="checkbox-<?= $val->id ?>" name="checkbox-<?= $val->id ?>">
-                                <p class="item-id"><?= $val->id ?></p>
+                                        <!-- <input class="checkbox" type="checkbox" id="checkbox-<?= $val->id ?>" name="checkbox-<?= $val->id ?>"> -->
+                                        <p class="item-id"><?= $val->id ?></p>
+                                    </div>
+                                    <i class='bx bxs-right-arrow-square'></i>
+                                    <p class="item-id"><?= $val->deliver_id ?></p>
+
+
+                                </div>
+                                <div class="item-options">
+
+                                    <button class="view-details" data-order='<?php echo json_encode($val); ?>' onclick="showPopup(this,'viewOrderDetails')">View Details</button>
+
+                                </div>
+
                             </div>
-                            <i class='bx bxs-right-arrow-square'></i>
-                            <p class="item-id">DD003</p>
-
-
-                        </div>
-                        <div class="item-options">
-                            <button class="view-details" id="detailButton" onclick="showPopup('viewDetails')">View Details</button>
-
-                        </div>
-
-                    </div>
 
                 </div>
-          
+
             </div>
-            <?php
-            }
+        <?php
+                        }
                     } else {
 
-            ?>
-                        <p class="empty-box">No Available dispatch orders</p>
-                    <?php
+        ?>
+        <p class="empty-box">No Available dispatch orders</p>
+    <?php
                     }
-                    ?>
+    ?>
 
-       
+
         </div>
     </div>
 
@@ -338,15 +405,21 @@ $this->view('includes/alreadyProcess_popup', $data);
 
 
 
+
     <script>
         var view_details = document.querySelector('view-details');
 
-
+        var data = {};
 
         function showPopup(button, popupId) {
 
+            data = {};
+
             data = JSON.parse(button.getAttribute('data-order'));
+
             var popup = document.getElementById(popupId);
+
+            //  console.log(data.mult_order);
 
             if (popup) {
                 popup.style.display = "block";
@@ -354,24 +427,44 @@ $this->view('includes/alreadyProcess_popup', $data);
 
             var order_id = document.getElementById('view-order-id');
             var user_location = document.getElementById('user-location');
+
+
             var pay_status = document.getElementById('pay-status');
+            var pay_status_btn = document.getElementById('pay-status-btn');
+
             var total_cost = document.getElementById('total_cost');
 
 
-            // console.log(data);
 
             order_id.innerHTML = data.id;
             user_location.innerHTML = data.delivery_address;
+            // user_phone.innerHTML = data.phone_number;
+            pay_status.innerHTML = data.payment_method;
             total_cost.innerHTML = data.total_cost;
 
+
+
+
+
             if (data.payment_method == 'card') {
-                pay_status.innerHTML = "PAID";
+                pay_status.innerHTML = ('PAID');
+                pay_status_btn.classList.remove('active');
 
             } else {
-                pay_status.innerHTML = "NOT PAID";
+                pay_status.innerHTML = ('NOT PAID');
+                pay_status_btn.classList.add('active');
+
             }
 
+            // document.getElementById('order-id-input').value = data.id;
 
+            document.getElementById('order-details').innerHTML = "";
+
+            for (let index = 0; index < data.mult_order.length; index++) {
+                // console.log(data.mult_order[index]);
+
+                order_list(data.mult_order[index]);
+            }
 
         }
 
@@ -383,10 +476,27 @@ $this->view('includes/alreadyProcess_popup', $data);
             }
         }
 
+        function order_list(orders_list) {
+
+
+            var details = document.getElementById('order-details');
+            var newCard = document.createElement("div");
+            newCard.className = "product-item";
+
+            newCard.innerHTML = `<div class="product-name" id="product-name">${orders_list.user_name}</div>
+          <div class="product-qty" id="product-qty">${orders_list.quantity}</div>
+          <div class="product-price" id="product-price">Rs.${orders_list.price}</div>
+      `;
+
+            newCard.style.transition = "all 0.5s ease-in-out";
+            details.appendChild(newCard);
+        }
+
 
 
         function filterOrders(type, data) {
 
+           
 
             var placed = document.getElementById("placed-order-list");
 
@@ -394,11 +504,14 @@ $this->view('includes/alreadyProcess_popup', $data);
 
             item_id = document.getElementsByName("item-id")
 
-            // data.forEach(element => {
+          
+            
             for (let index = 0; index < data.detail.length; index++) {
 
                 const element = data[index];
+               //console.log(element);
 
+               
                 switch (type) {
 
                     case 'D':
@@ -406,7 +519,7 @@ $this->view('includes/alreadyProcess_popup', $data);
                         if (element.delivery_or_pickup == "delivery") {
 
                             item_id.textContent = element.id
-                            // console.log(item_id)
+                           // console.log(item_id)
                             itemContainer = createItemHTML(element);
                             placed.appendChild(itemContainer);
 
@@ -823,8 +936,8 @@ $this->view('includes/alreadyProcess_popup', $data);
 
 
         // Function to show the popup modal of 'driver assign_popup'
-        function showAssignModal(selectedOrders) {
 
+        function showAssignModal(selectedOrders) {
             var modal = document.getElementById("viewAssign");
             var modalContent = document.querySelector(".modal-content");
             var closeBtn = document.getElementById("cancelAssign");
@@ -833,21 +946,23 @@ $this->view('includes/alreadyProcess_popup', $data);
             // Clear previous content
             ordersContainer.innerHTML = "";
 
-            // Create a flex container div to hold the order elements
-            var flexContainer = document.createElement("div");
-            flexContainer.classList.add("order-flex-container");
 
-            // Iterate over selectedOrders to create a div for each order
-            selectedOrders.forEach(function(orderId) {
-                // Create a div for each order
-                var orderDiv = document.createElement("div");
-                orderDiv.textContent = orderId;
-                // Append the order div to the flex container
-                flexContainer.appendChild(orderDiv);
+            selectedOrders.forEach(function(order) {
+                // Create a container for each order
+                var orderContainer = document.createElement("div");
+                orderContainer.classList.add("order-flex-container");
+
+                // Create a paragraph element to display order details
+                var p = document.createElement("p");
+                p.textContent = order;
+
+                // Append the paragraph to the order container
+                orderContainer.appendChild(p);
+
+                // Append the order container to the orders container
+                ordersContainer.appendChild(orderContainer);
             });
 
-            // Append the flex container to the orders container
-            ordersContainer.appendChild(flexContainer);
 
             modal.style.display = "block";
 
@@ -863,6 +978,7 @@ $this->view('includes/alreadyProcess_popup', $data);
                 }
             };
         }
+
 
         function showDrivers() {
 

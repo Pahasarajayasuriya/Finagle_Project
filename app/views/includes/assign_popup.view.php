@@ -384,28 +384,27 @@
     font-weight: 450;
     
   }
-  .order-container {
+  
+
+  .order-flex-container {
       border: 1px;
       border-radius: 8px;
-      padding: 10px;
+      padding: 7px;
       margin-bottom: 15px;
       background-color: #f9f9f9;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
-      margin-top: 10px;
-      width: 30%;
+      margin-top: 25px;
+      width: 15%;
       margin-left: 35%;
     }
 
    
-
-    .order-container:hover {
+    .order-flex-container:hover {
       transform: translateY(-3px);
 
     }
-
-
-    .order-container p {
+    .order-flex-container p {
       margin: 0;
       font-weight: bold;
       color: #333;
@@ -413,19 +412,7 @@
 
     }
 
-   
-.order-flex-container {
-    display: flex; 
-    flex-wrap: wrap; 
-    gap:20px;
-    margin-left: 20px;
-    margin-top: 20px;
-    align-items: center;
-}
 
-.order-flex-container > div {
-    margin-right: 10px; 
-}
 
 
  

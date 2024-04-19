@@ -10,7 +10,7 @@
 
 <body>
 
-    <!-- Already Processed orders -->
+  <!-- Already Processed orders -->
   <div id="viewAlreadyProcessed" class="modal">
     <div class="modal-content">
 
@@ -98,9 +98,9 @@
 
 
 
-    <!-- Inform customer orders -->
+  <!-- Inform customer orders -->
 
-<div id="customerInform" class="modal">
+  <div id="customerInform" class="modal">
     <div class="modal-content">
 
       <div>
@@ -121,7 +121,7 @@
     </div>
   </div>
 
-  
+
   <!-- Import JQuary Library script -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
@@ -149,7 +149,7 @@
           try {
             console.log(res);
 
-           
+
             Jsondata = JSON.parse(res);
 
             location.reload();
@@ -162,7 +162,7 @@
       });
 
 
-       document.getElementById('order-ids').value = JSON.stringify(selectedOrders);
+      document.getElementById('order-ids').value = JSON.stringify(selectedOrders);
 
 
       hidePopup('viewOrderConfirm')
@@ -177,7 +177,7 @@
 
 
 
-    <!-- Cancel orders -->
+  <!-- Cancel orders -->
   <div id="viewCancel" class="modal">
     <div class="modal-content">
 
@@ -193,13 +193,63 @@
           <!-- Selected orders will be appended here -->
         </div>
 
+        <div class="cancel-dropdown">
+          <div class="dropdownHeader" onclick="toggleCancelDropdown()">
+            <span id="placedAllCancelOption">Reason for the cancellation...</span>
+          </div>
+          <div class="dropdownContent" id="placedAllCancelDropdown">
+            <div onclick="selectCancelOption('Unfortunately, we have run out of the stock')">Unfortunately, we have run out of the stock</div>
+            <div onclick="selectCancelOption('We will not be able to fulfill within the requested time.')">We will not be able to fulfill within the requested time.</div>
+          </div>
+        </div>
 
-        <button type="submit" name="inform_btn" class="confirm_button" onclick="confirm_cancel()">Yes</button>
+        <script>
+          // Set the initial state value
+          var currentState = "Reason for the cancellation...";
+          document.getElementById("placedAllCancelOption").innerText = currentState;
 
-        <button type="button" class="cancel_button" id="cancelDetails_cancel" onclick="hidePopup('viewOrderConfirm')">No</button>
+          function toggleCancelDropdown() {
+            var dropdownContent = document.getElementById("placedAllCancelDropdown");
+            dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
+          }
+
+          function selectCancelOption(option) {
+            document.getElementById("placedAllCancelOption").innerText = option;
+            document.getElementById("placedAllCancelDropdown").style.display = "none";
+            currentState = option;
+          }
+
+          // Close the dropdown when clicking outside of it
+          window.onclick = function(event) {
+            if (!event.target.matches('.dropdownHeader')) {
+              var dropdowns = document.getElementsByClassName("dropdownContent");
+              for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.style.display === "block") {
+                  openDropdown.style.display = "none";
+                }
+              }
+            }
+          };
+        </script>
+
+        <div class="button-line">
+          <button type="submit" name="inform_btn" class="confirm_button" onclick="confirm_cancel()">Yes</button>
+
+          <button type="button" class="cancel_button" id="cancelDetails_cancel" onclick="hidePopup('viewOrderConfirm')">No</button>
+
+
+        </div>
+
+     
+
 
     </div>
+
+
+
   </div>
+
 
   <style>
     .modal {
@@ -243,6 +293,14 @@
       padding-top: -5px;
     }
 
+    .button-line {
+      display: flex;
+      margin-top: 75px;
+      margin-left: 150px;
+      gap: 30px;
+
+    }
+
 
     .confirm_button,
     .cancel_button {
@@ -257,7 +315,7 @@
       outline: none;
       color: #fff;
       transition: 0.3s ease-in;
-      margin-top: 20px;
+      margin-top: 30px;
       text-align: center;
       align-items: center;
     }
@@ -339,6 +397,81 @@
       font-weight: bold;
       color: #333;
       font-size: 16px;
+
+    }
+
+
+    .cancel-dropdown {
+      position: relative;
+      display: inline-block;
+      font-size: 13px;
+      color: rgb(138, 138, 138);
+      width: 400px;
+      margin-top: 20px;
+
+
+
+    }
+
+    .dropdownHeader {
+      cursor: pointer;
+      padding: 10px;
+      padding-left: 15px;
+      padding-right: 15px;
+      background-color: white;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+
+
+    }
+
+    .dropdownHeader:hover {
+      background-color: #f9f9f9;
+    }
+
+    /* .dropdownHeader i {
+  margin-left: 5px;
+} */
+
+    .dropdownContent {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-top: none;
+      border-radius: 5px;
+      margin-top: 5px;
+      width: 100%;
+      text-align: left;
+      padding: 7px
+        /* padding-left: 7px;
+  padding-right: 7px; */
+
+    }
+
+    .dropdownContent div {
+      padding: 10px;
+      cursor: pointer;
+      border-top: 1px solid #D3D3D3;
+      /* padding-left: 7px;
+  padding-right: 7px; */
+
+    }
+
+    .dropdownContent div:first-child {
+      border-top: none;
+      /* Remove border for the first option */
+    }
+
+
+    /* Hover effect for dropdown options */
+    .dropdownContent div:hover {
+      background-color: #f0f0f0;
+      /* Change background color on hover */
+
 
     }
   </style>

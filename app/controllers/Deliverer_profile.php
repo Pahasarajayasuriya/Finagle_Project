@@ -51,7 +51,7 @@ class Deliverer_profile extends Controller
         $order = new CheckoutOrder();
 
         $data = $order->find_total_earnings($driver_id);
-
+       
         return $data;
     }
 

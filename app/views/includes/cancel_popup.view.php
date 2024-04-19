@@ -24,10 +24,10 @@
       <h5 class="text">Are you sure you want to proceed with the cancellation ? This action is irreversible.</h5>
 
       <div class="cancel-dropdown">
-        <div class="dropdownHeader" onclick="toggleCancelDropdown()">
-          <span id="placedCancelOption">Reason for the cancellation...</span>
+        <div class="dropdownHeader" onclick="toggleSingleCancelDropdown()">
+          <span id="placedSingleCancelOption">Reason for the cancellation...</span>
         </div>
-        <div class="dropdownContent" id="placedCancelDropdown">
+        <div class="dropdownContent" id="placedSingleCancelDropdown">
           <div onclick="selectCancelOption('Unfortunately, we have run out of the stock')"> Unfortunately, we have run out of the stock</div>
           <div onclick="selectCancelOption('We will not be able to fulfill within the requested time.')">We will not be able to fulfill within the requested time. </div>
           <!-- <div onclick="selectCancelOption('Unfortunately, we will not be able to fulfill your order due to the staff storage ')">Unfortunately, we will not be able to fulfill your order due to the staff storage. </div> -->
@@ -48,15 +48,15 @@
   <script>
     // Set the initial state value
     var currentState = "Reason for the cancellation...";
-    document.getElementById("placedCancelOption").innerText = currentState;
+    document.getElementById("placedSingleCancelOption").innerText = currentState;
 
     // Display the dropdown content initially
-    var dropdownContent = document.getElementById("placedCancelDropdown");
+    var dropdownContent = document.getElementById("placedSingleCancelDropdown");
     dropdownContent.style.display = "block";
     // You might also need to set the width here based on your design
 
-    function toggleCancelDropdown() {
-      var dropdownContent = document.getElementById("placedCancelDropdown");
+    function toggleSingleCancelDropdown() {
+      var dropdownContent = document.getElementById("placedSingleCancelDropdown");
       var dropdownHeader = document.querySelector(".dropdown-header");
 
       dropdownContent.style.display = "block";
@@ -64,8 +64,8 @@
     }
 
     function selectCancelOption(option) {
-      document.getElementById("placedCancelOption").innerText = option;
-      document.getElementById("placedCancelDropdown").style.display = "none";
+      document.getElementById("placedSingleCancelOption").innerText = option;
+      document.getElementById("placedSingleCancelDropdown").style.display = "none";
 
       // Update the currentState variable
       currentState = option;
@@ -140,7 +140,7 @@
     }
 
    .button-line{
-    margin-top: 100px;
+    margin-top: 110px;
     padding-bottom: 5px;
 
     }
@@ -156,7 +156,7 @@
       outline: none;
       color: #fff;
       transition: 0.3s ease-in;
-      margin-top: 10px;
+      margin-top: 40px;
 
     }
 
