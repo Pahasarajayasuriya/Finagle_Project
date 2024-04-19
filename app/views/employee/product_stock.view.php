@@ -1,8 +1,6 @@
 <?php
 $role = "Employee";
-// require_once '../../Components/NavBar/header.php';
-// require_once '../../Components/NavBar/NavBar.php';
-// require_once '../../Components/NavBar/footer.php';
+$data['role'] = $role;
 
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
@@ -75,8 +73,8 @@ $this->view('includes/footer', $data);
                     
                         <?php
 
-                        if (isset($data['product'])) {
-                            foreach ($data['product'] as $product) {
+                        if (isset($product)) {
+                            foreach ($product as $product) {
                         ?>
                     <tr>
                         <td><?= $product->id ?></td>

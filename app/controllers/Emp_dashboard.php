@@ -36,14 +36,14 @@ class Emp_dashboard extends Controller
 
        $getOnlineorders = $this->getOnlineorders($check);
        //show($data['getOnlineorders']);
-       $data['getOnlineorders'] = $getOnlineorders ;
+       $data['getOnlineorders'] = $getOnlineorders;
 
        $getPickuporders = $this->getPickuporders($check);
-       $data['getPickuporders '] = $getPickuporders ;
+       $data['getPickuporders'] = $getPickuporders;
 
        $branch = new Branches();
        $getBranchcount = $this->getBranchcount ($branch);
-       $data['getBranchcount '] = $getBranchcount  ;
+       $data['getBranchcount'] = $getBranchcount ;
 
        $this->view('employee/employee_dashboard', $data);
         
