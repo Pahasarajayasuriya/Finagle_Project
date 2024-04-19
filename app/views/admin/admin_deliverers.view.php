@@ -36,7 +36,7 @@ $this->view('includes/footer', $data);
                     </div>
                 </form>
 
-                <!-- <input class="add-btn" type="button" onclick="openReport()" value="Add Branches"> -->
+                <input class="add-btn" type="button" onclick="openReport()" value="Add Deliverers">
             </div>
 
             <!-- Popup Container for add customer -->

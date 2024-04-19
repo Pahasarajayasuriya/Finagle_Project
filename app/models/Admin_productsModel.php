@@ -46,4 +46,11 @@ class Admin_productsModel extends Model
         $this->query($query);
     }
 
+    public function get_count()
+    {
+        $query = "SELECT COUNT(*) AS row_count FROM {$this->table}";
+        $result = $this->query($query);
+        return $result[0]->row_count;
+    }
+
 }

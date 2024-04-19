@@ -47,7 +47,7 @@ $this->view('includes/footer', $data);
               <h3>CUSTOMERS</h3>
               <span class="material-icons-outlined">groups</span>
             </div>
-            <h1>1500</h1>
+            <h1><?= $data['counts']['customer_count']; ?></h1>
           </div>
 
           <div class="card">
