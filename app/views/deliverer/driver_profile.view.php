@@ -29,15 +29,16 @@ $this->view('includes/footer', $data);
                 <p class="pro_head_1">YOUR <span> PROFILE</span></p>
             </div>
 
-            <?php
-            if (isset($driver_data)) {
-                //show($data['driver_data']);
-                foreach ($driver_data as $val) {
-
-
-            ?>
+          
 
                     <div class="profile-picture">
+                      <?php
+                         if (isset($driver_data)) {
+                             //show($data['driver_data']);
+                             foreach ($driver_data as $val) {
+
+
+                         ?>
 
                         <div class="inner-circle">
 
@@ -52,6 +53,11 @@ $this->view('includes/footer', $data);
                             <p class="joined-date">Joined Date : <?= $val->joined_date ?></p>
                         </div>
 
+                        <?php
+                                }
+                            }
+                            ?>
+
 
                     </div>
 
@@ -62,9 +68,9 @@ $this->view('includes/footer', $data);
                             <i class="fas fa-truck"></i>
 
                             <?php
-                            // show($data['$deliveredOrder']);
+                           // show($deliveredOrder);
                             if (isset($data['$deliveredOrder'])) {
-                                foreach ($deliveredOrder as $delivered_orders) {
+                                foreach ($data['$deliveredOrder'] as $delivered_orders) {
 
                             ?>
                                     <p class="stats-number"><?= $delivered_orders->delivered_count ?></p>
@@ -86,9 +92,10 @@ $this->view('includes/footer', $data);
                           
                             
                             <?php
-                            // show($data['$totalEarnings']);
+                           //show($totalEarnings);
                             if (isset($data['$totalEarnings'])) {
-                                foreach ($totalEarnings as $total_earnings) {
+                               
+                                foreach ($data['$totalEarnings'] as $total_earnings) {
 
                             ?>
                                      <p class="stats-number">Rs.<?= $total_earnings->totalCost ?></p>
@@ -103,12 +110,7 @@ $this->view('includes/footer', $data);
                         </div>
                     </div>
 
-            <?php
-
-                }
-            }
-            ?>
-
+          
 
 
         </div>
