@@ -1,15 +1,20 @@
 <?php
 
-class Emp_progress extends Controller
+class Manager_deliverer extends Controller
 {
     public function index($id = null)
     {
         $id = $id ?? Auth::getId();
 
-        $user = new User();
-        $data['row'] = $user->first(['id'=>$id]);
-        $data['title'] = "Progress";
-        $this->view('employee/order_assign', $data);
+        $driver = new Deliverers ();
+        $data= $this->getDelivererdata($driver);
+
+        // show($data);
+        
+        $data["driver"]= $data;
+        // show($newData);
+
+        $this->view('manager/deliverers', $data);
     }
 
     // public function profile($id = null)
@@ -24,4 +29,11 @@ class Emp_progress extends Controller
     //     $data['title'] = "Profile";
     //     $this->view('customer/cus_profile', $data);
     // }
+
+    private function getDelivererdata($driver){
+        $data = $driver->findAll();
+
+       return $data;
+
+    }
 }

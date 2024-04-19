@@ -56,6 +56,7 @@ $this->view('includes/footer', $data);
 
                         <h3 class="text-span">Conveniently Delicious Frozen & Fresh Bakery Products</h3>
                         <div class="button"> <a href="<?= ROOT ?>/home"><button>Explore</button></a></div>
+
                     </div>
                 </div>
             </div>
@@ -265,7 +266,7 @@ $this->view('includes/footer', $data);
                                         <h6>
                                             Rs.1000.00
                                         </h6>
-                                        <a href="<?= ROOT ?>/products">
+                                        <a href="product.php">
                                             <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i>
 
                                         </a>
@@ -290,7 +291,7 @@ $this->view('includes/footer', $data);
                                         <h6>
                                             Rs.4500.00
                                         </h6>
-                                        <a href="<?= ROOT ?>/products">
+                                        <a href="product.php">
                                             <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i>
 
 
@@ -316,7 +317,7 @@ $this->view('includes/footer', $data);
                                             <h6>
                                                 Rs.3750.00
                                             </h6>
-                                            <a href="<?= ROOT ?>/products">
+                                            <a href="product.php">
                                                 <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i>
 
                                             </a>
@@ -345,7 +346,7 @@ $this->view('includes/footer', $data);
                                             <h6>
                                                 Rs.1700.00
                                             </h6>
-                                            <a href="<?= ROOT ?>/products">
+                                            <a href="product.php">
                                                 <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i>
 
                                             </a>
@@ -372,7 +373,7 @@ $this->view('includes/footer', $data);
                                         <h6>
                                             Rs.200.00
                                         </h6>
-                                        <a href="<?= ROOT ?>/products">
+                                        <a href="product.php">
                                             <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i></span>
 
 
@@ -399,7 +400,7 @@ $this->view('includes/footer', $data);
                                             <h6>
                                                 Rs.5000.00
                                             </h6>
-                                            <a href="<?= ROOT ?>/products">
+                                            <a href="product.php">
                                                 <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i>
 
                                             </a>
@@ -496,6 +497,7 @@ $this->view('includes/footer', $data);
                         <div class="export-img">
                             <img src="<?= ROOT ?>/assets/images/exports.jpg" alt="export Img" />
                         </div>
+                        <div class="about-content">
 
                         <div class="export-content">
                             <p class="export-p">Exports of frozen baked products is another of our success stories. Exports of our baked
@@ -530,6 +532,16 @@ $this->view('includes/footer', $data);
                                     <img src="<?= ROOT ?>/assets/images/fssc-22000.png" alt="">
 
 
+
+                            <div class="about-exp">
+                                <div class="experience">
+                                    <div class="vertical-line"></div>
+                                    <div class="exp-title">
+                                        <h1 class=""> 15 </h1>
+                                    </div>
+                                    <div class="exp-content">
+                                        <p class="sub-topic">Years of</p>
+                                        <h3 class="ss-topic">EXPERIENCE</h6>
 
                                 </div>
                             </div>
@@ -598,7 +610,6 @@ $this->view('includes/footer', $data);
 
 
 
-
                     </div>
 
                 </div>
@@ -611,3 +622,4 @@ $this->view('includes/footer', $data);
 </html>
 
 <?php $this->view('includes/cus_footer', $data); ?>
+

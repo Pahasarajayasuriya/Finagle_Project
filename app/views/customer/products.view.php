@@ -116,11 +116,14 @@ $this->view('includes/footer', $data);
         </section>
     </div>
     </div>
+    <!-- HTML structure for the message container -->
+
     <script>
         const weights = <?= json_encode($data['weights']) ?>;
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+
         document.getElementById("checkout-button").addEventListener("click", function() {
             if (isLoggedIn()) {
                 window.location.href = "<?= ROOT ?>/checkout";
@@ -139,12 +142,14 @@ $this->view('includes/footer', $data);
             return <?php echo (Auth::is_customer()) ? 'true' : 'false'; ?>;
         }
 
+
         function displayMessage(message) {
             const messageContainer = document.getElementById("message-error-container");
             messageContainer.innerHTML = message;
             messageContainer.style.display = "block";
         }
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="<?= ROOT ?>/assets/js/product.js"></script>
 </body>

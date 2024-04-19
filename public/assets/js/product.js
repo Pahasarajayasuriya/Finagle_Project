@@ -228,8 +228,9 @@ class UI {
       let target = e.target;
 
       if (target.classList.contains("trash")) {
+
         removeItemFromCart(target);
-      } else if (target.classList.contains("arrow-down")) {
+      } else if (target.classList.contains('arrow-down')) {
         decreaseQuantity(target);
       }
     });
@@ -362,3 +363,4 @@ document.addEventListener("DOMContentLoaded", () => {
   ui.updateCheckoutButtonState();
   Storage.saveProducts(productsData);
 });
+

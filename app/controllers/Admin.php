@@ -32,6 +32,7 @@
 // 	}
 
 //     public function addproducts()
+
 //     {
 //         $adminProductsModel = new Admin_productsModel();
 
@@ -101,4 +102,5 @@
 // }
 
        
+
 
