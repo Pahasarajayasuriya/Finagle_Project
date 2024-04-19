@@ -11,7 +11,7 @@ class AddEmployee extends Controller
 
 // 		$user = new User();
 
-		if($_SERVER['REQUEST_METHOD'] == "POST")
+		if ($_SERVER['REQUEST_METHOD'] == "POST")
 		{
             $_POST['repassword'] =  $_POST['password'];
 
