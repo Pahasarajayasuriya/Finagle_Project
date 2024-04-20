@@ -1,5 +1,6 @@
 <?php
         $role = "Manager";
+        $data['role'] = $role;
         //require_once '../../Components/NavBar/header.php';
         //require_once '../../Components/NavBar/NavBar.php';
         //require_once '../../Components/NavBar/footer.php';
@@ -29,16 +30,23 @@
 
         <section class="feedback-container">
 
+        <?php
+
+        //   show($data);
+          if (isset($rows)) {
+               foreach ($rows as $rows) {
+       
+          ?>
+
             <div class="review-box">
                 <div class="user-review">
                     <img decoding="async" src="../../img/pic-1.png" alt="">
-                    <h3>Pahasara Jayasuriya</h3>
+                    <h3><?= $rows->name ?></h3>
                 </div>
-                <p>Tasty soft buns for burgers and submarines.
-                    Quality is great.</p>
+                <p><?= $rows->feedback ?></p>
             </div>
 
-            <div class="review-box">
+           <!--  <div class="review-box">
                 <div class="user-review">
 
                         <img decoding="async" src="../../img/pic-2.png" alt="">
@@ -59,7 +67,7 @@
                   
                 </div>
                 <p>Super and excellent productions. And my favorite product was roller cake</p>
-            </div>
+            </div> -->
 
             <!-- <div class="review-box">
                 <div class="user-review">
@@ -96,6 +104,10 @@
             </div> -->
 
 
+            <?php
+                }
+            }
+            ?>
         </section>
     </div>
 </body>

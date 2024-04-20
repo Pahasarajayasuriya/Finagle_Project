@@ -1,19 +1,12 @@
-
 <?php
-
 class Manager_employee extends Controller
 {
     public function index()
     {
-        //$id = $id ?? Auth::getId();
-
-        $employee = new Employee;
-        $data['rows'] = $employee->all();
-
-        // Pass $data array to the view
-
+        $employeeModel = new Employee();
+        $data['employee'] = $employeeModel->getEmployees();
 
         $this->view('manager/manager_employee', $data);
     }
-
 }
+?>

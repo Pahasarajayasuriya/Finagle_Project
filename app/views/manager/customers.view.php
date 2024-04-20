@@ -1,8 +1,6 @@
 <?php
 $role = "Manager";
-// require_once '../../Components/NavBar/header.php';
-// require_once '../../Components/NavBar/NavBar.php';
-// require_once '../../Components/NavBar/footer.php';
+$data['role'] = $role;
 
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
@@ -55,7 +53,6 @@ $this->view('includes/footer', $data);
                 </div>
                 <div class="header-item">Customer ID</div>
                 <div class="header-item">User name</div>
-                <div class="header-item">Name</div>
                 <div class="header-item">Email</div>
                 <div class="header-item">Contact Number</div>
             </div>
@@ -63,18 +60,17 @@ $this->view('includes/footer', $data);
         <?php
 
         //   show($data);
-          if (isset($data['customer'])) {
-               foreach ($data['customer'] as $customer) {
+          if (isset($customer)) {
+               foreach ($customer as $customer) {
        
           ?>
 
            <div class="employee-record">
-                <div class="employee-image"><img src="" alt="Deliverer 1"></div>
+                <!-- <div class="employee-image"><img src="" alt="Deliverer 1"></div>  -->
                 <div class="employee-id"><?= $customer->id ?></div>
                 <div class="employee-name"><?= $customer->username ?></div>
-                <div class="employee-name"><?= $customer->name ?></div>
                 <div class="employee-name"><?= $customer->email ?></div>
-                <div class="employee-name"><?= $customer->contact_no ?></div>
+                <div class="employee-name"><?= $customer->teleno ?></div>
 
         <!-- <div class="customer-record">
                 <div class="employee-image"> <img src="" alt="customer.name" class="customer-image"></div>

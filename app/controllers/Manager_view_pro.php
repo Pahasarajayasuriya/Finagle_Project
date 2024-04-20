@@ -3,12 +3,18 @@
 
 class Manager_view_pro extends Controller
 {
-    public function index($id = null)
+    public function index()
     {
-        $id = $id ?? Auth::getId();
+        //$id = $id ?? Auth::getId();
+
+        $productModel = new Products();
+        $data['rows'] = $productModel->all();
 
 
-        $this->view('manager/view_products');
+
+
+
+        $this->view('manager/manager_view_pro', $data);
     }
 
 }

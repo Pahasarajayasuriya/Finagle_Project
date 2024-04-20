@@ -1,5 +1,6 @@
 <?php
 $role = "Manager";
+$data['role'] = $role;
 //require_once '../../Components/NavBar/header.php';
 //require_once '../../Components/NavBar/NavBar.php';
 //require_once '../../Components/NavBar/footer.php';
@@ -27,7 +28,7 @@ $this->view('includes/footer', $data);
     <div class="pro_container">
 
   <?php if (!empty($data['rows'])): ?>
-    <?php foreach ($data['rows'] as $row): ?>  
+    <?php foreach ($rows as $row): ?>  
      
       <form action="view_profile.php" method="POST">
         <div class="pro_form-group">

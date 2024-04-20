@@ -1,21 +1,12 @@
 <?php
-
 class Employee extends Model
 {
-    public $table = "employee";
-    public $errors = [];
-    protected $allowedColumns = [
+    public $table = "users";
 
-        'id',
-        'branch',
-        'email',
-        'username',
-        'password',
-        'branch_id',
-        
-    ];
-   
-
-
-
+    public function getEmployees()
+    {
+        $result = $this->where(['role' => 'employee']);
+        return $result;
+    }
 }
+?>

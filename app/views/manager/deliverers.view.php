@@ -1,5 +1,6 @@
 <?php
 $role = "Manager";
+$data['role'] = $role;
 // require_once '../../Components/NavBar/header.php';
 // require_once '../../Components/NavBar/NavBar.php';
 // require_once '../../Components/NavBar/footer.php';
@@ -49,6 +50,16 @@ $this->view('includes/footer', $data);
 
         </div>
 
+        <?php
+
+            // show($data);
+          if (isset($driver)) {
+               foreach ($driver as $driver) {
+       
+
+          ?>
+
+
         <div class="employee-table">
             <div class="table-header">
                 <div class="header-item employee-image">
@@ -59,21 +70,14 @@ $this->view('includes/footer', $data);
                 <div class="header-item">Goals Assignment</div>
             </div>
 
-            <?php
-
-            // show($data);
-          if (isset($data['driver'])) {
-               foreach ($data['driver'] as $driver) {
-       
-
-          ?>
-
-
+            
 
             <div class="employee-record">
                 <div class="employee-image"><img src="" alt="Deliverer 1"></div>
                 <div class="employee-id"><?= $driver->id ?></div>
-                <div class="employee-name"><?= $driver->name ?></div>
+                <div class="employee-name"><?= $driver->username ?></div>
+                <div class="employee-name"><?= $driver->email ?></div>
+
 
                 <div class="rating">
                     <input type="radio" id="star5" name="rating" value="5" />

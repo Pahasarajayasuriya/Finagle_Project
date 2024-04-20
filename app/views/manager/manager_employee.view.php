@@ -1,5 +1,6 @@
 <?php
-    // $role = "Manager";
+     $role = "Manager";
+     $data['role'] = $role;
     // require_once '../../Components/NavBar/header.php';
     // require_once '../../Components/NavBar/NavBar.php';
     // require_once '../../Components/NavBar/footer.php';
@@ -30,8 +31,13 @@
 
      <div class="employee-table">
 
-     <?php if (!empty($data['rows'])): ?>
-        <?php foreach ($data['rows'] as $row): ?>
+     <?php
+
+        //   show($data);
+          if (isset($employee)) {
+               foreach ($employee as $employee) {
+       
+          ?>
 
          <div class="table-header">
              <div class="header-item employee-image">
@@ -44,8 +50,8 @@
 
          <div class="employee-record">
              <div class="employee-image"><img src="https://i.pinimg.com/474x/12/75/40/127540404fd8f8b0e423a8e599245701.jpg" alt="Employee 1"></div>
-             <div class="employee-id"><?= esc($row->id) ?></div>
-             <div class="employee-name"><?= esc($row->username) ?></div>
+             <div class="employee-id"><?= $employee->id ?></div>
+             <div class="employee-name"><?= $employee->username ?></div>
              <textarea class="goal-assignment" id="pro_complaint" name="pro_complaint"></textarea>
          </div>
 
@@ -66,11 +72,15 @@
             
          </div> -->
 
-         <?php endforeach; ?>
-    <?php else: ?>
-        <p>No complaints found.</p>
-    <?php endif; ?>
 
+         
+
+         <?php
+                }
+            }
+            ?>
+
+        </div>
          
      </div>
  </div>

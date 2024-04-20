@@ -1,26 +1,13 @@
 <?php
-
 class Deliverers extends Model
 {
-    public $table = "driver";
-    public $errors = [];
-    protected $allowedColumns = [
+    public $table = "users";
 
-        'id',
-        'name',
-        'username',
-        'password',
-        'email',
-        'contact_number',
-        'branch',
-        'DOB',
-        'joined_date',
-        
-
-   
-    ];
-
-
-
-
+    public function getdeliverers()
+    {
+        $result = $this->where(['role' => 'deliverer']);
+        return $result;
+    }
 }
+?>
+

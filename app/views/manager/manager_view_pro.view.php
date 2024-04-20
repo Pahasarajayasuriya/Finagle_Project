@@ -1,5 +1,6 @@
- <?php
-        // $role = "Manager";
+<?php
+         $role = "Manager";
+         $data['role'] = $role;
         // require_once '../../Components/NavBar/header.php';
         // require_once '../../Components/NavBar/NavBar.php';
         // require_once '../../Components/NavBar/footer.php';
@@ -39,6 +40,8 @@
          </div>
          <div class="products" id="productList"></div>
 
+         <?php if (!empty($data['rows'])): ?>
+        <?php foreach ($rows as $row): ?>
 
          <button class="back-button" id="back-button">Back</button>
 
@@ -49,6 +52,12 @@
          </script>
 
          <script src="<?= ROOT ?>/assets/js/manager/view_products.js"></script>
+
+         <?php endforeach; ?>
+    <?php else: ?>
+        <p>No product found.</p>
+    <?php endif; ?>
+    
      </div>
  </body>
 

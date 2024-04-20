@@ -1,5 +1,7 @@
 <?php
-                        $role = "Manager";
+
+$role = $data['role'];
+                        //$role = "Manager";
                         if ($role == "User") {
                             echo '<li>
                                <a href="'. ROOT .'/">
