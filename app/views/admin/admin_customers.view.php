@@ -185,7 +185,7 @@ $this->view('includes/footer', $data);
         }
 
         function confirmDelete(adId) {
-            const url = `<?=ROOT."/admin_advertisements/delete_advertisement/"?>${adId}`;
+            const url = `<?=ROOT."/admin_customers/delete_customer/"?>${adId}`;
             //console.log(url);
             window.location.href = url; // Redirect to delete the advertisement
         }

@@ -52,10 +52,11 @@ $this->view('includes/footer', $data);
 
           <div class="card">
             <div class="card-inner">
-              <h3>ALERTS</h3>
-              <span class="material-icons-outlined">notification_important</span>
+              <h3>DELIVERERS</h3>
+              <span class="material-icons-outlined">local_shipping</span>
+              <!-- <span class="material-icons-outlined">notification_important</span> -->
             </div>
-            <h1>56</h1>
+            <h1><?= $data['counts']['deliverer_count']; ?></h1>
           </div>
 
         </div>

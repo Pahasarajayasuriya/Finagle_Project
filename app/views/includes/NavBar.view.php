@@ -1,4 +1,5 @@
 <?php
+                        // $role = $data['role'];
                         $role = "Admin";
                         if ($role == "User") {
                             echo '<li>
@@ -203,7 +204,15 @@
                                   <span class="links_name">Advertisement</span>
                                 </a>
                                 <span class="tooltip">Advertisement</span>
-                              </li>';
+                              </li>
+                            <li>
+                              <a href="' . ROOT . '/addemployee">
+                                <i class="bx bx-cake"></i>
+                                <span class="links_name">Add Employee</span>
+                              </a>
+                              <span class="tooltip">Add Employee</span>
+                            </li>';
+                              
                         } elseif ($role == "Deliverer") {
                           echo '
                           <li>

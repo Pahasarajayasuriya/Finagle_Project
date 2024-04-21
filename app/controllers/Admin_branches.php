@@ -67,10 +67,10 @@ class Admin_branches extends Controller
 
     }
 
-    public function delete_branch($id)
+    public function delete_branch($name)
     {
         $admin_branch_model = new admin_branchesModel();
-        $admin_branch_model->del_branch($id);
+        $admin_branch_model->del_branch($name);
         redirect('admin_branches');
     }
 

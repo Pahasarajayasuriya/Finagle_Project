@@ -55,4 +55,11 @@ class admin_deliverersModel extends Model
         $query="DELETE FROM `users` WHERE `users`.`id` = ".$id;
         $this->query($query);
     }
+
+    public function get_count()
+    {
+        $query = "SELECT COUNT(*) AS row_count FROM {$this->table} WHERE role = 'deliverer'";
+        $result = $this->query($query);
+        return $result[0]->row_count;
+    }
 }

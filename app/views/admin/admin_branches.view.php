@@ -143,7 +143,7 @@ $this->view('includes/footer', $data);
                 <div class="advertisement-actions">
                   <!-- <button class="edit-button" onclick="openEditPopupDialog('${branch.id}', '${branch.name}', '${branch.location}')">Edit Branch</button> -->
                   <button class="edit-button"><a href="<?= ROOT."/admin_branches/update_branch/".$row->id ?>">Edit Branch</a></button>
-                  <button class="delete-button" onclick="openDeletePopup('<?= esc($row->id) ?>')">Delete Branch</button>
+                  <button class="delete-button" onclick="openDeletePopup('<?= esc($row->name) ?>')">Delete Branch</button>
                   <!-- <button class="edit-button"><a href="<?= ROOT."/admin_branches/delete_branch/".$row->id ?>">Delete Branch</a></button>                 -->
                 </div>             
              </div>
@@ -187,7 +187,7 @@ $this->view('includes/footer', $data);
         }
 
         function confirmDelete(adId) {
-            const url = `<?=ROOT."/admin_advertisements/delete_advertisement/"?>${adId}`;
+            const url = `<?=ROOT."/admin_branches/delete_branch/"?>${adId}`;
             //console.log(url);
             window.location.href = url; // Redirect to delete the advertisement
         }

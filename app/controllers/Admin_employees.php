@@ -67,14 +67,14 @@ class Admin_employees extends Controller
 
     }
 
-    public function delete_branch($id)
+    public function delete_employee($id)
     {
         $admin_employee_model = new admin_employeesModel();
-        $admin_employee_model->del_branch($id);
+        $admin_employee_model->del_employee($id);
         redirect('admin_employees');
     }
 
-    public function update_branch($id)
+    public function update_employee($id)
     {
         $param['id']=$id;
         $admin_employee_model = new admin_employeesModel();
