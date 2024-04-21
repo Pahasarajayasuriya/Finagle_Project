@@ -36,7 +36,7 @@ $this->view('includes/footer', $data);
 
           <div class="card">
             <div class="card-inner">
-              <h3>Branches</h3>
+              <h3>BRANCHES</h3>
               <span class="material-icons-outlined">storefront</span>
             </div>
             <h1><?= $data['counts']['branch_count']; ?></h1>
