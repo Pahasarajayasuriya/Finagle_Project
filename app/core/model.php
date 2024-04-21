@@ -334,7 +334,7 @@ class Model extends Database
     {
         $usersTable = 'users';
 
-        $query = "SELECT c.id , c.deliver_id , u.image ,u.username 
+        $query = "SELECT c.id , c.deliver_id , u.image ,u.username, c.view_status 
         FROM {$this->table} c 
         JOIN  $usersTable u ON c.deliver_id = u.id
 

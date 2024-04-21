@@ -52,30 +52,47 @@ $this->view('includes/alreadyProcess_popup', $data);
             </div>
 
             <button class="circle-container" id="notification-button">
-             
-                <i  id="bell-icon" class='bx bxs-bell' style='color:#ffffff'  ></i>
-               
+
+                <i id="bell-icon" class='bx bxs-bell' style='color:#ffffff'></i>
+
                 <div id="notification-box">
-                   <h3 class="notify_topic">Notifications</h3>
-                <?php
+                    <h3 class="notify_topic">Notifications</h3>
+                    <?php
 
-                if (!empty($notify)) {
-                  //show($data['detail']);
-                      foreach ($notify as $val) {
+                    if (!empty($notify)) {
+                        //show($data['detail']);
+                        foreach ($notify as $val) {
 
-                ?>
-                    
+                            if ($val->view_status == "No views") {             
 
-                    <hr>
-                    <div class="notify">
-                        <img src="<?= ROOT ?>/assets/images/drivers/<?= $val->image ?>" class="profile-img">
-                        <p class="msg"> <b>Deliver_ID - <?= $val->deliver_id ?> </b>delivered the <b>Order-<?= $val->id ?> </b> successfully</p>
-                    </div>
+                    ?>
+                     <hr>
+                           
+                            <div class="notify">
+                                <img src="<?= ROOT ?>/assets/images/drivers/<?= $val->image ?>" class="profile-img">
+                                <p class="msg"> <b>Deliver_ID - <?= $val->deliver_id ?> </b>delivered the <b>Order-<?= $val->id ?> </b> successfully</p>
+                          
+                            <!-- Delete the notification about successfull deliveres -->
 
-                <?php 
-                  }
-                   }
-                ?>
+                              <form method="POST">
+                                <input type="hidden" name="view_status" value= "View">
+                                <input type="hidden" name="id" value="<?= $val->id ?>">
+                                <!-- <button name="clear-msg" class="clear-msg">Clear</button>  -->
+                                <p name="clear-msg"  class='clear-msg'>Clear</p>
+                               
+                              </form>
+
+                             
+
+                              <!-- <p name="clear-msg"  class='clear-msg'>Clear</p> 
+                            -->
+                            </div>
+
+                    <?php
+                        }
+                    }
+                 }
+                    ?>
 
                 </div>
 
@@ -122,8 +139,8 @@ $this->view('includes/alreadyProcess_popup', $data);
 
                     <!-- <?php
 
-                    show(json_encode($data));
-                    ?> -->
+                            show(json_encode($data));
+                            ?> -->
                     <button onclick='filterOrders("D",<?php echo json_encode($data) ?>)'>Deliveries</button>
                     <button onclick='filterOrders("P",<?php echo json_encode($data) ?>)'>Pickups</button>
                 </div>
@@ -500,7 +517,7 @@ $this->view('includes/alreadyProcess_popup', $data);
 
         function filterOrders(type, data) {
 
-           
+
 
             var placed = document.getElementById("placed-order-list");
 
@@ -508,14 +525,14 @@ $this->view('includes/alreadyProcess_popup', $data);
 
             item_id = document.getElementsByName("item-id")
 
-          
-            
+
+
             for (let index = 0; index < data.detail.length; index++) {
 
                 const element = data[index];
-               //console.log(element);
+                //console.log(element);
 
-               
+
                 switch (type) {
 
                     case 'D':
@@ -523,7 +540,7 @@ $this->view('includes/alreadyProcess_popup', $data);
                         if (element.delivery_or_pickup == "delivery") {
 
                             item_id.textContent = element.id
-                           // console.log(item_id)
+                            // console.log(item_id)
                             itemContainer = createItemHTML(element);
                             placed.appendChild(itemContainer);
 

@@ -30,6 +30,12 @@ class Emp_progress extends Controller
             $this->update_delivered_order($_POST);
         }
 
+        if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST["clear-msg"])) {
+
+            unset($_POST["clear-msg"]);
+            $this->update_delivered_order($_POST);
+        }
+
 
 
         $driver_details= $this->getDriverDetails($branch);

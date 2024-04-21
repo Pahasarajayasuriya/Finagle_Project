@@ -644,9 +644,22 @@ hr{
 }
 
 .msg{
-  margin-left: -5px;
+  margin-left: 20px;
 }
 
+.clear-msg{
+  margin-left: 40px;
+  margin-top: 30px;
+  color: #afadad;
+  font-size: 12px;
+  font-style: italic;
+  cursor: pointer;
+
+}
+.clear-msg:hover {
+  color: rgb(255, 41, 41);
+  text-decoration: underline;
+}
 
 
 .home-section {
