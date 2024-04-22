@@ -76,7 +76,7 @@ $this->view('includes/footer', $data);
                 <?php endforeach; ?>
             </table>
             <div id="noResultsMessage" style="display: none;">Order not found</div>
-            <script src="<?= ROOT ?>/assets/js/manager/view_products.js"></script>
+            <script src="<?= ROOT ?>/assets/js/manager/order_history.js"></script>
         </div>
     </div>
 </body>
