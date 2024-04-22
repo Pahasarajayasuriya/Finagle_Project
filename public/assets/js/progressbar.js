@@ -41,7 +41,7 @@ function updateProgressBar() {
             three.classList.add("active");
             four.classList.add("active");
             break;
-          case "order cancel":
+          case "order cancelled":
             window.location.href =
               "http://localhost/finagle/public/ordercancel";
             break;

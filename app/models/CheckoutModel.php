@@ -235,4 +235,19 @@ class CheckoutModel extends Model
         $this->table = $originalTable;
         return $result[0]->reason ?? null;
     }
+
+    public function getDetailsFromBorella()
+    {
+        $query = "SELECT * FROM {$this->table} WHERE pickup_location = 'borella'";
+        return $this->query($query);
+    }
+
+    public function getDetailsByCustomerId($customerId)
+    {
+        $query = "SELECT * FROM checkout WHERE customer_id = :customer_id ORDER BY order_time DESC LIMIT 1";
+        $data = ['customer_id' => $customerId];
+
+        // Use the query method from the Database class to execute the query
+        return $this->query($query, $data);
+    }
 }
