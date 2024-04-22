@@ -14,8 +14,8 @@ $this->view('includes/footer', $data);
 <html>
 
 <head>
-    <title>Branches</title>
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/manager/deliverers_view.css">
+    <title>Customers</title>
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/manager/customer_view.css">
     <link href="https://fonts.googleapis.com/css?family=Cabin|Herr+Von+Muellerhoff|Source+Sans+Pro" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
 
@@ -47,12 +47,14 @@ $this->view('includes/footer', $data);
 
         </div>
 
-        <div class="employee-table">
+        <div class="customer-table">
             <div class="table-header">
-                <div class="header-item employee-image">
+                <div class="header-item customer-image">
                 </div>
                 <div class="header-item">Customer ID</div>
                 <div class="header-item">User name</div>
+
+                <div class="header-item name">Name</div>
                 <div class="header-item">Email</div>
                 <div class="header-item">Contact Number</div>
             </div>
@@ -74,14 +76,13 @@ $this->view('includes/footer', $data);
 
         <!-- <div class="customer-record">
                 <div class="employee-image"> <img src="" alt="customer.name" class="customer-image"></div>
-                <div class="customer-id"><?= $customer->id ?></div>
-                <div class="customer-name"><?= $customer->name ?></div> -->
 
-                <!-- <div class="employee-actions">
-                   <button class="ban-button" onclick="banCustomer('${customer.id}')">Ban the customer</button>
-                  <button class="remove-button" onclick="removeAccount('${customer.id}')">Remove the account</button>
-                </div>
-             -->
+                <div class="customer-id"><?= $customer->id ?></div>
+                <div class="customer-name"><?= $customer->username ?></div>
+                <div class="customer-name"><?= $customer->name ?></div>
+                <div class="customer-name"><?= $customer->email ?></div>
+                <div class="customer-name"><?= $customer->contact_no ?></div>
+       
             </div> 
         <?php
                 }

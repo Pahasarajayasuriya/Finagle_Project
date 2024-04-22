@@ -6,17 +6,19 @@ class Emp_productStock extends Controller
     {
         $id = $id ?? Auth::getId();
 
+        $branch="Borella";
+
         $user = new User();
         $data['row'] = $user->first(['id' => $id]);
         $data['title'] = "ProductStock";
 
-        $product = $this->editProducts();
+        $product = $this->editProducts($branch);
+        // show($product);
         $data['product'] = $product;
 
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update']) && $_POST['update'] === 'update') {
             unset($_POST['update']);
-            // show($_POST);
 
             $this->updateProducts($_POST);
         }
@@ -24,24 +26,11 @@ class Emp_productStock extends Controller
         $this->view('employee/product_stock', $data);
     }
 
-    // public function profile($id = null)
-    // {
-
-    //     $id = $id ?? Auth::getId();
-
-    //     $user = new User();
-    //     $data['row'] = $user->first(['id'=>$id]);
-
-
-    //     $data['title'] = "Profile";
-    //     $this->view('customer/cus_profile', $data);
-    // }
-
-    private function editProducts()
+    private function editProducts($branch)
     {
-        $product = new Products();
+        $product = new ProductsData();
 
-        $data = $product->findAll();
+        $data = $product->findAllProducts($branch);
 
 
         foreach ($data as $key) {
@@ -59,7 +48,7 @@ class Emp_productStock extends Controller
     {
         // added all product id and qty
         $newArr = array();
-        $product = new Products();
+        $product = new ProductsData();
 
 
         foreach ($arr as $key => $value) {
@@ -73,15 +62,11 @@ class Emp_productStock extends Controller
             $newArr[$idQtyIndex][$type] = $value;
         }
 
-        // show($newArr);
 
-        for ($i = 1; $i <= count($newArr); $i++) {
-
-            $qty['quantity'] = $newArr[$i]['qty'];
-
-            $product->update($newArr[$i]['id'], $qty);
+        foreach ($newArr as $key => $data) {
+            $qty['quantity'] = $data['qty'];
+            $product->update($data['id'], $qty);
         }
         redirect('Emp_productStock');
-        // echo count($newArr);
     }
 }

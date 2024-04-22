@@ -66,17 +66,21 @@ $this->view('includes/footer', $data);
                 </div>
                 <div class="header-item">Deliverer ID</div>
                 <div class="header-item">Name</div>
-                <div class="header-item">Rating</div>
-                <div class="header-item">Goals Assignment</div>
+                <div class="header-item">Contact Number</div>
+                <div class="header-item">Ratings</div>
+               
+                <!-- <div class="header-item">Goals Assignment</div> -->
             </div>
 
             
 
             <div class="employee-record">
-                <div class="employee-image"><img src="" alt="Deliverer 1"></div>
+                <div class="employee-image"><img src="<?= ROOT ?>/assets/images/drivers/<?= $driver->image ?>" alt="Deliverer 1"></div>
                 <div class="employee-id"><?= $driver->id ?></div>
+
                 <div class="employee-name"><?= $driver->username ?></div>
                 <div class="employee-name"><?= $driver->email ?></div>
+
 
 
                 <div class="rating">
@@ -94,7 +98,7 @@ $this->view('includes/footer', $data);
 
 
                 
-                <textarea class="goal-assignment" id="pro_complaint" name="pro_complaint"></textarea>
+                <!-- <textarea class="goal-assignment" id="pro_complaint" name="pro_complaint"></textarea> -->
             </div>
 
             <?php

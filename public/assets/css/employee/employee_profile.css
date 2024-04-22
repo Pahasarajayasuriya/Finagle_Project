@@ -86,7 +86,7 @@ body {
     gap: 20px;
     padding: 10px;
     border-radius: 15px;
-    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 4px 8px 2px rgba(0, 0, 0, 0.1);
     color:black;
     transition: transform 0.3s ease-in-out;
     width: 90%;
@@ -141,7 +141,6 @@ body {
 .logout-button {
     text-align: right;
     margin-top: 10px;
-    /* Increase the top margin for better spacing */
     height: 5px;
     align-content: end;
     justify-content: end;
@@ -279,7 +278,7 @@ h2{
 .home-section {
     position: relative;
     transition: all 0.5s ease;
-    /* min-height: 100vh; */
+    min-height: 100vh; 
     left: 20px;
     margin-top: 100px;
     width: calc(100% - 68px);
@@ -287,8 +286,8 @@ h2{
   }
 
   .sidebar.open ~ .home-section {
-    left: 150px;
-    width: calc(100% - 150);
+    left: 130px;
+    width: calc(100% - 130);
   } 
 
   .sidebar.open~.navbar {

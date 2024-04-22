@@ -1,8 +1,6 @@
 <?php
 $role = "Employee";
-// require_once '../../Components/NavBar/header.php';
-// require_once '../../Components/NavBar/NavBar.php';
-// require_once '../../Components/NavBar/footer.php';
+$data['role'] = $role;
 
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
@@ -50,7 +48,7 @@ $this->view('includes/footer', $data);
         <div class="form-header">
             <form action="#" class="sub-form">
                 <div class="ad-form-input">
-                    <input type="search" id="search" placeholder="Search...">
+                    <input type="search" id="search" onkeyup="searchProducts()" placeholder="Search...">
                     <button type="submit" class="ad-search-btn">
                         <i class='bx bx-search'></i>
                     </button>
@@ -58,10 +56,11 @@ $this->view('includes/footer', $data);
             </form>
         </div>
 
-        <form method="POST" class="complete_form">
+        
 
+        <form method="POST" class="complete_form">
             <div class="table-container">
-                <table>
+                <table id="product-table">
                     <tr class="table_heading">
                         <th>Product ID</th>
                         <th>Image</th>
@@ -71,15 +70,15 @@ $this->view('includes/footer', $data);
 
                     </tr>
 
-                    <tr>
+                    
                         <?php
 
-                        if (isset($data['product'])) {
-                            foreach ($data['product'] as $product) {
+                        if (isset($product)) {
+                            foreach ($product as $product) {
                         ?>
                     <tr>
                         <td><?= $product->id ?></td>
-                        <td><img src="<?= ROOT ?>/assets/images/products/<?= $product->image ?>" alt=""></td>
+                        <td><img src="<?= ROOT ?>/<?= $product->image ?>" alt=""></td>
                         <td><?= $product->user_name ?></td>
                         <td class="black-text">
                             <span class="quantity" id="quantity_<?= $product->id ?>"><?= $product->quantity ?></span>
@@ -109,6 +108,31 @@ $this->view('includes/footer', $data);
         </form>
 
     </div>
+
+    <script>
+    function searchProducts() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("search");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("product-table");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            td_id = tr[i].getElementsByTagName("td")[0]; // Product ID column
+            td_name = tr[i].getElementsByTagName("td")[2]; // Product Name column
+            if (td_id && td_name) {
+                txtValue_id = td_id.textContent || td_id.innerText;
+                txtValue_name = td_name.textContent || td_name.innerText;
+                if (txtValue_id.toUpperCase().indexOf(filter) > -1 || txtValue_name.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
 </body>
 
 </html>

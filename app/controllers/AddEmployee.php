@@ -1,43 +1,38 @@
 <?php 
 
-/**
- * signup class
- */
-// class AddEmployee extends Controller
-// {
+
+class AddEmployee extends Controller
+{
+
+	public function index()
+	{
 	
-// 	public function index()
-// 	{
-	
-// 		$data['errors'] = [];
+		$data['errors'] = [];
 
-// 		$user = new User();
+		$user = new User();
 
-// 		if($_SERVER['REQUEST_METHOD'] == "POST")
-// 		{
-//             show($_POST);
-//             $_POST['repassword'] =  $_POST['password'];
+		if($_SERVER['REQUEST_METHOD'] == "POST")
+		{
+            $_POST['repassword'] =  $_POST['password'];
 
-// 			if($user->validate($_POST))
-// 			{
-// 				$_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-// 				$user->insert($_POST);
+			if($user->validate($_POST))
+			{
+				$_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+				$user->insert($_POST);
 			
-// 				message("Your profile was successfuly created. Please login");
-// 			}
-//             else
-//             {
-//                 show($user->errors);
-//             }
-// 		}
+				message("Your profile was successfuly created. Please login");
+				redirect('login');
+			}
+		}
 
-// 		$data['errors'] = $user->errors;
-// 		$data['title'] = "Add User";
-//         $this->view('admin/admin_add_employees',$data);
-// 	}
+		$data['errors'] = $user->errors;
+		$data['title'] = "Add User";
+        $this->view('admin/admin_add_employees',$data);
+	}
 	
-// }
+}
 
        
 

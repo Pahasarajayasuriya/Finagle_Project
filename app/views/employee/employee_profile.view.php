@@ -1,15 +1,9 @@
 <?php
 $role = "Employee";
-// require_once '../../Components/NavBar/header.php';
-// require_once '../../Components/NavBar/NavBar.php';
-// require_once '../../Components/NavBar/footer.php';
-
+$data['role'] = $role;
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
-
-
-// show($data);
 ?>
 
 <!DOCTYPE html>
@@ -34,11 +28,7 @@ $this->view('includes/footer', $data);
 </head>
 
 <body>
-    <!-- <div class="navbar">
-         <div class="logo_icon">
-             <img src="<?= ROOT ?>/assets/images/logo.png" alt="">
-         </div>
-    </div> -->
+
 
 
 
@@ -49,7 +39,7 @@ $this->view('includes/footer', $data);
             <h2 class="section-title">BRANCH EMPLOYEES</h2>
             <div class="divider dark mb-4">
                 <div class="icon-wrap">
-                    <!-- <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>  -->
+
                 </div>
             </div>
 
@@ -61,47 +51,38 @@ $this->view('includes/footer', $data);
 
                 <div class="profile-header">
                     <div class="pro-image"></div>
-                    <div class="pro-id"> Username</div>
-                    <div class="pro-description">Name</div>
+                    <div class="pro-id"> User Id</div>
+                    <div class="pro-description">User Name</div>
                     <div class="pro-date">Joined Date</div>
                 </div>
 
-                        <?php
-                        if (isset($data)) {
-                            foreach ($data as $val) {
-                                // show($val);
-
-                        ?>
-                        
-                         <div class="profile-container">
-
-                               <div class="profile-record">
+                <?php
+                if (isset($emp)) {
+                    foreach ($emp as $val) {
+                ?>
+                        <div class="profile-container">
+                            <div class="profile-record">
                                 <div class="profile-image">
-                                    <!-- <img src="https://i.pinimg.com/474x/e0/4c/38/e04c383ed661003b1a599bb877eff836.jpg"> -->
-                                   <!-- <?= ROOT ?>/assets/images/Emp_profiles/-->
-                                   <img src="<?= ROOT ?>/assets/images/Emp_profiles/<?= $val->image ?>"> 
-                                  
+                                    <img src="<?= ROOT ?>/assets/images/Emp_profiles/<?= $val->image ?>">
                                 </div>
                                 <p class='profile-id'><?= $val->id ?></p>
                                 <p class='profile-name'><?= $val->username ?></p>
-                                <div class="profile-date"><?= $val->Joined_Date ?></div>
-                               </div>
-                         </div>
-
-                        <?php
-
-                            }
-                        }
-                        ?>
-                    
+                                <div class="profile-date"><?= $val->joined_date ?></div>
+                            </div>
+                        </div>
+                <?php
+                    }
+                }
+                ?>
 
 
 
 
-                </div>
+
             </div>
+        </div>
 
-            <!-- <div class="insights">
+        <!-- <div class="insights">
                     <div class="goals-container">
                         <h2>Goals</h2>
                        
@@ -115,11 +96,12 @@ $this->view('includes/footer', $data);
 
         </div> -->
 
-        </div>
+    </div>
 
-        <div class="logout-button">
-            <button><b>Log Out</b></button>
-        </div>
+    <div class="logout-button">
+        <button><b>Log Out</b></button>
+    </div>
+
     </div>
 </body>
 

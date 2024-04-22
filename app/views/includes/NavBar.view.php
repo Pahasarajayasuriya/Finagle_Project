@@ -1,10 +1,10 @@
 <?php
 
 $role = $data['role'];
-                        //$role = "Manager";
-                        if ($role == "User") {
-                            echo '<li>
-                               <a href="'. ROOT .'/">
+if ($role == "User") {
+  echo '<li>
+                               <a href="' . ROOT . '">
+
                                   <i class="bx bx-grid-alt"></i>
                                   <span class="links_name">Dashboard</span>
                                 </a>
@@ -17,6 +17,13 @@ $role = $data['role'];
                                 </a>
                                 <span class="tooltip">Products</span>
                               </li> 
+                              <li>
+                              <a href="' . (Auth::is_customer() ? ROOT . '/progressbar' : ROOT . '/login') . '">
+                                  <i class="bx bx-taxi"></i>
+                                  <span class="links_name">Order Status</span>
+                                </a>
+                                <span class="tooltip">Order Status</span>
+                              </li>
                               <li>
                                 <a href="' . ROOT . '/process">
                                   <i class="bx bx-pie-chart-alt-2"></i>
@@ -39,15 +46,15 @@ $role = $data['role'];
                                 <span class="tooltip">Complains</span>
                               </li>
                               <li>
-                                <a href="'. ROOT .'#aboutus">
+                                <a href="' . ROOT . '#aboutus">
                                 <i class="bx bx-info-circle"></i>
                                   <span class="links_name">About Us</span>
                                 </a>
                                 <span class="tooltip">About Us</span>
                               </li>
                               ';
-                        } elseif ($role == "Employee") {
-                          echo '
+} elseif ($role == "Employee") {
+  echo '
                           <li>
                                <a href="Emp_dashboard">
                                   <i class="bx bx-grid-alt"></i>
@@ -76,8 +83,8 @@ $role = $data['role'];
                       </a>
                       <span class="tooltip">Orders</span>
                     </li>';
-                        } elseif ($role == "Manager") {
-                            echo '
+} elseif ($role == "Manager") {
+  echo '
                             <li>
                             <a href="'.ROOT.'/Manager_profile">
                               <i class="bx bxs-user-circle"></i>
@@ -148,8 +155,8 @@ $role = $data['role'];
                                 </a>
                                 <span class="tooltip">Customers</span>
                               </li>';
-                        } elseif ($role == "Admin") {
-                            echo '
+} elseif ($role == "Admin") {
+  echo '
                             <li>
                                 <a href="#">
                                   <i class="bx bx-message-alt-detail"></i>
@@ -199,21 +206,20 @@ $role = $data['role'];
                                 </a>
                                 <span class="tooltip">Advertisement</span>
                               </li>';
-                        } elseif ($role == "Deliverer") {
-                          echo '
+} elseif ($role == "Deliverer") {
+  echo '
                           <li>
-                              <a href="profile.php">
+                              <a href="Deliverer_profile">
                                 <i class="bx bx-user"></i>
                                 <span class="links_name">Profile</span>
                               </a>
                               <span class="tooltip">Profile</span>
                             </li>
                             <li>
-                            <a href="assign.php">
+                            <a href="Deliverer_assign">
                             <i class="bx bx-clipboard"></i>
                               <span class="links_name">Assign Orders</span>
                             </a>
                             <span class="tooltip">Assign Orders</span>
                           </li>';
-                        }
-                        ?>
+}

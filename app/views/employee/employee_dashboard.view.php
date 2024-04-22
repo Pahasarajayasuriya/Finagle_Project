@@ -1,8 +1,6 @@
 <?php
 $role = "Employee";
-// require_once '../../Components/NavBar/header.php';
-// require_once '../../Components/NavBar/NavBar.php';
-// require_once '../../Components/NavBar/footer.php';
+$data['role'] = $role;
 
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
@@ -57,8 +55,22 @@ $this->view('includes/footer', $data);
 					</div>
 
 					<div class="right">
-						<p>Hey,Borella Branch </p>
-						<i class='bx bxs-building' ></i>
+						<p>Hey,
+							<?php
+							if (isset($BranchName)) {
+								foreach ($BranchName as $branch) {
+									// show($val);
+
+							?><?= $branch->name ?> Branch </p>
+
+				<?php
+
+								}
+							}
+				?>
+
+						
+				<i class='bx bxs-building'></i>
 					</div>
 
 				</div>
@@ -66,19 +78,30 @@ $this->view('includes/footer', $data);
 					<li>
 						<i class='bx bxs-calendar-check'></i>
 						<span class="text">
-							<h3>1020</h3>
-							<p>New Order</p>
+							<?php
+							//show($data['count']);
+
+							if (isset($count)) {
+								foreach ($count as $order_count) {
+
+							?>
+									<h3><?= $order_count->total_records ?></h3>
+
+
+							<?php
+								}
+							}
+							?>
+							<p>Orders</p>
 						</span>
+
 						<div class="circular">
 							<div class="inner"></div>
 							<div class="outer"></div>
 							<div class="numb1">
-								0%
+
 							</div>
 							<div class="circle">
-								<div class="dot">
-									<span></span>
-								</div>
 								<div class="bar left">
 									<div class="progress"></div>
 								</div>
@@ -91,19 +114,31 @@ $this->view('includes/footer', $data);
 					<li>
 						<i class='bx bxs-group'></i>
 						<span class="text">
-							<h3>2834</h3>
-							<p>Visitors</p>
+							<?php
+							//show($data['count']);
+
+							if (isset($getCusData)) {
+								foreach ($getCusData as $cus_count) {
+
+							?>
+									<h3><?= $cus_count->total_customers ?></h3>
+
+
+							<?php
+								}
+							}
+							?>
+							<!-- <p>Customers</p> -->
+							<p>Buyers</p>
 						</span>
+
 						<div class="circular">
 							<div class="inner"></div>
 							<div class="outer"></div>
 							<div class="numb2">
-								0%
+
 							</div>
 							<div class="circle">
-								<div class="dot">
-									<span></span>
-								</div>
 								<div class="bar left">
 									<div class="progress"></div>
 								</div>
@@ -112,24 +147,34 @@ $this->view('includes/footer', $data);
 								</div>
 							</div>
 						</div>
-						
 					</li>
+
+
+
 					<li>
 						<i class='bx bxs-dollar-circle'></i>
 						<span class="text">
-							<h3>$2543</h3>
-							<p>Total Sales</p>
+
+							<?php
+							//show($data['count']);
+							if (isset($getTotalcost)) {
+								foreach ($getTotalcost as $total_cost) {
+							?>
+									<h3><?= $total_cost->total_sum ?></h3>
+							<?php
+								}
+							}
+							?>
+							<p>Revenue</p>
 						</span>
+
 						<div class="circular">
 							<div class="inner"></div>
 							<div class="outer"></div>
 							<div class="numb3">
-								0%
+
 							</div>
 							<div class="circle">
-								<div class="dot">
-									<span></span>
-								</div>
 								<div class="bar left">
 									<div class="progress"></div>
 								</div>
@@ -138,7 +183,6 @@ $this->view('includes/footer', $data);
 								</div>
 							</div>
 						</div>
-						
 					</li>
 				</ul>
 
@@ -146,129 +190,176 @@ $this->view('includes/footer', $data);
 					<div class="order">
 						<div class="head">
 							<h3>Recent Orders</h3>
-							<i class='bx bx-search'></i>
-							<i class='bx bx-filter'></i>
+							<!-- <i class='bx bx-search'></i>
+							<i class='bx bx-filter'></i> -->
 						</div>
 						<table>
 							<thead>
 								<tr>
 									<th>User</th>
-									<th>Date Order</th>
+									<th>Order ID</th>
 									<th>Status</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>
-										<img src="<?= ROOT?>/assets/images/Emp_profiles/Dilum001.jpg">
-										<p>John Doe</p>
-									</td>
-									<td>01-10-2021</td>
-									<td><span class="status completed">Completed</span></td>
-								</tr>
-								<tr>
-									<td>
-									   <img src="<?= ROOT?>/assets/images/Emp_profiles/Malki002.jpg">
-										<p>Malki Yash</p>
-									</td>
-									<td>04-12-2022</td>
-									<td><span class="status pending">Pending</span></td>
-								</tr>
-								<tr>
-									<td>
-									    <img src="<?= ROOT?>/assets/images/Emp_profiles/yowin.jpg">
-										<p>Dilum IR</p>
-										
-									</td>
-									<td>21-09-2023</td>
-									<td><span class="status process">Process</span></td>
-								</tr>
-								
-								
+								<?php
+
+								//   show($data);
+								if (isset($getData)) {
+									foreach ($getData as $order) {
+
+								?>
+										<tr>
+											<td>
+												<!-- <img src="<?= ROOT ?>/assets/images/customers/<?= $order->image ?>"> -->
+												<p><?= $order->name ?></p>
+											</td>
+											<td> <?= $order->id ?></td>
+											<td><span class="status<?= $order->order_status ?>"><?= $order->order_status ?></span></td>
+										</tr>
+
+								<?php
+									}
+								}
+								?>
 							</tbody>
 						</table>
 					</div>
 					<div class="todo">
 						<div class="head">
 							<h3>Sales Analytics</h3>
-							<i class='bx bx-plus'></i>
-							<i class='bx bx-filter'></i>
+
 						</div>
 						<ul class="todo-list">
 							<li class="completed">
-							  <div class="numeric">
-							    <i class='bx bxs-cart bx-tada'></i>
-							  
-								<p class="type">Online Orders</p>
+								<div class="numeric">
+									<i class='bx bxs-cart bx-tada'></i>
 
-							  </div>
-							   
-								<p class="increase" style="color:rgb(147, 240, 94);">+38%</p>
-								<p class="count">380</p>
+									<p class="type">Online Orders</p>
+
+								</div>
+								<?php
+								//show($data['getOnlineorders']);
+
+								if (isset($getOnlineorders)) {
+									foreach ($getOnlineorders as $online_orders) {
+
+								?>
+										<p class="count"><?= $online_orders->online_delivery_count ?></p>
+
+
+								<?php
+									}
+								}
+								?>
+
+
+							</li>
+
+
+							<li class="completed">
+								<div class="numeric">
+									<i class='bx bxs-package bx-tada'></i>
+									<p class="type">PickUp Orders</p>
+								</div>
+
+								<?php
+								//show($data['getPickuporders ']);
+
+								if (isset($getPickuporders)) {
+									foreach ($getPickuporders as $pickup_orders) {
+
+								?>
+										<p class="count"><?= $pickup_orders->pickup_count ?></p>
+
+
+								<?php
+									}
+								}
+								?>
+
 
 							</li>
 							<li class="completed">
-							 <div class="numeric">
-						    	<i class='bx bxs-package bx-tada' ></i>
-								<p class="type">PickUp Orders</p>
-							 </div>
-								<p class="increase" style="color:red;">-17%</p>
-								<p class="count">200</p>
-								
+								<div class="numeric">
+									<i class='bx bxs-user bx-tada'></i>
+									<p class="type">New Branches</p>
+								</div>
+								<?php
+								//show($data['count']);
+								if (isset($getBranchcount)) {
+									foreach ($getBranchcount as $branch_count) {
+								?>
+										<p class="count"><?= $branch_count->total_records ?></p>
+								<?php
+									}
+								}
+								?>
+
+
+
 							</li>
-							<li class="completed">
-							<div class="numeric">
-							    <i class='bx bxs-user bx-tada'></i>
-								<p class="type">New Customers</p>
-							</div>
-								<p class="increase" style="color:rgb(147, 240, 94);">+18%</p>
-								<p class="count">150</p>
-								
-							</li>
-							
+
 						</ul>
 					</div>
 				</div>
 			</main>
-			<!-- MAIN -->
+
 		</section>
-		<!-- CONTENT -->
+
 	</div>
 	<script>
-            const numb1 = document.querySelector(".numb1");
-            let counter1 = 0;
-            const intervalId1 = setInterval(()=>{
-              if(counter1 == 100){
-                clearInterval(intervalId1);
-              }else{
-                counter1+=1;
-                numb1.textContent = counter1 + "%";
-              }
-            }, 80);
+		const numb1 = document.querySelector(".numb1");
+		let counter1 = 0;
+		const targetPercentage1 = <?= $order_count->total_records ?>;
+		const intervalId1 = setInterval(() => {
+			if (counter1 >= targetPercentage1) {
+				clearInterval(intervalId1);
+			} else {
+				counter1 += 1;
+				numb1.textContent = (counter1 / 400) * 100 + "%";
 
-			const numb2 = document.querySelector(".numb2");
-            let counter2 = 0;
-            const intervalId2 = setInterval(()=>{
-              if(counter2 == 70){
-                clearInterval(intervalId2);
-              }else{
-                counter2+=1;
-                numb2.textContent = counter2 + "%";
-              }
-            }, 80);
+			}
+		}, 80);
 
-			const numb3 = document.querySelector(".numb3");
-            let counter3 = 0;
-            const intervalId3 = setInterval(()=>{
-              if(counter3 == 70){
-                clearInterval(intervalId3);
-              }else{
-                counter3+=1;
-                numb3.textContent = counter3 + "%";
-              }
-            }, 80);
-         </script>
-	<script src="script.js"></script>
+
+
+
+		const numb2 = document.querySelector(".numb2");
+		let counter2 = 0;
+		const targetPercentage2 = <?= $cus_count->total_customers ?>;
+		const intervalId2 = setInterval(() => {
+			if (counter2 >= targetPercentage2) {
+				clearInterval(intervalId2);
+			} else {
+				counter2 += 1;
+				numb2.textContent = (counter2 / 200) * 100 + "%";
+
+			}
+		}, 80);
+
+
+
+
+		const numb3 = document.querySelector(".numb3");
+		let counter3 = 0;
+		const targetPercentage3 = <?= $total_cost->total_sum ?>;
+		const intervalId3 = setInterval(() => {
+			if (counter3 == targetPercentage3) {
+				clearInterval(intervalId3);
+			} else {
+				counter3 += 1;
+				numb3.textContent = (counter1 / 1000) * 100 + "%";
+
+			}
+		}, 80);
+
+
+</script>
+
+
+
+
 </body>
 
 </html>

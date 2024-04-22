@@ -172,137 +172,103 @@
         transform: rotate(225deg);
     }
 }
-.circular{
-	height: 100px;
-	width: 100px;
-	position: relative;
-  }
-  .circular .inner, .circular .outer, .circular .circle{
-	position: absolute;
-	z-index: 6;
-	height: 100%;
-	width: 100%;
-	border-radius: 100%;
-	box-shadow: inset 0 1px 0 rgba(0,0,0,0.2);
-  }
-  .circular .inner{
-	top: 50%;
-	left: 50%;
-	height: 80px;
-	width: 80px;
-	margin: -40px 0 0 -40px;
-	background-color: #dde6f0;
-	border-radius: 100%;
-	box-shadow: 0 1px 0 rgba(0,0,0,0.2);
-  }
-  .circular .circle{
-	z-index: 1;
-	box-shadow: none;
-  }
-  .circular .numb1{
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 10;
-	font-size: 18px;
-	font-weight: 500;
-	color: #4158d0;
-  }
-  .circular .numb2{
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 10;
-	font-size: 18px;
-	font-weight: 500;
-	color: #4158d0;
-  }
-  .circular .numb3{
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 10;
-	font-size: 18px;
-	font-weight: 500;
-	color: #4158d0;
-  }
-  .circular .bar{
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	background: #fff;
-	-webkit-border-radius: 100%;
-	clip: rect(0px, 100px, 100px, 50px);
-  }
-  .circle .bar .progress{
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	-webkit-border-radius: 100%;
-	clip: rect(0px, 50px, 100px, 0px);
-  }
-  .circle .bar .progress, .dot span{
-	background: #4158d0;
-  }
-  .circle .left .progress{
-	z-index: 1;
-	animation: left 4s linear both;
-  }
-   @keyframes left {
-	100%{
-	  transform: rotate(180deg);
-	}
-  } 
-  .circle .right{ 
-	z-index: 3;
-	transform: rotate(180deg);
-  }
-  .circle .right .progress{
-	animation: right 4s linear both;
-	animation-delay: 4s;
-  }
-  @keyframes right {
-	100%{
-	  transform: rotate(90deg);
-	}
-	
-  }
-  .circle .dot{
-	z-index: 2;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	width: 50%;
-	height: 10px;
-	margin-top: -5px;
-	animation: dot 8s linear both;
-	transform-origin: 0% 50%;
-  }
-  .circle .dot span {
-	position: absolute;
-	right: 0;
-	width: 10px;
-	height: 10px;
-	border-radius: 100%;
-  }
-  @keyframes dot{
-	0% {
-	  transform: rotate(-90deg);
-	}
-	50% {
-	  transform: rotate(90deg);
-	  z-index: 4;
-	}
-	100% {
-	  transform: rotate(270deg);
-	  z-index: 4;
-	}
-  }
 
-  
+.circular {
+    height: 100px;
+    width: 100px;
+    position: relative;
+}
+
+.circular .inner,
+.circular .outer,
+.circular .circle {
+    position: absolute;
+    z-index: 6;
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+    box-shadow: inset 1px 3px 2px rgba(0, 0, 0, 0.2); /* Adjust the shadow if needed */
+}
+
+.circular .outer {
+    box-shadow: 1px 1px 1.5px 1.5px rgba(0, 0, 0, 0.2);
+}
+
+.circular .inner {
+    top: 50%;
+    left: 50%;
+    height: 80px;
+    width: 80px;
+    margin: -40px 0 0 -40px;
+    background-color: #dde6f0; /* Adjust background color if needed */
+    border-radius: 100%;
+    box-shadow: 2px 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.circular .circle {
+    z-index: 1;
+    box-shadow: none;
+}
+
+.circular .numb1,
+.circular .numb2,
+.circular .numb3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    font-size: 18px;
+    font-weight: 500;
+    color: #4158d0; /* Adjust text color if needed */
+}
+
+.circular .bar {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #fff; /* Adjust background color if needed */
+    border-radius: 100%;
+    clip: rect(0px, 100px, 100px, 50px);
+}
+
+.circle .bar .progress {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+    clip: rect(0px, 50px, 100px, 0px);
+    background: #4158d0; /* Adjust progress color if needed */
+}
+
+.circle .left .progress {
+    z-index: 1;
+    animation: left 4s linear both;
+}
+
+.circle .right {
+    z-index: 4;
+    transform: rotate(180deg);
+}
+
+.circle .right .progress {
+    animation: right 4s linear both;
+    animation-delay: 4s;
+}
+
+@keyframes left {
+    100% {
+        transform: rotate(180deg);
+    }
+
+	
+}
+
+@keyframes right {
+    100% {
+        transform: rotate(180deg);
+    }
+}
   
 #content main .head-title {
 	margin-top: 1%;
@@ -328,7 +294,7 @@
 	padding: 24px;
 	overflow-x: auto;
 	background-color: rgba(255,255,255,240);
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+	box-shadow: 0 4px 8px rgba(130, 100, 100, 0.1); /* Add a subtle shadow */
     transition: transform 0.3s ease-in-out; /* Add a smooth hover effect */
 	
 }
@@ -384,10 +350,11 @@
 	transition: background-color 0.3s ease;
 }
 #content main .table-data .order table tbody tr:hover {
-	background: linear-gradient(to right, #8b8a8a, #d2cdc8); /* Gradient background */
-    color: #fff; /* Change text color to white on hover */
-    transform: scale(1.02); /* Add a slight scale effect on hover */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow on hover */
+	background: linear-gradient(to right, #d5d5d5, #d2cdc8); 
+    color: #fff; 
+    transform: scale(1.02); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	border-radius: 50%;
 
 }
 #content main .table-data .order table tr td .status {
@@ -405,14 +372,14 @@
 	font-size: 14px;
 	font-weight: bold;
 }
-#content main .table-data .order table tr td .status.completed {
+#content main .table-data .order table tr td .status.Dispatched {
 	background: black;
 	
 }
-#content main .table-data .order table tr td .status.process {
+#content main .table-data .order table tr td .status.Preparing{
 	background: red;
 }
-#content main .table-data .order table tr td .status.pending {
+#content main .table-data .order table tr td .status.Placed {
 	background: rgb(145, 255, 77);
 }
 
@@ -442,7 +409,7 @@
 #content main .table-data .todo .todo-list li:hover {
 
     /* opacity: 0.8; */
-    transform: scale(1.04);
+    transform: scale(1.02);
 }
 
 
@@ -495,6 +462,13 @@
 	font-size: 14px;
 	font-weight: 500;
 }
+
+
+
+
+
+
+
 .home-section {
     position: relative;
     transition: all 0.5s ease;

@@ -8,5 +8,6 @@ class Manager_deliverer extends Controller
         $data['driver'] = $customerModel->getdeliverers();
 
         $this->view('manager/deliverers', $data);
+       
     }
 }
