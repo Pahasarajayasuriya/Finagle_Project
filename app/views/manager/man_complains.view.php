@@ -125,6 +125,22 @@ $this->view('includes/footer', $data);
                         }
                     });
                 });
+
+
+                document.getElementById('searchInput').addEventListener('keyup', function() {
+                    let searchValue = this.value.toLowerCase();
+                    let tableRows = document.querySelectorAll('#complaintsTableBody tr');
+                    tableRows.forEach(function(row) {
+                        let rowText = row.textContent.toLowerCase();
+                        if (rowText.includes(searchValue)) {
+                            row.style.display = "";
+                        } else {
+                            row.style.display = "none";
+                        }
+                    });
+                    let visibleRows = Array.from(tableRows).filter(row => row.style.display !== "none");
+                    document.getElementById('noResultsMessage').style.display = visibleRows.length ? "none" : "block";
+                });
             </script>
         </div>
     </div>
