@@ -40,11 +40,12 @@ body {
   background-color: red;
   color: var(--bodyColor);
   padding: 10px 30px;
-  margin: 50px 100px 50px 650px;
+  margin: 30px 50px 50px 650px;
   font-weight: bolder;
   box-shadow: 0 0 10px rgb(62, 54, 54);
   cursor: pointer;
-  
+  color: white;
+  margin-bottom: 5px;
   
 }
 
@@ -81,11 +82,10 @@ body {
   flex-direction: column;
   width: 100%;
   width: 800px;
-  padding: 6px;
+  padding: 5px;
   position: relative;
   margin-left: 20px;
-  margin-top: 30px;
-
+  margin-top: 80px;
   border: 2px solid #ccc;
   overflow: hidden;
   background: white;
@@ -136,6 +136,11 @@ body {
   margin-right: 30px;
 
   
+}
+
+.pro_input{
+  color: #c6c5c5;
+
 }
 
 

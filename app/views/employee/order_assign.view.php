@@ -63,29 +63,24 @@ $this->view('includes/alreadyProcess_popup', $data);
                         //show($data['detail']);
                         foreach ($notify as $val) {
 
-                            if ($val->view_status == "No views") {             
+                            if ($val->view_status == "0") {             
 
                     ?>
                      <hr>
-                           
+
                             <div class="notify">
                                 <img src="<?= ROOT ?>/assets/images/drivers/<?= $val->image ?>" class="profile-img">
                                 <p class="msg"> <b>Deliver_ID - <?= $val->deliver_id ?> </b>delivered the <b>Order-<?= $val->id ?> </b> successfully</p>
-                          
+
                             <!-- Delete the notification about successfull deliveres -->
 
                               <form method="POST">
-                                <input type="hidden" name="view_status" value= "View">
+                                <input type="hidden" name="view_status" value= "1">
                                 <input type="hidden" name="id" value="<?= $val->id ?>">
                                 <!-- <button name="clear-msg" class="clear-msg">Clear</button>  -->
-                                <p name="clear-msg"  class='clear-msg'>Clear</p>
-                               
+                                <!-- <p name="clear-msg"  class="clear-msg">Clear</p> -->
+                                <p class="clear-msg" onclick="clearNotification(<?= $val->id ?>)">Clear</p>
                               </form>
-
-                             
-
-                              <!-- <p name="clear-msg"  class='clear-msg'>Clear</p> 
-                            -->
                             </div>
 
                     <?php
@@ -119,6 +114,43 @@ $this->view('includes/alreadyProcess_popup', $data);
                     }
                 });
             });
+
+           
+    function clearNotification(id) {
+        // Create a new FormData object
+        var formData = new FormData();
+        formData.append('view_status', '1');
+        formData.append('id', id);
+
+        // Create a new XMLHttpRequest object
+        var xhr = new XMLHttpRequest();
+
+        // Define what happens on successful data submission
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                // Success! You can handle any UI updates here.
+                console.log('Notification cleared successfully');
+                // Reload the page or update UI as needed
+                location.reload();
+            } else {
+                // Request failed, handle errors here
+                console.error('Failed to clear notification');
+            }
+        };
+
+        // Define what happens in case of error
+        xhr.onerror = function () {
+            console.error('Request failed');
+        };
+
+        // Set up our request
+        xhr.open('POST', 'Emp_progress.php', true);
+
+        // Send the form data
+        xhr.send(formData);
+    }
+
+
         </script>
 
         <div class="orders-container">

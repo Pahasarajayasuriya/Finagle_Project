@@ -23,6 +23,7 @@ class Emp_progress extends Controller
         $ready = $this->getReadyOrderDetails();
         //show($detail);
         $data['ready'] = $ready;
+        
 
         if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST["cancel"])) {
 

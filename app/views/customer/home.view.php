@@ -208,7 +208,7 @@ $this->view('includes/footer', $data);
 
                 <div class="category">
                     <div class="category-content">
-                        <img src="<?= ROOT ?>/assets/images/vegi_roti.jpg" alt="frozen" class="category-image">
+                        <img src="<?= ROOT ?>/assets/images/fish_patties.jpg" alt="frozen" class="category-image">
 
                         <a href="<?= ROOT ?>/products">
                             <h5 class="category-title">FROZEN FOODS</h5>
