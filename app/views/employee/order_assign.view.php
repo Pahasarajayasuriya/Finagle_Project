@@ -1,5 +1,5 @@
 <?php
-
+// show($data);
 
 $role = "Employee";
 $data['role'] = $role;
@@ -60,33 +60,29 @@ $this->view('includes/alreadyProcess_popup', $data);
                     <?php
 
                     if (!empty($notify)) {
-                        //show($data['detail']);
+
+                        
                         foreach ($notify as $val) {
-
-                            if ($val->view_status == "0") {             
-
+                            
+                            if ($val->view_status == 0) {
+                                
+                                // show($val);
                     ?>
-                     <hr>
+                                <hr>
 
-                            <div class="notify">
-                                <img src="<?= ROOT ?>/assets/images/drivers/<?= $val->image ?>" class="profile-img">
-                                <p class="msg"> <b>Deliver_ID - <?= $val->deliver_id ?> </b>delivered the <b>Order-<?= $val->id ?> </b> successfully</p>
+                                <div class="notify" id="notification_<?= $val->id ?>">
+                                    <img src="<?= ROOT ?>/assets/images/drivers/<?= $val->image ?>" class="profile-img">
+                                    <p class="msg"> <b>Deliver_ID - <?= $val->deliver_id ?> </b>delivered the <b>Order-<?= $val->id ?> </b> successfully</p>
 
-                            <!-- Delete the notification about successfull deliveres -->
-
-                              <form method="POST">
-                                <input type="hidden" name="view_status" value= "1">
-                                <input type="hidden" name="id" value="<?= $val->id ?>">
-                                <!-- <button name="clear-msg" class="clear-msg">Clear</button>  -->
-                                <!-- <p name="clear-msg"  class="clear-msg">Clear</p> -->
-                                <p class="clear-msg" onclick="clearNotification(<?= $val->id ?>)">Clear</p>
-                              </form>
-                            </div>
+                                    <!-- Delete the notification about successfull deliveres -->
+                                    <p class="clear-msg" onclick="clearNotification(<?= $val->id ?>)">Clear</p>
+                              
+                                </div>
 
                     <?php
+                            }
                         }
                     }
-                 }
                     ?>
 
                 </div>
@@ -115,42 +111,37 @@ $this->view('includes/alreadyProcess_popup', $data);
                 });
             });
 
-           
-    function clearNotification(id) {
-        // Create a new FormData object
-        var formData = new FormData();
-        formData.append('view_status', '1');
-        formData.append('id', id);
 
-        // Create a new XMLHttpRequest object
-        var xhr = new XMLHttpRequest();
+            function clearNotification(id) {
 
-        // Define what happens on successful data submission
-        xhr.onload = function () {
-            if (xhr.status >= 200 && xhr.status < 300) {
-                // Success! You can handle any UI updates here.
-                console.log('Notification cleared successfully');
-                // Reload the page or update UI as needed
-                location.reload();
-            } else {
-                // Request failed, handle errors here
-                console.error('Failed to clear notification');
+                data = {
+                    id_array: parseInt(id),
+                    status: "notification",
+                    };
+
+                    $.ajax({
+                    type: "POST",
+                    url: status_update_endpoint,
+                    data: data,
+                    cache: false,
+                    success: function(res) {
+                        try {
+                        // alert(res);
+
+                        // convert to the json type
+                        Jsondata = JSON.parse(res);
+
+                        // location.reload();
+                        document.getElementById(`notification_${id}`).style.display = "none";
+                        notificationBox.style.display = "block";
+                        
+                        } catch (error) {}
+                    },
+                    error: function(xhr, status, error) {
+                        // return xhr;
+                    },
+                    });
             }
-        };
-
-        // Define what happens in case of error
-        xhr.onerror = function () {
-            console.error('Request failed');
-        };
-
-        // Set up our request
-        xhr.open('POST', 'Emp_progress.php', true);
-
-        // Send the form data
-        xhr.send(formData);
-    }
-
-
         </script>
 
         <div class="orders-container">
@@ -166,15 +157,10 @@ $this->view('includes/alreadyProcess_popup', $data);
 
                 <div class="filter-buttons">
 
-
                     <a href="<?= ROOT ?>/Emp_progress">All</a>
 
-                    <!-- <?php
-
-                            show(json_encode($data));
-                            ?> -->
-                    <button onclick='filterOrders("D",<?php echo json_encode($data) ?>)'>Deliveries</button>
-                    <button onclick='filterOrders("P",<?php echo json_encode($data) ?>)'>Pickups</button>
+                    <button onclick='filterOrders("D",<?php echo json_encode($data["detail"]) ?>)'>Deliveries</button>
+                    <button onclick='filterOrders("P",<?php echo json_encode($data["detail"]) ?>)'>Pickups</button>
                 </div>
 
                 <div class="selectOption">
@@ -206,7 +192,7 @@ $this->view('includes/alreadyProcess_popup', $data);
                     <?php
 
                     if (!empty($detail)) {
-                        //show($data['detail']);
+                        //show($detail);
                         foreach ($detail as $val) {
 
                     ?>
@@ -244,7 +230,7 @@ $this->view('includes/alreadyProcess_popup', $data);
 
                                     <button class="view-details" data-order='<?php echo json_encode($val); ?>' onclick="showPopup(this,'viewOrderDetails')">View Details</button>
 
-                                    <button class="cancel" id="deleteButton" onclick="showPopup(this,'cancel')">Cancel</button>
+                                    <button class="cancel" id="deleteButton" data-order='<?php echo json_encode($val); ?>' onclick="showPopup(this,'cancel')">Cancel</button>
                                 </div>
 
                             </div>
@@ -335,7 +321,7 @@ $this->view('includes/alreadyProcess_popup', $data);
                                     if ($val->delivery_or_pickup == "delivery") {
                                     ?>
 
-                                        <button class="cancel" id="assignButton" onclick="showPopup(this,'assignDeliver')">Assign Deliverer</button>
+                                        <button class="cancel" id="assignButton" data-order='<?php echo json_encode($val); ?>' onclick="showPopup(this,'assignDeliver')">Assign Deliverer</button>
 
                                     <?php
                                     } else {
@@ -379,27 +365,7 @@ $this->view('includes/alreadyProcess_popup', $data);
                     <div class="status-title">Dispatched Orders</div>
                 </div>
 
-                <!-- <div class="selectOption">
-                    <div class="select-all" id="select-all-dispatch" onclick="selectAllItems('dispatch')">
-                        <div class="outer-circle">
-                            <div class="inner-circle"></div>
-                        </div>
-                        <span>Select All</span>
-                    </div>
 
-
-
-                    <div class="dropdown">
-                        <div class="dropdown-header" onclick="toggleDispatchDropdown()" id="dispatchDropdownHeader">
-                            <span id="dispatchSelectedOption">Change the State</span>
-                            <i class="bx bxs-down-arrow style='color:#266bff"></i>
-                        </div>
-                        <div class="dropdown-content" id="dispatchDropdownContent">
-                            <div id="dispatchButton" onclick="selectDispatchOption('Ready to Dispatch')">Ready to Dispatch</div>
-
-                        </div>
-                    </div>
-                </div> -->
 
                 <div class="dispatch-order-list" id="dispatch-order-list">
                     <?php
@@ -417,7 +383,9 @@ $this->view('includes/alreadyProcess_popup', $data);
                                         <p class="item-id"><?= $val->id ?></p>
                                     </div>
                                     <i class='bx bxs-right-arrow-square'></i>
-                                    <p class="item-id"><?= $val->deliver_id ?></p>
+                                    <!-- <p class="item-id"><?= $val->username ?></p> -->
+                                    <p class="item-id">Deliver ID -<?= $val->deliver_id ?></p>
+
 
 
                                 </div>
@@ -427,27 +395,29 @@ $this->view('includes/alreadyProcess_popup', $data);
 
                                 </div>
 
+
+
                             </div>
-
-                </div>
-
-            </div>
-        <?php
+                        <?php
                         }
                     } else {
 
-        ?>
-        <p class="empty-box">No Available dispatch orders</p>
-    <?php
+                        ?>
+                        <p class="empty-box">No Available dispatch orders</p>
+                    <?php
                     }
-    ?>
+                    ?>
+
+                </div>
+
+
+            </div>
+
+
 
 
         </div>
     </div>
-
-
-
 
 
 
@@ -457,14 +427,20 @@ $this->view('includes/alreadyProcess_popup', $data);
 
 
 
-
-
     <script>
         var view_details = document.querySelector('view-details');
 
         var data = {};
 
+        // select pickup orders list
+        var driver_assign_order_id = [];
+
+        // cancel order id list
+        var cancel_order_id = [];
+
         function showPopup(button, popupId) {
+
+            cancel_reason_State = ""
 
             data = {};
 
@@ -476,6 +452,22 @@ $this->view('includes/alreadyProcess_popup', $data);
 
             if (popup) {
                 popup.style.display = "block";
+            }
+
+
+            // when call the assign deliver button tap with check 
+            if (popupId == "assignDeliver") {
+
+                driver_assign_order_id = [];
+                driver_assign_order_id.push(data.id);
+                return;
+            }
+            // when call the cancel each single orders tap with check 
+            else if (popupId == "cancel") {
+
+                cancel_order_id = [];
+                cancel_order_id.push(data.id);
+                return;
             }
 
             var order_id = document.getElementById('view-order-id');
@@ -494,9 +486,6 @@ $this->view('includes/alreadyProcess_popup', $data);
             // user_phone.innerHTML = data.phone_number;
             pay_status.innerHTML = data.payment_method;
             total_cost.innerHTML = data.total_cost;
-
-
-
 
 
             if (data.payment_method == 'card') {
@@ -549,7 +538,7 @@ $this->view('includes/alreadyProcess_popup', $data);
 
         function filterOrders(type, data) {
 
-
+            // console.log(data);
 
             var placed = document.getElementById("placed-order-list");
 
@@ -559,10 +548,10 @@ $this->view('includes/alreadyProcess_popup', $data);
 
 
 
-            for (let index = 0; index < data.detail.length; index++) {
+            for (let index = 0; index < data.length; index++) {
 
                 const element = data[index];
-                //console.log(element);
+                // console.log(element);
 
 
                 switch (type) {
@@ -781,6 +770,7 @@ $this->view('includes/alreadyProcess_popup', $data);
             };
         }
 
+        // select orders from placed list
         var selectedOrders = [];
 
         function showProcessedOrders() {
@@ -841,8 +831,6 @@ $this->view('includes/alreadyProcess_popup', $data);
             };
         }
 
-        var selectedPickups = [];
-
         function showPickupsOrders() {
 
             selectedPickups = [];
@@ -852,7 +840,6 @@ $this->view('includes/alreadyProcess_popup', $data);
                 var orderId = checkbox.closest(".placed-item").querySelector(".item-id").textContent;
                 selectedPickups.push(orderId);
             });
-            console.log(selectedPickups);
             showPickupModal(selectedPickups);
         }
 
@@ -883,6 +870,9 @@ $this->view('includes/alreadyProcess_popup', $data);
 
                 // Append the order container to the orders container
                 ordersContainer_cancel.appendChild(orderContainer_cancel);
+                
+                // get the cancel process for selected all order ids 
+                cancel_order_id.push(order);
             });
 
 
@@ -902,6 +892,10 @@ $this->view('includes/alreadyProcess_popup', $data);
         }
 
         function showSelectedOrders_cancel() {
+            
+            // add initial reason state in empty
+            cancel_reason_State = ""
+
             var selectedOrders = [];
             var checkboxes = document.querySelectorAll(".placed-order-list .checkbox:checked");
             checkboxes.forEach(function(checkbox) {
@@ -1032,7 +1026,6 @@ $this->view('includes/alreadyProcess_popup', $data);
             };
         }
 
-
         function showDrivers() {
 
             var selectedOrders = [];
@@ -1043,12 +1036,12 @@ $this->view('includes/alreadyProcess_popup', $data);
                 selectedOrders.push(orderId);
             });
 
-            //console.log(selectedOrders);
+            // get order id list 
+            driver_assign_order_id = selectedOrders;
+
+            // console.log(driver_assign_order_id);
             showAssignModal(selectedOrders);
         }
-
-
-
 
 
 
@@ -1117,12 +1110,6 @@ $this->view('includes/alreadyProcess_popup', $data);
 
 
 
-
-
-
-
-
-
         function selectAllItems(category) {
 
             var outerCircle = document.querySelector('#select-all-' + category + ' .outer-circle');
@@ -1143,6 +1130,9 @@ $this->view('includes/alreadyProcess_popup', $data);
                     item.checked = false;
                 });
             }
+
+
+            // console.log();
         }
     </script>
 

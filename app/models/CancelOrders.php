@@ -2,7 +2,7 @@
 
 class CancelOrders extends Model
 {
-    public $table = "branch";
+    public $table = "cancel_orders";
     public $errors = [];
     protected $allowedColumns = [
 
