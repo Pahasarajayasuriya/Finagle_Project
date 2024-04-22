@@ -50,7 +50,7 @@ $this->view('includes/footer', $data);
                     </tr>
                 <?php endforeach; ?>
             </table>
-            <div id="noResultsMessage" style="display: none;">No products found</div>
+            <div id="noResultsMessage" style="display: none;">Product Not found</div>
             <script src="<?= ROOT ?>/assets/js/manager/view_products.js"></script>
         </div>
     </div>

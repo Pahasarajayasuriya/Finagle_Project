@@ -1,86 +1,133 @@
 <?php
-     $role = "Manager";
-     $data['role'] = $role;
-     // require_once '../../Components/NavBar/header.php';
-     // require_once '../../Components/NavBar/NavBar.php';
-     // require_once '../../Components/NavBar/footer.php';
-
-     $this->view('includes/header', $data);
-     $this->view('includes/NavBar', $data);
-     $this->view('includes/footer', $data);
+$role = "Manager";
+$data['role'] = $role;
+$this->view('includes/header', $data);
+$this->view('includes/NavBar', $data);
+$this->view('includes/footer', $data);
 
 ?>
 
- <!DOCTYPE html>
- <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
- <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>View Complaints</title>
-     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/manager/view_complains.css">
- </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Complaints</title>
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/manager/view_products.css">
+</head>
 
- <body>
-     <div class="home-section">
-         <div class="search-container">
-             <div class="branch_head">
-                 <p class="branch_head_1">CUSTOMER<span> COMPLAINTS</span></p>
-             </div>
-
-             <form action="#">
-                 <div class="form-input">
-                     <input type="search" id="search" placeholder="Search...">
-                     <button type="submit" class="search-btn">
-                         <i class='bx bx-search'></i>
-                     </button>
-                 </div>
-             </form>
-
-         </div>
-         <div class="complaint-list" id="complaintList">   
-    <?php if (!empty($data['rows'])): ?>
-        <?php foreach ($rows as $row): ?>
-            <div class="complaint">
-                <h4 class="order-id">Complaint ID: <?= esc($row->id) ?></h4>
-
-                <div class="order-details">
-                    <p class="topic">CUSTOMER NAME</p>
-                    <h4><?= esc($row->name) ?></h4><br>
-
-                    <p class="topic">COMPLAINT</p>
-                    <h4><?= esc($row->complaint) ?></h4><br>
-
-                    <p class="topic">TELEPHONE NUMBER</p>
-                    <h4><?= esc($row->teleno) ?></h4><br>
-
-                    <p class="topic">Email</p>
-                    <h4><?= esc($row->email) ?></h4><br>
-                </div>
-
-                <div class="button-container">
-                    <button class="response-button" onclick="window.location.href = 'http://localhost/finagle/public/response_complains';">Response</button>
-                </div>
+<body>
+    <div class="home-section">
+        <div class="search-container">
+            <div class="branch_head">
+                <p class="branch_head_1">COM<span>PLAITNS</span></p>
             </div>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <p>No complaints found.</p>
-    <?php endif; ?>
-</div>
+
+            <form>
+                <div class="form">
+                    <input id="searchInput" class="form-group" type="text" placeholder="Search...">
+                    <i class='bx bx-search icon'></i>
+                </div>
+
+            </form>
 
 
+            <table class="table" id="productTable">
+                <thead>
+                    <tr>
+                        <th class="ordId">Id</th>
+                        <th class="ordId">Customer Name</th>
+                        <th class="desc">Complaint</th>
+                        <th class="desc">Phone Number</th>
+                        <th class="ordId">Email</th>
+                        <th class="ordId">Response</th>
+                    </tr>
+                </thead>
+                <tbody id="complaintsTableBody">
+                    <?php foreach ($rows as $row) : ?>
+                        <tr>
+                            <td class="ordId"><?= esc($row->id) ?></td>
+                            <td class="products"><?= esc($row->name) ?> </td>
+                            <td class="category"><?= esc($row->complaint) ?></td>
+                            <td class="desc"><?= esc($row->teleno) ?></td>
+                            <td class="desc"><?= esc($row->email) ?></td>
+                            <td><button type="submit" class="view-order-btn response-btn">Response</button></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+            <div id="noResultsMessage" style="display: none;">Complaint Not found</div>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="<?= ROOT ?>/assets/js/manager/view_complains.js"></script>
 
-         <button class="back-button" id="back-button" onclick="window.location.href = 'http://localhost/finagle/public/Manager_profile';">Back</button>
+            <script>
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer);
+                        toast.addEventListener('mouseleave', Swal.resumeTimer);
+                    }
+                });
+                document.querySelectorAll('.response-btn').forEach(function(button) {
+                    button.addEventListener('click', async function(event) {
+                        event.preventDefault();
+                        const {
+                            value: email
+                        } = await Swal.fire({
+                            title: "Input email address",
+                            input: "email",
+                            inputLabel: "Your email address",
+                            inputPlaceholder: "Enter your email address"
+                        });
 
-        <!-- <script>
-             document.getElementById("back-button").addEventListener("click", function() {
-                 window.location.href = "manager_profile.php"
-             });
-         </script>-->
+                        if (email) {
+                            const {
+                                value: response
+                            } = await Swal.fire({
+                                title: "Write your response",
+                                input: "textarea",
+                                inputLabel: "Your response",
+                                inputPlaceholder: "Enter your response here"
+                            });
 
-        
-        <script src="<?= ROOT ?>/assets/js/manager/view_complainsj.js"></script>
-     </div>
- </body>
+                            if (response) {
+                                Toast.fire({
+                                    icon: "success",
+                                    title: "Email send successfully"
+                                });
+                                fetch('<?= ROOT ?>/man_complains/sendEmail', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                        },
+                                        body: JSON.stringify({
+                                            email: email,
+                                            response: response
+                                        }),
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        if (data.success) {
+                                            Swal.fire('Email sent successfully');
+                                        } else {
+                                            Swal.fire('Failed to send email');
+                                        }
+                                    })
+                                    .catch((error) => {
+                                        console.error('Error:', error);
+                                    });
+                            }
+                        }
+                    });
+                });
+            </script>
+        </div>
+    </div>
+</body>
 
- </html>
+</html>
