@@ -199,7 +199,7 @@ $this->view('includes/footer', $data);
                     <div class="category-content">
                         <img src="<?= ROOT ?>/assets/images/delicious-bread.jpg" alt="breads" class="category-image">
 
-                        <a href="<?= ROOT ?>/products">
+                        <a href="<?= ROOT ?>/products#bread">
                             <h5 class="category-title">BREAD & BUNS</h5>
                         </a>
 
@@ -210,7 +210,7 @@ $this->view('includes/footer', $data);
                     <div class="category-content">
                         <img src="<?= ROOT ?>/assets/images/vegi_roti.jpg" alt="frozen" class="category-image">
 
-                        <a href="<?= ROOT ?>/products">
+                        <a href="<?= ROOT ?>/products#frozen">
                             <h5 class="category-title">FROZEN FOODS</h5>
                         </a>
 
@@ -221,7 +221,7 @@ $this->view('includes/footer', $data);
                     <div class="category-content">
                         <img src="<?= ROOT ?>/assets/images/cakes.jpg" alt="cakes" class="category-image">
 
-                        <a href="<?= ROOT ?>/products">
+                        <a href="<?= ROOT ?>/products#cakes">
                             <h5 class="category-title"> CAKES</h5>
                         </a>
 
