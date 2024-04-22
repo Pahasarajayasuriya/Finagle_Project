@@ -113,16 +113,16 @@ class CheckoutModel extends Model
 
         // Retrieve the address, latitude, and longitude from the form data
         if ($_POST['delivery_or_pickup'] == 'delivery') {
-        if (isset($_POST['check_address'])) {
-            $data['delivery_address'] = $_POST['check_address'];
+            if (isset($_POST['check_address'])) {
+                $data['delivery_address'] = $_POST['check_address'];
+            }
+            if (isset($_POST['latitude'])) {
+                $data['latitude'] = $_POST['latitude'];
+            }
+            if (isset($_POST['longitude'])) {
+                $data['longitude'] = $_POST['longitude'];
+            }
         }
-        if (isset($_POST['latitude'])) {
-            $data['latitude'] = $_POST['latitude'];
-        }
-        if (isset($_POST['longitude'])) {
-            $data['longitude'] = $_POST['longitude'];
-        }
-    }
 
         $keys = array_keys($data);
         $values = array_values($data);
@@ -220,9 +220,19 @@ class CheckoutModel extends Model
         $this->query($query, $data);
     }
 
-    public function getAllBranches() {
+    public function getAllBranches()
+    {
         $query = "SELECT `name`, `latitude`, `longitude` FROM `branch`";
         return $this->query($query);
     }
 
+    public function getreason($orderId)
+    {
+        $originalTable = $this->table;
+        $this->table = 'cancel_orders';
+        $data = ['order_id' => $orderId];
+        $result = $this->where($data);
+        $this->table = $originalTable;
+        return $result[0]->reason ?? null;
+    }
 }
