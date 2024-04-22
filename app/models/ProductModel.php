@@ -1,5 +1,5 @@
 <?php
-
+/*
 class ProductModel extends Model
 {
     protected $table = "products";
@@ -39,3 +39,16 @@ class ProductModel extends Model
         return false;
     }
 }
+*/
+
+
+class ProductModel extends Model
+{
+    public $table = "products";
+
+    public function getProducts()
+    {
+        return $this->all();
+    }
+}
+?>

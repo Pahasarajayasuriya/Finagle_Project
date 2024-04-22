@@ -1,22 +1,12 @@
 <?php
-
 class Customer extends Model
 {
-    public $table = "customer";
-    public $errors = [];
-    protected $allowedColumns = [
+    public $table = "users";
 
-        'id',
-        'name',
-        'username',
-        'email',
-        'contact_number',
-        'address',
-        
-   
-    ];
-
-
-
-
+    public function getCustomers()
+    {
+        $result = $this->where(['role' => 'customer']);
+        return $result;
+    }
 }
+?>
