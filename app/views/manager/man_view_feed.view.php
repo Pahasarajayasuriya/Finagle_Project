@@ -41,9 +41,9 @@
             <div class="review-box">
                 <div class="user-review">
                     <img decoding="async" src="../../img/pic-1.png" alt="">
-                    <h3><?= $rows->name ?></h3>
+                    <h3><?= $rows->userName ?></h3>
                 </div>
-                <p><?= $rows->feedback ?></p>
+                <p><?= $rows->review ?></p>
             </div>
 
            <!--  <div class="review-box">

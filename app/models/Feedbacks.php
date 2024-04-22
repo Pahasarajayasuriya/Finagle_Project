@@ -2,15 +2,16 @@
 
 class Feedbacks extends Model
 {
-    public $table = "feedbacks";
+    public $table = "reviews";
     public $errors = [];
     protected $allowedColumns = [
 
         'id',
-        'name',
-        'teleno',
-        'email',
-        'feedback',
+        'userName',
+        'image',
+        'rating',
+        'review',
+        'datetime',
         
 
    
