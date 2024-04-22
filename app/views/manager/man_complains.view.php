@@ -46,20 +46,20 @@
 
                 <div class="order-details">
                     <p class="topic">CUSTOMER NAME</p>
-                    <h4><?= esc($row->name) ?></h4>
+                    <h4><?= esc($row->name) ?></h4><br>
 
                     <p class="topic">COMPLAINT</p>
-                    <h4><?= esc($row->complaint) ?></h4>
+                    <h4><?= esc($row->complaint) ?></h4><br>
 
                     <p class="topic">TELEPHONE NUMBER</p>
-                    <h4><?= esc($row->teleno) ?></h4>
+                    <h4><?= esc($row->teleno) ?></h4><br>
 
                     <p class="topic">Email</p>
-                    <h4><?= esc($row->email) ?></h4>
+                    <h4><?= esc($row->email) ?></h4><br>
                 </div>
 
                 <div class="button-container">
-                    <button class="response-button" onclick="redirectToResponsePage()">Response</button>
+                    <button class="response-button" onclick="window.location.href = 'http://localhost/finagle/public/response_complains';">Response</button>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -70,13 +70,13 @@
 
 
 
-         <button class="back-button" id="back-button">Back</button>
+         <button class="back-button" id="back-button" onclick="window.location.href = 'http://localhost/finagle/public/Manager_profile';">Back</button>
 
-         <script>
+        <!-- <script>
              document.getElementById("back-button").addEventListener("click", function() {
                  window.location.href = "manager_profile.php"
              });
-         </script>
+         </script>-->
 
         
         <script src="<?= ROOT ?>/assets/js/manager/view_complainsj.js"></script>

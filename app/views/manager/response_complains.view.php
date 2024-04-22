@@ -40,8 +40,11 @@
                         <p>&emsp;</p>
                         <form action="response_complaint.php">
                             <div class="actions">
-                                <button type="submit" class="res_back_btn">Back</button>
-                                <button type="submit" class="res_send_btn">Send</button>
+                                <!--<button class="res_back_btn" onclick="window.location.href = 'http://localhost/finagle/public/Manager_profile';">Back</button>
+                                <button type="submit" class="res_send_btn">Send</button>-->
+
+                                <button class="res_back_btn"  onclick="window.location.href = 'http://localhost/finagle/public/Man_complains';">Back</button>
+                                <button class="res_send_btn"  onclick="window.location.href = '#';">Send</button>
 
                             </div>
 

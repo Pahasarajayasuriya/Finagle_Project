@@ -101,8 +101,9 @@ $this->view('includes/footer', $data);
         </div>
     </div>
 
+    <br><br>
     <div class="logout-button">
-        <button><b>Log Out</b></button>
+        <button>Back</button>
     </div>
     </div>
 </body>

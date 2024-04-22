@@ -16,10 +16,12 @@ $this->view('includes/footer', $data);
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Manager Profile</title>
   <link rel="stylesheet" href="<?= ROOT ?>/assets/css/manager/view_profile.css">
   <script src="script.js" defer></script>
+
+
 </head>
 
 <body>
@@ -34,13 +36,10 @@ $this->view('includes/footer', $data);
         <div class="pro_form-group">
           <div class="avatar-container">
             <div class="username">
-              
               <h4><?= esc($row->username) ?></h4>
             </div>
-
-            
+            <img src="https://i.pinimg.com/474x/c4/a6/ad/c4a6ad3a4bdcd5a8d5425f2afa2f81c6.jpg" alt="Profile Image">
           </div>
-
         </div>
       </form>
 
