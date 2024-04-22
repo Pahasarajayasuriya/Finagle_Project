@@ -65,19 +65,19 @@ $this->view('includes/footer', $data);
 
 
         <div class="categories">
-            <div class="category-item" data-category="Bread & Buns">
+            <div class="category-item"  id="bread" data-category="Bread & Buns">
                 <div class="p-4">
                     <i class='bx bx-badge bx-tada'></i>
                     <h5 class="category-title">Bread & Buns</h5>
                 </div>
             </div>
-            <div class="category-item" data-category="Cakes">
+            <div class="category-item" id="cakes" data-category="Cakes">
                 <div class="p-4">
                     <i class='bx bxs-cake bx-tada'></i>
                     <h5 class="category-title">Cakes</h5>
                 </div>
             </div>
-            <div class="category-item" data-category="Frozen Foods">
+            <div class="category-item" id="frozen" data-category="Frozen Foods">
                 <div class="p-4">
                     <i class='bx bxs-pizza bx-tada'></i>
                     <h5 class="category-title">Frozen Foods</h5>
