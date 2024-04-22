@@ -2,9 +2,9 @@
 
 class Manager_branches extends Controller
 {
-    public function index($id = null)
+    public function index()
     {
-        $id = $id ?? Auth::getId();
+        //$id = $id ?? Auth::getId();
 
         $branch = new Branches();
         $data= $this->getBranchdata($branch);

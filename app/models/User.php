@@ -86,4 +86,48 @@ class User extends Model
         }
         return false;
     }
+    public function getManagers()
+    {
+        $managers = $this->where(['role' => 'manager']);
+        
+        if (is_array($managers)) {
+            return (object)$managers;
+        } else {
+            return false;
+        }
+    }
+
+    public function getEmployee()
+    {
+        $managers = $this->where(['role' => 'employee']);
+        
+        if (is_array($managers)) {
+            return (object)$managers;
+        } else {
+            return false;
+        }
+    }
+
+    public function getDeliverer()
+    {
+        $managers = $this->where(['role' => 'deliverer']);
+        
+        if (is_array($managers)) {
+            return (object)$managers;
+        } else {
+            return false;
+        }
+    }
+
+    public function getCustomer()
+    {
+        $managers = $this->where(['role' => 'customer']);
+        
+        if (is_array($managers)) {
+            return (object)$managers;
+        } else {
+            return false;
+        }
+    }
 }
+

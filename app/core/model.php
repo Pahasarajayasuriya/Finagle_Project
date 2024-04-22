@@ -240,6 +240,7 @@ class Model extends Database
         return $this->query($query);
     }
 
+
     public function countall()
     {
         $query = "SELECT  COUNT(*) AS total_records FROM {$this->table}";
@@ -342,4 +343,5 @@ class Model extends Database
 
         return $this->query($query);
     }
+
 }

@@ -1,0 +1,168 @@
+body {
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: black;
+}
+.branch_head {
+    align-items: center;
+    text-align: center;
+    font-size: 25px;
+    color: red;
+    letter-spacing: 0.08rem;
+    margin: 1rem 0 1rem;
+    font-weight: 600;
+    margin-top: -10px;
+
+  }
+  
+  .branch_head_1 {
+  
+    font-weight: 800;
+    color: black;
+    white-space: nowrap;
+    font-size: 25px;
+    margin-top: -10px;
+
+  }
+  
+  .branch_head_1 span {
+  
+    color: #d72323;
+  }
+
+
+.employee-table {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: black;
+    margin-top: 40px;
+}
+
+.table-header {
+    display: flex;
+    gap: 20px;
+    padding: 15px;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    font-weight: bold;
+    width: 800px;
+    color: black;
+  
+}
+
+.header-item, .employee-id, .employee-name, .goal-assignment {
+    flex: 1;
+}
+
+.header-item{
+    margin-left: -40px;
+
+}
+
+.employee-record {
+    display: flex;
+    gap: 20px;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color:black;
+    transition: transform 0.3s ease-in-out;
+    width: 800px;
+}
+
+.employee-record:hover {
+    transform: scale(1.05);
+}
+
+.employee-id,
+.employee-image,
+.employee-name,
+.goal-assignment {
+    flex: 1;
+}
+
+/* .employee-id{
+    margin-left: 50px;
+}
+.employee-name{
+    margin-left: 50px;
+} */
+.goal-assignment {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+.goal-assignment{ 
+    outline: none;
+    font-size: 16px;
+    flex: 2;
+    padding: 10px;
+    border: 1px solid  #f5eded;;
+    border-radius: 5px;
+    width: 100px;
+    
+  
+    
+  }
+
+  .header-item .employee-image{
+    font-size: 16px;
+    width: 20px;
+  }
+  .employee-image {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.employee-image img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.7);
+    transition: transform 0.1s ease, filter 0.1s ease;
+   
+}
+
+.employee-icon {
+    width: -20px; /* Adjust the width and height as needed */
+    height: -20px;
+    margin-left: -40px;
+
+}
+
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.star {
+    cursor: pointer;
+    font-size: 24px;
+    color: #ccc;
+    margin: 0 5px;
+    transition: color 0.3s;
+}
+
+.star:hover,
+.star.checked {
+    color: gold;
+}
+
+/* Optional: Hide radio input */
+input[type="radio"] {
+    display: none;
+}

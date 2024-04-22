@@ -1,8 +1,6 @@
 <?php
 $role = "Manager";
-// require_once '../../Components/NavBar/header.php';
-// require_once '../../Components/NavBar/NavBar.php';
-// require_once '../../Components/NavBar/footer.php';
+$data['role'] = $role;
 
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
@@ -49,53 +47,37 @@ $this->view('includes/footer', $data);
 
         </div>
 
+        <?php
+
+            // show($data);
+          if (isset($driver)) {
+               foreach ($driver as $driver) {
+       
+
+          ?>
+
+
         <div class="employee-table">
             <div class="table-header">
                 <div class="header-item employee-image">
                 </div>
                 <div class="header-item">Deliverer ID</div>
                 <div class="header-item">Name</div>
-                <div class="header-item">Contact Number</div>
-                <div class="header-item">Ratings</div>
+                <div class="header-item">Email</div>
+                <div class="header-item">Branch</div>
                
                 <!-- <div class="header-item">Goals Assignment</div> -->
             </div>
 
-            <?php
-
-            // show($data);
-          if (isset($data['driver'])) {
-               foreach ($data['driver'] as $driver) {
-       
-
-          ?>
-
-
+            
 
             <div class="employee-record">
                 <div class="employee-image"><img src="<?= ROOT ?>/assets/images/drivers/<?= $driver->image ?>" alt="Deliverer 1"></div>
                 <div class="employee-id"><?= $driver->id ?></div>
-                <div class="employee-name"><?= $driver->name ?></div>
-                <div class="employee-no"><?= $driver->contact_number ?></div>
 
-
-
-                <div class="rating">
-                    <input type="radio" id="star5" name="rating" value="5" />
-                    <label class="star" for="star5">&#9733;</label>
-                    <input type="radio" id="star4" name="rating" value="4" />
-                    <label class="star" for="star4">&#9733;</label>
-                    <input type="radio" id="star3" name="rating" value="3" />
-                    <label class="star" for="star3">&#9733;</label>
-                    <input type="radio" id="star2" name="rating" value="2" />
-                    <label class="star" for="star2">&#9733;</label>
-                    <input type="radio" id="star1" name="rating" value="1" />
-                    <label class="star" for="star1">&#9733;</label>
-                </div>
-
-
-                
-                <!-- <textarea class="goal-assignment" id="pro_complaint" name="pro_complaint"></textarea> -->
+                <div class="employee-name"><?= $driver->username ?></div>
+                <div class="employee-name"><?= $driver->email ?></div>
+                <div class="employee-name"><?= $driver->branch ?></div>
             </div>
 
             <?php
