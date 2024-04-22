@@ -1,9 +1,6 @@
 <?php
 $role = "Manager";
 $data['role'] = $role;
-// require_once '../../Components/NavBar/header.php';
-// require_once '../../Components/NavBar/NavBar.php';
-// require_once '../../Components/NavBar/footer.php';
 
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
@@ -66,8 +63,8 @@ $this->view('includes/footer', $data);
                 </div>
                 <div class="header-item">Deliverer ID</div>
                 <div class="header-item">Name</div>
-                <div class="header-item">Contact Number</div>
-                <div class="header-item">Ratings</div>
+                <div class="header-item">Email</div>
+                <div class="header-item">Branch</div>
                
                 <!-- <div class="header-item">Goals Assignment</div> -->
             </div>
@@ -80,25 +77,7 @@ $this->view('includes/footer', $data);
 
                 <div class="employee-name"><?= $driver->username ?></div>
                 <div class="employee-name"><?= $driver->email ?></div>
-
-
-
-                <div class="rating">
-                    <input type="radio" id="star5" name="rating" value="5" />
-                    <label class="star" for="star5">&#9733;</label>
-                    <input type="radio" id="star4" name="rating" value="4" />
-                    <label class="star" for="star4">&#9733;</label>
-                    <input type="radio" id="star3" name="rating" value="3" />
-                    <label class="star" for="star3">&#9733;</label>
-                    <input type="radio" id="star2" name="rating" value="2" />
-                    <label class="star" for="star2">&#9733;</label>
-                    <input type="radio" id="star1" name="rating" value="1" />
-                    <label class="star" for="star1">&#9733;</label>
-                </div>
-
-
-                
-                <!-- <textarea class="goal-assignment" id="pro_complaint" name="pro_complaint"></textarea> -->
+                <div class="employee-name"><?= $driver->branch ?></div>
             </div>
 
             <?php

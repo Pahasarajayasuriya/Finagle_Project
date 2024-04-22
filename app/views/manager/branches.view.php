@@ -56,13 +56,6 @@ $this->view('includes/footer', $data);
             // show($data);
             if (isset($branch)) {
                 foreach ($branch as $branch) {
-                    // Create a DateTime object from the time string
-                    //$open_time = DateTime::createFromFormat('H:i:s.u', $branch->open_time)->format('h:i A');
-
-                    //$close_time = DateTime::createFromFormat('H:i:s.u', $branch->close_time)->format('h:i A');
-
-                    // Format the time as AM/PM with hours and minutes
-                     //$formattedTime = $time->format('h:i A');
 
             ?>
 
@@ -99,11 +92,6 @@ $this->view('includes/footer', $data);
             ?>
 
         </div>
-    </div>
-
-    <br><br>
-    <div class="logout-button">
-        <button>Back</button>
     </div>
     </div>
 </body>

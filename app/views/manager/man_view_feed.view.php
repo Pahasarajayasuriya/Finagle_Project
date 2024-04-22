@@ -40,70 +40,11 @@
 
             <div class="review-box">
                 <div class="user-review">
-                    <img decoding="async" src="../../img/pic-1.png" alt="">
+                <img src='<?= esc($rows->image) ?>' alt="">
                     <h3><?= $rows->userName ?></h3>
                 </div>
                 <p><?= $rows->review ?></p>
             </div>
-
-           <!--  <div class="review-box">
-                <div class="user-review">
-
-                        <img decoding="async" src="../../img/pic-2.png" alt="">
-                        <h3>Malki Yasodhara</h3>
-
-                    
-
-                </div>
-                <p>Love it. Love the bread and bakery items produce by them. Top quality....❤❤</p>
-            </div>
-
-            <div class="review-box">
-                <div class="user-review">
-                 
-                  
-                        <img decoding="async" src="../../img/pic-3.png" alt="">
-                        <h3>Mithun Weerasinghe</h3>
-                  
-                </div>
-                <p>Super and excellent productions. And my favorite product was roller cake</p>
-            </div> -->
-
-            <!-- <div class="review-box">
-                <div class="user-review">
-                   
-                   
-                        <img decoding="async" src="../../img/pic-4.png" alt="">
-                        <h3>Senuri Hettiarachchi</h3>
-                 
-                </div>
-                <p>Great food and quality is ensured by the process and management.
-                </p>
-            </div>
-
-            <div class="review-box">
-                <div class="user-review">
-                  
-                  
-                        <img decoding="async" src="../../img/pic-5.png" alt="">
-                        <h3>Dilshan Akalanka</h3>
-                    
-                </div>
-                <p>Good place for employers. They produce healthy bakery food.</p>
-            </div>
-
-            <div class="review-box">
-                <div class="user-review">
-                   
-                  
-                        <img decoding="async" src="../../img/pic-6.png" alt="">
-                        <h3>Mihiri Samarasekara</h3>
-                 
-                </div>
-                <p>Best manufacturer of bakery items in srilanka </p>
-            </div> -->
-
-
             <?php
                 }
             }

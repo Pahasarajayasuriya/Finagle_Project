@@ -53,6 +53,7 @@ $this->view('includes/footer', $data);
                         <th class="ordId">Order Id</th>
                         <th class="desc">Name</th>
                         <th class="desc">Phone Number</th>
+                        <th class="ordId">Order Type</th>                        
                         <th class="ordId">Deliver</th>
                         <th class="ordId">Date & Time</th>
                         <th class="ordId">Order Status</th>
@@ -66,6 +67,7 @@ $this->view('includes/footer', $data);
                         <td><?= esc($row->id) ?></td>
                         <td><?= esc($row->name) ?> </td>
                         <td><?= esc($row->phone_number) ?></td>
+                        <td><?= esc($row->delivery_or_pickup) ?></td>
                         <td><?= esc($row->deliver_id) ?></td>
                         <td><?= esc($row->delivery_date) ?> <?= esc($row->delivery_time) ?></td>
                         <td><?= esc($row->order_status) ?></td>
