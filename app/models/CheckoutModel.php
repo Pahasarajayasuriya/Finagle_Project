@@ -235,4 +235,10 @@ class CheckoutModel extends Model
         $this->table = $originalTable;
         return $result[0]->reason ?? null;
     }
+
+    public function getDetailsFromBorella()
+    {
+        $query = "SELECT * FROM {$this->table} WHERE pickup_location = 'borella'";
+        return $this->query($query);
+    }
 }

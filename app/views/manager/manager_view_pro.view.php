@@ -35,20 +35,15 @@ $this->view('includes/footer', $data);
             <table class="table" id="productTable">
                 <thead>
                     <tr>
-                        <th></th>
                         <th class="ordId">Image</th>
                         <th class="desc">Product Name</th>
                         <th class="desc">category</th>
                         <th class="ordId">Price</th>
                     </tr>
                 </thead>
-                <?php $rowNumber = 1; ?>
                 <?php foreach ($rows as $row) : ?>
                     <tr>
-                        <td><?= $rowNumber++ ?></td>
-                        <td class="desc">
-                            <img class="image-preview" src="<?= esc($row->image) ?>" alt="Product Image">
-                        </td>
+                        <td class="desc"><img class="image-preview" src="<?= esc($row->image) ?>" alt="Product Image"></td>
                         <td class="products"><?= esc($row->user_name) ?> </td>
                         <td class="category"><?= esc($row->category) ?></td>
                         <td class="desc"><?= esc($row->price) ?></td>
