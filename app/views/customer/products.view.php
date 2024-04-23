@@ -136,7 +136,7 @@ $this->view('includes/footer', $data);
                 </div>
             </div>
         </section>
-    </div>
+        <?php $this->view('includes/cus_footer', $data); ?>
     </div>
     <!-- HTML structure for the message container -->
 

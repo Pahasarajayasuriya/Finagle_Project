@@ -1,5 +1,5 @@
 <?php
-/*
+
 class ProductModel extends Model
 {
     protected $table = "products";
@@ -38,17 +38,11 @@ class ProductModel extends Model
 
         return false;
     }
-}
-*/
 
-
-class ProductModel extends Model
-{
-    public $table = "products";
-
-    public function getProducts()
+    public function getLastProducts()
     {
-        return $this->all();
+        $query = "SELECT * FROM `" . $this->table . "` ORDER BY `id` DESC LIMIT 6";
+        return $this->query($query);
     }
+
 }
-?>

@@ -47,29 +47,24 @@ $this->view('includes/footer', $data);
             <p><i>Deliciously Convenient Bread Pizza</i></p>
           </div>
 
-       
+
           <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/-UKqYAROGEI?si=dw67Bhk028SxXqVN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          <p><i>Deliciously Convenient "Pita Bread<br> Nachos" Recipe To Try Out</i></p>
+            <iframe src="https://www.youtube.com/embed/-UKqYAROGEI?si=dw67Bhk028SxXqVN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <p><i>Deliciously Convenient "Pita Bread<br> Nachos" Recipe To Try Out</i></p>
           </div>
         </div>
 
         <div class="rec_section">
 
           <div class="video-container">
-           <iframe src="https://www.youtube.com/embed/VxK_V_Ke0vU?si=CVY7jgWABrwE8LKt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-           <p><i>Introducing To You A Quick And <br>Delicious "Pita Bread Pizza" Recipe</i></p>
-         </div>
+            <iframe src="https://www.youtube.com/embed/VxK_V_Ke0vU?si=CVY7jgWABrwE8LKt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <p><i>Introducing To You A Quick And <br>Delicious "Pita Bread Pizza" Recipe</i></p>
+          </div>
 
         </div>
       </div>
-
-
-        </div>
-
-       
     </div>
-
+    <?php $this->view('includes/cus_footer', $data); ?>
   </div>
 </body>
 

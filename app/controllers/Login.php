@@ -36,7 +36,7 @@ class Login extends Controller
                     } elseif (Auth::is_customer()) {
                         redirect("home");
                     } elseif (Auth::is_employee()) {
-                        redirect("emp_profile");
+                        redirect("Emp_dashboard");
                     } elseif (Auth::is_manager()) {
                         redirect("manager_profile");
                     } elseif (Auth::is_deliverer()) {

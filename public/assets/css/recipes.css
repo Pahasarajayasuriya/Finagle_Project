@@ -111,7 +111,7 @@ i {
 
 
 .sidebar.open~.home-section {
-    left: 190px;
+    /* left: 20px; */
     width: calc(100% - 200px);
 }
 
@@ -119,7 +119,7 @@ i {
     position: relative;
     transition: all 0.5s ease;
     min-height: 100vh;
-    left: 8px;
+    /* left: 3px; */
     width: calc(100% - 300px);
     z-index: 2;
 }

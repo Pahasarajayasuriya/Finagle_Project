@@ -1,7 +1,6 @@
 <?php
 $role = "Deliverer";
-
-
+$data['role'] = $role;
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
@@ -30,9 +29,9 @@ $this->view('includes/footer', $data);
             </div>
 
             <?php
-            if (isset($data['driver_data'])) {
+            if (isset($driver_data)) {
                 //show($data['driver_data']);
-                foreach ($data['driver_data'] as $val) {
+                foreach ($driver_data as $val) {
 
 
             ?>
@@ -63,8 +62,8 @@ $this->view('includes/footer', $data);
 
                             <?php
                             // show($data['$deliveredOrder']);
-                            if (isset($data['$deliveredOrder'])) {
-                                foreach ($data['$deliveredOrder'] as $delivered_orders) {
+                            if (isset($deliveredOrder)) {
+                                foreach ($deliveredOrder as $delivered_orders) {
 
                             ?>
                                     <p class="stats-number"><?= $delivered_orders->delivered_count ?></p>
@@ -87,8 +86,8 @@ $this->view('includes/footer', $data);
                             
                             <?php
                             // show($data['$totalEarnings']);
-                            if (isset($data['$totalEarnings'])) {
-                                foreach ($data['$totalEarnings'] as $total_earnings) {
+                            if (isset($totalEarnings)) {
+                                foreach ($totalEarnings as $total_earnings) {
 
                             ?>
                                      <p class="stats-number">Rs.<?= $total_earnings->totalCost ?></p>
