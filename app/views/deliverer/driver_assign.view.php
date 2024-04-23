@@ -1,9 +1,6 @@
 <?php
 $role = "Deliverer";
-// require_once '../../Components/NavBar/header.php';
-// require_once '../../Components/NavBar/NavBar.php';
-// require_once '../../Components/NavBar/footer.php';
-
+$data['role'] = $role;
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
@@ -39,9 +36,9 @@ $this->view('includes/orderDetails_popup', $data);
 
         // show($data['total_cost']);
 
-        if (!empty($data['ready_order'])) {
+        if (!empty($ready_order)) {
           //show($data['ready_order']);
-          foreach ($data['ready_order'] as $key => $element) {
+          foreach ($ready_order as $key => $element) {
         ?>
             <div class="order-box">
               <div class="order-header">
