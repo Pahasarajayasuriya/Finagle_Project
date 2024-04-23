@@ -18,7 +18,7 @@ $this->view('includes/footer', $data);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
   <title>Manager Profile</title>
-  <link rel="stylesheet" href="<?= ROOT ?>/assets/css/manager/view_profile.css">
+  <link rel="stylesheet" href="<?= ROOT ?>/assets/css/admin/admin_profile.css">
   <script src="script.js" defer></script>
 </head>
 
