@@ -166,3 +166,18 @@ body {
     }
   }
   
+  .sidebar.open~.home-section {
+    left: 150px;
+    width: calc(100% - 50px);
+  
+  }
+  
+  .home-section {
+    position: relative;
+    transition: all 0.5s ease;
+    min-height: 100vh;
+    left: 8px;
+    width: calc(100% - 58px);
+    z-index: 2;
+    margin-top: 50px;
+  }

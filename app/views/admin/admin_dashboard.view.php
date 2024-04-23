@@ -1,8 +1,6 @@
 <?php
 $role = "Admin";
-// $role = "Admin";
-// $data['role'] = $role;
-
+$data['role'] = $role;
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
@@ -12,16 +10,17 @@ $this->view('includes/footer', $data);
 <html lang="en">
 
 <head>
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin/admin_dashboard2.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="<?= ROOT ?>/assets/css/admin/admin_dashboard2.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
 <body>
-<div class="grid-container">
-<main class="main-container">
+  <div class="home-section">
+    <div class="grid-container">
+      <main class="main-container">
         <div class="main-title">
           <h2>DASHBOARD</h2>
         </div>
@@ -77,9 +76,10 @@ $this->view('includes/footer', $data);
 
         </div>
       </main>
-      </div>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
-      <script src="<?= ROOT?>/assets/js/admin_dashboard.js"></script>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
+  <script src="<?= ROOT ?>/assets/js/admin_dashboard.js"></script>
 </body>
 
 </html>
