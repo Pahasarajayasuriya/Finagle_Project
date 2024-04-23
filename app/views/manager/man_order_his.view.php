@@ -35,7 +35,7 @@ $this->view('includes/footer', $data);
     <div class="home-section">
         <div class="search-container">
             <div class="branch_head">
-                <p class="branch_head_1">PROD<span>UCTS</span></p>
+                <p class="branch_head_1">ORDER<span> HISTORY</span></p>
             </div>
 
             <form>

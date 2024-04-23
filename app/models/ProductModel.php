@@ -45,4 +45,14 @@ class ProductModel extends Model
         return $this->query($query);
     }
 
+    public function getTopSellingProducts($limit = 5)
+    {
+        $query = "SELECT p.*, SUM(o.quantity) as total_quantity 
+              FROM `" . $this->table . "` p 
+              JOIN orderitems o ON p.id = o.product_id 
+              GROUP BY p.id 
+              ORDER BY total_quantity DESC 
+              LIMIT $limit";
+        return $this->query($query);
+    }
 }

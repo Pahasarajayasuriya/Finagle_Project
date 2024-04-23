@@ -10,6 +10,13 @@ class AddEmployee extends Controller
 		$data['errors'] = [];
 
 		$user = new User();
+		$CheckoutModel = new CheckoutModel();
+        // Fetch all branches
+        $branches = $CheckoutModel->getAllBranches();
+
+        // Pass branches to the view
+        $data['branches'] = $branches;
+
 
 		if($_SERVER['REQUEST_METHOD'] == "POST")
 		{

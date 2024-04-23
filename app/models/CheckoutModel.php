@@ -250,4 +250,10 @@ class CheckoutModel extends Model
         // Use the query method from the Database class to execute the query
         return $this->query($query, $data);
     }
+
+    public function getOrderCountByOutlet()
+    {
+        $query = "SELECT pickup_location, COUNT(*) as order_count FROM {$this->table} GROUP BY pickup_location";
+        return $this->query($query);
+    }
 }
