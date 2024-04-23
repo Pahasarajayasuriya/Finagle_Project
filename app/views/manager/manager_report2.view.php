@@ -33,10 +33,12 @@
             
             // Product table
             $this->SetFont('Arial', 'B', 12);
-            $this->Cell(40, 10, 'Customer ID', 1);
-            $this->Cell(40, 10, 'Name', 1);
+            $this->Cell(40, 10, 'Order ID', 1);
+            // $this->Cell(40, 10, 'Name', 1);
             $this->Cell(40, 10, 'Delivery or Pickup', 1);
             $this->Cell(40, 10, 'Payment Method', 1);
+            $this->Cell(40, 10, 'Total Cost', 1);
+            $this->Cell(40, 10, 'Order Status', 1);
             $this->Ln();
             $this->SetFont('Arial', '', 12);
             // Hardcoded product data
@@ -56,9 +58,11 @@
 
             foreach ($data['rows'] as $row) {
                 $this->Cell(40, 10, $row->id, 1);
-                $this->Cell(40, 10, $row->name, 1);
+                // $this->Cell(40, 10, $row->name, 1);
                 $this->Cell(40, 10, $row->delivery_or_pickup, 1);
                 $this->Cell(40, 10, $row->payment_method, 1);
+                $this->Cell(40, 10, $row->total_cost, 1);
+                $this->Cell(40, 10, $row->order_status, 1);
                 $this->Ln();
             }
     

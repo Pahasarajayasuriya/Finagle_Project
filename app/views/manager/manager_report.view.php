@@ -1,10 +1,10 @@
 <?php
-// $role = "Manager";
-// $data['role'] = $role;
+$role = "Manager";
+$data['role'] = $role;
 
-// $this->view('includes/header', $data);
-// $this->view('includes/NavBar', $data);
-// $this->view('includes/footer', $data);
+$this->view('includes/header', $data);
+$this->view('includes/NavBar', $data);
+$this->view('includes/footer', $data);
 ?>
 
 <!DOCTYPE html>
@@ -89,7 +89,9 @@
                 <div>Customer ID</div>
                 <div>Name</div>
                 <div>Delivery or Pickup</div>
+                <div>Total Cost</div>
                 <div>Payment Method</div>
+                <div>Order Status</div>
               
             </div>
             </div>
@@ -125,7 +127,9 @@
                 <div class="branch-id"><?= esc($row->id) ?></div>
                 <div class="branch-id"><?= esc($row->name) ?></div>
                 <div class="branch-name"><?= esc($row->delivery_or_pickup) ?></div>
+                <div class="branch-loc"><?= esc($row->total_cost) ?></div>
                 <div class="branch-loc"><?= esc($row->payment_method) ?></div>
+                <div class="branch-loc"><?= esc($row->order_status) ?></div>
                 <div class="advertisement-actions">
                   <!-- <button class="edit-button" onclick="openEditPopupDialog('${branch.id}', '${branch.name}', '${branch.location}')">Edit Branch</button> -->
                   <!-- <button class="edit-button"><a href="<?= ROOT."/admin_advertisements/update_advertisement/".$row->id ?>">Edit Advertisement</a></button>
