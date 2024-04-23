@@ -108,12 +108,12 @@ $this->view('includes/footer', $data);
                 <?php endif; ?>
             </div>
         </div>
+        <?php $this->view('includes/cus_footer', $data); ?>
     </div>
 </body>
 
 </html>
 
 <?php
-// require_once '../../Components/NavBar/Footer/cus_footer.php';
 $this->view('includes/cus_topbar', $data);
 ?>
