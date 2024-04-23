@@ -104,21 +104,34 @@ $this->view('includes/footer', $data);
             </div>
             </div>
             
+            <!-- popup for editing -->
+            <form method="POST" enctype="multipart/form-data" action="<?= ROOT?>/admin_managers">
             <div class="popup-container" id="editPopupContainer">
-                <h2>Edit the branch</h2>
+                <h2>Edit Manager</h2>
                 <div class="popup-content">
-                    <label for="editDescription">Branch Name:</label>
-                    <input type="text" id="editDescription" name="editDescription" placeholder="Enter the branch name" value="">
+                    <label for="editDescription">User Name:</label>
+                    <input type="text" id="editDescription" name="username" placeholder="Enter the branch name" value="<?= $row[0]->username ?>">
 
-                    <label for="editEndDate">Address:</label>
-                    <input type="text" id="editEndDate" name="editEndDate" value="">
+                    <label for="editEndDate">Telephone:</label>
+                    <input type="text" id="editDescription" name="teleno" placeholder="Enter the branch name" value="<?= $row[0]->teleno ?>">
+
+                    <label for="editEndDate">E-mail:</label>
+                    <input type="text" id="editDescription" name="email" placeholder="Enter the branch name" value="<?= $row[0]->email ?>">
+                    
+                    <input type="hidden" name="id" value="<?= $row[0]->id; ?>">
+                    
+                    <!-- <label for="editEndDate">Address:</label>
+                    <input type="text" id="editEndDate" name="editEndDate" value=""> -->
 
                     <div class="buttons-container">
-                        <button class="cancel-btn" onclick="closeEditPopup()">Cancel</button>
-                        <button class="submit-btn" onclick="submitEditForm()">Submit</button>
+                        <!-- <button class="cancel-btn" onclick="closeEditPopup()">Cancel</button>
+                        <button class="submit-btn" onclick="submitEditForm()" value="update">Submit</button> -->
+                        <button class="cancel-btn"><a href="<?= ROOT."/admin_managers" ?>">Cancel</a></button>
+                        <button name="update" value="update" class="submit-btn" onclick="submitEditForm()">Submit</button>
                     </div>
                 </div>
             </div class="branch-container">
+            </form>
 
 
             <!-- delete popup -->
