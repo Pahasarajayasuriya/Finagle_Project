@@ -107,7 +107,7 @@ $this->view('includes/footer', $data);
                 </div>
             </div>
         </div>
-
+        <?php $this->view('includes/cus_footer', $data); ?>
      </div>
 
 

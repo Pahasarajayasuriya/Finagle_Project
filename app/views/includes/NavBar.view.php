@@ -135,7 +135,7 @@ if ($role == "User") {
                               <span class="tooltip">Feedbacks</span>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="'.ROOT.'/manager_report">
                                   <i class="bx bx-food-menu"></i>
                                   <span class="links_name">Reports</span>
                                 </a>

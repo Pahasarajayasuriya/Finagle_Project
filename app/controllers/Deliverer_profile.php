@@ -14,13 +14,10 @@ class Deliverer_profile extends Controller
         $data['driver_data'] = $driverData;
 
         $deliveredOrders = $this->getOrdersCount($driver_id );
-        //show( $deliveredOrders );
-        $data['$deliveredOrder']= $deliveredOrders;
-
+        $data['deliveredOrder']= $deliveredOrders;
+        
         $totalEarnings = $this->getTotalEarnings($driver_id );
-        //show( $totalEarnings);
-        $data['$totalEarnings']= $totalEarnings;
-
+        $data['totalEarnings']= $totalEarnings;
        
         $this->view('deliverer/driver_profile', $data);
     }
