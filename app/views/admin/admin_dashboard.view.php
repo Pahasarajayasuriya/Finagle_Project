@@ -70,6 +70,7 @@ $this->view('includes/footer', $data);
           </div>
           <script>
             var totalOrders = <?= json_encode($data['totalOrders']); ?>;
+            var topSellingProducts = <?= json_encode($data['topSellingProducts']); ?>;
           </script>
           <div class="charts-card">
             <h2 class="chart-title">Number of Orders</h2>

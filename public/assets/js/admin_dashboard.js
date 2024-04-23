@@ -19,11 +19,15 @@ function closeSidebar() {
 
 // ---------- CHARTS ----------
 
+// Extract product names and quantities from topSellingProducts
+const productNames = topSellingProducts.map(product => product.user_name);
+const productQuantities = topSellingProducts.map(product => product.total_quantity);
+
 // BAR CHART
 const barChartOptions = {
   series: [
     {
-      data: [10, 8, 6, 4, 2],
+      data: productQuantities,
       name: "Products",
     },
   ],
@@ -81,7 +85,7 @@ const barChartOptions = {
     theme: "dark",
   },
   xaxis: {
-    categories: ["Cake", "Pudding", "Roll", "Bread", "Sandwich"],
+    categories: productNames,
     title: {
       style: {
         color: "#f5f7ff",
