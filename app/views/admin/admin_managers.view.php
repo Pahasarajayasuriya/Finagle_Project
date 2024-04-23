@@ -36,7 +36,7 @@ $this->view('includes/footer', $data);
                     </div>
                 </form>
 
-                <!-- <input class="add-btn" type="button" onclick="openReport()" value="Add Branches"> -->
+                <!-- <input class="add-btn" type="button" onclick="openReport()" value="Add Managers"> -->
             </div>
 
             <!-- Popup Container for add customer -->
@@ -190,7 +190,7 @@ $this->view('includes/footer', $data);
         }
 
         function confirmDelete(adId) {
-            const url = `<?=ROOT."/admin_advertisements/delete_advertisement/"?>${adId}`;
+            const url = `<?=ROOT."/admin_managers/delete_manager/"?>${adId}`;
             //console.log(url);
             window.location.href = url; // Redirect to delete the advertisement
         }

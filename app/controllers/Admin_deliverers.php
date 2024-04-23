@@ -70,7 +70,7 @@ class Admin_deliverers extends Controller
     public function delete_deliverer($id)
     {
         $admin_deliverer_model = new admin_deliverersModel();
-        $admin_deliverer_model->del_manager($id);
+        $admin_deliverer_model->del_deliverer($id);
         redirect('admin_deliverers');
     }
 

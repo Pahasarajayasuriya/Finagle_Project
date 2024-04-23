@@ -157,35 +157,35 @@ if ($role == "User") {
   echo '
                             <li>
                                 <a href="' . ROOT . '/admin_dashboard">
-                                  <i class="bx bx-message-alt-detail"></i>
+                                  <i class="bx bx-food-menu"></i>
                                   <span class="links_name">Dashboard</span>
                                 </a>
                                 <span class="tooltip">Dashboard</span>
                               </li>
                               <li>
                                 <a href="' . ROOT . '/admin_customers">
-                                  <i class="bx bx-message-alt-detail"></i>
+                                  <i class="bx bxs-user-rectangle"></i>
                                   <span class="links_name">Customers</span>
                                 </a>
                                 <span class="tooltip">Customers</span>
                               </li>
                               <li>
                               <a href="' . ROOT . '/admin_managers">
-                                <i class="bx bx-message-alt-detail"></i>
+                                <i class="bx bxs-user-rectangle"></i>
                                 <span class="links_name">Managers</span>
                               </a>
                               <span class="tooltip">Managers</span>
                             </li>
                             <li>
                                 <a href="' . ROOT . '/admin_employees">
-                                  <i class="bx bx-message-alt-detail"></i>
+                                  <i class="bx bxs-user-rectangle"></i>
                                   <span class="links_name">Employess</span>
                                 </a>
                                 <span class="tooltip">Employees</span>
                               </li>
                               <li>
                               <a href="' . ROOT . '/admin_deliverers">
-                                <i class="bx bx-message-alt-detail"></i>
+                                <i class="bx bxs-user-rectangle"></i>
                                 <span class="links_name">Deliverers</span>
                               </a>
                               <span class="tooltip">Deliverers</span>
@@ -199,20 +199,35 @@ if ($role == "User") {
                               </li>
                               <li>
                               <a href="' . ROOT . '/admin_branches">
-                                <i class="bx bx-cake"></i>
+                                <i class="bx bxs-business"></i>
                                 <span class="links_name">Branches</span>
                               </a>
                               <span class="tooltip">Branches</span>
                             </li>
                             <li>
                                 <a href="' . ROOT . '/admin_advertisements">
-                                  <i class="bx bx-cake"></i>
+                                  <i class="bx bx-notepad"></i>
                                   <span class="links_name">Advertisement</span>
                                 </a>
                                 <span class="tooltip">Advertisement</span>
-                              </li>';
-} elseif ($role == "Deliverer") {
-  echo '
+                              </li>
+                            <li>
+                              <a href="' . ROOT . '/addemployee">
+                                <i class="bx bxs-user-rectangle"></i>
+                                <span class="links_name">Add Employee</span>
+                              </a>
+                              <span class="tooltip">Add Employee</span>
+                            </li>
+                            <li>
+                              <a href="' . ROOT . '/admin_profile">
+                                <i class="bx bx-user"></i>
+                                <span class="links_name">Profile</span>
+                              </a>
+                              <span class="tooltip">Profile</span>
+                            </li>';
+                              
+                        } elseif ($role == "Deliverer") {
+                          echo '
                           <li>
                               <a href="Deliverer_profile">
                                 <i class="bx bx-user"></i>

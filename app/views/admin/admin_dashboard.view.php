@@ -1,99 +1,27 @@
+<?php
+$role = "Admin";
+// $role = "Admin";
+// $data['role'] = $role;
+
+$this->view('includes/header', $data);
+$this->view('includes/NavBar', $data);
+$this->view('includes/footer', $data);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Admin Dashboard</title>
 
-    <!-- Montserrat Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <!-- Material Icons -->
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin/admin_dashboard2.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin_style.css">
-  </head>
-  <body>
-    <div class="grid-container">
-
-      <!-- Header -->
-      <header class="header">
-        <div class="menu-icon" onclick="openSidebar()">
-          <span class="material-icons-outlined">menu</span>
-        </div>
-        <div class="header-left">
-          <span class="material-icons-outlined">search</span>
-        </div>
-        <div class="header-right">
-          <span class="material-icons-outlined">notifications</span>
-          <span class="material-icons-outlined">email</span>
-          <span class="material-icons-outlined">account_circle</span>
-        </div>
-      </header>
-      <!-- End Header -->
-
-      <!-- Sidebar -->
-      <aside id="sidebar">
-        <div class="sidebar-title">
-          <div class="sidebar-brand">
-            <!-- <span class="material-icons-outlined">shopping_cart</span> --> ADMIN
-          </div>
-          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
-        </div>
-
-        <ul class="sidebar-list">
-          <li class="sidebar-list-item">
-            <a href="<?= ROOT?>/admin_dashboard" target="_self">
-              <span class="material-icons-outlined">dashboard</span> Dashboard
-            </a>
-          </li>
-          <li class="sidebar-list-item">
-            <a href="#" target="_blank">
-              <span class="material-icons-outlined">inventory_2</span> Products
-            </a>
-          </li>
-          <li class="sidebar-list-item">
-            <a href="<?= ROOT?>/admin_branches" target="_self">
-              <span class="material-icons-outlined">storefront</span> Branches
-            </a>
-          </li>
-          <li class="sidebar-list-item">
-            <a href="#" target="_blank">
-              <span class="material-icons-outlined">groups</span> Customers
-            </a>
-          </li>
-          <li class="sidebar-list-item">
-            <a href="#" target="_blank">
-              <span class="material-icons-outlined">local_shipping</span> Deliverers
-            </a>
-          </li>
-          <li class="sidebar-list-item">
-            <a href="#" target="_blank">
-              <span class="material-icons-outlined">manage_accounts</span> Employees
-            </a>
-          </li>
-          <li class="sidebar-list-item">
-            <a href="#" target="_blank">
-              <span class="material-icons-outlined">manage_accounts</span> Managers
-            </a>
-          </li>
-          <li class="sidebar-list-item">
-            <a href="#" target="_blank">
-              <span class="material-icons-outlined">featured_video</span> Advertisement
-            </a>
-          </li>
-          <li class="sidebar-list-item">
-            <a href="#" target="_blank">
-              <span class="material-icons-outlined">settings</span> Settings
-            </a>
-          </li>
-        </ul>
-      </aside>
-      <!-- End Sidebar -->
-
-      <!-- Main -->
-      <main class="main-container">
+<body>
+<div class="grid-container">
+<main class="main-container">
         <div class="main-title">
           <h2>DASHBOARD</h2>
         </div>
@@ -105,15 +33,15 @@
               <h3>PRODUCTS</h3>
               <span class="material-icons-outlined">inventory_2</span>
             </div>
-            <h1>249</h1>
+            <h1><?= $data['counts']['product_count']; ?></h1>
           </div>
 
           <div class="card">
             <div class="card-inner">
-              <h3>Branches</h3>
+              <h3>BRANCHES</h3>
               <span class="material-icons-outlined">storefront</span>
             </div>
-            <h1>25</h1>
+            <h1><?= $data['counts']['branch_count']; ?></h1>
           </div>
 
           <div class="card">
@@ -121,15 +49,16 @@
               <h3>CUSTOMERS</h3>
               <span class="material-icons-outlined">groups</span>
             </div>
-            <h1>1500</h1>
+            <h1><?= $data['counts']['customer_count']; ?></h1>
           </div>
 
           <div class="card">
             <div class="card-inner">
-              <h3>ALERTS</h3>
-              <span class="material-icons-outlined">notification_important</span>
+              <h3>DELIVERERS</h3>
+              <span class="material-icons-outlined">local_shipping</span>
+              <!-- <span class="material-icons-outlined">notification_important</span> -->
             </div>
-            <h1>56</h1>
+            <h1><?= $data['counts']['deliverer_count']; ?></h1>
           </div>
 
         </div>
@@ -148,14 +77,9 @@
 
         </div>
       </main>
-      <!-- End Main -->
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
+      <script src="<?= ROOT?>/assets/js/admin_dashboard.js"></script>
+</body>
 
-    </div>
-
-    <!-- Scripts -->
-    <!-- ApexCharts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
-    <!-- Custom JS -->
-    <script src="<?= ROOT?>/assets/js/admin.js"></script>
-  </body>
 </html>

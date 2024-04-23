@@ -129,6 +129,15 @@ $this->view('includes/footer', $data);
                 </div>
             </div class="branch-container">
 
+            <!-- delete popup -->
+            <div class="popup-container" id="deletePopup">
+                <h2>Are you sure you want to delete this item?</h2>
+                <div class="buttons-container">
+                    <button class="cancel-btn" onclick="closePopup1()">NO</button>
+                    <button class="submit-btn" onclick="confirmDelete()">DELETE</button>
+                </div>
+            </div>
+
             <?php foreach ($rows as $row) : ?>
             <div class="advertisement-record">
                 <div class="advertisement-image"> <img src="https://lh3.googleusercontent.com/p/AF1QipNFVt_67WFrJbjsHEQfxY691SYz3wxrn1Ioq5KC=s1360-w1360-h1020" alt="branch.id" class="customer-image"></div>
@@ -140,7 +149,8 @@ $this->view('includes/footer', $data);
                 <div class="advertisement-actions">
                   <!-- <button class="edit-button" onclick="openEditPopupDialog('${branch.id}', '${branch.name}', '${branch.location}')">Edit Branch</button> -->
                   <button class="edit-button"><a href="<?= ROOT."/admin_products/update_product/".$row->id ?>">Edit Product</a></button>
-                  <button class="edit-button"><a href="<?= ROOT."/admin_products/delete_product/".$row->id ?>">Delete Product</a></button>                
+                  <button class="delete-button" onclick="openDeletePopup('<?= esc($row->id) ?>')">Delete </button>
+                  <!-- <button class="edit-button"><a href="<?= ROOT."/admin_products/delete_product/".$row->id ?>">Delete Product</a></button>                 -->
                 </div>             
              </div>
              <?php endforeach;?>
@@ -171,6 +181,32 @@ $this->view('includes/footer', $data);
 
         document.getElementById('search').addEventListener('input', filterBranches);
     </script>
+
+    <script>
+        //for get id through delete button
+        function openDeletePopup(adId) {
+            const popupContainer = document.getElementById('deletePopup');
+            const overlay = document.getElementById('overlay');
+            const deleteButton = document.querySelector('#deletePopup .submit-btn');
+            deleteButton.onclick = function() { confirmDelete(adId); } // Set up the deletion confirmation
+            popupContainer.classList.add('show');
+            overlay.classList.add('show');
+        }
+
+        function confirmDelete(adId) {
+            const url = `<?=ROOT."/admin_products/delete_product/"?>${adId}`;
+            //console.log(url);
+            window.location.href = url; // Redirect to delete the advertisement
+        }
+
+        function closePopup1() {
+            const popupContainer = document.getElementById('deletePopup');
+            popupContainer.classList.remove('show');
+            overlay.classList.remove('show');
+        }
+
+    </script>
+
 </body>
 
 </html>

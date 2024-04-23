@@ -1,6 +1,6 @@
 <?php
 
-class admin_customersModel extends Model
+class admin_profileModel extends Model
 {
     public $table = "users";
     public $errors = [];
@@ -46,7 +46,7 @@ class admin_customersModel extends Model
 
     public function get_all()
     {
-        $query = "SELECT * FROM {$this->table} WHERE role = 'customer'";
+        $query = "SELECT * FROM {$this->table} WHERE role = 'admin'";
         return $this->query($query);
     }
 

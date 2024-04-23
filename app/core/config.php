@@ -8,10 +8,10 @@ if($_SERVER['SERVER_NAME'] == 'localhost'){
     define('DBHOST', 'localhost');
     define('DBNAME', 'finagle');
     define('DBUSER', 'root');
-    define('DBPASS', 'root');
+    define('DBPASS', '');
     define('DBDRIVER', 'mysql');
 
-    define('ROOT','http://localhost:8888/finagle/public');
+    define('ROOT','http://localhost:/finagle/public');
 }else {
 
     //database config for live server
