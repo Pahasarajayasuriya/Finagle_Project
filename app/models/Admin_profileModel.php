@@ -10,7 +10,7 @@ class admin_profileModel extends Model
         'image',
         'email',
         'password',
-        'tellno',
+        'teleno',
         'role',
         'address',
     ];

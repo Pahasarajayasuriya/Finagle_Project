@@ -10,7 +10,7 @@ $this->view('includes/footer', $data);
 <html lang="en">
 
 <head>
-    <title>Deliverers</title>
+    <title>Managers</title>
     <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin_branches.css">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -23,7 +23,7 @@ $this->view('includes/footer', $data);
         <!-- content  -->
         <section id="main" class="main">
             <div class="ad_head">
-                <p class="ad_head_1">DELIVERERS<span> DETAILS</span></p>
+                <p class="ad_head_1">MANAGER<span> DETAILS</span></p>
             </div>
 
             <div class="form-header">
@@ -36,7 +36,7 @@ $this->view('includes/footer', $data);
                     </div>
                 </form>
 
-                <!-- <input class="add-btn" type="button" onclick="openReport()" value="Add Deliverers"> -->
+                <!-- <input class="add-btn" type="button" onclick="openReport()" value="Add Branches"> -->
             </div>
 
             <!-- Popup Container for add customer -->
@@ -100,25 +100,34 @@ $this->view('includes/footer', $data);
                 <div >E-mail</div>
                 <div >Joined date</div>
                 <div >Branch</div>
-
+                <!-- <div >Address</div>  -->
             </div>
             </div>
             
+            <!-- popup for editing -->
+            <form method="POST" enctype="multipart/form-data" action="<?= ROOT?>/admin_employees">
             <div class="popup-container" id="editPopupContainer">
                 <h2>Edit the branch</h2>
                 <div class="popup-content">
-                    <label for="editDescription">Branch Name:</label>
-                    <input type="text" id="editDescription" name="editDescription" placeholder="Enter the branch name" value="">
+                    <label for="editDescription">User Name:</label>
+                    <input type="text" id="editDescription" name="username" placeholder="Enter the branch name" value="<?= $row[0]->username ?>">
 
-                    <label for="editEndDate">Address:</label>
-                    <input type="text" id="editEndDate" name="editEndDate" value="">
+                    <label for="editEndDate">Contact NO:</label>
+                    <input type="text" id="editEndDate" name="teleno" value="<?= $row[0]->teleno ?>">
 
+                    <label for="editEndDate">E-mail:</label>
+                    <input type="text" id="editEndDate" name="email" value="<?= $row[0]->email ?>">
+
+                    <input type="hidden" name="id" value="<?= $row[0]->id; ?>">
+                    
                     <div class="buttons-container">
-                        <button class="cancel-btn" onclick="closeEditPopup()">Cancel</button>
-                        <button class="submit-btn" onclick="submitEditForm()">Submit</button>
+                        <!-- <button class="cancel-btn" onclick="closeEditPopup()">Cancel</button> -->
+                        <button class="cancel-btn"><a href="<?= ROOT."/admin_employees" ?>">Cancel</a></button>
+                        <button name="update" value="update" class="submit-btn" onclick="submitEditForm()">Submit</button>
                     </div>
                 </div>
             </div class="branch-container">
+            </form>
 
 
             <!-- delete popup -->
@@ -143,10 +152,9 @@ $this->view('includes/footer', $data);
                 <div class="branch-loc"><?= esc($row->branch) ?></div>
                 <!-- <div class="branch-loc"><?= esc($row->address) ?></div> -->
 
-
                 <div class="advertisement-actions">
                   <!-- <button class="edit-button" onclick="openEditPopupDialog('${branch.id}', '${branch.name}', '${branch.location}')">Edit Branch</button> -->
-                  <button class="edit-button"><a href="<?= ROOT."/admin_deliverers/update_deliverer/".$row->id ?>">Edit</a></button>
+                  <button class="edit-button"><a href="<?= ROOT."/admin_branches/update_manager/".$row->id ?>">Edit Manager</a></button>
                   <button class="delete-button" onclick="openDeletePopup('<?= esc($row->id) ?>')">Delete</button>
                   <!-- <button class="edit-button"><a href="<?= ROOT."/admin_branches/delete_branch/".$row->id ?>">Delete Branch</a></button>                 -->
                 </div>             
@@ -157,7 +165,7 @@ $this->view('includes/footer', $data);
         </section>
         <!-- <script src="branch-admin.js"></script> -->
     </div>
-    <script src="<?= ROOT ?>/assets/js/admin_branch.js"></script>
+    <script src="<?= ROOT ?>/assets/js/admin_branch_update.js"></script>
     <script>
         function filterBranches() {
             var input, filter, branchesContainer, branches, branchName;
@@ -191,7 +199,7 @@ $this->view('includes/footer', $data);
         }
 
         function confirmDelete(adId) {
-            const url = `<?=ROOT."/admin_deliverers/delete_deliverer/"?>${adId}`;
+            const url = `<?=ROOT."/admin_advertisements/delete_advertisement/"?>${adId}`;
             //console.log(url);
             window.location.href = url; // Redirect to delete the advertisement
         }

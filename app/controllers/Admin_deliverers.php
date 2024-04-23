@@ -10,29 +10,29 @@ class Admin_deliverers extends Controller
         //show($data);
         $data['errors'] = [];
         //show($_POST);
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add'])) {
-            // Validate and sanitize input data
-            $validatedData = $admin_deliverer_model->validate($_POST);
+        // if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add'])) {
+        //     // Validate and sanitize input data
+        //     $validatedData = $admin_deliverer_model->validate($_POST);
 
-            //show($validatedData);
-            if ($validatedData) {
-                    //show($_POST);
-                    // Insert the product into the database
-                    $admin_deliverer_model->insert($_POST);
+        //     //show($validatedData);
+        //     if ($validatedData) {
+        //             //show($_POST);
+        //             // Insert the product into the database
+        //             $admin_deliverer_model->insert($_POST);
 
-                    // Redirect to avoid form resubmission
-                    redirect('admin_deliverers');
-                } else {
-                    // Handle image upload failure
+        //             // Redirect to avoid form resubmission
+        //             redirect('admin_deliverers');
+        //         } else {
+        //             // Handle image upload failure
 
-                    //echo "Image Upload Failed.";
-                }
-            } else {
-                // Handle validation errors
-                $data['errors'] = $admin_deliverer_model->errors;
+        //             //echo "Image Upload Failed.";
+        //         }
+        //     } else {
+        //         // Handle validation errors
+        //         $data['errors'] = $admin_deliverer_model->errors;
 
-            // }
-        }
+        //     // }
+        // }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
             // Validate and sanitize input data

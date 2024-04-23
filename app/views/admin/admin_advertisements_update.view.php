@@ -89,7 +89,7 @@ $this->view('includes/footer', $data);
                 <div class="popup-content">
 
                     <label for="editEndDate">Image:</label>
-                    <input type="text" id="editEndDate" name="image" value="<?= $row[0]->image ?>">
+                    <input type="file" id="editEndDate" name="image" value="<?= $row[0]->image ?>">
 
                     <label for="editEndDate">Description:</label>
                     <input type="text" id="editEndDate" name="description" value="<?= $row[0]->description ?>">

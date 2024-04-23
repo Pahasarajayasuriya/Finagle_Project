@@ -10,7 +10,7 @@ class admin_managersModel extends Model
         'image',
         'email',
         'password',
-        'tellno',
+        'teleno',
         'role',
         'address',
     ];
