@@ -35,11 +35,11 @@ $this->view('includes/footer', $data);
     <div class="home-section">
         <div class="search-container">
             <div class="branch_head">
-                <p class="branch_head_1">PROD<span>UCTS</span></p>
+                <p class="branch_head_1">ORDER <span>HISTORY</span></p>
             </div>
 
             <form>
-                <div class="form">
+                <div class="form-group">
                     <input id="searchInput" class="form-group" type="text" placeholder="Search by order Id">
                     <i class='bx bx-search icon'></i>
                 </div>

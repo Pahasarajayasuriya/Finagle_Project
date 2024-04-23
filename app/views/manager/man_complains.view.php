@@ -14,7 +14,7 @@ $this->view('includes/footer', $data);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Complaints</title>
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/manager/view_products.css">
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/manager/complaints_view.css">
 </head>
 
 <body>
@@ -25,7 +25,7 @@ $this->view('includes/footer', $data);
             </div>
 
             <form>
-                <div class="form">
+                <div class="form-group">
                     <input id="searchInput" class="form-group" type="text" placeholder="Search...">
                     <i class='bx bx-search icon'></i>
                 </div>
