@@ -6,9 +6,9 @@ if ($role == "User") {
                                <a href="' . ROOT . '">
 
                                   <i class="bx bx-grid-alt"></i>
-                                  <span class="links_name">Dashboard</span>
+                                  <span class="links_name">Home</span>
                                 </a>
-                                <span class="tooltip">Dashboard</span>
+                                <span class="tooltip">Home</span>
                               </li>
                               <li>
                                 <a href="' . ROOT . '/products">
