@@ -13,6 +13,37 @@ body {
 
 
 }
+
+
+.logo_icon {
+  width: 100px;
+  height: 50px;
+}
+
+.logo_icon img {
+  height: 100%;
+  width: auto;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 78px;
+  width: 100%;
+  background-color:black;
+  padding: 10px;
+  box-sizing: border-box;
+  z-index: 1000;
+  transition: background-color 0.5s ease;
+  justify-content: space-between;
+  /* Add this line to space items horizontally */
+  align-items: center;
+  /* Add this line to center items vertically */
+  display: flex;
+  font-family:"Poppins";
+}
+
+
 .profile-id, .profile-name {
     flex: 1;
 }
@@ -23,7 +54,7 @@ body {
 }
 
 .pro-id{
-    margin-left: 80px;
+    margin-left: 5%;
 }
 
 .pro-description
@@ -33,9 +64,11 @@ body {
 }
 
 .pro-date{
-    flex:2;
+    flex:1;
+    /* margin-left: -20px; */
+  }
    
-}
+
 
 .profile-date{
   margin-left: 90px;
@@ -46,16 +79,14 @@ body {
 }
 
 
-.pro-id{
-    margin-left: -40px;
-  }
+
   
 .profile-record {
     display: flex;
     gap: 20px;
     padding: 10px;
     border-radius: 15px;
-    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 4px 8px 2px rgba(0, 0, 0, 0.1);
     color:black;
     transition: transform 0.3s ease-in-out;
     width: 90%;
@@ -105,99 +136,11 @@ body {
    
 }
 
-  .insights > div {
-    width: 320px;
-    background:black;
-    padding: 20px 5px 10px 20px;
-    border-radius: 20px;
-    box-shadow: 0px 0px 20px 0px rgb(187, 184, 184);
-    transition: 0.5s ease-in-out;
-    border-right: 10px solid rgb(253, 253, 253);
-    color: #000000;
-    margin-left: 60px;
-    margin-right: 30px;
-    font-size: 14px;
-    height: 350px;
-    color: white;
-    margin-top: 40px;
-  }
-  .insights > div:hover {
-    box-shadow: 0 5px 10px 5px rgb(161, 161, 161);
-    border-right: 10px solid black;
-  }
-
-.white-frame{
-    margin-top: 20px;
-}
-
-.white-frame ul {
-    list-style-type: none;
-    padding: 0;
-    text-align: left;
-    text-decoration: none;
-}
-
-
-.white-frame li {
-    font-size: 16px;
-    margin: 10px 0;
-    position: relative;
-    padding: 10px;
-    padding-left: 5px;
-    color:white;
-    display: flex;
-    align-items: center;
-   
-}
-
-
-.white-frame input[type="checkbox"] {
-    position: absolute;
-    left: 0;
-    opacity: 0;
-}
-
-.white-frame label {
-    position: relative;
-    padding-left: 30px;
-    cursor: pointer;
-    color: white;
-}
-
-
-.white-frame label::before {
-    content: '\2610'; /* Unicode character for an empty checkbox */
-    position: absolute;
-    left: 0;
-    font-size: 20px;
-    color: #dfd9d9;
-}
-
-.white-frame input[type="checkbox"]:checked + label::before {
-    content: '\2611'; /* Unicode character for a checked checkbox */
-    color: #ff0000;
-}
-
-.white-frame label:hover {
-    text-decoration: underline;
-    color: #ff0000;
-}
-
-.white-frame li span {
-    margin-left: 10px;
-    color: #ababab;
-    font-style: italic;
-}
-
-/* .sections{
-    display: flex;
-} */
 
 
 .logout-button {
     text-align: right;
-    margin-top: 3px;
-    /* Increase the top margin for better spacing */
+    margin-top: 10px;
     height: 5px;
     align-content: end;
     justify-content: end;
@@ -211,7 +154,7 @@ h2{
 /* Style for the Log Out button */
 .logout-button button {
     outline: none;
-    margin-left: 84%;
+    margin-right: 20%;
     color: white;
     font-size: 16px;
     cursor: pointer;
@@ -226,7 +169,7 @@ h2{
     width: 150px;
     background-color: red;
     font-weight: bolder;
-    margin-top: 10px;
+    margin-top: 1%;
     /* box-shadow: 0 0 10px rgb(62, 54, 54); */
     
 
@@ -241,7 +184,7 @@ h2{
 }
 
 .title-profile{
-    margin-top: -40px;
+    margin-top: -10px;
 }
 .section-title {
     font-size: 2em;
@@ -250,10 +193,11 @@ h2{
     font-weight: bold;
     margin-top: 1%;
     font-family:"Poppins";
-    margin-left: 10%;
+    /* margin-left: 1%; */
+    text-align: center;
   }
   .fas.fa-bread-slice.fa-3x.text-primary.mb-4{
-    margin-left: 50%;
+    margin-left: 46%;
    
   
   } 
@@ -287,7 +231,7 @@ h2{
   
   .divider .icon-wrap:before,
   .divider.dark .icon-wrap:before {
-    left: 460px;
+    left: 30%;
     transform: translateX(-50%);
   
   
@@ -295,7 +239,7 @@ h2{
   
   .divider .icon-wrap:after,
   .divider.dark .icon-wrap:after {
-    right: 380px;
+    right: 30%;
     transform: translateX(50%);
   }
   
@@ -313,6 +257,8 @@ h2{
     margin-top: 40px;
     width: 90%;
     align-self: center;
+    margin-left: 30px;
+   
     
 }
 
@@ -332,7 +278,7 @@ h2{
 .home-section {
     position: relative;
     transition: all 0.5s ease;
-    /* min-height: 100vh; */
+    min-height: 100vh; 
     left: 20px;
     margin-top: 100px;
     width: calc(100% - 68px);
@@ -340,7 +286,17 @@ h2{
   }
 
   .sidebar.open ~ .home-section {
-    left: 150px;
-    width: calc(100% - 150);
+    left: 130px;
+    width: calc(100% - 130);
   } 
 
+  .sidebar.open~.navbar {
+    width: calc(100% - 170px);
+    margin-left: 170px;
+    transition: 0.5s;
+  }
+
+  .sidebar.close ~.navbar {
+   
+    transition: 0.5s;
+  }

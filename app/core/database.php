@@ -9,6 +9,11 @@ class Database
         return new PDO($str, DBUSER, DBPASS);
     }
 
+    public function prepare($query)
+    {
+        return $this->connect()->prepare($query);
+    }
+
     public function query($query, $data = [], $type = 'object')
     {
         $con = $this->connect();
@@ -30,6 +35,36 @@ class Database
         }
 
         return false;
+    }
+
+
+    public function query2($query, $data = [], $type = 'object')
+    {
+        $con = $this->connect();
+
+        $stm = $con->prepare($query);
+        if ($stm) {
+            $check =  $stm->execute($data);
+            if ($check) {
+                if ($type == 'object') {
+                    $type = PDO::FETCH_OBJ;
+                } else {
+                    $type = PDO::FETCH_ASSOC;
+                }
+                $result = $stm->fetchAll($type);
+                if (is_array($result) && count($result) > 0) {
+                    return $result;
+                }
+            }
+        }
+
+        // Return the PDO instance
+        return $con;
+    }
+
+    public function read($query, $data = [])
+    {
+        return $this->query($query, $data, 'assoc');
     }
 
     public function create_tables()

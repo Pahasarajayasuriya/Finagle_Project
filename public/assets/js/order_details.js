@@ -1,15 +1,15 @@
    // Get the modal
-   const modal = document.getElementById("myModal");
+   const modal = document.getElementById("myModal2");
 
    // Get the button that opens the modal
    const btn = document.getElementById("detailButton");
 
    // Get the <closeButton> element that closes the modal
-   const closeButton = document.getElementsByClassName("close")[0];
+  //  const closeButton = document.getElementsByClassName("close")[0];
 
    // Get the confirmation and cancellation buttons
-   const confirmBtn = document.getElementById("confirmDelete");
-   const cancelBtn = document.getElementById("cancelDelete");
+   const confirmBtn = document.getElementById("confirmDetails");
+  //  const cancelBtn = document.getElementById("cancelDelete");
 
    // When the user clicks on the button, open the modal
    btn.onclick = function () {
@@ -17,14 +17,14 @@
     };
 
     // When the user clicks on <closeButton> (x), close the modal
-    closeButton.onclick = function () {
-      modal.style.display = "none";
-    };
+    // closeButton.onclick = function () {
+    //   modal.style.display = "none";
+    // };
 
     // When the user clicks cancel, close the modal
-    cancelBtn.onclick = function () {
-      modal.style.display = "none";
-    };
+    // cancelBtn.onclick = function () {
+    //   modal.style.display = "none";
+    // };
 
     // When the user clicks confirm, delete data and close the modal
     confirmBtn.onclick = function () {

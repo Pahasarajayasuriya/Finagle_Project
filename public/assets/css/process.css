@@ -1,0 +1,260 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-family: sans-serif;
+  }
+  
+  
+  
+  .logo_icon {
+    width: 100px;
+    height: 50px;
+  }
+  
+  .logo_icon img {
+    height: 100%;
+    width: auto;
+  }
+  
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 78px;
+    width: 100%;
+    background-color: transparent;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 1000;
+    transition: background-color 0.5s ease;
+    justify-content: space-between;
+    /* Add this line to space items horizontally */
+    align-items: center;
+    /* Add this line to center items vertically */
+    display: flex;
+  }
+  
+  .navbar-links a {
+    color: rgb(192, 191, 191);
+    text-decoration: none;
+    margin-right: 85px;
+    justify-content: 20px;
+  }
+  
+  
+  /* .signup{
+    margin-left: 100px;
+  } */
+  .navbar-links a:hover {
+    color: rgb(158, 30, 30);
+    /* Add your desired hover color */
+  }
+  
+  
+  .logo_icon {
+    width: 100px;
+    height: 50px;
+  }
+  
+  .logo_icon img {
+    height: 100%;
+    width: auto;
+  }
+  
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 78px;
+    width: 100%;
+    background-color: transparent;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 1000;
+    transition: background-color 0.5s ease;
+    justify-content: space-between;
+    /* Add this line to space items horizontally */
+    align-items: center;
+    /* Add this line to center items vertically */
+    display: flex;
+  }
+  
+  .navbar-links a {
+    color: rgb(192, 191, 191);
+    text-decoration: none;
+    margin-right: 85px;
+    justify-content: 20px;
+  }
+  
+  
+  /* .signup{
+    margin-left: 100px;
+  } */
+  .navbar-links a:hover {
+    color: rgb(158, 30, 30);
+    /* Add your desired hover color */
+  }
+  
+  .home-section {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+  }
+
+
+  .process-category {
+    box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+    transition: .5s;
+    width: 850px;
+    border-radius: 10px;
+    display: flex;
+    padding: 20px;
+    margin-left: 80px;
+    margin-top: 100px;
+    align-self: center;
+  
+  
+  }
+  
+  .process-category:hover {
+    background: rgb(158, 30, 30);
+  }
+  
+  .process-category * {
+    transition: .5s;
+  }
+  
+  .process-category:hover * {
+    color: #F1F8FF;
+  }
+  
+  .p-section {
+    margin-top: 40px;
+  
+  }
+
+  .process-main-title{
+    display: flex;
+  }
+  
+  .process-title {
+  
+    /* margin-top: 20px; */
+    font-size: 16.5px;
+  }
+  
+  .process-content {
+     margin-top: 20px; 
+    font-size: 14px;
+    color: rgb(32, 32, 32);
+   
+  
+  }
+  
+  
+  .process-title {
+    font-size: 2em;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-left: 20px; 
+  }
+  
+  
+  .product-category {
+    text-align: center;
+  }
+  
+  .section-title strong {
+    font-size: 1em;
+    font-family: sans-serif;
+    color: rgb(158, 30, 30);
+    display: block;
+    text-transform: none;
+  }
+  
+
+  .separate-process-category {
+    
+    justify-content: space-between;
+    margin-top: 40px;
+    margin: 40px;
+    font-size: 14px;
+    position: relative;
+    align-self: center;
+    font-weight: normal;
+  
+  }
+  
+  .category-process {
+    box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+    transition: .5s;
+    width: 1000px;
+    height: 200px;
+    border-radius: 10px;
+    display: flex;
+    /* padding: 20px; */
+    margin-left: 20px;
+    margin: 20px;
+    margin-top: 20px;
+    background-color:black;
+  }
+  
+  /* .category-process:hover {
+    background: rgb(158, 30, 30);
+  } */
+  
+  .category-process * {
+    transition: .5s;
+  }
+  
+
+  .process-category-content {
+    display: flex;
+    align-items: center;
+    color:white;
+    font-weight: normal;
+    width: 1000px;
+  
+  
+  }
+  
+  h3{
+    margin-left: 40px;
+  }
+  .process-category-title {
+    padding: 10px;
+    width: 750px;
+  
+  }
+  
+  .process-category-image {
+    max-width: 250px;
+    height: 200px;
+    margin-left: 0px;
+    /* margin-right: 20px;  */
+    border-radius: 8px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding-left: 0px;
+    text-decoration: none;
+  
+  }
+  
+ 
+.home-section {
+    width: calc(100% - 78px);
+    margin-left: 78px;
+    transition: all 0.5s ease;
+  }
+  
+  
+  
+  .sidebar.open~.home-section {
+    width: calc(100% - 250px);
+    margin-left: 250px;
+  }
+  
+  .sidebar.open~.navbar {
+    width: calc(100% - 250px);
+    margin-left: 200px;
+  }
