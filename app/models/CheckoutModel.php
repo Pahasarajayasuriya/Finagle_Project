@@ -250,4 +250,19 @@ class CheckoutModel extends Model
         // Use the query method from the Database class to execute the query
         return $this->query($query, $data);
     }
+
+    public function getLastOrderType($customerId)
+    {
+        $query = "SELECT delivery_or_pickup FROM {$this->table} WHERE customer_id = :customer_id ORDER BY order_time DESC LIMIT 1";
+        $data = ['customer_id' => $customerId];
+
+        // Use the query method from the Database class to execute the query
+        $result = $this->query($query, $data);
+
+        if ($result) {
+            return $result[0]->delivery_or_pickup;
+        }
+
+        return false;
+    }
 }
