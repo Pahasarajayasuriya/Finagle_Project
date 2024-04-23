@@ -68,9 +68,11 @@ $this->view('includes/footer', $data);
             <h2 class="chart-title">Top 5 Products</h2>
             <div id="bar-chart"></div>
           </div>
-
+          <script>
+            var totalOrders = <?= json_encode($data['totalOrders']); ?>;
+          </script>
           <div class="charts-card">
-            <h2 class="chart-title">Purchase and Sales Orders</h2>
+            <h2 class="chart-title">Number of Orders</h2>
             <div id="area-chart"></div>
           </div>
 
@@ -78,6 +80,7 @@ $this->view('includes/footer', $data);
       </main>
     </div>
   </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
   <script src="<?= ROOT ?>/assets/js/admin_dashboard.js"></script>
 </body>

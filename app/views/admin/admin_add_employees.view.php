@@ -119,12 +119,9 @@ $this->view('includes/footer', $data);
                         <!-- <label for="branch">Branch</label> -->
 
                         <select name="branch" id="branch" placeholder="Branch">
-                            <option value="Battaramulla">Battaramulla</option>
-                            <option value="Borella">Borella</option>
-                            <option value="Nugegoda">Nugegoda</option>
-                            <option value="Kotahena">Kotahena</option>
-                            <option value="Mount_lavinia">Mount-lavinia</option>
-                            <option value="Thalawatugoda">Thalawatugoda</option>
+                        <?php foreach ($branches as $branch) : ?>
+                                <option class="branch_select"><?= $branch->name ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
 
