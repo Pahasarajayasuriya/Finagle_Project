@@ -20,6 +20,7 @@ class Model extends Database
 
     public function insert($data)
     {
+        
         if (!empty($this->allowedColumns)) {
             foreach ($data as $key => $value) {
                 if (!in_array($key, $this->allowedColumns)) {
@@ -31,6 +32,8 @@ class Model extends Database
         // $values = array_values($data);
         $query = "insert into " . $this->table;
         $query .= " (" . implode(",", $keys) . ") values (:" . implode(",:", $keys) . ")";
+
+        //show($_query);
 
         $this->query($query, $data);
     }

@@ -6,13 +6,16 @@ class Admin_productsModel extends Model
     public $errors = [];
     protected $allowedColumns = [
         'user_name',
+
         'description',
+
         'category',
         'price',
         'quantity',
         'image',
-        'date',
-        'slug',
+        'description',
+        'id',
+
     ];
 
     public function validate($data)
@@ -20,7 +23,8 @@ class Admin_productsModel extends Model
         return $data;
     }
 
-    public function all()
+
+    public function get_all()
     {
         $query = "SELECT * FROM {$this->table}";
         return $this->query($query);
@@ -36,4 +40,18 @@ class Admin_productsModel extends Model
 
         return $this->insert($validatedData);
     }
+
+    public function del_product($id)
+    {
+        $query="DELETE FROM `products` WHERE `products`.`id` = ".$id;
+        $this->query($query);
+    }
+
+    public function get_count()
+    {
+        $query = "SELECT COUNT(*) AS row_count FROM {$this->table}";
+        $result = $this->query($query);
+        return $result[0]->row_count;
+    }
+
 }

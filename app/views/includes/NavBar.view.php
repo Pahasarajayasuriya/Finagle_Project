@@ -4,7 +4,6 @@ $role = $data['role'];
 if ($role == "User") {
   echo '<li>
                                <a href="' . ROOT . '">
-
                                   <i class="bx bx-grid-alt"></i>
                                   <span class="links_name">Home</span>
                                 </a>
@@ -158,56 +157,78 @@ if ($role == "User") {
 } elseif ($role == "Admin") {
   echo '
                             <li>
-                                <a href="#">
-                                  <i class="bx bx-message-alt-detail"></i>
+                                <a href="' . ROOT . '/admin_dashboard">
+                                  <i class="bx bx-food-menu"></i>
+                                  <span class="links_name">Dashboard</span>
+                                </a>
+                                <span class="tooltip">Dashboard</span>
+                              </li>
+                              <li>
+                                <a href="' . ROOT . '/admin_customers">
+                                  <i class="bx bxs-user-rectangle"></i>
                                   <span class="links_name">Customers</span>
                                 </a>
                                 <span class="tooltip">Customers</span>
                               </li>
                               <li>
-                              <a href="#">
-                                <i class="bx bx-message-alt-detail"></i>
+                              <a href="' . ROOT . '/admin_managers">
+                                <i class="bx bxs-user-rectangle"></i>
                                 <span class="links_name">Managers</span>
                               </a>
                               <span class="tooltip">Managers</span>
                             </li>
                             <li>
-                                <a href="#">
-                                  <i class="bx bx-message-alt-detail"></i>
+                                <a href="' . ROOT . '/admin_employees">
+                                  <i class="bx bxs-user-rectangle"></i>
                                   <span class="links_name">Employess</span>
                                 </a>
                                 <span class="tooltip">Employees</span>
                               </li>
                               <li>
-                              <a href="#">
-                                <i class="bx bx-message-alt-detail"></i>
+                              <a href="' . ROOT . '/admin_deliverers">
+                                <i class="bx bxs-user-rectangle"></i>
                                 <span class="links_name">Deliverers</span>
                               </a>
                               <span class="tooltip">Deliverers</span>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="' . ROOT . '/admin_products">
                                   <i class="bx bx-cake"></i>
                                   <span class="links_name">Products</span>
                                 </a>
                                 <span class="tooltip">Products</span>
                               </li>
                               <li>
-                              <a href="#">
-                                <i class="bx bx-cake"></i>
+                              <a href="' . ROOT . '/admin_branches">
+                                <i class="bx bxs-business"></i>
                                 <span class="links_name">Branches</span>
                               </a>
                               <span class="tooltip">Branches</span>
                             </li>
                             <li>
-                                <a href="#">
-                                  <i class="bx bx-cake"></i>
+                                <a href="' . ROOT . '/admin_advertisements">
+                                  <i class="bx bx-notepad"></i>
                                   <span class="links_name">Advertisement</span>
                                 </a>
                                 <span class="tooltip">Advertisement</span>
-                              </li>';
-} elseif ($role == "Deliverer") {
-  echo '
+                              </li>
+                            <li>
+                              <a href="' . ROOT . '/addemployee">
+                                <i class="bx bxs-user-rectangle"></i>
+                                <span class="links_name">Add Employee</span>
+                              </a>
+                              <span class="tooltip">Add Employee</span>
+                            </li>
+                            <li>
+                              <a href="' . ROOT . '/admin_profile">
+                                <i class="bx bx-user"></i>
+                                <span class="links_name">Profile</span>
+                              </a>
+                              <span class="tooltip">Profile</span>
+                            </li>';
+                              
+                        } elseif ($role == "Deliverer") {
+                          echo '
                           <li>
                               <a href="Deliverer_profile">
                                 <i class="bx bx-user"></i>

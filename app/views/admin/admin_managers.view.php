@@ -1,18 +1,17 @@
 <?php
 $role = "Admin";
-$data['role'] = $role;
+
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Products</title>
-    <!-- Link Styles -->
-    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/admin/product-admin.css">
-    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin/admin_products.css">
+    <title>Managers</title>
+    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin_branches.css">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -24,7 +23,7 @@ $this->view('includes/footer', $data);
         <!-- content  -->
         <section id="main" class="main">
             <div class="ad_head">
-                <p class="ad_head_1">PRODUCTS<span> DETAILS</span></p>
+                <p class="ad_head_1">MANAGER<span> DETAILS</span></p>
             </div>
 
             <div class="form-header">
@@ -37,79 +36,71 @@ $this->view('includes/footer', $data);
                     </div>
                 </form>
 
-                <input class="add-btn" type="button" onclick="openReport()" value="Add PRODUCT">
+                <!-- <input class="add-btn" type="button" onclick="openReport()" value="Add Managers"> -->
             </div>
 
-            <!-- Popup Container for add branch -->
-            <form method="POST" enctype="multipart/form-data" action="<?= ROOT?>/admin_products">
+            <!-- Popup Container for add customer -->
+            <form method="POST" enctype="multipart/form-data" action="<?= ROOT?>/admin_customers">
             <div class="popup-container" id="popupContainer">
-                <h2>Add a Product</h2>
+                <h2>Add a Branch</h2>
                 <div class="popup-content">
-
-                    <label for="description">name:</label>
-                    <input value="<?= set_value('name') ?>" type="text" id="description" name="user_name" placeholder="">
+                    <label for="name">Branch Name:</label>
+                    <input value="<?= set_value('name') ?>" type="text" id="description" name="name" placeholder="Enter branch name">
                     <?php if (!empty($errors['name'])) : ?>
                             <div class="invalid"><?= $errors['name'] ?></div>
                     <?php endif; ?>
 
-                    <label for="image">image:</label>
-                    <input type="text" id="price" name="image">
-                    <?php if (!empty($errors['image'])) : ?>
-                            <div class="invalid"><?= $errors['image'] ?></div>
+                    <label for="address">Address:</label>
+                    <input type="text" id="price" name="address">
+                    <?php if (!empty($errors['address'])) : ?>
+                            <div class="invalid"><?= $errors['address'] ?></div>
                     <?php endif; ?>
 
-                    <label for="end_date">category:</label>
-                    <!-- <input type="text" id="Image" name="category"> -->
-
-                    <select id="dropdown" name="category">
-                        <option value="Bread & Buns">Bread & Buns</option>
-                        <option value="Cakes">Cakes</option>
-                        <option value="Frozen Foods">Frozen Foods</option>
-                    </select>
-
-                    <?php if (!empty($errors['category'])) : ?>
-                            <div class="invalid"><?= $errors['category'] ?></div>
-                    <?php endif; ?> </br>
-
-                    <label for="end_date">price:</label>
-                    <input type="text" id="Image" name="price">
-                    <?php if (!empty($errors['price'])) : ?>
-                            <div class="invalid"><?= $errors['price'] ?></div>
+                    <label for="contact-number">Contact number:</label>
+                    <input type="text" id="Image" name="contact_number">
+                    <?php if (!empty($errors['contact_number'])) : ?>
+                            <div class="invalid"><?= $errors['contact_number'] ?></div>
                     <?php endif; ?>
 
-                    <label for="end_date">description:</label>
-                    <input type="text" id="Image" name="description">
-                    <?php if (!empty($errors['description'])) : ?>
-                            <div class="invalid"><?= $errors['description'] ?></div>
+                    <label for="open">Openning hours:</label>
+                    <input type="time" id="open" name="open_time" value="00:00:00">
+                    <?php if (!empty($errors['open_time'])) : ?>
+                            <div class="invalid"><?= $errors['open_time'] ?></div>
                     <?php endif; ?>
 
-                    <!-- ssetting up quantitiy for temporary -->
-                    <input type="hidden" name="quantity" value="200">
-
+                    <label for="close">Closing hours:</label>
+                    <input type="time" id="close" name="close_time" value="00:00:00">
+                    <?php if (!empty($errors['close_time'])) : ?>
+                            <div class="invalid"><?= $errors['close_time'] ?></div>
+                    <?php endif; ?>
                     <div class="buttons-container">
                         <!-- <button class="cancel-btn" onclick="closePopup()">Cancel</button> -->
-                        <button class="cancel-btn" ><a href="<?= ROOT."/admin_products" ?>">Cancel</a></button>
+                        <button class="cancel-btn" ><a href="<?= ROOT."/admin_branches" ?>">Cancel</a></button>
                         <button name="add" value="add" class="submit-btn" onclick="submitForm()">Submit</button>
                     </div>
 
                 </div>
-              </div>
-              </form>
+            </div>
+            </form>
 
             <div class="advertisement-table">
             <div class="advertisement-header">
-                <!-- <div class="ad-image">Image</div>
-                <div class="ad-id">ID</div>
-                <div class="ad-description">Description</div>
-                <div class="ad-date">Name</div>
-                <div class="ad-date">Category</div> -->
-
-                <div>Image</div>
-                <div>ID</div>
-                <div>Name</div>
-                <div>Description</div>
-                <div>Category</div>
-              
+                <!-- <div class="ad-image"></div> -->
+                <!-- <div class="ad-id"> Branch ID</div>
+                <div class="ad-description">Branch Name</div> -->
+                <!-- <div class="ad-date">Address</div>   -->
+                <!-- <div class="ad-description">Address</div>
+                <div class="ad-description">Contact NO</div>
+                <div class="ad-description">Open Time</div>
+                <div class="ad-description">Close Time</div>    -->
+                
+                <div >ID</div>
+                <div >User Name</div>
+                <div >Contact NO</div>
+                <div >E-mail</div>
+                <div >Joined date</div>
+                <div >Branch</div>
+                <!-- <div >Address</div>  -->
             </div>
             </div>
             
@@ -129,6 +120,7 @@ $this->view('includes/footer', $data);
                 </div>
             </div class="branch-container">
 
+
             <!-- delete popup -->
             <div class="popup-container" id="deletePopup">
                 <h2>Are you sure you want to delete this item?</h2>
@@ -138,19 +130,24 @@ $this->view('includes/footer', $data);
                 </div>
             </div>
 
+
             <?php foreach ($rows as $row) : ?>
             <div class="advertisement-record">
-                <div class="advertisement-image"> <img src="https://lh3.googleusercontent.com/p/AF1QipNFVt_67WFrJbjsHEQfxY691SYz3wxrn1Ioq5KC=s1360-w1360-h1020" alt="branch.id" class="customer-image"></div>
-                <!-- <div class="branch-id"><?= esc($row->image) ?></div> -->
+                <!-- <div class="advertisement-image"> <img src="https://lh3.googleusercontent.com/p/AF1QipNFVt_67WFrJbjsHEQfxY691SYz3wxrn1Ioq5KC=s1360-w1360-h1020" alt="branch.id" class="customer-image"></div> -->
                 <div class="branch-id"><?= esc($row->id) ?></div>
-                <div class="branch-name"><?= esc($row->user_name) ?></div>
-                <div class="branch-name"><?= esc($row->description) ?></div>
-                <div class="branch-loc"><?= esc($row->category) ?></div>
+                <div class="branch-name"><?= esc($row->username) ?></div>
+                <div class="branch-loc"><?= esc($row->teleno) ?></div>
+                <div class="branch-loc"><?= esc($row->email) ?></div>
+                <!-- <div class="branch-loc"><?= htmlspecialchars((string)$row->joined_date, ENT_QUOTES, 'UTF-8') ?></div> -->
+                <div class="branch-loc"><?= (string)esc($row->joined_date) ?></div>
+                <div class="branch-loc"><?= esc($row->branch) ?></div>
+                <!-- <div class="branch-loc"><?= esc($row->address) ?></div> -->
+
                 <div class="advertisement-actions">
                   <!-- <button class="edit-button" onclick="openEditPopupDialog('${branch.id}', '${branch.name}', '${branch.location}')">Edit Branch</button> -->
-                  <button class="edit-button"><a href="<?= ROOT."/admin_products/update_product/".$row->id ?>">Edit Product</a></button>
-                  <button class="delete-button" onclick="openDeletePopup('<?= esc($row->id) ?>')">Delete </button>
-                  <!-- <button class="edit-button"><a href="<?= ROOT."/admin_products/delete_product/".$row->id ?>">Delete Product</a></button>                 -->
+                  <button class="edit-button"><a href="<?= ROOT."/admin_branches/update_branch/".$row->id ?>">Edit Manager</a></button>
+                  <button class="delete-button" onclick="openDeletePopup('<?= esc($row->id) ?>')">Delete</button>
+                  <!-- <button class="edit-button"><a href="<?= ROOT."/admin_branches/delete_branch/".$row->id ?>">Delete Branch</a></button>                 -->
                 </div>             
              </div>
              <?php endforeach;?>
@@ -181,7 +178,6 @@ $this->view('includes/footer', $data);
 
         document.getElementById('search').addEventListener('input', filterBranches);
     </script>
-
     <script>
         //for get id through delete button
         function openDeletePopup(adId) {
@@ -194,7 +190,7 @@ $this->view('includes/footer', $data);
         }
 
         function confirmDelete(adId) {
-            const url = `<?=ROOT."/admin_products/delete_product/"?>${adId}`;
+            const url = `<?=ROOT."/admin_managers/delete_manager/"?>${adId}`;
             //console.log(url);
             window.location.href = url; // Redirect to delete the advertisement
         }
@@ -206,7 +202,6 @@ $this->view('includes/footer', $data);
         }
 
     </script>
-
 </body>
 
 </html>
