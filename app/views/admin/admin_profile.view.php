@@ -54,12 +54,12 @@ $this->view('includes/footer', $data);
               <div class="pro_inline">
                 <div class="pro_name">
                   <label class="pro_label" for="pro_username">Username</label>
-                  <input class="pro_input" type="text" id="pro_username" name="username" value=<?= esc($row->username) ?>>
+                  <input  type="text" id="pro_username" name="username" value=<?= esc($row->username) ?>>
                 </div>
 
                 <div class="pro_name">
                   <label class="pro_label" for="pro_name">Email</label>
-                  <input class="pro_input" type="text" id="pro_name" name="email" value=<?= esc($row->email) ?>>
+                  <input  type="text" id="pro_name" name="email" value=<?= esc($row->email) ?>>
                 </div>
 
               </div>
@@ -67,7 +67,7 @@ $this->view('includes/footer', $data);
             </div>
 
 
-            <div class="pro_form-group">
+            <!-- <div class="pro_form-group">
               <div class="pro_inline">
                 <div class="pro_name">
                   <label class="pro_label" for="pro_email">New Password</label>
@@ -78,12 +78,12 @@ $this->view('includes/footer', $data);
                   <input class="pro_input" type="text" id="pro_phone" name="re_password" >
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <input type="hidden" name="id" value=<?= esc($row->id) ?>>
 
             <div class="button-container">
-              <button type="submit" class="submit-button">Submit</button>
+              <button type="submit" value="update"class="submit-button">Submit</button>
             </div>
 
           </form>

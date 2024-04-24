@@ -50,7 +50,7 @@ class Admin_profile extends Controller
                     $id=$_POST['id'];
                     unset($_POST['id']);
                     unset($_POST['update']);
-                    show($_POST);
+                    //show($_POST);
                     // UPdate the DB
                     $admin_profile_model->update($id,$_POST);
 
