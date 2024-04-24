@@ -194,3 +194,33 @@ select {
   transform: scale(1.15); /* Scale up by 5% */
   transition: transform 0.5s ease; /* Add smooth transition effect */
 }
+
+
+.form-group {
+  margin-bottom: 20px;
+  position: relative; /* Make the parent container relative */
+}
+
+.form-group input {
+  width: calc(100% - 40px); /* Adjust width to accommodate icon */
+  height: 45px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding-left: 15px;
+  font-size: 15px;
+  transition: all 0.3s ease-in;
+  border-bottom-width: 2px;
+}
+
+
+
+.icon {
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-70%);
+  font-size: 30px; /* Increase the font size here */
+  color: var(--dark);
+  cursor: pointer;
+}

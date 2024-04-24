@@ -24,7 +24,7 @@ $this->view('includes/footer', $data);
 <body>
     <div class="home-section">
         <div class="search-container">
-        <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
+            <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
             <div class="branch_head">
                 <p class="branch_head_1">PROD<span>UCTS</span></p>
                 <div class="divider dark mb-4">
