@@ -25,10 +25,8 @@ class Admin_products extends Controller
                     // Insert the product into the database
                     $admin_product_model->insert($validatedData);
 
-                    // Redirect to avoid form resubmission
                     redirect('admin_products');
                 } else {
-                    // Handle image upload failure
 
                    // echo "Image Upload Failed firstly.";
                 }
@@ -74,6 +72,7 @@ class Admin_products extends Controller
         $this->view('admin/admin_products', $data);
 
     }
+
 
     public function delete_product($id)
     {

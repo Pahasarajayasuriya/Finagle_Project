@@ -6,22 +6,24 @@ class Emp_profile extends Controller
     {
         $id = $id ?? Auth::getId();
 
-        $user = new User();
-        $data['row'] = $user->first(['id'=>$id]);
-        $data['title'] = "Profile";
+        $branch = 'Borella';
+
+        $allBranchEmp= $this->getEmpdata($branch);
+        //show($allBranchEmp);
+        $data['data'] = $allBranchEmp;
+
+
         $this->view('employee/employee_profile', $data);
     }
 
-    // public function profile($id = null)
-    // {
-        
-    //     $id = $id ?? Auth::getId();
+    
 
-    //     $user = new User();
-    //     $data['row'] = $user->first(['id'=>$id]);
-        
+    private function getEmpdata($branch){
+       $user = new User();
 
-    //     $data['title'] = "Profile";
-    //     $this->view('customer/cus_profile', $data);
-    // }
+       $data = $user->findUsersByRole($branch,'employee');
+
+       return $data;
+
+    }
 }

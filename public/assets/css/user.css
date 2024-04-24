@@ -169,7 +169,7 @@ img {
 }
 .text {
   position: absolute;
-  top: 50%;
+  top: 59%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
@@ -180,10 +180,11 @@ img {
   font-family: 'Pacifico', cursive;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
   background: linear-gradient(rgba(7, 7, 7, 0.5), rgba(0, 0, 0, 0.5));
-  padding: 20px;
-  border-radius: 10px;
-  width: 80%;
+  /* padding: 20px; */
+  /* border-radius: 10px; */
+  width: 100%;
   box-sizing: border-box;
+  height: 80%;
 }
 
 
@@ -661,6 +662,10 @@ strong {
   margin-left: 40px;
 }
 
+.newly-added.section-title{
+   margin-left: 50px;
+}
+
 .food_section .box {
   position: relative;
   margin-top: 25px;
@@ -776,6 +781,69 @@ strong {
   background-color: rgb(224, 61, 61);
 }
 
+.export-section{
+  display: flex;
+  margin-left: 40px;
+}
+
+.export-img{
+  width: 4000px; 
+   /* height: 500px;  */
+   /* margin-left: 20px; */
+}
+
+
+.export-content {
+  margin: 20px;
+  margin-right: 40px;
+  font-family:"Poppins";
+}
+
+.export-p {
+  text-align: justify;
+  margin-left: 10px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-size: 14px;
+  font-family:"Poppins";
+
+}
+
+.certificate-section{
+  display: flex;
+  justify-content: space-between;
+  margin-left: 60px;
+  margin-top: 20px;
+  margin-right: 40px;
+  align-items: center;
+
+}
+
+.outer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid black; 
+    padding: 3px;
+    border-radius: 50%;
+    
+}
+
+.c1 p{
+  margin-top: 5px;
+  font-size: 12px;
+  color: #373737;
+}
+
+.img-01{
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid black;
+  padding: 10px;
+}
 
 .about-us {
   margin-left: 40px;
@@ -1167,6 +1235,52 @@ strong {
   
 }
 
+
+
+
+.food_section {
+  margin: 20px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.col {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  width: 100%; 
+  max-width: 300px;
+  margin-right: 10px;
+}
+
+.food_section {
+  position: relative;
+}
+
+.arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgb(158, 30, 30);
+}
+
+.arrow-btn.left {
+  left: -10px;
+}
+
+.arrow-btn.right {
+  right: 10px;
+}
+
+
+
 .home-section {
   width: calc(100% - 78px);
   margin-left: 78px;
@@ -1184,3 +1298,24 @@ strong {
   width: calc(100% - 250px);
   margin-left: 200px;
 }
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: none;
+}
+
+.text {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  color: #fff;
+}
+

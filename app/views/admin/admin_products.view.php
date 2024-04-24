@@ -1,16 +1,17 @@
 <?php
 $role = "Admin";
-
+$data['role'] = $role;
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <title>Products</title>
+    <!-- Link Styles -->
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/admin/product-admin.css">
     <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin/admin_products.css">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>

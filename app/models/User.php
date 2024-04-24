@@ -6,12 +6,18 @@ class User extends Model
     public $errors = [];
     protected $allowedColumns = [
 
+        'id',
         'username',
+        'image',
         'email',
         'password',
         'teleno',
-        'role',
+        ' user_role',
         'address',
+        'branch',
+        'joined_date',
+        'reset_token_hash',
+        'reset_token_expires_at'
     ];
     public function validate($data)
     {

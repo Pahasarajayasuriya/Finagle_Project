@@ -1,135 +1,131 @@
 @media screen and (max-width: 768px) {
+  /* Adjust styles for smaller screens */
+  .sidebar {
+    display: none;
+    /* Hide the sidebar menu on small screens */
+  }
 
-    /* Adjust styles for smaller screens */
-    .sidebar {
-        display: none;
-        /* Hide the sidebar menu on small screens */
-    }
-
-    /* Modify other styles as needed */
+  /* Modify other styles as needed */
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
 
-
 body {
-    margin: 0;
-    padding: 0;
-   
-    background-color: #d9d9d9;
-    font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+
+  background-color: #d9d9d9;
+  font-family: sans-serif;
 }
 
 .login_container {
-    width: 100%;
-    height: 540px;
-    max-width: 900px;
-    margin: 30px auto;
-    border: 2px solid #ccc;
-    overflow: hidden;
-    background:white;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    display: flex;
+  width: 100%;
+  height: 540px;
+  max-width: 900px;
+  margin: 30px auto;
+  border: 2px solid #ccc;
+  overflow: hidden;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  display: flex;
 }
 
 .image-container {
-    position: relative;
-    /* margin-top: -20px; */
-    width: 420px;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem 3rem 5rem;
-    color: black;
-    float: left;
-    box-sizing: border-box;
-    background: #45a049;
-    border-radius: 10px;
+  position: relative;
+  /* margin-top: -20px; */
+  width: 420px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 3rem 5rem;
+  color: black;
+  float: left;
+  box-sizing: border-box;
+  background: #45a049;
+  border-radius: 10px;
 }
 
 .form-container {
-    position: relative;
-    /* margin-top: -20px; */
-    width: 480px;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem 3rem;
-    color: black;
-    float: right;
-    box-sizing: border-box;
-    background: white;
+  position: relative;
+  /* margin-top: -20px; */
+  width: 480px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 3rem;
+  color: black;
+  float: right;
+  box-sizing: border-box;
+  background: white;
 }
 
-
 .inputbox {
-    position: relative;
-    margin: 10px 0;
-    max-width: 310px;
-    border-bottom: 2px solid #aea7a7;
+  position: relative;
+  margin: 10px 0;
+  max-width: 310px;
+  border-bottom: 2px solid #aea7a7;
 }
 
 .inputbox label {
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-    color: #000000;
-    font-size: 1rem;
-    pointer-events: none;
-    transition: all 0.8s ease-in-out;
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  color: #000000;
+  font-size: 1rem;
+  pointer-events: none;
+  transition: all 0.8s ease-in-out;
 }
 
 .inputbox input:placeholder-shown ~ label {
-    top: 50%;
-    
+  top: 50%;
 }
 
-input:focus ~ label, 
+input:focus ~ label,
 input:valid ~ label {
-    top: -5px;
+  top: -5px;
 }
-.inputbox i{
-    position: absolute;
-    /* right: 8px; */
-    color: #000000;
-    font-size: 1.2rem;
-    margin-top: 20px;
+.inputbox i {
+  position: absolute;
+  /* right: 8px; */
+  color: #000000;
+  font-size: 1.2rem;
+  margin-top: 20px;
 }
 
 .inputbox input {
-    width: 100%;
-    height: 60px;
-    border: none;
-    outline: none;
-    font-size: 1rem;
-    padding: 0 35px 0 5px;
-    color: #cacaca; 
-    margin-left: 30px;
+  width: 100%;
+  height: 60px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 0 35px 0 5px;
+  color: #cacaca;
+  margin-left: 30px;
 }
 
 .inputbox ion-icon {
-    position: absolute;
-    right: 8px;
-    color: #fff;
-    font-size: 1.2rem;
-    top: 20px;
+  position: absolute;
+  right: 8px;
+  color: #fff;
+  font-size: 1.2rem;
+  top: 20px;
 }
 
 button {
-    width: 100%;
-    height: 40px;
-    border-radius: 40px;
-    background-color:red;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 600;
-    transition: all 0.4s ease;
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  background-color: red;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.4s ease;
 }
 
 button:hover {
@@ -137,62 +133,58 @@ button:hover {
 }
 
 .register {
-    font-size: 0.9rem;
-    color: #000000;
-    text-align: center;
-    margin: 25px 0 10px;
+  font-size: 0.9rem;
+  color: #000000;
+  text-align: center;
+  margin: 25px 0 10px;
 }
 
 .register p a {
-    text-decoration: none;
-    color: #000000;
-    font-weight: 600;
+  text-decoration: none;
+  color: #000000;
+  font-weight: 600;
 }
 
 .register p a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .form-container button {
-    background-color:red;
-    color: #fff;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+  background-color: red;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .form-container button:hover {
-    background-color: #000000;
+  background-color: #000000;
 }
 
 @media (max-width: 768px) {
-
-    .form-container,
-    .container img {
-        width: 100%;
-        float: none;
-        border-radius: 0;
-    }
+  .form-container,
+  .container img {
+    width: 100%;
+    float: none;
+    border-radius: 0;
+  }
 }
 
-
 h1 {
-    
-    align-items: center;
-    /* font-size: 2rem; */
-    text-align: center;
-    color:black;
-    /* letter-spacing: 0.08rem;
+  align-items: center;
+  /* font-size: 2rem; */
+  text-align: center;
+  color: black;
+  /* letter-spacing: 0.08rem;
     margin: 2rem 0 1rem;*/
-    font-weight: 900; 
+  font-weight: 900;
 
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 30px;
-    font-weight: bold;
-    letter-spacing: 8px;
-    /* margin: 0 0 15px;
+  font-family: "Source Code Pro", sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 8px;
+  /* margin: 0 0 15px;
     margin-top: 5px; */
-
 }
