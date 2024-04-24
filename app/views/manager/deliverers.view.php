@@ -38,7 +38,7 @@ $this->view('includes/footer', $data);
         <div class="title-profile">
 
             <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
-            <h2 class="section-title">DELIVERERS</h2>
+            <p class="section-title">DELIV<span>ERERS</span></p>
             <div class="divider dark mb-4">
                 <div class="icon-wrap">
                     <!-- <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>  -->
@@ -47,15 +47,7 @@ $this->view('includes/footer', $data);
 
         </div>
 
-        <?php
-
-            // show($data);
-          if (isset($driver)) {
-               foreach ($driver as $driver) {
-       
-
-          ?>
-
+        
 
         <div class="employee-table">
             <div class="table-header">
@@ -69,7 +61,15 @@ $this->view('includes/footer', $data);
                 <!-- <div class="header-item">Goals Assignment</div> -->
             </div>
 
-            
+            <?php
+
+            // show($data);
+          if (isset($driver)) {
+               foreach ($driver as $driver) {
+       
+
+          ?>
+
 
             <div class="employee-record">
                 <div class="employee-image"><img src="<?= ROOT ?>/assets/images/drivers/<?= $driver->image ?>" alt="Deliverer 1"></div>

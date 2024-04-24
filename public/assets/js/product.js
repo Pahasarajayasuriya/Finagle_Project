@@ -37,9 +37,11 @@ class UI {
       result += `
       <div class="product">
         <div class="img-container">
+
           <img class="product-img" src="${item.image}" alt="${
         item.user_name
       }" />
+
         </div>
         <div class="product-desc">
           <p class="product-title">${item.user_name}</p>
@@ -76,6 +78,7 @@ class UI {
       return grouped;
     }, {});
   }
+
   updateCheckoutButtonState() {
     const checkoutButton = document.getElementById("checkout-button");
     if (cart.length > 0) {

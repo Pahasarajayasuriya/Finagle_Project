@@ -23,6 +23,7 @@ class Emp_progress extends Controller
         $ready = $this->getReadyOrderDetails();
         //show($detail);
         $data['ready'] = $ready;
+        
 
         if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST["cancel"])) {
 
@@ -30,16 +31,19 @@ class Emp_progress extends Controller
             $this->update_delivered_order($_POST);
         }
 
+       
+
 
 
         $driver_details= $this->getDriverDetails($branch);
-        //show($driver_details);
+        // show($driver_details);
         $data['driver_details'] = $driver_details;
         // show($data);
 
         $dispatch= $this->getDispatchOrderDetails();
         //show($detail);
         $data['dispatch'] = $dispatch;
+        
 
         $notify = $this ->getNoficiations($branch);
         $data['notify'] = $notify;

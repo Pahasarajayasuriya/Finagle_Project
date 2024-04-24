@@ -38,6 +38,56 @@ body {
   font-weight: bold;
 }
 
+.fa.fa-cutlery {
+    font-size: 25px;
+    align-items: center;
+    margin-left: 100px;
+  }
+  .fas.fa-bread-slice.fa-3x.text-primary.mb-4{
+    margin-left: 30px;
+    margin-top: 60px;
+  
+  }
+  
+  .fas.fa-bread-slice.fa-3x.text-primary.mb-4 :after{
+    margin-left: 500px;
+   
+  
+  }
+  
+    .divider .icon-wrap:after {
+    content: "";
+    position: absolute;
+    border-bottom: 3px solid #ff0000;
+    width: 120px;
+    height: 17px;
+  
+  }
+  
+  .divider.dark .icon-wrap:before,
+  .divider.dark .icon-wrap:after {
+    content: "";
+    position: absolute;
+    border-bottom: 3px solid #ff0000;
+    width: 200px;
+    height: 17px;
+  
+  }
+  
+  .divider .icon-wrap:before,
+  .divider.dark .icon-wrap:before {
+    left: 40%;
+    transform: translateX(-50%);
+  
+  
+  }
+  
+  .divider .icon-wrap:after,
+  .divider.dark .icon-wrap:after {
+    right: 40%;
+    transform: translateX(50%);
+  }
+
 /* Form styles */
 .form-group {
   display: inline-block;

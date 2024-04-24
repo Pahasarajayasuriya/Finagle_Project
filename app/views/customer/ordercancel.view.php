@@ -17,7 +17,7 @@
         <i class='bx bxs-trash bx-burst' style='color:#e81212 ; font-size: 64px;'></i>
 
         <!-- Id and Reason  can retrieve from cancel_orders table -->
-        <p class='topic'>Your Order ( ID - <?= $data['orderid'] ?> ) has been cancelled </p>
+        <p class='topic'>Your Order ( No - <?= $data['orderid'] ?> ) has been cancelled </p>
       
         <p class='reason'><?=  $data['reason'] ?></p>
 

@@ -32,11 +32,11 @@ class Login extends Controller
 
                     // Redirect based on user role
                     if (Auth::is_admin()) {
-                        redirect("Admin_products");
+                        redirect("Admin_dashboard");
                     } elseif (Auth::is_customer()) {
                         redirect("home");
                     } elseif (Auth::is_employee()) {
-                        redirect("emp_profile");
+                        redirect("Emp_dashboard");
                     } elseif (Auth::is_manager()) {
                         redirect("manager_profile");
                     } elseif (Auth::is_deliverer()) {

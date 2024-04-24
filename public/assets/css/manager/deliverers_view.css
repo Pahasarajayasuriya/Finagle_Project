@@ -269,3 +269,14 @@ input[type="radio"] {
     left: 180px;
     width: calc(100% - 180);
   } 
+
+
+  .section-title {
+    font-weight: 800;
+    color: black;
+    font-size: 25px;
+  }
+  
+  .section-title span{
+    color: #d72323;
+  }

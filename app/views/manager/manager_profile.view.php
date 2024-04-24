@@ -27,7 +27,7 @@ $this->view('includes/footer', $data);
 <body>
   <div class="home-section">
     <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
-    <h2 class="section-title">YOUR ACCOUNT</h2>
+    <p class="section-title">YOUR <span>ACCOUNT</span></p>
     <div class="divider dark mb-4">
       <div class="icon-wrap">
         <!-- <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i> -->

@@ -84,25 +84,28 @@ body {
 
 .orders-container {
     display: flex;
-    width: calc(100% - 50px);
+    width: calc(100% - 30px);
     justify-content: space-around;
     /* margin: 90px; */
     margin: 10px;
     margin-top: 40px;
-    margin-left: 45px;
+    /* margin-left: 35px; */
    
+    /* gap: 30px; */
+    margin-right: 40px;
     
 }
 
 .order-status {
     background-color: white;
-    padding: 20px;
+    padding: 40px;
     border-radius: 8px;
     /* width: 100%; */
     text-align: center;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     transition: background-color 0.2s ease-in-out;
     height: auto;
+    /* flex: 1; */
 }
 
 .order-status:hover {
@@ -644,9 +647,22 @@ hr{
 }
 
 .msg{
-  margin-left: -5px;
+  margin-left: 20px;
 }
 
+button .clear-msg{
+  margin-left: 40px;
+  margin-top: 30px;
+  color: #afadad;
+  font-size: 12px;
+  font-style: italic;
+  cursor: pointer;
+
+}
+button .clear-msg:hover {
+  color: rgb(255, 41, 41);
+  text-decoration: underline;
+}
 
 
 .home-section {

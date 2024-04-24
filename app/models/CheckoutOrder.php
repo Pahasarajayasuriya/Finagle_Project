@@ -24,7 +24,9 @@ class CheckoutOrder extends Model
         'formatted_address',
         'order_status',
         'total_cost',
-        'deliver_id'
+        'deliver_id',
+        'view_status',
+        'payment_status'
 
        
     ];

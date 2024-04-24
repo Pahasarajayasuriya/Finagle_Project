@@ -49,6 +49,16 @@
     display: block;
     text-transform: none;
   }
+
+  .section-title {
+    font-weight: 800;
+    color: black;
+    font-size: 25px;
+  }
+  
+  .section-title span {
+    color: #d72323;
+  }
   
   .fa.fa-cutlery {
     font-size: 25px;

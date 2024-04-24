@@ -12,7 +12,7 @@ class User extends Model
         'email',
         'password',
         'teleno',
-        ' user_role',
+        'role',
         'address',
         'branch',
         'joined_date',
