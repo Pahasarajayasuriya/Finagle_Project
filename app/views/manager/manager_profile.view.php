@@ -44,7 +44,7 @@ $this->view('includes/footer', $data);
                 <div class="username">
                   <h4>Hi, <?= esc($row->username) ?></h4>
                 </div>
-                <img src="https://i.pinimg.com/474x/c4/a6/ad/c4a6ad3a4bdcd5a8d5425f2afa2f81c6.jpg" alt="Profile Image">
+                <img src="<?= esc($row->image) ?>" alt="Profile Image">
               </div>
             </div>
           </form>
