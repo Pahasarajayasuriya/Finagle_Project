@@ -55,7 +55,23 @@ $this->view('includes/footer', $data);
                         <div class="driver-info" id="availability_<?= $val->id ?>">
                             <p class="driver-name"><?= $val->username ?></p>
                             <p class="joined-date">Joined Date : <?= $val->joined_date ?></p>
-                            <button  onclick="updateAvailability(<?= $val->id ?>)">Available Now</button>
+                           
+
+                            <?php
+                            if ($val->availability_status == 0) {
+                                $button_class = "status-disabled";
+                            } else {
+                                $button_class = "status-enabled";
+                            }
+                            ?>
+
+                            <form method="POST">
+                                <input type="hidden" name="availability_status" value="<?= $val->availability_status == 0 ? 1 : 0 ?>">
+                                <input type="hidden" name="id" value="<?= $val->id ?>">
+                                <button name="status" class="status <?= $button_class ?>">Available Now</button>
+                            </form>
+
+
 
                         </div>
 
@@ -66,36 +82,7 @@ $this->view('includes/footer', $data);
 
 
             </div>
-            <script>
-                function updateAvailability(id) {
 
-                    // alert(id);
-                    data = {
-                        id_array: parseInt(id),
-                        status: "availability",
-                    };
-
-                   
-                    $.ajax({
-                        type: "POST",
-                        url: Driver_status_update.php,
-                        data: data,
-                        cache: false,
-                        success: function(res) {
-                            try {
-                                //alert(res);
-
-                                // convert to the json type
-                                Jsondata = JSON.parse(res);
-
-                            } catch (error) {}
-                        },
-                        error: function(xhr, status, error) {
-                            //return xhr;
-                        },
-                    });
-                }
-            </script>
 
 
             <div class="stats-boxes">
@@ -153,16 +140,7 @@ $this->view('includes/footer', $data);
         </div>
 
     </div>
-    <script>
-        function toggleButton() {
-            var button = document.querySelector('.status');
-            if (button.classList.contains('active')) {
-                button.classList.remove('active');
-            } else {
-                button.classList.add('active');
-            }
-        }
-    </script>
+
 </body>
 
 </html>

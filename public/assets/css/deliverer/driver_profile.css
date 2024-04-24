@@ -148,7 +148,6 @@ body {
   font-size: 1.5rem;
 }
 .status {
-  background-color: #cccccc; /* Grey (initially disabled) */
   border: none;
   color: white;
   padding: 10px 20px;
@@ -157,14 +156,18 @@ body {
   display: inline-block;
   font-size: 12px;
   margin: 4px 2px;
-  cursor: pointer; /* Initially enabled */
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
   transition: background-color 0.3s ease;
 }
 
-.status.active {
-  background-color: #4CAF50; /* Green */
+.status-disabled {
+  background-color: #cccccc; /* Grey (disabled) */
+  cursor: pointer;
+}
+
+.status-enabled {
+  background-color: #4CAF50; /* Green (enabled) */
+  cursor: pointer;
 }
 
 .status:hover {
@@ -178,6 +181,7 @@ body {
 .status:focus {
   outline: none;
 }
+
 
 
 .joined-date {

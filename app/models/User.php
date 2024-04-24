@@ -15,7 +15,7 @@ class User extends Model
         'role',
         'address',
         'branch',
-        'availablity_status',
+        'availability_status',
         'joined_date',
         'reset_token_hash',
         'reset_token_expires_at'
