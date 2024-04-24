@@ -1,4 +1,5 @@
 <?php
+
 $role = "Admin";
 $data['role'] = $role;
 $this->view('includes/header', $data);

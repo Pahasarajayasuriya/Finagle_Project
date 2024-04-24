@@ -53,7 +53,7 @@ $this->view('includes/footer', $data);
                     <?php endif; ?>
 
                     <label for="image">image:</label>
-                    <input type="text" id="price" name="image">
+                    <input type="file" id="price" name="image" onchange="load_image(this.files[0])">
                     <?php if (!empty($errors['image'])) : ?>
                             <div class="invalid"><?= $errors['image'] ?></div>
                     <?php endif; ?>
@@ -140,8 +140,8 @@ $this->view('includes/footer', $data);
 
             <?php foreach ($rows as $row) : ?>
             <div class="advertisement-record">
-                <div class="advertisement-image"> <img src="https://lh3.googleusercontent.com/p/AF1QipNFVt_67WFrJbjsHEQfxY691SYz3wxrn1Ioq5KC=s1360-w1360-h1020" alt="branch.id" class="customer-image"></div>
-                <!-- <div class="branch-id"><?= esc($row->image) ?></div> -->
+                <!-- <div class="advertisement-image"> <img src="https://lh3.googleusercontent.com/p/AF1QipNFVt_67WFrJbjsHEQfxY691SYz3wxrn1Ioq5KC=s1360-w1360-h1020" alt="branch.id" class="customer-image"></div> -->
+                <div class="advertisement-image"><img src="<?= esc($row->image) ?>" alt="Description of image"></div>
                 <div class="branch-id"><?= esc($row->id) ?></div>
                 <div class="branch-name"><?= esc($row->user_name) ?></div>
                 <div class="branch-name"><?= esc($row->description) ?></div>

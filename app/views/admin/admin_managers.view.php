@@ -1,6 +1,7 @@
 <?php
 $role = "Admin";
 $data['role'] = $role;
+
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
@@ -145,7 +146,7 @@ $this->view('includes/footer', $data);
 
                 <div class="advertisement-actions">
                   <!-- <button class="edit-button" onclick="openEditPopupDialog('${branch.id}', '${branch.name}', '${branch.location}')">Edit Branch</button> -->
-                  <button class="edit-button"><a href="<?= ROOT."/admin_branches/update_branch/".$row->id ?>">Edit Manager</a></button>
+                  <button class="edit-button"><a href="<?= ROOT."/admin_managers/update_manager/".$row->id ?>">Edit Manager</a></button>
                   <button class="delete-button" onclick="openDeletePopup('<?= esc($row->id) ?>')">Delete</button>
                   <!-- <button class="edit-button"><a href="<?= ROOT."/admin_branches/delete_branch/".$row->id ?>">Delete Branch</a></button>                 -->
                 </div>             

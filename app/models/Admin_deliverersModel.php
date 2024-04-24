@@ -10,7 +10,7 @@ class admin_deliverersModel extends Model
         'image',
         'email',
         'password',
-        'tellno',
+        'teleno',
         'role',
         'address',
     ];
@@ -18,30 +18,30 @@ class admin_deliverersModel extends Model
     public function validate($data)
     {
         //There are more validation parts to be created
-        $this->errors=[];
+        // $this->errors=[];
 
-        if(empty($data['name']))
-        {
-            $this->errors['name']='User name is required'; 
-        }
+        // if(empty($data['name']))
+        // {
+        //     $this->errors['name']='User name is required'; 
+        // }
 
-        if(empty($data['address']))
-        {
-            $this->errors['address']='Address is required'; 
-        }
+        // if(empty($data['address']))
+        // {
+        //     $this->errors['address']='Address is required'; 
+        // }
 
-        if(empty($data['tellno']))
-        {
-            $this->errors['contact_number']='Contact number is required'; 
-        }
+        // if(empty($data['tellno']))
+        // {
+        //     $this->errors['contact_number']='Contact number is required'; 
+        // }
 
-        if(empty($this->errors))
-        {
-            return true;
-        }
-        return false;
+        // if(empty($this->errors))
+        // {
+        //     return true;
+        // }
+        // return false;
 
-        // return $data;
+        return $data;
     }
 
     public function get_all()
