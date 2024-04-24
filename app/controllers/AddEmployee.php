@@ -18,7 +18,7 @@ class AddEmployee extends Controller
         $data['branches'] = $branches;
 
 
-		if($_SERVER['REQUEST_METHOD'] == "POST")
+		if ($_SERVER['REQUEST_METHOD'] == "POST")
 		{
             $_POST['repassword'] =  $_POST['password'];
 

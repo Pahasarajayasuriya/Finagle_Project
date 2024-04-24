@@ -1,5 +1,6 @@
 <?php
 $role = "Deliverer";
+
 $data['role'] = $role;
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
@@ -28,15 +29,20 @@ $this->view('includes/footer', $data);
                 <p class="pro_head_1">YOUR <span> PROFILE</span></p>
             </div>
 
+
             <?php
             if (isset($driver_data)) {
                 //show($data['driver_data']);
                 foreach ($driver_data as $val) {
 
-
-            ?>
-
                     <div class="profile-picture">
+                      <?php
+                         if (isset($driver_data)) {
+                             //show($data['driver_data']);
+                             foreach ($driver_data as $val) {
+
+
+                         ?>
 
                         <div class="inner-circle">
 
@@ -51,6 +57,11 @@ $this->view('includes/footer', $data);
                             <p class="joined-date">Joined Date : <?= $val->joined_date ?></p>
                         </div>
 
+                        <?php
+                                }
+                            }
+                            ?>
+
 
                     </div>
 
@@ -61,6 +72,7 @@ $this->view('includes/footer', $data);
                             <i class="fas fa-truck"></i>
 
                             <?php
+
                             // show($data['$deliveredOrder']);
                             if (isset($deliveredOrder)) {
                                 foreach ($deliveredOrder as $delivered_orders) {
@@ -85,6 +97,7 @@ $this->view('includes/footer', $data);
                           
                             
                             <?php
+
                             // show($data['$totalEarnings']);
                             if (isset($totalEarnings)) {
                                 foreach ($totalEarnings as $total_earnings) {
@@ -102,12 +115,7 @@ $this->view('includes/footer', $data);
                         </div>
                     </div>
 
-            <?php
-
-                }
-            }
-            ?>
-
+          
 
 
         </div>

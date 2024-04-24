@@ -140,8 +140,8 @@ body {
 
 .logout-button {
     text-align: right;
-    margin-top: 10px;
-    height: 5px;
+    /* margin-top: 1px; */
+    padding: 5px;
     align-content: end;
     justify-content: end;
 
@@ -154,14 +154,14 @@ h2{
 /* Style for the Log Out button */
 .logout-button button {
     outline: none;
-    margin-right: 20%;
+    margin-right: 10%;
     color: white;
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
     border: none;
     border-radius: 5px;
     backdrop-filter: blur(55px);
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: right;
     align-self:self-end ;
@@ -169,7 +169,7 @@ h2{
     width: 150px;
     background-color: red;
     font-weight: bolder;
-    margin-top: 1%;
+    /* margin-top: 0.5%; */
     /* box-shadow: 0 0 10px rgb(62, 54, 54); */
     
 

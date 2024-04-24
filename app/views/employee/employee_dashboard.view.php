@@ -174,12 +174,12 @@ $this->view('includes/footer', $data);
 							<div class="numb3">
 
 							</div>
-							<div class="circle">
-								<div class="bar left">
-									<div class="progress"></div>
+							<div class="circle1">
+								<div class="bar left1">
+									<div class="progress1"></div>
 								</div>
-								<div class="bar right">
-									<div class="progress"></div>
+								<div class="bar right1">
+									<div class="progress1"></div>
 								</div>
 							</div>
 						</div>
