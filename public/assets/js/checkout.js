@@ -23,7 +23,20 @@ var checkoutButton = document.getElementById("p_checkout-button");
 deliveryRadio.addEventListener("change", enableDeliveryOptions);
 pickupRadio.addEventListener("change", enablePickupOptions);
 
-
+deliveryRadio.addEventListener("change", function () {
+  if (this.checked && totalWeight > 30) {
+    Swal.fire({
+      title: "Order too large",
+      text: "Your order is too large for delivery. Please consider a pickup order.",
+      icon: "error",
+    });
+    checkoutButton.disabled = true;
+    checkoutButton.style.backgroundColor = "#b2b2b2"; 
+  } else {
+    checkoutButton.disabled = false;
+    checkoutButton.style.backgroundColor = "#FF0000"; 
+  }
+});
 
 function enableDeliveryOptions() {
   pickupLocation.disabled = true;
@@ -57,9 +70,9 @@ function enablePickupOptions() {
   // Hide delivery fee
   deliveryFeeContainer.textContent = "";
 
-    // Enable the checkout button
-    checkoutButton.disabled = false;
-    checkoutButton.style.backgroundColor = "#FF0000";
+  // Enable the checkout button
+  checkoutButton.disabled = false;
+  checkoutButton.style.backgroundColor = "#FF0000";
 }
 
 var map;
@@ -132,11 +145,27 @@ function initMap() {
             console.log("We deliver to your current location!");
             document.getElementById("p_checkout-button").disabled = false;
           } else {
+            var style = document.createElement("style");
+            style.textContent = `
+          .swal2-confirm {
+              background-color: #FF0000 !important;
+              color: white !important;
+              border: none !important;
+          }
+          .swal2-confirm a {
+              text-decoration: none !important;
+              color: white !important;
+          }
+          .swal2-confirm a:hover {
+              color: white !important;
+          }
+      `;
+            document.head.appendChild(style);
             Swal.fire({
               icon: "error",
               title: "Oops...",
               text: "Sorry, we don't deliver to your location.",
-              footer:
+              confirmButtonText:
                 '<a href="#" id="pickupLink">Click here to make a pickup order instead</a>',
               didOpen: () => {
                 document
@@ -225,11 +254,27 @@ function initMap() {
           console.log("We deliver to your selected location!");
           document.getElementById("p_checkout-button").disabled = false;
         } else {
+          var style = document.createElement("style");
+          style.textContent = `
+          .swal2-confirm {
+              background-color: #FF0000 !important;
+              color: white !important;
+              border: none !important;
+          }
+          .swal2-confirm a {
+              text-decoration: none !important;
+              color: white !important;
+          }
+          .swal2-confirm a:hover {
+              color: white !important;
+          }
+      `;
+          document.head.appendChild(style);
           Swal.fire({
             icon: "error",
             title: "Oops...",
             text: "Sorry, we don't deliver to your location.",
-            footer:
+            confirmButtonText:
               '<a href="#" id="pickupLink">Click here to make a pickup order instead</a>',
             didOpen: () => {
               document
@@ -313,11 +358,27 @@ function initMap() {
           console.log("We deliver to your selected location!");
           document.getElementById("p_checkout-button").disabled = false;
         } else {
+          var style = document.createElement("style");
+          style.textContent = `
+          .swal2-confirm {
+              background-color: #FF0000 !important;
+              color: white !important;
+              border: none !important;
+          }
+          .swal2-confirm a {
+              text-decoration: none !important;
+              color: white !important;
+          }
+          .swal2-confirm a:hover {
+              color: white !important;
+          }
+      `;
+          document.head.appendChild(style);
           Swal.fire({
             icon: "error",
             title: "Oops...",
             text: "Sorry, we don't deliver to your location.",
-            footer:
+            confirmButtonText:
               '<a href="#" id="pickupLink">Click here to make a pickup order instead</a>',
             didOpen: () => {
               document

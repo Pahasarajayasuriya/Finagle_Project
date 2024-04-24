@@ -78,13 +78,10 @@ $this->view('includes/footer', $data);
             } else {
                 ?>
                 <style>
-                    .swal2-popup {
-                        border-color: white !important;
-                    }
-
                     .swal2-confirm {
                         background-color: #FF0000 !important;
                         color: white !important;
+                        border: none !important;
                     }
 
                     .swal2-confirm a {
