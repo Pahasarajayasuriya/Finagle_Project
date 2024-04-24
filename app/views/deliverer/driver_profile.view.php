@@ -1,7 +1,7 @@
 <?php
 $role = "Deliverer";
-$data['role']= $role;
 
+$data['role'] = $role;
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
@@ -29,7 +29,11 @@ $this->view('includes/footer', $data);
                 <p class="pro_head_1">YOUR <span> PROFILE</span></p>
             </div>
 
-          
+
+            <?php
+            if (isset($driver_data)) {
+                //show($data['driver_data']);
+                foreach ($driver_data as $val) {
 
                     <div class="profile-picture">
                       <?php
@@ -68,9 +72,10 @@ $this->view('includes/footer', $data);
                             <i class="fas fa-truck"></i>
 
                             <?php
-                           // show($deliveredOrder);
-                            if (isset($data['$deliveredOrder'])) {
-                                foreach ($data['$deliveredOrder'] as $delivered_orders) {
+
+                            // show($data['$deliveredOrder']);
+                            if (isset($deliveredOrder)) {
+                                foreach ($deliveredOrder as $delivered_orders) {
 
                             ?>
                                     <p class="stats-number"><?= $delivered_orders->delivered_count ?></p>
@@ -92,10 +97,10 @@ $this->view('includes/footer', $data);
                           
                             
                             <?php
-                           //show($totalEarnings);
-                            if (isset($data['$totalEarnings'])) {
-                               
-                                foreach ($data['$totalEarnings'] as $total_earnings) {
+
+                            // show($data['$totalEarnings']);
+                            if (isset($totalEarnings)) {
+                                foreach ($totalEarnings as $total_earnings) {
 
                             ?>
                                      <p class="stats-number">Rs.<?= $total_earnings->totalCost ?></p>

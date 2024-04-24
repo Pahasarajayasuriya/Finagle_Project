@@ -31,7 +31,7 @@ $this->view('includes/footer', $data);
 </head>
 
 <body>
-
+<div class="home-section">
     <div class="login_container">
         <!-- <img src="https://i.pinimg.com/564x/4c/80/3b/4c803b6dcc4b96172ee2667ac3f80eff.jpg"> -->
     
@@ -119,12 +119,9 @@ $this->view('includes/footer', $data);
                         <!-- <label for="branch">Branch</label> -->
 
                         <select name="branch" id="branch" placeholder="Branch">
-                            <option value="Battaramulla">Battaramulla</option>
-                            <option value="Borella">Borella</option>
-                            <option value="Nugegoda">Nugegoda</option>
-                            <option value="Kotahena">Kotahena</option>
-                            <option value="Mount_lavinia">Mount-lavinia</option>
-                            <option value="Thalawatugoda">Thalawatugoda</option>
+                        <?php foreach ($branches as $branch) : ?>
+                                <option class="branch_select"><?= $branch->name ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
 
@@ -147,7 +144,7 @@ $this->view('includes/footer', $data);
             </section>
         </div>
     </div>
-
+</div>
 </body>
 
 

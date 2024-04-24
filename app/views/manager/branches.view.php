@@ -1,5 +1,6 @@
 <?php
 $role = "Manager";
+$data['role'] = $role;
 // require_once '../../Components/NavBar/header.php';
 // require_once '../../Components/NavBar/NavBar.php';
 // require_once '../../Components/NavBar/footer.php';
@@ -53,15 +54,8 @@ $this->view('includes/footer', $data);
             <?php
 
             // show($data);
-            if (isset($data['branch'])) {
-                foreach ($data['branch'] as $branch) {
-                    // Create a DateTime object from the time string
-                    $open_time = DateTime::createFromFormat('H:i:s.u', $branch->open_time)->format('h:i A');
-
-                    $close_time = DateTime::createFromFormat('H:i:s.u', $branch->close_time)->format('h:i A');
-
-                    // Format the time as AM/PM with hours and minutes
-                    // $formattedTime = $time->format('h:i A');
+            if (isset($branch)) {
+                foreach ($branch as $branch) {
 
             ?>
 
@@ -82,7 +76,9 @@ $this->view('includes/footer', $data);
 
                                 <p class="branch-hours">
                                     <img src="https://cdn-icons-png.flaticon.com/128/2838/2838773.png" alt="Clock Icon" class="clock-icon">
-                                    <?= $open_time ?> - <?= $close_time ?>
+                                    Open at <?= $branch->open_time ?> <br>
+                                    <img src="https://cdn-icons-png.flaticon.com/128/2838/2838773.png" alt="Clock Icon" class="clock-icon">
+                                    Close at <?= $branch->close_time ?>
                                 </p>
 
                             </div>
@@ -96,10 +92,6 @@ $this->view('includes/footer', $data);
             ?>
 
         </div>
-    </div>
-
-    <div class="logout-button">
-        <button><b>Log Out</b></button>
     </div>
     </div>
 </body>

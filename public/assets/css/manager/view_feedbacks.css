@@ -1,0 +1,101 @@
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.feedback_head {
+    align-items: center;
+    text-align: center;
+    font-size: 25px;
+    color: red;
+    letter-spacing: 0.08rem;
+    margin: 2rem 0 1rem;
+    font-weight: 600;
+}
+
+.feedback_head_1 {
+    font-weight: 800;
+    color: black;
+    white-space: nowrap;
+    font-size: 25px;
+}
+
+.feedback_head_1 span {
+    color: #d72323;
+}
+
+.feedback-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    gap: 1.5rem;
+    margin-top: 2rem; 
+}
+
+.feedback-container .review-box {
+    width:700px;
+    height: 150px;
+    padding: 10px;
+    margin-left: 90px;
+
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px 0px rgb(187, 184, 184);
+    transition: 0.5s ease-in-out;
+    border-right: 10px solid rgb(233, 229, 229);
+    
+    
+}
+
+.feedback-container .review-box:hover {
+    box-shadow: 0 5px 10px 5px rgb(161, 161, 161);
+    border-right: 10px solid black;
+  }
+.feedback-container .review-box .user-review {
+    display: flex;
+    flex-direction: row; /* Change to column direction */
+    align-items: center; /* Align items at the center */
+    gap: 1.5rem;
+
+   
+}
+
+.feedback-container .review-box .user-review img {
+    height:80px;
+    width: 80px;
+    border-radius: 50%;
+}
+
+.feedback-container .review-box .user-review h3 {
+    font-size: 18px;
+    color: #3e3636;
+}
+
+.feedback-container .review-box .user-review span {
+    font-size: 18px;
+    color: #f5eded;
+}
+
+.feedback-container .review-box p {
+    font-size: 16px;
+    color:rgb(94, 94, 94);
+    text-align: left;
+    margin-top: 5px;
+
+   
+}
+
+/* .home-section {
+    position: relative;
+    transition: all 0.5s ease;
+    min-height: 100vh;
+    left: 8px;
+    width: calc(100% - 58px);
+    z-index: 2;
+  }
+
+  .sidebar.open ~ .home-section {
+    left: 70px;
+    width: calc(100% - 150);
+  } */
+

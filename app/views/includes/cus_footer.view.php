@@ -24,15 +24,10 @@
                 <i class="fas fa-arrow-right"></i> <a href="<?= ROOT ?>/products" class="a-link">Products</a><br>
 
 
-                <i class="fas fa-arrow-right"></i> <a href="" class="a-link">Our Segments</a><br>
+                <i class="fas fa-arrow-right"></i> <a href="<?= ROOT ?>/complaint" class="a-link">Put a Complaint</a><br>
 
 
                 <i class="fas fa-arrow-right"></i> <a href="" class="a-link">Distributions</a><br>
-
-
-                <i class="fas fa-arrow-right"></i> <a href="" class="a-link">Privacy Policy</a><br>
-
-                <i class="fas fa-arrow-right"></i> <a href="" class="a-link">Sitemap</a><br>
                 <?php if (Auth::is_admin()) : ?>
                     <i class="fas fa-arrow-right"></i> <a href="<?= ROOT ?>/admin_products" class="a-link">Admin</a><br>
                 <?php endif; ?>
