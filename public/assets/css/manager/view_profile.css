@@ -39,7 +39,7 @@
     font-weight: bold;
     margin-top: 15px;
     font-family:"Poppins";
-    margin-left: 450px;
+    margin-left: 300px;
   }
   
   .section-title strong {
@@ -56,7 +56,7 @@
     margin-left: 100px;
   }
   .fas.fa-bread-slice.fa-3x.text-primary.mb-4{
-    margin-left: 550px;
+    margin-left: 400px;
     margin-top: 60px;
   
   }
@@ -67,7 +67,7 @@
   
   }
   
-  .divider .icon-wrap:after {
+    .divider .icon-wrap:after {
     content: "";
     position: absolute;
     border-bottom: 3px solid #ff0000;
@@ -88,7 +88,7 @@
   
   .divider .icon-wrap:before,
   .divider.dark .icon-wrap:before {
-    left: 460px;
+    left: 30%;
     transform: translateX(-50%);
   
   
@@ -96,9 +96,10 @@
   
   .divider .icon-wrap:after,
   .divider.dark .icon-wrap:after {
-    right: 380px;
+    right: 30%;
     transform: translateX(50%);
   }
+  
   .pro_content {
     padding: 10px;
   }
@@ -175,7 +176,7 @@
   .pro_font {
     color: #000000;
     letter-spacing: var(--mainSpacing);
-    font-size: 14px;
+    font-size: 18px;
     padding-bottom: 3px;
     text-transform: uppercase;
     margin-left: 20px;
@@ -228,8 +229,8 @@
   }
   
   .avatar-container img {
-    width: 80px;
-    height: 80px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
     margin-left: 420px;
@@ -244,7 +245,7 @@
     margin-left: 20px;
   }
   
-  h4 {
+  h3 {
     margin-left: 20px;
   
   }
@@ -278,7 +279,7 @@
   }
   
   .pro_input {
-    font-size: 14px;
+    font-size: 18px;
   }
   
   .pro_form-group {
@@ -288,6 +289,7 @@
   
   .pro_input {
     padding: 10px;
+    color: #0b6d18f5;
     /* Adjust the padding as needed */
   }
   

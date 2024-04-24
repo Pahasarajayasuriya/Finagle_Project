@@ -42,7 +42,7 @@ $this->view('includes/footer', $data);
             <div class="pro_form-group">
               <div class="avatar-container">
                 <div class="username">
-                  <h4>Hi, <?= esc($row->username) ?></h4>
+                  <h3>Hi, <?= esc($row->username) ?></h3>
                 </div>
                 <img src="<?= esc($row->image) ?>" alt="Profile Image">
               </div>
@@ -51,7 +51,7 @@ $this->view('includes/footer', $data);
 
 
           <div class="personal-info-section">
-            <h2 class="pro_font">Personal Information</h2>
+            <h2 class="pro_font">Personal Information</h2><br>
             <div class="pro_card">
               <form action="view_profile.php" method="POST">
                 <div class="pro_form-group">
