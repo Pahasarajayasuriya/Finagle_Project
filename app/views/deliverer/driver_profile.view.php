@@ -13,7 +13,7 @@ $this->view('includes/footer', $data);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Deliverer Profile</title>
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/deliverer/driver_profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -27,6 +27,10 @@ $this->view('includes/footer', $data);
 
             <div class="pro_head">
                 <p class="pro_head_1">YOUR <span> PROFILE</span></p>
+
+                <div class="logout-button">
+                    <a href="<?= ROOT ?>/Emp_Logout">LogOut</a>
+                </div>
             </div>
 
 
@@ -48,9 +52,11 @@ $this->view('includes/footer', $data);
                         </div>
 
 
-                        <div class="driver-info">
+                        <div class="driver-info" id="availability_<?= $val->id ?>">
                             <p class="driver-name"><?= $val->username ?></p>
                             <p class="joined-date">Joined Date : <?= $val->joined_date ?></p>
+                            <button  onclick="updateAvailability(<?= $val->id ?>)">Available Now</button>
+
                         </div>
 
                 <?php
@@ -60,6 +66,36 @@ $this->view('includes/footer', $data);
 
 
             </div>
+            <script>
+                function updateAvailability(id) {
+
+                    // alert(id);
+                    data = {
+                        id_array: parseInt(id),
+                        status: "availability",
+                    };
+
+                   
+                    $.ajax({
+                        type: "POST",
+                        url: Driver_status_update.php,
+                        data: data,
+                        cache: false,
+                        success: function(res) {
+                            try {
+                                //alert(res);
+
+                                // convert to the json type
+                                Jsondata = JSON.parse(res);
+
+                            } catch (error) {}
+                        },
+                        error: function(xhr, status, error) {
+                            //return xhr;
+                        },
+                    });
+                }
+            </script>
 
 
             <div class="stats-boxes">
@@ -117,6 +153,16 @@ $this->view('includes/footer', $data);
         </div>
 
     </div>
+    <script>
+        function toggleButton() {
+            var button = document.querySelector('.status');
+            if (button.classList.contains('active')) {
+                button.classList.remove('active');
+            } else {
+                button.classList.add('active');
+            }
+        }
+    </script>
 </body>
 
 </html>

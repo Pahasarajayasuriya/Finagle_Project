@@ -95,6 +95,7 @@ class Checkout extends Controller
         $number = "+94" . $_POST['phone_number']; // Replace with the customer's phone number
         require __DIR__ . '/../../vendor/autoload.php';
 
+
         // Send SMS via Infobip SMS API
         $baseUrl = '6glnnd.api.infobip.com';
         $apiKey = '48aec9f721e803db63f659fc3c34b046-a8406dfc-7c8e-4452-9ef9-19152170386c';

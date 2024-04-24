@@ -60,6 +60,7 @@ $this->view('includes/footer', $data);
                     <div class="pro-id"> User Id</div>
                     <div class="pro-description">User Name</div>
                     <div class="pro-date">Joined Date</div>
+                   
                 </div>
 
                 <?php

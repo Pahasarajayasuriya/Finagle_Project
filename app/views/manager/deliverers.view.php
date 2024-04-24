@@ -47,14 +47,7 @@ $this->view('includes/footer', $data);
 
         </div>
 
-        <?php
-
-            // show($data);
-          if (isset($driver)) {
-               foreach ($driver as $driver) {
        
-
-          ?>
 
 
         <div class="employee-table">
@@ -69,7 +62,14 @@ $this->view('includes/footer', $data);
                 <!-- <div class="header-item">Goals Assignment</div> -->
             </div>
 
-            
+            <?php
+
+// show($data);
+if (isset($driver)) {
+   foreach ($driver as $driver) {
+
+
+?>
 
             <div class="employee-record">
                 <div class="employee-image"><img src="<?= ROOT ?>/assets/images/drivers/<?= $driver->image ?>" alt="Deliverer 1"></div>
