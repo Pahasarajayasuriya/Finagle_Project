@@ -13,47 +13,6 @@ body {
 
 }
 
-.logout-button {
-    text-align: right;
-    margin-top: 10px;
-    /* Increase the top margin for better spacing */
-    height: 5px;
-    align-content: end;
-    justify-content: end;
-
-
-}
-/* Style for the Log Out button */
-.logout-button button {
-    outline: none;
-    margin-right: 20%;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    backdrop-filter: blur(55px);
-    display: flex;
-    justify-content: center;
-    align-items: right;
-    align-self:self-end ;
-    padding: 10px 20px;
-    width: 150px;
-    background-color: red;
-    font-weight: bolder;
-    margin-top: 1%;
-    /* box-shadow: 0 0 10px rgb(62, 54, 54); */
-    
-
-}
-
-.logout-button button:hover {
-   
-    
-    opacity: 0.8;
-    transform: scale(1.05);
-   
-}
 
 .title-profile{
     margin-top: -10px;
