@@ -1,6 +1,8 @@
 <?php
 $role = "Admin";
+
 $data['role']=$role;
+
 
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);

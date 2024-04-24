@@ -51,4 +51,11 @@ class ComplaintModel extends Model
 
         return $this->insert($validatedData);
     }
+
+    public function countComplaints()
+    {
+        $query = "SELECT COUNT(*) AS count FROM " . $this->table;
+        $result = $this->query($query);
+        return $result[0]->count;
+    }
 }

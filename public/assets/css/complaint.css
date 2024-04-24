@@ -24,7 +24,7 @@ body {
   height: 100vh;
   width: auto;
   font-family: "Poppins";
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   background-color: white;
@@ -40,11 +40,12 @@ body {
   background-color: red;
   color: var(--bodyColor);
   padding: 10px 30px;
-  margin: 50px 100px 50px 650px;
+  margin: 30px 50px 50px 650px;
   font-weight: bolder;
   box-shadow: 0 0 10px rgb(62, 54, 54);
   cursor: pointer;
-  
+  color: white;
+  margin-bottom: 5px;
   
 }
 
@@ -57,7 +58,7 @@ body {
 
 /* overlapping part fixed */
 .sidebar.open~.home-section {
-  left: 150px;
+  /* left: 150px; */
   width: calc(100% - 50px);
 
 }
@@ -66,7 +67,7 @@ body {
   position: relative;
   transition: all 0.5s ease;
   min-height: 100vh;
-  left: 8px;
+  /* left: 8px; */
   width: calc(100% - 58px);
   z-index: 2;
   margin-top: 50px;
@@ -81,9 +82,10 @@ body {
   flex-direction: column;
   width: 100%;
   width: 800px;
-  padding: 6px;
+  padding: 5px;
   position: relative;
-  margin-left: 20px;
+
+  margin-left: 28%;
   margin-top: 30px;
 
   border: 2px solid #ccc;
@@ -136,6 +138,11 @@ body {
   margin-right: 30px;
 
   
+}
+
+.pro_input{
+  color: #c6c5c5;
+
 }
 
 

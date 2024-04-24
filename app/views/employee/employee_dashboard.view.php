@@ -1,8 +1,6 @@
 <?php
 $role = "Employee";
-// require_once '../../Components/NavBar/header.php';
-// require_once '../../Components/NavBar/NavBar.php';
-// require_once '../../Components/NavBar/footer.php';
+$data['role'] = $role;
 
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
@@ -59,8 +57,8 @@ $this->view('includes/footer', $data);
 					<div class="right">
 						<p>Hey,
 							<?php
-							if (isset($data['BranchName'])) {
-								foreach ($data['BranchName'] as $branch) {
+							if (isset($BranchName)) {
+								foreach ($BranchName as $branch) {
 									// show($val);
 
 							?><?= $branch->name ?> Branch </p>
@@ -83,8 +81,8 @@ $this->view('includes/footer', $data);
 							<?php
 							//show($data['count']);
 
-							if (isset($data['count'])) {
-								foreach ($data['count'] as $order_count) {
+							if (isset($count)) {
+								foreach ($count as $order_count) {
 
 							?>
 									<h3><?= $order_count->total_records ?></h3>
@@ -119,8 +117,8 @@ $this->view('includes/footer', $data);
 							<?php
 							//show($data['count']);
 
-							if (isset($data['getCusData'])) {
-								foreach ($data['getCusData'] as $cus_count) {
+							if (isset($getCusData)) {
+								foreach ($getCusData as $cus_count) {
 
 							?>
 									<h3><?= $cus_count->total_customers ?></h3>
@@ -159,8 +157,8 @@ $this->view('includes/footer', $data);
 
 							<?php
 							//show($data['count']);
-							if (isset($data['getTotalcost'])) {
-								foreach ($data['getTotalcost'] as $total_cost) {
+							if (isset($getTotalcost)) {
+								foreach ($getTotalcost as $total_cost) {
 							?>
 									<h3><?= $total_cost->total_sum ?></h3>
 							<?php
@@ -176,12 +174,12 @@ $this->view('includes/footer', $data);
 							<div class="numb3">
 
 							</div>
-							<div class="circle">
-								<div class="bar left">
-									<div class="progress"></div>
+							<div class="circle1">
+								<div class="bar left1">
+									<div class="progress1"></div>
 								</div>
-								<div class="bar right">
-									<div class="progress"></div>
+								<div class="bar right1">
+									<div class="progress1"></div>
 								</div>
 							</div>
 						</div>
@@ -207,8 +205,8 @@ $this->view('includes/footer', $data);
 								<?php
 
 								//   show($data);
-								if (isset($data['getData'])) {
-									foreach ($data['getData'] as $order) {
+								if (isset($getData)) {
+									foreach ($getData as $order) {
 
 								?>
 										<tr>
@@ -243,8 +241,8 @@ $this->view('includes/footer', $data);
 								<?php
 								//show($data['getOnlineorders']);
 
-								if (isset($data['getOnlineorders'])) {
-									foreach ($data['getOnlineorders'] as $online_orders) {
+								if (isset($getOnlineorders)) {
+									foreach ($getOnlineorders as $online_orders) {
 
 								?>
 										<p class="count"><?= $online_orders->online_delivery_count ?></p>
@@ -268,8 +266,8 @@ $this->view('includes/footer', $data);
 								<?php
 								//show($data['getPickuporders ']);
 
-								if (isset($data['getPickuporders '])) {
-									foreach ($data['getPickuporders '] as $pickup_orders) {
+								if (isset($getPickuporders)) {
+									foreach ($getPickuporders as $pickup_orders) {
 
 								?>
 										<p class="count"><?= $pickup_orders->pickup_count ?></p>
@@ -289,8 +287,8 @@ $this->view('includes/footer', $data);
 								</div>
 								<?php
 								//show($data['count']);
-								if (isset($data['getBranchcount '])) {
-									foreach ($data['getBranchcount '] as $branch_count) {
+								if (isset($getBranchcount)) {
+									foreach ($getBranchcount as $branch_count) {
 								?>
 										<p class="count"><?= $branch_count->total_records ?></p>
 								<?php

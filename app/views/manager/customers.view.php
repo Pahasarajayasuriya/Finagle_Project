@@ -1,8 +1,6 @@
 <?php
 $role = "Manager";
-// require_once '../../Components/NavBar/header.php';
-// require_once '../../Components/NavBar/NavBar.php';
-// require_once '../../Components/NavBar/footer.php';
+$data['role'] = $role;
 
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
@@ -17,7 +15,7 @@ $this->view('includes/footer', $data);
 
 <head>
     <title>Customers</title>
-    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/manager/customer_view.css">
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/manager/view_products.css">
     <link href="https://fonts.googleapis.com/css?family=Cabin|Herr+Von+Muellerhoff|Source+Sans+Pro" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
 
@@ -34,57 +32,41 @@ $this->view('includes/footer', $data);
 </head>
 
 <body>
-
-
     <div class="home-section">
-        <div class="title-profile">
-
-            <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
-            <h2 class="section-title">CUSTOMERS</h2>
-            <div class="divider dark mb-4">
-                <div class="icon-wrap">
-                    <!-- <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>  -->
-                </div>
+        <div class="search-container">
+            <div class="branch_head">
+                <p class="branch_head_1">CUS<span>TOMERS</span></p>
             </div>
 
-        </div>
-
-        <div class="customer-table">
-            <div class="table-header">
-                <div class="header-item customer-image">
+            <form>
+                <div class="form">
+                    <input id="searchInput" class="form-group" type="text" placeholder="Search...">
+                    <i class='bx bx-search icon'></i>
                 </div>
-                <div class="header-item">Customer ID</div>
-                <div class="header-item">User name</div>
-                <div class="header-item name">Name</div>
-                <div class="header-item">Email</div>
-                <div class="header-item">Contact Number</div>
-            </div>
+            </form>
 
-        <?php
-
-        //   show($data);
-          if (isset($data['customer'])) {
-               foreach ($data['customer'] as $customer) {
-       
-          ?>
-
-           <div class="customer-record">
-                <div class="customer-image"><img src="<?= ROOT ?>/assets/images/customers/<?= $customer->image ?>" alt="Deliverer 1"></div>
-                <div class="customer-id"><?= $customer->id ?></div>
-                <div class="customer-name"><?= $customer->username ?></div>
-                <div class="customer-name"><?= $customer->name ?></div>
-                <div class="customer-name"><?= $customer->email ?></div>
-                <div class="customer-name"><?= $customer->contact_no ?></div>
-       
-            </div> 
-        <?php
-                }
-            }
-            ?>
-
+            <table class="table" id="productTable">
+                <thead>
+                    <tr>
+                        <th class="ordId">Id</th>
+                        <th class="ordId">Name</th>
+                        <th class="desc">Email</th>
+                        <th class="desc">Phone Number</th>
+                    </tr>
+                </thead>
+                <?php foreach ($customer as $order) : ?>
+                    <tr>
+                        <td class="desc"><?= esc($order->id) ?></td>
+                        <td class="products"><?= esc($order->username) ?> </td>
+                        <td class="category"><?= esc($order->email) ?></td>
+                        <td class="desc"><?= esc($order->teleno) ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+            <div id="noResultsMessage" style="display: none;">User not found</div>
+            <script src="<?= ROOT ?>/assets/js/manager/view_products.js"></script>
         </div>
-
-
     </div>
 </body>
+
 </html>

@@ -12,21 +12,24 @@ body {
 
 }
 
-.title-profile{
-  /* margin-top: -0px; */
-}
+
 .section-title {
   font-size: 2em;
   line-height: 1;
   text-transform: uppercase;
   font-weight: bold;
-  margin-top: 1%;
+  margin-top: 0.5%;
   font-family:"Poppins";
   /* margin-left: 1%; */
   text-align: center;
 }
+
+.title-profile{
+  margin-top: 5px; 
+}
 .fas.fa-bread-slice.fa-3x.text-primary.mb-4{
   margin-left: 46%;
+  
  
 
 } 
@@ -34,7 +37,7 @@ body {
   
 .fas.fa-bread-slice.fa-3x.text-primary.mb-4 :after{
 margin-left: 100px;
-
+margin-top: 5px;
 
 }
 

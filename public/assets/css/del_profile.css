@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  background-color: white;
+}
+
+
+.pro_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.pro_card {
+  width: 600px;
+  height: 400px;
+  padding: 15px;
+  position: relative;
+  border: 2px solid #ccc;
+  overflow: hidden;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+
+.pro_details {
+  width: 100%; 
+  margin: 20px 20px;
+  color:black;
+  
+}
+
+.pro_details strong{
+  color: #7b7a7a;
+  
+}
+
+.pro_head {
+  align-items: center;
+  text-align: center;
+  font-size: 25px;
+  color: red;
+  letter-spacing: 0.08rem;
+  margin: 2rem 0 1rem;
+  font-weight: 950;
+  font-family: pop;
+}
+
+.pro_head_1 {
+  font-weight: 950;
+  color: black;
+  white-space: nowrap;
+}
+
+.pro_head_1 span {
+  color: #d72323;
+}
+
+.pro_btn {
+  display: block;
+  margin-top: 16px;
+  outline: none;
+  border: none;
+  font-size: 17px;
+  width: 200px;
+  margin-left: 200px;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  background: #D72323;
+  transition: all 0.3s ease;
+  font-weight: bolder;
+  box-shadow: 0 0 10px rgb(62, 54, 54);
+}
+
+.pro_btn:hover {
+  transform: scale(0.97);
+}

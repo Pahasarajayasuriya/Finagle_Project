@@ -56,7 +56,6 @@ $this->view('includes/footer', $data);
 
                         <h3 class="text-span">Conveniently Delicious Frozen & Fresh Bakery Products</h3>
                         <div class="button"> <a href="<?= ROOT ?>/home"><button>Explore</button></a></div>
-
                     </div>
                 </div>
             </div>
@@ -200,7 +199,7 @@ $this->view('includes/footer', $data);
                     <div class="category-content">
                         <img src="<?= ROOT ?>/assets/images/delicious-bread.jpg" alt="breads" class="category-image">
 
-                        <a href="<?= ROOT ?>/products">
+                        <a href="<?= ROOT ?>/products#bread">
                             <h5 class="category-title">BREAD & BUNS</h5>
                         </a>
 
@@ -209,9 +208,9 @@ $this->view('includes/footer', $data);
 
                 <div class="category">
                     <div class="category-content">
-                        <img src="<?= ROOT ?>/assets/images/vegi_roti.jpg" alt="frozen" class="category-image">
+                        <img src="<?= ROOT ?>/assets/images/fish_patties.jpg" alt="frozen" class="category-image">
 
-                        <a href="<?= ROOT ?>/products">
+                        <a href="<?= ROOT ?>/products#frozen">
                             <h5 class="category-title">FROZEN FOODS</h5>
                         </a>
 
@@ -222,7 +221,7 @@ $this->view('includes/footer', $data);
                     <div class="category-content">
                         <img src="<?= ROOT ?>/assets/images/cakes.jpg" alt="cakes" class="category-image">
 
-                        <a href="<?= ROOT ?>/products">
+                        <a href="<?= ROOT ?>/products#cakes">
                             <h5 class="category-title"> CAKES</h5>
                         </a>
 
@@ -235,391 +234,231 @@ $this->view('includes/footer', $data);
             </a>
 
             <div class="newly-added">
-
-
                 <h2 class="section-title"><strong> </strong>NEWLY ADDED</h2>
                 <div class="divider dark mb-4">
                     <div class="icon-wrap">
                         <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
                     </div>
                 </div>
-
-
                 <div class="food_section">
                     <button class="arrow-btn left" onclick="prevProducts()">&#10094;</button>
                     <div class="row grid">
-
-                        <div class="col-sm-6 col-lg-4 all pizza">
-                            <div class="box">
-
-                                <div class="img-box">
-                                    <img src="https://i.pinimg.com/474x/46/82/38/4682389000f323e6b4a743a2a183c3aa.jpg" alt="">
-                                </div>
-                                <div class="detail-box">
-                                    <h5>
-                                        Vege Stuffed Roti
-                                    </h5>
-                                    <p>
-                                        Flavorful and nutritious dish that combines the goodness of whole wheat flour with a delectable mix of vegetables.
-                                    </p>
-                                    <div class="options">
-                                        <h6>
-                                            Rs.1000.00
-                                        </h6>
-                                        <a href="product.php">
-                                            <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i>
-
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 all pizza">
-                            <div class="box">
-
-                                <div class="img-box">
-                                    <img src="https://i.pinimg.com/564x/68/2d/71/682d710de798a1c465ac95f55fda8e14.jpg" alt="">
-                                </div>
-                                <div class="detail-box">
-                                    <h5>
-                                        Eggnog Cake
-                                    </h5>
-                                    <p>
-                                        This is a festive dessert that captures the rich and creamy flavors of the beloved holiday eggnog.
-                                    </p>
-                                    <div class="options">
-                                        <h6>
-                                            Rs.4500.00
-                                        </h6>
-                                        <a href="product.php">
-                                            <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i>
-
-
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 all burger">
-                            <div class="box">
-                                <div>
+                        <?php foreach ($newlyAdded as $product) : ?>
+                            <div class="col-sm-6 col-lg-4 all pizza">
+                                <div class="box">
                                     <div class="img-box">
-                                        <img src="https://i.pinimg.com/474x/6f/8f/7b/6f8f7b182c2c015bdda4a11c1f9f5426.jpg" alt="">
+                                        <img src="<?= $product->image ?>" alt="">
                                     </div>
                                     <div class="detail-box">
                                         <h5>
-                                            Neapolitan Frozen Pizza
+                                            <?= $product->user_name ?>
                                         </h5>
                                         <p>
-                                            This allows you to savor the authentic taste of Neapolitan pizza with just a few minutes of preparation.
+                                            <?= $product->description ?>
                                         </p>
                                         <div class="options">
                                             <h6>
-                                                Rs.3750.00
+                                                Rs.<?= $product->price ?>
                                             </h6>
-                                            <a href="product.php">
+                                            <a href="<?= ROOT ?>/products">
                                                 <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i>
-
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- </div> -->
-                        <!-- <div class="row grid"> -->
-
-                        <div class="col-sm-6 col-lg-4 all pizza">
-                            <div class="box">
-                                <div>
-                                    <div class="img-box">
-                                        <img src="https://i.pinimg.com/474x/ad/ca/b2/adcab2d2165598c7208bc2105b266c61.jpg" alt="">
-                                    </div>
-                                    <div class="detail-box">
-                                        <h5>
-                                            Blackstone Burger
-                                        </h5>
-                                        <p>
-                                            Crafted with precision on a Blackstone griddle, this burger boasts a perfect balance of flavors.
-                                        </p>
-                                        <div class="options">
-                                            <h6>
-                                                Rs.1700.00
-                                            </h6>
-                                            <a href="product.php">
-                                                <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i>
-
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-lg-4 all pizza">
-                            <div class="box">
-
-                                <div class="img-box">
-                                    <img src="https://i.pinimg.com/474x/ab/d3/6e/abd36e85ca11276e78c53d02853d88bd.jpg" alt="">
-                                </div>
-                                <div class="detail-box">
-                                    <h5>
-                                        Savory Rolls
-                                    </h5>
-                                    <p>
-                                        These delightful rolls are perfect for any occasion, from casual snacks to elegant appetizers.
-                                    </p>
-                                    <div class="options">
-                                        <h6>
-                                            Rs.200.00
-                                        </h6>
-                                        <a href="product.php">
-                                            <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i></span>
-
-
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-lg-4 all pizza">
-                            <div class="box">
-                                <div>
-                                    <div class="img-box">
-                                        <img src="https://i.pinimg.com/474x/0a/57/9b/0a579b9bdaf19849ca8443ba628e0b6b.jpg" alt="">
-                                    </div>
-                                    <div class="detail-box">
-                                        <h5>
-                                            Chocolate Berry Cake
-                                        </h5>
-                                        <p>
-                                            This dessert is a harmonious blend of flavors, making it a perfect treat for any occasion.
-                                        </p>
-                                        <div class="options">
-                                            <h6>
-                                                Rs.5000.00
-                                            </h6>
-                                            <a href="product.php">
-                                                <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i>
-
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- </div> -->
+                        <?php endforeach; ?>
                     </div>
-                    <button class="arrow-btn right" onclick="nextProducts()">&#10095;</button>
+                </div>
+            </div>
+            <div class="about-us">
+
+                <h2 class="section-title" id="aboutus"><strong> </strong>ABOUT US</h2>
+                <div class="divider dark mb-4">
+                    <div class="icon-wrap">
+                        <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
+                    </div>
+                </div>
+
+                <div class="about-us-section">
+                    <div class="about-img">
+                        <div class="img-container-1">
+                            <img class="img-1" src="https://www.finagle.lk/images/site-specific/about-us/01_our-story.jpg" alt="">
+                            <img class="img-2" src="https://bmkltsly13vb.compat.objectstorage.ap-mumbai-1.oraclecloud.com/cdn.dailymirror.lk/assets/uploads/image_4cb427c61e.jpg" alt="">
+
+                        </div>
+                        <div class="img-container-2">
+                            <img class="img-3" src="https://lh3.googleusercontent.com/p/AF1QipMRpMNJLbc9yGciZgvXzr4Y32F3pZBYMwuPtTzZ=s680-w680-h510" alt="">
+                            <img class="img-4" src="https://www.finagle.lk/images/site-specific/market-segments/horeca_01.jpg" alt="">
+
+                        </div>
+
+
+                    </div>
+                    <div class="about-content">
+
+                        <h1 class="about-head">Welcome to <i class="fa fa-utensils text-primary me-2"></i> Finagle Lanka </h1>
+                        <p class="about-p">In the late 1980s, an entrepreneur's wife in the textile weaving industry started baking cakes in a small Baby Belling oven and sold them in a boutique in Kottawa town. These cakes, known as "Nona Cakes" or "Cakes Baked by the Lady," gained popularity for their quality.<br><br>Recognizing the potential in the baking industry, her husband, Mahinda Ranasinghe, decided to expand the business in 1992. He invested in second-hand European equipment for production, forming the organization "Ran Ovens." <br><br>While the textile industry faced challenges due to liberalized imports, Ran Ovens continued to improve production and distribution with a strong focus on hygiene and quality.
+
+                            In 1999, a joint venture agreement was formed between Finagle-A-Bagel of Boston, USA, and Phoenix Ventures of Sri Lanka with Ran Ovens to establish a state-of-the-art bakery in Sri Lanka, named "Finagle Lanka."</p>
+
+
+
+                        <div class="about-exp">
+                            <div class="experience">
+                                <div class="vertical-line"></div>
+                                <div class="exp-title">
+                                    <h1 class=""> 15 </h1>
+                                </div>
+                                <div class="exp-content">
+                                    <p class="sub-topic">Years of</p>
+                                    <h3 class="ss-topic">EXPERIENCE</h6>
+
+                                </div>
+
+                            </div>
+
+                            <div class="many-branch">
+                                <div class="vertical-line"></div>
+                                <div class="exp-title">
+                                    <h1 class=""> 20 </h1>
+                                </div>
+                                <div class="exp-content">
+                                    <p class="sub-topic">Exporting</p>
+                                    <h3 class="ss-topic">COUNTRIES</h6>
+                                </div>
+
+                            </div>
+                        </div>
+                        <a class="read-more" href="<?= ROOT ?>/process">READ MORE</a>
+                    </div>
 
                 </div>
-                <br>
-                <a href="<?= ROOT ?>/products">
-                    <div class="view-more">View more</div>
-                </a>
+            </div>
+            <div class="exports">
 
-                <div class="about-us">
+                <h2 class="section-title" id="exports"><strong> </strong>EXPORT MARKETS</h2>
+                <div class="divider dark mb-4">
+                    <div class="icon-wrap">
+                        <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
+                    </div>
+                </div>
 
-                    <h2 class="section-title" id="aboutus"><strong> </strong>ABOUT US</h2>
+                <div class="export-section">
+                    <div class="export-img">
+                        <img src="<?= ROOT ?>/assets/images/exports.jpg" alt="export Img" />
+                    </div>
+
+                    <div class="export-content">
+                        <p class="export-p">Exports of frozen baked products is another of our success stories. Exports of our baked
+                            goods commenced several years back. We initially targeted hotels, restaurants and retail
+                            outlets in those countries. Starting with the Maldives and Seychelles, we expanded our
+                            export horizons to the USA, Australia, the United Kingdom, and Hong Kong a few years later.
+                            The expatriate Sri Lankan community in those countries were targeted with typical Sri Lankan products.
+                            Our current list of countries in our Exports Account are USA, Australia, Maldives,
+                            New Zealand & South Korea.
+                            Our efforts were crowned with success. What commenced with one 20’ FCL Freezer
+                            Container in every quarter is now increased to two to three 20’ FCL Freezer Containers
+                            a month. For the long term, we intend to further penetrate the local communities of
+                            those countries as well. Currently, we are the only organization to offer a complete
+                            package of baked products for exports. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="certificates">
+
+                <h2 class="section-title" id="exports">QUALITY CERTIFICATIONS</h2>
+                <div class="divider dark mb-4">
+                    <div class="icon-wrap">
+                        <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
+                    </div>
+                </div>
+
+                <div class="certificate-section">
+                    <div class="c1">
+
+                        <div class="outer">
+                            <div class="img-01">
+                                <img src="<?= ROOT ?>/assets/images/fssc-22000.png" alt="">
+
+
+
+                            </div>
+                        </div>
+                        <p>FSSC 22000 <br>Certification</p>
+
+                    </div>
+
+                    <div class="c1">
+                        <div class="outer">
+                            <div class="img-01">
+                                <img src="<?= ROOT ?>/assets/images/gmp.jpg" alt="">
+
+                            </div>
+                        </div>
+                        <p>GMP <br>Certification</p>
+                    </div>
+
+                    <div class="c1">
+                        <div class="outer">
+                            <div class="img-01">
+                                <img src="<?= ROOT ?>/assets/images/ISO-22000.png" alt="">
+
+                            </div>
+                        </div>
+                        <p>ISO 22000 <br> Certification</p>
+                    </div>
+
+                    <div class="c1">
+                        <div class="outer">
+                            <div class="img-01">
+                                <img src="<?= ROOT ?>/assets/images/HACCP.jpg" alt="">
+
+                            </div>
+                        </div>
+                        <p>HACCP <br> Certification</p>
+                    </div>
+
+
+
+                </div>
+                <br><br>
+
+
+
+                <div class="feedback-section">
+                    <h2 class="section-title"><strong> </strong>CLIENTS' REVIEWS</h2>
                     <div class="divider dark mb-4">
                         <div class="icon-wrap">
                             <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
                         </div>
                     </div>
 
-                    <div class="about-us-section">
-                        <div class="about-img">
-                            <div class="img-container-1">
-                                <img class="img-1" src="https://www.finagle.lk/images/site-specific/about-us/01_our-story.jpg" alt="">
-                                <img class="img-2" src="https://bmkltsly13vb.compat.objectstorage.ap-mumbai-1.oraclecloud.com/cdn.dailymirror.lk/assets/uploads/image_4cb427c61e.jpg" alt="">
 
-                            </div>
-                            <div class="img-container-2">
-                                <img class="img-3" src="https://lh3.googleusercontent.com/p/AF1QipMRpMNJLbc9yGciZgvXzr4Y32F3pZBYMwuPtTzZ=s680-w680-h510" alt="">
-                                <img class="img-4" src="https://www.finagle.lk/images/site-specific/market-segments/horeca_01.jpg" alt="">
-
-                            </div>
-
-
-                        </div>
-                        <div class="about-content">
-
-                            <h1 class="about-head">Welcome to <i class="fa fa-utensils text-primary me-2"></i> Finagle Lanka </h1>
-                            <p class="about-p">In the late 1980s, an entrepreneur's wife in the textile weaving industry started baking cakes in a small Baby Belling oven and sold them in a boutique in Kottawa town. These cakes, known as "Nona Cakes" or "Cakes Baked by the Lady," gained popularity for their quality.<br><br>Recognizing the potential in the baking industry, her husband, Mahinda Ranasinghe, decided to expand the business in 1992. He invested in second-hand European equipment for production, forming the organization "Ran Ovens." <br><br>While the textile industry faced challenges due to liberalized imports, Ran Ovens continued to improve production and distribution with a strong focus on hygiene and quality.
-
-                                In 1999, a joint venture agreement was formed between Finagle-A-Bagel of Boston, USA, and Phoenix Ventures of Sri Lanka with Ran Ovens to establish a state-of-the-art bakery in Sri Lanka, named "Finagle Lanka."</p>
-
-
-
-                            <div class="about-exp">
-                                <div class="experience">
-                                    <div class="vertical-line"></div>
-                                    <div class="exp-title">
-                                        <h1 class=""> 15 </h1>
-                                    </div>
-                                    <div class="exp-content">
-                                        <p class="sub-topic">Years of</p>
-                                        <h3 class="ss-topic">EXPERIENCE</h6>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="many-branch">
-                                    <div class="vertical-line"></div>
-                                    <div class="exp-title">
-                                        <h1 class=""> 20 </h1>
-                                    </div>
-                                    <div class="exp-content">
-                                        <p class="sub-topic">Exporting</p>
-                                        <h3 class="ss-topic">COUNTRIES</h6>
-                                    </div>
-
+                    <div class="feedback-container">
+                        <?php foreach ($reviews as $review) : ?>
+                            <div class="feedback">
+                                <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                                <p class="review"><?= htmlspecialchars($review->review) ?></p>
+                                <div class="client-info">
+                                    <img src='<?= esc($review->image) ?>' alt="">
+                                    <p class="client-name"><?= htmlspecialchars($review->userName) ?></p>
                                 </div>
                             </div>
-                            <a class="read-more" href="<?= ROOT ?>/process">READ MORE</a>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="exports">
-
-                    <h2 class="section-title" id="exports"><strong> </strong>EXPORT MARKETS</h2>
-                    <div class="divider dark mb-4">
-                        <div class="icon-wrap">
-                            <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
 
-                    <div class="export-section">
-                        <div class="export-img">
-                            <img src="<?= ROOT ?>/assets/images/exports.jpg" alt="export Img" />
-                        </div>
-                        <div class="about-content">
-
-                        <div class="export-content">
-                            <p class="export-p">Exports of frozen baked products is another of our success stories. Exports of our baked
-                                goods commenced several years back. We initially targeted hotels, restaurants and retail
-                                outlets in those countries. Starting with the Maldives and Seychelles, we expanded our
-                                export horizons to the USA, Australia, the United Kingdom, and Hong Kong a few years later.
-                                The expatriate Sri Lankan community in those countries were targeted with typical Sri Lankan products.
-                                Our current list of countries in our Exports Account are USA, Australia, Maldives,
-                                New Zealand & South Korea.
-                                Our efforts were crowned with success. What commenced with one 20’ FCL Freezer
-                                Container in every quarter is now increased to two to three 20’ FCL Freezer Containers
-                                a month. For the long term, we intend to further penetrate the local communities of
-                                those countries as well. Currently, we are the only organization to offer a complete
-                                package of baked products for exports. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="certificates">
-
-                    <h2 class="section-title" id="exports">QUALITY CERTIFICATIONS</h2>
-                    <div class="divider dark mb-4">
-                        <div class="icon-wrap">
-                            <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
-                        </div>
-                    </div>
-
-                    <div class="certificate-section">
-                        <div class="c1">
-
-                            <div class="outer">
-                                <div class="img-01">
-                                    <img src="<?= ROOT ?>/assets/images/fssc-22000.png" alt="">
 
 
-
-                            <div class="about-exp">
-                                <div class="experience">
-                                    <div class="vertical-line"></div>
-                                    <div class="exp-title">
-                                        <h1 class=""> 15 </h1>
-                                    </div>
-                                    <div class="exp-content">
-                                        <p class="sub-topic">Years of</p>
-                                        <h3 class="ss-topic">EXPERIENCE</h6>
-
-                                </div>
-                            </div>
-                            <p>FSSC 22000 <br>Certification</p>
-
-                        </div>
-
-                        <div class="c1">
-                            <div class="outer">
-                                <div class="img-01">
-                                    <img src="<?= ROOT ?>/assets/images/gmp.jpg" alt="">
-
-                                </div>
-                            </div>
-                            <p>GMP <br>Certification</p>
-                        </div>
-
-                        <div class="c1">
-                            <div class="outer">
-                                <div class="img-01">
-                                    <img src="<?= ROOT ?>/assets/images/ISO-22000.png" alt="">
-
-                                </div>
-                            </div>
-                            <p>ISO 22000 <br> Certification</p>
-                        </div>
-
-                        <div class="c1">
-                            <div class="outer">
-                                <div class="img-01">
-                                    <img src="<?= ROOT ?>/assets/images/HACCP.jpg" alt="">
-
-                                </div>
-                            </div>
-                            <p>HACCP <br> Certification</p>
-                        </div>
-
-
-
-                    </div>
-                    <br><br>
-
-
-
-                    <div class="feedback-section">
-                        <h2 class="section-title"><strong> </strong>CLIENTS' REVIEWS</h2>
-                        <div class="divider dark mb-4">
-                            <div class="icon-wrap">
-                                <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
-                            </div>
-                        </div>
-
-
-                        <div class="feedback-container">
-                            <?php foreach ($reviews as $review) : ?>
-                                <div class="feedback">
-                                    <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                                    <p class="review"><?= htmlspecialchars($review->review) ?></p>
-                                    <div class="client-info">
-                                        <img src='<?= esc($review->image) ?>' alt="">
-                                        <p class="client-name"><?= htmlspecialchars($review->userName) ?></p>
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-
-
-
-                    </div>
 
                 </div>
-                <script src="<?= ROOT ?>/assets/js/user.js"></script>
+
+            </div>
+            <script src="<?= ROOT ?>/assets/js/user.js"></script>
+            <?php $this->view('includes/cus_footer', $data); ?>
 </body>
 </div>
 </div>
 </body>
 
 </html>
-
-<?php $this->view('includes/cus_footer', $data); ?>
-
