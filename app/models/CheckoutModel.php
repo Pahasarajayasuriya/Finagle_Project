@@ -256,4 +256,16 @@ class CheckoutModel extends Model
         $query = "SELECT pickup_location, COUNT(*) as order_count FROM {$this->table} GROUP BY pickup_location";
         return $this->query($query);
     }
+
+    public function getCheckoutDataByUserId($userId)
+{
+    $query = "SELECT * FROM `" . $this->table . "` WHERE `customer_id` = :userId";
+    $result = $this->query($query, ['userId' => $userId]);
+
+    if (is_array($result) && count($result) > 0) {
+        return $result;
+    }
+
+    return false;
+}
 }
