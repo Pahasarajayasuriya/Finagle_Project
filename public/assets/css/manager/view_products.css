@@ -1,4 +1,33 @@
 /* Reset styles */
+/* Example media queries for responsiveness */
+@media screen and (max-width: 768px) {
+  /* Adjust styles for smaller screens */
+  .sidebar {
+    display: none;
+    /* Hide the sidebar menu on small screens */
+  }
+
+  .fas.fa-bread-slice.fa-3x.text-primary.mb-4 {
+    margin-left: 200px;
+  }
+
+  .fas.fa-bread-slice.fa-3x.text-primary.mb-4:after {
+    margin-left: 250px;
+  }
+
+  .divider .icon-wrap:before,
+  .divider.dark .icon-wrap:before,
+  .divider .icon-wrap:after,
+  .divider.dark .icon-wrap:after {
+    left: 20%;
+    right: 20%;
+    transform: translateX(-50%);
+    width: 100px;
+  }
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -39,54 +68,10 @@ body {
 }
 
 .fa.fa-cutlery {
-    font-size: 25px;
-    align-items: center;
-    margin-left: 100px;
-  }
-  .fas.fa-bread-slice.fa-3x.text-primary.mb-4{
-    margin-left: 30px;
-    margin-top: 60px;
-  
-  }
-  
-  .fas.fa-bread-slice.fa-3x.text-primary.mb-4 :after{
-    margin-left: 500px;
-   
-  
-  }
-  
-    .divider .icon-wrap:after {
-    content: "";
-    position: absolute;
-    border-bottom: 3px solid #ff0000;
-    width: 120px;
-    height: 17px;
-  
-  }
-  
-  .divider.dark .icon-wrap:before,
-  .divider.dark .icon-wrap:after {
-    content: "";
-    position: absolute;
-    border-bottom: 3px solid #ff0000;
-    width: 200px;
-    height: 17px;
-  
-  }
-  
-  .divider .icon-wrap:before,
-  .divider.dark .icon-wrap:before {
-    left: 40%;
-    transform: translateX(-50%);
-  
-  
-  }
-  
-  .divider .icon-wrap:after,
-  .divider.dark .icon-wrap:after {
-    right: 40%;
-    transform: translateX(50%);
-  }
+  font-size: 25px;
+  align-items: center;
+  margin-left: 100px;
+}
 
 /* Form styles */
 .form-group {
@@ -193,9 +178,6 @@ select {
   margin-left: 250px; /* Adjust based on your sidebar width */
 }
 
-
-
-
 .search-container {
   background-color: #ffffff;
   padding: 20px;
@@ -205,54 +187,6 @@ select {
   flex-direction: column;
 }
 
-.branch_head {
-  align-items: center;
-  text-align: center;
-  font-size: 25px;
-  color: red;
-  letter-spacing: 0.08rem;
-  margin: 2rem 0 1rem;
-  font-weight: 600;
-}
-
-.branch_head_1 {
-  font-weight: 800;
-  color: black;
-  font-size: 25px;
-}
-
-.branch_head_1 span {
-  color: #d72323;
-}
-
-.form-group {
-  margin-bottom: 20px;
-  position: relative; /* Make the parent container relative */
-}
-
-.form-group input {
-  width: calc(100% - 40px); /* Adjust width to accommodate icon */
-  height: 45px;
-  outline: none;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  padding-left: 15px;
-  font-size: 15px;
-  transition: all 0.3s ease-in;
-  border-bottom-width: 2px;
-}
-
-.icon {
-  position: absolute; /* Position the icon absolutely */
-  right: -20px; /* Adjust the distance between icon and input */
-  top: 50%; /* Align the icon vertically */
-  transform: translateY(-70%); /* Adjust vertical alignment */
-  font-size: 30px;
-  color: var(--dark);
-  cursor: pointer; /* Change mouse pointer to indicate interactivity */
-}
-
-
 /* CSS for enlarging image on hover */
 
 /* Scale up image within table row on hover */
@@ -260,5 +194,3 @@ select {
   transform: scale(1.15); /* Scale up by 5% */
   transition: transform 0.5s ease; /* Add smooth transition effect */
 }
-
-

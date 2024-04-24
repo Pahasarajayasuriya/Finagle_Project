@@ -86,7 +86,7 @@ $this->view('includes/footer', $data);
             ?>
         </div>
         
-        <script src="<?= ROOT ?>/assets/js/manager_deliverer.js"></script>
+        <script src="<?= ROOT ?>/assets/js/mmanager_deliverer.js"></script>
 
     </div>
 </body>
