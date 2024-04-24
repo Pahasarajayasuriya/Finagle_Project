@@ -18,25 +18,12 @@ const pickupOutletsSection = document.getElementById("pickupOutletsSection");
 const deliveryOrdersSection = document.getElementById("deliveryOrdersSection");
 const pickupLocation = document.getElementById("pickupLocation");
 
-var checkoutButton = document.getElementById("checkout-button");
+var checkoutButton = document.getElementById("p_checkout-button");
 
 deliveryRadio.addEventListener("change", enableDeliveryOptions);
 pickupRadio.addEventListener("change", enablePickupOptions);
 
-deliveryRadio.addEventListener("change", function () {
-  if (this.checked && totalWeight > 30) {
-    Swal.fire({
-      title: "Order too large",
-      text: "Your order is too large for delivery. Please consider a pickup order.",
-      icon: "error",
-    });
-    checkoutButton.disabled = true;
-    checkoutButton.style.backgroundColor = "#b2b2b2"; 
-  } else {
-    checkoutButton.disabled = false;
-    checkoutButton.style.backgroundColor = "#FF0000"; 
-  }
-});
+
 
 function enableDeliveryOptions() {
   pickupLocation.disabled = true;
@@ -69,6 +56,10 @@ function enablePickupOptions() {
   )}`;
   // Hide delivery fee
   deliveryFeeContainer.textContent = "";
+
+    // Enable the checkout button
+    checkoutButton.disabled = false;
+    checkoutButton.style.backgroundColor = "#FF0000";
 }
 
 var map;
