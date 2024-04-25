@@ -97,6 +97,9 @@ $this->view('includes/footer', $data);
                     <label for="editEndDate">Description:</label>
                     <input type="text" id="editEndDate" name="description" value="<?= $row[0]->description ?>">
 
+                    <label for="editEndDate">Price:</label>
+                    <input type="file" id="editEndDate" name="price" value="<?= $row[0]->price ?>">
+
                     <label for="editEndDate">Category:</label>
                     <!-- <input type="date" id="editEndDate" name="end_date" value="<?= $row[0]->category ?>"> -->
                     <select id="dropdown" name="category" value="<?= $row[0]->category ?>">

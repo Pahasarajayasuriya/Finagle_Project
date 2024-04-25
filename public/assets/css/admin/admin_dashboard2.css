@@ -99,19 +99,21 @@ body {
   }
   
   .charts-card {
-    background-color: #322c57;
+    background-color: #ffffff;
+    /* background-color: rgba(243, 174, 174, 0.95); */
     margin-bottom: 20px;
     padding: 25px;
     box-sizing: border-box;
     -webkit-column-break-inside: avoid;
     border-radius: 5px;
-    box-shadow: 5px 20px 4px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 10px 15px 2px rgba(0, 0, 0, 0.8);
   }
   
   .chart-title {
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #FE2727;
   }
   
   /*======Begin CSS about the tables========*/
