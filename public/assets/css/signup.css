@@ -20,7 +20,7 @@ body {
 
 .login_container {
   width: 100%;
-  height: 540px;
+  height: auto;
   max-width: 900px;
   margin: 30px auto;
   border: 2px solid #ccc;
@@ -60,6 +60,8 @@ body {
   float: right;
   box-sizing: border-box;
   background: white;
+  margin-top: 5px;
+  margin-bottom: -5px;
 }
 
 .inputbox {
@@ -133,10 +135,11 @@ button:hover {
 }
 
 .register {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #000000;
   text-align: center;
-  margin: 25px 0 10px;
+  margin: 5px 0 10px;
+  
 }
 
 .register p a {
@@ -187,4 +190,68 @@ h1 {
   letter-spacing: 8px;
   /* margin: 0 0 15px;
     margin-top: 5px; */
+}
+
+
+#back-button {
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+}
+
+.back-icon i {
+  color: white;
+  font-size: 24px;
+}
+
+.invalid {
+  color:red; 
+  font-size: 0.9em; 
+  margin-top: 5px; 
+  display: block; 
+  transition: all 0.3s ease; 
+  border: 2px solid red; 
+  padding: 8px; 
+  border-radius: 5px; 
+}
+
+.inputbox {
+  position: relative; 
+}
+
+.invalid::before {
+  content: "\f071";
+  font-family: "Font Awesome 5 Free"; 
+  position: absolute;
+  top: 50%; 
+  right: 10px; 
+  transform: translateY(-50%); 
+  color: red;
+  font-size: 1em; 
+}
+
+.invalid::before {
+  content: "\26A0"; 
+  font-family: Arial, sans-serif; 
+  position: absolute;
+  top: 50%; 
+  right: 10px; 
+  transform: translateY(-50%); 
+  color: red;
+  font-size: 1em; 
+}
+
+
+.invalid:focus {
+  outline: none; 
+  border-color: #d93025; 
+  box-shadow: 0 0 5px #d93025; 
 }

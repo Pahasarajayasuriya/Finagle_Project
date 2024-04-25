@@ -84,7 +84,10 @@ $this->view('includes/footer', $data);
                                 <td><img src="<?= ROOT ?>/<?= $product->image ?>" alt=""></td>
                                 <td><?= $product->user_name ?></td>
                                 <td class="black-text">
-                                    <span class="quantity" id="quantity_<?= $product->id ?>"><?= $product->quantity ?></span>
+                                    <!-- <span class="quantity" id="quantity_<?= $product->id ?>"><?= $product->quantity ?></span> -->
+                                   
+                                    <span class="quantity" id="quantity_<?= $product->id ?>" data-product-id="<?= $product->id ?>" contenteditable="true"><?= $product->quantity ?></span>
+
                                     <button type="reset" class="plus-button" onclick="changeQuantity(<?= $product->id ?>, 'increase')">+</button>
                                     <button type="reset" class="minus-button" onclick="changeQuantity(<?= $product->id ?>, 'decrease')">-</button>
                                 </td>

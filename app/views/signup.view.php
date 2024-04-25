@@ -15,6 +15,13 @@
 </head>
 
 <body>
+        <div class="back-icon" id="back-button">
+          <a href="<?= ROOT ?>/Home"> <i class="fa fa-arrow-left" aria-hidden="true"></i> </a>
+         
+
+        </div>
+
+
     <div class="login_container">
         <div class="image_container">
             <img src="https://i.pinimg.com/564x/e5/e2/3a/e5e23aa6ee2fbcfac5e5e183183a2dde.jpg" width="420px" height="100%" alt="Login Image">
