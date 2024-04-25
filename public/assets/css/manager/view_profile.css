@@ -66,7 +66,7 @@
     margin-left: 100px;
   }
   .fas.fa-bread-slice.fa-3x.text-primary.mb-4{
-    margin-left: 400px;
+    margin-left: 370px;
     margin-top: 60px;
   
   }
@@ -98,7 +98,7 @@
   
   .divider .icon-wrap:before,
   .divider.dark .icon-wrap:before {
-    left: 30%;
+    left: 28%;
     transform: translateX(-50%);
   
   

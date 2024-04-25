@@ -73,6 +73,51 @@ body {
   margin-left: 100px;
 }
 
+.fas.fa-bread-slice.fa-3x.text-primary.mb-4{
+  margin-left: 10px;
+  margin-top: 60px;
+
+}
+
+.fas.fa-bread-slice.fa-3x.text-primary.mb-4 :after{
+  margin-left: 500px;
+ 
+
+}
+
+.divider .icon-wrap:after {
+  content: "";
+  position: absolute;
+  border-bottom: 3px solid #ff0000;
+  width: 120px;
+  height: 17px;
+
+}
+
+.divider.dark .icon-wrap:before,
+.divider.dark .icon-wrap:after {
+  content: "";
+  position: absolute;
+  border-bottom: 3px solid #ff0000;
+  width: 200px;
+  height: 17px;
+
+}
+
+.divider .icon-wrap:before,
+.divider.dark .icon-wrap:before {
+  left: 40%;
+  transform: translateX(-50%);
+
+
+}
+
+.divider .icon-wrap:after,
+.divider.dark .icon-wrap:after {
+  right: 40%;
+  transform: translateX(50%);
+}
+
 /* Form styles */
 .form-group {
   display: inline-block;
@@ -223,4 +268,15 @@ select {
   font-size: 30px; /* Increase the font size here */
   color: var(--dark);
   cursor: pointer;
+}
+
+
+.home-section {
+  position: relative;
+  transition: all 0.5s ease;
+  min-height: 100vh;
+  left: 0px;
+  width: calc(100% - 58px);
+  z-index: 2;
+  margin-top: 0px;
 }
