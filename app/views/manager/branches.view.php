@@ -64,7 +64,7 @@ $this->view('includes/footer', $data);
                         <img src="https://lh3.googleusercontent.com/p/AF1QipNFVt_67WFrJbjsHEQfxY691SYz3wxrn1Ioq5KC=s1360-w1360-h1020" alt="branch.name" class="branch-image">
                         <div class="branch-details">
                             <div class="row">
-                                <h3 class="branch-title"><?= $branch->name ?></h3>
+                                <h2 class="branch-title"><?= $branch->name ?></h2>
                                 <p class="branch-id">ID: <?= $branch->id ?> </p>
                             </div>
                             <div class="sub-details">

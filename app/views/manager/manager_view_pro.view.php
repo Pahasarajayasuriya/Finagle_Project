@@ -33,7 +33,7 @@ $this->view('includes/footer', $data);
                 </div>
                 </div>
             </div>
-            <br>
+            <br><br>
             <form>
               <div class="form-group">
                 <input id="searchInput" class="form-group" type="text" placeholder="Search...">
