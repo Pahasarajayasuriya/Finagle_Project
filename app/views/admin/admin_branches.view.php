@@ -12,7 +12,7 @@ $this->view('includes/footer', $data);
 
 <head>
     <title>Branches</title>
-    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin_branches.css">
+    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin/admin_branch.css">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -96,9 +96,9 @@ $this->view('includes/footer', $data);
                 <div class="ad-description">Close Time</div>    -->
                 
                 <!-- <div >ID</div> -->
-                <div >Branch Name</div>
+                <div style="margin-left:-20px">Branch Name</div>
                 <div >Address</div>
-                <div >Contact NO</div>
+                <div style="margin-left:30px">Contact NO</div>
                 <div >Open Time</div>
                 <div >Close Time</div> 
             </div>
@@ -137,9 +137,9 @@ $this->view('includes/footer', $data);
                 <!-- <div class="branch-id"><?= esc($row->id) ?></div> -->
                 <div class="branch-name"><?= esc($row->name) ?></div>
                 <div class="branch-loc"><?= esc($row->address) ?></div>
-                <div class="branch-loc"><?= esc($row->contact_number) ?></div>
-                <div class="branch-loc"><?= esc($row->open_time) ?></div>
-                <div class="branch-loc"><?= esc($row->close_time) ?></div>
+                <div  style="width:120px"><?= esc($row->contact_number) ?></div>
+                <div class="branch-name"><?= esc($row->open_time) ?></div>
+                <div class="branch-name"><?= esc($row->close_time) ?></div>
 
                 <div class="advertisement-actions">
                   <!-- <button class="edit-button" onclick="openEditPopupDialog('${branch.id}', '${branch.name}', '${branch.location}')">Edit Branch</button> -->

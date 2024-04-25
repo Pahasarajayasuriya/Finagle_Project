@@ -12,7 +12,7 @@ $this->view('includes/footer', $data);
 
 <head>
     <title>Employees</title>
-    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin_branches.css">
+    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin/admin_employee.css">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -95,9 +95,9 @@ $this->view('includes/footer', $data);
                 <div class="ad-description">Open Time</div>
                 <div class="ad-description">Close Time</div>    -->
                 
-                <div >ID</div>
-                <div >User Name</div>
-                <div >Contact NO</div>
+                <div style="margin-left:-20px">ID</div>
+                <div style="margin-left:-20px">User Name</div>
+                <div style="margin-left:-30px">Contact NO</div>
                 <div >E-mail</div>
                 <div >Joined date</div>
                 <div >Branch</div>
@@ -137,7 +137,7 @@ $this->view('includes/footer', $data);
                 <!-- <div class="advertisement-image"> <img src="https://lh3.googleusercontent.com/p/AF1QipNFVt_67WFrJbjsHEQfxY691SYz3wxrn1Ioq5KC=s1360-w1360-h1020" alt="branch.id" class="customer-image"></div> -->
                 <div class="branch-id"><?= esc($row->id) ?></div>
                 <div class="branch-name"><?= esc($row->username) ?></div>
-                <div class="branch-loc"><?= esc($row->teleno) ?></div>
+                <div class="branch-loc" style="margin-left:20px"><?= esc($row->teleno) ?></div>
                 <div class="branch-loc"><?= esc($row->email) ?></div>
                 <!-- <div class="branch-loc"><?= htmlspecialchars((string)$row->joined_date, ENT_QUOTES, 'UTF-8') ?></div> -->
                 <div class="branch-loc"><?= (string)esc($row->joined_date) ?></div>
