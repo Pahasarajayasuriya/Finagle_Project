@@ -53,10 +53,10 @@ class admin_branchesModel extends Model
         // $query="DELETE FROM `branch` WHERE `branch`.`name` = ".$name;
         // $this->query($query);
          // Escape the branch name to prevent SQL injection
-        $escaped_name = $this->escape_string($name);
+        //$escaped_name = $this->escape_string($name);
     
         // Use single quotes around the branch name in the SQL query
-        $query = "DELETE FROM `branch` WHERE `branch`.`name` = '$escaped_name'";
+        $query = "DELETE FROM `branch` WHERE `branch`.`name` = '$name'";
     
         // Execute the query
         $this->query($query);

@@ -144,8 +144,8 @@ $this->view('includes/footer', $data);
                 <div class="advertisement-image"><img src="<?= esc($row->image) ?>" alt="Description of image"></div>
                 <div class="branch-id"><?= esc($row->id) ?></div>
                 <div class="branch-name"><?= esc($row->user_name) ?></div>
-                <div class="branch-name"><?= esc($row->description) ?></div>
-                <div class="branch-loc"><?= esc($row->category) ?></div>
+                <div class="branch-loc"><?= esc($row->description) ?></div>
+                <div class="branch-name"><?= esc($row->category) ?></div>
                 <div class="advertisement-actions">
                   <!-- <button class="edit-button" onclick="openEditPopupDialog('${branch.id}', '${branch.name}', '${branch.location}')">Edit Branch</button> -->
                   <button class="edit-button"><a href="<?= ROOT."/admin_products/update_product/".$row->id ?>">Edit Product</a></button>
