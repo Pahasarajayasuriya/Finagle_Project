@@ -7,7 +7,7 @@
 <body>
     <script>
         localStorage.removeItem("cart");
-        window.location.href = 'progressbar'; 
+        window.location.href = 'home'; 
     </script>
 </body>
 

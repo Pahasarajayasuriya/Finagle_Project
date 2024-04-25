@@ -31,13 +31,15 @@
   
   .check_container form .check_row {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: column;
     gap: 15px;
   }
   
   .check_container form .check_row .check_col {
     flex: 1 1 250px;
     color: #333;
+    display: flex;
+    flex-direction: column;
   }
   
   

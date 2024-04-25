@@ -57,11 +57,11 @@ class CheckoutModel extends Model
         //         $this->errors['pickupLocation'] = "Please select pickup location";
         //     }
         // }
-        if (empty($data['delivery_date'])) {
-            $this->errors['delivery_date'] = "Date is required";
-        } elseif (date('Y-m-d', strtotime($data['delivery_date'])) != date('Y-m-d')) {
-            $this->errors['delivery_date'] = "Date must be the current date";
-        }
+        // if (empty($data['delivery_date'])) {
+        //     $this->errors['delivery_date'] = "Date is required";
+        // } elseif (date('Y-m-d', strtotime($data['delivery_date'])) != date('Y-m-d')) {
+        //     $this->errors['delivery_date'] = "Date must be the current date";
+        // }
 
         if (empty($data['delivery_time'])) {
             $this->errors['delivery_time'] = "Time is required";
@@ -78,9 +78,9 @@ class CheckoutModel extends Model
             }
         }
 
-        if (empty($data['is_gift'])) {
-            $this->errors['is_gift'] = "Please select whether to send as a gift or not";
-        }
+        // if (empty($data['is_gift'])) {
+        //     $this->errors['is_gift'] = "Please select whether to send as a gift or not";
+        // }
 
         if (empty($data['payment_method'])) {
             $this->errors['payment_method'] = "Please select a payment method";

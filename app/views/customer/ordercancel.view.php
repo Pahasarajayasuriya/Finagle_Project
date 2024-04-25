@@ -1,3 +1,11 @@
+<?php
+$role = "User";
+$data['role'] = $role;
+$this->view('includes/header', $data);
+$this->view('includes/NavBar', $data);
+$this->view('includes/footer', $data);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,20 +20,23 @@
 </head>
 
 <body>
-    <div class="center-box">
+    <?php $this->view('includes/cus_topbar', $data); ?>
+    <div class="home-section">
+        <div class="center-box">
 
-        <i class='bx bxs-trash bx-burst' style='color:#e81212 ; font-size: 64px;'></i>
+            <i class='bx bxs-trash bx-burst' style='color:#e81212 ; font-size: 64px;'></i>
 
-        <!-- Id and Reason  can retrieve from cancel_orders table -->
-        <p class='topic'>Your Order ( No - <?= $data['orderId'] ?> ) has been cancelled </p>
-      
-        <p class='reason'><?=  $data['reason'] ?></p>
+            <!-- Id and Reason  can retrieve from cancel_orders table -->
+            <p class='topic'>Your Order ( No - <?= $data['orderId'] ?> ) has been cancelled </p>
+
+            <p class='reason'><?= $data['reason'] ?></p>
 
 
-        <button class="ok-button" onclick="window.location.href='products'">Place a new Order</button>
+            <button class="ok-button" onclick="window.location.href='products'">Place a new Order</button>
+        </div>
+        <div class="center-box-placeholder"></div>
+        <?php $this->view('includes/cus_footer', $data); ?>
     </div>
-
-
 
 
 
@@ -35,14 +46,13 @@
         }
 
         .center-box {
-            position: fixed;
-            top: 50%;
+            position: absolute;
+            top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: #fff;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
             font-family: "Poppins";
             width: 500px;
@@ -50,7 +60,7 @@
 
 
         .ok-button {
-        
+
             background-color: green;
             width: 200px;
             height: 37px;
@@ -84,6 +94,10 @@
             font-style: italic;
             font-size: 14px;
 
+        }
+
+        .center-box-placeholder {
+            height: 500px;
         }
     </style>
 

@@ -334,7 +334,24 @@ class UI {
         this.clearErrorMessage();
       }
 
-      this.displayProducts(filteredProducts);
+      // If the search input is not empty, hide the category names
+      if (searchValue !== "") {
+        document.querySelectorAll(".category-item").forEach((element) => {
+          element.style.display = "none";
+        });
+        this.displayProducts(filteredProducts);
+      } else {
+        // If the search input is empty, show the category names
+        document.querySelectorAll(".category-item").forEach((element) => {
+          element.style.display = "block";
+        });
+        // Display only the "Bread & Buns" category
+        const breadAndBunsProducts = productsData.filter(
+          (product) => product.category === "Bread & Buns"
+        );
+        this.displayProducts(breadAndBunsProducts);
+      }
+
       this.getCartBtns();
     });
   }
