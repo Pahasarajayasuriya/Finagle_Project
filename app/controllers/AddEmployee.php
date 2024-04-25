@@ -22,7 +22,7 @@ class AddEmployee extends Controller
 		{
             $_POST['repassword'] =  $_POST['password'];
 
-
+			show($_POST);
 			if($user->validate($_POST))
 			{
 				$_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -30,7 +30,7 @@ class AddEmployee extends Controller
 				$user->insert($_POST);
 			
 				message("Your profile was successfuly created. Please login");
-				redirect('login');
+				//redirect('login');
 			}
 		}
 

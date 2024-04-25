@@ -139,7 +139,7 @@ $this->view('includes/footer', $data);
                 
 
 
-                    <button>Sign Up</button>
+                    <button>REGISTER</button>
                 </form>
             </section>
         </div>

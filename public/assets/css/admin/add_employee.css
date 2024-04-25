@@ -113,7 +113,7 @@ input:valid ~ label {
     outline: none;
     font-size: 1rem;
     padding: 0 35px 0 5px;
-    color: #cacaca; 
+    color: #000000; 
     margin-left: 20px;
 }
 
@@ -174,7 +174,7 @@ button:hover {
 .form-container button {
     background-color:red;
     color: #fff;
-    padding: 12px 20px;
+    padding: 6px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -248,8 +248,8 @@ h1 {
 }
 
 button {
-    width: 60%; 
+    width: 34%; 
     margin: 20px auto; 
-    margin-left: 120px;
+    margin-left: 197px;
    
 }
