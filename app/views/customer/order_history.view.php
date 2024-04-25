@@ -87,36 +87,8 @@ $this->view('includes/footer', $data);
                         <div class="employee-name"><?= $detail->total_cost ?></div>
                         <button class="order_status" data-order-id="<?= $detail->id ?>" data-order-type="<?= $detail->delivery_or_pickup ?>">Order Status</button>
                     </div>
-                <?php
-                }
-            } else {
-                ?>
-                <style>
-                    .swal2-confirm {
-                        background-color: #FF0000 !important;
-                        color: white !important;
-                        border: none !important;
-                    }
-
-                    .swal2-confirm a {
-                        text-decoration: none !important;
-                        color: white !important;
-                    }
-
-                    .swal2-confirm a:hover {
-                        color: white !important;
-                    }
-                </style>
-                <script>
-                    Swal.fire({
-                        title: "No orders!",
-                        text: "You haven't placed any orders yet.",
-                        icon: "info",
-                        backdrop: 'rgba(255,255,255,1)',
-                        confirmButtonText: '<a href="<?= ROOT ?>/products">Place an order</a>'
-                    });
-                </script>
             <?php
+                }
             }
             ?>
         </div>
