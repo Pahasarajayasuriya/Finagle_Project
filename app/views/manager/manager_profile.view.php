@@ -51,7 +51,8 @@ $this->view('includes/footer', $data);
                 <div class="username">
                   <h3>Hi, <?= esc($row->username) ?></h3>
                 </div>
-                <img src="<?= esc($row->image) ?>" alt="Profile Image">
+                 <img src=' <?= ROOT ?>/assets/images/Emp_profiles/<?= $row->image ?>'>
+                <!-- <img src="<?= esc($row->image) ?>" alt="Profile Image"> -->
               </div>
             </div>
           </form>

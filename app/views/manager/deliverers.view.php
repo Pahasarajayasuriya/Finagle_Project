@@ -76,7 +76,7 @@ if (isset($driver)) {
                 <div class="employee-id"><?= $driver->id ?></div>
 
                 <div class="employee-name"><?= $driver->username ?></div>
-                <div class="employee-name"><?= $driver->email ?></div>
+                <div class="employee-email"><?= $driver->email ?></div>
                 <div class="employee-name"><?= $driver->branch ?></div>
             </div>
 

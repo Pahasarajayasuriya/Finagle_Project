@@ -49,6 +49,7 @@ $this->view('includes/footer', $data);
             <div class="table-header">
                 <div class="header-item employee-image">
                     <!-- <img src="https://cdn-icons-png.flaticon.com/128/64/64572.png" alt="Employee image" class="employee-icon"> -->
+                   
                 </div>
                 <div class="header-item">Employee ID</div>
                 <div class="header-item">User Name</div>
@@ -61,9 +62,10 @@ $this->view('includes/footer', $data);
 
             ?>
                     <div class="employee-record">
+                    <div class="employee-image"><img src="<?= ROOT ?>/assets/images/Emp_profiles/<?= $employee->image ?>" alt="Employee 1"></div>
                         <div class="employee-id"><?= $employee->id ?></div>
                         <div class="employee-name"><?= $employee->username ?></div>
-                        <div class="employee-name"><?= $employee->email ?></div>
+                        <div class="employee-email"><?= $employee->email ?></div>
                         <div class="employee-name"><?= $employee->branch ?></div>
                     </div>
             <?php

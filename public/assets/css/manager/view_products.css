@@ -24,23 +24,7 @@ body {
   text-align: center;
 }
 
-.branch_head {
-  font-size: 25px;
-  color: red;
-  letter-spacing: 0.08rem;
-  margin: 2rem 0 1rem;
-  font-weight: 600;
-}
 
-.branch_head_1 {
-  font-weight: 800;
-  color: black;
-  font-size: 25px;
-}
-
-.branch_head_1 span {
-  color: #d72323;
-}
 
 /* Utility classes */
 .text-center {
@@ -180,7 +164,7 @@ select {
   background-color: #ffffff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  
   display: flex;
   flex-direction: column;
 }
@@ -238,7 +222,7 @@ select {
   cursor: pointer;
 
   width: 36px;
-  height: 75%;
+  height: 70%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -257,14 +241,14 @@ select {
 
 
 .title-profile{
-  margin-top: 20px;
+  margin-top: 30px;
 }
 .section-title {
-  font-size: 2em;
+  font-size: 1.7em;
   line-height: 1;
   text-transform: uppercase;
   font-weight: bold;
-  margin-top: 1%;
+  margin-top: 2%;
   font-family:"Poppins";
   margin-left: 2%; 
   text-align: center;

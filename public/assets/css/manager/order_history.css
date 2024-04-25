@@ -93,7 +93,7 @@ select {
 
     margin-top: 10px;
 
-    padding: 20px;
+    padding: 10px;
     margin-top: 20px;
     width: 1000px;
     overflow: auto;
@@ -109,8 +109,9 @@ select {
 
 .table th,
 .table td {
-    padding: 12px 30px 12px 20px;
+    padding: 12px 25px 12px 20px;
     border-bottom: 1px solid #dddddd;
+    font-size: 14px;
 }
 
 .table th {
@@ -125,6 +126,8 @@ select {
 .ordId.date{
     flex: 4;
 }
+
+
 /* Image styles */
 .image-preview {
     width: 100px;
@@ -258,7 +261,7 @@ select {
 .icon {
     position: absolute;
     right: -37px;
-    top: 63%;
+    top: 60%;
     transform: translateY(-70%);
     font-size: 30px;
     /* Increase the font size here */
@@ -266,7 +269,7 @@ select {
     cursor: pointer;
 
     width: 36px;
-    height: 58%;
+    height: 57%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -298,7 +301,7 @@ select {
 }
 
 .section-title {
-    font-size: 2em;
+    font-size: 1.5em;
     line-height: 1;
     text-transform: uppercase;
     font-weight: bold;
@@ -354,4 +357,8 @@ select {
 .divider.dark .icon-wrap:after {
     right: 35%;
     transform: translateX(50%);
+}
+
+.datetime{
+    font-size: 12px;
 }

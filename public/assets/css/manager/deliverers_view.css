@@ -132,6 +132,10 @@ flex: 2;
   flex: 1;
 }
 
+.employee-email{
+  flex: 2;
+}
+
 /* .employee-id{
   margin-left: 50px;
 }

@@ -16,6 +16,7 @@ $this->view('includes/footer', $data);
 <head>
     <title>Customers</title>
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/manager/view_products.css">
+
     <link href="https://fonts.googleapis.com/css?family=Cabin|Herr+Von+Muellerhoff|Source+Sans+Pro" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
 
@@ -34,9 +35,17 @@ $this->view('includes/footer', $data);
 <body>
     <div class="home-section">
         <div class="search-container">
-            <div class="branch_head">
-                <p class="branch_head_1">CUS<span>TOMERS</span></p>
+
+        <div class="title-profile">
+                <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
+                <p class="section-title">CUSTOMER<span> DETAILS </span></p>
+                <div class="divider dark mb-4">
+                    <div class="icon-wrap">
+                        <!-- <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i> -->
+                    </div>
+                </div>
             </div>
+
 
             <form>
                 <div class="form-group">
