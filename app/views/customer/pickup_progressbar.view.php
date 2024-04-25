@@ -60,6 +60,8 @@
         </div>
         <script>
             var orderStatus = "<?= $data['orderStatus'] ?>";
+            var orderId = "<?= $data['orderId'] ?>";
+            console.log(orderId);
             console.log(orderStatus);
         </script>
 

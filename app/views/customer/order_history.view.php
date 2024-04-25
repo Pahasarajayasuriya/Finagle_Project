@@ -56,10 +56,8 @@ $this->view('includes/footer', $data);
                 <div class="header-item">Order Type</div>
                 <div class="header-item">Outlet</div>
                 <div class="header-item">Order Time</div>
-                <div class="header-item">Order Status</div>
                 <div class="header-item">Order Total</div>
-
-                <!-- <div class="header-item">Goals Assignment</div> -->
+                <div class="header-item">Order Status</div>
             </div>
             <?php
             if (isset($details) && !empty($details)) {
@@ -70,8 +68,8 @@ $this->view('includes/footer', $data);
                         <div class="employee-name"><?= $detail->delivery_or_pickup ?></div>
                         <div class="employee-name"><?= $detail->pickup_location ?></div>
                         <div class="employee-name"><?= $detail->order_time ?></div>
-                        <div class="employee-name"><?= $detail->order_status ?></div>
                         <div class="employee-name"><?= $detail->total_cost ?></div>
+                        <button class="order_status" data-order-id="<?= $detail->id ?>" data-order-type="<?= $detail->delivery_or_pickup ?>">Order Status</button>
                     </div>
                 <?php
                 }
@@ -108,6 +106,19 @@ $this->view('includes/footer', $data);
         </div>
         <?php $this->view('includes/cus_footer', $data); ?>
     </div>
+    <script>
+        document.querySelectorAll('.order_status').forEach(function(button) {
+            button.addEventListener('click', function() {
+                var orderId = this.getAttribute('data-order-id');
+                var orderType = this.getAttribute('data-order-type');
+                if (orderType === 'pickup') {
+                    window.location.href = '<?= ROOT ?>/pickup_progressbar?orderId=' + orderId;
+                } else {
+                    window.location.href = '<?= ROOT ?>/Progressbar?orderId=' + orderId;
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

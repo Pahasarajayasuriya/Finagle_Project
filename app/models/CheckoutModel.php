@@ -258,14 +258,68 @@ class CheckoutModel extends Model
     }
 
     public function getCheckoutDataByUserId($userId)
-{
-    $query = "SELECT * FROM `" . $this->table . "` WHERE `customer_id` = :userId";
-    $result = $this->query($query, ['userId' => $userId]);
+    {
+        $query = "SELECT * FROM `" . $this->table . "` WHERE `customer_id` = :userId";
+        $result = $this->query($query, ['userId' => $userId]);
 
-    if (is_array($result) && count($result) > 0) {
-        return $result;
+        if (is_array($result) && count($result) > 0) {
+            return $result;
+        }
+
+        return false;
     }
 
-    return false;
-}
+    public function getLastFiveOrderStatuses($userId)
+    {
+        $query = "SELECT `order_status` FROM `" . $this->table . "` WHERE `customer_id` = :userId ORDER BY `id` DESC LIMIT 5";
+        $result = $this->query($query, ['userId' => $userId]);
+
+        if ($result) {
+            return array_map(function ($order) {
+                return $order->order_status;
+            }, $result);
+        }
+
+        return false;
+    }
+
+    public function getLastFiveOrderIds($userId)
+    {
+        $query = "SELECT `id` FROM `" . $this->table . "` WHERE `customer_id` = :userId ORDER BY `id` DESC LIMIT 5";
+        $result = $this->query($query, ['userId' => $userId]);
+
+        if ($result) {
+            return array_map(function ($order) {
+                return $order->id;
+            }, $result);
+        }
+
+        return false;
+    }
+
+    public function getLastFiveOrders($userId)
+    {
+        $query = "SELECT `id`, `order_status` FROM `" . $this->table . "` WHERE `customer_id` = :userId ORDER BY `id` DESC LIMIT 5";
+        $result = $this->query($query, ['userId' => $userId]);
+
+        if ($result) {
+            return array_map(function ($order) {
+                return ['id' => $order->id, 'status' => $order->order_status];
+            }, $result);
+        }
+
+        return false;
+    }
+
+    public function getOrderStatus($userId, $orderId)
+    {
+        $query = "SELECT `order_status` FROM `" . $this->table . "` WHERE `customer_id` = :userId AND `id` = :orderId";
+        $result = $this->query($query, ['userId' => $userId, 'orderId' => $orderId]);
+
+        if ($result) {
+            return $result[0]->order_status;
+        }
+
+        return false;
+    }
 }
