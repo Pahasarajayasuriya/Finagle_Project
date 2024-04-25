@@ -25,7 +25,23 @@ $this->view('includes/footer', $data);
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
+    <style>
+        .order_status {
+            background-color: #FF0000;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 10px;
+            margin: 2px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-right: 5%;
+            margin-bottom: 2%;
+        }
+    </style>
 
 </head>
 
