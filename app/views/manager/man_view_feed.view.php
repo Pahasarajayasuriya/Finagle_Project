@@ -35,6 +35,7 @@
 <body>
     <div class="home-section">
 
+        <?php $this->view('includes/emp_topbar', $data); ?>
        <div class="title-profile">
             <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
             <p class="section-title">CUSTOMER<span> FEEDBACKS</span></p>
@@ -70,6 +71,21 @@
             ?>
         </section>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            var navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = "white";
+                } else {
+                    navbar.style.backgroundColor = "transparent";
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

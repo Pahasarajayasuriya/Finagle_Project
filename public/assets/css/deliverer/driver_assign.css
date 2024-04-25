@@ -24,6 +24,7 @@ body {
   transition: all 0.5s ease;
   width: calc(100% - 155px); /* Adjust width as needed */
   padding: 3%; /* Add padding to increase size */
+ 
 }
 
 h4 {
@@ -47,7 +48,7 @@ h2::before {
 
 .assigned-orders {
   width: 80%;
-  margin-top: 3%;
+  margin-top: 5%;
   padding: 1%;
   margin-left: 5%;
 }
@@ -239,6 +240,7 @@ hr {
 .home-section {
   display: flex;
   justify-content: space-between;
+  /* margin-top: 50%; */
 }
 
 .left-section {
@@ -246,6 +248,7 @@ hr {
   padding-right: 20px;
   height: 100vh;
   overflow-y: auto;
+  /* width: 600px; */
 }
 
 .right-section {
@@ -272,7 +275,7 @@ hr {
 }
 
 .googlemap {
-  margin-top: 20px;
+  margin-top: 40px;
   background-color: #fff;
   border-radius: 10px;
   padding: 3%;
@@ -285,3 +288,5 @@ hr {
   left: 150px;
   width: calc(100% - 150px);
 }
+
+

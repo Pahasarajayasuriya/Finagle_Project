@@ -20,7 +20,12 @@ $this->view('includes/footer', $data);
 </head>
 
 <body>
+
+    <?php $this->view('includes/emp_topbar', $data); ?>
+  
+
     <div class="home-section">
+   
 
 
         <div class="pro_card">
@@ -28,9 +33,7 @@ $this->view('includes/footer', $data);
             <div class="pro_head">
                 <p class="pro_head_1">YOUR <span> PROFILE</span></p>
 
-                <div class="logout-button">
-                    <a href="<?= ROOT ?>/Emp_Logout">LogOut</a>
-                </div>
+                
             </div>
 
 
@@ -55,7 +58,7 @@ $this->view('includes/footer', $data);
                         <div class="driver-info" id="availability_<?= $val->id ?>">
                             <p class="driver-name"><?= $val->username ?></p>
                             <p class="joined-date">Joined Date : <?= $val->joined_date ?></p>
-                           
+
 
                             <?php
                             if ($val->availability_status == 0) {
@@ -140,6 +143,22 @@ $this->view('includes/footer', $data);
         </div>
 
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            var navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = "white";
+                } else {
+                    navbar.style.backgroundColor = "transparent";
+                }
+            });
+        });
+    </script>
 
 </body>
 

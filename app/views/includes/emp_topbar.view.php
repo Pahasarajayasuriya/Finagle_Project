@@ -20,12 +20,13 @@
 
         <div class="navbar-links">
             <div class="user-buttons">
+                
                 <?php if (Auth::logged_in()) : ?>
                     <a class="signup" href="<?= ROOT ?>/Emp_Logout">Log Out</a>
 
                 
 
-                    <!-- <a class="login" href="<?= ROOT ?>/login">Login</a> -->
+                   
 
                 <?php else : ?>
                     <!-- <div class="user_navbar">

@@ -23,6 +23,8 @@ $this->view('includes/footer', $data);
 </head>
 
 <body>
+   <?php $this->view('includes/emp_topbar', $data); ?>
+
     <div class="home-section">
         <div class="search-container">
 
@@ -73,6 +75,22 @@ $this->view('includes/footer', $data);
             <script src="<?= ROOT ?>/assets/js/manager/view_products.js"></script>
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            var navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = "white";
+                } else {
+                    navbar.style.backgroundColor = "transparent";
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

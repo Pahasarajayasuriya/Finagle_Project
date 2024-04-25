@@ -41,7 +41,7 @@ $this->view('includes/footer', $data);
 			<main>
 				<div class="head-title">
 					<div class="left">
-						<h1>Dashboard</h1>
+						<!-- <h1>Dashboard</h1> -->
 						<ul class="breadcrumb">
 							<li>
 								<a href="#">Dashboard</a>
@@ -94,7 +94,7 @@ $this->view('includes/footer', $data);
 							<p>Orders</p>
 						</span>
 
-						<div class="circular">
+						<!-- <div class="circular">
 							<div class="inner"></div>
 							<div class="outer"></div>
 							<div class="numb1">
@@ -108,7 +108,7 @@ $this->view('includes/footer', $data);
 									<div class="progress"></div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</li>
 					<li>
 						<i class='bx bxs-group'></i>
@@ -131,7 +131,7 @@ $this->view('includes/footer', $data);
 							<p>Buyers</p>
 						</span>
 
-						<div class="circular">
+						<!-- <div class="circular">
 							<div class="inner"></div>
 							<div class="outer"></div>
 							<div class="numb2">
@@ -145,7 +145,7 @@ $this->view('includes/footer', $data);
 									<div class="progress"></div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</li>
 
 
@@ -167,7 +167,7 @@ $this->view('includes/footer', $data);
 							<p>Revenue</p>
 						</span>
 
-						<div class="circular">
+						<!-- <div class="circular">
 							<div class="inner"></div>
 							<div class="outer"></div>
 							<div class="numb3">
@@ -181,7 +181,7 @@ $this->view('includes/footer', $data);
 									<div class="progress1"></div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</li>
 				</ul>
 
@@ -301,6 +301,27 @@ $this->view('includes/footer', $data);
 
 						</ul>
 					</div>
+
+
+					<div class="goal">
+						<div class="head">
+							<h3>Assigned Goals</h3>
+
+						</div>
+						<ul class="todo-list">
+							<li class="completed">
+								 <p>Target orders must be  1500 for this month</p>
+							</li>
+
+
+							<li class="completed">
+							  <p>Target revenue must be  Rs.50 000 for this month</p>
+							</li>
+							
+
+						</ul>
+					</div>
+
 				</div>
 			</main>
 

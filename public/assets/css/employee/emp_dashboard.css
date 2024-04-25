@@ -133,12 +133,21 @@
 	color: var(--orange);
 }
 #content main .box-info li .text h3 {
-	font-size: 24px;
+	font-size: 30px;
 	font-weight: 600;
 	color: var(--dark);
 }
+
+#content main .box-info li .text{
+	text-align: center;
+	align-items: center;
+	margin-left: 25%;
+}
 #content main .box-info li .text p {
 	color: var(--dark);	
+	text-align: center;
+	align-items: center;
+	font-size: 16px;
 }
 #content main .box-info li .progress-circle {
     position: relative;
@@ -350,16 +359,18 @@
 }
 #content main .table-data .head h3 {
 	margin-right: auto;
-	font-size: 24px;
+	font-size: 20px;
 	font-weight: 600;
 }
 #content main .table-data .head .bx {
 	cursor: pointer;
 }
 
+
+
 #content main .table-data .order {
 	flex-grow: 1;
-	flex-basis: 500px;
+	flex-basis: 300px;
 }
 #content main .table-data .order table {
 	width: 100%;
@@ -429,9 +440,10 @@
 
 
 
+
 #content main .table-data .todo {
 	flex-grow: 1;
-	flex-basis: 300px;
+	flex-basis: 200px;
 }
 #content main .table-data .todo .todo-list {
 	width: 100%;
@@ -490,6 +502,26 @@
 	background: black;
 	color:white
 }
+
+
+
+#content main .table-data .goal {
+	flex-grow: 1;
+	flex-basis: 200px;
+}
+
+#content main .table-data .goal .todo-list li {
+	font-size: 14px;
+	font-weight: 500;
+	margin-bottom: 8px;
+	color: #929292;
+}
+#content main .table-data .goal .todo-list li :hover{
+
+    /* opacity: 0.8; */
+    transform: scale(1.02);
+}
+
 
 #content main .table-data {
 	height: 200px;

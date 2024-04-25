@@ -45,11 +45,15 @@ body {
   }
   
   
-  .signup:hover .login:hover {
+  .signup:hover  {
     color: rgb(158, 30, 30);
     background-color: transparent;
   
   
+  }
+
+  .navbar-links :hover{
+    color: rgb(215, 32, 32);
   }
   
   
