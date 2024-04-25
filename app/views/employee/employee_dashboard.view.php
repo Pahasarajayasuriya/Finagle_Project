@@ -32,11 +32,10 @@ $this->view('includes/footer', $data);
 </head>
 
 <body>
-	<!-- <div class="navbar">
-         <div class="logo_icon">
-             <img src="<?= ROOT ?>/assets/images/logo.png" alt="">
-         </div>
-    </div> -->
+	<?php $this->view('includes/emp_topbar', $data); ?>
+	
+	
+
 	<div class="home-section">
 		<section id="content">
 			<main>
@@ -69,7 +68,7 @@ $this->view('includes/footer', $data);
 							}
 				?>
 
-						
+
 				<i class='bx bxs-building'></i>
 					</div>
 
@@ -308,54 +307,67 @@ $this->view('includes/footer', $data);
 		</section>
 
 	</div>
+
 	<script>
-		const numb1 = document.querySelector(".numb1");
-		let counter1 = 0;
-		const targetPercentage1 = <?= $order_count->total_records ?>;
-		const intervalId1 = setInterval(() => {
-			if (counter1 >= targetPercentage1) {
-				clearInterval(intervalId1);
-			} else {
-				counter1 += 1;
-				numb1.textContent = (counter1 / 400) * 100 + "%";
-
-			}
-		}, 80);
+		document.addEventListener("DOMContentLoaded", function() {
 
 
+					var navbar = document.querySelector(".navbar");
 
+					window.addEventListener("scroll", function() {
+						if (window.scrollY > 0) {
+							navbar.style.backgroundColor = "white";
+						} else {
+							navbar.style.backgroundColor = "transparent";
+						}
+					});
+		});
 
-		const numb2 = document.querySelector(".numb2");
-		let counter2 = 0;
-		const targetPercentage2 = <?= $cus_count->total_customers ?>;
-		const intervalId2 = setInterval(() => {
-			if (counter2 >= targetPercentage2) {
-				clearInterval(intervalId2);
-			} else {
-				counter2 += 1;
-				numb2.textContent = (counter2 / 200) * 100 + "%";
+					const numb1 = document.querySelector(".numb1");
+					let counter1 = 0;
+					const targetPercentage1 = <?= $order_count->total_records ?>;
+					const intervalId1 = setInterval(() => {
+						if (counter1 >= targetPercentage1) {
+							clearInterval(intervalId1);
+						} else {
+							counter1 += 1;
+							numb1.textContent = (counter1 / 400) * 100 + "%";
 
-			}
-		}, 80);
+						}
+					}, 80);
 
 
 
 
-		const numb3 = document.querySelector(".numb3");
-		let counter3 = 0;
-		const targetPercentage3 = <?= $total_cost->total_sum ?>;
-		const intervalId3 = setInterval(() => {
-			if (counter3 == targetPercentage3) {
-				clearInterval(intervalId3);
-			} else {
-				counter3 += 1;
-				numb3.textContent = (counter1 / 1000) * 100 + "%";
+					const numb2 = document.querySelector(".numb2");
+					let counter2 = 0;
+					const targetPercentage2 = <?= $cus_count->total_customers ?>;
+					const intervalId2 = setInterval(() => {
+						if (counter2 >= targetPercentage2) {
+							clearInterval(intervalId2);
+						} else {
+							counter2 += 1;
+							numb2.textContent = (counter2 / 200) * 100 + "%";
 
-			}
-		}, 80);
+						}
+					}, 80);
 
 
-</script>
+
+
+					const numb3 = document.querySelector(".numb3");
+					let counter3 = 0;
+					const targetPercentage3 = <?= $total_cost->total_sum ?>;
+					const intervalId3 = setInterval(() => {
+						if (counter3 == targetPercentage3) {
+							clearInterval(intervalId3);
+						} else {
+							counter3 += 1;
+							numb3.textContent = (counter1 / 1000) * 100 + "%";
+
+						}
+					}, 80);
+	</script>
 
 
 
