@@ -4,6 +4,57 @@ body {
     text-align: center;
 }
 
+.fa.fa-cutlery {
+    font-size: 25px;
+    align-items: center;
+    margin-left: 100px;
+}
+
+.fas.fa-bread-slice.fa-3x.text-primary.mb-4 {
+    margin-left: 30px;
+    margin-top: 60px;
+}
+
+.fas.fa-bread-slice.fa-3x.text-primary.mb-4:after {
+    margin-left: 500px;
+}
+
+.divider .icon-wrap:after {
+    content: "";
+    position: absolute;
+    border-bottom: 3px solid #ff0000;
+    width: 120px;
+    height: 17px;
+}
+
+.divider.dark .icon-wrap:before,
+.divider.dark .icon-wrap:after {
+    content: "";
+    position: absolute;
+    border-bottom: 3px solid #ff0000;
+    width: 200px;
+    height: 17px;
+}
+
+.divider .icon-wrap:before,
+.divider.dark .icon-wrap:before {
+    left: 40%;
+    transform: translateX(-50%);
+}
+
+.divider .icon-wrap:after,
+.divider.dark .icon-wrap:after {
+    right: 40%;
+    transform: translateX(50%);
+}
+
+/* Adjust divider position when sidebar is open */
+.sidebar.open + .home-section .divider .icon-wrap:before,
+.sidebar.open + .home-section .divider .icon-wrap:after {
+    right: calc(40% + 250px); /* Adjust based on your sidebar width */
+    transform: translateX(50%);
+}
+
 .feedback_head {
     align-items: center;
     text-align: center;
@@ -113,3 +164,14 @@ body {
 .review-box:hover {
     transform: scale(1.05);
 }
+
+
+.home-section {
+    position: relative;
+    /*transition: all 0.5s ease;*/
+    /*min-height: 100vh;*/
+    left: 0px;
+    width: calc(100% - 58px);
+    /*z-index: 2;*/
+    margin-top: 0px;
+  }
