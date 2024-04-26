@@ -2,6 +2,7 @@
   .sidebar {
     display: none;
   }
+
 }
 .check_container {
   display: flex;
@@ -358,11 +359,9 @@ input[type="radio"]:checked {
   height: 100vh;
   width: 100%;
   background-color: white;
+
 }
 
-#paymentDetailsSection {
-  display: none;
-}
 .check_container {
   display: flex;
   justify-content: center;
@@ -371,29 +370,33 @@ input[type="radio"]:checked {
   min-height: 100vh;
   font-family: pop, sans-serif;
   gap: 5%;
+
 }
 
 #p_checkout-button:disabled {
   background-color: gray;
   cursor: not-allowed;
+
 }
 
 .check_container form {
   padding: 15px;
-  width: 800px;
+  width: 800px; /* Adjusted width */
   overflow: hidden;
   background: white;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   border-radius: 10px;
-  margin-left: 70px;
+  margin-left: auto; /* Centering horizontally */
+  margin-right: auto; /* Centering horizontally */
 }
 
 .check_container form .check_row {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Allowing elements to wrap */
   gap: 15px;
+  justify-content: center; /* Centering elements horizontally */
 }
 
 .check_container form .check_row .check_col {
@@ -413,40 +416,20 @@ input[type="radio"]:checked {
   gap: 20px;
 }
 
-.check_container form .check_row .check_col .check_inputBox span {
-  margin-bottom: 10px;
-  display: block;
-}
-
-.check_container form .check_row .check_col .check_inputBox input {
-  width: 100%;
-  border: 1px solid #f5eded;
-  padding: 10px 10px;
-  font-size: 15px;
-  text-transform: none;
-  align-self: center;
-  margin-top: -10px;
-  color: #d72323;
-}
-
-.check_container form .check_row .check_col .check_inputBox input:focus {
-  border: 1px solid #000;
-}
-
-.check_container form .check_row .check_col .check_flex {
+.check_inline {
   display: flex;
+
   gap: 15px;
   margin-left: 45px;
 }
 
 .check_container form .check_row .check_col .check_flex .check_inputBox {
   margin-top: 5px;
+
 }
 
-.check_container form .check_row .check_col .check_inputBox img {
-  height: 34px;
-  margin-top: 5px;
-  filter: drop-shadow(0 0 1px #000);
+.check_inputBox .check_input {
+  width: auto; /* Allowing width to adjust */
 }
 
 .check_container form .check_submit-btn {
@@ -459,11 +442,13 @@ input[type="radio"]:checked {
   cursor: pointer;
   border-radius: 5px;
   font-weight: bolder;
+
 }
 
 .check_container form .check_submit-btn:hover {
   opacity: 0.8;
   transform: scale(1.02);
+
 }
 
 .back-icon {
@@ -492,7 +477,7 @@ input[type="radio"]:checked {
   background-color: red;
   color: var(--bodyColor);
   padding: 10px 30px;
-  margin: 50px 100px 50px 650px;
+  margin: 50px auto; /* Centering horizontally */
   font-weight: bolder;
   box-shadow: 0 0 10px rgb(62, 54, 54);
   cursor: pointer;
@@ -506,7 +491,6 @@ input[type="radio"]:checked {
 .check_inline .check_input {
   outline: none;
   font-size: 15px;
-  flex: 2;
   padding: 10px;
   border: 1px solid #f5eded;
   border-radius: 5px;
@@ -576,24 +560,29 @@ input[type="radio"]:checked {
 
 .change_address:hover {
   opacity: 0.8;
+
 }
 
 .check_inline select {
-  margin-right: 350px;
+  width: 100%;
   font-size: 15px;
 }
+
 input[type="radio"]:checked {
   /* Change the background color */
   background-color: red;
   /* Change the border color */
   border-color: red;
 }
+
 #note {
   margin-top: -10px;
 }
 
+
 .radio_button {
   margin-right: 27%;
+
 }
 
 .recipe_head {
@@ -620,16 +609,16 @@ input[type="radio"]:checked {
 .summary-container {
   padding: 20px;
   padding-right: 10px;
-  margin-top: -12.5%;
+  margin-top: 50px; /* Adjusted margin */
   overflow: hidden;
   background: white;
   border-radius: 10px;
   box-shadow: 2px 6px 10px rgba(0, 0, 0, 0.1);
   background-color: #fbfbfb;
   border-radius: 10px;
-  margin-right: 10px;
+  margin-right: auto; /* Centering horizontally */
+  margin-left: auto; /* Centering horizontally */
   padding-bottom: 30px;
-  margin-top: 50px;
   color: #7b7b7b;
 }
 
@@ -638,6 +627,7 @@ input[type="radio"]:checked {
   font-weight: bold;
   text-align: center;
 }
+
 .summary-container h3 {
   color: black;
   text-align: center;
@@ -650,6 +640,7 @@ input[type="radio"]:checked {
 
 .cart-summary-list {
   list-style-type: none;
+
   padding: 0;
 }
 
@@ -709,3 +700,4 @@ input[type="radio"]:checked {
   letter-spacing: 0.05rem;
   color: #d72323;
 }
+

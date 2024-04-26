@@ -278,6 +278,7 @@ class UI {
       cartContent.removeChild(cartContent.children[0]);
     }
 
+
     //-> update cart
     cart.length = 0;
 
@@ -293,6 +294,7 @@ class UI {
       button.textContent = "Add to Cart";
       button.disabled = false;
     });
+
 
     closeModal();
   }

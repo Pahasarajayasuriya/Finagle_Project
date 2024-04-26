@@ -116,6 +116,7 @@ $this->view('includes/footer', $data);
                     <label for="editEndDate">Telephone:</label>
                     <input type="text" id="editDescription" name="teleno" placeholder="Enter the branch name" value="<?= $row[0]->teleno ?>">
 
+                    <br>
                     <label for="editEndDate">E-mail:</label>
                     <input type="text" id="editDescription" name="email" placeholder="Enter the branch name" value="<?= $row[0]->email ?>">
                     

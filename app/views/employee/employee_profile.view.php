@@ -31,14 +31,12 @@ $this->view('includes/footer', $data);
 <body>
 
 
+    <?php $this->view('includes/emp_topbar', $data); ?>
 
 
     <div class="home-section">
 
-        <div class="logout-button">
-            <!-- <button><b>Log Out</b></button> -->
-             <a href="<?= ROOT ?>/Emp_Logout">Logout</a> 
-        </div>
+
         <div class="title-profile">
 
             <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
@@ -60,6 +58,7 @@ $this->view('includes/footer', $data);
                     <div class="pro-id"> User Id</div>
                     <div class="pro-description">User Name</div>
                     <div class="pro-date">Joined Date</div>
+
                 </div>
 
                 <?php
@@ -107,6 +106,22 @@ $this->view('includes/footer', $data);
 
 
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            var navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = "white";
+                } else {
+                    navbar.style.backgroundColor = "transparent";
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

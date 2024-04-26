@@ -40,6 +40,8 @@
           // show($data['driver_details']);
 
           foreach ($data['driver_details'] as $driver) {
+            if($driver->availability_status == 1)
+            {
         ?>
 
             <ul class="options">
@@ -53,6 +55,7 @@
 
         <?php
           }
+        }
         }
 
         ?>
@@ -95,6 +98,8 @@
         // show($data['driver_details']);
 
         foreach ($data['driver_details'] as $driver) {
+          if($driver->availability_status == 1)
+          {
       ?>
 
           <ul class="options_main">
@@ -108,6 +113,7 @@
 
       <?php
         }
+      }
       }
 
       ?>

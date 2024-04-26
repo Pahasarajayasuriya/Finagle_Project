@@ -25,7 +25,12 @@ $this->view('includes/orderDetails_popup', $data);
 
 <body>
 
+  <!-- <?php $this->view('includes/emp_topbar', $data); ?> -->
+
+
   <div class="home-section">
+
+
     <div class="left-section">
       <h4><i>You have been assigned to.........</i></h4>
 
@@ -42,7 +47,7 @@ $this->view('includes/orderDetails_popup', $data);
         ?>
             <div class="order-box">
               <div class="order-header">
-                
+
                 <h3>Order ID: <?= $element->id ?> D</h3>
 
                 <button type="button" class="view-details" id="locationButton view-details" data-order='<?php echo json_encode($element); ?>' onclick="showPopup(this,'viewOrderDetails')">View Details >>>></button>
@@ -76,7 +81,7 @@ $this->view('includes/orderDetails_popup', $data);
                 <div class="action-buttons">
 
                   <!-- <button class="view-location-btn" id="locationButton">View Location</button> -->
-                  
+
                   <!-- <button class="view-location-btn" onclick="addMarker(<?= $element->latitude ?>, <?= $element->longitude ?>)">View Location</button> -->
 
                   <button class="view-location-btn" onclick="calculateAndDisplayRoute({lat: <?= $element->latitude ?>, lng: <?= $element->longitude ?>})">View Location</button>
@@ -84,14 +89,14 @@ $this->view('includes/orderDetails_popup', $data);
 
 
 
-                 <!-- <form method="POST">
+                  <!-- <form method="POST">
                     <input type="hidden" name="order_status" value="delivered">
                     <input type="hidden" name="id" value="<?= $element->id ?>">
                     <button name="delivered_btn" class="delivered-btn">Delivered</button>
                   </form>   -->
 
-                  <button  class="delivered-btn" id="locationButton view-details" data-order='<?php echo json_encode($element); ?>' onclick="showPopup(this,'viewOrderConfirm')"> Delivered</button>
-               
+                  <button class="delivered-btn" id="locationButton view-details" data-order='<?php echo json_encode($element); ?>' onclick="showPopup(this,'viewOrderConfirm')"> Delivered</button>
+
                 </div>
 
               </div>
@@ -116,14 +121,13 @@ $this->view('includes/orderDetails_popup', $data);
 
     </div>
   </div>
- </div>
+  </div>
 
- <style>
-
-  .active{
-    background-color: green;
-  }
- </style>
+  <style>
+    .active {
+      background-color: green;
+    }
+  </style>
 
   <script>
     // var view_details = document.querySelector('view-details');
@@ -131,17 +135,17 @@ $this->view('includes/orderDetails_popup', $data);
 
 
     var data = {};
-    
+
     function showPopup(button, popupId) {
-      
+
       data = {};
 
       data = JSON.parse(button.getAttribute('data-order'));
 
       var popup = document.getElementById(popupId);
 
-    //  console.log(data.mult_order);
-      
+      //  console.log(data.mult_order);
+
       if (popup) {
         popup.style.display = "block";
       }
@@ -158,20 +162,20 @@ $this->view('includes/orderDetails_popup', $data);
       var delivered_id = document.getElementById('deliver-order-id');
       var order_status = document.getElementById('order_status');
 
-     order_id.innerHTML = data.id;
+      order_id.innerHTML = data.id;
       user_location.innerHTML = data.delivery_address;
       user_phone.innerHTML = data.phone_number;
       pay_status.innerHTML = data.payment_method;
       total_cost.innerHTML = data.total_cost;
 
-     // delivered_id.innerHTML = data.id;
-     // order_status.innerHTML = data.order_status;
+      // delivered_id.innerHTML = data.id;
+      // order_status.innerHTML = data.order_status;
 
 
       if (data.payment_method == 'card') {
         pay_status.innerHTML = ('PAID');
         pay_status_btn.classList.remove('active');
-        
+
       } else {
         pay_status.innerHTML = ('NOT PAID');
         pay_status_btn.classList.add('active');
@@ -183,7 +187,7 @@ $this->view('includes/orderDetails_popup', $data);
       document.getElementById('order-details').innerHTML = "";
 
       for (let index = 0; index < data.mult_order.length; index++) {
-       // console.log(data.mult_order[index]);
+        // console.log(data.mult_order[index]);
 
         order_list(data.mult_order[index]);
       }
@@ -204,8 +208,8 @@ $this->view('includes/orderDetails_popup', $data);
       var details = document.getElementById('order-details');
       var newCard = document.createElement("div");
       newCard.className = "product-item";
-      
-      newCard.innerHTML  = `<div class="product-name" id="product-name">${orders_list.user_name}</div>
+
+      newCard.innerHTML = `<div class="product-name" id="product-name">${orders_list.user_name}</div>
           <div class="product-qty" id="product-qty">${orders_list.quantity}</div>
           <div class="product-price" id="product-price">Rs.${orders_list.price}</div>
       `;
@@ -213,73 +217,89 @@ $this->view('includes/orderDetails_popup', $data);
       newCard.style.transition = "all 0.5s ease-in-out";
       details.appendChild(newCard);
     }
-
-
-
   </script>
 
 
   <script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+
+      var navbar = document.querySelector(".navbar");
+
+      window.addEventListener("scroll", function() {
+        if (window.scrollY > 0) {
+          navbar.style.backgroundColor = "white";
+        } else {
+          navbar.style.backgroundColor = "transparent";
+        }
+      });
+    });
+
+
+
     var map;
     var directionsService;
     var directionsRenderer;
- 
+
 
     function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: {
-                lat: 6.9271,
-                lng: 79.8612
-            },
-            zoom: 15
-        });
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {
+          lat: 6.9271,
+          lng: 79.8612
+        },
+        zoom: 15
+      });
 
-        directionsService = new google.maps.DirectionsService();
-        directionsRenderer = new google.maps.DirectionsRenderer();
-        directionsRenderer.setMap(map);
+      directionsService = new google.maps.DirectionsService();
+      directionsRenderer = new google.maps.DirectionsRenderer();
+      directionsRenderer.setMap(map);
     }
 
     function addMarker(latitude, longitude) {
-        // Remove existing markers (if any)
-        mapMarkers.forEach(function(marker) {
-            marker.setMap(null);
-        });
+      // Remove existing markers (if any)
+      mapMarkers.forEach(function(marker) {
+        marker.setMap(null);
+      });
 
-        // Create a new marker
-        var marker = new google.maps.Marker({
-            position: {
-                lat: latitude,
-                lng: longitude
-            },
-            map: map,
-            title: 'Location'
-        });
+      // Create a new marker
+      var marker = new google.maps.Marker({
+        position: {
+          lat: latitude,
+          lng: longitude
+        },
+        map: map,
+        title: 'Location'
+      });
 
-        // Store the marker in an array for future reference
-        mapMarkers.push(marker);
+      // Store the marker in an array for future reference
+      mapMarkers.push(marker);
 
-        // Pan the map to the marker's position
-        map.panTo(marker.getPosition());
+      // Pan the map to the marker's position
+      map.panTo(marker.getPosition());
     }
 
 
     var mapMarkers = []; // Array to store markers
 
     function calculateAndDisplayRoute(destination) {
-        var request = {
-            origin: 'Dr NM Perera Mawatha Rd, Colombo 00800',
-            destination: destination,
-            travelMode: 'DRIVING'
-        };
-        directionsService.route(request, function(result, status) {
-            if (status == 'OK') {
-                directionsRenderer.setDirections(result);
-            } else {
-                console.error('Error:', status);
-            }
-        });
+      var request = {
+        origin: 'Dr NM Perera Mawatha Rd, Colombo 00800',
+        destination: destination,
+        travelMode: 'DRIVING'
+      };
+      directionsService.route(request, function(result, status) {
+        if (status == 'OK') {
+          directionsRenderer.setDirections(result);
+        } else {
+          console.error('Error:', status);
+        }
+      });
     }
-</script>
+  </script>
+
+
+
 
 
 

@@ -63,15 +63,19 @@
 
 .bx .bx-menu{
   color: rgb(220, 42, 42);
+  align-items: center;
 
 }
 .sidebar i {
   color: rgb(255, 255, 255);
-  height: 60px;
+  height: 40px;
   min-width: 50px;
-  font-size: 28px;
+  font-size: 24px;
   text-align: center;
-  line-height: 60px;
+  line-height: 70px;
+  align-items: center;
+  margin-bottom: 5px;
+
 }
 .sidebar .nav-list {
   margin-top: 20px;
@@ -79,7 +83,7 @@
 }
 .sidebar li {
   position: relative;
-  margin: 8px 0;
+  margin: 4px 0;
   list-style: none;
 }
 .sidebar li .tooltip {
@@ -160,7 +164,7 @@
   color: rgb(246, 245, 245);
 }
 .sidebar li i {
-  height: 50px;
+  height: 40px;
   line-height: 50px;
   font-size: 18px;
   border-radius: 12px;

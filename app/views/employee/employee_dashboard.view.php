@@ -32,17 +32,16 @@ $this->view('includes/footer', $data);
 </head>
 
 <body>
-	<!-- <div class="navbar">
-         <div class="logo_icon">
-             <img src="<?= ROOT ?>/assets/images/logo.png" alt="">
-         </div>
-    </div> -->
+	<?php $this->view('includes/emp_topbar', $data); ?>
+	
+	
+
 	<div class="home-section">
 		<section id="content">
 			<main>
 				<div class="head-title">
 					<div class="left">
-						<h1>Dashboard</h1>
+						<!-- <h1>Dashboard</h1> -->
 						<ul class="breadcrumb">
 							<li>
 								<a href="#">Dashboard</a>
@@ -69,7 +68,7 @@ $this->view('includes/footer', $data);
 							}
 				?>
 
-						
+
 				<i class='bx bxs-building'></i>
 					</div>
 
@@ -95,7 +94,7 @@ $this->view('includes/footer', $data);
 							<p>Orders</p>
 						</span>
 
-						<div class="circular">
+						<!-- <div class="circular">
 							<div class="inner"></div>
 							<div class="outer"></div>
 							<div class="numb1">
@@ -109,7 +108,7 @@ $this->view('includes/footer', $data);
 									<div class="progress"></div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</li>
 					<li>
 						<i class='bx bxs-group'></i>
@@ -132,7 +131,7 @@ $this->view('includes/footer', $data);
 							<p>Buyers</p>
 						</span>
 
-						<div class="circular">
+						<!-- <div class="circular">
 							<div class="inner"></div>
 							<div class="outer"></div>
 							<div class="numb2">
@@ -146,7 +145,7 @@ $this->view('includes/footer', $data);
 									<div class="progress"></div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</li>
 
 
@@ -168,7 +167,7 @@ $this->view('includes/footer', $data);
 							<p>Revenue</p>
 						</span>
 
-						<div class="circular">
+						<!-- <div class="circular">
 							<div class="inner"></div>
 							<div class="outer"></div>
 							<div class="numb3">
@@ -182,7 +181,7 @@ $this->view('includes/footer', $data);
 									<div class="progress1"></div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</li>
 				</ul>
 
@@ -302,60 +301,94 @@ $this->view('includes/footer', $data);
 
 						</ul>
 					</div>
+
+
+					<div class="goal">
+						<div class="head">
+							<h3>Assigned Goals</h3>
+
+						</div>
+						<ul class="todo-list">
+							<li class="completed">
+								 <p>Target orders must be  1500 for this month</p>
+							</li>
+
+
+							<li class="completed">
+							  <p>Target revenue must be  Rs.50 000 for this month</p>
+							</li>
+							
+
+						</ul>
+					</div>
+
 				</div>
 			</main>
 
 		</section>
 
 	</div>
+
 	<script>
-		const numb1 = document.querySelector(".numb1");
-		let counter1 = 0;
-		const targetPercentage1 = <?= $order_count->total_records ?>;
-		const intervalId1 = setInterval(() => {
-			if (counter1 >= targetPercentage1) {
-				clearInterval(intervalId1);
-			} else {
-				counter1 += 1;
-				numb1.textContent = (counter1 / 400) * 100 + "%";
-
-			}
-		}, 80);
+		document.addEventListener("DOMContentLoaded", function() {
 
 
+					var navbar = document.querySelector(".navbar");
 
+					window.addEventListener("scroll", function() {
+						if (window.scrollY > 0) {
+							navbar.style.backgroundColor = "white";
+						} else {
+							navbar.style.backgroundColor = "transparent";
+						}
+					});
+		});
 
-		const numb2 = document.querySelector(".numb2");
-		let counter2 = 0;
-		const targetPercentage2 = <?= $cus_count->total_customers ?>;
-		const intervalId2 = setInterval(() => {
-			if (counter2 >= targetPercentage2) {
-				clearInterval(intervalId2);
-			} else {
-				counter2 += 1;
-				numb2.textContent = (counter2 / 200) * 100 + "%";
+					const numb1 = document.querySelector(".numb1");
+					let counter1 = 0;
+					const targetPercentage1 = <?= $order_count->total_records ?>;
+					const intervalId1 = setInterval(() => {
+						if (counter1 >= targetPercentage1) {
+							clearInterval(intervalId1);
+						} else {
+							counter1 += 1;
+							numb1.textContent = (counter1 / 400) * 100 + "%";
 
-			}
-		}, 80);
+						}
+					}, 80);
 
 
 
 
-		const numb3 = document.querySelector(".numb3");
-		let counter3 = 0;
-		const targetPercentage3 = <?= $total_cost->total_sum ?>;
-		const intervalId3 = setInterval(() => {
-			if (counter3 == targetPercentage3) {
-				clearInterval(intervalId3);
-			} else {
-				counter3 += 1;
-				numb3.textContent = (counter1 / 1000) * 100 + "%";
+					const numb2 = document.querySelector(".numb2");
+					let counter2 = 0;
+					const targetPercentage2 = <?= $cus_count->total_customers ?>;
+					const intervalId2 = setInterval(() => {
+						if (counter2 >= targetPercentage2) {
+							clearInterval(intervalId2);
+						} else {
+							counter2 += 1;
+							numb2.textContent = (counter2 / 200) * 100 + "%";
 
-			}
-		}, 80);
+						}
+					}, 80);
 
 
-</script>
+
+
+					const numb3 = document.querySelector(".numb3");
+					let counter3 = 0;
+					const targetPercentage3 = <?= $total_cost->total_sum ?>;
+					const intervalId3 = setInterval(() => {
+						if (counter3 == targetPercentage3) {
+							clearInterval(intervalId3);
+						} else {
+							counter3 += 1;
+							numb3.textContent = (counter1 / 1000) * 100 + "%";
+
+						}
+					}, 80);
+	</script>
 
 
 

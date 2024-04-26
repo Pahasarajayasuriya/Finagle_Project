@@ -6,6 +6,7 @@ $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,12 +22,13 @@ $this->view('includes/footer', $data);
 
 <body>
     <?php $this->view('includes/cus_topbar', $data); ?>
+
     <div class="home-section">
         <div class="progress_main">
             <div class="container">
                 <div class="text-container">
                     <h1>Order ID: <?= $data['orderId'] ?></h1>
-                    <h2>If you have any issue, then call our hotline: <a href="tel:+940112236976">+94 (0) 11 223 6976</a></h2>
+                    <p>If you have any issue, then call our hotline: <a href="tel:+940112236976">+94 (0) 11 223 6976</a></p>
                 </div>
             </div>
             <div class="bar_container">
@@ -154,6 +156,25 @@ $this->view('includes/footer', $data);
                     });
                 }
             }
+
+        }
+    });
+</script>
+
+<script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            var navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = "white";
+                } else {
+                    navbar.style.backgroundColor = "transparent";
+                }
+            });
+
         });
     </script>
 </body>

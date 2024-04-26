@@ -1,0 +1,364 @@
+/* Reset styles */
+
+/* Example media queries for responsiveness */
+@media screen and (max-width: 768px) {
+
+    /* Adjust styles for smaller screens */
+    .sidebar {
+        display: none;
+        /* Hide the sidebar menu on small screens */
+    }
+
+    /* Modify other styles as needed */
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.branch_head {
+    font-size: 25px;
+    color: red;
+    letter-spacing: 0.08rem;
+    margin: 2rem 0 1rem;
+    font-weight: 600;
+}
+
+.branch_head_1 {
+    font-weight: 800;
+    color: black;
+    font-size: 25px;
+}
+
+.branch_head_1 span {
+    color: #d72323;
+}
+
+/* Utility classes */
+.text-center {
+    text-align: center;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+
+
+
+/* Form styles */
+.form-group {
+    display: inline-block;
+    margin-bottom: 20px;
+    width: 40%;
+}
+
+.input-box {
+    margin-bottom: 10px;
+}
+
+.details,
+.size {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    height: 45px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 15px;
+    transition: all 0.3s ease-in;
+    border-bottom-width: 2px;
+}
+
+/* Table styles */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+
+    margin-top: 5px;
+
+    padding: 10px;
+    margin-top: 20px;
+    width: 1000px;
+    overflow: auto;
+    border: 2px solid #ccc;
+    overflow: hidden;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    align-self: center;
+    align-items: center;
+
+}
+
+.table th,
+.table td {
+    padding: 12px 25px 12px 20px;
+    border-bottom: 1px solid #dddddd;
+    font-size: 14px;
+}
+
+.table th {
+    background-color:rgb(200, 200, 200);
+  color:black;
+}
+
+.table tbody tr:nth-of-type(even) {
+    background-color: #f4f4f4;
+}
+
+.ordId.date{
+    flex: 4;
+}
+
+
+/* Image styles */
+.image-preview {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    /* For a circular shape */
+    object-fit: cover;
+    /* Preserve aspect ratio */
+}
+
+/* Responsive styles */
+@media (max-width: 980px) {
+    .form-group {
+        width: calc(100% - 40px);
+        margin-bottom: 20px;
+    }
+}
+
+.container1 {
+    max-width: 700px;
+    width: 100%;
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 15px;
+    margin-left: 8%;
+}
+
+.container1 .emptitle {
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+}
+
+.container1 .emptitle::before {
+    content: "";
+    position: absolute;
+    left: 285px;
+    bottom: 11px;
+    height: 4px;
+    width: 50px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+/* Sidebar and main content layout */
+.home-section {
+    width: calc(100% - 78px);
+    /* Adjust based on your sidebar width */
+    margin-left: 78px;
+    /* Adjust based on your sidebar width */
+    transition: all 0.5s ease;
+
+    position: relative;
+    min-height: 100vh;
+    z-index: 2;
+}
+
+.sidebar.open~.home-section {
+    width: calc(100% - 200px);
+    /* Adjust based on your sidebar width */
+    margin-left: 250px;
+    /* Adjust based on your sidebar width */
+}
+
+.search-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.branch_head {
+    align-items: center;
+    text-align: center;
+    font-size: 25px;
+    color: red;
+    letter-spacing: 0.08rem;
+    margin: 2rem 0 1rem;
+    font-weight: 600;
+}
+
+.branch_head_1 {
+    font-weight: 800;
+    color: black;
+    font-size: 25px;
+}
+
+.branch_head_1 span {
+    color: #d72323;
+}
+
+
+
+.form-group {
+    margin-top: 20px;
+    position: relative;
+    /* Make the parent container relative */
+
+    display: flex;
+    align-items: center;
+
+    justify-content: center;
+    margin-left: 25%;
+
+}
+
+.form-group input {
+    width: calc(100% - 10px);
+    height: 50px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 35px;
+    font-size: 15px;
+    transition: all 0.3s ease-in;
+    border-bottom-width: 2px;
+    border: none;
+    background: rgb(255, 255, 255);
+    outline: none;
+    border-radius: 36px 0 0 36px;
+    box-shadow: 0px 0px 10px 0px rgb(187, 184, 184);
+    padding-right: 80px;
+
+
+}
+
+
+
+.icon {
+    position: absolute;
+    right: -37px;
+    top: 60%;
+    transform: translateY(-70%);
+    font-size: 30px;
+    /* Increase the font size here */
+    color: var(--dark);
+    cursor: pointer;
+
+    width: 36px;
+    height: 57%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    color: white;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 0 36px 36px 0;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 2px rgb(187, 184, 184);
+    transition: 0.3s ease;
+}
+
+
+/* CSS for enlarging image on hover */
+
+/* Scale up image within table row on hover */
+.table tr:hover img {
+    transform: scale(1.15);
+    /* Scale up by 5% */
+    transition: transform 0.5s ease;
+    /* Add smooth transition effect */
+}
+
+
+.title-profile {
+    margin-top: 30px;
+}
+
+.section-title {
+    font-size: 1.5em;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 1%;
+    font-family: "Poppins";
+    margin-left: 2%;
+    text-align: center;
+
+}
+
+.fas.fa-bread-slice.fa-3x.text-primary.mb-4 {
+    margin-left: 3%;
+
+
+}
+
+
+.fas.fa-bread-slice.fa-3x.text-primary.mb-4 :after {
+    margin-left: 130px;
+
+
+}
+
+
+.divider .icon-wrap:after {
+    content: "";
+    position: absolute;
+    border-bottom: 3px solid #ff0000;
+    width: 120px;
+    height: 17px;
+
+}
+
+.divider.dark .icon-wrap:before,
+.divider.dark .icon-wrap:after {
+    content: "";
+    position: absolute;
+    border-bottom: 3px solid #ff0000;
+    width: 200px;
+    height: 17px;
+
+}
+
+.divider .icon-wrap:before,
+.divider.dark .icon-wrap:before {
+    left: 40%;
+    transform: translateX(-50%);
+
+
+}
+
+.divider .icon-wrap:after,
+.divider.dark .icon-wrap:after {
+    right: 35%;
+    transform: translateX(50%);
+}
+
+.datetime{
+    font-size: 12px;
+}

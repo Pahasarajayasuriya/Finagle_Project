@@ -33,6 +33,7 @@ $this->view('includes/footer', $data);
 
 <body>
     <?php $this->view('includes/cus_topbar', $data); ?>
+    
     <div class="home-section">
         <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
         <h2 class="section-title">OUR PRODUCTS</h2>
@@ -60,6 +61,7 @@ $this->view('includes/footer', $data);
 
             <div class="search-error"></div>
         </div>
+
         <div id="message-error-container"></div>
 
 
@@ -177,6 +179,22 @@ $this->view('includes/footer', $data);
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="<?= ROOT ?>/assets/js/product.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            var navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = "white";
+                } else {
+                    navbar.style.backgroundColor = "transparent";
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

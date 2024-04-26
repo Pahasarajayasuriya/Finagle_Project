@@ -13,20 +13,27 @@ $this->view('includes/footer', $data);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Deliverer Profile</title>
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/deliverer/driver_profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 
 <body>
+
+    <?php $this->view('includes/emp_topbar', $data); ?>
+  
+
     <div class="home-section">
+   
 
 
         <div class="pro_card">
 
             <div class="pro_head">
                 <p class="pro_head_1">YOUR <span> PROFILE</span></p>
+
+                
             </div>
 
 
@@ -48,9 +55,27 @@ $this->view('includes/footer', $data);
                         </div>
 
 
-                        <div class="driver-info">
+                        <div class="driver-info" id="availability_<?= $val->id ?>">
                             <p class="driver-name"><?= $val->username ?></p>
                             <p class="joined-date">Joined Date : <?= $val->joined_date ?></p>
+
+
+                            <?php
+                            if ($val->availability_status == 0) {
+                                $button_class = "status-disabled";
+                            } else {
+                                $button_class = "status-enabled";
+                            }
+                            ?>
+
+                            <form method="POST">
+                                <input type="hidden" name="availability_status" value="<?= $val->availability_status == 0 ? 1 : 0 ?>">
+                                <input type="hidden" name="id" value="<?= $val->id ?>">
+                                <button name="status" class="status <?= $button_class ?>">Available Now</button>
+                            </form>
+
+
+
                         </div>
 
                 <?php
@@ -60,6 +85,7 @@ $this->view('includes/footer', $data);
 
 
             </div>
+
 
 
             <div class="stats-boxes">
@@ -117,6 +143,23 @@ $this->view('includes/footer', $data);
         </div>
 
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            var navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = "white";
+                } else {
+                    navbar.style.backgroundColor = "transparent";
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>

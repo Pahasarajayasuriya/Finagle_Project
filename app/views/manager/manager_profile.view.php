@@ -16,6 +16,7 @@ $this->view('includes/footer', $data);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Manager Profile</title>
   <link rel="stylesheet" href="<?= ROOT ?>/assets/css/manager/view_profile.css">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Cabin|Herr+Von+Muellerhoff|Source+Sans+Pro" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -26,13 +27,21 @@ $this->view('includes/footer', $data);
 
 <body>
   <div class="home-section">
-    <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
-    <h2 class="section-title">YOUR ACCOUNT</h2>
-    <div class="divider dark mb-4">
-      <div class="icon-wrap">
-        <!-- <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i> -->
-      </div>
-    </div>
+
+       <?php $this->view('includes/emp_topbar', $data); ?>
+
+
+        <div class="title-profile">
+            <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
+            <p class="section-title">YOUR<span> PROFILE</span></p>
+            <div class="divider dark mb-4">
+                <div class="icon-wrap">
+                <!-- <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i> -->
+                 </div>
+            </div>
+        </div>
+
+
     <div class="pro_container">
 
       <?php if (!empty($data['rows'])) : ?>
@@ -42,16 +51,17 @@ $this->view('includes/footer', $data);
             <div class="pro_form-group">
               <div class="avatar-container">
                 <div class="username">
-                  <h4>Hi, <?= esc($row->username) ?></h4>
+                  <h3>Hi, <?= esc($row->username) ?></h3>
                 </div>
-                <img src="https://i.pinimg.com/474x/c4/a6/ad/c4a6ad3a4bdcd5a8d5425f2afa2f81c6.jpg" alt="Profile Image">
+                 <img src=' <?= ROOT ?>/assets/images/Emp_profiles/<?= $row->image ?>'>
+                <!-- <img src="<?= esc($row->image) ?>" alt="Profile Image"> -->
               </div>
             </div>
           </form>
 
 
           <div class="personal-info-section">
-            <h2 class="pro_font">Personal Information</h2>
+            <h2 class="pro_font">Personal Information</h2><br>
             <div class="pro_card">
               <form action="view_profile.php" method="POST">
                 <div class="pro_form-group">
@@ -90,6 +100,23 @@ $this->view('includes/footer', $data);
 
     </div>
   </div>
+
+  
+  <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            var navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = "white";
+                } else {
+                    navbar.style.backgroundColor = "transparent";
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

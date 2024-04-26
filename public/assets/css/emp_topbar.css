@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-family: sans-serif;
+  
+  }
+
+  .logo_icon {
+    width: 100px;
+    height: 50px;
+  }
+  
+  .logo_icon img {
+    height: 100%;
+    width: auto;
+  }
+  
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 78px;
+    width: 97%;
+    background-color: transparent;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 1000;
+    transition: background-color 0.5s ease;
+    justify-content: space-between;
+
+    align-items: center;
+    display: flex;
+    font-family:"Poppins";
+    margin-bottom: 40px;
+    right: 30px;
+  }
+  
+  .signup , .login {
+    color: rgb(192, 191, 191);
+    text-decoration: none;
+    margin-right: 85px;
+    justify-content: 20px;
+    background-color: transparent;
+  
+  }
+  
+  
+  .signup:hover  {
+    color: rgb(158, 30, 30);
+    background-color: transparent;
+  
+  
+  }
+
+  .navbar-links :hover{
+    color: rgb(215, 32, 32);
+  }
+  
+  
+
+  
+  
+  .home-section {
+    display: flex;
+    flex-direction: column;
+    /* margin-top: 50%; */
+  }
+  
+   /* .home-section {
+    width: calc(100% - 78px);
+    margin-left: 70px;
+    transition: all 0.5s ease;
+  }
+    */
+  /* .sidebar.open~.home-section {
+    width: calc(100% - 250px);
+    margin-left: 50px;
+  } */
+  
+  .sidebar.open~.navbar {
+    width: calc(100% - 250px);
+    margin-left: 200px;
+  }
