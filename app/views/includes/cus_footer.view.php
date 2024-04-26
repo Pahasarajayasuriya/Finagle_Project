@@ -81,7 +81,7 @@
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <div class="newsletter-link">
             <h3>NEWS LETTER</h3>
-            <form action="<?= ROOT ?>/subscribe/handleSubscription" method="post">
+            <form action="" method="post">
                 <div class="newsletter">
                     <div class="link-newsletter">
                         <input class="email-input" type="email" name="email" placeholder="Enter your email" required>
@@ -98,7 +98,7 @@
             </div>
         </div>
     </div>
-    <script>
+    <!-- <script>
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
 
@@ -135,7 +135,7 @@
         .red-button:hover {
             background-color: lightcoral !important;
         }
-    </style>
+    </style> -->
 </body>
 
 </html>
