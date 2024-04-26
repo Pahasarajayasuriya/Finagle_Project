@@ -1,4 +1,11 @@
 
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 
 
  
@@ -15,7 +22,7 @@
 .bar_container {
   height: auto;
   align-items: center;
- 
+
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -24,8 +31,6 @@
   padding: 40px;
   position: relative;
   border-radius: 8px;
-
-
   border: 2px solid #ccc;
   overflow: hidden;
   background: white;
@@ -47,31 +52,39 @@
   color: #d72323;
 }
 
-.bar_container ul {
+.ul {
+
   display: flex;
   margin-top: 80px;
 }
 
-.bar_container ul li {
+
+.ul li {
+
   list-style: none;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.bar_container ul li .icon {
+
+.ul li .icon {
+
   font-size: 35px;
   color: black;
   margin: 0 60px;
 }
 
-.bar_container ul li .progress_text {
+
+.ul li .progress_text {
+
   font-size: 14px;
   font-weight: 600;
   color: #d72323;
 }
 
-.bar_container ul li .progress {
+.ul li .progress {
+
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -98,15 +111,17 @@
   height: 0;
 }
 
-.bar_container ul li .progress .uil {
+
+.ul li .progress .uil {
   display: none;
 }
 
-.bar_container ul li .progress p {
+.ul li .progress p {
   font-size: 13px;
 }
 
-.bar_container ul li .active {
+.ul li .active {
+
   background-color: #20d110;
   display: grid;
   place-items: center;
@@ -116,11 +131,13 @@
   background-color: #20d110;
 }
 
-.bar_container ul li .active p {
+
+.ul li .active p {
   display: none;
 }
 
-.bar_container ul li .active .uil {
+.ul li .active .uil {
+
   font-size: 20px;
   display: flex;
 }
@@ -136,7 +153,7 @@
   border-radius: 5px;
   color: var(--bodyColor);
   padding: 10px 30px;
-  margin: 30px 100px;
+  /* margin: 30px 80px; */
   font-weight: bolder;
   box-shadow: 0 0 10px rgb(255, 255, 255);
   cursor: pointer;
@@ -144,14 +161,10 @@
   color: white;
 }
 
-#homeButton {
-  margin-right: 30vw;
-  background-color:  rgb(16, 187, 0);; 
-}
-
 #complaintButton {
-  margin-left: 10vw; 
-  background-color:black;
+  /* margin-left: 10vw;  */
+  background-color: rgb(250, 54, 54);
+
 }
 
 .process_btn:hover {
@@ -160,15 +173,17 @@
 }
 
 @media (max-width: 678px) {
-  .bar_container ul {
+
+  .ul {
     flex-direction: column;
   }
 
-  .bar_container ul li {
+  .ul li {
     flex-direction: row;
   }
 
-  .bar_container ul li .progress {
+  .ul li .progress {
+
     margin: 0 30px;
   }
 
@@ -185,7 +200,8 @@
     height: 0;
   }
 
-  .bar_container ul li .icon {
+  .ul li .icon {
+
     margin: 15px 0;
   }
 }
@@ -200,6 +216,17 @@
   }
 }
 
+
+.sidebar.open ~ .home-section {
+  width: calc(100% - 190px);
+}
+.home-section {
+  position: relative;
+  transition: all 0.5s ease;
+  min-height: 100vh;
+  width: calc(100% - 58px);
+  z-index: 2;
+}
 
 
 .container {

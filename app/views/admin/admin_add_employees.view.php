@@ -129,7 +129,6 @@ $this->view('includes/footer', $data);
                        <i class="fas fa-tasks"></i>
                         <!-- <label for="role">Role</label> -->
                         <select name="role" id="role" placeholder="Role">
-                            <option value="admin">Admin</option>
                             <option value="manager">Manager</option>
                             <option value="employee">Employee</option>
                             <option value="deliverer">Deliverer</option>

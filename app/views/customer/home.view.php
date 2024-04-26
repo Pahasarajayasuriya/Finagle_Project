@@ -35,8 +35,36 @@ $this->view('includes/footer', $data);
 </head>
 
 <body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php $this->view('includes/cus_topbar', $data); ?>
-
+    <?php if (isset($_SESSION['account_created'])) : ?>
+        <script>
+            Swal.fire({
+                title: "Success!",
+                text: "Your account was successfully created!",
+                icon: "success",
+                confirmButtonColor: '#FF0000'
+            });
+        </script>
+        <?php
+        // Unset the session variable so the popup won't show again on refresh
+        unset($_SESSION['account_created']);
+        ?>
+    <?php endif; ?>
+    <?php if (isset($_SESSION['complaint_submitted'])) : ?>
+        <script>
+            Swal.fire({
+                title: "Success!",
+                text: "Your complaint was successfully submitted!",
+                icon: "success",
+                confirmButtonColor: '#FF0000'
+            });
+        </script>
+        <?php
+        // Unset the session variable so the popup won't show again on refresh
+        unset($_SESSION['complaint_submitted']);
+        ?>
+    <?php endif; ?>
     <div class="home-section">
         <div class="page-container">
             <div class="page-container">
@@ -138,44 +166,25 @@ $this->view('includes/footer', $data);
                 <div class="offer_container">
                     <div class="container ">
                         <div class="row">
-                            <div class="col-md-6  ">
-                                <div class="box ">
-                                    <div class="img-box">
-                                        <img src="https://i.pinimg.com/474x/f3/02/d7/f302d7ea19236892be02fd77a986cd7b.jpg" alt="">
-                                    </div>
-                                    <div class="detail-box">
-                                        <h5>
-                                            Tasty Thursdays
-                                        </h5>
-                                        <h6>
-                                            <span>20%</span> Off
-                                        </h6>
-                                        <a href="<?= ROOT ?>/products">
-                                            Order Now<span> <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6  ">
-                                <div class="box ">
-                                    <div class="img-box">
-                                        <img src="https://i.pinimg.com/474x/1d/28/c5/1d28c51cfab73dfcd0e3fad6824f4e86.jpg" alt="">
-                                    </div>
-                                    <div class="detail-box">
-                                        <h5>
-                                            Pizza Days
-                                        </h5>
-                                        <h6>
-                                            <span>15%</span> Off
-                                        </h6>
-                                        <a href="<?= ROOT ?>/products">
-                                            Order Now<span> <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i></span>
-
-                                        </a>
+                            <?php foreach ($advertisements as $advertisement) : ?>
+                                <div class="col-md-6">
+                                    <div class="box">
+                                        <div class="img-box">
+                                            <img src="<?= $advertisement->image ?>" alt="">
+                                        </div>
+                                        <div class="detail-box">
+                                            <h5>
+                                                <?= $advertisement->description ?>
+                                            </h5>
+                                            <div style="position: relative; top: 40px; right: -100px;">
+                                                <a href="<?= ROOT ?>/products">
+                                                    Order Now<span> <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i></span>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>

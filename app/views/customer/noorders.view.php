@@ -23,13 +23,9 @@ $this->view('includes/footer', $data);
     <?php $this->view('includes/cus_topbar', $data); ?>
     <div class="home-section">
         <div class="center-box">
+            <i class='bx bx-cart-download' style='color:#e81212 ; font-size: 64px;'></i>
 
-            <i class='bx bxs-trash bx-burst' style='color:#e81212 ; font-size: 64px;'></i>
-
-            <!-- Id and Reason  can retrieve from cancel_orders table -->
-            <p class='topic'>Your Order ( No - <?= $data['orderId'] ?> ) has been cancelled </p>
-
-            <p class='reason'><?= $data['reason'] ?></p>
+            <p>You haven't placed any orders yet.</p>
 
 
             <button class="ok-button" onclick="window.location.href='products'">Place a new Order</button>
@@ -41,6 +37,60 @@ $this->view('includes/footer', $data);
 
 
     <style>
+        @keyframes shake {
+            0% {
+                transform: translate(1px, 1px) rotate(0deg);
+            }
+
+            10% {
+                transform: translate(-1px, -2px) rotate(-1deg);
+            }
+
+            20% {
+                transform: translate(-3px, 0px) rotate(1deg);
+            }
+
+            30% {
+                transform: translate(3px, 2px) rotate(0deg);
+            }
+
+            40% {
+                transform: translate(1px, -1px) rotate(1deg);
+            }
+
+            50% {
+                transform: translate(-1px, 2px) rotate(-1deg);
+            }
+
+            60% {
+                transform: translate(-3px, 1px) rotate(0deg);
+            }
+
+            70% {
+                transform: translate(3px, 1px) rotate(-1deg);
+            }
+
+            80% {
+                transform: translate(-1px, -1px) rotate(1deg);
+            }
+
+            90% {
+                transform: translate(1px, 2px) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(1px, -2px) rotate(-1deg);
+            }
+        }
+
+        /* Apply the shake animation to the cart symbol */
+        .bx-cart-download {
+            animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both infinite;
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+
         .body {
             font-family: "Poppins";
         }
@@ -60,7 +110,7 @@ $this->view('includes/footer', $data);
 
 
         .ok-button {
-
+            box-shadow: 0 0 10px rgba(0, 187, 0, 0.3);
             background-color: green;
             width: 200px;
             height: 37px;
@@ -80,20 +130,6 @@ $this->view('includes/footer', $data);
 
         .ok-button:hover {
             background-color: rgb(16, 187, 0)
-        }
-
-        .topic {
-            margin-top: 30px;
-            font-size: 20px;
-            font-family: sans-serif;
-            font-weight: 800;
-        }
-
-        .reason {
-            font-family: sans-serif;
-            font-style: italic;
-            font-size: 14px;
-
         }
 
         .center-box-placeholder {

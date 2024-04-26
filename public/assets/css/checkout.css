@@ -3,7 +3,6 @@
     display: none;
   }
 }
-
 .check_container {
   display: flex;
   justify-content: center;
@@ -12,31 +11,32 @@
   min-height: 100vh;
   font-family: pop, sans-serif;
   gap: 5%;
+  margin-top: 50px;
 }
 
 .check_container form {
   padding: 15px;
-  width: 800px; /* Adjusted width */
+  width: 600px;
   overflow: hidden;
   background: white;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   border-radius: 10px;
-  margin-left: auto; /* Centering horizontally */
-  margin-right: auto; /* Centering horizontally */
+  margin-left: 70px;
 }
 
 .check_container form .check_row {
   display: flex;
-  flex-wrap: wrap; /* Allowing elements to wrap */
+  flex-wrap: column;
   gap: 15px;
-  justify-content: center; /* Centering elements horizontally */
 }
 
 .check_container form .check_row .check_col {
   flex: 1 1 250px;
   color: #333;
+  display: flex;
+  flex-direction: column;
 }
 
 .check_title {
@@ -51,24 +51,40 @@
   gap: 20px;
 }
 
-.check_inline {
+.check_container form .check_row .check_col .check_inputBox span {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.check_container form .check_row .check_col .check_inputBox input {
+  width: 100%;
+  border: 1px solid #f5eded;
+  padding: 10px 10px;
+  font-size: 15px;
+  text-transform: none;
+  align-self: center;
+  margin-top: -10px;
+  color: #7b7b7b;
+}
+
+.check_container form .check_row .check_col .check_inputBox input:focus {
+  border: 1px solid #000;
+}
+
+.check_container form .check_row .check_col .check_flex {
   display: flex;
-  align-items: center; /* Aligning items vertically */
-  margin-bottom: 20px;
+  gap: 15px;
+  margin-left: 45px;
 }
 
-.check_inline .check_name {
-  margin-right: 10px;
-  color: black;
-  font-size: 16px;
+.check_container form .check_row .check_col .check_flex .check_inputBox {
+  margin-top: 5px;
 }
 
-.check_inline input[type="radio"] {
-  margin-right: 5px; /* Adjusted margin */
-}
-
-.check_inputBox .check_input {
-  width: auto; /* Allowing width to adjust */
+.check_container form .check_row .check_col .check_inputBox img {
+  height: 34px;
+  margin-top: 5px;
+  filter: drop-shadow(0 0 1px #000);
 }
 
 .check_container form .check_submit-btn {
@@ -81,6 +97,11 @@
   cursor: pointer;
   border-radius: 5px;
   font-weight: bolder;
+}
+
+.check_container form .check_submit-btn:hover {
+  opacity: 0.8;
+  transform: scale(1.02);
 }
 
 .back-icon {
@@ -109,7 +130,7 @@
   background-color: red;
   color: var(--bodyColor);
   padding: 10px 30px;
-  margin: 50px auto; /* Centering horizontally */
+  margin: 50px 100px 50px 650px;
   font-weight: bolder;
   box-shadow: 0 0 10px rgb(62, 54, 54);
   cursor: pointer;
@@ -123,23 +144,94 @@
 .check_inline .check_input {
   outline: none;
   font-size: 15px;
+  flex: 2;
   padding: 10px;
   border: 1px solid #f5eded;
   border-radius: 5px;
-  margin-right: 10px; /* Adjusted margin */
+  width: 100px;
+  margin-right: 30px;
+  color: red;
+}
+
+.check_inline .payment_methods {
+  outline: none;
+  border-radius: 5px;
+  margin-right: 150px;
+}
+
+.check_inputBox .check_input {
+  outline: none;
+  font-size: 15px;
+  border: 1px solid #f5eded;
+  border-radius: 5px;
+  width: 100px;
+}
+
+.check_inline {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.check_inline .check_name {
+  flex: 1;
+  margin-right: 10px;
+  padding-left: 40px;
+  color: black;
+  font-size: 16px;
+}
+
+.check_inline .check_radio {
+  outline: none;
+  font-size: 15px;
+  flex: 1;
+  padding: 10px;
+  gap: 100px;
+}
+
+.check_inline .check_radio_1 {
+  outline: none;
+  font-size: 15px;
+  padding: 10px;
+  gap: 100px;
+}
+
+.check_radio_1 :checked {
+  background-color: red;
+}
+
+.check_inputBox .order-title {
+  font-weight: 100;
+}
+
+.change_address {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  font-size: 15px;
+  margin-right: 300px;
+}
+
+.change_address:hover {
+  opacity: 0.8;
 }
 
 .check_inline select {
-  width: 100%;
+  margin-right: 350px;
   font-size: 15px;
 }
-
+input[type="radio"]:checked {
+  /* Change the background color */
+  background-color: red;
+  /* Change the border color */
+  border-color: red;
+}
 #note {
   margin-top: -10px;
-}
-
-#payment {
-  margin-top: -30px;
 }
 
 .recipe_head {
@@ -166,23 +258,15 @@
 .summary-container {
   padding: 20px;
   padding-right: 10px;
-  margin-top: 50px; /* Adjusted margin */
+  margin-top: -12.5%;
   overflow: hidden;
   background: white;
   border-radius: 10px;
   box-shadow: 2px 6px 10px rgba(0, 0, 0, 0.1);
   background-color: #fbfbfb;
   border-radius: 10px;
-  margin-right: auto; /* Centering horizontally */
-  margin-left: auto; /* Centering horizontally */
+  margin-right: 10px;
   padding-bottom: 30px;
-  color: #7b7b7b;
-}
-
-.total-product-price {
-  color: black;
-  font-weight: bold;
-  text-align: center;
 }
 
 .summary-container h3 {
@@ -197,8 +281,431 @@
 
 .cart-summary-list {
   list-style-type: none;
+  padding: 0;
 }
 
-#note , #payment{
-  margin-top: 10px;
+.cart-summary-list li {
+  margin-bottom: 10px;
+}
+
+.product-image {
+  max-width: 100px;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.product-details {
+  display: flex;
+  align-items: center;
+  gap: 5%;
+}
+
+.other-details p {
+  margin-right: 10px;
+  display: inline-block;
+
+  font-size: 13px;
+}
+
+.other-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-name,
+.total-price {
+  flex: 0 0 auto;
+  width: 70px;
+}
+
+.quantity {
+  flex: 0 0 auto;
+  width: 50px;
+}
+.total-price-container {
+  display: flex;
+  gap: 170px;
+  margin-top: 20px;
+}
+
+.total-label {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.price-label {
+  font-size: 19px;
+  letter-spacing: 0.05rem;
+  color: #d72323;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-transform: capitalize;
+  transition: all 0.2s linear;
+}
+
+.body {
+  height: 100vh;
+  width: 100%;
+  background-color: white;
+}
+
+#paymentDetailsSection {
+  display: none;
+}
+.check_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  min-height: 100vh;
+  font-family: pop, sans-serif;
+  gap: 5%;
+}
+
+#p_checkout-button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+.check_container form {
+  padding: 15px;
+  width: 800px;
+  overflow: hidden;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 10px;
+  margin-left: 70px;
+}
+
+.check_container form .check_row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.check_container form .check_row .check_col {
+  flex: 1 1 250px;
+  color: #333;
+}
+
+.check_title {
+  color: #000000;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.check_container form .check_row .check_col .check_inputBox {
+  margin: 15px 0;
+  display: flex;
+  gap: 20px;
+}
+
+.check_container form .check_row .check_col .check_inputBox span {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.check_container form .check_row .check_col .check_inputBox input {
+  width: 100%;
+  border: 1px solid #f5eded;
+  padding: 10px 10px;
+  font-size: 15px;
+  text-transform: none;
+  align-self: center;
+  margin-top: -10px;
+  color: #d72323;
+}
+
+.check_container form .check_row .check_col .check_inputBox input:focus {
+  border: 1px solid #000;
+}
+
+.check_container form .check_row .check_col .check_flex {
+  display: flex;
+  gap: 15px;
+  margin-left: 45px;
+}
+
+.check_container form .check_row .check_col .check_flex .check_inputBox {
+  margin-top: 5px;
+}
+
+.check_container form .check_row .check_col .check_inputBox img {
+  height: 34px;
+  margin-top: 5px;
+  filter: drop-shadow(0 0 1px #000);
+}
+
+.check_container form .check_submit-btn {
+  width: 100%;
+  padding: 10px 30px;
+  font-size: 15px;
+  background: red;
+  color: white;
+  margin-top: -10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bolder;
+}
+
+.check_container form .check_submit-btn:hover {
+  opacity: 0.8;
+  transform: scale(1.02);
+}
+
+.back-icon {
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+}
+
+.back-icon i {
+  color: white;
+  font-size: 24px;
+}
+
+.pro_btn {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background-color: red;
+  color: var(--bodyColor);
+  padding: 10px 30px;
+  margin: 50px 100px 50px 650px;
+  font-weight: bolder;
+  box-shadow: 0 0 10px rgb(62, 54, 54);
+  cursor: pointer;
+}
+
+.pro_btn:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+.check_inline .check_input {
+  outline: none;
+  font-size: 15px;
+  flex: 2;
+  padding: 10px;
+  border: 1px solid #f5eded;
+  border-radius: 5px;
+  width: 100px;
+  margin-right: 30px;
+  color: #d72323;
+}
+
+.check_inline .payment_methods {
+  outline: none;
+  border-radius: 5px;
+  margin-right: 150px;
+}
+
+.check_inputBox .check_input {
+  outline: none;
+  font-size: 15px;
+  border: 1px solid #f5eded;
+  border-radius: 5px;
+  width: 100px;
+}
+
+.check_inline {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.check_inline .check_name {
+  flex: 1;
+  margin-right: 10px;
+  padding-left: 40px;
+  color: black;
+  font-size: 16px;
+}
+
+.check_inline .check_radio {
+  outline: none;
+  font-size: 15px;
+  flex: 1;
+  padding: 10px;
+  gap: 100px;
+}
+
+.check_inline .check_radio_1 {
+  outline: none;
+  font-size: 15px;
+  padding: 10px;
+  gap: 100px;
+}
+
+.check_inputBox .order-title {
+  font-weight: 100;
+}
+
+.change_address {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  font-size: 15px;
+  margin-right: 300px;
+}
+
+.change_address:hover {
+  opacity: 0.8;
+}
+
+.check_inline select {
+  margin-right: 350px;
+  font-size: 15px;
+}
+input[type="radio"]:checked {
+  /* Change the background color */
+  background-color: red;
+  /* Change the border color */
+  border-color: red;
+}
+#note {
+  margin-top: -10px;
+}
+
+.radio_button {
+  margin-right: 27%;
+}
+
+.recipe_head {
+  align-items: center;
+  text-align: center;
+  font-size: 25px;
+  color: red;
+  letter-spacing: 0.08rem;
+  margin: 1rem 0 1rem;
+  font-weight: 600;
+}
+
+.recipe_head_1 {
+  font-weight: 800;
+  color: black;
+  white-space: nowrap;
+  font-size: 18px;
+}
+
+.recipe_head_1 span {
+  color: #d72323;
+}
+
+.summary-container {
+  padding: 20px;
+  padding-right: 10px;
+  margin-top: -12.5%;
+  overflow: hidden;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 2px 6px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fbfbfb;
+  border-radius: 10px;
+  margin-right: 10px;
+  padding-bottom: 30px;
+  margin-top: 50px;
+  color: #7b7b7b;
+}
+
+.total-product-price {
+  color: black;
+  font-weight: bold;
+  text-align: center;
+}
+.summary-container h3 {
+  color: black;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: bolder;
+  letter-spacing: 0.08rem;
+  font-weight: 750;
+  font-size: 15px;
+}
+
+.cart-summary-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.cart-summary-list li {
+  margin-bottom: 10px;
+}
+
+.product-image {
+  max-width: 100px;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.product-details {
+  display: flex;
+  align-items: center;
+  gap: 5%;
+}
+
+.other-details p {
+  margin-right: 10px;
+  display: inline-block;
+
+  font-size: 13px;
+}
+
+.other-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-name,
+.total-price {
+  flex: 0 0 auto;
+  width: 70px;
+}
+
+.quantity {
+  flex: 0 0 auto;
+  width: 50px;
+}
+.total-price-container {
+  display: flex;
+  gap: 170px;
+  margin-top: 20px;
+}
+
+.total-label {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.price-label {
+  font-size: 19px;
+  letter-spacing: 0.05rem;
+  color: #d72323;
 }
