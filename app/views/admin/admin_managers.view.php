@@ -30,7 +30,7 @@ $this->view('includes/footer', $data);
             <div class="form-header">
                 <form action="#">
                     <div class="ad-form-input">
-                        <input type="search" id="search" placeholder="Search...">
+                        <input type="search" id="search" placeholder="by name">
                         <button type="submit" class="ad-search-btn">
                             <i class='bx bx-search'></i>
                         </button>
@@ -136,7 +136,7 @@ $this->view('includes/footer', $data);
             <div class="advertisement-record">
                 <!-- <div class="advertisement-image"> <img src="https://lh3.googleusercontent.com/p/AF1QipNFVt_67WFrJbjsHEQfxY691SYz3wxrn1Ioq5KC=s1360-w1360-h1020" alt="branch.id" class="customer-image"></div> -->
                 <div class="branch-id"><?= esc($row->id) ?></div>
-                <div class="branch-loc"><?= esc($row->username) ?></div>
+                <div class="branch-name"><?= esc($row->username) ?></div>
                 <div class="branch-loc" ><?= esc($row->teleno) ?></div>
                 <div class="branch-loc"><?= esc($row->email) ?></div>
                 <!-- <div class="branch-loc"><?= htmlspecialchars((string)$row->joined_date, ENT_QUOTES, 'UTF-8') ?></div> -->

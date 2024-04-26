@@ -20,15 +20,15 @@ class AddEmployee extends Controller
 
 		if ($_SERVER['REQUEST_METHOD'] == "POST")
 		{
-            $_POST['repassword'] =  $_POST['password'];
+            //$_POST['repassword'] =  $_POST['password'];
 
-			show($_POST);
+			//show($_POST);
 			if($user->validate($_POST))
 			{
 				$_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
 				$user->insert($_POST);
-			
+				show($_POST);
 				message("Your profile was successfuly created. Please login");
 				//redirect('login');
 			}

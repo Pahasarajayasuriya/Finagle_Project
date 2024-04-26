@@ -30,7 +30,7 @@ $this->view('includes/footer', $data);
             <div class="form-header">
                 <form action="#">
                     <div class="ad-form-input">
-                        <input type="search" id="search" placeholder="Search...">
+                        <input type="search" id="search" placeholder="by product name">
                         <button type="submit" class="ad-search-btn">
                             <i class='bx bx-search'></i>
                         </button>
