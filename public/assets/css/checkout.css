@@ -430,7 +430,7 @@ input[type="radio"]:checked {
 }
 
 .check_container form .check_row .check_col .check_inputBox input:focus {
-  border: 1px solid #000;
+  border: 2px solid #000;
 }
 
 .check_container form .check_row .check_col .check_flex {
@@ -708,4 +708,121 @@ input[type="radio"]:checked {
   font-size: 19px;
   letter-spacing: 0.05rem;
   color: #d72323;
+}
+
+.check_name {
+ 
+  font-weight: bold;
+  text-transform: uppercase; 
+  letter-spacing: 1px; 
+  font-size: 12px;
+}
+
+.check_input {
+  border: 2px solid #484848; 
+  border-radius: 8px; 
+  padding: 12px; 
+  font-size: 16px;
+  color: #333; 
+}
+
+.summary-container {
+  background-color: #f7f7f7; 
+  padding: 20px; 
+  border-radius: 15px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.summary-container h3 {
+  color: #333;
+  font-size: 18px; 
+  margin-bottom: 20px;
+}
+
+.cart-summary-list li {
+  padding: 10px 0; 
+  border-bottom: 2px solid #ccc; 
+}
+
+.total-product-price {
+  color: #FF5733; /* Change total price color to match other elements */
+  font-size: 18px; /* Reduce font size slightly */
+  font-weight: bold; /* Make the total price bold */
+}
+
+.delivery-fee{
+  text-align: center;
+  align-items: center;
+  color: black;
+  margin: 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.check_inline .check_name{
+  font-size: 12px;
+}
+
+.check_inline #order-time{
+  margin-left: -45px;
+}
+
+.check_inline .check_input{
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+
+#pickupOutletsSection {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#pickupOutletsSection label {
+  font-weight: bold;
+  margin-right: 10px;
+  display: inline-block; 
+}
+
+#pickupLocation {
+  width: 200px; 
+  padding: 8px;
+  border-radius: 5px;
+  background-color: white;
+  font-size: 14px;
+  appearance: none; 
+  cursor: pointer;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  color: #d72323;
+
+
+}
+
+
+#pickupLocation option {
+  background-color: white;
+
+ 
+}
+
+
+
+
+#pickupLocation:focus {
+  outline: none;
+ 
+  /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); */
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+#pickupLocation option {
+  background-color: white;
+
+ 
+}
+
+#pickupLocation option:hover {
+  background-color: #f0f0f0; 
+ 
+
 }

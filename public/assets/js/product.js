@@ -150,6 +150,13 @@ class UI {
           .swal2-confirm a:hover {
               color: white !important;
           }
+          .swal2-icon {
+            color : red !important;
+          }
+
+          .swal2-confirm{
+             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+          }
       `;
       document.head.appendChild(style);
 

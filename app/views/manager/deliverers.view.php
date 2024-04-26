@@ -33,7 +33,7 @@ $this->view('includes/footer', $data);
 
 <body>
 
-     <?php $this->view('includes/emp_topbar', $data); ?>
+    <?php $this->view('includes/emp_topbar', $data); ?>
 
     <div class="home-section">
         <div class="title-profile">
@@ -65,31 +65,31 @@ $this->view('includes/footer', $data);
             <?php
 
 
-            <?php
-
-// show($data);
-if (isset($driver)) {
-   foreach ($driver as $driver) {
 
 
-?>
+            // show($data);
+            if (isset($driver)) {
+                foreach ($driver as $driver) {
 
 
-
-
-                <div class="employee-name"><?= $driver->username ?></div>
-                <div class="employee-email"><?= $driver->email ?></div>
-                <div class="employee-name"><?= $driver->branch ?></div>
-            </div>
-
-
-            <?php
-                }
-            }
             ?>
+
+
+
+
+                    <div class="employee-name"><?= $driver->username ?></div>
+                    <div class="employee-email"><?= $driver->email ?></div>
+                    <div class="employee-name"><?= $driver->branch ?></div>
         </div>
 
-        <script src="<?= ROOT ?>/assets/js/manager_deliverer.js"></script>
+
+<?php
+                }
+            }
+?>
+    </div>
+
+    <script src="<?= ROOT ?>/assets/js/manager_deliverer.js"></script>
 
     </div>
 

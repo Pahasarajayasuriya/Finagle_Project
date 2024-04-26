@@ -80,14 +80,19 @@
                             <a class="change_address" href="#">Choose Address</a>
                         </div>
                     </div>
+
                     <input type="hidden" name="pickup_location" id="pickup_location">
                     <div id="pickupOutletsSection" class="check_inline" style="display: none;">
+                    <div class="check_inline">
                         <label class="check_name" for="pickup_orders"><b>For Pickup Orders:</b></label>
+
                         <select id="pickupLocation" name="pickup_location" disabled>
                             <?php foreach ($data['branches'] as $branch) : ?>
                                 <option class="branch_select"><?= $branch->name ?></option>
                             <?php endforeach; ?>
                         </select>
+                    </div>
+
                     </div>
 
 
@@ -101,8 +106,8 @@
                             <?php endif; ?>
                         </div> -->
 
-                        <div class="check_inputBox">
-                            <label class="check_name" for="order_time" name='delivery_time'>Time:</label>
+                        <div class="check_inline">
+                            <label class="check_name" id="order-time" for="order_time" name='delivery_time'>Time:</label>
                             <input class="check_input" type="time" name='delivery_time' value="<?= set_value('delivery_time') ?>">
                             <?php if (!empty($errors['delivery_time'])) : ?>
                                 <div class="invalid"><?= $errors['delivery_time'] ?></div>
@@ -157,6 +162,8 @@
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
 
         </div>
+
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -167,9 +174,12 @@
                         title: "Pay here",
                         icon: "info",
                         showCancelButton: true,
-                        confirmButtonColor: "#3085d6",
-                        cancelButtonColor: "#d33",
-                        confirmButtonText: "Pay here"
+                        confirmButtonColor: "red",
+                        cancelButtonColor: "black",
+                        confirmButtonText: "Pay here",
+                        customClass: {
+                           icon: 'green-icon-container' 
+                         }
                     }).then((result) => {
                         if (result.isConfirmed) {
                             paymentGateWay();
@@ -177,7 +187,16 @@
                     });
                 }
             });
+
         </script>
+        <style>
+          .green-icon-container .swal2-icon {
+                color: green !important;
+           }
+
+        </style>
+
+        
 
         <script>
             document.getElementById("back-button").addEventListener("click", function() {
