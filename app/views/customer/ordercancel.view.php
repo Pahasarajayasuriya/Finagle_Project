@@ -55,7 +55,9 @@ $this->view('includes/footer', $data);
             border-radius: 10px;
             text-align: center;
             font-family: "Poppins";
-            width: 500px;
+            width: 600px;
+            box-shadow: 2px 2px 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
         }
 
 
@@ -73,7 +75,7 @@ $this->view('includes/footer', $data);
             outline: none;
             color: #fff;
             transition: 0.3s ease-in;
-            margin-top: 10px;
+            margin-top: 40px;
             text-align: center;
             align-items: center;
         }
