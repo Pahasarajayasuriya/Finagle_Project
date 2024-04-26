@@ -140,4 +140,10 @@ class User extends Model
 
         return false;
     }
+
+    public function all()
+    {
+        $query = "SELECT * FROM {$this->table}";
+        return $this->query($query);
+    }
 }

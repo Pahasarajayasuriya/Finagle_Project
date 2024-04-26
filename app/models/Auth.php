@@ -91,4 +91,19 @@ class Auth
         }
         return '';
     }
+
+    public static function getName()
+    {
+        return $_SESSION['USER_DATA']->username;
+    }
+
+    public static function getTeleno()
+    {
+        return $_SESSION['USER_DATA']->teleno;
+    }
+
+    public static function getEmail()
+    {
+        return $_SESSION['USER_DATA']->email;
+    }
 }

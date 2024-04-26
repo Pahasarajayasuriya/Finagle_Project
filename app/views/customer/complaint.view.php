@@ -28,50 +28,18 @@ $this->view('includes/footer', $data);
                 <p class="com_head_1">COMPL<span>AINTS</span></p>
             </div>
 
-            <style>
-                /* Add these styles to your existing CSS file or inline in HTML */
-
-                .success-message {
-                    color: green;
-                    text-align: center;
-
-                    font-size: 18px;
-                    font-weight: bold;
-
-                }
-
-                .invalid {
-                    color: red;
-                    font-size: 14px;
-                }
-            </style>
-            <script>
-                function hideSuccessMessage() {
-                    var successMessage = document.querySelector('.success-message');
-                    if (successMessage) {
-                        setTimeout(function() {
-                            successMessage.style.display = 'none';
-                        }, 3000);
-                    }
-                }
-
-                window.onload = function() {
-                    hideSuccessMessage();
-                };
-            </script>
-
             <div class="pro_card">
                 <form action="<?= ROOT ?>/complaint" method="POST">
                     <div class="pro_inline">
                         <label class="pro_name" for="pro_username">Enter Your Name</label>
-                        <input class="pro_input" type="text" id="pro_name" name="name" value="<?= set_value('name') ?>" required>
+                        <input class="pro_input" type="text" id="pro_name" name="name" value="<?= Auth::is_customer() ? Auth::getName() : '' ?>" required>
                         <?php if (!empty($errors['name'])) : ?>
                             <div class="invalid"><?= $errors['name'] ?></div>
                         <?php endif; ?>
                     </div>
                     <div class="pro_inline">
                         <label class="pro_name" for="pro_phoneno">Enter Your Phone Number</label>
-                        <input class="pro_input" type="text" id="pro_phoneno" name="teleno" value="<?= set_value('teleno') ?>" required>
+                        <input class="pro_input" type="text" id="pro_phoneno" name="teleno" value="<?= Auth::is_customer() ? Auth::getTeleno() : '' ?>" required>
                         <?php if (!empty($errors['teleno'])) : ?>
                             <div class="invalid"><?= $errors['teleno'] ?></div>
                         <?php endif; ?>
@@ -79,7 +47,7 @@ $this->view('includes/footer', $data);
 
                     <div class="pro_inline">
                         <label class="pro_name" for="pro_comemail">Enter Your E-mail</label>
-                        <input class="pro_input" type="email" id="pro_comemail" name="email" value="<?= set_value('email') ?>" required>
+                        <input class="pro_input" type="email" id="pro_comemail" name="email" value="<?= Auth::is_customer() ? Auth::getEmail() : '' ?>" required>
                         <?php if (!empty($errors['email'])) : ?>
                             <div class="invalid"><?= $errors['email'] ?></div>
                         <?php endif; ?>
@@ -101,11 +69,6 @@ $this->view('includes/footer', $data);
 
                     </div>
                 </form>
-                <?php if (!empty($successMessage)) : ?>
-                    <div class="success-message">
-                        <?= $successMessage ?>
-                    </div>
-                <?php endif; ?>
             </div>
         </div>
         <?php $this->view('includes/cus_footer', $data); ?>

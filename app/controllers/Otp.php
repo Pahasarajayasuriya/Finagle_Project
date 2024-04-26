@@ -23,6 +23,7 @@ class Otp extends Controller
                 $newUser = $user->first(['email' => $signup_data['email']]);
                 // Authenticate the new user
                 Auth::authenticate($newUser);
+                $_SESSION['account_created'] = true;
                 redirect('home');
             } else {
                 // Invalid OTP

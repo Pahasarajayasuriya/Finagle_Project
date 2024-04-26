@@ -60,11 +60,6 @@
                             <?php endif; ?>
                         </div>
                         <button name="sendotp">Send OTP</button>
-                        <div class="message">
-                            <?php if (isset($_POST['sendotp'])) : ?>
-                                <div class="success-message">OTP has been sent successfully!</div>
-                            <?php endif; ?>
-                        </div>
                         <div class="register">
                             <p>Already have an account? <a href="<?= ROOT ?>/login">Sign In</a></p>
                         </div>

@@ -35,7 +35,36 @@ $this->view('includes/footer', $data);
 </head>
 
 <body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php $this->view('includes/cus_topbar', $data); ?>
+    <?php if (isset($_SESSION['account_created'])) : ?>
+        <script>
+            Swal.fire({
+                title: "Success!",
+                text: "Your account was successfully created!",
+                icon: "success",
+                confirmButtonColor: '#FF0000'
+            });
+        </script>
+        <?php
+        // Unset the session variable so the popup won't show again on refresh
+        unset($_SESSION['account_created']);
+        ?>
+    <?php endif; ?>
+    <?php if (isset($_SESSION['complaint_submitted'])) : ?>
+        <script>
+            Swal.fire({
+                title: "Success!",
+                text: "Your complaint was successfully submitted!",
+                icon: "success",
+                confirmButtonColor: '#FF0000'
+            });
+        </script>
+        <?php
+        // Unset the session variable so the popup won't show again on refresh
+        unset($_SESSION['complaint_submitted']);
+        ?>
+    <?php endif; ?>
     <div class="home-section">
         <div class="page-container">
             <div class="page-container">
