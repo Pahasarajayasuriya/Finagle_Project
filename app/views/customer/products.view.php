@@ -158,7 +158,7 @@ $this->view('includes/footer', $data);
                 displayMessage("Please log in before placing an order");
                 setTimeout(function() {
                     window.location.href = "<?= ROOT ?>/login";
-                }, 3000);
+                }, 5000);
             }
         });
 

@@ -78,32 +78,64 @@
             </div>
 
         </div>
-
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <div class="newsletter-link">
             <h3>NEWS LETTER</h3>
-            <div class="newsletter">
-                <div class="link-newsletter">
-                    <input class="email-input" type="text" placeholder="Enter your email">
-                    <button type="button" class="send">SEND</button>
+            <form action="<?= ROOT ?>/subscribe/handleSubscription" method="post">
+                <div class="newsletter">
+                    <div class="link-newsletter">
+                        <input class="email-input" type="email" name="email" placeholder="Enter your email" required>
+                        <button type="submit" class="send">SEND</button>
+                    </div>
+                    <div class="confirm">
+                        <input type="checkbox" id="consentCheckbox" name="consent" required>
+                        <label for="consentCheckbox" class="confirm-content">I consent to receiving email<br> communications.</label>
+                    </div>
                 </div>
-                <div class="confirm">
-                    <input type="checkbox" id="consentCheckbox">
-                    <label for="consentCheckbox" class="confirm-content">I consent to receiving email<br> communications.</label>
-                </div>
-
-
-            </div>
+            </form>
             <div class="copyright">
                 <section class="credit">Copyright &copy; Finagle Lanka (Pvt) Ltd || all rights reserved</section>
             </div>
-
-
-
         </div>
     </div>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
 
+            fetch(this.action, {
+                    method: 'POST',
+                    body: new FormData(this)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        swal({
+                            title: "Success!",
+                            text: "Subscription successful",
+                            icon: "success",
+                            button: {
+                                text: "OK",
+                                closeModal: true,
+                                className: "red-button"
+                            }
+                        });
+                        document.querySelector('.email-input').value = '';
+                    } else {
+                        // Handle error...
+                    }
+                });
+        });
+    </script>
+    <style>
+        .red-button {
+            background-color: red;
+            color: white;
+        }
 
-
+        .red-button:hover {
+            background-color: lightcoral !important;
+        }
+    </style>
 </body>
 
 </html>

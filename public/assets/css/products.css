@@ -764,8 +764,8 @@ cursor: pointer;
 
 #message-error-container {
   position: fixed;
-  top: 200%;
-  left: 50%;
+  top: 620%;
+  right: 10%;
   transform: translate(-50%, -50%);
   background-color: white; 
   padding: 10px; 
