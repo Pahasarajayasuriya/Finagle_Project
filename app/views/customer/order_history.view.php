@@ -94,6 +94,7 @@ $this->view('includes/footer', $data);
         </div>
         <?php $this->view('includes/cus_footer', $data); ?>
     </div>
+    
     <script>
         document.querySelectorAll('.order_status').forEach(function(button) {
             button.addEventListener('click', function() {
@@ -103,6 +104,20 @@ $this->view('includes/footer', $data);
                     window.location.href = '<?= ROOT ?>/pickup_progressbar?orderId=' + orderId;
                 } else {
                     window.location.href = '<?= ROOT ?>/Progressbar?orderId=' + orderId;
+                }
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            var navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = "white";
+                } else {
+                    navbar.style.backgroundColor = "transparent";
                 }
             });
         });

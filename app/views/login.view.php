@@ -41,13 +41,15 @@
             <section>
                 <form method="post">
                     <h1>Log In</h1>
+                    <?php if (!empty($errors['email'])) : ?>
+                            <div class="invalid"><?= $errors['email'] ?></div>
+                            
+                    <?php endif; ?>
                     <div class="inputbox">
                         <i class="fas fa-envelope"></i>
                         <input value="<?= !empty($email) ? $email : (isset($_COOKIE["remember_email"]) ? $_COOKIE["remember_email"] : set_value('email')) ?>" name="email" type="email" placeholder="Email" required>
 
-                        <?php if (!empty($errors['email'])) : ?>
-                            <div class="invalid"><?= $errors['email'] ?></div>
-                        <?php endif; ?>
+                      
                     </div>
                     <div class="inputbox">
                         <i class="fas fa-lock"></i>

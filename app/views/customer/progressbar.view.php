@@ -93,7 +93,10 @@ $this->view('includes/footer', $data);
                 input: 'text',
                 inputPlaceholder: 'Enter your user name',
                 showCancelButton: true,
-                confirmButtonColor: '#FF0000'
+                confirmButtonColor: '#FF0000',
+                cancelButtonColor: 'black',
+               
+
             });
 
             if (userName) {
@@ -107,7 +110,9 @@ $this->view('includes/footer', $data);
                         'aria-label': 'Type your message here'
                     },
                     showCancelButton: true,
-                    confirmButtonColor: '#FF0000'
+                    confirmButtonColor: '#FF0000',
+                    cancelButtonColor: 'black'
+
                 });
 
                 if (review) {
@@ -157,11 +162,11 @@ $this->view('includes/footer', $data);
                 }
             }
 
-        }
-    });
-</script>
 
-<script>
+        });
+    </script>
+
+    <script>
         document.addEventListener("DOMContentLoaded", function() {
 
 
@@ -177,6 +182,9 @@ $this->view('includes/footer', $data);
 
         });
     </script>
+
+   
+    
 </body>
 
 </html>

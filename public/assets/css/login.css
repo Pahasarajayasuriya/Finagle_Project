@@ -278,3 +278,17 @@ button:hover {
     color: white;
     font-size: 24px;
   }
+
+  .invalid {
+    background-color:white; /* Light red background */
+    border: 2px solid #ff0000; /* Red border */
+    color: #ff0000; /* Red text color */
+    padding: 5px 10px; /* Padding for better readability */
+    border-radius: 5px; /* Rounded corners */
+    margin-top: -30px; /* Add some space above */
+    font-size: 14px; /* Adjust font size */
+    font-weight: bold; /* Make text bold */
+    width: 300px;
+    text-align: center;
+    align-items: center;
+}
