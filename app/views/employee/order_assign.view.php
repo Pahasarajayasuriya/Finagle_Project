@@ -494,6 +494,7 @@ $this->view('includes/alreadyProcess_popup', $data);
             var pay_status_btn = document.getElementById('pay-status-btn');
 
             var total_cost = document.getElementById('total_cost');
+            var note =document.getElementById('note');
 
 
 
@@ -502,6 +503,9 @@ $this->view('includes/alreadyProcess_popup', $data);
             // user_phone.innerHTML = data.phone_number;
             pay_status.innerHTML = data.payment_method;
             total_cost.innerHTML = data.total_cost;
+
+            note.innerHTML = data.note;
+
 
 
             if (data.payment_method == 'card') {

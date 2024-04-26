@@ -69,7 +69,7 @@ const barChartOptions = {
   },
   legend: {
     labels: {
-      colors: "#f5f7ff",
+      colors: "#000000",
     },
     show: true,
     position: "top",
@@ -88,7 +88,7 @@ const barChartOptions = {
     categories: productNames,
     title: {
       style: {
-        color: "#f5f7ff",
+        color: "#000000",
       },
     },
     axisBorder: {
@@ -101,7 +101,7 @@ const barChartOptions = {
     },
     labels: {
       style: {
-        colors: "#f5f7ff",
+        colors: "#000000",
       },
     },
   },
@@ -109,7 +109,7 @@ const barChartOptions = {
     title: {
       text: "Count",
       style: {
-        color: "#f5f7ff",
+        color: "#000000",
       },
     },
     axisBorder: {
@@ -122,7 +122,7 @@ const barChartOptions = {
     },
     labels: {
       style: {
-        colors: "#f5f7ff",
+        colors: "#000000",
       },
     },
   },
@@ -152,7 +152,7 @@ const areaChartOptions = {
   ],
   tooltip: {
     style: {
-      colors: ["#FFFFFF"],
+      colors: ["#000000"],
     },
     theme: "dark",
   },
@@ -170,26 +170,26 @@ const areaChartOptions = {
   xaxis: {
     labels: {
       style: {
-        colors: "#FFFF00",
+        colors: "#000000",
       },
     },
     title: {
       text: "Outlets",
       style: {
-        color: "#FFFFFF",
+        color: "#000000",
       },
     },
   },
   yaxis: {
     labels: {
       style: {
-        colors: "#FFFF00",
+        colors: "#000000",
       },
     },
     title: {
       text: "Number of Orders",
       style: {
-        color: "#FFFFFF",
+        color: "#000000",
       },
     },
   },

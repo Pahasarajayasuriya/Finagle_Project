@@ -24,7 +24,10 @@ class Deliverer_profile extends Controller
             unset($_POST["status"]);
             $this->update_delivered_order($_POST);
         }
+
+        
        
+
         $this->view('deliverer/driver_profile', $data);
     }
 

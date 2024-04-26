@@ -138,10 +138,13 @@
 	color: var(--dark);
 }
 
+#content main .box-info li i{
+	margin-left: 40px;
+}
 #content main .box-info li .text{
 	text-align: center;
 	align-items: center;
-	margin-left: 25%;
+	margin-left: 15%;
 }
 #content main .box-info li .text p {
 	color: var(--dark);	

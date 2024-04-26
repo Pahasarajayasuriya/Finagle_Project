@@ -12,7 +12,7 @@ $this->view('includes/footer', $data);
 
 <head>
     <title>Managers</title>
-    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin_branches.css">
+    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin/admin_manager.css">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -20,6 +20,9 @@ $this->view('includes/footer', $data);
 
 <body>
     <div class="overlay" id="overlay"></div>
+    <?php
+       $this->view('includes/emp_topbar', $data);
+      ?>
     <div class="home-section">
         <!-- content  -->
         <section id="main" class="main">
@@ -108,17 +111,16 @@ $this->view('includes/footer', $data);
             <!-- popup for editing -->
             <form method="POST" enctype="multipart/form-data" action="<?= ROOT?>/admin_managers">
             <div class="popup-container" id="editPopupContainer">
-                <h2>Edit Manager</h2>
+                <h2>Edit the Manager</h2>
                 <div class="popup-content">
                     <label for="editDescription">User Name:</label>
-                    <input type="text" id="editDescription" name="username" placeholder="Enter the branch name" value="<?= $row[0]->username ?>">
+                    <input type="text" id="editDescription" name="username" placeholder="Enter the branch name" value="<?= $row[0]->username ?>" style ="background-color:grey ; color:white" >
 
                     <label for="editEndDate">Telephone:</label>
-                    <input type="text" id="editDescription" name="teleno" placeholder="Enter the branch name" value="<?= $row[0]->teleno ?>">
+                    <input type="text" id="editDescription" name="teleno" placeholder="Enter the branch name" value="<?= $row[0]->teleno ?>" style ="background-color:grey ; color:white" >
 
-                    <br>
                     <label for="editEndDate">E-mail:</label>
-                    <input type="text" id="editDescription" name="email" placeholder="Enter the branch name" value="<?= $row[0]->email ?>">
+                    <input type="text" id="editDescription" name="email" placeholder="Enter the branch name" value="<?= $row[0]->email ?>" style ="background-color:grey ; color:white" >
                     
                     <input type="hidden" name="id" value="<?= $row[0]->id; ?>">
                     
@@ -128,7 +130,7 @@ $this->view('includes/footer', $data);
                     <div class="buttons-container">
                         <!-- <button class="cancel-btn" onclick="closeEditPopup()">Cancel</button>
                         <button class="submit-btn" onclick="submitEditForm()" value="update">Submit</button> -->
-                        <button class="cancel-btn"><a href="<?= ROOT."/admin_managers" ?>">Cancel</a></button>
+                        <button class="cancel-btn" style ="background-color:black"><a href="<?= ROOT."/admin_managers" ?>">Cancel</a></button>
                         <button name="update" value="update" class="submit-btn" onclick="submitEditForm()">Submit</button>
                     </div>
                 </div>
@@ -216,6 +218,21 @@ $this->view('includes/footer', $data);
             overlay.classList.remove('show');
         }
 
+    </script>
+     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            var navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = "white";
+                } else {
+                    navbar.style.backgroundColor = "transparent";
+                }
+            });
+        });
     </script>
 </body>
 

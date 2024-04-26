@@ -42,11 +42,8 @@ $this->view('includes/footer', $data);
                 <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
                 <p class="section-title">CUSTOMER<span> DETAILS </span></p>
                 <div class="divider dark mb-4">
-                    <div class="icon-wrap">
-                        <!-- <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i> -->
-                    </div>
                 </div>
-            </div>
+         </div>
 
 
             <form>

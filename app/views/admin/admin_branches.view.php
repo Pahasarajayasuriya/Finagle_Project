@@ -12,7 +12,7 @@ $this->view('includes/footer', $data);
 
 <head>
     <title>Branches</title>
-    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin_branches.css">
+    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin/admin_branch.css">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -20,12 +20,22 @@ $this->view('includes/footer', $data);
 
 <body>
     <div class="overlay" id="overlay"></div>
+    <?php
+       $this->view('includes/emp_topbar', $data);
+      ?>
     <div class="home-section">
         <!-- content  -->
         <section id="main" class="main">
-            <div class="ad_head">
-                <p class="ad_head_1">BRANCH<span> DETAILS</span></p>
+
+        <div class="title-profile">
+            <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
+            <p class="section-title">BRANCH<span> DETAILS</span></p>
+            <div class="divider dark mb-4">
+                <div class="icon-wrap">
+                <!-- <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i> -->
+                 </div>
             </div>
+        </div>
 
             <div class="form-header">
                 <form action="#">
@@ -96,11 +106,11 @@ $this->view('includes/footer', $data);
                 <div class="ad-description">Close Time</div>    -->
                 
                 <!-- <div >ID</div> -->
-                <div >Branch Name</div>
-                <div >Address</div>
-                <div >Contact NO</div>
-                <div >Open Time</div>
-                <div >Close Time</div> 
+                <div class="header-item"  >Branch Name ->></div>
+                <div class="header-item">Address</div>
+                <div class="header-item" >Contact NO</div>
+                <div  class="header-item" style ="margin-right:160px">Open Time & Close time</div>
+                <!-- <div class="header-item"  >Close Time</div>  -->
             </div>
             </div>
             
@@ -123,9 +133,9 @@ $this->view('includes/footer', $data);
 
             <!-- delete popup -->
             <div class="popup-container" id="deletePopup">
-                <h2>Are you sure you want to delete this item?</h2>
+                <h2>Are you sure you want to delete this branch?</h2>
                 <div class="buttons-container">
-                    <button class="cancel-btn" onclick="closePopup1()">NO</button>
+                    <button class="cancel-btn"  style ="background-color:black"onclick="closePopup1()">NO</button>
                     <button class="submit-btn" onclick="confirmDelete()">DELETE</button>
                 </div>
             </div>
@@ -135,9 +145,9 @@ $this->view('includes/footer', $data);
             <div class="advertisement-record">
                 <!-- <div class="advertisement-image"> <img src="https://lh3.googleusercontent.com/p/AF1QipNFVt_67WFrJbjsHEQfxY691SYz3wxrn1Ioq5KC=s1360-w1360-h1020" alt="branch.id" class="customer-image"></div> -->
                 <!-- <div class="branch-id"><?= esc($row->id) ?></div> -->
-                <div class="branch-name"><?= esc($row->name) ?></div>
+                <div class="branch-loc"><?= esc($row->name) ?></div>
                 <div class="branch-loc"><?= esc($row->address) ?></div>
-                <div class="branch-loc"><?= esc($row->contact_number) ?></div>
+                <div class="branch-loc" ><?= esc($row->contact_number) ?></div>
                 <div class="branch-loc"><?= esc($row->open_time) ?></div>
                 <div class="branch-loc"><?= esc($row->close_time) ?></div>
 
@@ -199,6 +209,21 @@ $this->view('includes/footer', $data);
             overlay.classList.remove('show');
         }
 
+    </script>
+     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            var navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = "white";
+                } else {
+                    navbar.style.backgroundColor = "transparent";
+                }
+            });
+        });
     </script>
 </body>
 

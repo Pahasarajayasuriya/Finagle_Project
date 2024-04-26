@@ -13,6 +13,12 @@ class Deliverer_assign extends Controller
         $data['ready_order'] = $readyOrder;
 
         
+        if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST["payment-btn"])) {
+
+            unset($_POST["payment-btn"]);
+            $this->update_delivered_order($_POST);
+        }
+
 
         if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST["delivered_btn"])) {
 
