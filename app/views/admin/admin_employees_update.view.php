@@ -12,7 +12,7 @@ $this->view('includes/footer', $data);
 
 <head>
     <title>Managers</title>
-    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin_branches.css">
+    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin/admin_employee.css">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -108,7 +108,7 @@ $this->view('includes/footer', $data);
             <!-- popup for editing -->
             <form method="POST" enctype="multipart/form-data" action="<?= ROOT?>/admin_employees">
             <div class="popup-container" id="editPopupContainer">
-                <h2>Edit the branch</h2>
+                <h2>Edit Employee Profile</h2>
                 <div class="popup-content">
                     <label for="editDescription">User Name:</label>
                     <input type="text" id="editDescription" name="username" placeholder="Enter the branch name" value="<?= $row[0]->username ?>">

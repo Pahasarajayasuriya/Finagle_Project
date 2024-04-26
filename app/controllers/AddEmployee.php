@@ -28,9 +28,9 @@ class AddEmployee extends Controller
 				$_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
 				$user->insert($_POST);
-				show($_POST);
+				//show($_POST);
 				message("Your profile was successfuly created. Please login");
-				//redirect('login');
+				redirect('addemployee');
 			}
 		}
 

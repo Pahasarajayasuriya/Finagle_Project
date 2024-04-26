@@ -52,9 +52,17 @@ class Admin_advertisements extends Controller
                     unset($_POST['update']);
                     //show($_POST);
                     // UPdate the DB
-                    $imagePath = $this->uploadImage($_FILES['image']);
-                    $validatedData['image'] = $imagePath;
-                    $admin_advertisement_model->update($id,$validatedData);
+                    // $imagePath = $this->uploadImage($_FILES['image']);
+                    // $validatedData['image'] = $imagePath;
+                    if ($_FILES['image']['size'] > 0) {
+                        $imagePath = $this->uploadImage($_FILES['image']);
+                        $validatedData['image'] = $imagePath;
+                        $admin_advertisement_model->update($id,$validatedData);
+                    } else {
+
+                        $admin_advertisement_model->update($id,$validatedData);
+                    }
+                    //$admin_advertisement_model->update($id,$validatedData);
 
                     // Redirect to avoid form resubmission
                     redirect('admin_advertisements');

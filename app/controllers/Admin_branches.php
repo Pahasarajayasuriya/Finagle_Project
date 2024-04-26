@@ -32,7 +32,7 @@ class Admin_branches extends Controller
                 $data['errors'] = $admin_branch_model->errors;
 
             // }
-        }
+                 }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
             // Validate and sanitize input data

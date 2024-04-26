@@ -50,10 +50,15 @@ class Admin_products extends Controller
                     unset($_POST['update']);
                     show($_POST);
                     // UPdate the DB
-                    $imagePath = $this->uploadImage($_FILES['image']);
-                    $validatedData['image'] = $imagePath;
-                    $admin_product_model->update($id,$validatedData);
+                    if ($_FILES['image']['size'] > 0) {
+                        $imagePath = $this->uploadImage($_FILES['image']);
+                        $validatedData['image'] = $imagePath;
+                        $admin_product_model->update($id,$validatedData);;
+                    } else {
 
+                        $admin_product_model->update($id,$validatedData);
+                    }
+                    
                     // Redirect to avoid form resubmission
                     redirect('admin_products');
                 } else {
