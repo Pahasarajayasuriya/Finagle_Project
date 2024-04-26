@@ -120,8 +120,8 @@ $this->view('includes/footer', $data);
                 <div class="branch-loc"><?= esc($row->end_date) ?></div>
                 <div class="advertisement-actions">
                   <!-- <button class="edit-button" onclick="openEditPopupDialog('${branch.id}', '${branch.name}', '${branch.location}')">Edit Branch</button> -->
-                  <button class="edit-button"><a href="<?= ROOT."/admin_advertisements/update_advertisement/".$row->id ?>">Edit Advertisement</a></button>
-                  <button class="edit-button"><a href="<?= ROOT."/admin_advertisements/delete_advertisement/".$row->id ?>">Delete Advertisement</a></button>                
+                  <button class="edit-button"><a href="<?= ROOT."/admin_advertisements/update_advertisement/".$row->id ?>">Edit</a></button>
+                  <button class="edit-button"><a href="<?= ROOT."/admin_advertisements/delete_advertisement/".$row->id ?>">Delete</a></button>                
                 </div>             
              </div>
              <?php endforeach;?>

@@ -338,61 +338,62 @@ body {
     font-weight: bold;
  }
  .popup-content label{
-    text-align: left;
-    padding-left: 14%;
-    padding-bottom: 2%;
-    font-weight: bold;
-  }
+  text-align: left;
+  padding-left: 16%;
+  padding-bottom: 2%;
+  font-weight: bold;
+}
 
 .popup-content input  {
-  position: relative;
-  left: 9%;
-  width: 80%;
-  background: #d5dfe7d5;
-  border-radius: 20px;
-  border-style: solid;
-  border: #000;
-  outline-width: 1px;
-  padding: 10px 30px;
-  margin-bottom: 2%;
-  transition: all 0.3s ease;
-  color: var(--dark);
+position: relative;
+left: 9%;
+width: 80%;
+background: #d5dfe7d5;
+border-radius: 20px;
+border-style: solid;
+border: #000;
+outline-width: 1px;
+padding: 10px 30px;
+margin-bottom: 2%;
+transition: all 0.3s ease;
+color: var(--dark);
 }
 
 .popup-container .buttons-container {
-    position: relative;
-    left: 40%;
-    width: 50%;
-    height: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  margin-top: 18px;
+  position: relative;
+  left: 19%;
+  width: 60%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  .buttons-container .cancel-btn{
-    position: relative;
-    margin-left: 10px;
-    background-color: blue;
-    font-size: 16px;
-    color: white;
-    cursor: pointer;
-    padding: 5px 15px;
-    border-radius: 6px;
-    border: none;
+.buttons-container .cancel-btn{
+  position: relative;
+  margin-left: 10px;
+  background-color: red;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  padding: 5px 15px;
+  border-radius: 6px;
+  border: none;
 
-  }
+}
 
-  .buttons-container .submit-btn {
-    position:relative;
-    right: 1%;
-    font-size: 16px;
-    color: white;
-    cursor: pointer;
-    padding: 5px 15px;
-    border-radius: 6px;
-    border: none;
-    background: red;
-  }
+.buttons-container .submit-btn {
+  position:relative;
+  right: 1%;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  padding: 5px 15px;
+  border-radius: 6px;
+  border: none;
+  background: red;
+}
 
   .advertisement-actions {
     display: flex;
