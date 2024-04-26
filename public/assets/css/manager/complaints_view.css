@@ -1,17 +1,4 @@
 /* Reset styles */
-/* Example media queries for responsiveness */
-@media screen and (max-width: 768px) {
-  /* Adjust styles for smaller screens */
-  .sidebar {
-    display: none;
-    /* Hide the sidebar menu on small screens */
-  }
-
-  
-}
-
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
-
 * {
   margin: 0;
   padding: 0;
@@ -24,7 +11,23 @@ body {
   text-align: center;
 }
 
+.branch_head {
+  font-size: 25px;
+  color: red;
+  letter-spacing: 0.08rem;
+  margin: 2rem 0 1rem;
+  font-weight: 600;
+}
 
+.branch_head_1 {
+  font-weight: 800;
+  color: black;
+  font-size: 25px;
+}
+
+.branch_head_1 span {
+  color: #d72323;
+}
 
 /* Utility classes */
 .text-center {
@@ -35,11 +38,10 @@ body {
   font-weight: bold;
 }
 
-
 /* Form styles */
 .form-group {
   display: inline-block;
-  margin-top: 20px;
+  margin-bottom: 20px;
   width: 40%;
 }
 
@@ -70,31 +72,33 @@ select {
 .table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
 
-  padding: 20px;
-  margin-top: 40px;
-  width: 1000px;
-  overflow: auto;
-  border: 2px solid #ccc;
-  overflow: hidden;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  align-self: center;
-  align-items: center;
-  /* margin-left: 65px; */
+  margin-top: 5px;
+
+    padding: 10px;
+    margin-top: 20px;
+    width: 1000px;
+    overflow: auto;
+    border: 2px solid #ccc;
+    overflow: hidden;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    align-self: center;
+    align-items: center;
+
 }
 
 .table th,
 .table td {
   padding: 12px 30px 12px 20px;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #ededed;
+  font-size: 14px;
 }
 
 .table th {
-  background-color: #c7c7c7;
-  color: black;
+  background-color:rgb(200, 200, 200);
+  color:black;
 }
 
 .table tbody tr:nth-of-type(even) {
@@ -103,10 +107,12 @@ select {
 
 /* Image styles */
 .image-preview {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%; /* For a circular shape */
-  object-fit: cover; /* Preserve aspect ratio */
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  /* For a circular shape */
+  object-fit: cover;
+  /* Preserve aspect ratio */
 }
 
 /* Responsive styles */
@@ -145,49 +151,47 @@ select {
 
 /* Sidebar and main content layout */
 .home-section {
-  width: calc(100% - 78px); /* Adjust based on your sidebar width */
-  margin-left: 78px; /* Adjust based on your sidebar width */
+  width: calc(100% - 78px);
+  /* Adjust based on your sidebar width */
+  margin-left: 78px;
+  /* Adjust based on your sidebar width */
   transition: all 0.5s ease;
 
   position: relative;
   min-height: 100vh;
   z-index: 2;
- 
 }
 
-.sidebar.open ~ .home-section {
-  width: calc(100% - 250px); /* Adjust based on your sidebar width */
-  margin-left: 250px; /* Adjust based on your sidebar width */
+.sidebar.open~.home-section {
+  width: calc(100% - 250px);
+  /* Adjust based on your sidebar width */
+  margin-left: 250px;
+  /* Adjust based on your sidebar width */
 }
+
+
+
 
 .search-container {
   background-color: #ffffff;
-  padding: 20px;
+  padding: 10px;
   border-radius: 8px;
-  
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
 }
 
-/* CSS for enlarging image on hover */
-
-/* Scale up image within table row on hover */
-.table tr:hover img {
-  transform: scale(1.15); /* Scale up by 5% */
-  transition: transform 0.5s ease; /* Add smooth transition effect */
-}
-
 
 .form-group {
-  margin-top: 20px;
-  position: relative; /* Make the parent container relative */
+  margin-top: 30px;
+  position: relative;
+  /* Make the parent container relative */
 
   display: flex;
   align-items: center;
 
   justify-content: center;
-  margin-left: 25%;
- 
+  margin-left: 25%
 }
 
 .form-group input {
@@ -206,23 +210,19 @@ select {
   border-radius: 36px 0 0 36px;
   box-shadow: 0px 0px 10px 0px rgb(187, 184, 184);
   padding-right: 80px;
-
-
 }
-
-
 
 .icon {
   position: absolute;
   right: -37px;
-  top: 77%;
+  top: 60%;
   transform: translateY(-70%);
   font-size: 30px; /* Increase the font size here */
   color: var(--dark);
   cursor: pointer;
 
   width: 36px;
-  height: 70%;
+  height: 55%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -237,32 +237,47 @@ select {
   transition: 0.3s ease;
 }
 
+/* Response button styles */
+.view-order-btn {
+  background-color: #ee3b35;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.view-order-btn:hover {
+  background-color: black;
+}
 
 
-
-.title-profile{
+.title-profile {
   margin-top: 30px;
 }
+
 .section-title {
   font-size: 1.7em;
   line-height: 1;
   text-transform: uppercase;
   font-weight: bold;
   margin-top: 2%;
-  font-family:"Poppins";
-  margin-left: 2%; 
+  font-family: "Poppins";
+  margin-left: 2%;
   text-align: center;
-  
+
 }
-.fas.fa-bread-slice.fa-3x.text-primary.mb-4{
+
+.fas.fa-bread-slice.fa-3x.text-primary.mb-4 {
   margin-left: 3%;
- 
 
-} 
 
-  
-.fas.fa-bread-slice.fa-3x.text-primary.mb-4 :after{
-margin-left: 130px;
+}
+
+
+.fas.fa-bread-slice.fa-3x.text-primary.mb-4 :after {
+  margin-left: 130px;
 
 
 }
@@ -289,7 +304,7 @@ margin-left: 130px;
 
 .divider .icon-wrap:before,
 .divider.dark .icon-wrap:before {
-  left: 40%;
+  left: 32%;
   transform: translateX(-50%);
 
 
@@ -297,7 +312,6 @@ margin-left: 130px;
 
 .divider .icon-wrap:after,
 .divider.dark .icon-wrap:after {
-  right: 37%;
+  right: 30%;
   transform: translateX(50%);
 }
-

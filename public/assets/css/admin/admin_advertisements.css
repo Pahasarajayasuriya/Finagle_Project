@@ -129,35 +129,36 @@ opacity: 0.8;
 transform: scale(1.0);
 
 }
-.advertisement-id, .advertisement-name {
+/* .advertisement-id, .advertisement-name {
   flex: 1;
-}
+} */
 
 
 .advertisement-table {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  /* flex-direction: row; */
+
   /* gap: 20px; */
   color: black;
   margin-top: 40px;
   background-color: #e0e0e0;
   border-radius: 10px;
+  margin-left: 50px;
   
 }
 
 .advertisement-header {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
   gap: 10px;
   padding: 15px;
   /* background-color: #e0e0e0; */
   border-radius: 8px;
   font-weight: bold;
-  width: 800px;
+  width: 600px;
   color: black;
-  /* margin-left: 100px; */
+   margin-left: 100px; 
 
 }
 

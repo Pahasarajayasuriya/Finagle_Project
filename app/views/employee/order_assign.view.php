@@ -41,6 +41,8 @@ $this->view('includes/alreadyProcess_popup', $data);
 </head>
 
 <body>
+    <?php $this->view('includes/emp_topbar', $data); ?>
+
     <div class="home-section">
         <div class="main-title">
             <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
@@ -61,11 +63,11 @@ $this->view('includes/alreadyProcess_popup', $data);
 
                     if (!empty($notify)) {
 
-                        
+
                         foreach ($notify as $val) {
-                            
+
                             if ($val->view_status == 0) {
-                                
+
                                 // show($val);
                     ?>
                                 <hr>
@@ -76,7 +78,7 @@ $this->view('includes/alreadyProcess_popup', $data);
 
                                     <!-- Delete the notification about successfull deliveres -->
                                     <p class="clear-msg" onclick="clearNotification(<?= $val->id ?>)">Clear</p>
-                              
+
                                 </div>
 
                     <?php
@@ -117,31 +119,45 @@ $this->view('includes/alreadyProcess_popup', $data);
                 data = {
                     id_array: parseInt(id),
                     status: "notification",
-                    };
+                };
 
-                    $.ajax({
+                $.ajax({
                     type: "POST",
                     url: status_update_endpoint,
                     data: data,
                     cache: false,
                     success: function(res) {
                         try {
-                        // alert(res);
+                            // alert(res);
 
-                        // convert to the json type
-                        Jsondata = JSON.parse(res);
+                            // convert to the json type
+                            Jsondata = JSON.parse(res);
 
-                        // location.reload();
-                        document.getElementById(`notification_${id}`).style.display = "none";
-                        notificationBox.style.display = "block";
-                        
+                            // location.reload();
+                            document.getElementById(`notification_${id}`).style.display = "none";
+                            notificationBox.style.display = "block";
+
                         } catch (error) {}
                     },
                     error: function(xhr, status, error) {
                         // return xhr;
                     },
-                    });
+                });
             }
+
+            document.addEventListener("DOMContentLoaded", function() {
+
+
+                var navbar = document.querySelector(".navbar");
+
+                window.addEventListener("scroll", function() {
+                    if (window.scrollY > 0) {
+                        navbar.style.backgroundColor = "white";
+                    } else {
+                        navbar.style.backgroundColor = "transparent";
+                    }
+                });
+            });
         </script>
 
         <div class="orders-container">
@@ -870,7 +886,7 @@ $this->view('includes/alreadyProcess_popup', $data);
 
                 // Append the order container to the orders container
                 ordersContainer_cancel.appendChild(orderContainer_cancel);
-                
+
                 // get the cancel process for selected all order ids 
                 cancel_order_id.push(order);
             });
@@ -892,7 +908,7 @@ $this->view('includes/alreadyProcess_popup', $data);
         }
 
         function showSelectedOrders_cancel() {
-            
+
             // add initial reason state in empty
             cancel_reason_State = ""
 

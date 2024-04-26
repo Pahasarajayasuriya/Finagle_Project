@@ -33,6 +33,7 @@ $this->view('includes/footer', $data);
 
 <body>
 
+     <?php $this->view('includes/emp_topbar', $data); ?>
 
     <div class="home-section">
         <div class="title-profile">
@@ -47,14 +48,7 @@ $this->view('includes/footer', $data);
 
         </div>
 
-        <?php
-
-            // show($data);
-          if (isset($driver)) {
-               foreach ($driver as $driver) {
        
-
-          ?>
 
 
         <div class="employee-table">
@@ -69,14 +63,21 @@ $this->view('includes/footer', $data);
                 <!-- <div class="header-item">Goals Assignment</div> -->
             </div>
 
-            
+            <?php
+
+// show($data);
+if (isset($driver)) {
+   foreach ($driver as $driver) {
+
+
+?>
 
             <div class="employee-record">
                 <div class="employee-image"><img src="<?= ROOT ?>/assets/images/drivers/<?= $driver->image ?>" alt="Deliverer 1"></div>
                 <div class="employee-id"><?= $driver->id ?></div>
 
                 <div class="employee-name"><?= $driver->username ?></div>
-                <div class="employee-name"><?= $driver->email ?></div>
+                <div class="employee-email"><?= $driver->email ?></div>
                 <div class="employee-name"><?= $driver->branch ?></div>
             </div>
 
@@ -89,5 +90,21 @@ $this->view('includes/footer', $data);
         <script src="<?= ROOT ?>/assets/js/manager_deliverer.js"></script>
 
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            var navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = "white";
+                } else {
+                    navbar.style.backgroundColor = "transparent";
+                }
+            });
+        });
+    </script>
 </body>
 </html>
