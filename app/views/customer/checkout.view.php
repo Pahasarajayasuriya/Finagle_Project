@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/checkout.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/boxicons/2.1.0/css/boxicons.min.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -36,9 +35,7 @@
                         <i class='bx bxs-calendar-check' style="margin-top: 10px;"></i>
                         <p class="recipe_head_1">ORDER<span> CHECKOUT</span></p>
                     </div>
-
                     <input type="hidden" id="totalCost" name="total_cost" value="">
-
                     <div class="check_inline">
                         <label class="check_name" for="check_name" name='name'>Name</label>
                         <input class="check_input" name='name' value="<?= Auth::is_customer() ? Auth::getName() : '' ?>" type="text" id="check_name" name="check_name">
@@ -46,7 +43,6 @@
                             <div class="invalid"><?= $errors['name'] ?></div>
                         <?php endif; ?>
                     </div>
-
                     <div class="check_inline">
                         <label class="check_name" for="check_comemail" name='email'>E-mail</label>
                         <input class="check_input" name='email' value="<?= Auth::is_customer() ? Auth::getEmail() : '' ?>" type="email" id="check_comemail" name="check_comemail">
@@ -54,7 +50,6 @@
                             <div class="invalid"><?= $errors['email'] ?></div>
                         <?php endif; ?>
                     </div>
-
                     <div class="check_inline">
                         <label class="check_name" for="check_phoneno" name='phone_number'>Phone Number</label>
                         <input class="check_input" name='phone_number' value="<?= Auth::is_customer() ? Auth::getTeleno() : '' ?>" type="text" id="check_phoneno" name="check_phoneno">
@@ -63,10 +58,8 @@
                         <?php endif; ?>
                     </div>
 
-
                     <div class="check_inline">
                         <label class="check_name" for="check_option">Delivery or Pickup:</label>
-
                         <input type="radio" id="delivery" name="delivery_or_pickup" value="delivery">
                         <label class="check_radio" for="delivery"> Delivery </label>
 
@@ -74,7 +67,6 @@
                         <label class="check_radio" for="pickup"> Pickup </label>
                     </div>
 
-                   
                     <div class="check_inline" id="deliveryOrdersSection" style="display: none;">
                         <label class="check_name" for="delivery_orders"><b>For Delivery Orders:</b></label>
                         <div class="check_inline">
@@ -101,8 +93,13 @@
 
 
                     <div class="check_flex">
-
-
+                        <!-- <div class="check_inputBox">
+                            <label class="check_name" for="order_data" name='delivery_date'>Date:</label>
+                            <input class="check_input" type="date" name='delivery_date' value="<?= set_value('delivery_date') ?>">
+                            <?php if (!empty($errors['delivery_date'])) : ?>
+                                <div class="invalid"><?= $errors['delivery_date'] ?></div>
+                            <?php endif; ?>
+                        </div> -->
 
                         <div class="check_inputBox">
                             <label class="check_name" for="order_time" name='delivery_time'>Time:</label>
@@ -137,7 +134,6 @@
                                 <input type="radio" id="payment-card" name="payment_method" value="card" class="payment-method-radio">
                                 <label class="check_radio_1" for="payment-card"> Online payment </label>
 
-
                                 <input type="radio" id="payment-cash" name="payment_method" value="cash" class="payment-method-radio">
                                 <label class="check_radio_1" for="payment-cash"> Cash payment </label>
                             </div>
@@ -145,8 +141,6 @@
                     </div>
                 </div>
                 <div id="paymentDetailsSection">
-                </div>
-
                 </div>
             </div>
             <br><br><br>
@@ -163,7 +157,6 @@
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
 
         </div>
-        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

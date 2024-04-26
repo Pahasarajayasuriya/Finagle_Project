@@ -49,6 +49,8 @@ $this->view('includes/footer', $data);
                     <button type="submit" class="ad-search-btn">
                         <i class='bx bx-search'></i>
                     </button>
+                    <div class="search-error"></div>
+                    <div id="message-error-container"></div>
                 </div>
             </form>
 
@@ -58,11 +60,9 @@ $this->view('includes/footer', $data);
                 </span>
                 <div class="cart-items">0</div>
             </div>
-
-            <div class="search-error"></div>
         </div>
 
-        <div id="message-error-container"></div>
+        
 
 
 
