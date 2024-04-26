@@ -16,9 +16,15 @@ class Otp extends Controller
                 $user = new User();
                 $_POST['password'] = password_hash($signup_data['password'], PASSWORD_DEFAULT); // Use the password from stored data
                 $user->insert($signup_data); // Insert stored user input data
-                $successMessage = '<div id="success-message" style="color: #008000;">Your account was successfully created!</div>';
-                message($successMessage);
-                redirect('login');
+                // $successMessage = '<div id="success-message" style="color: #008000;">Your account was successfully created!</div>';
+                // message($successMessage);
+                // $_SESSION['user_id'] = $user->getLastInsertId();
+                // Fetch the newly created user's data
+                $newUser = $user->first(['email' => $signup_data['email']]);
+                // Authenticate the new user
+                Auth::authenticate($newUser);
+                $_SESSION['account_created'] = true;
+                redirect('home');
             } else {
                 // Invalid OTP
                 $data['errors']['otp'] = 'Invalid OTP'; // Set error message
@@ -31,4 +37,3 @@ class Otp extends Controller
         $this->view('otp', $data);
     }
 }
-?>

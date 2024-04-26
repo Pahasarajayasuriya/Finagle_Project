@@ -48,7 +48,7 @@ $this->view('includes/footer', $data);
 
         </div>
 
-       
+
 
 
         <div class="employee-table">
@@ -59,9 +59,11 @@ $this->view('includes/footer', $data);
                 <div class="header-item">Name</div>
                 <div class="header-item">Email</div>
                 <div class="header-item">Branch</div>
-               
+
                 <!-- <div class="header-item">Goals Assignment</div> -->
             </div>
+            <?php
+
 
             <?php
 
@@ -72,21 +74,21 @@ if (isset($driver)) {
 
 ?>
 
-            <div class="employee-record">
-                <div class="employee-image"><img src="<?= ROOT ?>/assets/images/drivers/<?= $driver->image ?>" alt="Deliverer 1"></div>
-                <div class="employee-id"><?= $driver->id ?></div>
+
+
 
                 <div class="employee-name"><?= $driver->username ?></div>
                 <div class="employee-email"><?= $driver->email ?></div>
                 <div class="employee-name"><?= $driver->branch ?></div>
             </div>
 
+
             <?php
                 }
             }
             ?>
         </div>
-        
+
         <script src="<?= ROOT ?>/assets/js/manager_deliverer.js"></script>
 
     </div>
@@ -107,4 +109,5 @@ if (isset($driver)) {
         });
     </script>
 </body>
+
 </html>

@@ -136,6 +136,23 @@ class UI {
 
     // Check if the total weight exceeds the limit
     if (totalWeight > 30) {
+      var style = document.createElement("style");
+      style.textContent = `
+          .swal2-confirm {
+              background-color: #FF0000 !important;
+              color: white !important;
+              border: none !important;
+          }
+          .swal2-confirm a {
+              text-decoration: none !important;
+              color: white !important;
+          }
+          .swal2-confirm a:hover {
+              color: white !important;
+          }
+      `;
+      document.head.appendChild(style);
+
       Swal.fire({
         title: "Order too large",
         text: "Your order exceeds our delivery limit due to its large size. Please place your order as a pickup order.",
@@ -260,23 +277,25 @@ class UI {
     while (cartContent.children.length > 0) {
       cartContent.removeChild(cartContent.children[0]);
     }
-  
+
+
     //-> update cart
     cart.length = 0;
-  
+
     //-> update total price & cart items
     this.setCartValue(cart);
     this.updateCheckoutButtonState();
-  
+
     //-> update localStorage
     Storage.saveCart(cart);
-  
+
     //-> get carts and update text and disabled
-    buttonsDOM.forEach(button => {
+    buttonsDOM.forEach((button) => {
       button.textContent = "Add to Cart";
       button.disabled = false;
     });
-  
+
+
     closeModal();
   }
 
@@ -317,7 +336,24 @@ class UI {
         this.clearErrorMessage();
       }
 
-      this.displayProducts(filteredProducts);
+      // If the search input is not empty, hide the category names
+      if (searchValue !== "") {
+        document.querySelectorAll(".category-item").forEach((element) => {
+          element.style.display = "none";
+        });
+        this.displayProducts(filteredProducts);
+      } else {
+        // If the search input is empty, show the category names
+        document.querySelectorAll(".category-item").forEach((element) => {
+          element.style.display = "block";
+        });
+        // Display only the "Bread & Buns" category
+        const breadAndBunsProducts = productsData.filter(
+          (product) => product.category === "Bread & Buns"
+        );
+        this.displayProducts(breadAndBunsProducts);
+      }
+
       this.getCartBtns();
     });
   }

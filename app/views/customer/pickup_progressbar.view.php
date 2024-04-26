@@ -1,3 +1,11 @@
+<?php
+$role = "User";
+$data['role'] = $role;
+$this->view('includes/header', $data);
+$this->view('includes/NavBar', $data);
+$this->view('includes/footer', $data);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +20,7 @@
 </head>
 
 <body>
+<?php $this->view('includes/cus_topbar', $data); ?>
     <div class="home-section">
         <div class="progress_main">
             <div class="container">
@@ -25,7 +34,7 @@
                     <p class="progress_head_1">Order <span> Status</span></p>
                 </div>
 
-                <ul>
+                <ul class="ul">
                     <li>
                         <i class="icon uil uil-capture"></i>
                         <div class="progress one">
@@ -48,18 +57,17 @@
 
             </div>
             <div class="button-container">
-                <form action="<?= ROOT ?>/products">
-                    <br><br><br>
-                    <button type="submit" class="process_btn" id="homeButton">Place a new Order</button>
-                </form>
                 <form action="">
                     <br><br><br>
-                    <button type="submit" class="process_btn" id="complaintButton">Rate and Review</button>
+                    <button type="submit" class="process_btn" id="complaintButton">Review</button>
                 </form>
             </div>
         </div>
+        <?php $this->view('includes/cus_footer', $data); ?>
         <script>
             var orderStatus = "<?= $data['orderStatus'] ?>";
+            var orderId = "<?= $data['orderId'] ?>";
+            console.log(orderId);
             console.log(orderStatus);
         </script>
 

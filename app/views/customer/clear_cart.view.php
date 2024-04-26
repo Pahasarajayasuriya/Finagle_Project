@@ -5,10 +5,11 @@
 </head>
 
 <body>
-    <script>
-        localStorage.removeItem("cart");
-        window.location.href = 'progressbar'; 
-    </script>
+<script>
+    localStorage.removeItem("cart");
+    var orderId = new URLSearchParams(window.location.search).get('orderId');
+    window.location.href = 'progressbar?orderId=' + orderId; 
+</script>
 </body>
 
 </html>

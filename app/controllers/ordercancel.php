@@ -4,12 +4,14 @@ class ordercancel extends Controller
 {
     public function index()
     {
-        $checkoutModel = new CheckoutModel();
+        $CheckoutModel = new CheckoutModel();
         $userId = $_SESSION['USER_DATA']->id; // Get the user ID from the session
-        $orderid = $checkoutModel->getLastOrderId($userId);
-        $reason = $checkoutModel->getreason($orderid);
+        $orderId = $_GET['orderId']; // Get the order ID from the query parameters
+        $orderStatus = $CheckoutModel->getOrderStatus($userId, $orderId);
+        $reason = $CheckoutModel->getreason($orderId);
         $data['reason'] = $reason;
-        $data['orderid'] = $orderid;
+        $data['orderId'] = $orderId;
+        $data['orderStatus'] = $orderStatus;
         $data['title'] = "Ordercancel";
         $this->view('customer/ordercancel', $data);
     }
