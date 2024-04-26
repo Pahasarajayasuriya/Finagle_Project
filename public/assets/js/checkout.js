@@ -89,7 +89,7 @@ function initMap() {
       lng = pos.coords.longitude;
       map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: lat, lng: lng },
-        zoom: 8,
+        zoom: 11,
       });
 
       var branches = JSON.parse(document.getElementById("branches").value);

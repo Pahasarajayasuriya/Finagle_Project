@@ -36,7 +36,6 @@ $this->view('includes/footer', $data);
 
 <body>
     <?php $this->view('includes/cus_topbar', $data); ?>
-
     <div class="home-section">
         <div class="page-container">
             <div class="page-container">
