@@ -18,6 +18,12 @@ class Deliverer_profile extends Controller
         
         $totalEarnings = $this->getTotalEarnings($driver_id );
         $data['totalEarnings']= $totalEarnings;
+
+        if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST["status"])) {
+
+            unset($_POST["status"]);
+            $this->update_delivered_order($_POST);
+        }
        
         $this->view('deliverer/driver_profile', $data);
     }
@@ -51,6 +57,21 @@ class Deliverer_profile extends Controller
        
         return $data;
     }
+
+    private function update_delivered_order($arr)
+    {
+        $user = new User();
+
+        $id = $arr['id'];
+        $user->updateOrder($id, $arr);
+
+        unset($arr['id']);
+        // show($arr);
+
+        redirect("Deliverer_profile");
+    }
+
+    
 
     
 }

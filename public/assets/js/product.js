@@ -256,14 +256,27 @@ class UI {
   }
 
   clearCart() {
-    //-> get all carts and pass id to removeItem()
-    cart.forEach((cItem) => this.removeItem(cItem.id));
-
     //-> remove cart-content children from Modal
     while (cartContent.children.length > 0) {
       cartContent.removeChild(cartContent.children[0]);
     }
+  
+    //-> update cart
+    cart.length = 0;
+  
+    //-> update total price & cart items
+    this.setCartValue(cart);
     this.updateCheckoutButtonState();
+  
+    //-> update localStorage
+    Storage.saveCart(cart);
+  
+    //-> get carts and update text and disabled
+    buttonsDOM.forEach(button => {
+      button.textContent = "Add to Cart";
+      button.disabled = false;
+    });
+  
     closeModal();
   }
 

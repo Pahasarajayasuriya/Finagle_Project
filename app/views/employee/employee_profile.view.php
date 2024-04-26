@@ -34,6 +34,11 @@ $this->view('includes/footer', $data);
 
 
     <div class="home-section">
+
+        <div class="logout-button">
+            <!-- <button><b>Log Out</b></button> -->
+             <a href="<?= ROOT ?>/Emp_Logout">Logout</a> 
+        </div>
         <div class="title-profile">
 
             <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
@@ -55,6 +60,7 @@ $this->view('includes/footer', $data);
                     <div class="pro-id"> User Id</div>
                     <div class="pro-description">User Name</div>
                     <div class="pro-date">Joined Date</div>
+                   
                 </div>
 
                 <?php
@@ -99,9 +105,7 @@ $this->view('includes/footer', $data);
 
     </div>
 
-    <div class="logout-button">
-        <button><b>Log Out</b></button>
-    </div>
+
 
     </div>
 </body>

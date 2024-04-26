@@ -1,43 +1,67 @@
-
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
-    font-family: "Poppins";
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: black;
-    background-color: white;
+  font-family: "Poppins", sans-serif;
+  color: black;
+  background-color: white;
+}
 
+/* Styles for the Log Out button */
+.logout-button {
+  text-align: right;
+  margin-top: 10px;
+}
 
+.logout-button button {
+  outline: none;
+  margin-right: 20%;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  width: 150px;
+  background-color: red;
+  font-weight: bold;
+}
+
+.logout-button button:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
 }
 
 
 .title-profile{
-    margin-top: -40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .section-title {
-    font-size: 2em;
-    line-height: 1;
-    text-transform: uppercase;
-    font-weight: bold;
-    margin-top: 1%;
-    font-family:"Poppins";
-    margin-left: 2%; 
-    text-align: center;
-    
-  }
-  .fas.fa-bread-slice.fa-3x.text-primary.mb-4{
-    margin-left: 48%;
-   
+  font-size: 1.5em;
+  line-height: 1;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 1%;
+  font-family:"Poppins";
+  margin-left: 2%; 
+  text-align: center;
   
-  } 
+}
+.fas.fa-bread-slice.fa-3x.text-primary.mb-4{
+  margin-left: 50%;
  
-    
+
+} 
+
+  
 .fas.fa-bread-slice.fa-3x.text-primary.mb-4 :after{
-  margin-left: 100px;
- 
+margin-left: 130px;
+
 
 }
  

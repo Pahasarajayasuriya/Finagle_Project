@@ -19,6 +19,7 @@ $this->view('includes/footer', $data);
 <head>
     <title>Branches</title>
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/assets/css/manager/branch_view.css">
+
     <link href="https://fonts.googleapis.com/css?family=Cabin|Herr+Von+Muellerhoff|Source+Sans+Pro" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
 
@@ -38,17 +39,16 @@ $this->view('includes/footer', $data);
 
 
     <div class="home-section">
-        <div class="title-profile">
-
-            <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
-            <h2 class="section-title">BRANCHES</h2>
-            <div class="divider dark mb-4">
-                <div class="icon-wrap">
-                    <!-- <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>  -->
+           <div class="title-profile">
+                <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
+                <p class="section-title">BRANCHES<span> </span></p>
+                <div class="divider dark mb-4">
+                    <div class="icon-wrap">
+                        <!-- <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i> -->
+                    </div>
                 </div>
             </div>
 
-        </div>
 
         <div class="branches">
             <?php
@@ -61,9 +61,10 @@ $this->view('includes/footer', $data);
 
                     <div class="branch-container">
 
-                        <img src="https://lh3.googleusercontent.com/p/AF1QipNFVt_67WFrJbjsHEQfxY691SYz3wxrn1Ioq5KC=s1360-w1360-h1020" alt="branch.name" class="branch-image">
+                        <img src="<?= ROOT ?>/assets/images/branches/<?= $branch->image ?>" alt="branch.name" class="branch-image">
                         <div class="branch-details">
                             <div class="row">
+                                <h2 class="branch-title"><?= $branch->name ?></h>
                                 <h2 class="branch-title"><?= $branch->name ?></h2>
                                 <p class="branch-id">ID: <?= $branch->id ?> </p>
                             </div>
