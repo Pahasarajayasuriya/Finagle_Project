@@ -105,7 +105,10 @@ $this->view('includes/footer', $data);
                             input: "email",
                             inputValue: userEmail, 
                             inputLabel: "Your email address",
-                            inputPlaceholder: "Enter your email address"
+                            inputPlaceholder: "Enter your email address",
+                            customClass: {
+                              confirmButton: 'red-background' // Apply custom class to the confirm button
+                             },
                         });
 
                         if (email) {
@@ -115,7 +118,11 @@ $this->view('includes/footer', $data);
                                 title: "Write your response",
                                 input: "textarea",
                                 inputLabel: "Your response",
-                                inputPlaceholder: "Enter your response here"
+                                inputPlaceholder: "Enter your response here",
+                                customClass: {
+                                  confirmButton: 'red-background' 
+                                }
+                                
                             });
 
                             if (response) {
@@ -183,6 +190,12 @@ $this->view('includes/footer', $data);
             });
         });
     </script>
+
+<style>
+    .red-background {
+        background-color: red !important; 
+    }
+</style>
 </body>
 
 </html>
