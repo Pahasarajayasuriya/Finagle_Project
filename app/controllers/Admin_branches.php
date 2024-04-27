@@ -93,4 +93,10 @@ class Admin_branches extends Controller
         $this->view('admin/admin_branches_update',$data);
 
     }
+
+    public function add_branch(){
+        $admin_branch_model = new admin_branchesModel();
+        $data['rows'] = $admin_branch_model->get_all();
+        $this->view('admin/admin_branches_add',$data);
+    }
 }

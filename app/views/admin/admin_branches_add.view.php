@@ -154,7 +154,7 @@ $this->view('includes/footer', $data);
         </section>
         <!-- <script src="branch-admin.js"></script> -->
     </div>
-    <script src="<?= ROOT ?>/assets/js/admin_branch.js"></script>
+    <script src="<?= ROOT ?>/assets/js/admin/admin_add.js"></script>
     <script>
         function filterBranches() {
             var input, filter, branchesContainer, branches, branchName;
@@ -200,62 +200,6 @@ $this->view('includes/footer', $data);
         }
 
     </script>
-    <script>
-function validateForm() {
-    var contactNumberInput = document.getElementById("contactNumber").value.trim();
-    var openHourInput = document.getElementById("open").value;
-    var closeHourInput = document.getElementById("close").value;
-
-    var phoneNumberRegex = /^\d{10}$/; // Assuming a 10-digit phone number format
-
-    if (contactNumberInput === "") {
-        alert("Contact number is required");
-        return false;
-    }
-
-    if (!phoneNumberRegex.test(contactNumberInput)) {
-        alert("Invalid contact number. Please enter a 10-digit phone number.");
-        return false;
-    }
-
-    var openTime = new Date('1970-01-01T' + openHourInput);
-    var closeTime = new Date('1970-01-01T' + closeHourInput);
-
-    if (closeTime <= openTime) {
-        alert("Close hour must be after open hour");
-        return false;
-    }
-
-    return true; // Allow form submission
-}
-
-// Attach event listener to the form submission
-document.getElementById("myForm").addEventListener("submit", function(event) {
-    // Call the validation function and only allow form submission if it returns true
-    if (!validateForm()) {
-        // If validation fails, prevent form submission
-        event.preventDefault();
-    }
-});
-
-// Disable submit button by default
-document.getElementById("submitBtn").disabled = true;
-
-// Attach event listeners to form inputs to enable/disable submit button
-document.getElementById("contactNumber").addEventListener("input", function() {
-    var isValid = validateForm();
-    document.getElementById("submitBtn").disabled = !isValid;
-});
-document.getElementById("open").addEventListener("input", function() {
-    var isValid = validateForm();
-    document.getElementById("submitBtn").disabled = !isValid;
-});
-document.getElementById("close").addEventListener("input", function() {
-    var isValid = validateForm();
-    document.getElementById("submitBtn").disabled = !isValid;
-});
-</script>
-
 </body>
 
 </html>
