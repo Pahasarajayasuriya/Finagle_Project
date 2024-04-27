@@ -9,7 +9,6 @@ class Admin_managers extends Controller
         $data['rows'] = $admin_manager_model->get_all();
         //show($data);
         $data['errors'] = [];
-        
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
             // Validate and sanitize input data
             $validatedData = $admin_manager_model->validate($_POST);
