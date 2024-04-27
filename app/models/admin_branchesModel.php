@@ -85,5 +85,17 @@ class admin_branchesModel extends Model
         $result = $this->query($query);
         return $result[0]->row_count;
     }
+
+    public function pagination($start_from, $limit)
+    {
+        $query = "SELECT * FROM `branch` LIMIT $start_from, $limit";
+        return $this->query($query);
+    }
+
+    public function get_count_p()
+    {
+        $query = "SELECT COUNT(name) FROM `branch`";
+        return $this->query($query);
+    }
     
 }

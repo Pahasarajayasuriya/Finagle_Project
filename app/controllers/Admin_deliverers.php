@@ -67,7 +67,42 @@ class Admin_deliverers extends Controller
         }
 
         else{
-            //show($data['errors']);
+            
+            // ######## Pagination #########
+            $limit = 4; // Number of records per page
+            if (isset($_GET["page"])) {
+                $page  = $_GET["page"];
+            } else {
+                $page=1;
+            }
+
+            $start_from = ($page-1) * $limit;
+
+            $result=$admin_deliverer_model->pagination($start_from,$limit);
+
+            $rs_result = $admin_deliverer_model->get_count_p();
+            if (is_array($rs_result) && isset($rs_result[0]->{'COUNT(id)'})) {
+                $total_records = $rs_result[0]->{'COUNT(id)'};
+                $total_pages = ceil($total_records / $limit);
+            } else {
+                // Handle case where the count value is not found or the result is not as expected
+                // For example:
+                $total_records = 0; // Set default value for total records
+                $total_pages = 0; // Set default value for total pages
+                // Log an error message
+                error_log("Error: Count value not found or unexpected result.");
+                // You can also display an error message to the user or take other appropriate actions
+            }
+
+            $data['rows'] = $result;
+
+            $pagination = "";
+            for ($i=1; $i<=$total_pages; $i++) {
+                $pagination .= "<a href='http://localhost/finagle/public/admin_deliverers?page=".$i."'>".$i."</a> ";
+            }
+
+            $data['pagination']="<<   ".$pagination."   >>";
+
             $data['title'] = "admin_deliverer";
             $this->view('admin/admin_deliverers', $data);
         }

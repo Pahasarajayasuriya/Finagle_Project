@@ -71,4 +71,17 @@ class admin_customersModel extends Model
         $result = $this->query($query);
         return $result[0]->row_count;
     }
+
+    public function pagination($start_from, $limit)
+    {
+        $query = "SELECT * FROM `users` WHERE role = 'customer' LIMIT $start_from, $limit";
+        return $this->query($query);
+    }
+
+    public function get_count_p()
+    {
+        $query = "SELECT COUNT(id) FROM `users` WHERE role = 'customer'";
+        return $this->query($query);
+    }
+
 }

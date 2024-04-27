@@ -865,3 +865,22 @@ a {
 
   /* Other styles to indicate invalid input */
 }
+
+#pagination {
+  text-align:center;
+  margin-top:100px;
+  color:red;
+}
+
+#pagination a {
+  color:red;
+  text-decoration:none;
+  padding: 8px 15px;
+}
+
+#pagination a:hover{
+  color:white;
+  background-color: #000000;
+  border-radius: 20px;
+}
+

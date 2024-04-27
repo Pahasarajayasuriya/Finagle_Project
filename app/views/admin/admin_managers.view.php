@@ -151,12 +151,16 @@ $this->view('includes/footer', $data);
                   <!-- <button class="edit-button"><a href="<?= ROOT."/admin_branches/delete_branch/".$row->id ?>">Delete Branch</a></button>                 -->
                 </div>             
              </div>
-             <?php endforeach;?>
+            <?php endforeach;?>
+                <div id="pagination" >
+                <?php echo $pagination; ?>
+                </div>
             </div>
 
         </section>
         <!-- <script src="branch-admin.js"></script> -->
     </div>
+
     <script src="<?= ROOT ?>/assets/js/admin_branch.js"></script>
     <script>
         function filterBranches() {

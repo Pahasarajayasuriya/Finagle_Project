@@ -63,7 +63,41 @@ class Admin_branches extends Controller
         }
 
         else{
-            //show($data['errors']);
+
+            // ######## Pagination #########
+            $limit =3; // Number of records per page
+            if (isset($_GET["page"])) {
+                $page  = $_GET["page"];
+            } else {
+                $page=1;
+            }
+
+            $start_from = ($page-1) * $limit;
+
+            $result=$admin_branch_model->pagination($start_from,$limit);
+
+            $rs_result = $admin_branch_model->get_count_p();
+            if (is_array($rs_result) && isset($rs_result[0]->{'COUNT(name)'})) {
+                $total_records = $rs_result[0]->{'COUNT(name)'};
+                $total_pages = ceil($total_records / $limit);
+                //show($rs_result);
+            } else {
+                // Handle case where the count value is not found or the result is not as expected
+                $total_records = 0; // Set default value for total records
+                $total_pages = 0; // Set default value for total pages
+                // Log an error message
+                error_log("Error: Count value not found or unexpected result.");
+            }
+
+            $data['rows'] = $result;
+
+            $pagination = "";
+            for ($i=1; $i<=$total_pages; $i++) {
+                $pagination .= "<a href='http://localhost/finagle/public/admin_branches?page=".$i."'>".$i."</a> ";
+            }
+
+            $data['pagination']="<<   ".$pagination."   >>";
+
             $data['title'] = "admin_branch";
             $this->view('admin/admin_branches', $data);
         };

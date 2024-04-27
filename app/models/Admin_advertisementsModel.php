@@ -57,4 +57,17 @@ class admin_advertisementsModel extends Model
         show($query);
         $this->query($query);
     }
+
+    public function pagination($start_from, $limit)
+    {
+        $query = "SELECT * FROM `advertisement` LIMIT $start_from, $limit";
+        return $this->query($query);
+    }
+
+    public function get_count()
+    {
+        $query = "SELECT COUNT(id) FROM `advertisement`";
+        return $this->query($query);
+    }
+
 }

@@ -78,4 +78,16 @@ class Admin_productsModel extends Model
         return $result[0]->row_count;
     }
 
+    public function pagination($start_from, $limit)
+    {
+        $query = "SELECT * FROM `products` LIMIT $start_from, $limit";
+        return $this->query($query);
+    }
+
+    public function get_count_p()
+    {
+        $query = "SELECT COUNT(id) FROM `products`";
+        return $this->query($query);
+    }
+
 }

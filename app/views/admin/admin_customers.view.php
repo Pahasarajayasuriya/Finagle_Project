@@ -147,6 +147,9 @@ $this->view('includes/footer', $data);
                 </div>             
              </div>
              <?php endforeach;?>
+                <div id="pagination" >
+                <?php echo $pagination; ?>
+                </div>
             </div>
 
         </section>

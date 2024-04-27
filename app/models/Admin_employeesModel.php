@@ -59,4 +59,17 @@ class admin_employeesModel extends Model
         $query="DELETE FROM `users` WHERE `users`.`id` = ".$id;
         $this->query($query);
     }
+
+    public function pagination($start_from, $limit)
+    {
+        $query = "SELECT * FROM `users` WHERE role = 'employee' LIMIT $start_from, $limit";
+        return $this->query($query);
+    }
+
+    public function get_count()
+    {
+        $query = "SELECT COUNT(id) FROM `users` WHERE role = 'employee'";
+        return $this->query($query);
+    }
+
 }
