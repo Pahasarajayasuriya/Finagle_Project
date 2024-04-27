@@ -20,7 +20,31 @@ class Admin_productsModel extends Model
 
     public function validate($data)
     {
-        return $data;
+        $this->errors=[];
+
+        if(empty($data['user_name']))
+        {
+            $this->errors['username']='Username is required'; 
+        }
+
+        if(empty($data['description']))
+        {
+            $this->errors['description']='Description is required'; 
+        }
+
+        if (empty($data['price'])) {
+            $this->errors['price'] = 'Price is required';
+        } elseif ($data['price'] <= 0) {
+            $this->errors['price'] = 'Price must be greater than zero';
+        }
+
+        if(empty($this->errors))
+        {
+            return $data;
+        }
+        return false;
+
+        //return $data;
     }
 
 

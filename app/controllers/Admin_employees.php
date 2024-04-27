@@ -39,6 +39,7 @@ class Admin_employees extends Controller
             $validatedData = $admin_employee_model->validate($_POST);
             //show($data);
             //show($validatedData);
+            $id=$_POST['id'];
             if ($validatedData) {
                     //show($_POST);
                     $id=$_POST['id'];
@@ -50,20 +51,25 @@ class Admin_employees extends Controller
 
                     // Redirect to avoid form resubmission
                     redirect('admin_employees');
-                } else {
-                    // Handle image upload failure
-
-                    echo "Image Upload Failed.";
-                }
             } else {
                 // Handle validation errors
                 $data['errors'] = $admin_employee_model->errors;
-
-            // }
+            }
         }
 
-        $data['title'] = "admin_employee";
-        $this->view('admin/admin_employees', $data);
+        if (!empty($data['errors'])){
+            $param['id']=$id;
+            $data['row']=$admin_employee_model->where($param);
+            //$data['errors']['teleno']="hello";
+            //show($data['errors']);
+            $this->view('admin/admin_employees_update',$data);
+        }
+
+        else{
+            //show($data['errors']);
+            $data['title'] = "admin_employee";
+            $this->view('admin/admin_employees', $data);
+        }
 
     }
 

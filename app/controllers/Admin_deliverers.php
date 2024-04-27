@@ -39,6 +39,7 @@ class Admin_deliverers extends Controller
             $validatedData = $admin_deliverer_model->validate($_POST);
             //show($data);
             //show($validatedData);
+            $id=$_POST['id'];
             if ($validatedData) {
                     //show($_POST);
                     $id=$_POST['id'];
@@ -50,11 +51,7 @@ class Admin_deliverers extends Controller
 
                     // Redirect to avoid form resubmission
                     redirect('admin_deliverers');
-                } else {
-                    // Handle image upload failure
-
-                    echo "Image Upload Failed.";
-                }
+            } 
             } else {
                 // Handle validation errors
                 $data['errors'] = $admin_deliverer_model->errors;
@@ -62,8 +59,19 @@ class Admin_deliverers extends Controller
             // }
         }
 
-        $data['title'] = "admin_deliverer";
-        $this->view('admin/admin_deliverers', $data);
+        if (!empty($data['errors'])){
+            $param['id']=$id;
+            $data['row']=$admin_deliverer_model->where($param);
+            //$data['errors']['teleno']="hello";
+            //show($data['errors']);
+            $this->view('admin/admin_deliverers_update',$data);
+        }
+
+        else{
+            //show($data['errors']);
+            $data['title'] = "admin_deliverer";
+            $this->view('admin/admin_deliverers', $data);
+        }
 
     }
 

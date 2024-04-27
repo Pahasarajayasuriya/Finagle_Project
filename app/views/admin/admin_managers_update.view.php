@@ -108,7 +108,7 @@ $this->view('includes/footer', $data);
             <!-- popup for editing -->
             <form method="POST" enctype="multipart/form-data" action="<?= ROOT?>/admin_managers">
             <div class="popup-container" id="editPopupContainer">
-                <h2>Edit Manager</h2>
+                <h2>Edit Manager Profile</h2>
                 <div class="popup-content">
             
                     <label for="editDescription">User Name:</label>
@@ -117,7 +117,7 @@ $this->view('includes/footer', $data);
                             <div class="invalid"><?= $errors['username'] ?></div>
                     <?php endif; ?>
 
-                    <label for="editEndDate">Telephone:</label>
+                    <label for="editEndDate">Contact:</label>
                     <input type="text" id="editDescription" name="teleno" placeholder="Enter the contact number" value="<?= $row[0]->teleno ?>"required>
                     <?php if (!empty($errors['teleno'])) : ?>
                             <div class="invalid"><?= $errors['teleno'] ?></div>

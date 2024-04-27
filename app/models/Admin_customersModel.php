@@ -20,19 +20,28 @@ class admin_customersModel extends Model
         //There are more validation parts to be created
         $this->errors=[];
 
-        if(empty($data['name']))
+        if(empty($data['username']))
         {
-            $this->errors['name']='Branch name is required'; 
+            $this->errors['username']='Useername is required'; 
         }
 
         if(empty($data['address']))
         {
-            $this->errors['address']='Address is required'; 
+            $this->errors['address']='Useername is required'; 
         }
 
-        if(empty($data['tellno']))
+        if(empty($data['teleno']))
         {
-            $this->errors['contact_number']='Contact number is required'; 
+            $this->errors['teleno']='Contact number is required'; 
+        }elseif (!preg_match('/^\d{10}$/', $data['teleno'])) {
+            $this->errors['teleno'] = 'Invalid telephone number format';
+        }
+
+        if(empty($data['email']))
+        {
+            $this->errors['email']='Email is required'; 
+        }elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+            $this->errors['email'] = 'Invalid email format';
         }
 
         if(empty($this->errors))

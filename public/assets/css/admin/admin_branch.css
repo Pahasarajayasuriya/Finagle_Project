@@ -427,3 +427,14 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
+.invalid {
+  color: red;
+  color: #ff0000; /* Red color for error messages */
+  font-size: 17px; /* Font size */
+  margin-top: 5px;
+  margin-left: 127px;
+  margin-bottom:5px;
+
+  /* Other styles to indicate invalid input */
+}

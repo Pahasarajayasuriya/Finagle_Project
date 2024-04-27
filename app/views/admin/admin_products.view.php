@@ -11,7 +11,7 @@ $this->view('includes/footer', $data);
 <head>
     <title>Products</title>
     <!-- Link Styles -->
-    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/admin/product-admin.css">
+    <!-- <link rel="stylesheet" href="<?= ROOT ?>/assets/css/admin/product-admin.css"> -->
     <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin/admin_products.css">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -109,6 +109,7 @@ $this->view('includes/footer', $data);
                 <div>Name</div>
                 <div>Description</div>
                 <div>Category</div>
+                <div>Price</div>
               
             </div>
             </div>
@@ -146,6 +147,7 @@ $this->view('includes/footer', $data);
                 <div class="branch-name"><?= esc($row->user_name) ?></div>
                 <div class="branch-loc"><?= esc($row->description) ?></div>
                 <div class="branch-name"><?= esc($row->category) ?></div>
+                <div class="branch-name"><?= esc($row->price) ?></div>
                 <div class="advertisement-actions">
                   <!-- <button class="edit-button" onclick="openEditPopupDialog('${branch.id}', '${branch.name}', '${branch.location}')">Edit Branch</button> -->
                   <button class="edit-button"><a href="<?= ROOT."/admin_products/update_product/".$row->id ?>">Edit Product</a></button>

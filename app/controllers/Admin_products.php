@@ -40,15 +40,15 @@ class Admin_products extends Controller
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
             // Validate and sanitize input data
+            $id=$_POST['id'];
+            unset($_POST['id']);
+            unset($_POST['update']);
             $validatedData = $admin_product_model->validate($_POST);
             //show($data);
             //show($validatedData);
             if ($validatedData) {
                     //show($_POST);
-                    $id=$_POST['id'];
-                    unset($_POST['id']);
-                    unset($_POST['update']);
-                    show($_POST);
+                    //show($_POST);
                     // UPdate the DB
                     if ($_FILES['image']['size'] > 0) {
                         $imagePath = $this->uploadImage($_FILES['image']);
@@ -58,23 +58,28 @@ class Admin_products extends Controller
 
                         $admin_product_model->update($id,$validatedData);
                     }
-                    
-                    // Redirect to avoid form resubmission
-                    redirect('admin_products');
-                } else {
-                    // Handle image upload failure
 
-                    //echo "Image Upload Failed.";
-                }
-            } else {
+                    // Redirect to avoid form resubmission
+                    redirect('admin_products'); 
+            }else {
                 // Handle validation errors
                 $data['errors'] = $admin_product_model->errors;
-
-            // }
+            }
         }
 
-        $data['title'] = "admin_products";
-        $this->view('admin/admin_products', $data);
+        if (!empty($data['errors'])){
+            $param['id']=$id;
+            $data['row']=$admin_product_model->where($param);
+            //$data['errors']['teleno']="hello";
+            //show($data['errors']);
+            $this->view('admin/admin_products_update',$data);
+        }
+
+        else{
+            //show($data['errors']);
+            $data['title'] = "admin_product";
+            $this->view('admin/admin_products', $data);
+        }
 
     }
 

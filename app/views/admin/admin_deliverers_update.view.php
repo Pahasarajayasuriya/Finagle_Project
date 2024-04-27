@@ -77,7 +77,7 @@ $this->view('includes/footer', $data);
                     <div class="buttons-container">
                         <!-- <button class="cancel-btn" onclick="closePopup()">Cancel</button> -->
                         <button class="cancel-btn" ><a href="<?= ROOT."/admin_branches" ?>">Cancel</a></button>
-                        <button name="add" value="add" class="submit-btn" onclick="submitForm()">Submit</button>
+                        <button name="add" value="add" class="submit-btn" type="submit" >Submit</button>
                     </div>
 
                 </div>
@@ -110,21 +110,31 @@ $this->view('includes/footer', $data);
             <div class="popup-container" id="editPopupContainer">
                 <h2>Edit Deliverer Profile</h2>
                 <div class="popup-content">
+                    
                     <label for="editDescription">User Name:</label>
-                    <input type="text" id="editDescription" name="username" placeholder="Enter the branch name" value="<?= $row[0]->username ?>">
+                    <input type="text" id="editDescription" name="username" placeholder="Enter name" value="<?= $row[0]->username ?>" required>
+                    <?php if (!empty($errors['username'])) : ?>
+                            <div class="invalid"><?= $errors['username'] ?></div>
+                    <?php endif; ?>
 
-                    <label for="editEndDate">Contact NO:</label>
-                    <input type="text" id="editEndDate" name="teleno" value="<?= $row[0]->teleno ?>">
+                    <label for="editEndDate">Contact:</label>
+                    <input type="text" id="editDescription" name="teleno" placeholder="Enter the contact number" value="<?= $row[0]->teleno ?>"required>
+                    <?php if (!empty($errors['teleno'])) : ?>
+                            <div class="invalid"><?= $errors['teleno'] ?></div>
+                    <?php endif; ?>
 
                     <label for="editEndDate">E-mail:</label>
-                    <input type="text" id="editEndDate" name="email" value="<?= $row[0]->email ?>">
+                    <input type="text" id="editDescription" name="email" placeholder="Enter the e-mail" value="<?= $row[0]->email ?>"required>
+                    <?php if (!empty($errors['email'])) : ?>
+                            <div class="invalid"><?= $errors['email'] ?></div>
+                    <?php endif; ?>
 
                     <input type="hidden" name="id" value="<?= $row[0]->id; ?>">
                     
                     <div class="buttons-container">
                         <!-- <button class="cancel-btn" onclick="closeEditPopup()">Cancel</button> -->
                         <button class="cancel-btn"><a href="<?= ROOT."/admin_deliverers" ?>">Cancel</a></button>
-                        <button name="update" value="update" class="submit-btn" onclick="submitEditForm()">Submit</button>
+                        <button type="submit" name="update" value="update" class="submit-btn" type="submit" >Submit</button>
                     </div>
                 </div>
             </div class="branch-container">

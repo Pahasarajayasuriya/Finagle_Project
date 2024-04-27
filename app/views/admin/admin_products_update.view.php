@@ -93,12 +93,21 @@ $this->view('includes/footer', $data);
 
                     <label for="editEndDate">Name:</label>
                     <input type="text" id="editEndDate" name="user_name" value="<?= $row[0]->user_name ?>">
+                    <?php if (!empty($errors['use_rname'])) : ?>
+                            <div class="invalid"><?= $errors['user_name'] ?></div>
+                    <?php endif; ?>
 
                     <label for="editEndDate">Description:</label>
                     <input type="text" id="editEndDate" name="description" value="<?= $row[0]->description ?>">
+                    <?php if (!empty($errors['description'])) : ?>
+                            <div class="invalid"><?= $errors['description'] ?></div>
+                    <?php endif; ?>
 
                     <label for="editEndDate">Price:</label>
-                    <input type="file" id="editEndDate" name="price" value="<?= $row[0]->price ?>">
+                    <input type="text" id="editEndDate" name="price" value="<?= $row[0]->price ?>">
+                    <?php if (!empty($errors['price'])) : ?>
+                            <div class="invalid"><?= $errors['price'] ?></div>
+                    <?php endif; ?>
 
                     <label for="editEndDate">Category:</label>
                     <!-- <input type="date" id="editEndDate" name="end_date" value="<?= $row[0]->category ?>"> -->
@@ -114,7 +123,7 @@ $this->view('includes/footer', $data);
                     <div class="buttons-container">
                         <!-- <button class="cancel-btn" onclick="closeEditPopup()">Cancel</button> -->
                         <button class="cancel-btn"><a href="<?= ROOT."/admin_products" ?>">Cancel</a></button>
-                        <button name="update" value="update" class="submit-btn" onclick="submitEditForm()">Submit</button>
+                        <button type="submit"name="update" value="update" class="submit-btn">Submit</button>
                     </div>
                 </div>
             </div class="branch-container">
