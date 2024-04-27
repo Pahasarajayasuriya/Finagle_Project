@@ -5,10 +5,13 @@ class Progressbar extends Controller
     public function index()
     {
         $CheckoutModel = new CheckoutModel();
+        $user = new User();
+        $userdetails = $user->all();
         $userId = $_SESSION['USER_DATA']->id; // Get the user ID from the session
         $orderId = $_GET['orderId']; // Get the order ID from the query parameters
         $orderStatus = $CheckoutModel->getOrderStatus($userId, $orderId);
         // show($orderStatus);
+        $data['all'] = $userdetails;
         $data['title'] = "Progressbar";
         $data['orderId'] = $orderId;
         $data['orderStatus'] = $orderStatus;

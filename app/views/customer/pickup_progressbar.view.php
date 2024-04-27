@@ -26,7 +26,7 @@ $this->view('includes/footer', $data);
             <div class="container">
                 <div class="text-container">
                     <h1>Order ID: <?= $data['orderId'] ?></h1>
-                    <h2>If you have any issue, then call our hotline: <a href="tel:+940112236976">+94 (0) 11 223 6976</a></h2>
+                    <p>If you have any issue, then call our hotline: <a href="tel:+940112236976">+94 (0) 11 223 6976</a></p>
                 </div>
             </div>
             <div class="bar_container">
