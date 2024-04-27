@@ -12,7 +12,7 @@ class Deliverer_assign extends Controller
         //show($readyOrder);
         $data['ready_order'] = $readyOrder;
 
-        
+
         if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST["payment-btn"])) {
 
             unset($_POST["payment-btn"]);
@@ -44,7 +44,7 @@ class Deliverer_assign extends Controller
         redirect("Deliverer_assign");
     }
 
-   
+
 
     private function getItemsDetails()
     {
@@ -52,37 +52,37 @@ class Deliverer_assign extends Controller
         $checkout = new CheckoutOrder();
 
         $data = $checkout->findOrderdetails();
-        
+
         $i = 0;
 
         // show($data);
-        
+
         foreach ($data as $item) {
 
             $item->unique_id = $i;
 
             if ($item->delivery_or_pickup == "delivery" && $item->order_status == "order dispatch") {
-                
+
                 // initially included data pass to the array
                 $item->mult_order = [
                     [
                         "user_name" => $item->user_name,
                         "quantity" => $item->quantity,
-                        "price"=> $item->price
+                        "price" => $item->price
                     ]
-                    ];
-                }else{
-                    unset($data[$i]);
-                }
-                $i++;
+                ];
+            } else {
+                unset($data[$i]);
             }
-            
+            $i++;
+        }
+
         //show($data);        
         // find the same order id orders and merge that orders 
-        foreach ($data as $nkey =>$item) {
-            
+        foreach ($data as $nkey => $item) {
 
-            foreach ($data as $key=> $value) {
+
+            foreach ($data as $key => $value) {
 
                 if ($item->unique_id != $value->unique_id && $item->id == $value->id) {
 
@@ -90,15 +90,12 @@ class Deliverer_assign extends Controller
 
                         "user_name" => $value->user_name,
                         "quantity" => $value->quantity,
-                        "price"=> $value->price
+                        "price" => $value->price
                     ];
 
                     $item->mult_order = array_merge($item->mult_order, [$new_mult]);
-
                 }
-                
             }
-            
         }
 
         $new_result = [];
@@ -107,28 +104,30 @@ class Deliverer_assign extends Controller
         // show($data);
 
 
-        foreach($data as $item) {
+        foreach ($data as $item) {
 
-            if (!in_array( $item->id,$id_array)) {
+            if (!in_array($item->id, $id_array)) {
 
                 array_push($id_array, $item->id);
                 array_push($new_result, $item);
             }
 
             unset($item->user_name);
-            
+
             unset($item->quantity);
 
             unset($item->price);
-
-
-
         }
 
         //show($new_result);
 
-        return($new_result);
+        return ($new_result);
+    }
 
-        
+    public function getOrdersJson()
+    {
+        $orders = $this->getItemsDetails();
+        header('Content-Type: application/json');
+        echo json_encode($orders);
     }
 }

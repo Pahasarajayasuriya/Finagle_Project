@@ -80,14 +80,14 @@ $this->view('includes/orderDetails_popup', $data);
 
                 <div class="action-buttons">
 
-                
+
                   <button class="view-location-btn" onclick="calculateAndDisplayRoute({lat: <?= $element->latitude ?>, lng: <?= $element->longitude ?>})">View Location</button>
 
                   <?php
                   if ($element->payment_status == "Not Completed") {
 
                   ?>
-                    
+
                     <!-- <button class="payment-btn" >Payment</button>  -->
 
                     <form method="POST">
@@ -306,7 +306,69 @@ $this->view('includes/orderDetails_popup', $data);
     }
   </script>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+  <script>
+    setInterval(function() {
+      $.ajax({
+        url: 'http://localhost/finagle/public/deliverer_assign/getOrdersJson',
+        type: 'GET',
+        success: function(orders) {
+          // Clear the current list of orders
+          $('.assigned-orders').empty();
+
+          // Parse the data into JSON
+          // var orders = JSON.parse(data);
+          console.log(orders);
+          // Loop through the new orders and add them to the page
+          orders.forEach(order => {
+            // Create the HTML for the order
+            var orderHtml = `
+                    <div class="order-box">
+                        <div class="order-header">
+                            <h3>Order ID: ${order.id} D</h3>
+                            <button type="button" class="view-details" id="locationButton view-details" data-order='${JSON.stringify(order)}' onclick="showPopup(this,'viewOrderDetails')">View Details >>>></button>
+                        </div>
+                        <hr>
+                        <div class="addresses">
+                            <div class="pickup-address">
+                                <div class="dot"></div>
+                                <p>Pickup from branch</p>
+                            </div>
+                            <div class="vertical-line"><br><br></div>
+                            <div class="delivery-address">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <p>${order.delivery_address}</p>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <div class="call-icon">
+                                <a href="tel:${order.phone_number}"><i class="fa-solid fa-phone"></i></a>
+                            </div>
+                            <div class="action-buttons">
+                                <button class="view-location-btn" onclick="calculateAndDisplayRoute({lat: ${order.latitude}, lng: ${order.longitude}})">View Location</button>
+                                ${order.payment_status == "Not Completed" ? `
+                                    <form method="POST">
+                                        <input type="hidden" name="payment_status" value="Completed">
+                                        <input type="hidden" name="id" value="${order.id}">
+                                        <button name="payment-btn" class="payment-btn">Payment</button>
+                                    </form>
+                                ` : ''}
+                                <button class="delivered-btn" id="locationButton view-details" data-order='${JSON.stringify(order)}' onclick="showPopup(this,'viewOrderConfirm')"> Delivered</button>
+                            </div>
+                        </div>
+                    </div>`;
+
+            // Add the order to the page
+            $('.assigned-orders').append(orderHtml);
+          });
+        },
+        error: function(error) {
+          console.error('Error:', error);
+        }
+      });
+    }, 60000); // 60000 milliseconds = 30 seconds
+  </script>
 
 
 
