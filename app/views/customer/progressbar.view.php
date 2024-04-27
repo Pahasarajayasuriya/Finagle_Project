@@ -82,6 +82,9 @@ $this->view('includes/footer', $data);
         <script>
             var orderStatus = "<?= $data['orderStatus'] ?>";
             var orderId = "<?= $data['orderId'] ?>";
+
+            var userName = <?= json_encode(Auth::is_customer() ? Auth::getName() : '') ?>;
+
             console.log(orderId);
             console.log(orderStatus);
         </script>
@@ -94,19 +97,17 @@ $this->view('includes/footer', $data);
             event.preventDefault(); // Prevent the form from being submitted
 
             const {
-                value: userName
+                value: userInput
             } = await Swal.fire({
                 title: 'User Name',
                 input: 'text',
-                inputPlaceholder: 'Enter your user name',
+                inputValue: userName, // Pre-fill the input with the username
                 showCancelButton: true,
                 confirmButtonColor: '#FF0000',
                 cancelButtonColor: 'black',
-               
-
             });
 
-            if (userName) {
+            if (userInput) {
                 const {
                     value: review
                 } = await Swal.fire({
@@ -190,8 +191,7 @@ $this->view('includes/footer', $data);
     </script>
 
 
-   
-    
+
 </body>
 
 </html>
