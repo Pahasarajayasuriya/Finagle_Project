@@ -200,6 +200,7 @@ $this->view('includes/footer', $data);
         }
 
     </script>
+
 </body>
 
 </html>

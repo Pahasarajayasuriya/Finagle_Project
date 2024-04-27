@@ -26,10 +26,7 @@ class admin_advertisementsModel extends Model
         //     $this->errors['image']='Image is required'; 
         // }
 
-        if(empty($data['end_date']))
-        {
-            $this->errors['end_date']='End date is required'; 
-        }
+    
         if (empty($data['end_date'])) {
             $this->errors['end_date'] = 'Date is required';
         } elseif (!strtotime($data['end_date'])) {
