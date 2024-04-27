@@ -93,7 +93,7 @@ $this->view('includes/footer', $data);
 
                     <label for="editEndDate">Name:</label>
                     <input type="text" id="editEndDate" name="user_name" value="<?= $row[0]->user_name ?>">
-                    <?php if (!empty($errors['use_rname'])) : ?>
+                    <?php if (!empty($errors['user_name'])) : ?>
                             <div class="invalid"><?= $errors['user_name'] ?></div>
                     <?php endif; ?>
 

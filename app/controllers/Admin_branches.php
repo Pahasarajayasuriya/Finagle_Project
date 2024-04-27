@@ -22,17 +22,12 @@ class Admin_branches extends Controller
 
                     // Redirect to avoid form resubmission
                     redirect('admin_branches');
-                } else {
-                    // Handle image upload failure
-
-                    //echo "Image Upload Failed.";
-                }
-            } else {
+            }else {
                 // Handle validation errors
                 $data['errors'] = $admin_branch_model->errors;
 
-            // }
-                 }
+            }
+        }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
             // Validate and sanitize input data
@@ -92,11 +87,5 @@ class Admin_branches extends Controller
         $data['errors'] = [];
         $this->view('admin/admin_branches_update',$data);
 
-    }
-
-    public function add_branch(){
-        $admin_branch_model = new admin_branchesModel();
-        $data['rows'] = $admin_branch_model->get_all();
-        $this->view('admin/admin_branches_add',$data);
     }
 }

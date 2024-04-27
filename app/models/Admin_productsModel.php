@@ -24,7 +24,7 @@ class Admin_productsModel extends Model
 
         if(empty($data['user_name']))
         {
-            $this->errors['username']='Username is required'; 
+            $this->errors['user_name']='Username is required'; 
         }
 
         if(empty($data['description']))

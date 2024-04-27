@@ -37,19 +37,19 @@ $this->view('includes/footer', $data);
                     </div>
                 </form>
 
-                <a href="<?= ROOT?>/admin_products_add"><input class="add-btn" type="button" onclick="openReport()" value="Add PRODUCT"></a>
+                <input class="add-btn" type="button" onclick="openReport()" value="Add PRODUCT">
             </div>
 
             <!-- Popup Container for add branch -->
-            <form method="POST" enctype="multipart/form-data" action="<?= ROOT?>/admin_products">
+            <form method="POST" enctype="multipart/form-data" action="<?= ROOT?>/admin_products_add">
             <div class="popup-container" id="popupContainer">
                 <h2>Add a Product</h2>
                 <div class="popup-content">
 
                     <label for="description">name:</label>
-                    <input value="<?= set_value('name') ?>" type="text" id="description" name="user_name" placeholder="">
-                    <?php if (!empty($errors['name'])) : ?>
-                            <div class="invalid"><?= $errors['name'] ?></div>
+                    <input value="<?= set_value('user_name') ?>" type="text" id="description" name="user_name">
+                    <?php if (!empty($errors['user_name'])) : ?>
+                            <div class="invalid"><?= $errors['user_name'] ?></div>
                     <?php endif; ?>
 
                     <label for="image">image:</label>
@@ -72,13 +72,13 @@ $this->view('includes/footer', $data);
                     <?php endif; ?> </br>
 
                     <label for="end_date">price:</label>
-                    <input type="text" id="Image" name="price">
+                    <input value="<?= set_value('user_name') ?>" type="text" id="Image" name="price">
                     <?php if (!empty($errors['price'])) : ?>
                             <div class="invalid"><?= $errors['price'] ?></div>
                     <?php endif; ?>
 
                     <label for="end_date">description:</label>
-                    <input type="text" id="Image" name="description">
+                    <input value="<?= set_value('description') ?>" type="text" id="Image" name="description">
                     <?php if (!empty($errors['description'])) : ?>
                             <div class="invalid"><?= $errors['description'] ?></div>
                     <?php endif; ?>
@@ -161,7 +161,7 @@ $this->view('includes/footer', $data);
         </section>
         <!-- <script src="branch-admin.js"></script> -->
     </div>
-    <script src="<?= ROOT ?>/assets/js/admin_branch.js"></script>
+    <script src="<?= ROOT ?>/assets/js/admin/admin_add.js"></script>
     <script>
         function filterBranches() {
             var input, filter, branchesContainer, branches, branchName;

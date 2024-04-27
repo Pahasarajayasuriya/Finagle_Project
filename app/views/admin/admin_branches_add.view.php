@@ -41,7 +41,7 @@ $this->view('includes/footer', $data);
             </div>
 
             <!-- Popup Container for add branch -->
-            <form method="POST" enctype="multipart/form-data" action="<?= ROOT?>/admin_branches">
+            <form method="POST" enctype="multipart/form-data" action="<?= ROOT?>/admin_branches_add">
             <div class="popup-container" id="popupContainer">
                 <h2>Add a Branch</h2>
                 <div class="popup-content">
@@ -52,25 +52,25 @@ $this->view('includes/footer', $data);
                     <?php endif; ?>
 
                     <label for="address">Address:</label>
-                    <input type="text" id="price" name="address">
+                    <input value="<?= set_value('address') ?>" type="text" id="price" name="address">
                     <?php if (!empty($errors['address'])) : ?>
                             <div class="invalid"><?= $errors['address'] ?></div>
                     <?php endif; ?>
 
                     <label for="contact-number">Contact number:</label>
-                    <input type="text" id="Image" name="contact_number">
+                    <input value="<?= set_value('contact_number') ?>" type="text" id="Image" name="contact_number">
                     <?php if (!empty($errors['contact_number'])) : ?>
                             <div class="invalid"><?= $errors['contact_number'] ?></div>
                     <?php endif; ?>
 
                     <label for="open">Openning hours:</label>
-                    <input type="time" id="open" name="open_time" value="00:00:00">
+                    <input value="<?= set_value('open_time') ?>" type="time" id="open" name="open_time" value="00:00:00">
                     <?php if (!empty($errors['open_time'])) : ?>
                             <div class="invalid"><?= $errors['open_time'] ?></div>
                     <?php endif; ?>
 
                     <label for="close">Closing hours:</label>
-                    <input type="time" id="close" name="close_time" value="00:00:00">
+                    <input value="<?= set_value('close_time') ?>" type="time" id="close" name="close_time" value="00:00:00">
                     <?php if (!empty($errors['close_time'])) : ?>
                             <div class="invalid"><?= $errors['close_time'] ?></div>
                     <?php endif; ?>

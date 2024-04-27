@@ -37,7 +37,7 @@ $this->view('includes/footer', $data);
                     </div>
                 </form>
 
-                <input class="add-btn" type="button" onclick="openReport()" value="Add Branches">
+                <a href="<?= ROOT?>/admin_branches_add"><input class="add-btn" type="button"  value="Add Branches"></a>
             </div>
 
             <!-- Popup Container for add branch -->

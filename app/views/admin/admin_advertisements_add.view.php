@@ -1,18 +1,18 @@
 <?php
 $role = "Admin";
 $data['role'] = $role;
+
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Products</title>
-    <!-- Link Styles -->
-    <!-- <link rel="stylesheet" href="<?= ROOT ?>/assets/css/admin/product-admin.css"> -->
-    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin/admin_products.css">
+    <title>Advertisements</title>
+    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin/admin_advertisements.css">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -24,71 +24,48 @@ $this->view('includes/footer', $data);
         <!-- content  -->
         <section id="main" class="main">
             <div class="ad_head">
-                <p class="ad_head_1">PRODUCTS<span> DETAILS</span></p>
+                <p class="ad_head_1">ADVERTISEMENTS<span> DETAILS</span></p>
             </div>
 
             <div class="form-header">
                 <form action="#">
                     <div class="ad-form-input">
-                        <input type="search" id="search" placeholder="by product name">
+                        <input type="search" placeholder="by description" id="search" placeholder="Search...">
                         <button type="submit" class="ad-search-btn">
                             <i class='bx bx-search'></i>
                         </button>
                     </div>
                 </form>
 
-                <a href="<?= ROOT?>/admin_products_add"><input class="add-btn" type="button" onclick="openReport()" value="Add PRODUCT"></a>
+                <input class="add-btn" type="button" onclick="openReport()" value="Add ADVERTISEMENT">
             </div>
 
             <!-- Popup Container for add branch -->
-            <form method="POST" enctype="multipart/form-data" action="<?= ROOT?>/admin_products">
+            <form method="POST" enctype="multipart/form-data" action="<?= ROOT?>/admin_advertisements_add">
             <div class="popup-container" id="popupContainer">
-                <h2>Add a Product</h2>
+                <h2>Add a Advertisement</h2>
                 <div class="popup-content">
-
-                    <label for="description">name:</label>
-                    <input value="<?= set_value('name') ?>" type="text" id="description" name="user_name" placeholder="">
-                    <?php if (!empty($errors['name'])) : ?>
-                            <div class="invalid"><?= $errors['name'] ?></div>
-                    <?php endif; ?>
-
-                    <label for="image">image:</label>
-                    <input type="file" id="price" name="image" onchange="load_image(this.files[0])">
-                    <?php if (!empty($errors['image'])) : ?>
-                            <div class="invalid"><?= $errors['image'] ?></div>
-                    <?php endif; ?>
-
-                    <label for="end_date">category:</label>
-                    <!-- <input type="text" id="Image" name="category"> -->
-
-                    <select id="dropdown" name="category">
-                        <option value="Bread & Buns">Bread & Buns</option>
-                        <option value="Cakes">Cakes</option>
-                        <option value="Frozen Foods">Frozen Foods</option>
-                    </select>
-
-                    <?php if (!empty($errors['category'])) : ?>
-                            <div class="invalid"><?= $errors['category'] ?></div>
-                    <?php endif; ?> </br>
-
-                    <label for="end_date">price:</label>
-                    <input type="text" id="Image" name="price">
-                    <?php if (!empty($errors['price'])) : ?>
-                            <div class="invalid"><?= $errors['price'] ?></div>
-                    <?php endif; ?>
-
-                    <label for="end_date">description:</label>
-                    <input type="text" id="Image" name="description">
+                    <label for="description">Description:</label>
+                    <input value="<?= set_value('description') ?>" type="text" id="description" name="description" >
                     <?php if (!empty($errors['description'])) : ?>
                             <div class="invalid"><?= $errors['description'] ?></div>
                     <?php endif; ?>
 
-                    <!-- ssetting up quantitiy for temporary -->
-                    <input type="hidden" name="quantity" value="200">
+                    <label for="image">image:</label>
+                    <input type="file" onchange="load_image(this.files[0])" id="image" name="image" required>
+                    <?php if (!empty($errors['image'])) : ?>
+                            <div class="invalid"><?= $errors['image'] ?></div>
+                    <?php endif; ?>
+
+                    <label for="end_date">end_date:</label>
+                    <input value="<?= set_value('end_date') ?>" type="date" id="Image" name="end_date">
+                    <?php if (!empty($errors['end_date'])) : ?>
+                            <div class="invalid"><?= $errors['end_date'] ?></div>
+                    <?php endif; ?>
 
                     <div class="buttons-container">
                         <!-- <button class="cancel-btn" onclick="closePopup()">Cancel</button> -->
-                        <button class="cancel-btn" ><a href="<?= ROOT."/admin_products" ?>">Cancel</a></button>
+                        <button class="cancel-btn" ><a href="<?= ROOT."/admin_advertisements" ?>">Cancel</a></button>
                         <button name="add" value="add" class="submit-btn" onclick="submitForm()">Submit</button>
                     </div>
 
@@ -101,15 +78,12 @@ $this->view('includes/footer', $data);
                 <!-- <div class="ad-image">Image</div>
                 <div class="ad-id">ID</div>
                 <div class="ad-description">Description</div>
-                <div class="ad-date">Name</div>
-                <div class="ad-date">Category</div> -->
+                <div class="ad-date">End Date</div> -->
 
                 <div>Image</div>
                 <div>ID</div>
-                <div>Name</div>
                 <div>Description</div>
-                <div>Category</div>
-                <div>Price</div>
+                <div>End Date</div>
               
             </div>
             </div>
@@ -139,20 +113,20 @@ $this->view('includes/footer', $data);
                 </div>
             </div>
 
+
             <?php foreach ($rows as $row) : ?>
             <div class="advertisement-record">
                 <!-- <div class="advertisement-image"> <img src="https://lh3.googleusercontent.com/p/AF1QipNFVt_67WFrJbjsHEQfxY691SYz3wxrn1Ioq5KC=s1360-w1360-h1020" alt="branch.id" class="customer-image"></div> -->
                 <div class="advertisement-image"><img src="<?= esc($row->image) ?>" alt="Description of image"></div>
                 <div class="branch-id"><?= esc($row->id) ?></div>
-                <div class="branch-name"><?= esc($row->user_name) ?></div>
-                <div class="branch-loc"><?= esc($row->description) ?></div>
-                <div class="branch-name"><?= esc($row->category) ?></div>
-                <div class="branch-name"><?= esc($row->price) ?></div>
+                <div class="branch-name"><?= esc($row->description) ?></div>
+                <div class="branch-loc"><?= esc($row->end_date) ?></div>
                 <div class="advertisement-actions">
                   <!-- <button class="edit-button" onclick="openEditPopupDialog('${branch.id}', '${branch.name}', '${branch.location}')">Edit Branch</button> -->
-                  <button class="edit-button"><a href="<?= ROOT."/admin_products/update_product/".$row->id ?>">Edit Product</a></button>
-                  <button class="delete-button" onclick="openDeletePopup('<?= esc($row->id) ?>')">Delete </button>
-                  <!-- <button class="edit-button"><a href="<?= ROOT."/admin_products/delete_product/".$row->id ?>">Delete Product</a></button>                 -->
+                  <button class="edit-button"><a href="<?= ROOT."/admin_advertisements/update_advertisement/".$row->id ?>">Edit</a></button>
+                  <button class="delete-button" onclick="openDeletePopup('<?= esc($row->id) ?>')">Delete</button>
+                  <!-- <button class="edit-button" onclick="openReport1()">Delete Advertisement</button>                 -->
+                  <!-- <button class="edit-button"><a href="<?= ROOT."/admin_advertisements/delete_advertisement/".$row->id ?>">Delete Advertisement</a></button>                 -->
                 </div>             
              </div>
              <?php endforeach;?>
@@ -161,8 +135,10 @@ $this->view('includes/footer', $data);
         </section>
         <!-- <script src="branch-admin.js"></script> -->
     </div>
-    <script src="<?= ROOT ?>/assets/js/admin_branch.js"></script>
+    <script src="<?= ROOT ?>/assets/js/admin/admin_add.js"></script>
     <script>
+        //for search bar
+        var deleteulr="<?= ROOT ?>/admin_advertisements/delete_advertisement/";
         function filterBranches() {
             var input, filter, branchesContainer, branches, branchName;
             input = document.getElementById('search');
@@ -183,7 +159,6 @@ $this->view('includes/footer', $data);
 
         document.getElementById('search').addEventListener('input', filterBranches);
     </script>
-
     <script>
         //for get id through delete button
         function openDeletePopup(adId) {
@@ -196,7 +171,7 @@ $this->view('includes/footer', $data);
         }
 
         function confirmDelete(adId) {
-            const url = `<?=ROOT."/admin_products/delete_product/"?>${adId}`;
+            const url = `<?=ROOT."/admin_advertisements/delete_advertisement/"?>${adId}`;
             //console.log(url);
             window.location.href = url; // Redirect to delete the advertisement
         }
@@ -208,7 +183,6 @@ $this->view('includes/footer', $data);
         }
 
     </script>
-
 </body>
 
 </html>
