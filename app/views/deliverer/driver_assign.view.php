@@ -311,7 +311,8 @@ $this->view('includes/orderDetails_popup', $data);
 
 
 
-  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3KoOPDxuE9bSb6J__Wn_tz18S3IdBNIw&loading=async&callback=initMap"></script>
+  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJgBkLPPO15pdU1KgvHPib8NnXlun3IsM&loading=async&callback=initMap"></script>
+
 
   <style>
     #map {

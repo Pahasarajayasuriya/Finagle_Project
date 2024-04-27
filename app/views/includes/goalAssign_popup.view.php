@@ -8,39 +8,58 @@
 </head>
 
 <body>
-    <div id="assignGoals" class="modal_new">
-        <div class="model_new_content">
+    <div id="assignGoals" class="modal">
 
-            <div>
-                <i class='bx bx-window-close bx-fade-right' style='color:red' onclick="hidePopup('assignGoals')"></i>
+        <div class="modal-content">
+
+            <!-- <div>
+                <i class='bx bx-window-close bx-fade-right' style='color:red'></i>
+
+
+            </div> -->
+
+          <form method="POST" action="<?= ROOT ?>/Manager_employee">
+
+            <h2>Assign Goals to Employees</h2>
+
+
+            <div class="check_inline">
+                <label class="check_order" for="check_order" name='orders' id="orders">Target Orders</label>
+                <input class="check_input" name='orders' value="" type="text" id="orders" name="orders">
             </div>
 
-            <h5 class="text">Assign Goals to Employees</h5>
+            <div class="check_inline">
+                <label class="check_order" for="check_customer" name='customers'>Target Customers</label>
+                <input class="check_input" name='customers' value="" type="text" id="customers" name="customers">
+            </div>
 
-            <form method="POST">
-                        <div class="inputbox">
-                            <i class='bx bxs-calendar-check'></i>
-                            <input value=""  name="password" id="password" placeholder="Target Orders must be">
-                        </div>
+            <div class="check_inline">
+                <label class="check_order" for="check_revenue" name='revenues'>Target Revenue</label>
+                <input class="check_input" name='revenues' value="" type="text" id="revenue" name="revenues">
+            </div>
 
-                        <div class="inputbox">
-                            <i class='bx bxs-dollar-circle'></i>
-                            <input value=""  name="password" id="password" placeholder="Target Revenue must be">
-                        </div>
+            <div class="check_inline" id="others">
+                <label class="check_order" id="other_note" name='others'>Other:</label><br><br>
+                <textarea class="check_input" id="others" name="others" value=""></textarea>
+            </div>
 
-                        <div class="inputbox">
-                            <i class='bx bxs-group'></i>
-                            <textarea value=""  name="password" id="password" placeholder="Other goals">
-                        </div>
-            </form>
+
+
 
             <div class="button-line">
-                <button class="button" id="confirmDelete" onclick="cancelOrder()">OK</button>
+                <button class="button" id="confirmDelete" type="submit">OK</button>
                 <button class="button" id="cancelDelete" onclick="hidePopup('assignGoals')">Cancel</button>
-            
+
             </div>
+
+
+          </form>
         </div>
+        
     </div>
+
+
+
 
     <style>
         .modal {
@@ -53,25 +72,11 @@
             height: 100%;
             overflow: auto;
             background-color: rgba(0, 0, 0, 0.4);
-        }
-
-        .model_new{
-            width:200px;
-            height: 500px;
-            margin-top: 5px;
-            background-color: #888;
 
         }
 
-        .model_new_content{
-            border-radius: 10px;
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 50%;
 
-        }
+
         .modal-content {
             border-radius: 10px;
             background-color: #fefefe;
@@ -82,6 +87,7 @@
             text-align: center;
             padding-top: 10px;
             padding-bottom: 10px;
+            margin-top: 5%;
         }
 
         .close {
@@ -98,13 +104,21 @@
             cursor: pointer;
         }
 
-        .icon-warn,
+        .icon-warn {
+            margin-left: 27px;
+            font-size: 7rem;
+            display: flexbox;
+            justify-content: center;
+            align-items: center;
+        }
+
         .bx-window-close {
             margin-left: 27px;
             font-size: 7rem;
             display: flexbox;
             justify-content: center;
             align-items: center;
+
         }
 
         .bx.bx-window-close.bx-fade-right {
@@ -113,8 +127,9 @@
         }
 
         .button-line {
-            margin-top: 110px;
+            margin-top: 20px;
             padding-bottom: 5px;
+
         }
 
         .button {
@@ -130,6 +145,7 @@
             color: #fff;
             transition: 0.3s ease-in;
             margin-top: 40px;
+
         }
 
         #confirmDelete {
@@ -148,6 +164,54 @@
         #cancelDelete:hover {
             background-color: rgb(255, 0, 0);
         }
+
+
+        label {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+
+
+        
+        input[type="text"],
+        textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus,
+        textarea:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        
+        /* Additional styles for textarea */
+        #other {
+            height: 100px;
+            /* Adjust height as needed */
+        }
+
+        /* Optional: Styles for the check_inline container */
+        .check_inline {
+            margin-top: 20px;
+        }
+
+        .check_input:focus {
+          border-color: #000;
+         }
+
+         .check_input:hover{
+            border-color: #000;
+         }
     </style>
 </body>
 

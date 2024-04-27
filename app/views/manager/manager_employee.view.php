@@ -6,6 +6,8 @@ $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
 
+$this->view('includes/goalAssign_popup', $data);
+
 ?>
 
 <!DOCTYPE html>
@@ -100,7 +102,8 @@ $this->view('includes/footer', $data);
 
         var popup = document.getElementById(popupId);
 
-        // console.log('popup calling');
+        console.log('popup calling');
+
         if (popup) {
             popup.style.display = "block";
         }
@@ -108,6 +111,7 @@ $this->view('includes/footer', $data);
 
     function hidePopup(popupId) {
         var popup = document.getElementById(popupId);
+
         if (popup) {
             popup.style.display = "none";
         }

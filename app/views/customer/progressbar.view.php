@@ -173,7 +173,7 @@ $this->view('includes/footer', $data);
         });
     </script>
 
-    <script>
+<script>
         document.addEventListener("DOMContentLoaded", function() {
 
 
@@ -186,9 +186,9 @@ $this->view('includes/footer', $data);
                     navbar.style.backgroundColor = "transparent";
                 }
             });
-
         });
     </script>
+
 
    
     

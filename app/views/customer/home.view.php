@@ -153,44 +153,42 @@ $this->view('includes/footer', $data);
 
         </div>
 
-        <div class="offer-category">
-            <!-- <h2 class="section-title"><strong>Check </strong>OUR CATEGORIES</h2> -->
-            <h2 class="section-title"><strong> </strong>SPECIAL OFFERS</h2>
-            <div class="divider dark mb-4">
-                <div class="icon-wrap">
-                    <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
-
-                </div>
+        <?php if (!empty($advertisements)) : ?>
+    <div class="offer-category">
+        <h2 class="section-title"><strong> </strong>SPECIAL OFFERS</h2>
+        <div class="divider dark mb-4">
+            <div class="icon-wrap">
+                <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
             </div>
-            <section class="offer_section ">
-                <div class="offer_container">
-                    <div class="container ">
-                        <div class="row">
-                            <?php foreach ($advertisements as $advertisement) : ?>
-                                <div class="col-md-6">
-                                    <div class="box">
-                                        <div class="img-box">
-                                            <img src="<?= $advertisement->image ?>" alt="">
-                                        </div>
-                                        <div class="detail-box">
-                                            <h5>
-                                                <?= $advertisement->description ?>
-                                            </h5>
-                                            <div style="position: relative; top: 40px; right: -100px;">
-                                                <a href="<?= ROOT ?>/products">
-                                                    Order Now<span> <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i></span>
-                                                </a>
-                                            </div>
+        </div>
+        <section class="offer_section ">
+            <div class="offer_container">
+                <div class="container ">
+                    <div class="row">
+                        <?php foreach ($advertisements as $advertisement) : ?>
+                            <div class="col-md-6">
+                                <div class="box">
+                                    <div class="img-box">
+                                        <img src="<?= $advertisement->image ?>" alt="">
+                                    </div>
+                                    <div class="detail-box">
+                                        <h5><?= $advertisement->description ?></h5>
+                                        <div style="position: relative; top: 40px; right: -100px;">
+                                            <a href="<?= ROOT ?>/products">
+                                                Order Now<span> <i class="fas fa-shopping-cart fa-3x text-primary mb-4"></i></span>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
-                            <?php endforeach; ?>
-                        </div>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
+    </div>
+<?php endif; ?>
 
-        </div>
 
 
         <div class="product-category">
@@ -250,7 +248,7 @@ $this->view('includes/footer', $data);
                     </div>
                 </div>
                 <div class="food_section">
-                    <button class="arrow-btn left" onclick="prevProducts()">&#10094;</button>
+                    <!-- <button class="arrow-btn left" onclick="prevProducts()">&#10094;</button> -->
                     <div class="row grid">
                         <?php foreach ($newlyAdded as $product) : ?>
                             <div class="col-sm-6 col-lg-4 all pizza">

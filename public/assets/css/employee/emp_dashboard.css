@@ -17,8 +17,6 @@
 	--light-orange: #FFE0D3;
 }
 
-  
-
 #content main .head-title {
 	display: flex;
 	align-items: center;
@@ -141,7 +139,7 @@
 #content main .box-info li i{
 	margin-left: 40px;
 }
-#content main .box-info li .text{
+ #content main .box-info li .text{
 	text-align: center;
 	align-items: center;
 	margin-left: 15%;
@@ -571,3 +569,36 @@
     margin-left: 170px;
     transition: 0.5s;
   }
+
+
+  
+
+#orders{
+	background-color:#CFE8FF ;
+}
+  
+
+#customers{
+	background-color:#FFF2C6;
+}
+
+#revenue{
+	background-color: #FFE0D3;
+}
+
+
+#content main .table-data .todo .todo-list #orders{
+	background-color:#CFE8FF ;
+}
+
+#content main .table-data .todo .todo-list #customers{
+	background-color:#FFF2C6;
+}
+
+#content main .table-data .todo .todo-list #revenue{
+	background-color: #FFE0D3;
+}
+
+
+
+  

@@ -9,7 +9,8 @@ class Goals extends Model
         'id',
         'branch_name',
         'orders',
-        'revenue',
+        'customers',
+        'revenues',
         'others'
     ];
 
