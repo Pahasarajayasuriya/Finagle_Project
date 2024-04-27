@@ -7,7 +7,8 @@
 <body>
     <script>
         localStorage.removeItem("cart");
-        window.location.href = 'pickup_progressbar'; 
+        var orderId = new URLSearchParams(window.location.search).get('orderId');
+        window.location.href = 'pickup_progressbar?orderId=' + orderId;
     </script>
 </body>
 

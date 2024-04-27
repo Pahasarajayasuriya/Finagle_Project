@@ -18,7 +18,7 @@
 
 <body>
 
-
+  <!-- single popup -->
   <div id="assignDeliver" class="modal">
     <div class="modal-content">
 
@@ -40,6 +40,8 @@
           // show($data['driver_details']);
 
           foreach ($data['driver_details'] as $driver) {
+            if($driver->availability_status == 1)
+            {
         ?>
 
             <ul class="options">
@@ -54,6 +56,7 @@
         <?php
           }
         }
+        }
 
         ?>
       </div>
@@ -65,80 +68,178 @@
 </html>
 
 
-<button class="confirm_button"  onclick="hidePopup('assignDeliver')">OK</button>
+<button class="confirm_button" onclick="assignPopup()">OK</button>
 
 <button class="cancel_button" id="confirmDelete" onclick="hidePopup('assignDeliver')">Cancel</button>
 
 </div>
 </div>
 
-<script>
-
- function assignPopup(e){
-
- }
-
-</script>
-
-
 
 <!-- Main 'Assign Drivers' button -->
-   
+
 <div id="viewAssign" class="modal">
-    <div class="modal-content">
+  <div class="modal-content">
 
     <div>
-        <i class='bx bxs-truck bx-fade-right' style='color:#f90000'></i>
-      </div>
-
-
-      <div class="select-menu_main">
-        <div class="select-btn_main">
-          <span class="sBtn-text_main">Assign a deliverer</span>
-          <i class="bx bx-chevron-down"></i>
-        </div>
-
-        <?php
-        //show($data);
-        if (isset($data['driver_details'])) {
-          // show($data['driver_details']);
-
-          foreach ($data['driver_details'] as $driver) {
-        ?>
-
-            <ul class="options_main">
-              <li class="option_main">
-                <i class='bx bxs-user-circle' style='color:#ff0e0e'></i>
-                <span class="option-text_main"><?= $driver->id ?> - <?= $driver->username ?></span>
-              </li>
-
-
-            </ul>
-
-        <?php
-          }
-        }
-
-        ?>
-      </div>
-
-    
-      <h4>Are you sure you want to assign these orders to this driver ?  </h5>
-
-
-        <div id="assignOrdersContainer">
-          <!-- Selected orders will be appended here -->
-        </div>
-
-
-        <button type="submit" name="inform_btn" class="confirm_button" onclick="confirm_assign()">Yes</button>
-
-        <button type="button" class="cancel_button" id="cancelAssign" onclick="hidePopup('viewOrderConfirm')">No</button>
-
-        
-
+      <i class='bx bxs-truck bx-fade-right' style='color:#f90000'></i>
     </div>
+
+
+    <div class="select-menu_main">
+      <div class="select-btn_main">
+        <span class="sBtn-text_main">Assign a deliverer</span>
+        <i class="bx bx-chevron-down"></i>
+      </div>
+
+      <?php
+      //show($data);
+      if (isset($data['driver_details'])) {
+        // show($data['driver_details']);
+
+        foreach ($data['driver_details'] as $driver) {
+          if($driver->availability_status == 1)
+          {
+      ?>
+
+          <ul class="options_main">
+            <li class="option_main">
+              <i class='bx bxs-user-circle' style='color:#ff0e0e'></i>
+              <span class="option-text_main"><?= $driver->id ?> - <?= $driver->username ?></span>
+            </li>
+
+
+          </ul>
+
+      <?php
+        }
+      }
+      }
+
+      ?>
+    </div>
+
+
+    <h4>Are you sure you want to assign these orders to this driver ? </h5>
+
+
+      <div id="assignOrdersContainer">
+        <!-- Selected orders will be appended here -->
+      </div>
+
+
+      <button type="submit" name="inform_btn" class="confirm_button" onclick="assignPopup('all')">Yes</button>
+
+
+      <button type="button" class="cancel_button" id="cancelAssign" onclick="hidePopup('viewOrderConfirm')">No</button>
+
+
+
   </div>
+</div>
+
+<!-- Import JQuary Library script -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+  var status_update_endpoint = "<?= ROOT ?>/Order_status_update"
+
+  var selected_deliver_data = -1;
+
+
+  const optionMenu = document.querySelector(".select-menu"),
+    selectBtn = optionMenu.querySelector(".select-btn"),
+    options = optionMenu.querySelectorAll(".option"),
+    sBtn_text = optionMenu.querySelector(".sBtn-text");
+
+  selectBtn.addEventListener("click", () => optionMenu.classList.toggle("active"));
+
+  options.forEach(option => {
+    option.addEventListener("click", () => {
+      let selectedOption = option.querySelector(".option-text").innerText;
+      sBtn_text.innerText = selectedOption;
+      
+      selected_deliver_data = selectedOption
+
+      optionMenu.classList.remove("active");
+    });
+  });
+
+  const optionMenu_main = document.querySelector(".select-menu_main"),
+    selectBtn_main = optionMenu_main.querySelector(".select-btn_main"),
+    options_main = optionMenu_main.querySelectorAll(".option_main"),
+    sBtn_text_main = optionMenu_main.querySelector(".sBtn-text_main");
+    
+    selectBtn_main.addEventListener("click", () => optionMenu_main.classList.toggle("active"));
+
+  options_main.forEach(option_main => {
+    option_main.addEventListener("click", () => {
+      let selectedOption_main = option_main.querySelector(".option-text_main").innerText;
+
+      selected_deliver_data = selectedOption_main;
+      
+      sBtn_text_main.innerText = selectedOption_main;
+
+      optionMenu_main.classList.remove("active");
+    });
+  });
+
+
+  // all the delivery assigning process
+  function assignPopup(btn = "") {
+
+    if (btn == "all") {
+      // Remove newline characters and everything after
+      driver_assign_order_id = driver_assign_order_id.map(element => parseInt(element));
+      
+    }
+    
+    
+    // not selected deliver man
+    if(selected_deliver_data == -1){
+      
+      return;
+    }else{
+      // get the id value only
+      selected_deliver_data = parseInt(selected_deliver_data);
+
+    }
+    
+    // console.log(selected_deliver_data);
+    // console.log(driver_assign_order_id);
+
+    data = {
+      id_array: driver_assign_order_id,
+      status: "order dispatch",
+      deliver_id: selected_deliver_data
+    };
+
+    $.ajax({
+      type: "POST",
+      url: status_update_endpoint,
+      data: data,
+      cache: false,
+      success: function(res) {
+        try {
+          console.log(res);
+
+          // convert to the json type
+          Jsondata = JSON.parse(res);
+
+          location.reload();
+
+        } catch (error) {}
+      },
+      error: function(xhr, status, error) {
+        // return xhr;
+      },
+    });
+
+
+
+  }
+</script>
+
 
 
 <style>
@@ -197,7 +298,7 @@
 
   }
 
-  .confirm_button{
+  .confirm_button {
     width: 100px;
     height: 37px;
     font-size: 16px;
@@ -303,13 +404,13 @@
 
   .sBtn-text {
     font-size: 14px;
-    color:#aaa;
+    color: #aaa;
     font-weight: 450;
-    
+
   }
 
 
-  
+
   .select-menu_main {
     width: 320px;
     margin: 20px auto;
@@ -380,83 +481,39 @@
 
   .sBtn-text_main {
     font-size: 14px;
-    color:#aaa;
+    color: #aaa;
     font-weight: 450;
-    
+
   }
-  
+
 
   .order-flex-container {
-      border: 1px;
-      border-radius: 8px;
-      padding: 7px;
-      margin-bottom: 15px;
-      background-color: #f9f9f9;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-      margin-top: 25px;
-      width: 15%;
-      margin-left: 35%;
-    }
-
-   
-    .order-flex-container:hover {
-      transform: translateY(-3px);
-
-    }
-    .order-flex-container p {
-      margin: 0;
-      font-weight: bold;
-      color: #333;
-      font-size: 16px;
-
-    }
+    border: 1px;
+    border-radius: 8px;
+    padding: 7px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin-top: 25px;
+    width: 15%;
+    margin-left: 35%;
+  }
 
 
+  .order-flex-container:hover {
+    transform: translateY(-3px);
 
+  }
 
- 
+  .order-flex-container p {
+    margin: 0;
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+
+  }
 </style>
-
-<script>
-  const optionMenu = document.querySelector(".select-menu"),
-    selectBtn = optionMenu.querySelector(".select-btn"),
-    options = optionMenu.querySelectorAll(".option"),
-    sBtn_text = optionMenu.querySelector(".sBtn-text");
-
-  selectBtn.addEventListener("click", () => optionMenu.classList.toggle("active"));
-
-  options.forEach(option => {
-    option.addEventListener("click", () => {
-      let selectedOption = option.querySelector(".option-text").innerText;
-      sBtn_text.innerText = selectedOption;
-
-      optionMenu.classList.remove("active");
-    });
-  });
-</script>
-
-<script>
-  const optionMenu_main = document.querySelector(".select-menu_main"),
-    selectBtn_main = optionMenu_main.querySelector(".select-btn_main"),
-    options_main = optionMenu_main.querySelectorAll(".option_main"),
-    sBtn_text_main = optionMenu_main.querySelector(".sBtn-text_main");
-
-  selectBtn_main.addEventListener("click", () => optionMenu_main.classList.toggle("active"));
-
-  options_main.forEach(option_main => {
-    option_main.addEventListener("click", () => {
-      let selectedOption_main = option_main.querySelector(".option-text_main").innerText;
-      sBtn_text_main.innerText = selectedOption_main;
-
-      optionMenu_main.classList.remove("active");
-    });
-  });
-</script>
-
- 
-
-
 
 </body>
 

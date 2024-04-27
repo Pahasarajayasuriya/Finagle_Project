@@ -37,9 +37,11 @@ class UI {
       result += `
       <div class="product">
         <div class="img-container">
+
           <img class="product-img" src="${item.image}" alt="${
         item.user_name
       }" />
+
         </div>
         <div class="product-desc">
           <p class="product-title">${item.user_name}</p>
@@ -76,6 +78,7 @@ class UI {
       return grouped;
     }, {});
   }
+
   updateCheckoutButtonState() {
     const checkoutButton = document.getElementById("checkout-button");
     if (cart.length > 0) {
@@ -133,6 +136,30 @@ class UI {
 
     // Check if the total weight exceeds the limit
     if (totalWeight > 30) {
+      var style = document.createElement("style");
+      style.textContent = `
+          .swal2-confirm {
+              background-color: #FF0000 !important;
+              color: white !important;
+              border: none !important;
+          }
+          .swal2-confirm a {
+              text-decoration: none !important;
+              color: white !important;
+          }
+          .swal2-confirm a:hover {
+              color: white !important;
+          }
+          .swal2-icon {
+            color : red !important;
+          }
+
+          .swal2-confirm{
+             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+          }
+      `;
+      document.head.appendChild(style);
+
       Swal.fire({
         title: "Order too large",
         text: "Your order exceeds our delivery limit due to its large size. Please place your order as a pickup order.",
@@ -253,14 +280,29 @@ class UI {
   }
 
   clearCart() {
-    //-> get all carts and pass id to removeItem()
-    cart.forEach((cItem) => this.removeItem(cItem.id));
-
     //-> remove cart-content children from Modal
     while (cartContent.children.length > 0) {
       cartContent.removeChild(cartContent.children[0]);
     }
+
+
+    //-> update cart
+    cart.length = 0;
+
+    //-> update total price & cart items
+    this.setCartValue(cart);
     this.updateCheckoutButtonState();
+
+    //-> update localStorage
+    Storage.saveCart(cart);
+
+    //-> get carts and update text and disabled
+    buttonsDOM.forEach((button) => {
+      button.textContent = "Add to Cart";
+      button.disabled = false;
+    });
+
+
     closeModal();
   }
 
@@ -301,7 +343,24 @@ class UI {
         this.clearErrorMessage();
       }
 
-      this.displayProducts(filteredProducts);
+      // If the search input is not empty, hide the category names
+      if (searchValue !== "") {
+        document.querySelectorAll(".category-item").forEach((element) => {
+          element.style.display = "none";
+        });
+        this.displayProducts(filteredProducts);
+      } else {
+        // If the search input is empty, show the category names
+        document.querySelectorAll(".category-item").forEach((element) => {
+          element.style.display = "block";
+        });
+        // Display only the "Bread & Buns" category
+        const breadAndBunsProducts = productsData.filter(
+          (product) => product.category === "Bread & Buns"
+        );
+        this.displayProducts(breadAndBunsProducts);
+      }
+
       this.getCartBtns();
     });
   }

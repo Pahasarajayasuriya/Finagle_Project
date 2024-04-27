@@ -60,9 +60,9 @@ class Checkout extends Controller
                         $lastInsertId = $CheckoutModel->saveData($validatedData);
                         $this->sendOrderConfirmationSMS($lastInsertId); // send sms
                         if ($_POST['delivery_or_pickup'] == 'pickup') {
-                            redirect('clear_cart_pickup');
+                            redirect('clear_cart_pickup?orderId=' . $lastInsertId);
                         } else {
-                            redirect('clear_cart');
+                            redirect('clear_cart?orderId=' . $lastInsertId);
                         }
                     } else if ($_POST['payment_method'] == 'card') {
                         if (isset($_SESSION['orderId'])) {
@@ -72,9 +72,9 @@ class Checkout extends Controller
                             $CheckoutModel->updatePaymentStatus($lastInsertId, 'Completed');
                             unset($_SESSION['orderId']);
                             if ($_POST['delivery_or_pickup'] == 'pickup') {
-                                redirect('clear_cart_pickup');
+                                redirect('clear_cart_pickup?orderId=' . $lastInsertId);
                             } else {
-                                redirect('clear_cart');
+                                redirect('clear_cart?orderId=' . $lastInsertId);
                             }
                         } else {
                             // If the orderId is not set in the session, save the validated data to the session
@@ -94,6 +94,7 @@ class Checkout extends Controller
     {
         $number = "+94" . $_POST['phone_number']; // Replace with the customer's phone number
         require __DIR__ . '/../../vendor/autoload.php';
+
 
         // Send SMS via Infobip SMS API
         $baseUrl = '6glnnd.api.infobip.com';

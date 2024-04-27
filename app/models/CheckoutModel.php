@@ -57,30 +57,30 @@ class CheckoutModel extends Model
         //         $this->errors['pickupLocation'] = "Please select pickup location";
         //     }
         // }
-        if (empty($data['delivery_date'])) {
-            $this->errors['delivery_date'] = "Date is required";
-        } elseif (date('Y-m-d', strtotime($data['delivery_date'])) != date('Y-m-d')) {
-            $this->errors['delivery_date'] = "Date must be the current date";
-        }
+        // if (empty($data['delivery_date'])) {
+        //     $this->errors['delivery_date'] = "Date is required";
+        // } elseif (date('Y-m-d', strtotime($data['delivery_date'])) != date('Y-m-d')) {
+        //     $this->errors['delivery_date'] = "Date must be the current date";
+        // }
 
-        if (empty($data['delivery_time'])) {
-            $this->errors['delivery_time'] = "Time is required";
-        } else {
-            $deliveryTime = strtotime($data['delivery_time']);
-            $currentTime = strtotime('now');
-            $openingTime = strtotime(date('Y-m-d') . ' 7:30');
-            $closingTime = strtotime(date('Y-m-d') . ' 19:30');
+        // if (empty($data['delivery_time'])) {
+        //     $this->errors['delivery_time'] = "Time is required";
+        // } else {
+        //     $deliveryTime = strtotime($data['delivery_time']);
+        //     $currentTime = strtotime('now');
+        //     $openingTime = strtotime(date('Y-m-d') . ' 7:30');
+        //     $closingTime = strtotime(date('Y-m-d') . ' 19:30');
 
-            if ($deliveryTime < $currentTime + 1800) {
-                $this->errors['delivery_time'] = "Time must be at least 30 minutes ahead of the current time";
-            } elseif ($deliveryTime < $openingTime || $deliveryTime > $closingTime) {
-                $this->errors['delivery_time'] = "We're open from 7:30 AM to 7:30 PM. Please choose a delivery time within our operating hours.";
-            }
-        }
+        //     if ($deliveryTime < $currentTime + 1800) {
+        //         $this->errors['delivery_time'] = "Time must be at least 30 minutes ahead of the current time";
+        //     } elseif ($deliveryTime < $openingTime || $deliveryTime > $closingTime) {
+        //         $this->errors['delivery_time'] = "We're open from 7:30 AM to 7:30 PM. Please choose a delivery time within our operating hours.";
+        //     }
+        // }
 
-        if (empty($data['is_gift'])) {
-            $this->errors['is_gift'] = "Please select whether to send as a gift or not";
-        }
+        // if (empty($data['is_gift'])) {
+        //     $this->errors['is_gift'] = "Please select whether to send as a gift or not";
+        // }
 
         if (empty($data['payment_method'])) {
             $this->errors['payment_method'] = "Please select a payment method";
@@ -249,5 +249,77 @@ class CheckoutModel extends Model
 
         // Use the query method from the Database class to execute the query
         return $this->query($query, $data);
+    }
+
+    public function getOrderCountByOutlet()
+    {
+        $query = "SELECT pickup_location, COUNT(*) as order_count FROM {$this->table} GROUP BY pickup_location";
+        return $this->query($query);
+    }
+
+    public function getCheckoutDataByUserId($userId)
+    {
+        $query = "SELECT * FROM `" . $this->table . "` WHERE `customer_id` = :userId";
+        $result = $this->query($query, ['userId' => $userId]);
+
+        if (is_array($result) && count($result) > 0) {
+            return $result;
+        }
+
+        return false;
+    }
+
+    public function getLastFiveOrderStatuses($userId)
+    {
+        $query = "SELECT `order_status` FROM `" . $this->table . "` WHERE `customer_id` = :userId ORDER BY `id` DESC LIMIT 5";
+        $result = $this->query($query, ['userId' => $userId]);
+
+        if ($result) {
+            return array_map(function ($order) {
+                return $order->order_status;
+            }, $result);
+        }
+
+        return false;
+    }
+
+    public function getLastFiveOrderIds($userId)
+    {
+        $query = "SELECT `id` FROM `" . $this->table . "` WHERE `customer_id` = :userId ORDER BY `id` DESC LIMIT 5";
+        $result = $this->query($query, ['userId' => $userId]);
+
+        if ($result) {
+            return array_map(function ($order) {
+                return $order->id;
+            }, $result);
+        }
+
+        return false;
+    }
+
+    public function getLastFiveOrders($userId)
+    {
+        $query = "SELECT `id`, `order_status` FROM `" . $this->table . "` WHERE `customer_id` = :userId ORDER BY `id` DESC LIMIT 5";
+        $result = $this->query($query, ['userId' => $userId]);
+
+        if ($result) {
+            return array_map(function ($order) {
+                return ['id' => $order->id, 'status' => $order->order_status];
+            }, $result);
+        }
+
+        return false;
+    }
+
+    public function getOrderStatus($userId, $orderId)
+    {
+        $query = "SELECT `order_status` FROM `" . $this->table . "` WHERE `customer_id` = :userId AND `id` = :orderId";
+        $result = $this->query($query, ['userId' => $userId, 'orderId' => $orderId]);
+
+        if ($result) {
+            return $result[0]->order_status;
+        }
+
+        return false;
     }
 }

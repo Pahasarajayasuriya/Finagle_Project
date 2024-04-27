@@ -26,6 +26,12 @@
 </head>
 
 <body>
+       <div class="back-icon" id="back-button">
+          <a href="<?= ROOT ?>/Home"> <i class="fa fa-arrow-left" aria-hidden="true"></i> </a>
+         
+
+        </div>
+
     <div class="login_container">
         <div class="image_container">
             <img src="https://i.pinimg.com/564x/e5/e2/3a/e5e23aa6ee2fbcfac5e5e183183a2dde.jpg" width="420px" height="100%" alt="Login Image">
@@ -35,13 +41,15 @@
             <section>
                 <form method="post">
                     <h1>Log In</h1>
+                    <?php if (!empty($errors['email'])) : ?>
+                            <div class="invalid"><?= $errors['email'] ?></div>
+                            
+                    <?php endif; ?>
                     <div class="inputbox">
                         <i class="fas fa-envelope"></i>
                         <input value="<?= !empty($email) ? $email : (isset($_COOKIE["remember_email"]) ? $_COOKIE["remember_email"] : set_value('email')) ?>" name="email" type="email" placeholder="Email" required>
 
-                        <?php if (!empty($errors['email'])) : ?>
-                            <div class="invalid"><?= $errors['email'] ?></div>
-                        <?php endif; ?>
+                      
                     </div>
                     <div class="inputbox">
                         <i class="fas fa-lock"></i>

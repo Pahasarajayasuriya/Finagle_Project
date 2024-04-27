@@ -17,6 +17,16 @@ body {
 }
 .no-results-message {
   /* display: flex; */
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: red;
+  font-weight: bold;
+}
+.delete-btn{
+
   /* align-items: center;
   justify-content: center;
   height: 100vh;
@@ -46,60 +56,59 @@ body {
   border: none;
   background: var(--blue);
 }
-#main {
-  position: fixed;
-  top: 78px;
-  width: calc(100% - 120px);
-  height: max-content;
-  left: 78px;
-  margin-left: 20px;
-  transition: all 0.5s ease;
-  z-index: 2;
-  border-radius: 50px;
-}
+  form {
+    max-width: 800px;
+    width: 100%;
+    padding: 10px;
+    margin-top: 0px;
+    margin-left: -30px;
+  }
+ form .ad-form-input {
+    display: flex;
+    align-items: center;
+    height: 36px;
+    margin-left: 350px;
+    margin-top: 0px;
 
-#main.open {
-  left: 250px;
-  width: calc(100% - 250px);
-}
+  }
+  
+ form .ad-form-input input {
+    flex-grow: 1;
+    padding: 0 16px;
+    height: 100%;
+    border: none;
+    background: rgb(255, 255, 255);
+    outline: none;
+    border-radius: 36px 0 0 36px;
+    box-shadow: 0px 0px 10px 0px rgb(187, 184, 184);
+    width: 400px;
+    
+  
+  }
+  
+ form .ad-form-input button {
+    width: 36px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    color: white;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 0 36px 36px 0;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 2px rgb(187, 184, 184);
+    transition: 0.3s ease;
+  }
+  
+ form .ad-form-input button:hover {
+    /* background: rgb(236, 236, 236); */
+    font-size: 20px;
+    /* color: black; */
+  }
 
-#main h2 {
-  position: relative;
-  padding: 10px 10px;
-  text-align: center;
-  background: #f4f7fc;
-}
-
-#main form {
-  background: #f4f7fc;
-  top: 60px;
-  padding-bottom: 10px;
-}
-
-.form-group {
-  position: relative;
-  left: 3%;
-  width: 20%;
-  background: #d5dfe7d5;
-  border-radius: 20px;
-  border: none;
-  outline: none;
-  padding: 10px 30px;
-  transition: all 0.3s ease;
-  color: var(--dark);
-}
-
-.form-group:focus {
-  box-shadow: 0 0 4px 1px rgb(47, 122, 235);
-}
-
-.form .icon {
-  position: relative;
-  font-size: 20px;
-  top: 12%;
-  /* transform: translateY(-50%); */
-  color: var(--dark);
-}
 
 .btn {
   position: absolute;
@@ -147,56 +156,6 @@ body {
   background: darkblue;
 }
 
-table.table {
-  border-collapse: collapse;
-  margin: 0px 0;
-  font-size: 0.9em;
-  font-family: sans-serif;
-  width: 100%;
-
-  border-radius: 12px;
-  padding-right: 15px;
-}
-
-table thead tr {
-  background-color: #f4f7fc;
-  color: #191919;
-  text-align: justify;
-  border-radius: 12px;
-}
-
-table th,
-table td {
-  padding: 12px 30px 12px 20px;
-  width: 10px;
-}
-
-table tr,
-table td {
-  background: #ededed;
-}
-
-table tbody tr {
-  border-top: 1px solid #191919;
-  height: 60px;
-}
-
-table tbody tr:nth-of-type(even) {
-  background-color: #191919;
-}
-
-table tbody tr:last-of-type {
-  border-top: 2px solid #bcc2ce;
-}
-
-table tbody tr.active-row {
-  font-weight: bold;
-  color: #009879;
-}
-
-.st {
-  padding: 0%;
-}
 
 /* .text-status {
   background-color: rgb(16, 197, 52);
@@ -207,7 +166,8 @@ table tbody tr.active-row {
 } */
 
 
-.report{
+.report {
+
   position: absolute;
   height: fit-content;
   width: 60%;
@@ -604,6 +564,7 @@ select {
     z-index: 2;
   } */
 
+
 /* Add these styles to your existing CSS file or inline in HTML */
 
 .image-preview {
@@ -612,4 +573,160 @@ select {
   border-radius: 50%; /* Use 50% for a circle */
   object-fit: cover; /* Preserve aspect ratio and cover the entire container */
 
+}
+
+
+
+.title-profile{
+  margin-top: 400px;
+  margin-bottom: 20px;
+}
+.section-title {
+  font-size: 1.5em;
+  line-height: 1;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 1%;
+  font-family:"Poppins";
+  margin-left: 2%; 
+  text-align: center;
+  
+}
+.fas.fa-bread-slice.fa-3x.text-primary.mb-4{
+  margin-left: 48%;
+ 
+
+} 
+
+  
+.fas.fa-bread-slice.fa-3x.text-primary.mb-4 :after{
+margin-left: 100px;
+
+
+}
+
+
+.divider .icon-wrap:after {
+  content: "";
+  position: absolute;
+  border-bottom: 3px solid #ff0000;
+  width: 120px;
+  height: 17px;
+
+}
+
+.divider.dark .icon-wrap:before,
+.divider.dark .icon-wrap:after {
+  content: "";
+  position: absolute;
+  border-bottom: 3px solid #ff0000;
+  width: 200px;
+  height: 17px;
+
+}
+
+.divider .icon-wrap:before,
+.divider.dark .icon-wrap:before {
+  left: 30%;
+  transform: translateX(-50%);
+
+
+}
+
+.divider .icon-wrap:after,
+.divider.dark .icon-wrap:after {
+  right: 30%;
+  transform: translateX(50%);
+}
+
+
+.ad-id{
+  margin-left: -40px;
+}
+
+
+.advertisement-header {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-evenly; */
+  /* gap: 10px; */
+  padding: 8px;
+  /* background-color: #e0e0e0; */
+  border-radius: 8px;
+  font-weight: bold;
+  width: 100%;
+  color: black;
+  margin-left: -90px;
+
+
+}
+ .header-item{
+  /* margin-left: -40px;  */
+
+  font-size: 13px;
+
+}
+
+
+
+.branch-id{
+  /* flex: 2; */
+  font-size: 13px;
+  margin-right: -50px; 
+ 
+
+}
+
+.branch-loc{
+  flex: 3;
+  font-size: 13px;
+
+}
+
+.branch-name{
+ 
+  font-size: 13px;
+
+}
+
+
+
+.advertisement-record {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 5px 6px 6px rgba(0, 0, 0, 0.1);
+  color:black;
+  transition: transform 0.2s ease-in-out;
+  width: 100%;
+  margin-left: 50px;
+  margin-top: 20px;
+  width: 1000px;
+  
+
+}
+
+.advertisement-record:hover {
+  transform: scale(1.02);
+}
+
+
+
+.home-section {
+  position: relative;
+  transition: all 0.5s ease;
+  width: calc(100% - 155px); /* Adjust width as needed */
+  padding: 3%; /* Add padding to increase size */
+  margin-top: 40px;
+ 
+}
+
+.sidebar.open~.home-section {
+  left: 150px;
+  width: calc(100% - 150px);
+}
+
+.add-btn{
+  padding: 5px ;
 }

@@ -11,7 +11,7 @@ if($_SERVER['SERVER_NAME'] == 'localhost'){
     define('DBPASS', '');
     define('DBDRIVER', 'mysql');
 
-    define('ROOT','http://localhost/finagle/public');
+    define('ROOT','http://localhost:/finagle/public');
 }else {
 
     //database config for live server

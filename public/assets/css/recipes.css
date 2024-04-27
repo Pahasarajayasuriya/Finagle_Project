@@ -12,6 +12,7 @@ body {
     display: flex;
     justify-content: center;
     background-color: white;
+    overflow-x: hidden;
 
 }
 
@@ -127,4 +128,65 @@ i {
 
 
   
-  
+.fas.fa-bread-slice.fa-3x.text-primary.mb-4{
+  margin-left: 48%;
+  margin-top: 6%;
+
+}
+
+.fas.fa-bread-slice.fa-3x.text-primary.mb-4 :after{
+  margin-left: 500px;
+ 
+
+}
+
+.section-title {
+  font-size: 2em;
+  line-height: 1;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 2%;
+  font-family:"Poppins";
+  margin-left: 40%;
+}
+
+.section-title strong {
+  font-size: 1em;
+  font-family: sans-serif;
+  color: rgb(158, 30, 30);
+  display: block;
+  text-transform: none;
+}
+
+.divider .icon-wrap:after {
+  content: "";
+  position: absolute;
+  border-bottom: 3px solid #ff0000;
+  width: 120px;
+  height: 17px;
+
+}
+
+.divider.dark .icon-wrap:before,
+.divider.dark .icon-wrap:after {
+  content: "";
+  position: absolute;
+  border-bottom: 3px solid #ff0000;
+  width: 200px;
+  height: 17px;
+
+}
+
+.divider .icon-wrap:before,
+.divider.dark .icon-wrap:before {
+  left: 460px;
+  transform: translateX(-50%);
+
+
+}
+
+.divider .icon-wrap:after,
+.divider.dark .icon-wrap:after {
+  right: 380px;
+  transform: translateX(50%);
+}

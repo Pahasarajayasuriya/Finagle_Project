@@ -100,7 +100,7 @@
 
   <!-- Inform customer orders -->
 
-  <div id="customerInform" class="modal">
+  <!-- <div id="customerInform" class="modal">
     <div class="modal-content">
 
       <div>
@@ -112,25 +112,25 @@
 
 
         <div id="selectedPickupsContainer">
-          <!-- Selected orders will be appended here -->
+         
         </div>
 
         <button type="submit" name="inform_btn" class="confirm_button" onclick="confirm_inform()">Yes</button>
 
         <button type="button" class="cancel_button" id="cancelDetails_pickups" onclick="hidePopup('viewOrderConfirm')">No</button>
     </div>
-  </div>
+  </div> -->
 
 
   <!-- Import JQuary Library script -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
   <script>
     status_update_endpoint = "<?= ROOT ?>/Order_status_update"
 
     function confirm_inform() {
 
-      // Remove newline characters and everything after
+      
       let cleanedArray = selectedPickups.map(element => parseInt(element.replace(/\n.*$/, ''), 10));
 
       console.log(cleanedArray);
@@ -170,85 +170,9 @@
 
 
     }
-  </script>
+  </script> -->
 
 
-
-
-
-
-  <!-- Cancel orders -->
-  <div id="viewCancel" class="modal">
-    <div class="modal-content">
-
-      <div>
-        <i class='bx bx-edit bx-fade-right' style='color:red'></i>
-      </div>
-
-
-      <h4>Are you sure you want to proceed with the cancellation ? ? </h5>
-
-
-        <div id="selectedOrdersContainer_cancel">
-          <!-- Selected orders will be appended here -->
-        </div>
-
-        <div class="cancel-dropdown">
-          <div class="dropdownHeader" onclick="toggleCancelDropdown()">
-            <span id="placedAllCancelOption">Reason for the cancellation...</span>
-          </div>
-          <div class="dropdownContent" id="placedAllCancelDropdown">
-            <div onclick="selectCancelOption('Unfortunately, we have run out of the stock')">Unfortunately, we have run out of the stock</div>
-            <div onclick="selectCancelOption('We will not be able to fulfill within the requested time.')">We will not be able to fulfill within the requested time.</div>
-          </div>
-        </div>
-
-        <script>
-          // Set the initial state value
-          var currentState = "Reason for the cancellation...";
-          document.getElementById("placedAllCancelOption").innerText = currentState;
-
-          function toggleCancelDropdown() {
-            var dropdownContent = document.getElementById("placedAllCancelDropdown");
-            dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
-          }
-
-          function selectCancelOption(option) {
-            document.getElementById("placedAllCancelOption").innerText = option;
-            document.getElementById("placedAllCancelDropdown").style.display = "none";
-            currentState = option;
-          }
-
-          // Close the dropdown when clicking outside of it
-          window.onclick = function(event) {
-            if (!event.target.matches('.dropdownHeader')) {
-              var dropdowns = document.getElementsByClassName("dropdownContent");
-              for (var i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.style.display === "block") {
-                  openDropdown.style.display = "none";
-                }
-              }
-            }
-          };
-        </script>
-
-        <div class="button-line">
-          <button type="submit" name="inform_btn" class="confirm_button" onclick="confirm_cancel()">Yes</button>
-
-          <button type="button" class="cancel_button" id="cancelDetails_cancel" onclick="hidePopup('viewOrderConfirm')">No</button>
-
-
-        </div>
-
-     
-
-
-    </div>
-
-
-
-  </div>
 
 
   <style>

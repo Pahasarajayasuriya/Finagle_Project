@@ -32,17 +32,16 @@ $this->view('includes/footer', $data);
 </head>
 
 <body>
-	<!-- <div class="navbar">
-         <div class="logo_icon">
-             <img src="<?= ROOT ?>/assets/images/logo.png" alt="">
-         </div>
-    </div> -->
+	<?php $this->view('includes/emp_topbar', $data); ?>
+
+
+
 	<div class="home-section">
 		<section id="content">
 			<main>
 				<div class="head-title">
 					<div class="left">
-						<h1>Dashboard</h1>
+						<!-- <h1>Dashboard</h1> -->
 						<ul class="breadcrumb">
 							<li>
 								<a href="#">Dashboard</a>
@@ -69,7 +68,7 @@ $this->view('includes/footer', $data);
 							}
 				?>
 
-						
+
 				<i class='bx bxs-building'></i>
 					</div>
 
@@ -95,7 +94,7 @@ $this->view('includes/footer', $data);
 							<p>Orders</p>
 						</span>
 
-						<div class="circular">
+						<!-- <div class="circular">
 							<div class="inner"></div>
 							<div class="outer"></div>
 							<div class="numb1">
@@ -109,7 +108,7 @@ $this->view('includes/footer', $data);
 									<div class="progress"></div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</li>
 					<li>
 						<i class='bx bxs-group'></i>
@@ -132,7 +131,7 @@ $this->view('includes/footer', $data);
 							<p>Buyers</p>
 						</span>
 
-						<div class="circular">
+						<!-- <div class="circular">
 							<div class="inner"></div>
 							<div class="outer"></div>
 							<div class="numb2">
@@ -146,7 +145,7 @@ $this->view('includes/footer', $data);
 									<div class="progress"></div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</li>
 
 
@@ -168,21 +167,21 @@ $this->view('includes/footer', $data);
 							<p>Revenue</p>
 						</span>
 
-						<div class="circular">
+						<!-- <div class="circular">
 							<div class="inner"></div>
 							<div class="outer"></div>
 							<div class="numb3">
 
 							</div>
-							<div class="circle">
-								<div class="bar left">
-									<div class="progress"></div>
+							<div class="circle1">
+								<div class="bar left1">
+									<div class="progress1"></div>
 								</div>
-								<div class="bar right">
-									<div class="progress"></div>
+								<div class="bar right1">
+									<div class="progress1"></div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</li>
 				</ul>
 
@@ -302,13 +301,84 @@ $this->view('includes/footer', $data);
 
 						</ul>
 					</div>
+
+					<?php
+					if (!empty($getGoals)) {
+					?>
+
+						<div class="todo">
+							<div class="head">
+								<h3>Assigned Goals</h3>
+							</div>
+
+							<?php
+							//show($data['getPickuporders ']);
+
+							if (isset($getGoals)) {
+								foreach ($getGoals as  $goal) {
+							?>
+
+									<ul class="todo-list">
+										<li class="completed" id="orders">
+											<div class="numeric">
+												<i class='bx bxs-calendar-check'></i>
+												<p class="type">Target Orders</p>
+											</div>
+											<p class="count"><?= $goal->orders ?></p>
+										</li>
+
+										<li class="completed" id="customers">
+											<div class="numeric">
+												<i class='bx bxs-group'></i>
+												<p class="type">Target Customers </p>
+											</div>
+											<p class="count"><?= $goal->customers ?></p>
+										</li>
+
+										<li class="completed" id="revenue">
+											<div class="numeric">
+												<i class='bx bxs-dollar-circle'></i>
+												<p class="type">Target Revenue</p>
+											</div>
+											<p class="count"><?= $goal->revenues ?></p>
+										</li>
+									</ul>
+
+							<?php
+								}
+							}
+							?>
+
+						</div>
+
+					<?php
+					}
+					?>
+
 				</div>
 			</main>
 
 		</section>
 
 	</div>
+
 	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+
+
+			var navbar = document.querySelector(".navbar");
+
+			window.addEventListener("scroll", function() {
+				if (window.scrollY > 0) {
+					navbar.style.backgroundColor = "white";
+				} else {
+					navbar.style.backgroundColor = "transparent";
+				}
+			});
+		});
+
+
+
 		const numb1 = document.querySelector(".numb1");
 		let counter1 = 0;
 		const targetPercentage1 = <?= $order_count->total_records ?>;
@@ -317,10 +387,28 @@ $this->view('includes/footer', $data);
 				clearInterval(intervalId1);
 			} else {
 				counter1 += 1;
-				numb1.textContent = (counter1 / 400) * 100 + "%";
+				<?php
+				//show($data['getPickuporders ']);
+
+				if (isset($getGoals)) {
+					foreach ($getGoals as  $goal) {
+
+				?>
+						orders = <?= $goal->orders ?>
+
+				<?php
+					}
+				}
+				?>
+
+				const percentage = ((counter1 / revenue) * 100).toFixed(2);
+
+				numb1.textContent = percentage + "%";
+
+				// numb1.textContent = (counter1 / orders) * 100 + "%";
 
 			}
-		}, 80);
+		}, 50);
 
 
 
@@ -333,7 +421,26 @@ $this->view('includes/footer', $data);
 				clearInterval(intervalId2);
 			} else {
 				counter2 += 1;
-				numb2.textContent = (counter2 / 200) * 100 + "%";
+
+				<?php
+				//show($data['getPickuporders ']);
+
+				if (isset($getGoals)) {
+					foreach ($getGoals as  $goal) {
+
+				?>
+						customers = <?= $goal->customers ?>
+
+				<?php
+					}
+				}
+				?>
+
+				const percentage = ((counter2 / customers) * 100).toFixed(2);
+
+				numb2.textContent = percentage + "%";
+
+				// numb2.textContent = (counter2 / customers) * 100 + "%";
 
 			}
 		}, 80);
@@ -349,13 +456,28 @@ $this->view('includes/footer', $data);
 				clearInterval(intervalId3);
 			} else {
 				counter3 += 1;
-				numb3.textContent = (counter1 / 1000) * 100 + "%";
+				<?php
+				//show($data['getPickuporders ']);
+
+				if (isset($getGoals)) {
+					foreach ($getGoals as  $goal) {
+
+				?>
+						revenue = <?= $goal->revenues ?>
+
+				<?php
+					}
+				}
+				?>
+
+				// const percentage = ((counter3 / revenue) * 100).toFixed(2);
+
+				// numb3.textContent = percentage + "%";
+				numb3.textContent = ((counter1 / revenue) * 100).toFixed(2) + "%";
 
 			}
 		}, 80);
-
-
-</script>
+	</script>
 
 
 

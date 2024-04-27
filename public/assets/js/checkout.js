@@ -18,7 +18,7 @@ const pickupOutletsSection = document.getElementById("pickupOutletsSection");
 const deliveryOrdersSection = document.getElementById("deliveryOrdersSection");
 const pickupLocation = document.getElementById("pickupLocation");
 
-var checkoutButton = document.getElementById("checkout-button");
+var checkoutButton = document.getElementById("p_checkout-button");
 
 deliveryRadio.addEventListener("change", enableDeliveryOptions);
 pickupRadio.addEventListener("change", enablePickupOptions);
@@ -31,10 +31,10 @@ deliveryRadio.addEventListener("change", function () {
       icon: "error",
     });
     checkoutButton.disabled = true;
-    checkoutButton.style.backgroundColor = "#b2b2b2"; 
+    checkoutButton.style.backgroundColor = "#b2b2b2";
   } else {
     checkoutButton.disabled = false;
-    checkoutButton.style.backgroundColor = "#FF0000"; 
+    checkoutButton.style.backgroundColor = "#FF0000";
   }
 });
 
@@ -69,6 +69,10 @@ function enablePickupOptions() {
   )}`;
   // Hide delivery fee
   deliveryFeeContainer.textContent = "";
+
+  // Enable the checkout button
+  checkoutButton.disabled = false;
+  checkoutButton.style.backgroundColor = "#FF0000";
 }
 
 var map;
@@ -85,7 +89,7 @@ function initMap() {
       lng = pos.coords.longitude;
       map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: lat, lng: lng },
-        zoom: 8,
+        zoom: 11,
       });
 
       var branches = JSON.parse(document.getElementById("branches").value);
@@ -139,14 +143,32 @@ function initMap() {
           // Show a message to the user about whether delivery is available or not
           if (deliveryAvailable) {
             console.log("We deliver to your current location!");
-            document.getElementById("p_checkout-button").disabled = false;
+            var checkoutButton = document.getElementById("p_checkout-button");
+            checkoutButton.disabled = false;
+            checkoutButton.style.backgroundColor = "#FF0000";
           } else {
+            var style = document.createElement("style");
+            style.textContent = `
+          .swal2-confirm {
+              background-color: #FF0000 !important;
+              color: white !important;
+              border: none !important;
+          }
+          .swal2-confirm a {
+              text-decoration: none !important;
+              color: white !important;
+          }
+          .swal2-confirm a:hover {
+              color: white !important;
+          }
+      `;
+            document.head.appendChild(style);
             Swal.fire({
               icon: "error",
               title: "Oops...",
               text: "Sorry, we don't deliver to your location.",
-              footer:
-                '<a href="#" id="pickupLink">Click here to make a pickup order instead</a>',
+              confirmButtonText:
+                'Okay',
               didOpen: () => {
                 document
                   .getElementById("pickupLink")
@@ -156,8 +178,13 @@ function initMap() {
                     Swal.close();
                   });
               },
+              didClose: () => {
+                var checkoutButton =
+                  document.getElementById("p_checkout-button");
+                checkoutButton.disabled = true;
+                checkoutButton.style.backgroundColor = "#b2b2b2";
+              },
             });
-            document.getElementById("p_checkout-button").disabled = true;
           }
         });
 
@@ -209,6 +236,7 @@ function initMap() {
             branch.latitude,
             branch.longitude
           );
+          console.log(distance);
           if (distance <= 4) {
             nearestBranches.push(branch);
             if (distance < minDistance) {
@@ -232,14 +260,32 @@ function initMap() {
         // Show a message to the user about whether delivery is available or not
         if (deliveryAvailable) {
           console.log("We deliver to your selected location!");
-          document.getElementById("p_checkout-button").disabled = false;
+          var checkoutButton = document.getElementById("p_checkout-button");
+          checkoutButton.disabled = false;
+          checkoutButton.style.backgroundColor = "#FF0000";
         } else {
+          var style = document.createElement("style");
+          style.textContent = `
+          .swal2-confirm {
+              background-color: #FF0000 !important;
+              color: white !important;
+              border: none !important;
+          }
+          .swal2-confirm a {
+              text-decoration: none !important;
+              color: white !important;
+          }
+          .swal2-confirm a:hover {
+              color: white !important;
+          }
+      `;
+          document.head.appendChild(style);
           Swal.fire({
             icon: "error",
             title: "Oops...",
             text: "Sorry, we don't deliver to your location.",
-            footer:
-              '<a href="#" id="pickupLink">Click here to make a pickup order instead</a>',
+            confirmButtonText:
+              'Okay',
             didOpen: () => {
               document
                 .getElementById("pickupLink")
@@ -250,7 +296,9 @@ function initMap() {
                 });
             },
           });
-          document.getElementById("p_checkout-button").disabled = true;
+          var checkoutButton = document.getElementById("p_checkout-button");
+          checkoutButton.disabled = true;
+          checkoutButton.style.backgroundColor = "#b2b2b2";
         }
       });
 
@@ -320,14 +368,32 @@ function initMap() {
         // Show a message to the user about whether delivery is available or not
         if (deliveryAvailable) {
           console.log("We deliver to your selected location!");
-          document.getElementById("p_checkout-button").disabled = false;
+          var checkoutButton = document.getElementById("p_checkout-button");
+          checkoutButton.disabled = false;
+          checkoutButton.style.backgroundColor = "#FF0000";
         } else {
+          var style = document.createElement("style");
+          style.textContent = `
+          .swal2-confirm {
+              background-color: #FF0000 !important;
+              color: white !important;
+              border: none !important;
+          }
+          .swal2-confirm a {
+              text-decoration: none !important;
+              color: white !important;
+          }
+          .swal2-confirm a:hover {
+              color: white !important;
+          }
+      `;
+          document.head.appendChild(style);
           Swal.fire({
             icon: "error",
             title: "Oops...",
             text: "Sorry, we don't deliver to your location.",
-            footer:
-              '<a href="#" id="pickupLink">Click here to make a pickup order instead</a>',
+            confirmButtonText:
+              'okay',
             didOpen: () => {
               document
                 .getElementById("pickupLink")
@@ -338,7 +404,9 @@ function initMap() {
                 });
             },
           });
-          document.getElementById("p_checkout-button").disabled = true;
+          var checkoutButton = document.getElementById("p_checkout-button");
+          checkoutButton.disabled = true;
+          checkoutButton.style.backgroundColor = "#b2b2b2";
         }
       });
     },

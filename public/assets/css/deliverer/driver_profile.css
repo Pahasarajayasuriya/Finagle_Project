@@ -13,37 +13,31 @@ body {
   background-color: white;
 }
 
-
-
 .pro_card {
-  
-  width: 700px;
-  height: 500px;
+  width: 80%;
+  max-width: 700px;
+  height: auto;
   background-color: #fff;
   border-radius: 10px;
   padding: 3%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-left: 25%;
-  margin-top: 2%;
-
- 
-  border: 2px solid #d72323; 
-
- 
+  margin: 1% auto;
+  border: 2px solid #d72323;
+  padding-bottom: 0.1%;
+  margin-top: 5%;
 }
 
-
 .pro_head {
-  
   text-align: left;
   font-size: 14px;
   color: red;
   letter-spacing: 0.05rem;
   margin: 2rem 0 1rem;
   font-weight: 600;
-  font-family: pop;
+  font-family: "Poppins", sans-serif;
   margin-top: -15px;
-
+  display: flex;
+  gap: 70%;
 }
 
 .pro_head_1 {
@@ -58,16 +52,16 @@ body {
 
 .profile-picture {
   position: relative;
-  width: 200px; 
-  height: 200px; 
-  justify-content: center;
-  align-items: center;
-  margin-left: 50%;
+  width: 50%;
+  max-width: 200px;
+  height: auto;
+  margin: 0 auto;
 }
 
 .outer-circle {
-  width: 140px; 
-  height: 140px; 
+  width: 70%;
+  max-width: 140px;
+  height: auto;
   border-radius: 50%;
   border: 2px solid rgb(159, 159, 159);
   display: flex;
@@ -75,12 +69,13 @@ body {
   align-items: center;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
 }
 
 .inner-circle {
-  width: 130px; /* Adjust size as needed */
-  height: 130px; /* Adjust size as needed */
+  width: 67%;
+  max-width: 150px;
+  height: auto;
   border-radius: 50%;
   background-color: rgb(159, 159, 159);
   display: flex;
@@ -88,8 +83,7 @@ body {
   align-items: center;
   position: relative;
   box-shadow: 0 0.5px 4px 6px rgba(0, 0, 0, 0.1);
-  margin-left: -35%;
-  
+  margin-left: 20%;
 }
 
 .inner-circle img {
@@ -100,17 +94,17 @@ body {
 }
 
 .inner-circle i {
-  color:rgb(159, 159, 159);
+  color: rgb(159, 159, 159);
   font-size: 20px;
   position: absolute;
   bottom: 5px;
   right: 10px;
   cursor: pointer;
-  width: 30px; /* Adjust size of the small circle */
-  height: 30px; /* Adjust size of the small circle */
-  border-radius: 50%; /* Make it a circle */
-  background-color: black; /* Set background color */
-  color:white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -118,18 +112,54 @@ body {
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
 }
 
-
 .driver-info {
   text-align: center;
-  margin-top: 20px;
-  width: 500px;
-  margin-left: -245px;
+  margin-top: 5%;
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .driver-name {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 1.5rem;
 }
+.status {
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.status-disabled {
+  background-color: #cccccc; /* Grey (disabled) */
+  cursor: pointer;
+}
+
+.status-enabled {
+  background-color: #4CAF50; /* Green (enabled) */
+  cursor: pointer;
+}
+
+.status:hover {
+  background-color: #45a049; /* Darker Green */
+}
+
+.status:active {
+  background-color: #3e8e41; /* Active Green */
+}
+
+.status:focus {
+  outline: none;
+}
+
+
 
 .joined-date {
   color: #6c757d;
@@ -138,46 +168,85 @@ body {
 
 .stats-boxes {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
-  margin-top: 50px;
+  margin-top: 3%;
 }
 
 .stats-box {
   text-align: center;
-  padding: 10px;
-  width: 200px;
-  height: 150px;
+  padding: 3%;
+  width: 35%;
+  max-width: 200px;
+  margin-bottom: 5%;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 6px 8px rgba(0, 0, 0, 0.1);
 }
 
 .stats-box i {
-  font-size: 24px;
+  font-size: 2rem;
   margin-bottom: 10px;
 }
-.fas.fa-truck{
+
+.fas.fa-truck {
   color: rgb(254, 117, 26);
-
 }
 
-.fas.fa-money-bill{
+.fas.fa-money-bill {
   color: green;
-
 }
+
 .stats-number {
-  font-size: 22px;
+  font-size: 1.5rem;
   font-weight: bold;
   margin-top: 10px;
-
 }
 
 .stats-text {
   margin-top: 10px;
-  color: #6c757d; /* Optional: Adjust the color as needed */
+  color: #6c757d;
 }
 
 .stats-box:hover {
-  transform: scale(1.1); 
-  
+  transform: scale(1.1);
+}
+
+.sidebar.open ~ .home-section {
+  left: 180px;
+  width: calc(100% - 180);
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 768px) {
+  .pro_card {
+    width: 90%;
+  }
+
+  .profile-picture,
+  .outer-circle,
+  .inner-circle {
+    width: 80%;
+  }
+
+  .logout-button a {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .pro_card {
+    width: 85%;
+  }
+
+  .profile-picture,
+  .outer-circle,
+  .inner-circle {
+    width: 90%;
+  }
+
+  .logout-button a {
+    width: 80%;
+  }
 }

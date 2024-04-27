@@ -2,6 +2,7 @@
 $role = "Employee";
 $data['role'] = $role;
 
+
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
 $this->view('includes/footer', $data);
@@ -32,12 +33,14 @@ $this->view('includes/footer', $data);
 </head>
 
 <body>
+    <?php $this->view('includes/emp_topbar', $data); ?>
+
     <div class="home-section">
 
         <div class="title-profile">
 
             <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
-            <h2 class="section-title">BRANCH EMPLOYEES</h2>
+            <h2 class="section-title">PRODUCTS STOCK</h2>
             <div class="divider dark mb-4">
                 <div class="icon-wrap">
                 </div>
@@ -56,7 +59,7 @@ $this->view('includes/footer', $data);
             </form>
         </div>
 
-        
+
 
         <form method="POST" class="complete_form">
             <div class="table-container">
@@ -70,32 +73,35 @@ $this->view('includes/footer', $data);
 
                     </tr>
 
-                    
-                        <?php
 
-                        if (isset($product)) {
-                            foreach ($product as $product) {
-                        ?>
-                    <tr>
-                        <td><?= $product->id ?></td>
-                        <td><img src="<?= ROOT ?>/<?= $product->image ?>" alt=""></td>
-                        <td><?= $product->user_name ?></td>
-                        <td class="black-text">
-                            <span class="quantity" id="quantity_<?= $product->id ?>"><?= $product->quantity ?></span>
-                            <button type="reset" class="plus-button" onclick="changeQuantity(<?= $product->id ?>, 'increase')">+</button>
-                            <button type="reset" class="minus-button" onclick="changeQuantity(<?= $product->id ?>, 'decrease')">-</button>
-                        </td>
-                        <td>
-                            <?= $product->category ?>
-                        </td>
+                    <?php
 
-                    </tr>
-                    <input type="hidden" name="id_<?= $product->id ?>" id="product_id_<?= $product->id ?>" value="<?= $product->id ?>">
-                    <input type="hidden" name="qty_<?= $product->id ?>" id="updated_quantity_<?= $product->id ?>" value="<?= $product->quantity ?>" style="display: none;">
-            <?php
-                            }
+                    if (isset($product)) {
+                        foreach ($product as $product) {
+                    ?>
+                            <tr>
+                                <td><?= $product->id ?></td>
+                                <td><img src="<?= ROOT ?>/<?= $product->image ?>" alt=""></td>
+                                <td><?= $product->user_name ?></td>
+                                <td class="black-text">
+                                    <!-- <span class="quantity" id="quantity_<?= $product->id ?>"><?= $product->quantity ?></span> -->
+                                   
+                                    <span class="quantity" id="quantity_<?= $product->id ?>" data-product-id="<?= $product->id ?>" contenteditable="true"><?= $product->quantity ?></span>
+
+                                    <button type="reset" class="plus-button" onclick="changeQuantity(<?= $product->id ?>, 'increase')">+</button>
+                                    <button type="reset" class="minus-button" onclick="changeQuantity(<?= $product->id ?>, 'decrease')">-</button>
+                                </td>
+                                <td>
+                                    <?= $product->category ?>
+                                </td>
+
+                            </tr>
+                            <input type="hidden" name="id_<?= $product->id ?>" id="product_id_<?= $product->id ?>" value="<?= $product->id ?>">
+                            <input type="hidden" name="qty_<?= $product->id ?>" id="updated_quantity_<?= $product->id ?>" value="<?= $product->quantity ?>" style="display: none;">
+                    <?php
                         }
-            ?>
+                    }
+                    ?>
 
                 </table>
             </div>
@@ -110,28 +116,42 @@ $this->view('includes/footer', $data);
     </div>
 
     <script>
-    function searchProducts() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("search");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("product-table");
-        tr = table.getElementsByTagName("tr");
+        document.addEventListener("DOMContentLoaded", function() {
 
-        for (i = 0; i < tr.length; i++) {
-            td_id = tr[i].getElementsByTagName("td")[0]; // Product ID column
-            td_name = tr[i].getElementsByTagName("td")[2]; // Product Name column
-            if (td_id && td_name) {
-                txtValue_id = td_id.textContent || td_id.innerText;
-                txtValue_name = td_name.textContent || td_name.innerText;
-                if (txtValue_id.toUpperCase().indexOf(filter) > -1 || txtValue_name.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
+
+            var navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = "white";
                 } else {
-                    tr[i].style.display = "none";
+                    navbar.style.backgroundColor = "transparent";
+                }
+            });
+        });
+
+        function searchProducts() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("search");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("product-table");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                td_id = tr[i].getElementsByTagName("td")[0]; // Product ID column
+                td_name = tr[i].getElementsByTagName("td")[2]; // Product Name column
+                if (td_id && td_name) {
+                    txtValue_id = td_id.textContent || td_id.innerText;
+                    txtValue_name = td_name.textContent || td_name.innerText;
+                    if (txtValue_id.toUpperCase().indexOf(filter) > -1 || txtValue_name.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
                 }
             }
         }
-    }
-</script>
+    </script>
 
 </body>
 

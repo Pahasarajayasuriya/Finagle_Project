@@ -1,4 +1,3 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
 
 * {
@@ -7,9 +6,6 @@
   box-sizing: border-box;
   font-family: "Poppins";
 }
-
-
-
 
 body {
   font-family: "Poppins";
@@ -20,51 +16,42 @@ body {
   justify-content: center;
   color: black;
   background-color: white;
-  overflow: hidden; 
-
+  overflow: hidden;
 }
-
-
 
 .home-section {
   position: relative;
   transition: all 0.5s ease;
   width: calc(100% - 155px); /* Adjust width as needed */
   padding: 3%; /* Add padding to increase size */
+ 
 }
 
-
-
-h4{
-  position: relative; 
+h4 {
+  position: relative;
   font-weight: bold;
   text-transform: uppercase;
   padding: 2% 2%;
-  margin-top: 1%; 
+  margin-top: 1%;
   color: #ccc;
 }
 
 h2::before {
-  content: ""; /* Add content */
+  content: "";
   position: absolute;
-  top: -10px; /* Adjust to position above the heading */
+  top: -10px;
   left: 0;
   width: 100%;
-  height: 3%; /* Height of the decorative line */
-  background-color: #333; /* Color of the decorative line */
+  height: 3%;
+  background-color: #333;
 }
-
-
 
 .assigned-orders {
-
-  width: 80%;
-  margin-top: 3%;
+  width: 90%;
+  margin-top: 5%;
   padding: 1%;
-  margin-left:5%;
-
+  margin-left: 5%;
 }
-
 
 .order-box {
   background-color: #fff;
@@ -76,25 +63,18 @@ h2::before {
   margin-left: 10px;
 }
 
-.order-header{
+.order-header {
   display: flex;
-  
 }
 
-.order-header h3{
+.order-header h3 {
   color: black;
 }
-.order-id {
-  font-size: 18px;
-  font-weight: bold;
-  color: #333;
-}
-
 
 .view-details {
   background: none;
   border: none;
-  color:#bbbbbb;
+  color: #bbbbbb;
   font-size: 14px;
   cursor: pointer;
   text-decoration: none;
@@ -105,55 +85,50 @@ h2::before {
   color: #c70909;
 }
 
-hr{
+hr {
   margin-top: 3%;
   margin-bottom: 3%;
   border-color: #bbbbbb;
 }
+
 .address {
   margin-top: 3%;
   font-size: 14px;
-  
 }
-.pickup-address{
+
+.pickup-address {
   display: flex;
 }
+
 .dot {
   width: 10px;
   height: 10px;
   background-color: red;
   border-radius: 50%;
-  margin-right: 3%; /* Adjust as needed */
+  margin-right: 3%;
   margin-top: 1%;
   box-shadow: 0 0 5px red;
 }
 
-
-/* Add vertical broken line */
 .vertical-line {
-  border-left: 1px dashed rgba(0, 0, 0, 0.5); /* Transparent dashed line */
-  height: 100%; /* Adjust height */
-  margin: 0 10px; /* Adjust margin as needed */
+  border-left: 1px dashed rgba(0, 0, 0, 0.5);
+  height: 100%;
+  margin: 0 10px;
   margin-left: 1%;
 }
 
-/* Style for delivery address */
 .delivery-address {
   display: flex;
   align-items: center;
- 
-  
 }
 
-/* Style for location icon */
 .delivery-address i {
-  margin-right: 3%; 
- 
+  margin-right: 3%;
 }
 
-.footer{
+.footer {
   display: flex;
-  gap: 40%;
+  gap: 10%;
 }
 
 .call-icon {
@@ -161,88 +136,100 @@ hr{
   justify-content: center;
   align-items: center;
   margin-top: 3.5%;
-  width: 35px; /* Adjust width and height to set the size of the circle */
-  height: 35px; 
-  border-radius: 50%; /* Make it a circle */
-  background-color: #ccc; /* Grey background */
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #ccc;
   cursor: pointer;
 }
 
 .call-icon i {
-  color: black; /* Black icon color */
-  font-size: 15px; /* Adjust font size as needed */
+  color: black;
+  font-size: 15px;
   align-items: center;
 }
 
-.action-buttons{
+.action-buttons {
   margin-top: 3.5%;
   display: flex;
-  gap: 10px;
+  gap: 8px;
 }
-
 
 .view-location-btn,
 .delivered-btn {
   color: #fff;
   border: none;
-  border-radius: 10px; 
-  padding: 4% 12%; /* Increase padding for larger buttons and adjust horizontally */
-  font-size: 11px; 
+  border-radius: 10px;
+  padding: 4% 10%;
+  font-size: 11px;
   cursor: pointer;
-  transition: all 0.3s ease; 
-  width: auto; 
+  transition: all 0.3s ease;
+  width: auto;
 }
-
 
 .view-location-btn {
-  background-color: #28a745; /* Green color for location button */
+  background-color: #28a745;
 }
-
 
 .delivered-btn {
-  background-color: #dc3545; /* Red color for delivered button */
+  background-color: #dc3545;
 }
 
-/* Hover styles for location button */
 .view-location-btn:hover {
-  background-color: #218838; /* Darker green color on hover */
-  transform: scale(1.05); /* Increase button size on hover */
+  background-color: #218838;
+  transform: scale(1.05);
 }
 
-/* Hover styles for delivered button */
 .delivered-btn:hover {
-  background-color: #c82333; /* Darker red color on hover */
-  transform: scale(1.1); /* Increase button size on hover */
+  background-color: #c82333;
+  transform: scale(1.1);
 }
 
+
+.action-buttons form .payment-btn{
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 20% 8%;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100px;
+  background-color:rgb(97, 97, 97);
+
+}
+
+.action-buttons form .payment-btn:hover {
+  background-color:black;
+  transform: scale(1.05);
+}
 
 @media screen and (max-width: 768px) {
   .order-box {
-    padding: 15px; /* Adjust padding for smaller screens */
+    padding: 15px;
   }
 
   .view-details-btn,
   .call-icon {
-    margin-bottom: 5px; /* Reduce margin for smaller screens */
+    margin-bottom: 5px;
   }
 
   .addresses {
-    margin-bottom: 10px; /* Adjust margin for smaller screens */
+    margin-bottom: 10px;
   }
 
   .action-buttons {
-    flex-direction: column; /* Stack buttons vertically on smaller screens */
+    flex-direction: column;
   }
 
   .view-location-btn,
   .delivered-btn {
-    width: 100%; /* Make buttons full width on smaller screens */
-    margin-top: 10px; /* Add margin between buttons */
+    width: 100%;
+    margin-top: 10px;
   }
 }
 
 @media only screen and (max-width: 600px) {
- 
   .home-section {
     padding: 20px;
   }
@@ -252,7 +239,6 @@ hr{
 }
 
 @media only screen and (min-width: 601px) and (max-width: 1024px) {
-  /* Adjust styles for medium screens here */
   .home-section {
     padding: 30px;
   }
@@ -261,9 +247,7 @@ hr{
   }
 }
 
-/* Example of media query for large screens */
 @media only screen and (min-width: 1025px) {
-  /* Adjust styles for large screens here */
   .home-section {
     padding: 40px;
   }
@@ -271,18 +255,19 @@ hr{
     margin-bottom: 40px;
   }
 }
+
 .home-section {
   display: flex;
   justify-content: space-between;
+  /* margin-top: 50%; */
 }
-
-
 
 .left-section {
   flex: 1;
   padding-right: 20px;
-  height: 100vh; /* Adjust the height as needed */
-  overflow-y: auto; /* Add scrollbar when content exceeds height */
+  height: 100vh;
+  overflow-y: auto;
+  /* width: 600px; */
 }
 
 .right-section {
@@ -290,32 +275,26 @@ hr{
   padding-left: 20px;
 }
 
-/* Hide the default scrollbar */
 .left-section::-webkit-scrollbar {
   width: 10px;
-  border-radius: 5px; 
+  border-radius: 5px;
 }
 
-/* Track */
 .left-section::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Color of the track */
+  background: #f1f1f1;
 }
 
-/* Handle */
 .left-section::-webkit-scrollbar-thumb {
-  background: #8e6d6d; /* Color of the scrollbar handle */
-  border-radius: 5px; /* Make the scrollbar handle round */
+  background: #8e6d6d;
+  border-radius: 5px;
 }
 
-/* Handle on hover */
 .left-section::-webkit-scrollbar-thumb:hover {
-  background: #8e6d6d; /* Change color of scrollbar handle on hover */
+  background: #8e6d6d;
 }
 
 .googlemap {
-
-   
-  margin-top: 20px;
+  margin-top: 40px;
   background-color: #fff;
   border-radius: 10px;
   padding: 3%;
@@ -324,10 +303,14 @@ hr{
   width: 100%;
 }
 
-
 .sidebar.open~.home-section {
   left: 150px;
   width: calc(100% - 150px);
-
 }
+
+
+
+
+
+
 

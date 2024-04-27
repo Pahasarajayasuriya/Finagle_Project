@@ -10,10 +10,17 @@ class AddEmployee extends Controller
 		$data['errors'] = [];
 
 		$user = new User();
+		$CheckoutModel = new CheckoutModel();
+        // Fetch all branches
+        $branches = $CheckoutModel->getAllBranches();
 
-		if($_SERVER['REQUEST_METHOD'] == "POST")
+        // Pass branches to the view
+        $data['branches'] = $branches;
+
+
+		if ($_SERVER['REQUEST_METHOD'] == "POST")
 		{
-            $_POST['repassword'] =  $_POST['password'];
+            // $_POST['repassword'] =  $_POST['password'];
 
 
 			if($user->validate($_POST))

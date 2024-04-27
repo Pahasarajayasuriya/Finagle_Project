@@ -23,10 +23,18 @@ $this->view('includes/footer', $data);
 <body>
 
   <div class="home-section">
+
     <div class="recipe main">
-      <div class="recipe_head">
-        <p class="recipe_head_1">FINAGLE <span> RECIPES</span></p>
-      </div>
+
+           <div class="title-profile">
+                <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
+                <p class="section-title">FINAGLE<span> RECIPES </span></p>
+                <div class="divider dark mb-4">
+                    <div class="icon-wrap">
+                        <!-- <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i> -->
+                    </div>
+                </div>
+            </div>
 
       <div class="rec_container">
         <div class="rec_section">
@@ -66,6 +74,21 @@ $this->view('includes/footer', $data);
     </div>
     <?php $this->view('includes/cus_footer', $data); ?>
   </div>
+  <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            var navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = "white";
+                } else {
+                    navbar.style.backgroundColor = "transparent";
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
