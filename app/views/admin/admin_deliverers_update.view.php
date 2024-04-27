@@ -11,7 +11,7 @@ $this->view('includes/footer', $data);
 <html lang="en">
 
 <head>
-    <title>Managers</title>
+    <title>Deliverers</title>
     <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin/admin_deliverer.css">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>

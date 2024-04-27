@@ -51,12 +51,11 @@ class Admin_deliverers extends Controller
 
                     // Redirect to avoid form resubmission
                     redirect('admin_deliverers');
-            } 
             } else {
                 // Handle validation errors
                 $data['errors'] = $admin_deliverer_model->errors;
 
-            // }
+            }
         }
 
         if (!empty($data['errors'])){
