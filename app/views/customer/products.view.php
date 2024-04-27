@@ -95,7 +95,7 @@ $this->view('includes/footer', $data);
         <div class="products-center">
             <?php foreach ($productsByCategory as $category => $products) : ?>
                 <div class="category-container">
-                    <h2 class="section-title"><?= $category ?></h2>
+                    <!-- <h2 class="section-title"><?= $category ?></h2> -->
                     <div class="products">
                         <?php foreach ($products as $product) : ?>
                             <div class="product">

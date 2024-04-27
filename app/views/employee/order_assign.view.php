@@ -371,7 +371,51 @@ $this->view('includes/alreadyProcess_popup', $data);
 
                 </div>
             </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script>
+                function updateOrders() {
+                    $.ajax({
+                        url: 'http://localhost/finagle/public/Emp_progress/getOrdersJson',
+                        type: 'GET',
+                        success: function(orders) {
+                            // Clear the current list of orders
+                            $('#placed-order-list').empty();
+                            console.log(orders);
+                            // Loop through the new orders and add them to the page
+                            orders.forEach(order => {
+                                // Create the HTML for the order
+                                var orderHtml = `
+                    <div class="placed-item">
+                        <div class="item-title">
+                            <div class="main-item">
+                                <input class="checkbox" type="checkbox" id="checkbox-${order.id}" name="checkbox-${order.id}">
+                                <p class="item-id"><b>${order.id}<span>${order.delivery_or_pickup == "delivery" ? 'D' : 'P'}</span></b></p>
+                            </div>
+                            ${order.delivery_or_pickup == "delivery" ? `
+                                <div class="time-duration">
+                                    <i class='bx bx-time-five'></i>
+                                    <div class="ready-time">${order.delivery_time}</div>
+                                </div>
+                            ` : ''}
+                        </div>
+                        <div class="item-options">
+                            <button class="view-details" data-order='${JSON.stringify(order)}' onclick="showPopup(this,'viewOrderDetails')">View Details</button>
+                            <button class="cancel" id="deleteButton" data-order='${JSON.stringify(order)}' onclick="showPopup(this,'cancel')">Cancel</button>
+                        </div>
+                    </div>`;
 
+                                // Add the order to the page
+                                $('#placed-order-list').append(orderHtml);
+                            });
+                        },
+                        error: function(error) {
+                            console.error('Error:', error);
+                        }
+                    });
+                }
+
+                setInterval(updateOrders, 60000); // 60000 milliseconds = 60 seconds
+            </script>
 
 
             <div class="order-status dispatched-orders">
@@ -502,9 +546,10 @@ $this->view('includes/alreadyProcess_popup', $data);
 
             order_id.innerHTML = data.id;
 
-            
+           
             user_location.innerHTML = data.delivery_address; 
-        
+                    
+            
           
             // user_phone.innerHTML = data.phone_number;
             pay_status.innerHTML = data.payment_method;
