@@ -233,7 +233,7 @@ $this->view('includes/alreadyProcess_popup', $data);
                                     ?>
                                         <div class="time-duration">
                                             <i class='bx bx-time-five'></i>
-                                            <div class="ready-time"><?= $val->delivery_date ?></div>
+                                            <div class="ready-time"><?= $val->delivery_time ?></div>
                                         </div>
                                     <?php
 
@@ -487,6 +487,8 @@ $this->view('includes/alreadyProcess_popup', $data);
             }
 
             var order_id = document.getElementById('view-order-id');
+
+
             var user_location = document.getElementById('user-location');
 
 
@@ -494,14 +496,29 @@ $this->view('includes/alreadyProcess_popup', $data);
             var pay_status_btn = document.getElementById('pay-status-btn');
 
             var total_cost = document.getElementById('total_cost');
+            var note = document.getElementById('note');
 
 
 
             order_id.innerHTML = data.id;
-            user_location.innerHTML = data.delivery_address;
+
+            <?php
+            if ($val->delivery_or_pickup == "delivery") {
+
+            ?>
+                    user_location.innerHTML = data.delivery_address; 
+                    
+            <?php
+
+            }
+            ?>
+          
             // user_phone.innerHTML = data.phone_number;
             pay_status.innerHTML = data.payment_method;
             total_cost.innerHTML = data.total_cost;
+
+            note.innerHTML = data.note;
+
 
 
             if (data.payment_method == 'card') {

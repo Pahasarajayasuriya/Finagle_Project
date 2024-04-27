@@ -80,22 +80,30 @@ $this->view('includes/orderDetails_popup', $data);
 
                 <div class="action-buttons">
 
-                  <!-- <button class="view-location-btn" id="locationButton">View Location</button> -->
-
-                  <!-- <button class="view-location-btn" onclick="addMarker(<?= $element->latitude ?>, <?= $element->longitude ?>)">View Location</button> -->
-
+                
                   <button class="view-location-btn" onclick="calculateAndDisplayRoute({lat: <?= $element->latitude ?>, lng: <?= $element->longitude ?>})">View Location</button>
 
+                  <?php
+                  if ($element->payment_status == "Not Completed") {
+
+                  ?>
+                    
+                    <!-- <button class="payment-btn" >Payment</button>  -->
+
+                    <form method="POST">
+                      <input type="hidden" name="payment_status" value="Completed">
+                      <input type="hidden" name="id" value="<?= $element->id ?>">
+                      <button name="payment-btn" class="payment-btn">Payment</button>
+                    </form>
 
 
-
-                  <!-- <form method="POST">
-                    <input type="hidden" name="order_status" value="delivered">
-                    <input type="hidden" name="id" value="<?= $element->id ?>">
-                    <button name="delivered_btn" class="delivered-btn">Delivered</button>
-                  </form>   -->
+                  <?php
+                  }
+                  ?>
 
                   <button class="delivered-btn" id="locationButton view-details" data-order='<?php echo json_encode($element); ?>' onclick="showPopup(this,'viewOrderConfirm')"> Delivered</button>
+
+
 
                 </div>
 
@@ -303,7 +311,8 @@ $this->view('includes/orderDetails_popup', $data);
 
 
 
-  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3KoOPDxuE9bSb6J__Wn_tz18S3IdBNIw&loading=async&callback=initMap"></script>
+  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJgBkLPPO15pdU1KgvHPib8NnXlun3IsM&loading=async&callback=initMap"></script>
+
 
   <style>
     #map {

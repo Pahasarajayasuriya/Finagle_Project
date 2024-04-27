@@ -46,16 +46,21 @@
                     <div class="check_inline">
                         <label class="check_name" for="check_comemail" name='email'>E-mail</label>
                         <input class="check_input" name='email' value="<?= Auth::is_customer() ? Auth::getEmail() : '' ?>" type="email" id="check_comemail" name="check_comemail">
+                       
                         <?php if (!empty($errors['email'])) : ?>
                             <div class="invalid"><?= $errors['email'] ?></div>
+                        
                         <?php endif; ?>
+                        
                     </div>
                     <div class="check_inline">
                         <label class="check_name" for="check_phoneno" name='phone_number'>Phone Number</label>
                         <input class="check_input" name='phone_number' value="<?= Auth::is_customer() ? Auth::getTeleno() : '' ?>" type="text" id="check_phoneno" name="check_phoneno">
+
                         <?php if (!empty($errors['phone_number'])) : ?>
                             <div class="invalid"><?= $errors['phone_number'] ?></div>
                         <?php endif; ?>
+
                     </div>
 
                     <div class="check_inline">

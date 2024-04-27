@@ -1,8 +1,6 @@
 <?php
 $role = "Admin";
-
-$data['role']=$role;
-
+$data['role'] = $role;
 
 $this->view('includes/header', $data);
 $this->view('includes/NavBar', $data);
@@ -22,10 +20,10 @@ $this->view('includes/footer', $data);
 
 <body>
     <div class="overlay" id="overlay"></div>
-    <div class="home-section">
-      <?php
+    <?php
        $this->view('includes/emp_topbar', $data);
       ?>
+    <div class="home-section">
         <!-- content  -->
         <section id="main" class="main">
             <div class="ad_head">
@@ -51,26 +49,26 @@ $this->view('includes/footer', $data);
                 <h2>Add a Advertisement</h2>
                 <div class="popup-content">
                     <label for="description">Description:</label>
-                    <input value="<?= set_value('name') ?>" type="text" id="description" name="description" placeholder="" style ="background-color:grey ; color:white" >
+                    <input value="<?= set_value('name') ?>" type="text" id="description" name="description" placeholder="">
                     <?php if (!empty($errors['name'])) : ?>
                             <div class="invalid"><?= $errors['description'] ?></div>
                     <?php endif; ?>
 
                     <label for="image">image:</label>
-                    <input type="text" id="price" name="image" style ="background-color:grey ; color:white" >
+                    <input type="text" id="price" name="image">
                     <?php if (!empty($errors['address'])) : ?>
                             <div class="invalid"><?= $errors['image'] ?></div>
                     <?php endif; ?>
 
                     <label for="end_date">end_date:</label>
-                    <input type="date" id="Image" name="end_date" style ="background-color:grey ; color:white" >
+                    <input type="date" id="Image" name="end_date">
                     <?php if (!empty($errors['contact_number'])) : ?>
                             <div class="invalid"><?= $errors['end_date'] ?></div>
                     <?php endif; ?>
 
                     <div class="buttons-container">
                         <!-- <button class="cancel-btn" onclick="closePopup()">Cancel</button> -->
-                        <button class="cancel-btn" style ="background-color:black"  ><a href="<?= ROOT."/admin_advertisements" ?>">Cancel</a></button>
+                        <button class="cancel-btn" ><a href="<?= ROOT."/admin_advertisements" ?>">Cancel</a></button>
                         <button name="add" value="add" class="submit-btn" onclick="submitForm()">Submit</button>
                     </div>
 
@@ -88,26 +86,37 @@ $this->view('includes/footer', $data);
             </div>
             </div>
             
-            <form method="POST" enctype="multipart/form-data" action="<?= ROOT?>/admin_advertisements">
-            <div class="popup-container" id="editPopupContainer">
-                <h2>Edit the Advertisement</h2>
+            <form method="POST" enctype="multipart/form-data" action="<?= ROOT?>/admin_products">
+            <div class="popup-container" id="editPopupContainer" style ="margin-top:40px">
+                <h2>Edit the Product</h2>
                 <div class="popup-content">
 
                     <label for="editEndDate">Image:</label>
                     <input type="file" id="editEndDate" name="image" value="<?= $row[0]->image ?>" style ="background-color:grey ; color:white" >
 
+                    <label for="editEndDate">Name:</label>
+                    <input type="text" id="editEndDate" name="user_name" value="<?= $row[0]->user_name ?>" style ="background-color:grey ; color:white" >
+
                     <label for="editEndDate">Description:</label>
                     <input type="text" id="editEndDate" name="description" value="<?= $row[0]->description ?>" style ="background-color:grey ; color:white" >
 
-                    <label for="editEndDate">End Date:</label>
-                    <input type="date" id="editEndDate" name="end_date" value="<?= $row[0]->end_date ?>" style ="background-color:grey ; color:white" >
+                    <label for="editEndDate">Price:</label>
+                    <input type="file" id="editEndDate" name="price" value="<?= $row[0]->price ?>" style ="background-color:grey ; color:white" >
+
+                    <label for="editEndDate">Category:</label>
+                    <!-- <input type="date" id="editEndDate" name="end_date" value="<?= $row[0]->category ?>"> -->
+                    <select id="dropdown" name="category" value="<?= $row[0]->category ?>"style ="border:none; padding:10px;box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);" >
+                        <option value="Bread & Buns">Bread & Buns</option>
+                        <option value="Cakes">Cakes</option>
+                        <option value="Frozen Foods">Frozen Foods</option>
+                    </select>
 
 
                     <input type="hidden" name="id" value="<?= $row[0]->id; ?>">
                     
                     <div class="buttons-container">
                         <!-- <button class="cancel-btn" onclick="closeEditPopup()">Cancel</button> -->
-                        <button class="cancel-btn" style ="background-color:black"><a href="<?= ROOT."/admin_advertisements" ?>">Cancel</a></button>
+                        <button class="cancel-btn" style ="background-color:black" ><a href="<?= ROOT."/admin_products" ?>">Cancel</a></button>
                         <button name="update" value="update" class="submit-btn" onclick="submitEditForm()">Submit</button>
                     </div>
                 </div>
@@ -116,15 +125,17 @@ $this->view('includes/footer', $data);
 
             <?php foreach ($rows as $row) : ?>
             <div class="advertisement-record">
-                <div class="advertisement-image"> <img src="https://lh3.googleusercontent.com/p/AF1QipNFVt_67WFrJbjsHEQfxY691SYz3wxrn1Ioq5KC=s1360-w1360-h1020" alt="branch.id" class="customer-image"></div>
-                <div class="branch-id"><?= esc($row->image) ?></div>
+                <!-- <div class="advertisement-image"> <img src="https://lh3.googleusercontent.com/p/AF1QipNFVt_67WFrJbjsHEQfxY691SYz3wxrn1Ioq5KC=s1360-w1360-h1020" alt="branch.id" class="customer-image"></div> -->
+                <div class="advertisement-image"><img src="<?= esc($row->image) ?>" alt="Description of image"></div>
                 <div class="branch-id"><?= esc($row->id) ?></div>
+                <div class="branch-name"><?= esc($row->user_name) ?></div>
                 <div class="branch-name"><?= esc($row->description) ?></div>
-                <div class="branch-loc"><?= esc($row->end_date) ?></div>
+                <div class="branch-loc"><?= esc($row->category) ?></div>
                 <div class="advertisement-actions">
                   <!-- <button class="edit-button" onclick="openEditPopupDialog('${branch.id}', '${branch.name}', '${branch.location}')">Edit Branch</button> -->
-                  <button class="edit-button"><a href="<?= ROOT."/admin_advertisements/update_advertisement/".$row->id ?>">Edit</a></button>
-                  <button class="edit-button"><a href="<?= ROOT."/admin_advertisements/delete_advertisement/".$row->id ?>">Delete</a></button>                
+                  <button class="edit-button"><a href="<?= ROOT."/admin_products/update_product/".$row->id ?>">Edit Product</a></button>
+                  <button class="delete-button" onclick="openDeletePopup('<?= esc($row->id) ?>')">Delete </button>
+                  <!-- <button class="edit-button"><a href="<?= ROOT."/admin_products/delete_product/".$row->id ?>">Delete Product</a></button>                 -->
                 </div>             
              </div>
              <?php endforeach;?>
@@ -134,7 +145,6 @@ $this->view('includes/footer', $data);
         <!-- <script src="branch-admin.js"></script> -->
     </div>
     <script src="<?= ROOT ?>/assets/js/admin_branch_update.js"></script>
-
     <script>
         document.addEventListener("DOMContentLoaded", function() {
 

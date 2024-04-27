@@ -15,9 +15,16 @@ class Model extends Database
         'password',
         'teleno',
         'role',
+        
+        'orders',
+        'customers',
+        'revenues',
+        'others'
+    
     ];
 
 
+    
     public function insert($data)
     {
         
@@ -37,6 +44,8 @@ class Model extends Database
 
         $this->query($query, $data);
     }
+
+
 
     public function findAll($order_column = 'id', $order_type = 'ASC', $limit = 10)
     {
@@ -84,6 +93,16 @@ class Model extends Database
     {
 
         $quary = "SELECT * FROM {$this->table} WHERE branch_name = '$branch' ";
+
+        //echo $quary;
+        // run the quary stage
+        return $this->query($quary);
+    }
+
+    public function findTargets()
+    {
+
+        $quary = "SELECT * FROM {$this->table} ";
 
         //echo $quary;
         // run the quary stage
@@ -271,7 +290,7 @@ class Model extends Database
         $productsTable = 'products';
         $usersTable = 'users';
 
-        $query = "SELECT p.user_name, oi.quantity , p.price ,c.id,c.customer_id,c.phone_number,c.deliver_id,c.delivery_or_pickup ,c.order_status,c.order_status,c.total_cost,c.payment_method,c.deliver_id,c.delivery_date,c.delivery_address,c.latitude,c.longitude
+        $query = "SELECT p.user_name, oi.quantity , p.price ,c.id,c.customer_id,c.phone_number,c.deliver_id,c.delivery_or_pickup ,c.order_status,c.order_status,c.total_cost,c.note,c.payment_method,c.payment_status,c.deliver_id,c.delivery_date,c.delivery_address,c.delivery_time,c.latitude,c.longitude
                   FROM {$this->table} c
                   JOIN  $orderitemsTable oi ON c.id = oi.order_id
                   JOIN $productsTable p ON oi.product_id = p.id

@@ -164,10 +164,7 @@ if ($role == "User") {
                                 <span class="tooltip">Dashboard</span>
                               </li>
                               <li>
-                              <a href="' . ROOT . '/admin_profile">
-                                <i class="bx bxs-user-circle"></i>
-                                <span class="links_name">Profile</span>
-                              </a>
+                            
                               <span class="tooltip">Profile</span>
                             </li>
                             <li>

@@ -31,6 +31,7 @@
                 <form method="post" action="<?= ROOT ?>/signup">
                     <h1>Register</h1>
                     <div class="set1">
+
                         <div class="inputbox">
                             <i class="fas fa-user"></i>
                             <input value="<?= set_value('username') ?>" type="text" name="username" id="username" placeholder="Username" required>
@@ -38,6 +39,7 @@
                                 <div class="invalid"><?= $errors['username'] ?></div>
                             <?php endif; ?>
                         </div>
+
                         <div class="inputbox">
                             <i class="fas fa-envelope"></i>
                             <input value="<?= set_value('email') ?>" type="email" name="email" id="name" placeholder="Email" required>
@@ -45,6 +47,7 @@
                                 <div class="invalid"><?= $errors['email'] ?></div>
                             <?php endif; ?>
                         </div>
+
                         <div class="inputbox">
                             <i class="fas fa-phone"></i>
                             <input value="<?= set_value('teleno') ?>" type="phoneno." name="teleno" id="teleno" placeholder="Contact Number" required>
@@ -52,6 +55,7 @@
                                 <div class="invalid"><?= $errors['teleno'] ?></div>
                             <?php endif; ?>
                         </div>
+
                         <div class="inputbox">
                             <i class="fas fa-lock"></i>
                             <input value="<?= set_value('password') ?>" type="password" name="password" id="password" placeholder="Create Password">
@@ -59,6 +63,7 @@
                                 <div class="invalid"><?= $errors['password'] ?></div>
                             <?php endif; ?>
                         </div>
+
                         <div class="inputbox">
                             <i class="fas fa-lock"></i>
                             <input value="<?= set_value('repassword') ?>" type="password" name="repassword" id="repassword" placeholder="Confirm Password">
@@ -66,10 +71,13 @@
                                 <div class="invalid"><?= $errors['password'] ?></div>
                             <?php endif; ?>
                         </div>
+
                         <button name="sendotp">Send OTP</button>
+
                         <div class="register">
                             <p>Already have an account? <a href="<?= ROOT ?>/login">Sign In</a></p>
                         </div>
+                        
                     </div>
                 </form>
             </section>

@@ -12,7 +12,7 @@ $this->view('includes/footer', $data);
 
 <head>
     <title>Deliverers</title>
-    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin_branches.css">
+    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin/admin_deliverer.css">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -20,12 +20,23 @@ $this->view('includes/footer', $data);
 
 <body>
     <div class="overlay" id="overlay"></div>
+    <?php
+       $this->view('includes/emp_topbar', $data);
+      ?>
     <div class="home-section">
         <!-- content  -->
         <section id="main" class="main">
-            <div class="ad_head">
-                <p class="ad_head_1">DELIVERERS<span> DETAILS</span></p>
+           
+        <div class="title-profile">
+            <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
+            <p class="section-title">DELIVERERS<span> DETAILS</span></p>
+            <div class="divider dark mb-4">
+                <div class="icon-wrap">
+                <!-- <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i> -->
+                 </div>
             </div>
+        </div>
+          
 
             <div class="form-header">
                 <form action="#">
@@ -95,12 +106,12 @@ $this->view('includes/footer', $data);
                 <div class="ad-description">Open Time</div>
                 <div class="ad-description">Close Time</div>    -->
                 
-                <div >ID</div>
-                <div >User Name</div>
-                <div >Contact NO</div>
-                <div >E-mail</div>
-                <div >Joined date</div>
-                <div >Branch</div>
+                <div class="header-item" style="margin-left:50px">ID ->></div>
+                <div class="header-item" style="margin-left:-90px"  >User Name</div>
+                <div class="header-item"  >Contact NO</div>
+                <div class="header-item"  >E-mail</div>
+                <!-- <div class="header-item"  style="margin-left:20px">Joined date</div> -->
+                <div class="header-item"  >Branch</div>
 
             </div>
             </div>
@@ -124,9 +135,9 @@ $this->view('includes/footer', $data);
 
             <!-- delete popup -->
             <div class="popup-container" id="deletePopup">
-                <h2>Are you sure you want to delete this item?</h2>
+                <h2>Are you sure you want to remove this deliverer from the service?</h2>
                 <div class="buttons-container">
-                    <button class="cancel-btn" onclick="closePopup1()">NO</button>
+                    <button class="cancel-btn" style="background-color:black" onclick="closePopup1()">NO</button>
                     <button class="submit-btn" onclick="confirmDelete()">DELETE</button>
                 </div>
             </div>
@@ -137,11 +148,11 @@ $this->view('includes/footer', $data);
                 <!-- <div class="advertisement-image"> <img src="https://lh3.googleusercontent.com/p/AF1QipNFVt_67WFrJbjsHEQfxY691SYz3wxrn1Ioq5KC=s1360-w1360-h1020" alt="branch.id" class="customer-image"></div> -->
                 <div class="branch-id"><?= esc($row->id) ?></div>
                 <div class="branch-name"><?= esc($row->username) ?></div>
-                <div class="branch-loc"><?= esc($row->teleno) ?></div>
-                <div class="branch-loc"><?= esc($row->email) ?></div>
+                <div class="branch-name"><?= esc($row->teleno) ?></div>
+                <div class="branch-loc" style="margin-left:20px"><?= esc($row->email) ?></div>
                 <!-- <div class="branch-loc"><?= htmlspecialchars((string)$row->joined_date, ENT_QUOTES, 'UTF-8') ?></div> -->
-                <div class="branch-loc"><?= (string)esc($row->joined_date) ?></div>
-                <div class="branch-loc"><?= esc($row->branch) ?></div>
+                <!-- <div class="branch-loc"style="margin-left:-40px"><?= (string)esc($row->joined_date) ?></div> -->
+                <div class="branch-name"><?= esc($row->branch) ?></div>
                 <!-- <div class="branch-loc"><?= esc($row->address) ?></div> -->
 
 
@@ -203,6 +214,21 @@ $this->view('includes/footer', $data);
             overlay.classList.remove('show');
         }
 
+    </script>
+     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            var navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = "white";
+                } else {
+                    navbar.style.backgroundColor = "transparent";
+                }
+            });
+        });
     </script>
 </body>
 

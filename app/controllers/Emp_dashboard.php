@@ -45,6 +45,12 @@ class Emp_dashboard extends Controller
        $getBranchcount = $this->getBranchcount ($branch);
        $data['getBranchcount'] = $getBranchcount ;
 
+
+       $goal = new Goals();
+       $getGoals = $this -> findAllTargets($goal);
+       $data['getGoals'] = $getGoals;
+
+
        $this->view('employee/employee_dashboard', $data);
         
      
@@ -123,5 +129,11 @@ class Emp_dashboard extends Controller
        return $data;
     }
 
+    private function findAllTargets($goal)
+    {
+        $data = $goal->findTargets() ;
+       // show($data);
+       return $data;
+    }
 
 }

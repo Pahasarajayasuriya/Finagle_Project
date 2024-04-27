@@ -33,8 +33,8 @@ $this->view('includes/footer', $data);
 
 <body>
 	<?php $this->view('includes/emp_topbar', $data); ?>
-	
-	
+
+
 
 	<div class="home-section">
 		<section id="content">
@@ -303,23 +303,62 @@ $this->view('includes/footer', $data);
 					</div>
 
 
-					<div class="goal">
+
+					<div class="todo">
 						<div class="head">
 							<h3>Assigned Goals</h3>
 
 						</div>
-						<ul class="todo-list">
-							<li class="completed">
-								 <p>Target orders must be  1500 for this month</p>
-							</li>
+
+						<?php
+						//show($data['getPickuporders ']);
+
+						if (isset($getGoals)) {
+							foreach ($getGoals as  $goal) {
+
+						?>
+
+								<ul class="todo-list">
+									<li class="completed" id="orders">
+										<div class="numeric">
+											<i class='bx bxs-calendar-check'></i>
+
+											<p class="type">Target Orders</p>
+
+										</div>
+
+										<p class="count"><?= $goal->orders ?></p>
+
+									</li>
 
 
-							<li class="completed">
-							  <p>Target revenue must be  Rs.50 000 for this month</p>
-							</li>
-							
+									<li class="completed" id="customers">
+										<div class="numeric">
+											<i class='bx bxs-group'></i>
+											<p class="type">Target Customers </p>
+										</div>
 
-						</ul>
+										<p class="count"><?= $goal->customers ?></p>
+
+
+									</li>
+									<li class="completed" id="revenue">
+										<div class="numeric">
+											<i class='bx bxs-dollar-circle'></i>
+											<p class="type">Target Revenue</p>
+										</div>
+
+										<p class="count"><?= $goal->revenues ?></p>
+
+									</li>
+
+								</ul>
+
+						<?php
+							}
+						}
+						?>
+
 					</div>
 
 				</div>
@@ -333,61 +372,117 @@ $this->view('includes/footer', $data);
 		document.addEventListener("DOMContentLoaded", function() {
 
 
-					var navbar = document.querySelector(".navbar");
+			var navbar = document.querySelector(".navbar");
 
-					window.addEventListener("scroll", function() {
-						if (window.scrollY > 0) {
-							navbar.style.backgroundColor = "white";
-						} else {
-							navbar.style.backgroundColor = "transparent";
-						}
-					});
+			window.addEventListener("scroll", function() {
+				if (window.scrollY > 0) {
+					navbar.style.backgroundColor = "white";
+				} else {
+					navbar.style.backgroundColor = "transparent";
+				}
+			});
 		});
 
-					const numb1 = document.querySelector(".numb1");
-					let counter1 = 0;
-					const targetPercentage1 = <?= $order_count->total_records ?>;
-					const intervalId1 = setInterval(() => {
-						if (counter1 >= targetPercentage1) {
-							clearInterval(intervalId1);
-						} else {
-							counter1 += 1;
-							numb1.textContent = (counter1 / 400) * 100 + "%";
-
-						}
-					}, 80);
 
 
+		const numb1 = document.querySelector(".numb1");
+		let counter1 = 0;
+		const targetPercentage1 = <?= $order_count->total_records ?>;
+		const intervalId1 = setInterval(() => {
+			if (counter1 >= targetPercentage1) {
+				clearInterval(intervalId1);
+			} else {
+				counter1 += 1;
+				<?php
+				//show($data['getPickuporders ']);
+
+				if (isset($getGoals)) {
+					foreach ($getGoals as  $goal) {
+
+				?>
+						orders = <?= $goal->orders ?>
+
+				<?php
+					}
+				}
+				?>
+
+				const percentage = ((counter1 / revenue) * 100).toFixed(2);
+
+				numb1.textContent = percentage + "%";
+
+				// numb1.textContent = (counter1 / orders) * 100 + "%";
+
+			}
+		}, 50);
 
 
-					const numb2 = document.querySelector(".numb2");
-					let counter2 = 0;
-					const targetPercentage2 = <?= $cus_count->total_customers ?>;
-					const intervalId2 = setInterval(() => {
-						if (counter2 >= targetPercentage2) {
-							clearInterval(intervalId2);
-						} else {
-							counter2 += 1;
-							numb2.textContent = (counter2 / 200) * 100 + "%";
-
-						}
-					}, 80);
 
 
+		const numb2 = document.querySelector(".numb2");
+		let counter2 = 0;
+		const targetPercentage2 = <?= $cus_count->total_customers ?>;
+		const intervalId2 = setInterval(() => {
+			if (counter2 >= targetPercentage2) {
+				clearInterval(intervalId2);
+			} else {
+				counter2 += 1;
+
+				<?php
+				//show($data['getPickuporders ']);
+
+				if (isset($getGoals)) {
+					foreach ($getGoals as  $goal) {
+
+				?>
+						customers = <?= $goal->customers ?>
+
+				<?php
+					}
+				}
+				?>
+
+				const percentage = ((counter2 / customers) * 100).toFixed(2);
+
+				numb2.textContent = percentage + "%";
+
+				// numb2.textContent = (counter2 / customers) * 100 + "%";
+
+			}
+		}, 80);
 
 
-					const numb3 = document.querySelector(".numb3");
-					let counter3 = 0;
-					const targetPercentage3 = <?= $total_cost->total_sum ?>;
-					const intervalId3 = setInterval(() => {
-						if (counter3 == targetPercentage3) {
-							clearInterval(intervalId3);
-						} else {
-							counter3 += 1;
-							numb3.textContent = (counter1 / 1000) * 100 + "%";
 
-						}
-					}, 80);
+
+		const numb3 = document.querySelector(".numb3");
+		let counter3 = 0;
+		const targetPercentage3 = <?= $total_cost->total_sum ?>;
+		const intervalId3 = setInterval(() => {
+			if (counter3 == targetPercentage3) {
+				clearInterval(intervalId3);
+			} else {
+				counter3 += 1;
+				<?php
+				//show($data['getPickuporders ']);
+
+				if (isset($getGoals)) {
+					foreach ($getGoals as  $goal) {
+
+				?>
+						revenue = <?= $goal->revenues ?>
+
+				<?php
+					}
+				}
+				?>
+
+				// const percentage = ((counter3 / revenue) * 100).toFixed(2);
+
+				// numb3.textContent = percentage + "%";
+				numb3.textContent = ((counter1 / revenue) * 100).toFixed(2) + "%";
+
+			}
+		}, 80);
 	</script>
 
 
