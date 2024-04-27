@@ -28,22 +28,24 @@ class admin_branchesModel extends Model
             $this->errors['address']='Address is required'; 
         }
 
-        if(empty($data['open_time'])) {
-            $this->errors['open_time'] = 'Open time is required'; 
-        } elseif (!isValidTimeFormat($data['open_time'])) {
-            $this->errors['open_time'] = 'Invalid open time format'; 
-        }
+        // if(empty($data['open_time'])) {
+        //     $this->errors['open_time'] = 'Open time is required'; 
+        // } 
+        // elseif (!isValidTimeFormat($data['open_time'])) {
+        //     $this->errors['open_time'] = 'Invalid open time format'; 
+        // }
         
-        if(empty($data['close_time'])) {
-            $this->errors['close_time'] = 'Close time is required'; 
-        } elseif (!isValidTimeFormat($data['close_time'])) {
-            $this->errors['close_time'] = 'Invalid close time format'; 
-        }   
+        // if(empty($data['close_time'])) {
+        //     $this->errors['close_time'] = 'Close time is required'; 
+        // } 
+        // elseif (!isValidTimeFormat($data['close_time'])) {
+        //     $this->errors['close_time'] = 'Invalid close time format'; 
+        // }   
 
         if(empty($data['contact_number']))
         {
             $this->errors['contact_number']='Contact number is required'; 
-        }elseif (!preg_match('/^\d{10}$/', $data['teleno'])) {
+        }elseif (!preg_match('/^\d{10}$/', $data['contact_number'])) {
             $this->errors['contact_number'] = 'Invalid telephone number format';
         }
 
@@ -54,7 +56,7 @@ class admin_branchesModel extends Model
         }
         return false;
 
-        // return $data;
+        //return $data;
     }
 
     public function get_all()

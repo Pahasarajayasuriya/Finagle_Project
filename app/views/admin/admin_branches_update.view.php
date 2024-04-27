@@ -12,7 +12,7 @@ $this->view('includes/footer', $data);
 
 <head>
     <title>Branches</title>
-    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin_branches.css">
+    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin/admin_branch.css">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -107,27 +107,43 @@ $this->view('includes/footer', $data);
             <div class="popup-container" id="editPopupContainer">
                 <h2>Edit the branch</h2>
                 <div class="popup-content">
+
                     <label for="editDescription">Branch Name:</label>
-                    <input type="text" id="editDescription" name="name" placeholder="Enter the branch name" value="<?= $row[0]->name ?>">
+                    <input type="text" id="editDescription" name="name" placeholder="Enter the branch name" value="<?= $row[0]->name ?>" required>
+                    <?php if (!empty($errors['username'])) : ?>
+                            <div class="invalid"><?= $errors['username'] ?></div>
+                    <?php endif; ?>
 
                     <label for="editEndDate">Address:</label>
-                    <input type="text" id="editEndDate" name="address" value="<?= $row[0]->address ?>">
+                    <input type="text" id="editEndDate" name="address" value="<?= $row[0]->address ?>" required>
+                    <?php if (!empty($errors['address'])) : ?>
+                            <div class="invalid"><?= $errors['address'] ?></div>
+                    <?php endif; ?>
 
                     <label for="editEndDate">Contact NO:</label>
-                    <input type="text" id="editEndDate" name="address" value="<?= $row[0]->contact_number ?>">
+                    <input type="text" id="editEndDate" name="contact_number" value="<?= $row[0]->contact_number ?>" required>
+                    <?php if (!empty($errors['contact_number'])) : ?>
+                            <div class="invalid"><?= $errors['contact_number'] ?></div>
+                    <?php endif; ?>
 
                     <label for="editEndDate">OPEN HOUR:</label>
-                    <input type="text" id="editEndDate" name="address" value="<?= $row[0]->open_time ?>">
+                    <input type="time" id="editEndDate" name="open_time" value="<?= $row[0]->open_time ?>" required>
+                    <?php if (!empty($errors['open_time'])) : ?>
+                            <div class="invalid"><?= $errors['open_time'] ?></div>
+                    <?php endif; ?>
 
                     <label for="editEndDate">CLOSE HOUR:</label>
-                    <input type="text" id="editEndDate" name="address" value="<?= $row[0]->close_time ?>">
+                    <input type="time" id="editEndDate" name="close_time" value="<?= $row[0]->close_time ?>" required>
+                    <?php if (!empty($errors['close_time'])) : ?>
+                            <div class="invalid"><?= $errors['close_time'] ?></div>
+                    <?php endif; ?>
 
                     <input type="hidden" name="id" value="<?= $row[0]->id; ?>">
                     
                     <div class="buttons-container">
                         <!-- <button class="cancel-btn" onclick="closeEditPopup()">Cancel</button> -->
                         <button class="cancel-btn"><a href="<?= ROOT."/admin_branches" ?>">Cancel</a></button>
-                        <button name="update" value="update" class="submit-btn" onclick="submitEditForm()">Submit</button>
+                        <button type="submit" name="update" value="update" class="submit-btn" >Submit</button>
                     </div>
                 </div>
             </div class="branch-container">

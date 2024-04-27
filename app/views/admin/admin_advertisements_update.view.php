@@ -92,12 +92,21 @@ $this->view('includes/footer', $data);
 
                     <label for="editEndDate">Image:</label>
                     <input type="file" id="editEndDate" name="image" value="<?= $row[0]->image ?>">
+                    <?php if (!empty($errors['image'])) : ?>
+                            <div class="invalid"><?= $errors['image'] ?></div>
+                    <?php endif; ?>
 
                     <label for="editEndDate">Description:</label>
-                    <input type="text" id="editEndDate" name="description" value="<?= $row[0]->description ?>">
+                    <input type="text" id="editEndDate" name="description" value="<?= $row[0]->description ?>" required>
+                    <?php if (!empty($errors['description'])) : ?>
+                            <div class="invalid"><?= $errors['description'] ?></div>
+                    <?php endif; ?>
 
                     <label for="editEndDate">End Date:</label>
-                    <input type="date" id="editEndDate" name="end_date" value="<?= $row[0]->end_date ?>">
+                    <input type="date" id="editEndDate" name="end_date" value="<?= $row[0]->end_date ?>"required>
+                    <?php if (!empty($errors['end_date'])) : ?>
+                            <div class="invalid"><?= $errors['end_date'] ?></div>
+                    <?php endif; ?>
 
 
                     <input type="hidden" name="id" value="<?= $row[0]->id; ?>">
@@ -105,7 +114,7 @@ $this->view('includes/footer', $data);
                     <div class="buttons-container">
                         <!-- <button class="cancel-btn" onclick="closeEditPopup()">Cancel</button> -->
                         <button class="cancel-btn"><a href="<?= ROOT."/admin_advertisements" ?>">Cancel</a></button>
-                        <button name="update" value="update" class="submit-btn" onclick="submitEditForm()">Submit</button>
+                        <button type="submit" name="update" value="update" class="submit-btn">Submit</button>
                     </div>
                 </div>
             </div class="branch-container">

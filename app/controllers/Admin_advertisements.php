@@ -42,6 +42,9 @@ class Admin_advertisements extends Controller
         //handle updats
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
             // Validate and sanitize input data
+            $id=$_POST['id'];
+            unset($_POST['id']);
+            unset($_POST['update']);
             $validatedData = $admin_advertisement_model->validate($_POST);
             //show($data);
             //show($validatedData);
@@ -63,23 +66,28 @@ class Admin_advertisements extends Controller
                         $admin_advertisement_model->update($id,$validatedData);
                     }
                     //$admin_advertisement_model->update($id,$validatedData);
-
                     // Redirect to avoid form resubmission
                     redirect('admin_advertisements');
-                } else {
-                    // Handle image upload failure
-
-                    //echo "Image Upload Failed.";
-                }
             } else {
                 // Handle validation errors
                 $data['errors'] = $admin_advertisement_model->errors;
 
-            // }
+            }
         }
 
-        $data['title'] = "admin_advertisements";
-        $this->view('admin/admin_advertisements', $data);
+        if (!empty($data['errors'])){
+            $param['id']=$id;
+            $data['row']=$admin_advertisement_model->where($param);
+            //$data['errors']['teleno']="hello";
+            //show($data['errors']);
+            $this->view('admin/admin_advertisements_update',$data);
+        }
+
+        else{
+            //show($data['errors']);
+            $data['title'] = "admin_advertisement";
+            $this->view('admin/admin_advertisements', $data);
+        }
 
     }
 
