@@ -35,15 +35,15 @@ $this->view('includes/footer', $data);
     <div class="home-section">
         <div class="search-container">
 
-        <div class="title-profile">
-            <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
-            <p class="section-title">COMPLAINTS<span></span></p>
-            <div class="divider dark mb-4">
-                <div class="icon-wrap">
-                <!-- <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i> -->
-                 </div>
+            <div class="title-profile">
+                <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
+                <p class="section-title">COMPLAINTS<span></span></p>
+                <div class="divider dark mb-4">
+                    <div class="icon-wrap">
+                        <!-- <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i> -->
+                    </div>
+                </div>
             </div>
-        </div>
 
             <form>
                 <div class="form-group">
@@ -73,7 +73,7 @@ $this->view('includes/footer', $data);
                             <td class="category"><?= esc($row->complaint) ?></td>
                             <td class="desc"><?= esc($row->teleno) ?></td>
                             <td class="desc"><?= esc($row->email) ?></td>
-                            <td><button type="submit" class="view-order-btn response-btn">Response</button></td>
+                            <td><button type="submit" class="view-order-btn response-btn" data-email="<?= esc($row->email) ?>">Response</button></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -97,11 +97,13 @@ $this->view('includes/footer', $data);
                 document.querySelectorAll('.response-btn').forEach(function(button) {
                     button.addEventListener('click', async function(event) {
                         event.preventDefault();
+                        const userEmail = this.getAttribute('data-email');
                         const {
                             value: email
                         } = await Swal.fire({
                             title: "Input email address",
                             input: "email",
+                            inputValue: userEmail, 
                             inputLabel: "Your email address",
                             inputPlaceholder: "Enter your email address"
                         });
