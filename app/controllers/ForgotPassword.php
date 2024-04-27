@@ -29,8 +29,8 @@ class ForgotPassword extends Controller
                 $phpmailer->SMTPSecure = 'ssl';
                 $phpmailer->SMTPAuth = true;
                 $phpmailer->Port = 465;
-                $phpmailer->Username = '2021cs087@stu.ucsc.cmb.ac.lk';
-                $phpmailer->Password = 'soevefjawduuahin';
+                $phpmailer->Username = 'finaglelankapvt@gmail.com';
+                $phpmailer->Password = 'fgrhniuuyyglbxhf';
                 $phpmailer->isHtml(true);
 
                 // Email content
