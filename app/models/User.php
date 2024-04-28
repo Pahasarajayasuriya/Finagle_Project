@@ -147,4 +147,16 @@ class User extends Model
         $query = "SELECT * FROM {$this->table}";
         return $this->query($query);
     }
+
+
+    public function getManagersBorella()
+    {
+        $managers = $this->where(['role' => 'manager', 'branch' => 'Borella']);
+
+        if (is_array($managers)) {
+            return (object)$managers;
+        } else {
+            return false;
+        }
+    }
 }
