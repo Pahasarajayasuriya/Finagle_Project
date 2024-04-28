@@ -12,7 +12,7 @@ $this->view('includes/footer', $data);
 
 <head>
     <title>Branches</title>
-    <link rel="stylesheet" href="<?= ROOT?>/assets/css/admin/admin_branch.css">
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/css/admin/admin_branch.css">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -21,21 +21,21 @@ $this->view('includes/footer', $data);
 <body>
     <div class="overlay" id="overlay"></div>
     <?php
-       $this->view('includes/emp_topbar', $data);
-      ?>
+    $this->view('includes/emp_topbar', $data);
+    ?>
     <div class="home-section">
         <!-- content  -->
         <section id="main" class="main">
 
-        <div class="title-profile">
-            <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
-            <p class="section-title">BRANCH<span> DETAILS</span></p>
-            <div class="divider dark mb-4">
-                <div class="icon-wrap">
-                <!-- <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i> -->
-                 </div>
+            <div class="title-profile">
+                <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
+                <p class="section-title">BRANCH<span> DETAILS</span></p>
+                <div class="divider dark mb-4">
+                    <div class="icon-wrap">
+                        <!-- <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i> -->
+                    </div>
+                </div>
             </div>
-        </div>
 
             <div class="form-header">
                 <form action="#">
@@ -51,69 +51,74 @@ $this->view('includes/footer', $data);
             </div>
 
             <!-- Popup Container for add branch -->
-            <form method="POST" enctype="multipart/form-data" action="<?= ROOT?>/admin_branches">
-            <div class="popup-container" id="popupContainer">
-                <h2>Add a Branch</h2>
-                <div class="popup-content">
-                    <label for="name">Branch Name:</label>
-                    <input value="<?= set_value('name') ?>" type="text" id="description" name="name" placeholder="Enter branch name">
-                    <?php if (!empty($errors['name'])) : ?>
+            <form method="POST" enctype="multipart/form-data" action="<?= ROOT ?>/admin_branches">
+                <div class="popup-container" id="popupContainer">
+                    <h2>Add a Branch</h2>
+                    <div class="popup-content">
+                        <label for="name">Branch Name:</label>
+                        <input value="<?= set_value('name') ?>" type="text" id="description" name="name" placeholder="Enter branch name">
+                        <?php if (!empty($errors['name'])) : ?>
                             <div class="invalid"><?= $errors['name'] ?></div>
-                    <?php endif; ?>
+                        <?php endif; ?>
 
-                    <label for="address">Address:</label>
-                    <input type="text" id="price" name="address">
-                    <?php if (!empty($errors['address'])) : ?>
+                        <label for="address">Address:</label>
+                        <input type="text" id="price" name="address">
+                        <?php if (!empty($errors['address'])) : ?>
                             <div class="invalid"><?= $errors['address'] ?></div>
-                    <?php endif; ?>
+                        <?php endif; ?>
 
-                    <label for="contact-number">Contact number:</label>
-                    <input type="text" id="Image" name="contact_number">
-                    <?php if (!empty($errors['contact_number'])) : ?>
+
+                        <div id="map"></div>
+                        <input type="hidden" id="latitude" name="latitude">
+                        <input type="hidden" id="longitude" name="longitude">
+
+                        <label for="contact-number">Contact number:</label>
+                        <input type="text" id="Image" name="contact_number">
+                        <?php if (!empty($errors['contact_number'])) : ?>
                             <div class="invalid"><?= $errors['contact_number'] ?></div>
-                    <?php endif; ?>
+                        <?php endif; ?>
 
-                    <label for="open">Openning hours:</label>
-                    <input type="time" id="open" name="open_time" value="00:00:00">
-                    <?php if (!empty($errors['open_time'])) : ?>
+                        <label for="open">Openning hours:</label>
+                        <input type="time" id="open" name="open_time" value="00:00:00">
+                        <?php if (!empty($errors['open_time'])) : ?>
                             <div class="invalid"><?= $errors['open_time'] ?></div>
-                    <?php endif; ?>
+                        <?php endif; ?>
 
-                    <label for="close">Closing hours:</label>
-                    <input type="time" id="close" name="close_time" value="00:00:00">
-                    <?php if (!empty($errors['close_time'])) : ?>
+                        <label for="close">Closing hours:</label>
+                        <input type="time" id="close" name="close_time" value="00:00:00">
+                        <?php if (!empty($errors['close_time'])) : ?>
                             <div class="invalid"><?= $errors['close_time'] ?></div>
-                    <?php endif; ?>
-                    <div class="buttons-container">
-                        <!-- <button class="cancel-btn" onclick="closePopup()">Cancel</button> -->
-                        <button class="cancel-btn" ><a href="<?= ROOT."/admin_branches" ?>">Cancel</a></button>
-                        <button name="add" value="add" class="submit-btn" onclick="submitForm()">Submit</button>
-                    </div>
+                        <?php endif; ?>
+                        <div class="buttons-container">
+                            <!-- <button class="cancel-btn" onclick="closePopup()">Cancel</button> -->
+                            <button class="cancel-btn"><a href="<?= ROOT . "/admin_branches" ?>">Cancel</a></button>
+                            <button name="add" value="add" class="submit-btn" onclick="submitForm()">Submit</button>
+                        </div>
 
+                    </div>
                 </div>
-              </div>
-              </form>
+            </form>
 
             <div class="advertisement-table">
-            <div class="advertisement-header">
-                <!-- <div class="ad-image"></div> -->
-                <!-- <div class="ad-id"> Branch ID</div>
+                <div class="advertisement-header">
+                    <!-- <div class="ad-image"></div> -->
+                    <!-- <div class="ad-id"> Branch ID</div>
                 <div class="ad-description">Branch Name</div> -->
-                <!-- <div class="ad-date">Address</div>   -->
-                <!-- <div class="ad-description">Address</div>
+                    <!-- <div class="ad-date">Address</div>   -->
+                    <!-- <div class="ad-description">Address</div>
                 <div class="ad-description">Contact NO</div>
                 <div class="ad-description">Open Time</div>
                 <div class="ad-description">Close Time</div>    -->
-                
-                <!-- <div >ID</div> -->
-                <div class="header-item"  >Branch Name ->></div>
-                <div class="header-item">Address</div>
-                <div class="header-item" >Contact NO</div>
-                <div  class="header-item" style ="margin-right:160px">Open Time & Close time</div>
-                <!-- <div class="header-item"  >Close Time</div>  -->
+
+                    <!-- <div >ID</div> -->
+                    <div class="header-item">Branch Name</div>
+                    <div class="header-item">Address</div>
+                    <div class="header-item">Contact NO</div>
+                    <div class="header-item" style="margin-right:160px">Open Time & Close time</div>
+                    <!-- <div class="header-item"  >Close Time</div>  -->
+                </div>
             </div>
-            </div>
-            
+
             <div class="popup-container" id="editPopupContainer">
                 <h2>Edit the branch</h2>
                 <div class="popup-content">
@@ -135,34 +140,34 @@ $this->view('includes/footer', $data);
             <div class="popup-container" id="deletePopup">
                 <h2>Are you sure you want to delete this branch?</h2>
                 <div class="buttons-container">
-                    <button class="cancel-btn"  style ="background-color:black"onclick="closePopup1()">NO</button>
+                    <button class="cancel-btn" style="background-color:black" onclick="closePopup1()">NO</button>
                     <button class="submit-btn" onclick="confirmDelete()">DELETE</button>
                 </div>
             </div>
 
 
             <?php foreach ($rows as $row) : ?>
-            <div class="advertisement-record">
-                <!-- <div class="advertisement-image"> <img src="https://lh3.googleusercontent.com/p/AF1QipNFVt_67WFrJbjsHEQfxY691SYz3wxrn1Ioq5KC=s1360-w1360-h1020" alt="branch.id" class="customer-image"></div> -->
-                <!-- <div class="branch-id"><?= esc($row->id) ?></div> -->
-                <div class="branch-loc"><?= esc($row->name) ?></div>
-                <div class="branch-loc"><?= esc($row->address) ?></div>
-                <div class="branch-loc" ><?= esc($row->contact_number) ?></div>
-                <div class="branch-loc"><?= esc($row->open_time) ?></div>
-                <div class="branch-loc"><?= esc($row->close_time) ?></div>
+                <div class="advertisement-record">
+                    <!-- <div class="advertisement-image"> <img src="https://lh3.googleusercontent.com/p/AF1QipNFVt_67WFrJbjsHEQfxY691SYz3wxrn1Ioq5KC=s1360-w1360-h1020" alt="branch.id" class="customer-image"></div> -->
+                    <!-- <div class="branch-id"><?= esc($row->id) ?></div> -->
+                    <div class="branch-loc"><?= esc($row->name) ?></div>
+                    <div class="branch-loc"><?= esc($row->address) ?></div>
+                    <div class="branch-loc"><?= esc($row->contact_number) ?></div>
+                    <div class="branch-loc"><?= esc($row->open_time) ?></div>
+                    <div class="branch-loc"><?= esc($row->close_time) ?></div>
 
-                <div class="advertisement-actions">
-                  <!-- <button class="edit-button" onclick="openEditPopupDialog('${branch.id}', '${branch.name}', '${branch.location}')">Edit Branch</button> -->
-                  <button class="edit-button"><a href="<?= ROOT."/admin_branches/update_branch/".$row->id ?>">Edit Branch</a></button>
-                  <button class="delete-button" onclick="openDeletePopup('<?= esc($row->name) ?>')">Delete Branch</button>
-                  <!-- <button class="edit-button"><a href="<?= ROOT."/admin_branches/delete_branch/".$row->id ?>">Delete Branch</a></button>                 -->
-                </div>             
-             </div>
-             <?php endforeach;?>
-            </div>
+                    <div class="advertisement-actions">
+                        <!-- <button class="edit-button" onclick="openEditPopupDialog('${branch.id}', '${branch.name}', '${branch.location}')">Edit Branch</button> -->
+                        <button class="edit-button"><a href="<?= ROOT . "/admin_branches/update_branch/" . $row->id ?>">Edit Branch</a></button>
+                        <button class="delete-button" onclick="openDeletePopup('<?= esc($row->name) ?>')">Delete Branch</button>
+                        <!-- <button class="edit-button"><a href="<?= ROOT . "/admin_branches/delete_branch/" . $row->id ?>">Delete Branch</a></button>                 -->
+                    </div>
+                </div>
+            <?php endforeach; ?>
+    </div>
 
-        </section>
-        <!-- <script src="branch-admin.js"></script> -->
+    </section>
+    <!-- <script src="branch-admin.js"></script> -->
     </div>
     <script src="<?= ROOT ?>/assets/js/admin_branch.js"></script>
     <script>
@@ -172,7 +177,7 @@ $this->view('includes/footer', $data);
             filter = input.value.toUpperCase();
             branchesContainer = document.getElementById('main'); // Corrected ID
             branches = branchesContainer.getElementsByClassName('advertisement-record');
-            
+
             // Loop through all branches, hide those that don't match the search query
             for (var i = 0; i < branches.length; i++) {
                 branchName = branches[i].getElementsByClassName('branch-name')[0];
@@ -192,13 +197,15 @@ $this->view('includes/footer', $data);
             const popupContainer = document.getElementById('deletePopup');
             const overlay = document.getElementById('overlay');
             const deleteButton = document.querySelector('#deletePopup .submit-btn');
-            deleteButton.onclick = function() { confirmDelete(adId); } // Set up the deletion confirmation
+            deleteButton.onclick = function() {
+                confirmDelete(adId);
+            } // Set up the deletion confirmation
             popupContainer.classList.add('show');
             overlay.classList.add('show');
         }
 
         function confirmDelete(adId) {
-            const url = `<?=ROOT."/admin_branches/delete_branch/"?>${adId}`;
+            const url = `<?= ROOT . "/admin_branches/delete_branch/" ?>${adId}`;
             //console.log(url);
             window.location.href = url; // Redirect to delete the advertisement
         }
@@ -208,9 +215,8 @@ $this->view('includes/footer', $data);
             popupContainer.classList.remove('show');
             overlay.classList.remove('show');
         }
-
     </script>
-     <script>
+    <script>
         document.addEventListener("DOMContentLoaded", function() {
 
 
@@ -225,6 +231,96 @@ $this->view('includes/footer', $data);
             });
         });
     </script>
+    <style>
+        #map {
+            height: 200px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+    </style>
+    <script>
+        // Initialize the map
+        var map;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 10,
+                center: {
+                    lat: 6.9271,
+                    lng: 79.8612
+                } // Coordinates for Colombo, Sri Lanka
+            });
+
+            // Create the search box and link it to the UI element.
+            var input = document.getElementById('price');
+            var autocomplete = new google.maps.places.Autocomplete(input, {
+                componentRestrictions: {
+                    country: 'lk'
+                }
+            });
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+            // Bias the Autocomplete results towards current map's viewport.
+            map.addListener('bounds_changed', function() {
+                autocomplete.setBounds(map.getBounds());
+            });
+
+            var markers = [];
+            // Listen for the event fired when the user selects a prediction and retrieve
+            // more details for that place.
+            autocomplete.addListener('place_changed', function() {
+    var place = autocomplete.getPlace();
+
+    if (!place.geometry) {
+        console.log("Returned place contains no geometry");
+        return;
+    }
+
+    var latitude = place.geometry.location.lat();
+    var longitude = place.geometry.location.lng();
+
+    console.log('Latitude: ' + latitude);
+    console.log('Longitude: ' + longitude);
+
+    // Store the latitude and longitude in hidden input fields
+    document.getElementById('latitude').value = latitude;
+    document.getElementById('longitude').value = longitude;
+
+    // Clear out the old markers.
+    markers.forEach(function(marker) {
+        marker.setMap(null);
+    });
+    markers = [];
+
+    var icon = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(25, 25)
+    };
+
+    // Create a marker for each place.
+    markers.push(new google.maps.Marker({
+        map: map,
+        icon: icon,
+        title: place.name,
+        position: place.geometry.location
+    }));
+
+    var bounds = new google.maps.LatLngBounds();
+    if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+    } else {
+        bounds.extend(place.geometry.location);
+    }
+    map.fitBounds(bounds);
+});
+        }
+    </script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJgBkLPPO15pdU1KgvHPib8NnXlun3IsM&loading=async&libraries=places&callback=initMap"></script>
 </body>
 
 </html>

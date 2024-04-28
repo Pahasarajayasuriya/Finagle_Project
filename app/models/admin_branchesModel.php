@@ -7,6 +7,8 @@ class admin_branchesModel extends Model
     protected $allowedColumns = [
         'id',
         'name',
+        'latitude',
+        'longitude',
         'address',
         'contact_number',
         'open_time',
@@ -16,25 +18,21 @@ class admin_branchesModel extends Model
     public function validate($data)
     {
         //There are more validation parts to be created
-        $this->errors=[];
+        $this->errors = [];
 
-        if(empty($data['name']))
-        {
-            $this->errors['name']='Branch name is required'; 
+        if (empty($data['name'])) {
+            $this->errors['name'] = 'Branch name is required';
         }
 
-        if(empty($data['address']))
-        {
-            $this->errors['address']='Address is required'; 
+        if (empty($data['address'])) {
+            $this->errors['address'] = 'Address is required';
         }
 
-        if(empty($data['contact_number']))
-        {
-            $this->errors['contact_number']='Contact number is required'; 
+        if (empty($data['contact_number'])) {
+            $this->errors['contact_number'] = 'Contact number is required';
         }
 
-        if(empty($this->errors))
-        {
+        if (empty($this->errors)) {
             return true;
         }
         return false;
@@ -52,12 +50,12 @@ class admin_branchesModel extends Model
     {
         // $query="DELETE FROM `branch` WHERE `branch`.`name` = ".$name;
         // $this->query($query);
-         // Escape the branch name to prevent SQL injection
+        // Escape the branch name to prevent SQL injection
         $escaped_name = $this->escape_string($name);
-    
+
         // Use single quotes around the branch name in the SQL query
         $query = "DELETE FROM `branch` WHERE `branch`.`name` = '$escaped_name'";
-    
+
         // Execute the query
         $this->query($query);
     }
@@ -68,5 +66,4 @@ class admin_branchesModel extends Model
         $result = $this->query($query);
         return $result[0]->row_count;
     }
-    
 }
