@@ -6,9 +6,7 @@ class Admin_productsModel extends Model
     public $errors = [];
     protected $allowedColumns = [
         'user_name',
-
         'description',
-
         'category',
         'price',
         'quantity',
