@@ -48,8 +48,9 @@ $this->view('includes/footer', $data);
                 </form>
 
                 <form action="<?= ROOT ?>/manager_report" method="POST">
+                    <input type="date" name="start_date" required>
+                    <input type="date" name="end_date" required>
                     <div class="buttons-container">
-                        <!-- <button class="cancel-btn" onclick="closePopup()">Cancel</button> -->
                         <button name="add" value="add" class="submit-btn" onclick="submitForm()">GET THE REPORT</button>
                     </div>
                 </form>
@@ -199,7 +200,7 @@ $this->view('includes/footer', $data);
         }
     </script>
 
-<script>
+    <script>
         document.addEventListener("DOMContentLoaded", function() {
 
 
