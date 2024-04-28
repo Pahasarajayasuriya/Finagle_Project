@@ -302,58 +302,77 @@ $this->view('includes/footer', $data);
 						</ul>
 					</div>
 
-					<?php
-					if (!empty($getGoals)) {
-					?>
+					
 
 						<div class="todo">
 							<div class="head">
 								<h3>Assigned Goals</h3>
 							</div>
 
-							<?php
-							//show($data['getPickuporders ']);
 
-							if (isset($getGoals)) {
-								foreach ($getGoals as  $goal) {
-							?>
+							<ul class="todo-list">
+								<li class="completed" id="orders">
+									<div class="numeric">
+										<i class='bx bxs-calendar-check'></i>
+										<p class="type">Target Orders</p>
+									</div>
 
-									<ul class="todo-list">
-										<li class="completed" id="orders">
-											<div class="numeric">
-												<i class='bx bxs-calendar-check'></i>
-												<p class="type">Target Orders</p>
-											</div>
-											<p class="count"><?= $goal->orders ?></p>
-										</li>
+									<?php
+									if (isset($getGoalorders)) {
+										foreach ($getGoalorders as  $goalOrders) {
+									?>
 
-										<li class="completed" id="customers">
-											<div class="numeric">
-												<i class='bx bxs-group'></i>
-												<p class="type">Target Customers </p>
-											</div>
-											<p class="count"><?= $goal->customers ?></p>
-										</li>
 
-										<li class="completed" id="revenue">
-											<div class="numeric">
-												<i class='bx bxs-dollar-circle'></i>
-												<p class="type">Target Revenue</p>
-											</div>
-											<p class="count"><?= $goal->revenues ?></p>
-										</li>
-									</ul>
+											<p class="count"><?= $goalOrders->totalOrders ?></p>
 
-							<?php
-								}
-							}
-							?>
+									<?php
+										}
+									}
+									?>
+
+								</li>
+
+								<li class="completed" id="customers">
+									<div class="numeric">
+										<i class='bx bxs-group'></i>
+										<p class="type">Target Customers </p>
+									</div>
+									<?php
+									if (isset($getGoalcustomers)) {
+										foreach ($getGoalcustomers as  $goalCustomers) {
+									?>
+
+									<p class="count"><?= $goalCustomers->totalCustomers?></p>
+
+									<?php
+										}
+									}
+									?>
+								</li>
+
+								<li class="completed" id="revenue">
+									<div class="numeric">
+										<i class='bx bxs-dollar-circle'></i>
+										<p class="type">Target Revenue</p>
+									</div>
+									<?php
+									if (isset($getGoalrevenues)) {
+										foreach ($getGoalrevenues as  $goalRevenues) {
+									?>
+
+									<p class="count"><?= $goalRevenues->totalRevenues?></p>
+
+									<?php
+										}
+									}
+									?>
+								</li>
+							</ul>
+
+
 
 						</div>
 
-					<?php
-					}
-					?>
 
 				</div>
 			</main>

@@ -47,8 +47,22 @@ class Emp_dashboard extends Controller
 
 
        $goal = new Goals();
-       $getGoals = $this -> findAllTargets($goal);
-       $data['getGoals'] = $getGoals;
+    //    $getGoals = $this -> findAllTargets($goal);
+    //    $data['getGoals'] = $getGoals;
+
+       $getGoalorders = $this->findTargetOrders($goal);
+       //show($getGoalorders);
+       $data['getGoalorders'] = $getGoalorders;
+
+       $getGoalcustomers = $this->findTargetCustomers($goal);
+       //show($getGoalorders);
+       $data['getGoalcustomers'] = $getGoalcustomers;
+
+       $getGoalrevenues = $this->findTargetRevenues($goal);
+       //show($getGoalorders);
+       $data['getGoalrevenues'] = $getGoalrevenues;
+
+
 
 
        $this->view('employee/employee_dashboard', $data);
@@ -136,4 +150,27 @@ class Emp_dashboard extends Controller
        return $data;
     }
 
+    private function   findTargetOrders($goal)
+    {
+        $data = $goal->findOrderTargets() ;
+       // show($data);
+       return $data;
+    }
+
+    private function   findTargetCustomers($goal)
+    {
+        $data = $goal->findCustomerTargets() ;
+       // show($data);
+       return $data;
+    }
+
+    private function   findTargetRevenues($goal)
+    {
+        $data = $goal->findRevenueTargets() ;
+       // show($data);
+       return $data;
+    }
+ 
+  
 }
+

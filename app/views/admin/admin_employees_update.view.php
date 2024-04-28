@@ -107,26 +107,27 @@ $this->view('includes/footer', $data);
                 <!-- <div >Address</div>  -->
             </div>
             </div>
-            
-            <!-- popup for editing -->
+
             <form method="POST" enctype="multipart/form-data" action="<?= ROOT?>/admin_employees">
             <div class="popup-container" id="editPopupContainer">
-                <h2>Edit the branch</h2>
+                <h2>Edit the Employee</h2>
                 <div class="popup-content">
                     <label for="editDescription">User Name:</label>
-                    <input type="text" id="editDescription" name="username" placeholder="Enter the branch name" value="<?= $row[0]->username ?>">
+                    <input type="text" id="editDescription" name="username" placeholder="Enter the branch name" value="<?= $row[0]->username ?>" style ="background-color:grey ; color:white" >
 
-                    <label for="editEndDate">Contact NO:</label>
-                    <input type="text" id="editEndDate" name="teleno" value="<?= $row[0]->teleno ?>">
+                    <label for="editEndDate">Telephone:</label>
+                    <input type="text" id="editDescription" name="teleno" placeholder="Enter the branch name" value="<?= $row[0]->teleno ?>" style ="background-color:grey ; color:white" >
 
+                    <br>
                     <label for="editEndDate">E-mail:</label>
-                    <input type="text" id="editEndDate" name="email" value="<?= $row[0]->email ?>">
-
-                    <input type="hidden" name="id" value="<?= $row[0]->id; ?>">
+                    <input type="text" id="editDescription" name="email" placeholder="Enter the branch name" value="<?= $row[0]->email ?>" style ="background-color:grey ; color:white" >
                     
+                    <input type="hidden" name="id" value="<?= $row[0]->id; ?>">
+
+
                     <div class="buttons-container">
-                        <!-- <button class="cancel-btn" onclick="closeEditPopup()">Cancel</button> -->
-                        <button class="cancel-btn"><a href="<?= ROOT."/admin_employees" ?>">Cancel</a></button>
+                        
+                        <button class="cancel-btn" style ="background-color:black"><a href="<?= ROOT."/admin_employees" ?>">Cancel</a></button>
                         <button name="update" value="update" class="submit-btn" onclick="submitEditForm()">Submit</button>
                     </div>
                 </div>

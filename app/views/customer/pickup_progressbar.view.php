@@ -20,7 +20,7 @@ $this->view('includes/footer', $data);
 </head>
 
 <body>
-<?php $this->view('includes/cus_topbar', $data); ?>
+    <?php $this->view('includes/cus_topbar', $data); ?>
     <div class="home-section">
         <div class="progress_main">
             <div class="container">
@@ -67,6 +67,7 @@ $this->view('includes/footer', $data);
         <script>
             var orderStatus = "<?= $data['orderStatus'] ?>";
             var orderId = "<?= $data['orderId'] ?>";
+            var userName = <?= json_encode(Auth::is_customer() ? Auth::getName() : '') ?>;
             console.log(orderId);
             console.log(orderStatus);
         </script>
@@ -75,77 +76,81 @@ $this->view('includes/footer', $data);
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </div>
     <script>
-    document.getElementById('complaintButton').addEventListener('click', async function(event) {
-        event.preventDefault(); // Prevent the form from being submitted
+        document.getElementById('complaintButton').addEventListener('click', async function(event) {
+            event.preventDefault(); // Prevent the form from being submitted
 
-        const {
-            value: userName
-        } = await Swal.fire({
-            title: 'User Name',
-            input: 'text',
-            inputPlaceholder: 'Enter your user name',
-            showCancelButton: true
-        });
-
-        if (userName) {
             const {
-                value: review
+                value: userInput
             } = await Swal.fire({
-                title: 'Review',
-                input: 'textarea',
-                inputPlaceholder: 'Share details of your own experience of our service.',
-                inputAttributes: {
-                    'aria-label': 'Type your message here'
-                },
-                showCancelButton: true
+                title: 'User Name',
+                input: 'text',
+                inputValue: userName, // Pre-fill the input with the username
+                showCancelButton: true,
+                confirmButtonColor: '#FF0000',
+                cancelButtonColor: 'black',
             });
 
-            if (review) {
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: 'Your review will be posted publicly on the web',
-                    icon: 'question',
+            if (userInput) {
+                const {
+                    value: review
+                } = await Swal.fire({
+                    title: 'Review',
+                    input: 'textarea',
+                    inputPlaceholder: 'Share details of your own experience of our service.',
+                    inputAttributes: {
+                        'aria-label': 'Type your message here'
+                    },
                     showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, Confirm!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        fetch('<?=ROOT?>/Progressbar/saveReview', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({
-                                userName: userName,
-                                review: review
-                            }),
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                Swal.fire({
-                                    title: 'Saved!',
-                                    text: 'Your review has been saved.',
-                                    icon: 'success'
-                                });
-                            } else {
-                                Swal.fire({
-                                    title: 'Error!',
-                                    text: 'There was an error saving your review. Please try again.',
-                                    icon: 'error'
-                                });
-                            }
-                        })
-                        .catch((error) => {
-                            console.error('Error:', error);
-                        });
-                    }
+                    confirmButtonColor: '#FF0000',
+                    cancelButtonColor: 'black',
                 });
+
+                if (review) {
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: 'Your review will be posted publicly on the web',
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonColor: '#FF0000',
+                        cancelButtonColor: 'black',
+                        confirmButtonText: 'Yes, Confirm!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            fetch('<?= ROOT ?>/Progressbar/saveReview', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({
+                                        userName: userName,
+                                        review: review
+                                    }),
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.success) {
+                                        Swal.fire({
+                                            title: 'Saved!',
+                                            text: 'Your review has been saved.',
+                                            icon: 'success'
+                                        });
+                                    } else {
+                                        Swal.fire({
+                                            title: 'Error!',
+                                            text: 'There was an error saving your review. Please try again.',
+                                            icon: 'error'
+                                        });
+                                    }
+                                })
+                                .catch((error) => {
+                                    console.error('Error:', error);
+                                });
+                        }
+                    });
+                }
             }
-        }
-    });
-</script>
+        });
+    </script>
 </body>
 
 </html>
