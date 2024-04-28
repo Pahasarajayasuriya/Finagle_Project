@@ -73,8 +73,9 @@ class admin_branchesModel extends Model
         //$escaped_name = $this->escape_string($name);
     
         // Use single quotes around the branch name in the SQL query
-        $query = "DELETE FROM `branch` WHERE `branch`.`name` = '$name'";
-    
+        //$query = "DELETE FROM `branch` WHERE `branch`.`name` = '$name'";
+        //$query = "DELETE FROM `branch` WHERE `branch`.`name` = '$name'";
+        $query = "UPDATE `branch` SET `availability` = '0' WHERE `name` = '$name'";
         // Execute the query
         $this->query($query);
     }
@@ -88,7 +89,7 @@ class admin_branchesModel extends Model
 
     public function pagination($start_from, $limit)
     {
-        $query = "SELECT * FROM `branch` LIMIT $start_from, $limit";
+        $query = "SELECT * FROM `branch` WHERE `branch`.`availability`='1' LIMIT $start_from, $limit";
         return $this->query($query);
     }
 
