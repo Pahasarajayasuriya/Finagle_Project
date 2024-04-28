@@ -109,6 +109,32 @@ class Model extends Database
         return $this->query($quary);
     }
 
+    
+
+    public function findOrderTargets()
+    {
+
+        $query = "SELECT SUM(orders) AS totalOrders FROM {$this->table}";
+
+        return $this->query($query);
+    }
+    
+    public function findCustomerTargets()
+    {
+
+        $query = "SELECT SUM(customers) AS totalCustomers FROM {$this->table}";
+
+        return $this->query($query);
+    }
+
+    public function findRevenueTargets()
+    {
+
+        $query = "SELECT SUM(revenues) AS totalRevenues FROM {$this->table}";
+
+        return $this->query($query);
+    }
+
     public function count_online()
     {
         $query = "SELECT COUNT(*) AS online_delivery_count FROM {$this->table} WHERE delivery_or_pickup ='delivery'";

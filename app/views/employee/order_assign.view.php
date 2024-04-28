@@ -546,17 +546,11 @@ $this->view('includes/alreadyProcess_popup', $data);
 
             order_id.innerHTML = data.id;
 
-            <?php
-            if ($val->delivery_or_pickup == "delivery") {
-
-            ?>
-                user_location.innerHTML = data.delivery_address;
-
-            <?php
-
-            }
-            ?>
-
+           
+            user_location.innerHTML = data.delivery_address; 
+                    
+            
+          
             // user_phone.innerHTML = data.phone_number;
             pay_status.innerHTML = data.payment_method;
             total_cost.innerHTML = data.total_cost;

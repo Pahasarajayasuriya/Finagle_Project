@@ -102,7 +102,9 @@ $this->view('includes/footer', $data);
                     },
                     showCancelButton: true,
                     confirmButtonColor: '#FF0000',
-                    cancelButtonColor: 'black'
+
+                    cancelButtonColor: 'black',
+
                 });
 
                 if (review) {
@@ -111,8 +113,10 @@ $this->view('includes/footer', $data);
                         text: 'Your review will be posted publicly on the web',
                         icon: 'question',
                         showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
+
+                        confirmButtonColor: '#FF0000',
+                        cancelButtonColor: 'black',
+
                         confirmButtonText: 'Yes, Confirm!'
                     }).then((result) => {
                         if (result.isConfirmed) {
