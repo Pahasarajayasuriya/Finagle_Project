@@ -80,7 +80,7 @@ $this->view('includes/footer', $data);
                         <td><?= esc($row->name) ?> </td>
                         <td><?= esc($row->phone_number) ?></td>
                         <td><?= esc($row->delivery_or_pickup) ?></td>
-                        <td><?= esc($row->deliver_id) ?></td>
+                        <td><?= esc($row->deliver_id) ? esc($row->deliver_id) : '-' ?></td>
                         <td class="datetime"><?= esc($row->delivery_date) ?> <?= esc($row->delivery_time) ?></td>
                         <td><?= esc($row->order_status) ?></td>
                         <td><?= esc($row->total_cost) ?></td>
