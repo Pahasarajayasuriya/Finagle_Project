@@ -24,18 +24,18 @@ $this->view('includes/footer', $data);
     <?php $this->view('includes/cus_topbar', $data); ?>
 
     <div class="home-section">
-       
+
 
         <div class="progress_main">
-          <div class="back-icon" id="back-button">
-          <a href="<?= ROOT ?>/Order_history"> <i class="fa fa-arrow-left" aria-hidden="true"></i> </a>
-         
+            <div class="back-icon" id="back-button">
+                <a href="<?= ROOT ?>/Order_history"> <i class="fa fa-arrow-left" aria-hidden="true"></i> </a>
 
-          </div>
+
+            </div>
             <div class="container">
                 <div class="text-container">
                     <h1>Order ID: <?= $data['orderId'] ?></h1>
-                    <p >If you have any issue, then call our hotline: <a href="tel:+940112236976">+94 (0) 11 223 6976</a></p>
+                    <p>If you have any issue, then call our hotline: <a href="tel:+940112236976">+94 (0) 11 223 6976</a></p>
                 </div>
             </div>
             <div class="bar_container">
@@ -119,8 +119,10 @@ $this->view('includes/footer', $data);
                     },
                     showCancelButton: true,
                     confirmButtonColor: '#FF0000',
-                    cancelButtonColor: 'black'
-
+                    cancelButtonColor: 'black',
+                    customClass: {
+                         confirmButton: 'red-background' // Apply custom class to the confirm button
+                   }
                 });
 
                 if (review) {
@@ -174,7 +176,7 @@ $this->view('includes/footer', $data);
         });
     </script>
 
-<script>
+    <script>
         document.addEventListener("DOMContentLoaded", function() {
 
 

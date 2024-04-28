@@ -30,7 +30,7 @@ class AddEmployee extends Controller
 				$user->insert($_POST);
 			
 				message("Your profile was successfuly created. Please login");
-				redirect('login');
+				redirect('addemployee');
 			}
 		}
 

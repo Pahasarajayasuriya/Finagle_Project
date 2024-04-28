@@ -117,7 +117,7 @@ $this->view('includes/footer', $data);
             </div>
             
             <div class="popup-container" id="editPopupContainer">
-                <h2>Edit the branch</h2>
+                <h2>Edit the employee</h2>
                 <div class="popup-content">
                     <label for="editDescription">Branch Name:</label>
                     <input type="text" id="editDescription" name="editDescription" placeholder="Enter the branch name" value="">

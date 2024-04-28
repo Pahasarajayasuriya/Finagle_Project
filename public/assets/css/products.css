@@ -533,6 +533,10 @@ form .ad-form-input button:hover {
   
 }
 
+.cart-footer button{
+  color: white;
+}
+
 .products-center {
   display: flex;
   flex-wrap: wrap;
