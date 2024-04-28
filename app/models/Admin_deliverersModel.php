@@ -56,26 +56,29 @@ class admin_deliverersModel extends Model
 
     public function del_deliverer($id)
     {
-        $query="DELETE FROM `users` WHERE `users`.`id` = ".$id;
+        //$query="DELETE FROM `users` WHERE `users`.`id` = ".$id;
+        $query = "UPDATE `users` SET `availability_status` = '0' WHERE `id` = '$id'";
         $this->query($query);
     }
 
     public function get_count()
     {
-        $query = "SELECT COUNT(*) AS row_count FROM {$this->table} WHERE role = 'deliverer'";
+        $query = "SELECT COUNT(*) AS row_count FROM {$this->table} WHERE role = 'deliverer' AND availability_status = '1'";
         $result = $this->query($query);
         return $result[0]->row_count;
     }
 
     public function pagination($start_from, $limit)
     {
-        $query = "SELECT * FROM `users` WHERE role = 'deliverer' LIMIT $start_from, $limit";
+        //$query = "SELECT * FROM `users` WHERE role = 'deliverer' LIMIT $start_from, $limit";
+        $query = "SELECT * FROM `users` WHERE role = 'deliverer' AND availability_status = '1' LIMIT $start_from, $limit";
         return $this->query($query);
     }
 
     public function get_count_p()
     {
-        $query = "SELECT COUNT(id) FROM `users` WHERE role = 'deliverer'";
+        //$query = "SELECT COUNT(id) FROM `users` WHERE role = 'deliverer'";
+        $query = "SELECT COUNT(id) FROM `users` WHERE role = 'deliverer' AND availability_status = '1'";
         return $this->query($query);
     }
 

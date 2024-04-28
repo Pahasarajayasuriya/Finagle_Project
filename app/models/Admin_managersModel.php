@@ -56,19 +56,21 @@ class admin_managersModel extends Model
 
     public function del_manager($id)
     {
-        $query="DELETE FROM `users` WHERE `users`.`id` = ".$id;
+        //$query="DELETE FROM `users` WHERE `users`.`id` = ".$id;
+        $query = "UPDATE `users` SET `availability_status` = '0' WHERE `id` = '$id'";
         $this->query($query);
     }
 
     public function pagination($start_from, $limit)
     {
-        $query = "SELECT * FROM `users` WHERE role = 'manager' LIMIT $start_from, $limit";
+        //$query = "SELECT * FROM `users` WHERE role = 'manager' LIMIT $start_from, $limit";
+        $query = "SELECT * FROM `users` WHERE role = 'manager' AND availability_status = '1' LIMIT $start_from, $limit";
         return $this->query($query);
     }
 
     public function get_count()
     {
-        $query = "SELECT COUNT(id) FROM `users` WHERE role = 'manager'";
+        $query = "SELECT COUNT(id) FROM `users` WHERE role = 'manager' AND availability_status = '1'";
         return $this->query($query);
     }
 

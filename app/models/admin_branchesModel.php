@@ -95,7 +95,7 @@ class admin_branchesModel extends Model
 
     public function get_count_p()
     {
-        $query = "SELECT COUNT(name) FROM `branch`";
+        $query = "SELECT COUNT(name) FROM `branch` WHERE `branch`.`availability`='1'";
         return $this->query($query);
     }
     

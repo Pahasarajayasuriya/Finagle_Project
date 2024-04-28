@@ -65,26 +65,30 @@ class Admin_productsModel extends Model
 
     public function del_product($id)
     {
-        $query="DELETE FROM `products` WHERE `products`.`id` = ".$id;
+        //$query="DELETE FROM `products` WHERE `products`.`id` = ".$id;
+        $query = "UPDATE `products` SET `availability` = '0' WHERE `id` = '$id'";
         $this->query($query);
     }
 
     public function get_count()
     {
-        $query = "SELECT COUNT(*) AS row_count FROM {$this->table}";
+        //$query = "SELECT COUNT(*) AS row_count FROM {$this->table}";
+        $query = "SELECT COUNT(*) AS row_count FROM {$this->table} WHERE availability='1'";
         $result = $this->query($query);
         return $result[0]->row_count;
     }
 
     public function pagination($start_from, $limit)
     {
-        $query = "SELECT * FROM `products` LIMIT $start_from, $limit";
+        //$query = "SELECT * FROM `products` LIMIT $start_from, $limit";
+        $query = "SELECT * FROM `products` WHERE availability = '1' LIMIT $start_from, $limit";
         return $this->query($query);
     }
 
     public function get_count_p()
     {
-        $query = "SELECT COUNT(id) FROM `products`";
+        //$query = "SELECT COUNT(id) FROM `products`";
+        $query = "SELECT COUNT(id) FROM `products` WHERE availability = '1'";
         return $this->query($query);
     }
 

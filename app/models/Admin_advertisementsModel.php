@@ -53,20 +53,22 @@ class admin_advertisementsModel extends Model
 
     public function del_advertisement($id)
     {
-        $query="DELETE FROM `advertisement` WHERE `advertisement`.`id` = ".$id;
-        show($query);
+        //$query="DELETE FROM `advertisement` WHERE `advertisement`.`id` = ".$id;
+        $query = "UPDATE `advertisement` SET `availability` = '0' WHERE `id` = '$id'";
+        //show($query);
         $this->query($query);
     }
 
     public function pagination($start_from, $limit)
     {
-        $query = "SELECT * FROM `advertisement` LIMIT $start_from, $limit";
+        //$query = "SELECT * FROM `advertisement` LIMIT $start_from, $limit";
+        $query = "SELECT * FROM `advertisement` WHERE availability = '1' LIMIT $start_from, $limit";
         return $this->query($query);
     }
 
     public function get_count()
     {
-        $query = "SELECT COUNT(id) FROM `advertisement`";
+        $query = "SELECT COUNT(id) FROM `advertisement` WHERE availability = '1'";
         return $this->query($query);
     }
 
