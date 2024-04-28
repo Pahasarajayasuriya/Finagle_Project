@@ -33,6 +33,7 @@ $this->view('includes/footer', $data);
 
 <body>
     <?php $this->view('includes/cus_topbar', $data); ?>
+    
     <div class="home-section">
         <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
         <h2 class="section-title">OUR PRODUCTS</h2>
@@ -48,6 +49,8 @@ $this->view('includes/footer', $data);
                     <button type="submit" class="ad-search-btn">
                         <i class='bx bx-search'></i>
                     </button>
+                    <div class="search-error"></div>
+                    <div id="message-error-container"></div>
                 </div>
             </form>
 
@@ -57,10 +60,9 @@ $this->view('includes/footer', $data);
                 </span>
                 <div class="cart-items">0</div>
             </div>
-
-            <div class="search-error"></div>
         </div>
-        <div id="message-error-container"></div>
+
+        
 
 
 
@@ -93,7 +95,7 @@ $this->view('includes/footer', $data);
         <div class="products-center">
             <?php foreach ($productsByCategory as $category => $products) : ?>
                 <div class="category-container">
-                    <h2 class="section-title"><?= $category ?></h2>
+                    <!-- <h2 class="section-title"><?= $category ?></h2> -->
                     <div class="products">
                         <?php foreach ($products as $product) : ?>
                             <div class="product">
@@ -156,7 +158,7 @@ $this->view('includes/footer', $data);
                 displayMessage("Please log in before placing an order");
                 setTimeout(function() {
                     window.location.href = "<?= ROOT ?>/login";
-                }, 3000);
+                }, 5000);
             }
         });
 
@@ -177,6 +179,22 @@ $this->view('includes/footer', $data);
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="<?= ROOT ?>/assets/js/product.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            var navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = "white";
+                } else {
+                    navbar.style.backgroundColor = "transparent";
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

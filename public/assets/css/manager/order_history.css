@@ -137,6 +137,21 @@ select {
 .table {
     width: 100%;
     border-collapse: collapse;
+
+    margin-top: 5px;
+
+    padding: 10px;
+    margin-top: 20px;
+    width: 1000px;
+    overflow: auto;
+    border: 2px solid #ccc;
+    overflow: hidden;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    align-self: center;
+    align-items: center;
+
 }
 
 .table th,
@@ -272,6 +287,73 @@ select {
     transition: transform 0.5s ease; /* Add smooth transition effect */
 }
 
+
+.title-profile {
+    margin-top: 30px;
+}
+
+.section-title {
+    font-size: 1.5em;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 1%;
+    font-family: "Poppins";
+    margin-left: 2%;
+    text-align: center;
+
+}
+
+.fas.fa-bread-slice.fa-3x.text-primary.mb-4 {
+    margin-left: 3%;
+
+
+}
+
+
+.fas.fa-bread-slice.fa-3x.text-primary.mb-4 :after {
+    margin-left: 130px;
+
+
+}
+
+
+.divider .icon-wrap:after {
+    content: "";
+    position: absolute;
+    border-bottom: 3px solid #ff0000;
+    width: 120px;
+    height: 17px;
+
+}
+
+.divider.dark .icon-wrap:before,
+.divider.dark .icon-wrap:after {
+    content: "";
+    position: absolute;
+    border-bottom: 3px solid #ff0000;
+    width: 200px;
+    height: 17px;
+
+}
+
+.divider .icon-wrap:before,
+.divider.dark .icon-wrap:before {
+    left: 40%;
+    transform: translateX(-50%);
+
+
+}
+
+.divider .icon-wrap:after,
+.divider.dark .icon-wrap:after {
+    right: 35%;
+    transform: translateX(50%);
+}
+
+.datetime{
+    font-size: 12px;
+}
 
 
 .home-section {

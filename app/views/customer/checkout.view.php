@@ -38,24 +38,29 @@
                     <input type="hidden" id="totalCost" name="total_cost" value="">
                     <div class="check_inline">
                         <label class="check_name" for="check_name" name='name'>Name</label>
-                        <input class="check_input" name='name' value="<?= set_value('name') ?>" type="text" id="check_name" name="check_name">
+                        <input class="check_input" name='name' value="<?= Auth::is_customer() ? Auth::getName() : '' ?>" type="text" id="check_name" name="check_name">
                         <?php if (!empty($errors['name'])) : ?>
                             <div class="invalid"><?= $errors['name'] ?></div>
                         <?php endif; ?>
                     </div>
                     <div class="check_inline">
                         <label class="check_name" for="check_comemail" name='email'>E-mail</label>
-                        <input class="check_input" name='email' value="<?= set_value('email') ?>" type="email" id="check_comemail" name="check_comemail">
+                        <input class="check_input" name='email' value="<?= Auth::is_customer() ? Auth::getEmail() : '' ?>" type="email" id="check_comemail" name="check_comemail">
+                       
                         <?php if (!empty($errors['email'])) : ?>
                             <div class="invalid"><?= $errors['email'] ?></div>
+                        
                         <?php endif; ?>
+                        
                     </div>
                     <div class="check_inline">
                         <label class="check_name" for="check_phoneno" name='phone_number'>Phone Number</label>
-                        <input class="check_input" name='phone_number' value="<?= set_value('phone_number') ?>" type="text" id="check_phoneno" name="check_phoneno">
+                        <input class="check_input" name='phone_number' value="<?= Auth::is_customer() ? Auth::getTeleno() : '' ?>" type="text" id="check_phoneno" name="check_phoneno">
+
                         <?php if (!empty($errors['phone_number'])) : ?>
                             <div class="invalid"><?= $errors['phone_number'] ?></div>
                         <?php endif; ?>
+
                     </div>
 
                     <div class="check_inline">
@@ -80,9 +85,12 @@
                             <a class="change_address" href="#">Choose Address</a>
                         </div>
                     </div>
+
                     <input type="hidden" name="pickup_location" id="pickup_location">
                     <div id="pickupOutletsSection" class="check_inline" style="display: none;">
+                    <div class="check_inline">
                         <label class="check_name" for="pickup_orders"><b>For Pickup Orders:</b></label>
+
                         <select id="pickupLocation" name="pickup_location" disabled>
                             <?php foreach ($data['branches'] as $branch) : ?>
                                 <option class="branch_select"><?= $branch->name ?></option>
@@ -90,19 +98,21 @@
                         </select>
                     </div>
 
+                    </div>
+
 
 
                     <div class="check_flex">
-                        <div class="check_inputBox">
+                        <!-- <div class="check_inputBox">
                             <label class="check_name" for="order_data" name='delivery_date'>Date:</label>
                             <input class="check_input" type="date" name='delivery_date' value="<?= set_value('delivery_date') ?>">
                             <?php if (!empty($errors['delivery_date'])) : ?>
                                 <div class="invalid"><?= $errors['delivery_date'] ?></div>
                             <?php endif; ?>
-                        </div>
+                        </div> -->
 
-                        <div class="check_inputBox">
-                            <label class="check_name" for="order_time" name='delivery_time'>Time:</label>
+                        <div class="check_inline">
+                            <label class="check_name" id="order-time" for="order_time" name='delivery_time'>Time:</label>
                             <input class="check_input" type="time" name='delivery_time' value="<?= set_value('delivery_time') ?>">
                             <?php if (!empty($errors['delivery_time'])) : ?>
                                 <div class="invalid"><?= $errors['delivery_time'] ?></div>
@@ -110,14 +120,14 @@
                         </div>
                     </div>
 
-                    <div class="check_inline">
+                    <!-- <div class="check_inline">
                         <label class="check_name" for="check_gift" name='is_gift'>Send as a gift:</label>
                         <input type="radio" id="send-gift-yes" name="is_gift" value="yes" class="send-as-gift-radio">
                         <label class="check_radio" for="send-gift-yes"> Yes </label>
 
                         <input type="radio" id="send-gift-no" name="is_gift" value="no" class="send-as-gift-radio">
                         <label class="check_radio" for="send-gift-no"> No </label>
-                    </div>
+                    </div> -->
 
                     <div class="check_inline" id="note">
                         <label class="check_name" id="order_note" name='note'>Note:</label><br><br>
@@ -126,20 +136,23 @@
                         <textarea class="check_input" id="note" name="note" value="<?= set_value('note') ?>"></textarea>
                     </div>
 
-                </div>
-                <div class="check_inline" id="payment">
-                    <label class="check_name" for="check_payment">Payment Method :</label>
-                    <input type="radio" id="payment-card" name="payment_method" value="card" class="payment-method-radio">
-                    <label class="check_radio_1" for="payment-card"> Online payment </label>
 
-                    <input type="radio" id="payment-cash" name="payment_method" value="cash" class="payment-method-radio">
-                    <label class="check_radio_1" for="payment-cash"> Cash payment </label>
+                    <div class="payment_method">
+                        <div class="check_inline" id="payment">
+                            <label class="check_name" id="check_name" for="check_payment">Payment Method :</label>
+                            <div class="radio_button">
+                                <input type="radio" id="payment-card" name="payment_method" value="card" class="payment-method-radio">
+                                <label class="check_radio_1" for="payment-card"> Online payment </label>
 
+                                <input type="radio" id="payment-cash" name="payment_method" value="cash" class="payment-method-radio">
+                                <label class="check_radio_1" for="payment-cash"> Cash payment </label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="check_col" id="paymentDetailsSection">
+                <div id="paymentDetailsSection">
                 </div>
             </div>
-
             <br><br><br>
             <button class="check_submit-btn" id="p_checkout-button" name="place_order">Place Order</button>
         </form>
@@ -154,6 +167,8 @@
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
 
         </div>
+
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -164,9 +179,12 @@
                         title: "Pay here",
                         icon: "info",
                         showCancelButton: true,
-                        confirmButtonColor: "#3085d6",
-                        cancelButtonColor: "#d33",
-                        confirmButtonText: "Pay here"
+                        confirmButtonColor: "red",
+                        cancelButtonColor: "black",
+                        confirmButtonText: "Pay here",
+                        customClass: {
+                           icon: 'green-icon-container' 
+                         }
                     }).then((result) => {
                         if (result.isConfirmed) {
                             paymentGateWay();
@@ -174,7 +192,16 @@
                     });
                 }
             });
+
         </script>
+        <style>
+          .green-icon-container .swal2-icon {
+                color: green !important;
+           }
+
+        </style>
+
+        
 
         <script>
             document.getElementById("back-button").addEventListener("click", function() {
@@ -260,7 +287,7 @@
 
     </div>
     <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3KoOPDxuE9bSb6J__Wn_tz18S3IdBNIw&loading=async&libraries=places&callback=initMap"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJgBkLPPO15pdU1KgvHPib8NnXlun3IsM&loading=async&libraries=places&callback=initMap"></script>
     <script src="<?= ROOT ?>/assets/js/checkout.js"></script>
 </body>
 

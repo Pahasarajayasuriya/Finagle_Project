@@ -1,13 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
 
 * {
   font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: white;
 }
 
+
+
+ 
 .progress_main {
   width: 100%;
   height: 100vh;
@@ -16,27 +17,29 @@
   align-items: center;
   font-family: pop;
   flex-direction: column;
+  margin-top: 600px;
+  height: auto;
 }
+
 
 .bar_container {
   height: auto;
   align-items: center;
-  /* Align text to the left within the container */
+
   display: flex;
   flex-direction: column;
   width: 100%;
   width: 900px;
-  margin-top: 100px;
+   margin-top: 20px;
   padding: 40px;
   position: relative;
   border-radius: 8px;
-
-
   border: 2px solid #ccc;
   overflow: hidden;
   background: white;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
 }
 
 .progress_head {
@@ -53,31 +56,39 @@
   color: #d72323;
 }
 
-ul {
+.ul {
+
   display: flex;
   margin-top: 80px;
 }
 
-ul li {
+
+.ul li {
+
   list-style: none;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-ul li .icon {
+
+.ul li .icon {
+
   font-size: 35px;
   color: black;
   margin: 0 60px;
 }
 
-ul li .progress_text {
+
+.ul li .progress_text {
+
   font-size: 14px;
   font-weight: 600;
   color: #d72323;
 }
 
-ul li .progress {
+.ul li .progress {
+
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -104,29 +115,33 @@ ul li .progress {
   height: 0;
 }
 
-ul li .progress .uil {
+
+.ul li .progress .uil {
   display: none;
 }
 
-ul li .progress p {
+.ul li .progress p {
   font-size: 13px;
 }
 
-ul li .active {
+.ul li .active {
+
   background-color: #20d110;
   display: grid;
   place-items: center;
 }
 
-li .active::after {
+.bar_container li .active::after {
   background-color: #20d110;
 }
 
-ul li .active p {
+
+.ul li .active p {
   display: none;
 }
 
-ul li .active .uil {
+.ul li .active .uil {
+
   font-size: 20px;
   display: flex;
 }
@@ -134,6 +149,7 @@ ul li .active .uil {
 .button-container {
   display: flex;
   justify-content: space-between; 
+  margin-top: 10px;
 }
 
 .process_btn {
@@ -142,7 +158,7 @@ ul li .active .uil {
   border-radius: 5px;
   color: var(--bodyColor);
   padding: 10px 30px;
-  margin: 30px 100px;
+  /* margin: 30px 80px; */
   font-weight: bolder;
   box-shadow: 0 0 10px rgb(255, 255, 255);
   cursor: pointer;
@@ -150,14 +166,10 @@ ul li .active .uil {
   color: white;
 }
 
-#homeButton {
-  margin-right: 30vw;
-  background-color: rgb(71, 71, 255); 
-}
-
 #complaintButton {
-  margin-left: 10vw; 
+  /* margin-left: 10vw;  */
   background-color: rgb(250, 54, 54);
+
 }
 
 .process_btn:hover {
@@ -166,15 +178,17 @@ ul li .active .uil {
 }
 
 @media (max-width: 678px) {
-  ul {
+
+  .ul {
     flex-direction: column;
   }
 
-  ul li {
+  .ul li {
     flex-direction: row;
   }
 
-  ul li .progress {
+  .ul li .progress {
+
     margin: 0 30px;
   }
 
@@ -191,7 +205,8 @@ ul li .active .uil {
     height: 0;
   }
 
-  ul li .icon {
+  .ul li .icon {
+
     margin: 15px 0;
   }
 }
@@ -206,19 +221,18 @@ ul li .active .uil {
   }
 }
 
-/* overlapping part fixed */
-/* .sidebar.open ~ .home-section {
-  left: 190px;
+
+.sidebar.open ~ .home-section {
   width: calc(100% - 190px);
 }
 .home-section {
   position: relative;
   transition: all 0.5s ease;
   min-height: 100vh;
-  left: 8px;
   width: calc(100% - 58px);
   z-index: 2;
-} */
+}
+
 
 .container {
   display: flex;
@@ -237,8 +251,87 @@ h1 {
   margin-bottom: 20px;
 }
 
-h2 {
-  font-size: 18px; 
-  color: red;
+.text-container p {
+  font-size: 12px; 
+  color: grey;
   margin-top: 20px;
+  font-weight: 400;
+  font-style: italic;
+} 
+
+
+.text-container a{
+  color: #d72323;
+}
+@media screen and (max-width: 768px) {
+
+  .sidebar {
+    display: none;
+   
+  }
+
+  
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins";
+}
+
+html,
+body {
+  height: 100vh;
+  width: auto;
+  font-family: "Poppins";
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+
+}
+
+.sidebar.open~.home-section {
+ 
+  width: calc(100% - 50px);
+
+}
+
+.home-section {
+  position: relative;
+  transition: all 0.5s ease;
+  min-height: 100vh;
+
+  width: calc(100% - 58px);
+  z-index: 2;
+  margin-top: 50px;
+}
+
+.text-container h1{
+  text-align: center;
+  align-items:center ;
+  font-size: 24px;
+
+}
+
+#back-button {
+  width: 40px;
+  height: 40px;
+  background-color: red;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 80px;
+  left: 150px;
+  cursor: pointer;
+}
+
+.back-icon i {
+  color: white;
+  font-size: 20px;
 }

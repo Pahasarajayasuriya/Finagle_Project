@@ -55,7 +55,7 @@ class User extends Model
         return false;
     }
 
-    public function edit_validate($data,$id)
+    public function edit_validate($data, $id)
     {
         $this->errors = [];
 
@@ -67,11 +67,10 @@ class User extends Model
         //check email
         if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
             $this->errors['email'] = "Email is not valid";
-        }
-         else 
+        } else 
         if ($results = $this->where(['email' => $data['email']])) {
             foreach ($results as $result) {
-                if($id != $result->id){
+                if ($id != $result->id) {
                     $this->errors['email'] = "This email already exists";
                 }
             }
@@ -90,7 +89,7 @@ class User extends Model
     public function getManagers()
     {
         $managers = $this->where(['role' => 'manager']);
-        
+
         if (is_array($managers)) {
             return (object)$managers;
         } else {
@@ -101,7 +100,7 @@ class User extends Model
     public function getEmployee()
     {
         $managers = $this->where(['role' => 'employee']);
-        
+
         if (is_array($managers)) {
             return (object)$managers;
         } else {
@@ -112,7 +111,7 @@ class User extends Model
     public function getDeliverer()
     {
         $managers = $this->where(['role' => 'deliverer']);
-        
+
         if (is_array($managers)) {
             return (object)$managers;
         } else {
@@ -123,12 +122,29 @@ class User extends Model
     public function getCustomer()
     {
         $managers = $this->where(['role' => 'customer']);
-        
+
         if (is_array($managers)) {
             return (object)$managers;
         } else {
             return false;
         }
     }
-}
 
+    public function getLastInsertId()
+    {
+        $query = "SELECT `id` FROM `" . $this->table . "` ORDER BY `id` DESC LIMIT 1";
+        $result = $this->query($query);
+
+        if ($result) {
+            return $result[0]->id;
+        }
+
+        return false;
+    }
+
+    public function all()
+    {
+        $query = "SELECT * FROM {$this->table}";
+        return $this->query($query);
+    }
+}

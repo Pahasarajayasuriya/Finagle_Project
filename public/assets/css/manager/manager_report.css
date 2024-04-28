@@ -1,357 +1,328 @@
 body {
-    font-family: "Poppins", sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    color: black;
-  }
-  .ad_head {
-    align-items: center;
-    text-align: center;
-    font-size: 25px;
-    color: red;
-    letter-spacing: 0.08rem;
-    margin: 1rem 0 1rem;
-    font-weight: 600;
-    margin-top: -10px;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  color: black;
+}
+
+
+
+.form-header{
+  display: flex;
+   gap: 70px;
+}
+form {
+  max-width: 800px;
+  width: 100%;
+  padding: 10px;
+  margin-top: 0px;
+}
+form .ad-form-input {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  margin-left: 350px;
+  margin-top: 0px;
+
+}
+
+form .ad-form-input input {
+  flex-grow: 1;
+  padding: 0 16px;
+  height: 100%;
+  border: none;
+  background: rgb(255, 255, 255);
+  outline: none;
+  border-radius: 36px 0 0 36px;
+  box-shadow: 0px 0px 10px 0px rgb(187, 184, 184);
+  width: 400px;
   
-  }
-  
-  .ad_head_1 {
-  
-    font-weight: 800;
-    color: black;
-    white-space: nowrap;
-    font-size: 25px;
-    margin-top: -10px;
-  
-  }
-  
-  .ad_head_1 span {
-  
-    color: #d72323;
-  }
-  
-  .form-header{
-    display: flex;
-     gap: 70px;
-  }
-  form {
-    max-width: 800px;
-    width: 100%;
-    padding: 10px;
-    margin-top: 0px;
-  }
-  form .ad-form-input {
-    display: flex;
-    align-items: center;
-    height: 36px;
-    margin-left: 350px;
-    margin-top: 0px;
-  
-  }
-  
-  form .ad-form-input input {
-    flex-grow: 1;
-    padding: 0 16px;
-    height: 100%;
-    border: none;
-    background: rgb(255, 255, 255);
-    outline: none;
-    border-radius: 36px 0 0 36px;
-    box-shadow: 0px 0px 10px 0px rgb(187, 184, 184);
-    width: 400px;
-    
-  
-  }
-  
-  form .ad-form-input button {
-    width: 36px;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: black;
-    color: white;
-    font-size: 18px;
-    border: none;
-    outline: none;
-    border-radius: 0 36px 36px 0;
-    cursor: pointer;
-    box-shadow: 0px 0px 5px 2px rgb(187, 184, 184);
-    transition: 0.3s ease;
-  }
-  
-  form .ad-form-input button:hover {
-    /* background: rgb(236, 236, 236); */
-    font-size: 20px;
-    /* color: black; */
-  }
-  
-  
-  .add-btn {
-    position: relative;
-    background: red;
-    color: white;
-    padding: 0px 10px;
-    margin-right: 10px;
-    border: none;
-    border-radius: 8px;
-    width: 200px;
-    height: 50px;
-  }
-  
-  .add-btn:hover {
-    opacity: 0.8;
-    transform: scale(1.0);
-  }
-  .edit-button , .delete-button{
-    position: relative;
-    background: red;
-    color: white;
-    padding: 0px 8px;
-    margin-right: 10px;
-    border: none;
-    border-radius: 8px;
-    width: 180px;
-    height: 30px;
-  }
-  
-  .edit-button:hover {
-    opacity: 0.8;
-    transform: scale(1.0);
-  }
-  
-  .delete-button:hover{
+
+}
+
+form .ad-form-input button {
+  width: 36px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
+  color: white;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  border-radius: 0 36px 36px 0;
+  cursor: pointer;
+  box-shadow: 0px 0px 5px 2px rgb(187, 184, 184);
+  transition: 0.3s ease;
+}
+
+form .ad-form-input button:hover {
+  /* background: rgb(236, 236, 236); */
+  font-size: 20px;
+  /* color: black; */
+}
+
+
+.add-btn {
+  position: relative;
+  background: red;
+  color: white;
+  padding: 0px 10px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 8px;
+  width: 200px;
+  height: 50px;
+}
+
+.add-btn:hover {
   opacity: 0.8;
   transform: scale(1.0);
-  
-  }
-  .advertisement-id, .advertisement-name {
-    flex: 1;
-  }
-  
-  
-  .advertisement-table {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    /* gap: 20px; */
-    color: black;
-    margin-top: 40px;
-    background-color: #e0e0e0;
-    border-radius: 10px;
-    
-  }
-  
-  .advertisement-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    gap: 10px;
-    padding: 15px;
-    /* background-color: #e0e0e0; */
-    border-radius: 8px;
-    font-weight: bold;
-    width: 100%;
-    color: black;
-    /* margin-left: 100px; */
-  
-  }
-  
-  .header-item{
-    margin-left: -40px;
-  
-  }
-  .ad-image ,
-  .ad-id{
-    flex: 1;
-  }
-  
-  .ad-description
-  {
-    flex: 2;
-  }
-  
-  .ad-date{
-    flex:3;
-    margin-left: -20px;
-  }
-  
-  .advertisement-date{
-  margin-left: 90px;
-  }
-  
-  .advertisement-name{
-  margin-left: 20px;
-  }
-  
-  .branch-loc{
-  flex: 2;
-  
-  }
-  
-  .branch-name{
+}
+.edit-button , .delete-button{
+  position: relative;
+  background: red;
+  color: white;
+  padding: 0px 8px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 8px;
+  width: 180px;
+  height: 30px;
+}
+
+.edit-button:hover {
+  opacity: 0.8;
+  transform: scale(1.0);
+}
+
+.delete-button:hover{
+opacity: 0.8;
+transform: scale(1.0);
+
+}
+.advertisement-id, .advertisement-name {
   flex: 1;
-  margin-left: 20px;
-  }
+}
+
+
+.advertisement-table {
+  /* display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  color: black;
+  margin-top: 40px;
+  background-color: #e0e0e0;
+  border-radius: 10px; */
+
+  width: 100%;
+  border-collapse: collapse;
+
+  margin-top: 10px;
+
+  padding: 10px;
+  margin-top: 20px;
+  width: 1000px;
+  overflow: auto;
+  border: 2px solid #ccc;
+  overflow: hidden;
+  background: rgb(214, 214, 214);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(49, 49, 49, 0.1);
+  align-self: center;
+  align-items: center;
+
+  margin-left: 60px;
+
+
   
-  .branch-id{
-  flex: 1;
+}
+
+.advertisement-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 10px;
+  padding: 15px;
+  /* background-color: #e0e0e0; */
+  border-radius: 8px;
+  font-weight: bold;
+  width: 100%;
+  color: black;
+  /* margin-left: 100px; */
+
   
-  
-  
-  }
-  .ad-id{
+
+}
+
+.header-item{
   margin-left: -40px;
-  }
-  
-  /* .emp-id{
+
+}
+.ad-image ,
+.ad-id{
   flex: 1;
-  } */
-  /* 
-  .emp-name{
-  margin-left: 10px;
+}
+
+.ad-description
+{
+  flex: 2;
+}
+
+.ad-date{
+  flex:3;
+  margin-left: -20px;
+}
+
+.advertisement-date{
+margin-left: 90px;
+}
+
+.advertisement-name{
+margin-left: 20px;
+}
+
+.branch-loc{
+flex: 2;
+
+}
+
+.branch-name{
+flex: 1;
+margin-left: 20px;
+}
+
+.branch-id{
+flex: 1;
+
+
+
+}
+.ad-id{
+margin-left: -40px;
+}
+
+.branch-id{
+  padding: 12px 25px 12px 20px;
   
-  } */
-  /* .emp-branch{
+  font-size: 14px;
+}
+
+/* .emp-id{
+flex: 1;
+} */
+/* 
+.emp-name{
+margin-left: 10px;
+
+} */
+/* .emp-branch{
+flex: 1;
+
+} */
+
+
+.advertisement-record {
+  display: flex;
+  gap: 20px;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 5px 6px 6px rgba(0, 0, 0, 0.1);
+  color:black;
+  transition: transform 0.2s ease-in-out;
+  width: 100%;
+  margin-left: 50px;
+  margin-top: 20px;
+  width: 1000px;
+  
+
+}
+
+.advertisement-record:hover {
+  transform: scale(1.02);
+}
+
+.advertisement-id,
+.advertisement-image
+{
   flex: 1;
+  margin-left: 80px;
+  margin-right: 60px;
+}
+
+.advertisement-name,.advertisement-date {
+  flex: 2;
+}
+
+.advertisement-id{
+  font-weight: bold;
+}
+.advertisement-image{
+  font-size: 16px;
+  width: 20px;
+}
+.advertisement-image {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.advertisement-image img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
   
-  } */
-  
-  
-  .advertisement-record {
-    display: flex;
-    gap: 20px;
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: 5px 8px 6px rgba(0, 0, 0, 0.1);
-    color:black;
-    transition: transform 0.3s ease-in-out;
-    width: 100%;
-    margin-left: 10px;
-    margin-top: 20px;
-    width: 1200px;
-    
-  
-  }
-  
-  .advertisement-record:hover {
-    transform: scale(1.05);
-  }
-  
-  .advertisement-id,
-  .advertisement-image
-  {
-    flex: 1;
-    margin-left: 80px;
-    margin-right: 60px;
-  }
-  
-  .advertisement-name,.advertisement-date {
-    flex: 2;
-  }
-  
-  .advertisement-id{
-    font-weight: bold;
-  }
-  .advertisement-image{
-    font-size: 16px;
-    width: 20px;
-  }
-  .advertisement-image {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .advertisement-image img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.7);
-    transition: transform 0.1s ease, filter 0.1s ease;
-   
-  }
-  
-  .overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
-    z-index: 998; /* Ensure the overlay is behind the popup but in front of the content */
-    backdrop-filter: blur(5px); /* Apply a blur effect to the background */
-  }
-  
-  
-  
-  .popup-container {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    width: 800px;
-    border-radius: 10px;
-    border: 2px solid #191919; /* Set your desired border color */
-    padding: 20px;
-    z-index: 999;
-    box-shadow: 0px 0px 10px 0px rgb(187, 184, 184);
-    /* visibility: hidden; */
-  }
-  
-  .popup-container.show,
-  .overlay.show {
-    display: block;
-  }
-  
-  .popup-content {
-    position: relative;
-    left: 9%;
-    width: 80%;
-  
-    border-radius: 20px;
-    border-style: solid;
-    border: #000;
-    outline-width: 1px;
-    padding: 10px 30px;
-    margin-bottom: 2%;
-    transition: all 0.3s ease;
-    color: black;
-  }
-  
-  .popup-container.show {
-    display: block;
-  }
-  
-  .popup-container h2 {
-    text-align: center;
-    padding-top: 2%;
-    padding-bottom: 4%;
-    margin: 4px;
-    font-weight: bold;
-  }
-  .popup-content label{
-    text-align: left;
-    padding-left: 14%;
-    padding-bottom: 2%;
-    font-weight: bold;
-  }
-  
-  .popup-content input  {
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.7);
+  transition: transform 0.1s ease, filter 0.1s ease;
+ 
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+  z-index: 998; /* Ensure the overlay is behind the popup but in front of the content */
+  backdrop-filter: blur(5px); /* Apply a blur effect to the background */
+}
+
+
+
+.popup-container {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  width: 800px;
+  border-radius: 10px;
+  border: 2px solid #191919; /* Set your desired border color */
+  padding: 20px;
+  z-index: 999;
+  box-shadow: 0px 0px 10px 0px rgb(187, 184, 184);
+  /* visibility: hidden; */
+}
+
+.popup-container.show,
+.overlay.show {
+  display: block;
+}
+
+.popup-content {
   position: relative;
   left: 9%;
   width: 80%;
-  background: #d5dfe7d5;
+
   border-radius: 20px;
   border-style: solid;
   border: #000;
@@ -359,77 +330,179 @@ body {
   padding: 10px 30px;
   margin-bottom: 2%;
   transition: all 0.3s ease;
-  color: var(--dark);
-  }
-  
-  .popup-container .buttons-container {
-    position: relative;
-    left: 40%;
-    width: 50%;
-    height: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .buttons-container .cancel-btn{
-    position: relative;
-    margin-left: 10px;
-    background-color: blue;
-    font-size: 16px;
-    color: white;
-    cursor: pointer;
-    padding: 5px 15px;
-    border-radius: 6px;
-    border: none;
-  
-  }
-  
-  .buttons-container .submit-btn {
-    position:relative;
-    right: 1%;
-    font-size: 16px;
-    color: white;
-    cursor: pointer;
-    padding: 5px 15px;
-    border-radius: 6px;
-    border: none;
-    background: red;
-  }
-  
-  .advertisement-actions {
-    display: flex;
-    gap: 10px;
-  }
-  
-  
-  .cancel-btn:hover,
-  .submit-btn:hover {
-    opacity: 0.8;
-    transform: scale(1.0);
-  }
-  .home-section {
-    position: relative;
-    transition: all 0.5s ease;
-    min-height: 100vh;
-    left: 20px;
-    margin-top: 50px;
-    /* width: calc(100% - 58px); */
-    /* z-index: 2; */
-  }
-  
-  .sidebar.open ~ .home-section {
-    left: 100px;
-    width: calc(100% - 150);
-  } 
-  
-  /* my css for branches */
-  
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  .main {
-    overflow-y: auto;
-  }
+  color: black;
+}
+
+.popup-container.show {
+  display: block;
+}
+
+.popup-container h2 {
+  text-align: center;
+  padding-top: 2%;
+  padding-bottom: 4%;
+  margin: 4px;
+  font-weight: bold;
+}
+.popup-content label{
+  text-align: left;
+  padding-left: 14%;
+  padding-bottom: 2%;
+  font-weight: bold;
+}
+
+.popup-content input  {
+position: relative;
+left: 9%;
+width: 80%;
+background: #d5dfe7d5;
+border-radius: 20px;
+border-style: solid;
+border: #000;
+outline-width: 1px;
+padding: 10px 30px;
+margin-bottom: 2%;
+transition: all 0.3s ease;
+color: var(--dark);
+}
+
+.popup-container .buttons-container {
+  position: relative;
+  left: 40%;
+  width: 50%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttons-container .cancel-btn{
+  position: relative;
+  margin-left: 10px;
+  background-color: blue;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  padding: 5px 15px;
+  border-radius: 6px;
+  border: none;
+
+}
+
+.buttons-container .submit-btn {
+  position:relative;
+  ;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  padding: 5px 15px;
+  border-radius: 6px;
+  border: none;
+  background: red;
+  margin-top: 20px;
+  margin-left: 70%;
+  font-weight: bold;
+}
+
+.advertisement-actions {
+  display: flex;
+  gap: 10px;
+}
+
+
+.cancel-btn:hover,
+.submit-btn:hover {
+  opacity: 0.8;
+  transform: scale(1.0);
+}
+.home-section {
+  position: relative;
+  transition: all 0.5s ease;
+  min-height: 100vh;
+  left: 20px;
+  margin-top: 50px;
+  /* width: calc(100% - 58px); */
+  /* z-index: 2; */
+}
+
+.sidebar.open ~ .home-section {
+  left: 100px;
+  width: calc(100% - 150);
+} 
+
+/* my css for branches */
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.main {
+  overflow-y: auto;
+}
+
+
+
+.title-profile {
+  margin-top:100px;
+}
+
+.section-title {
+  font-size: 1.5em;
+  line-height: 1;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 2%;
+  font-family: "Poppins";
+  margin-left: 2%;
+  text-align: center;
+
+}
+
+.fas.fa-bread-slice.fa-3x.text-primary.mb-4 {
+  margin-left: 50%;
+
+
+}
+
+
+.fas.fa-bread-slice.fa-3x.text-primary.mb-4 :after {
+  margin-left: 130px;
+
+
+}
+
+
+.divider .icon-wrap:after {
+  content: "";
+  position: absolute;
+  border-bottom: 3px solid #ff0000;
+  width: 120px;
+  height: 17px;
+
+}
+
+.divider.dark .icon-wrap:before,
+.divider.dark .icon-wrap:after {
+  content: "";
+  position: absolute;
+  border-bottom: 3px solid #ff0000;
+  width: 200px;
+  height: 17px;
+
+}
+
+.divider .icon-wrap:before,
+.divider.dark .icon-wrap:before {
+  left: 40%;
+  transform: translateX(-50%);
+
+
+}
+
+.divider .icon-wrap:after,
+.divider.dark .icon-wrap:after {
+  right: 35%;
+  transform: translateX(50%);
+}
+

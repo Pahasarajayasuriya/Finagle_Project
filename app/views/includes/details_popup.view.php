@@ -51,7 +51,13 @@
           <div class="total-amount">Total Amount : Rs.<span id="total_cost"></span> </div>
         </div>
 
-        <hr>
+        <div class="product-note">
+          <div class="order-note"><i class='bx bxs-book-heart' style='color:#f50000' ></i>  <span id="note"></span> </div>
+        </div>
+
+
+
+        
 
       </div>
 
@@ -218,6 +224,28 @@
     .details {
       text-align: center;
     }
+
+    .order-note {
+    margin: 20px auto;
+    padding: 15px; 
+    background-color: white; 
+    border-radius: 8px; 
+    /* border: 1px solid #ccc; */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 80%; 
+    font-size: 14px;
+    display: flex; 
+    align-items: center; 
+  }
+
+  .order-note i{
+    font-size: 25px;
+    margin-right: 10px;
+  }
+
+  .order-note span{
+    color: #aaa;
+  }
 
     #confirmDetails {
       margin-right: 10px;

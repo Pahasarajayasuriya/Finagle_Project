@@ -30,6 +30,8 @@ $this->view('includes/footer', $data);
 </head>
 
 <body>
+    <?php $this->view('includes/emp_topbar', $data); ?>
+
     <div class="home-section">
         <div class="search-container">
         <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
@@ -70,7 +72,7 @@ $this->view('includes/footer', $data);
                             <td class="category"><?= esc($row->complaint) ?></td>
                             <td class="desc"><?= esc($row->teleno) ?></td>
                             <td class="desc"><?= esc($row->email) ?></td>
-                            <td><button type="submit" class="view-order-btn response-btn">Response</button></td>
+                            <td><button type="submit" class="view-order-btn response-btn" data-email="<?= esc($row->email) ?>">Response</button></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -94,11 +96,13 @@ $this->view('includes/footer', $data);
                 document.querySelectorAll('.response-btn').forEach(function(button) {
                     button.addEventListener('click', async function(event) {
                         event.preventDefault();
+                        const userEmail = this.getAttribute('data-email');
                         const {
                             value: email
                         } = await Swal.fire({
                             title: "Input email address",
                             input: "email",
+                            inputValue: userEmail, 
                             inputLabel: "Your email address",
                             inputPlaceholder: "Enter your email address"
                         });
@@ -162,6 +166,22 @@ $this->view('includes/footer', $data);
             </script>
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            var navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = "white";
+                } else {
+                    navbar.style.backgroundColor = "transparent";
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

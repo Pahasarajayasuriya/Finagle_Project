@@ -15,7 +15,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #d9d9d9;
+    background-color: #ffffff;
     font-family: sans-serif;
 }
 
@@ -48,14 +48,14 @@ body {
     /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); */
     display: flex;
 
-
-   
-   
-   
 }
 
 
 .form-container {
+    padding-top: 20px;
+    /* border: 0.1px solid #000000; */
+    margin-top: 5%;
+    margin-right: 20%;
     position: relative;
     width: 900px;
     height: 100%;
@@ -65,7 +65,10 @@ body {
     color: black;
     float: right;
     box-sizing: border-box;
-    background: white;
+    background: rgb(255, 255, 255);
+  
+    margin-left: 18%;
+    box-shadow: 2px 8px 8px 8px rgba(0, 0, 0, 0.1);
 
 }
 
@@ -113,7 +116,7 @@ input:valid ~ label {
     outline: none;
     font-size: 1rem;
     padding: 0 35px 0 5px;
-    color: #cacaca; 
+    color: #000000; 
     margin-left: 20px;
 }
 
@@ -174,7 +177,7 @@ button:hover {
 .form-container button {
     background-color:red;
     color: #fff;
-    padding: 12px 20px;
+    padding: 6px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -248,8 +251,55 @@ h1 {
 }
 
 button {
-    width: 60%; 
+    width: 34%; 
     margin: 20px auto; 
-    margin-left: 120px;
+    margin-left: 197px;
    
 }
+
+
+
+.invalid {
+    color:red; 
+    font-size: 0.9em; 
+    margin-top: 5px; 
+    display: block; 
+    transition: all 0.3s ease; 
+    border: 2px solid red; 
+    padding: 8px; 
+    border-radius: 5px; 
+  }
+  
+  .inputbox {
+    position: relative; 
+  }
+  
+  .invalid::before {
+    content: "\f071";
+    font-family: "Font Awesome 5 Free"; 
+    position: absolute;
+    top: 50%; 
+    right: 10px; 
+    transform: translateY(-50%); 
+    color: red;
+    font-size: 1em; 
+  }
+  
+  .invalid::before {
+    content: "\26A0"; 
+    font-family: Arial, sans-serif; 
+    position: absolute;
+    top: 50%; 
+    right: 10px; 
+    transform: translateY(-50%); 
+    color: red;
+    font-size: 1em; 
+  }
+  
+  
+  .invalid:focus {
+    outline: none; 
+    border-color: #d93025; 
+    box-shadow: 0 0 5px #d93025; 
+  }
+  

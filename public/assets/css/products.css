@@ -4,6 +4,7 @@ body {
   padding: 0;
   background-color: white;
   font-family: sans-serif;
+  overflow-x: hidden;
 }
 
 .logo_icon {
@@ -335,7 +336,7 @@ form .ad-form-input button:hover {
   left: 0;
   right: 0;
   top: -100%;
-  background-color: var(--bodyColor);
+  background-color: white;
   border: 1px solid #ccc;
   box-shadow: 0 20px 120px rgba(0, 0, 0, 0.07);
   border-radius: 8px;
@@ -370,7 +371,7 @@ form .ad-form-input button:hover {
   justify-content: space-between;
   height: 100%;
   width: 60%;
-  border-bottom: 1px solid #7a74747c;
+  /* border-bottom: 1px solid #7a74747c; */
   padding-bottom: 10px;
 }
 
@@ -653,7 +654,7 @@ cursor: pointer;
 .arrow-down,
 .arrow-up {
   cursor: pointer;
-  color: white;
+  color: black;
 }
 
 
@@ -719,7 +720,7 @@ cursor: pointer;
 
 .search-error {
   position: fixed;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #fff;
@@ -727,7 +728,15 @@ cursor: pointer;
   border: 1px solid red;
   color: red;
   display: none;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  width: 300px;
+  text-align: center;
+  align-items: center;
+  
+  
 }
+
+
 .cart-content {
   max-height: 400px; /* Set the maximum height based on your design */
   overflow-y: auto; /* Add vertical scrollbar if needed */
@@ -745,7 +754,7 @@ cursor: pointer;
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  border-top: 1px solid #ddd; /* Add a border above the footer */
+  /* border-top: 1px solid #ddd;  */
 }
 
 /* Additional styles for scrollable cart content */
@@ -756,14 +765,31 @@ cursor: pointer;
 
 #message-error-container {
   position: fixed;
-  top: 50%;
-  left: 50%;
+  top: 620%;
+  right: 10%;
   transform: translate(-50%, -50%);
-  background-color: #fff;
-  padding: 10px;
-  border: 1px solid red;
-  color: red;
+  background-color: white; 
+  padding: 10px; 
+  border: 2px solid red; 
+  color: red; 
   display: none;
+  border-radius: 5px; 
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  text-align: center; 
+  position: relative;
+  width: 400px;
+}
+
+
+#message-error-container p {
+  margin: 0; 
+  position: relative; 
+}
+
+
+
+#message-error-container.show {
+  display: block; 
 }
 
 .btn.add-to-cart:disabled {
@@ -822,3 +848,6 @@ strong {
 }
 
 
+.cart-title{
+  color: red;
+}

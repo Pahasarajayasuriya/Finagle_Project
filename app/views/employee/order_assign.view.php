@@ -41,6 +41,8 @@ $this->view('includes/alreadyProcess_popup', $data);
 </head>
 
 <body>
+    <?php $this->view('includes/emp_topbar', $data); ?>
+
     <div class="home-section">
         <div class="main-title">
             <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
@@ -61,11 +63,11 @@ $this->view('includes/alreadyProcess_popup', $data);
 
                     if (!empty($notify)) {
 
-                        
+
                         foreach ($notify as $val) {
-                            
+
                             if ($val->view_status == 0) {
-                                
+
                                 // show($val);
                     ?>
                                 <hr>
@@ -76,7 +78,7 @@ $this->view('includes/alreadyProcess_popup', $data);
 
                                     <!-- Delete the notification about successfull deliveres -->
                                     <p class="clear-msg" onclick="clearNotification(<?= $val->id ?>)">Clear</p>
-                              
+
                                 </div>
 
                     <?php
@@ -117,31 +119,45 @@ $this->view('includes/alreadyProcess_popup', $data);
                 data = {
                     id_array: parseInt(id),
                     status: "notification",
-                    };
+                };
 
-                    $.ajax({
+                $.ajax({
                     type: "POST",
                     url: status_update_endpoint,
                     data: data,
                     cache: false,
                     success: function(res) {
                         try {
-                        // alert(res);
+                            // alert(res);
 
-                        // convert to the json type
-                        Jsondata = JSON.parse(res);
+                            // convert to the json type
+                            Jsondata = JSON.parse(res);
 
-                        // location.reload();
-                        document.getElementById(`notification_${id}`).style.display = "none";
-                        notificationBox.style.display = "block";
-                        
+                            // location.reload();
+                            document.getElementById(`notification_${id}`).style.display = "none";
+                            notificationBox.style.display = "block";
+
                         } catch (error) {}
                     },
                     error: function(xhr, status, error) {
                         // return xhr;
                     },
-                    });
+                });
             }
+
+            document.addEventListener("DOMContentLoaded", function() {
+
+
+                var navbar = document.querySelector(".navbar");
+
+                window.addEventListener("scroll", function() {
+                    if (window.scrollY > 0) {
+                        navbar.style.backgroundColor = "white";
+                    } else {
+                        navbar.style.backgroundColor = "transparent";
+                    }
+                });
+            });
         </script>
 
         <div class="orders-container">
@@ -217,7 +233,7 @@ $this->view('includes/alreadyProcess_popup', $data);
                                     ?>
                                         <div class="time-duration">
                                             <i class='bx bx-time-five'></i>
-                                            <div class="ready-time"><?= $val->delivery_date ?></div>
+                                            <div class="ready-time"><?= $val->delivery_time ?></div>
                                         </div>
                                     <?php
 
@@ -355,7 +371,51 @@ $this->view('includes/alreadyProcess_popup', $data);
 
                 </div>
             </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script>
+                function updateOrders() {
+                    $.ajax({
+                        url: 'http://localhost/finagle/public/Emp_progress/getOrdersJson',
+                        type: 'GET',
+                        success: function(orders) {
+                            // Clear the current list of orders
+                            $('#placed-order-list').empty();
+                            console.log(orders);
+                            // Loop through the new orders and add them to the page
+                            orders.forEach(order => {
+                                // Create the HTML for the order
+                                var orderHtml = `
+                    <div class="placed-item">
+                        <div class="item-title">
+                            <div class="main-item">
+                                <input class="checkbox" type="checkbox" id="checkbox-${order.id}" name="checkbox-${order.id}">
+                                <p class="item-id"><b>${order.id}<span>${order.delivery_or_pickup == "delivery" ? 'D' : 'P'}</span></b></p>
+                            </div>
+                            ${order.delivery_or_pickup == "delivery" ? `
+                                <div class="time-duration">
+                                    <i class='bx bx-time-five'></i>
+                                    <div class="ready-time">${order.delivery_time}</div>
+                                </div>
+                            ` : ''}
+                        </div>
+                        <div class="item-options">
+                            <button class="view-details" data-order='${JSON.stringify(order)}' onclick="showPopup(this,'viewOrderDetails')">View Details</button>
+                            <button class="cancel" id="deleteButton" data-order='${JSON.stringify(order)}' onclick="showPopup(this,'cancel')">Cancel</button>
+                        </div>
+                    </div>`;
 
+                                // Add the order to the page
+                                $('#placed-order-list').append(orderHtml);
+                            });
+                        },
+                        error: function(error) {
+                            console.error('Error:', error);
+                        }
+                    });
+                }
+
+                setInterval(updateOrders, 60000); // 60000 milliseconds = 60 seconds
+            </script>
 
 
             <div class="order-status dispatched-orders">
@@ -471,6 +531,8 @@ $this->view('includes/alreadyProcess_popup', $data);
             }
 
             var order_id = document.getElementById('view-order-id');
+
+
             var user_location = document.getElementById('user-location');
 
 
@@ -478,14 +540,29 @@ $this->view('includes/alreadyProcess_popup', $data);
             var pay_status_btn = document.getElementById('pay-status-btn');
 
             var total_cost = document.getElementById('total_cost');
+            var note = document.getElementById('note');
 
 
 
             order_id.innerHTML = data.id;
-            user_location.innerHTML = data.delivery_address;
+
+            <?php
+            if ($val->delivery_or_pickup == "delivery") {
+
+            ?>
+                user_location.innerHTML = data.delivery_address;
+
+            <?php
+
+            }
+            ?>
+
             // user_phone.innerHTML = data.phone_number;
             pay_status.innerHTML = data.payment_method;
             total_cost.innerHTML = data.total_cost;
+
+            note.innerHTML = data.note;
+
 
 
             if (data.payment_method == 'card') {
@@ -870,7 +947,7 @@ $this->view('includes/alreadyProcess_popup', $data);
 
                 // Append the order container to the orders container
                 ordersContainer_cancel.appendChild(orderContainer_cancel);
-                
+
                 // get the cancel process for selected all order ids 
                 cancel_order_id.push(order);
             });
@@ -892,7 +969,7 @@ $this->view('includes/alreadyProcess_popup', $data);
         }
 
         function showSelectedOrders_cancel() {
-            
+
             // add initial reason state in empty
             cancel_reason_State = ""
 

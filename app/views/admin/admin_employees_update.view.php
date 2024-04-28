@@ -20,6 +20,9 @@ $this->view('includes/footer', $data);
 
 <body>
     <div class="overlay" id="overlay"></div>
+    <?php
+       $this->view('includes/emp_topbar', $data);
+      ?>
     <div class="home-section">
         <!-- content  -->
         <section id="main" class="main">
@@ -211,6 +214,21 @@ $this->view('includes/footer', $data);
             overlay.classList.remove('show');
         }
 
+    </script>
+     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            var navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = "white";
+                } else {
+                    navbar.style.backgroundColor = "transparent";
+                }
+            });
+        });
     </script>
 </body>
 

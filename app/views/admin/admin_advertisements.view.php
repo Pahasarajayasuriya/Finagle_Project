@@ -20,12 +20,23 @@ $this->view('includes/footer', $data);
 
 <body>
     <div class="overlay" id="overlay"></div>
+    <?php
+       $this->view('includes/emp_topbar', $data);
+      ?>
+
     <div class="home-section">
         <!-- content  -->
         <section id="main" class="main">
-            <div class="ad_head">
-                <p class="ad_head_1">ADVERTISEMENTS<span> DETAILS</span></p>
+
+        <div class="title-profile">
+            <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
+            <p class="section-title">ADVERTISEMENTS<span> DETAILS</span></p>
+            <div class="divider dark mb-4">
+                <div class="icon-wrap">
+                <!-- <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i> -->
+                 </div>
             </div>
+        </div>
 
             <div class="form-header">
                 <form action="#">
@@ -37,7 +48,7 @@ $this->view('includes/footer', $data);
                     </div>
                 </form>
 
-                <input class="add-btn" type="button" onclick="openReport()" value="Add ADVERTISEMENT">
+                <input class="add-btn"  style ="margin-top:20px" type="button" onclick="openReport()" value="Add Advertisement">
             </div>
 
             <!-- Popup Container for add branch -->
@@ -46,26 +57,26 @@ $this->view('includes/footer', $data);
                 <h2>Add a Advertisement</h2>
                 <div class="popup-content">
                     <label for="description">Description:</label>
-                    <input value="<?= set_value('name') ?>" type="text" id="description" name="description" placeholder="">
+                    <input value="<?= set_value('name') ?>" type="text" id="description" name="description" placeholder="" style ="background-color:grey ; color:white" >
                     <?php if (!empty($errors['name'])) : ?>
                             <div class="invalid"><?= $errors['description'] ?></div>
                     <?php endif; ?>
 
-                    <label for="image">image:</label>
-                    <input type="file" onchange="load_image(this.files[0])" id="image" name="image">
+                    <label for="image">Image:</label>
+                    <input type="file" onchange="load_image(this.files[0])" id="image" name="image" style ="background-color:grey ; color:white" >
                     <?php if (!empty($errors['image'])) : ?>
                             <div class="invalid"><?= $errors['image'] ?></div>
                     <?php endif; ?>
 
-                    <label for="end_date">end_date:</label>
-                    <input type="date" id="Image" name="end_date">
+                    <label for="end_date">End_date:</label>
+                    <input type="date" id="Image" name="end_date" style ="background-color:grey ; color:white" >
                     <?php if (!empty($errors['contact_number'])) : ?>
                             <div class="invalid"><?= $errors['end_date'] ?></div>
                     <?php endif; ?>
 
                     <div class="buttons-container">
                         <!-- <button class="cancel-btn" onclick="closePopup()">Cancel</button> -->
-                        <button class="cancel-btn" ><a href="<?= ROOT."/admin_advertisements" ?>">Cancel</a></button>
+                        <button class="cancel-btn" style ="background-color:black"  ><a href="<?= ROOT."/admin_advertisements" ?>">Cancel</a></button>
                         <button name="add" value="add" class="submit-btn" onclick="submitForm()">Submit</button>
                     </div>
 
@@ -80,10 +91,10 @@ $this->view('includes/footer', $data);
                 <div class="ad-description">Description</div>
                 <div class="ad-date">End Date</div> -->
 
-                <div>Image</div>
-                <div>ID</div>
-                <div>Description</div>
-                <div>End Date</div>
+                <div style ="margin-left:-50px">Image</div>
+                <div style ="margin-right:280px">ID</div>
+                <div style ="margin-left:-210px">Description</div>
+                <div style ="margin-right:220px">End Date</div>
               
             </div>
             </div>
@@ -106,9 +117,9 @@ $this->view('includes/footer', $data);
 
             <!-- delete popup -->
             <div class="popup-container" id="deletePopup">
-                <h2>Are you sure you want to delete this item?</h2>
+                <h2>Are you sure you want to delete this advertisement?</h2>
                 <div class="buttons-container">
-                    <button class="cancel-btn" onclick="closePopup1()">NO</button>
+                    <button class="cancel-btn" style ="background-color:black"  onclick="closePopup1()">NO</button>
                     <button class="submit-btn" onclick="confirmDelete()">DELETE</button>
                 </div>
             </div>
@@ -123,8 +134,8 @@ $this->view('includes/footer', $data);
                 <div class="branch-loc"><?= esc($row->end_date) ?></div>
                 <div class="advertisement-actions">
                   <!-- <button class="edit-button" onclick="openEditPopupDialog('${branch.id}', '${branch.name}', '${branch.location}')">Edit Branch</button> -->
-                  <button class="edit-button"><a href="<?= ROOT."/admin_advertisements/update_advertisement/".$row->id ?>">Edit Advertisement</a></button>
-                  <button class="delete-button" onclick="openDeletePopup('<?= esc($row->id) ?>')">Delete Advertisement</button>
+                  <button class="edit-button"><a href="<?= ROOT."/admin_advertisements/update_advertisement/".$row->id ?>">Edit</a></button>
+                  <button class="delete-button" onclick="openDeletePopup('<?= esc($row->id) ?>')">Delete</button>
                   <!-- <button class="edit-button" onclick="openReport1()">Delete Advertisement</button>                 -->
                   <!-- <button class="edit-button"><a href="<?= ROOT."/admin_advertisements/delete_advertisement/".$row->id ?>">Delete Advertisement</a></button>                 -->
                 </div>             
@@ -182,6 +193,22 @@ $this->view('includes/footer', $data);
             overlay.classList.remove('show');
         }
 
+    </script>
+
+<script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            var navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = "white";
+                } else {
+                    navbar.style.backgroundColor = "transparent";
+                }
+            });
+        });
     </script>
 </body>
 

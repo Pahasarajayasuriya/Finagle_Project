@@ -17,12 +17,12 @@ if ($role == "User") {
                                 <span class="tooltip">Products</span>
                               </li> 
                               <li>
-                              <a href="' . (Auth::is_customer() ? ROOT . '/progressbar' : ROOT . '/login') . '">
-                                  <i class="bx bx-taxi"></i>
-                                  <span class="links_name">Order Status</span>
+                              <a href="' . (Auth::is_customer() ? ROOT . '/order_history' : ROOT . '/login') . '">
+                                  <i class="bx bx-notepad"></i>
+                                  <span class="links_name">Order History</span>
                                 </a>
-                                <span class="tooltip">Order Status</span>
-                              </li>
+                                <span class="tooltip">Order History</span>
+                              </li> 
                               <li>
                                 <a href="' . ROOT . '/process">
                                   <i class="bx bx-pie-chart-alt-2"></i>
@@ -164,10 +164,7 @@ if ($role == "User") {
                                 <span class="tooltip">Dashboard</span>
                               </li>
                               <li>
-                              <a href="' . ROOT . '/admin_profile">
-                                <i class="bx bxs-user-circle"></i>
-                                <span class="links_name">Profile</span>
-                              </a>
+                            
                               <span class="tooltip">Profile</span>
                             </li>
                             <li>

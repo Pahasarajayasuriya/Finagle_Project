@@ -25,14 +25,23 @@ $this->view('includes/footer', $data);
 </head>
 
 <body>
+<?php $this->view('includes/emp_topbar', $data); ?>
   <div class="home-section">
-    <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
-    <p class="section-title">YOUR <span>ACCOUNT</span></p>
-    <div class="divider dark mb-4">
-      <div class="icon-wrap">
-        <!-- <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i> -->
-      </div>
-    </div>
+
+       
+
+
+        <div class="title-profile">
+            <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i>
+            <p class="section-title">YOUR<span> PROFILE</span></p>
+            <div class="divider dark mb-4">
+                <div class="icon-wrap">
+                <!-- <i class="fas fa-bread-slice fa-3x text-primary mb-4"></i> -->
+                 </div>
+            </div>
+        </div>
+
+
     <div class="pro_container">
 
       <?php if (!empty($data['rows'])) : ?>
@@ -90,6 +99,23 @@ $this->view('includes/footer', $data);
 
     </div>
   </div>
+
+  
+  <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            var navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = "white";
+                } else {
+                    navbar.style.backgroundColor = "transparent";
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

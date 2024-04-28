@@ -16,11 +16,17 @@ $this->view('includes/footer', $data);
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
   <div class="home-section">
+  <?php
+       $this->view('includes/emp_topbar', $data);
+      ?>
     <div class="grid-container">
+      
       <main class="main-container">
         <div class="main-title">
           <h2>DASHBOARD</h2>
@@ -85,6 +91,23 @@ $this->view('includes/footer', $data);
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
   <script src="<?= ROOT ?>/assets/js/admin_dashboard.js"></script>
+
+  <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            var navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = "white";
+                } else {
+                    navbar.style.backgroundColor = "transparent";
+                }
+            });
+        });
+    </script>
 </body>
+
 
 </html>

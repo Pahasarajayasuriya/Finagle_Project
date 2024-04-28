@@ -23,6 +23,9 @@ $this->view('includes/footer', $data);
 <body>
     <div class="overlay" id="overlay"></div>
     <div class="home-section">
+      <?php
+       $this->view('includes/emp_topbar', $data);
+      ?>
         <!-- content  -->
         <section id="main" class="main">
             <div class="ad_head">
@@ -48,26 +51,26 @@ $this->view('includes/footer', $data);
                 <h2>Add a Advertisement</h2>
                 <div class="popup-content">
                     <label for="description">Description:</label>
-                    <input value="<?= set_value('name') ?>" type="text" id="description" name="description" placeholder="">
+                    <input value="<?= set_value('name') ?>" type="text" id="description" name="description" placeholder="" style ="background-color:grey ; color:white" >
                     <?php if (!empty($errors['name'])) : ?>
                             <div class="invalid"><?= $errors['description'] ?></div>
                     <?php endif; ?>
 
                     <label for="image">image:</label>
-                    <input type="text" id="price" name="image">
+                    <input type="text" id="price" name="image" style ="background-color:grey ; color:white" >
                     <?php if (!empty($errors['address'])) : ?>
                             <div class="invalid"><?= $errors['image'] ?></div>
                     <?php endif; ?>
 
                     <label for="end_date">end_date:</label>
-                    <input type="date" id="Image" name="end_date">
+                    <input type="date" id="Image" name="end_date" style ="background-color:grey ; color:white" >
                     <?php if (!empty($errors['contact_number'])) : ?>
                             <div class="invalid"><?= $errors['end_date'] ?></div>
                     <?php endif; ?>
 
                     <div class="buttons-container">
                         <!-- <button class="cancel-btn" onclick="closePopup()">Cancel</button> -->
-                        <button class="cancel-btn" ><a href="<?= ROOT."/admin_advertisements" ?>">Cancel</a></button>
+                        <button class="cancel-btn" style ="background-color:black"  ><a href="<?= ROOT."/admin_advertisements" ?>">Cancel</a></button>
                         <button name="add" value="add" class="submit-btn" onclick="submitForm()">Submit</button>
                     </div>
 
@@ -91,20 +94,20 @@ $this->view('includes/footer', $data);
                 <div class="popup-content">
 
                     <label for="editEndDate">Image:</label>
-                    <input type="file" id="editEndDate" name="image" value="<?= $row[0]->image ?>">
+                    <input type="file" id="editEndDate" name="image" value="<?= $row[0]->image ?>" style ="background-color:grey ; color:white" >
 
                     <label for="editEndDate">Description:</label>
-                    <input type="text" id="editEndDate" name="description" value="<?= $row[0]->description ?>">
+                    <input type="text" id="editEndDate" name="description" value="<?= $row[0]->description ?>" style ="background-color:grey ; color:white" >
 
                     <label for="editEndDate">End Date:</label>
-                    <input type="date" id="editEndDate" name="end_date" value="<?= $row[0]->end_date ?>">
+                    <input type="date" id="editEndDate" name="end_date" value="<?= $row[0]->end_date ?>" style ="background-color:grey ; color:white" >
 
 
                     <input type="hidden" name="id" value="<?= $row[0]->id; ?>">
                     
                     <div class="buttons-container">
                         <!-- <button class="cancel-btn" onclick="closeEditPopup()">Cancel</button> -->
-                        <button class="cancel-btn"><a href="<?= ROOT."/admin_advertisements" ?>">Cancel</a></button>
+                        <button class="cancel-btn" style ="background-color:black"><a href="<?= ROOT."/admin_advertisements" ?>">Cancel</a></button>
                         <button name="update" value="update" class="submit-btn" onclick="submitEditForm()">Submit</button>
                     </div>
                 </div>
@@ -120,8 +123,8 @@ $this->view('includes/footer', $data);
                 <div class="branch-loc"><?= esc($row->end_date) ?></div>
                 <div class="advertisement-actions">
                   <!-- <button class="edit-button" onclick="openEditPopupDialog('${branch.id}', '${branch.name}', '${branch.location}')">Edit Branch</button> -->
-                  <button class="edit-button"><a href="<?= ROOT."/admin_advertisements/update_advertisement/".$row->id ?>">Edit Advertisement</a></button>
-                  <button class="edit-button"><a href="<?= ROOT."/admin_advertisements/delete_advertisement/".$row->id ?>">Delete Advertisement</a></button>                
+                  <button class="edit-button"><a href="<?= ROOT."/admin_advertisements/update_advertisement/".$row->id ?>">Edit</a></button>
+                  <button class="edit-button"><a href="<?= ROOT."/admin_advertisements/delete_advertisement/".$row->id ?>">Delete</a></button>                
                 </div>             
              </div>
              <?php endforeach;?>
@@ -131,6 +134,22 @@ $this->view('includes/footer', $data);
         <!-- <script src="branch-admin.js"></script> -->
     </div>
     <script src="<?= ROOT ?>/assets/js/admin_branch_update.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            var navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = "white";
+                } else {
+                    navbar.style.backgroundColor = "transparent";
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

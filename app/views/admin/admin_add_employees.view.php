@@ -32,15 +32,19 @@ $this->view('includes/footer', $data);
 
 <body>
 <div class="home-section">
-    <div class="login_container">
-        <!-- <img src="https://i.pinimg.com/564x/4c/80/3b/4c803b6dcc4b96172ee2667ac3f80eff.jpg"> -->
-    
 
-        <div class="form-container">
-            <section>
-                <i class="fas fa-birthday-cake" style="font-size:30px;margin-left:280px;"></i>
-                <form method="post">
-                    <h1>Add Employee</h1>
+   <?php
+    $this->view('includes/emp_topbar', $data);
+    ?>
+    <!-- <div class="login_container"> -->
+    <!-- <img src="https://i.pinimg.com/564x/4c/80/3b/4c803b6dcc4b96172ee2667ac3f80eff.jpg"> -->
+
+
+    <div class="form-container">
+        <section>
+            <!-- <i class="fas fa-birthday-cake" style="font-size:30px;margin-left:280px;"></i> -->
+            <form method="post">
+                <h1>Add Employee</h1>
                 <div class="line-inputs">
 
                     <div class="inputbox">
@@ -62,7 +66,7 @@ $this->view('includes/footer', $data);
                         <?php endif; ?>
                     </div>
                 </div>
-                
+
                 <div class="line-inputs">
 
                     <div class="inputbox">
@@ -103,48 +107,63 @@ $this->view('includes/footer', $data);
                     <div class="inputbox">
                         <i class="far fa-calendar-alt"></i>
 
-                           <!-- <label for="address">Joined Date</label> -->
+                        <!-- <label for="address">Joined Date</label> -->
 
-                         <input type="date" name="joined_date" id="joined_date"  value="<?= set_value('joined_date') ?> "  placeholder="Joined Date" required style="color: #717171;">
-                         <?php if (!empty($errors['joined_date'])) : ?>
+                        <input type="date" name="joined_date" id="joined_date" value="<?= set_value('joined_date') ?> " placeholder="Joined Date" required style="color: #717171;">
+                        <?php if (!empty($errors['joined_date'])) : ?>
                             <div class="invalid"><?= $errors['joined_date'] ?></div>
                         <?php endif; ?>
                     </div>
                 </div>
 
                 <div class="line-inputs">
-                     <div class="inputbox" >
+                    <div class="inputbox">
                         <i class="fas fa-code-branch"></i>
 
                         <!-- <label for="branch">Branch</label> -->
 
                         <select name="branch" id="branch" placeholder="Branch">
-                        <?php foreach ($branches as $branch) : ?>
+                            <?php foreach ($branches as $branch) : ?>
                                 <option class="branch_select"><?= $branch->name ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
 
-                    <div class="inputbox" >
-                       <i class="fas fa-tasks"></i>
+                    <div class="inputbox">
+                        <i class="fas fa-tasks"></i>
                         <!-- <label for="role">Role</label> -->
                         <select name="role" id="role" placeholder="Role">
-                            <option value="admin">Admin</option>
+                            <!-- <option value="admin">Admin</option> -->
                             <option value="manager">Manager</option>
                             <option value="employee">Employee</option>
                             <option value="deliverer">Deliverer</option>
                         </select>
                     </div>
                 </div>
-                
 
 
-                    <button>Sign Up</button>
-                </form>
-            </section>
-        </div>
+
+                <button>REGISTER</button>
+            </form>
+        </section>
     </div>
 </div>
+<script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            var navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = "white";
+                } else {
+                    navbar.style.backgroundColor = "transparent";
+                }
+            });
+        });
+    </script>
+
 </body>
 
 

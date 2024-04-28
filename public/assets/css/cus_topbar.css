@@ -140,14 +140,12 @@ body {
     margin-top: 0;
   }
   
-  .home-section {
+   .home-section {
     width: calc(100% - 78px);
-    margin-left: 78px;
+    margin-left: 70px;
     transition: all 0.5s ease;
   }
-  
-  
-  
+   
   .sidebar.open~.home-section {
     width: calc(100% - 250px);
     margin-left: 250px;

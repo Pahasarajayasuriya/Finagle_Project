@@ -18,7 +18,7 @@ body {
   margin-top: -10px;
 }
 .section-title {
-  font-size: 2em;
+  font-size: 1.5em;
   line-height: 1;
   text-transform: uppercase;
   font-weight: bold;
@@ -81,7 +81,7 @@ margin-left: 100px;
   flex-direction: column;
   gap: 20px;
   color: black;
-  margin-top: 40px;
+  margin-top: 10px;
   align-items: center;
 }
 
@@ -238,4 +238,22 @@ input[type="radio"] {
 
 .section-title span{
   color: #d72323;
+
+.goals{
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 200px;
+  height: 40px;
+  background-color:rgb(235, 12, 12);
+  margin-left: 67%;
+  margin-top: 30px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+ 
+  
 }
