@@ -23,11 +23,6 @@
                 
                 <?php if (Auth::logged_in()) : ?>
                     <a class="signup" href="<?= ROOT ?>/Emp_Logout">Log Out</a>
-
-                
-
-                   
-
                 <?php else : ?>
                     <!-- <div class="user_navbar">
                         <div class="dropdown">

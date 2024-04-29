@@ -25,6 +25,7 @@ $this->view('includes/footer', $data);
   <?php
        $this->view('includes/emp_topbar', $data);
       ?>
+      
     <div class="grid-container">
       
       <main class="main-container">
