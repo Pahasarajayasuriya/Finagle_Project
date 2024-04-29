@@ -253,7 +253,7 @@ img {
   position: relative;
   margin-left: 200px;
   margin-top:40px;
-  height: 380px;
+  /* height: 380px; */
   /* align-items: center; */
 
   border: 2px solid #ccc;
@@ -346,4 +346,47 @@ img {
 .sidebar.open~.navbar {
   width: calc(100% - 250px);
   margin-left: 200px;
+}
+.invalid {
+  color:red; 
+  font-size: 0.9em; 
+  margin-top: 5px; 
+  display: block; 
+  transition: all 0.3s ease; 
+  border: 2px solid red; 
+  padding: 8px; 
+  border-radius: 5px; 
+}
+
+.inputbox {
+  position: relative; 
+}
+
+.invalid::before {
+  content: "\f071";
+  font-family: "Font Awesome 5 Free"; 
+  position: absolute;
+  top: 50%; 
+  right: 10px; 
+  transform: translateY(-50%); 
+  color: red;
+  font-size: 1em; 
+}
+
+.invalid::before {
+  content: "\26A0"; 
+  font-family: Arial, sans-serif; 
+  position: absolute;
+  top: 50%; 
+  right: 10px; 
+  transform: translateY(-50%); 
+  color: red;
+  font-size: 1em; 
+}
+
+
+.invalid:focus {
+  outline: none; 
+  border-color: #d93025; 
+  box-shadow: 0 0 5px #d93025; 
 }

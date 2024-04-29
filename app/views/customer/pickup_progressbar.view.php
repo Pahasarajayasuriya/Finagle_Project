@@ -23,6 +23,11 @@ $this->view('includes/footer', $data);
     <?php $this->view('includes/cus_topbar', $data); ?>
     <div class="home-section">
         <div class="progress_main">
+           <div class="back-icon" id="back-button">
+                <a href="<?= ROOT ?>/Order_history"> <i class="fa fa-arrow-left" aria-hidden="true"></i> </a>
+
+
+            </div>
             <div class="container">
                 <div class="text-container">
                     <h1>Order ID: <?= $data['orderId'] ?></h1>
