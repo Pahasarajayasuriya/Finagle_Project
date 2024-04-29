@@ -132,7 +132,7 @@ margin-top: 5px;
 
     padding: 20px;
     margin-top: 40px;
-    width: 1000px;
+    width: 1200px;
     overflow: auto;
     border: 2px solid #ccc;
     overflow: hidden;
@@ -141,7 +141,7 @@ margin-top: 5px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     align-self: center;
     align-items: center;
-    margin-left: 100px;
+    margin-left: 180px;
 }
 
 table {

@@ -813,7 +813,7 @@ cursor: pointer;
   gap: 90px;
   width: calc(100% - 160px); /* Adjusted width to fit within the viewport */
   align-items: center;
-  margin-left: 200px;
+  margin-left: 350px;
 }
 
 .category-item {
