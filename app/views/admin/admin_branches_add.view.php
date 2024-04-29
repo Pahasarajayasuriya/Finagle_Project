@@ -57,6 +57,10 @@ $this->view('includes/footer', $data);
                             <div class="invalid"><?= $errors['address'] ?></div>
                     <?php endif; ?>
 
+                    <div id="map"></div>
+                    <input type="hidden" id="latitude" name="latitude">
+                    <input type="hidden" id="longitude" name="longitude">
+
                     <label for="contact-number">Contact number:</label>
                     <input value="<?= set_value('contact_number') ?>" type="text" id="Image" name="contact_number">
                     <?php if (!empty($errors['contact_number'])) : ?>
@@ -200,6 +204,138 @@ $this->view('includes/footer', $data);
         }
 
     </script>
+
+<script>
+        //for get id through delete button
+        function openDeletePopup(adId) {
+            const popupContainer = document.getElementById('deletePopup');
+            const overlay = document.getElementById('overlay');
+            const deleteButton = document.querySelector('#deletePopup .submit-btn');
+            deleteButton.onclick = function() {
+                confirmDelete(adId);
+            } // Set up the deletion confirmation
+            popupContainer.classList.add('show');
+            overlay.classList.add('show');
+        }
+
+        function confirmDelete(adId) {
+            const url = `<?= ROOT . "/admin_branches/delete_branch/" ?>${adId}`;
+            //console.log(url);
+            window.location.href = url; // Redirect to delete the advertisement
+        }
+
+        function closePopup1() {
+            const popupContainer = document.getElementById('deletePopup');
+            popupContainer.classList.remove('show');
+            overlay.classList.remove('show');
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            var navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = "white";
+                } else {
+                    navbar.style.backgroundColor = "transparent";
+                }
+            });
+        });
+    </script>
+    <style>
+        #map {
+            height: 200px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+    </style>
+    <script>
+        // Initialize the map
+        var map;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 10,
+                center: {
+                    lat: 6.9271,
+                    lng: 79.8612
+                } // Coordinates for Colombo, Sri Lanka
+            });
+
+            // Create the search box and link it to the UI element.
+            var input = document.getElementById('price');
+            var autocomplete = new google.maps.places.Autocomplete(input, {
+                componentRestrictions: {
+                    country: 'lk'
+                }
+            });
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+            // Bias the Autocomplete results towards current map's viewport.
+            map.addListener('bounds_changed', function() {
+                autocomplete.setBounds(map.getBounds());
+            });
+
+            var markers = [];
+            // Listen for the event fired when the user selects a prediction and retrieve
+            // more details for that place.
+            autocomplete.addListener('place_changed', function() {
+    var place = autocomplete.getPlace();
+
+    if (!place.geometry) {
+        console.log("Returned place contains no geometry");
+        return;
+    }
+
+    var latitude = place.geometry.location.lat();
+    var longitude = place.geometry.location.lng();
+
+    console.log('Latitude: ' + latitude);
+    console.log('Longitude: ' + longitude);
+
+    // Store the latitude and longitude in hidden input fields
+    document.getElementById('latitude').value = latitude;
+    document.getElementById('longitude').value = longitude;
+
+    // Clear out the old markers.
+    markers.forEach(function(marker) {
+        marker.setMap(null);
+    });
+    markers = [];
+
+    var icon = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(25, 25)
+    };
+
+    // Create a marker for each place.
+    markers.push(new google.maps.Marker({
+        map: map,
+        icon: icon,
+        title: place.name,
+        position: place.geometry.location
+    }));
+
+    var bounds = new google.maps.LatLngBounds();
+    if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+    } else {
+        bounds.extend(place.geometry.location);
+    }
+    map.fitBounds(bounds);
+});
+        }
+    </script>
+
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJgBkLPPO15pdU1KgvHPib8NnXlun3IsM&loading=async&libraries=places&callback=initMap"></script>
 </body>
 
 </html>

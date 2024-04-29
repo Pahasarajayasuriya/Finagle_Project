@@ -40,7 +40,7 @@ class Admin_branches extends Controller
                     $id=$_POST['id'];
                     unset($_POST['id']);
                     unset($_POST['update']);
-                    show($_POST);
+                    //show($_POST);
                     // UPdate the DB
                     $admin_branch_model->update($id,$_POST);
 

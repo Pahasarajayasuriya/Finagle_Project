@@ -17,9 +17,11 @@ class Admin_branches_add extends Controller
             //show($validatedData);
             if ($validatedData) {
                     //show($_POST);
+                    $_POST['latitude'] = floatval($_POST['latitude']);
+                    $_POST['longitude'] = floatval($_POST['longitude']);
                     // Insert the product into the database
                     $admin_branch_model->insert($_POST);
-
+                    //show($_POST);
                     // Redirect to avoid form resubmission
                     redirect('admin_branches');
             }else {

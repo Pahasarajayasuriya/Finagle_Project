@@ -8,6 +8,8 @@ class admin_branchesModel extends Model
         'id',
         'name',
         'address',
+        'latitude',
+        'longitude',
         'contact_number',
         'open_time',
         'close_time',
